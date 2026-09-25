@@ -56,3 +56,10 @@ own worktree and PR. The base is required so new servers inherit the foundation.
 This implementation carries forward the merged planning PR #2, with ky-server-base
 required and KyForge scoped to its actual ITSM surfaces. PR creation is not
 proof that the visual, CI or review gates have passed; record evidence in each PR.
+
+## Post-rollout regression automation
+
+- Shared primitive browser tests run in ky-ui CI at 390px/1280px in light/dark Chromium: layout, navigation focus/selection/disabled states, dialogs, theme transitions, cross-tab updates and denied storage. This is a contract fixture, not coverage of every product layout.
+- ky-server-base and KyForge run real-server browser checks, including CSP-safe worker activation, mobile Settings, pairing keyboard behavior, authentication errors and populated UI. Each has its own worktree and PR; publishing depends on the browser job.
+- Suite freshness runs daily, on ky-ui main pushes and manually against all ten public consumer default branches. It compares exact release bytes without executing consumer code; existing vendor checks remain local-integrity gates.
+- Other products retain their current tests and rendered rollout evidence. Product-specific E2E flows, live KyVault SSO and complete accessibility audits are not claimed by these checks.

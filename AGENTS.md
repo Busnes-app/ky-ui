@@ -11,6 +11,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
 - `consumers.json` lists nine product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
+- `scripts/check-suite.mjs` checks public consumer default branches read-only; no consumer code runs. Scheduled/manual CI detects release drift separately from local copy integrity.
 
 ## Local Contracts
 
@@ -23,15 +24,15 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 
 ## Work Guidance
 
-- Keep this package dependency-free unless a concrete product requirement proves a dependency necessary.
+- Keep the shipped primitives dependency-free. Playwright is a development-only dependency for browser verification.
 - Add tokens and interaction primitives here; keep product composition and layout local to each product.
 - Run `npm run sync:consumers -- --root=<suite worktree root>` for a release copy, and `npm run check:consumers -- --root=<suite worktree root>` before merging consumer changes.
 - Update `PLAN.md` when a rollout step changes or a product migration is completed.
 
 ## Verification
 
-Run `npm test` from this directory. For a rollout, also run `npm run check:consumers -- --root=<suite worktree root>` after syncing the consumer copies.
+Run `npm test` and `npm run test:browser` from this directory (install Chromium first, as described in README). For a rollout, also run `npm run check:consumers -- --root=<suite worktree root>` after syncing the consumer copies; `npm run check:suite` checks public default branches.
 
 ## Child DOX Index
 
-No child DOX files.
+- `browser/AGENTS.md` owns the shared primitive browser fixture and regression checks (not product integration coverage).

@@ -1,0 +1,10 @@
+/* Fixture geometry is deliberately local, never part of the shipped primitives. */
+body { margin: 16px; background: var(--bg); color: var(--ink-strong); font: 16px system-ui; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 16px; }
+button, select, input { font: inherit; padding: 10px; }
+button, select, input, dialog { color: var(--ink-strong); background: var(--panel); border: 1px solid var(--line); }
+dialog { max-width: calc(100vw - 64px); }
+input { max-width: 100%; box-sizing: border-box; }
+[role=alert] { color: var(--ky-danger); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:root[data-theme=legacy] { --bg: #202040; --panel: #28284a; --ink-strong: #ffffff; --ink: #ddddff; --accent: #d5b8ff; --accent-soft: #403050; --line: #aaaaaa; }
