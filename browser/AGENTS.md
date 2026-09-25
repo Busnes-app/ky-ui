@@ -13,6 +13,7 @@ Owns the explicitly labeled contract fixture, loopback-only fixture server and P
 - Import actual shared assets; fixture CSS owns only layout and the legacy-theme example.
 - Assert overflow, keyboard focus, native dialog dismissal/focus return, selected/disabled states, persistence, OS changes, cross-tab updates and restricted storage.
 - Screenshots and failure traces are test artifacts, not pixel-diff baselines or proof of product accessibility.
+- `readme.spec.js` serves the README's actual HTML/module snippets with shared assets on an owned loopback port and verifies saved-choice initialization under `script-src 'self'`.
 
 ## Verification
 

@@ -6,16 +6,32 @@ It deliberately does not provide a framework, router, component runtime, or prod
 
 ## Use
 
+Serve these files from the application's own origin. Put this markup in the
+document head; it works with `script-src 'self'`:
+
 ```html
 <link rel="stylesheet" href="/assets/ky-ui/tokens.css">
 <link rel="stylesheet" href="/assets/ky-ui/navigation.css">
-<script type="module">
-  import { applyTheme } from "/assets/ky-ui/theme.js";
-  applyTheme();
-</script>
+<script type="module" src="/assets/theme-init.js"></script>
 ```
 
-For a server-rendered page, call `applyTheme()` in the document head when possible to reduce theme flash. Product CSS should map its existing local variables to the `--ky-*` tokens during migration, then delete the duplicate token definitions once all consumers are moved.
+Create the product-owned `/assets/theme-init.js` (or put this code in the
+product's existing external entry bundle):
+
+```js
+import { applyTheme } from "/assets/ky-ui/theme.js";
+applyTheme();
+```
+
+Do not add `unsafe-inline` to the script policy for theme initialization.
+Modules are deferred: putting this tag in the head does not guarantee that a
+saved theme is applied before first paint. Check saved-choice first paint in the
+product; server-render a validated theme attribute when that preference is
+available to the server. The token stylesheet follows the OS before an override
+is applied. Existing products should retain their adapter, saved key and named
+themes rather than replace them with this minimal default-key example.
+
+Product CSS should map its existing local variables to the `--ky-*` tokens during migration, then delete the duplicate token definitions once all consumers are moved.
 
 Refresh the checked-in consumer copies with `npm run sync:consumers -- --root=/path/to/suite-worktrees`. `consumers.json` names the nine products and server base. For differently named checkouts, pass `--paths=/path/to/paths.json`, a JSON object mapping those repository names to absolute checkout paths. Every destination is validated before writing.
 
@@ -55,10 +71,15 @@ This checks freshness against the selected ky-ui revision, not package-registry
 availability. Consumer build checks still enforce their own pinned integrity.
 
 KyForge is private. Its own `consumer-freshness` workflow checks out itself with
-its repository-scoped token and compares against public ky-ui main using
-`node upstream/scripts/sync-consumers.mjs --root=consumers --check --consumer=KyForge-Server`.
+its repository-scoped token and reads public ky-ui main strictly as comparison
+data. It runs **Forge's reviewed `scripts/check-ui-freshness.mjs`**, not a script
+or import from the upstream checkout. That comparator owns the release-copy
+format, including generated palettes and the version manifest; format changes
+require a Forge-side review. There is no dependency on the upstream selector or
+on merging ky-ui #4 before Forge #34.
 The central job explicitly reports this delegation; a green central run alone
 does not assert Forge freshness. Both workflows must be green for suite freshness.
-No cross-repository private token is needed. `--consumer=<inventory name>` is a
-repeatable, check-only scope selector; unknown names fail. Update this split when
-consumer visibility changes.
+No cross-repository private token is needed. Update this split when consumer
+visibility changes. The upstream sync tool's `--consumer=<inventory name>` is
+still a repeatable, check-only selector for trusted local verification; it does
+not make execution of mutable upstream code safe beside private source.
