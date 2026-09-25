@@ -61,5 +61,22 @@ proof that the visual, CI or review gates have passed; record evidence in each P
 
 - Shared primitive browser tests run in ky-ui CI at 390px/1280px in light/dark Chromium: layout, navigation focus/selection/disabled states, dialogs, theme transitions, cross-tab updates and denied storage. This is a contract fixture, not coverage of every product layout.
 - ky-server-base and KyForge run real-server browser checks, including CSP-safe worker activation, mobile Settings, pairing keyboard behavior, authentication errors and populated UI. Each has its own worktree and PR; publishing depends on the browser job.
-- Suite freshness runs daily, on default-branch pushes and manually. The central job checks nine public consumers without Git credentials; private KyForge checks public ky-ui main from its own repository using the check-only consumer selector. Both workflows must be green to cover all ten; existing vendor checks remain local-integrity gates. Merge ky-ui #4 before KyForge #34 so the upstream selector exists when Forge's workflow starts.
+- Suite freshness runs daily, on default-branch pushes and manually. The central job checks nine public consumers without Git credentials; private KyForge runs its own reviewed comparator against public upstream files as data, without executing upstream code. Both workflows must be green to cover all ten; existing vendor checks remain local-integrity gates. No upstream-selector merge dependency remains.
 - Other products retain their current tests and rendered rollout evidence. Product-specific E2E flows, live KyVault SSO and complete accessibility audits are not claimed by these checks.
+
+## Next product-browser passes — planned, not implemented
+
+Prioritize real application behavior by consequence of failure, not another visual redesign:
+
+1. **KyIdentity + KyVault:** disposable Identity/Vault integration, real SSO redirect/return and sign-out, denied/expired authentication, vault unlock and populated entries. Establish a development IdP and throwaway identities first; fixtures cannot certify SSO and authentication must not be bypassed.
+2. **KyRecovery + KyYard + KyDNS:** confirmation/cancellation, permission-denied/error states and long operational tables. Use scratch capsule/container/DNS data; exercise destructive actions only on owned disposable resources.
+3. **KyPost + KyNotes + KyMark:** populated reading/editing/search flows, long content, empty/error states and saved-theme transitions. Mail stays in a test sink; no production recipients or personal data.
+
+Each application gets an isolated worktree and PR. First inspect its existing tests
+and reuse the product's harness. The minimum browser pass is desktop/mobile ×
+Busnes light/dark, named-to-Busnes switching, keyboard reachability/visible focus,
+dialog dismissal/focus return and contained overflow with populated data.
+Add explicit contrast checks for text, focus and warning/error states; retain a
+manual keyboard/screen-reader pass rather than equating screenshots or automated
+checks with a complete accessibility audit. Include Firefox/WebKit in a subsequent
+compatibility pass; current shared/base/Forge browser coverage is Chromium only.
