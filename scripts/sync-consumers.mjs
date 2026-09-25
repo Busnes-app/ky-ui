@@ -9,12 +9,18 @@ const pkg = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));
 let suite = resolve(root, '..');
 let check = false;
 let overrides = {};
+const selected = new Set();
 for (const arg of process.argv.slice(2)) {
   if (arg === '--check') check = true;
   else if (arg.startsWith('--root=')) suite = resolve(arg.slice(7));
   else if (arg.startsWith('--paths=')) overrides = JSON.parse(await readFile(resolve(arg.slice(8)), 'utf8'));
+  else if (arg.startsWith('--consumer=')) selected.add(arg.slice(11));
   else throw new Error(`Unknown argument: ${arg}`);
 }
+for (const repo of selected) {
+  if (!Object.hasOwn(consumers, repo)) throw new Error(`Unknown consumer: ${repo}`);
+}
+if (selected.size && !check) throw new Error('--consumer is only supported with --check');
 if (!overrides || Array.isArray(overrides) || typeof overrides !== 'object') throw new Error('Paths must be an object');
 for (const [key, path] of Object.entries(overrides)) {
   if (!(key in consumers)) throw new Error(`Unknown consumer: ${key}`);
@@ -45,6 +51,7 @@ bytes.VERSION = Buffer.from(JSON.stringify(manifest, null, 2) + '\n');
 // Validate every checkout before writing anything. Worktrees use a .git file.
 const targets = [];
 for (const [repo, assetPath] of Object.entries(consumers)) {
+  if (selected.size && !selected.has(repo)) continue;
   const checkout = await realpath(overrides[repo] ?? join(suite, repo));
   await stat(join(checkout, '.git'));
   const parent = await realpath(dirname(join(checkout, assetPath)));

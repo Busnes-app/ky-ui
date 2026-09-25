@@ -42,13 +42,23 @@ CI retains screenshots and failure traces in `browser-results` for seven days.
 
 ## Suite freshness
 
-`npm run check:suite` shallow-clones all ten public consumer default branches into
+`npm run check:suite` shallow-clones the nine public consumer default branches into
 an owned temporary directory and invokes the existing exact-byte `--check`.
 It logs each checked commit, fails on fetch errors/missing/stale files, and cleans
-up on completion. It neither executes consumer code nor writes to those repos.
+up on completion. Git credential helpers are disabled for these public fetches.
+It neither executes consumer code nor writes to those repos.
 The `consumer-freshness` workflow runs daily, after pushes to main, and manually;
 it needs no cross-repository token. A release can legitimately turn it red until
 the corresponding consumer updates merge. Open the failed Actions run, sync the
 reported consumers in isolated worktrees, and submit their updates as PRs.
 This checks freshness against the selected ky-ui revision, not package-registry
 availability. Consumer build checks still enforce their own pinned integrity.
+
+KyForge is private. Its own `consumer-freshness` workflow checks out itself with
+its repository-scoped token and compares against public ky-ui main using
+`node upstream/scripts/sync-consumers.mjs --root=consumers --check --consumer=KyForge-Server`.
+The central job explicitly reports this delegation; a green central run alone
+does not assert Forge freshness. Both workflows must be green for suite freshness.
+No cross-repository private token is needed. `--consumer=<inventory name>` is a
+repeatable, check-only scope selector; unknown names fail. Update this split when
+consumer visibility changes.

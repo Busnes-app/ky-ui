@@ -11,7 +11,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
 - `consumers.json` lists nine product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
-- `scripts/check-suite.mjs` checks public consumer default branches read-only; no consumer code runs. Scheduled/manual CI detects release drift separately from local copy integrity.
+- `scripts/check-suite.mjs` checks nine public consumer default branches read-only with credential helpers disabled; no consumer code runs. Private KyForge checks public ky-ui main from its own scheduled workflow via check-only `--consumer=KyForge-Server`. Both workflows gate suite freshness; no cross-repository private token.
 
 ## Local Contracts
 
