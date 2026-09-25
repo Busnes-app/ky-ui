@@ -36,10 +36,12 @@ own worktree and PR. The base is required so new servers inherit the foundation.
    screens, rebuild KyNotes' embedded output and compare it with source in CI.
 5. **Theme adapters.** Share restricted-storage-safe read/write and event helpers;
    preserve product choice validation and special semantic aliases. Test OS
-   following, explicit and legacy choices, cross-tab changes and unavailable storage.
+   following, explicit and legacy choices, cross-tab changes, unavailable storage,
+   first paint and named-to-Busnes switching.
 6. **Rendered evidence.** Each consumer PR includes screenshots and the exact
    capture conditions. Exercise desktop/mobile, light/dark, selected/focus states
-   and representative operational or honest empty/error surfaces. Do not describe
+   and representative operational or honest empty/loading/error surfaces. Verify
+   disabled states and stable mobile item dimensions. Do not describe
    fixture-backed captures as live integration tests.
 
 ## Merge gates
@@ -51,5 +53,6 @@ own worktree and PR. The base is required so new servers inherit the foundation.
   issue explicitly in the evidence instead of silently counting it as verified.
 - Each PR passes CI and clears review at its current head. Merging is a human action.
 
-This implementation supersedes the planning-only ky-ui PR #2. PR creation is not
+This implementation carries forward the merged planning PR #2, with ky-server-base
+required and KyForge scoped to its actual ITSM surfaces. PR creation is not
 proof that the visual, CI or review gates have passed; record evidence in each PR.
