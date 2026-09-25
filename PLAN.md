@@ -47,6 +47,8 @@ Done when a clean build produces the checked-in asset set and the editor loads w
 
 ## 5. Migrate shared styling across the suite
 
+- Status: in progress — the versioned consumer sync and canonical token aliases are landed; product-specific palette removal continues in the consumer PRs.
+
 - Map each product's existing variables to `--ky-*` during a small, reviewable migration.
 - Move only shared tokens, theme persistence, focus treatment, and navigation states into `ky-ui`.
 - Keep page grids, forms, editor rules, tables, and product-specific components in their owning repositories.

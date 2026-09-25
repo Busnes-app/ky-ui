@@ -11,6 +11,8 @@
   },
   "scripts": {
     "test": "node --test",
-    "check": "node --test"
+    "check": "node --test",
+    "sync:consumers": "node scripts/sync-consumers.mjs",
+    "check:consumers": "node scripts/sync-consumers.mjs --check"
   }
 }

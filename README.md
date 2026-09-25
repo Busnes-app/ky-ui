@@ -17,6 +17,8 @@ It deliberately does not provide a framework, router, component runtime, or prod
 
 For a server-rendered page, call `applyTheme()` in the document head when possible to reduce theme flash. Product CSS should map its existing local variables to the `--ky-*` tokens during migration, then delete the duplicate token definitions once all consumers are moved.
 
+Refresh the checked-in consumer copies with `npm run sync:consumers -- --root=/path/to/suite-worktrees`. It writes only `tokens.css`, `navigation.css`, and `VERSION` into the seven web products. `npm run check:consumers -- --root=/path/to/suite-worktrees` verifies that every copy matches this package exactly.
+
 ## Boundary
 
 The package is browser UI infrastructure. `ky-primitives` remains the home for Go protocol, crypto, and recovery primitives; it should not absorb CSS or browser behavior.
