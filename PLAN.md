@@ -1,66 +1,55 @@
-# Ky UI rollout plan
+# Shared UI rollout
 
-This is the implementation plan for the five follow-up fixes identified after the server theme work.
+## Required scope
 
-## 0. Establish the base
+Nine products **and ky-server-base** ship the same versioned browser foundation.
+`consumers.json` is the repository/asset-path inventory. Each repository gets its
+own worktree and PR. The base is required so new servers inherit the foundation.
 
-- Land `ky-ui` as a dependency-free, versioned browser package.
-- Use Busnes Light/Dark as the shared default and follow the OS until a local choice exists.
-- Publish tokens, theme application, and navigation state CSS without taking ownership of product layouts.
-- Verify the package with deterministic Node tests.
+| Consumer | Product-owned surface to preserve |
+| --- | --- |
+| KyMark | Bookmark folders, search, import/export and encrypted vault |
+| KyDNS | Horizontal navigation, DNS tables and operational status |
+| KyRecovery | Capsules, ceremony, replication and warning/error states |
+| KyIdentity | Applications, security, directory and administration |
+| KyVault | Vault groups, entries, unlock and recovery |
+| KyNotes | List/editor workspace and encrypted local queue |
+| KyPost | Mail folders, reader, compose and administration |
+| KyYard | Containers/endpoints, deployment controls and scoped administration |
+| KyForge | ITSM work items, queues, approvals, directory and recovery |
+| ky-server-base | Scaffold shell and inherited future product defaults |
 
-Done when every exported primitive has a documented contract and `npm test` is green.
+## Implementation
 
-## 1. Migrate KyMark
+1. **One palette source.** Version 0.2.0 owns Busnes CSS values. Consumer CSS maps
+   semantic variables to shared tokens; palette swatches and stylesheet-free
+   renderers use generated palette objects. Preserve named themes and saved keys.
+2. **Effective selected navigation.** Mark actual navigation elements, retain
+   current-page semantics, and share the quiet selected surface, accent rail,
+   hover and focus states. Products keep geometry. Selection must not resize items.
+3. **Safe release copies.** Preflight every checkout, support explicit worktree
+   mappings, reject symlink destinations, record version plus file hashes, and
+   verify consumer bytes in builds/CI. Local integrity does not establish latest
+   upstream version: the central `--check` does that against the selected release.
+4. **Repair earlier gaps.** Check KyRecovery's active light/dark aliases and
+   contrast, remove KyYard's unused shell, keep KyMark controls reachable on small
+   screens, rebuild KyNotes' embedded output and compare it with source in CI.
+5. **Theme adapters.** Share restricted-storage-safe read/write and event helpers;
+   preserve product choice validation and special semantic aliases. Test OS
+   following, explicit and legacy choices, cross-tab changes and unavailable storage.
+6. **Rendered evidence.** Each consumer PR includes screenshots and the exact
+   capture conditions. Exercise desktop/mobile, light/dark, selected/focus states
+   and representative operational or honest empty/error surfaces. Do not describe
+   fixture-backed captures as live integration tests.
 
-- Replace the Patina/Cyan root palette with `ky-ui` tokens.
-- Remove the duplicate `.nav-item.active` rule.
-- Preserve KyMark-specific card, bookmark, and toolbar layout locally.
-- Check light, dark, keyboard focus, and narrow viewport states.
+## Merge gates
 
-Done when no legacy palette token controls the application shell and the active page is distinguishable without color alone.
+- Shared tests, consumer tests/builds and vendor checks pass.
+- Served assets correspond to the changed sources; embedded bundles are rebuilt.
+- Screenshots are reviewed for navigation, readable status and reachable controls.
+- Existing theme choices are preserved. Name any broken theme or unrelated browser
+  issue explicitly in the evidence instead of silently counting it as verified.
+- Each PR passes CI and clears review at its current head. Merging is a human action.
 
-## 2. Improve KyDNS selected navigation
-
-- Adopt `ky-ui/navigation.css` for the selected page.
-- Keep the horizontal navigation shape, but add the quiet selected surface and slim accent rail.
-- Retain the existing named theme choices and OS default behavior.
-
-Done when selected, hovered, focused, and disabled states are distinct in both themes and at mobile widths.
-
-## 3. Replace gallery-only screenshots with real states
-
-- Capture rendered desktop and mobile states from KyDNS, KyRecovery, KySignOn, KyMark, KyVault, KyNotes, and KyPost.
-- Cover Busnes Light, Busnes Dark, selected navigation, empty/loading/error, and one representative application screen per product.
-- Store the images beside the owning product or in a clearly versioned visual-regression fixture directory.
-
-Done when each product has screenshots of its actual shell and at least one real application surface, not only generic templates.
-
-## 4. Clean the KyNotes embedded bundle
-
-- Regenerate `internal/web/dist` from the current source build.
-- Confirm the generated index references only current BlockNote chunks.
-- Remove unreferenced stale hashed assets from the embedded output.
-- Make the build/check fail if stale output is committed again.
-
-Done when a clean build produces the checked-in asset set and the editor loads without selecting an obsolete chunk.
-
-## 5. Migrate shared styling across the suite
-
-- Status: in progress — the versioned consumer sync and canonical token aliases are landed; product-specific palette removal continues in the consumer PRs.
-
-- Map each product's existing variables to `--ky-*` during a small, reviewable migration.
-- Move only shared tokens, theme persistence, focus treatment, and navigation states into `ky-ui`.
-- Keep page grids, forms, editor rules, tables, and product-specific components in their owning repositories.
-- Remove dead duplicate shell rules after each product is migrated; KyYard's redundant legacy shell block is an early cleanup candidate.
-- Add a versioned release/copy step so servers consume a known `ky-ui` version rather than remote runtime CSS.
-
-Done when all seven web products use one token source, each product still owns its layout, and visual checks pass in both themes.
-
-## Release gates
-
-- `ky-ui` unit tests are green.
-- Each migrated product's existing tests/build are green.
-- Keyboard focus and selected state are visible in both themes.
-- No product-specific asset, route, or backend behavior moved into the shared package.
-- A visual diff is reviewed for desktop and mobile before each product migration is merged.
+This implementation supersedes the planning-only ky-ui PR #2. PR creation is not
+proof that the visual, CI or review gates have passed; record evidence in each PR.

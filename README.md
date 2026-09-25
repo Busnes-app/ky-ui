@@ -17,7 +17,11 @@ It deliberately does not provide a framework, router, component runtime, or prod
 
 For a server-rendered page, call `applyTheme()` in the document head when possible to reduce theme flash. Product CSS should map its existing local variables to the `--ky-*` tokens during migration, then delete the duplicate token definitions once all consumers are moved.
 
-Refresh the checked-in consumer copies with `npm run sync:consumers -- --root=/path/to/suite-worktrees`. It writes only `tokens.css`, `navigation.css`, and `VERSION` into the seven web products. `npm run check:consumers -- --root=/path/to/suite-worktrees` verifies that every copy matches this package exactly.
+Refresh the checked-in consumer copies with `npm run sync:consumers -- --root=/path/to/suite-worktrees`. `consumers.json` names the nine products and server base. For differently named checkouts, pass `--paths=/path/to/paths.json`, a JSON object mapping those repository names to absolute checkout paths. Every destination is validated before writing.
+
+The copy includes CSS, theme preference helpers, generated palette previews and `VERSION` with SHA-256 hashes. `npm run check:consumers -- --paths=/path/to/paths.json` compares copies to the source. Each consumer runs `node path/to/ky-ui/check-vendor.mjs` in CI to detect accidental local edits. That check verifies the recorded copy; it does not claim a newer release is available. Bump the package version when releasing changes.
+
+`tokens.css` is the palette source. Generated `palettes.ts` and `palettes-browser.js` support swatches and consumers that require literal values without duplicating maintained palettes. Product adapters use `readChoice` and `saveChoice` with their existing storage keys. Navigation uses `.ky-nav-item` plus ARIA state or existing active/selected classes and product colors; spacing and orientation stay local.
 
 ## Boundary
 

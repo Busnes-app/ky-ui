@@ -1,6 +1,27 @@
 export const THEMES = Object.freeze(["system", "busnes-light", "busnes-dark"]);
 export const THEME_STORAGE_KEY = "ky-theme";
 
+// Product adapters keep their keys and named palettes. Access the storage getter
+// inside the try: restricted browsers can throw before getItem is called.
+export function readChoice(key) {
+  try { return globalThis.localStorage.getItem(key); } catch { return null; }
+}
+export function saveChoice(key, value) {
+  try { globalThis.localStorage.setItem(key, value); } catch { /* Choice still applies in memory. */ }
+}
+export function watchChoice(key, apply, hasChoice) {
+  const target = globalThis.window ?? globalThis;
+  const storage = event => { if (event.key === key || event.key === null) apply(); };
+  const media = target.matchMedia?.('(prefers-color-scheme: dark)');
+  const change = () => { if (!hasChoice()) apply(); };
+  target.addEventListener?.('storage', storage);
+  media?.addEventListener('change', change);
+  return () => {
+    target.removeEventListener?.('storage', storage);
+    media?.removeEventListener('change', change);
+  };
+}
+
 export function normalizeTheme(value) {
   return THEMES.includes(value) ? value : "system";
 }
@@ -18,7 +39,8 @@ function safeStorage(storage) {
     : null;
 }
 
-export function readStoredTheme(storage = globalThis.localStorage) {
+export function readStoredTheme(storage) {
+  if (storage === undefined) return normalizeTheme(readChoice(THEME_STORAGE_KEY));
   const candidate = safeStorage(storage);
   let value = null;
   try {
@@ -33,7 +55,7 @@ export function applyTheme(choice = readStoredTheme(), options = {}) {
   const document = options.document ?? globalThis.document;
   if (!document?.documentElement) return "system";
 
-  const storage = safeStorage(options.storage ?? globalThis.localStorage);
+  const storage = safeStorage(options.storage);
   const normalized = normalizeTheme(choice);
   const prefersDark = options.prefersDark ?? globalThis.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
   const resolved = resolveTheme(normalized, prefersDark);
@@ -48,5 +70,6 @@ export function applyTheme(choice = readStoredTheme(), options = {}) {
       // Storage can be unavailable in private or restricted browser contexts.
     }
   }
+  if (options.persist !== false && options.storage === undefined) saveChoice(THEME_STORAGE_KEY, normalized);
   return resolved;
 }

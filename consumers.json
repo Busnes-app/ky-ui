@@ -1,0 +1,12 @@
+{
+  "KyMark-server": "frontend/src/ky-ui",
+  "KyDNS-server": "internal/web/static/ky-ui",
+  "KyRecovery-server": "internal/server/static/ky-ui",
+  "KyIdentity-server": "web/src/ky-ui",
+  "KyVault-server": "frontend/src/ky-ui",
+  "KyNotes-server": "web/src/ky-ui",
+  "KyPost-Server": "frontend/src/ky-ui",
+  "KyYard-server": "web/src/ky-ui",
+  "KyForge-Server": "web/src/ky-ui",
+  "ky-server-base": "web/src/ky-ui"
+}
