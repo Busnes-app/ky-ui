@@ -10,9 +10,14 @@
     "./navigation.css": "./src/navigation.css"
   },
   "scripts": {
-    "test": "node --test",
-    "check": "node --test",
+    "test": "node --test test/*.test.js",
+    "check": "node --test test/*.test.js",
+    "test:browser": "playwright test",
+    "check:suite": "node scripts/check-suite.mjs",
     "sync:consumers": "node scripts/sync-consumers.mjs",
     "check:consumers": "node scripts/sync-consumers.mjs --check"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
   }
 }

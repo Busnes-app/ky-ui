@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ky-ui contract fixture (not a product)</title>
+  <link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/navigation.css"><link rel="stylesheet" href="/fixture.css">
+  <script type="module" src="/fixture.js"></script>
+</head>
+<body>
+  <h1>Shared browser contracts</h1>
+  <label>Theme <select id="theme"><option value="system">System</option><option value="busnes-light">Light</option><option value="busnes-dark">Dark</option><option value="legacy">Legacy fixture</option></select></label>
+  <nav aria-label="Primary"><button class="ky-nav-item" aria-current="page">Records</button><button class="ky-nav-item">Activity</button><button class="ky-nav-item" disabled>Unavailable</button></nav>
+  <main>
+    <h2>Populated records</h2>
+    <ul><li>Production document with a deliberately long descriptive name</li><li>Second record</li></ul>
+    <p role="alert">Example error: the operation could not be completed.</p>
+    <button id="open">Open dialog</button>
+    <dialog aria-labelledby="dialog-title"><h2 id="dialog-title">Review record</h2><label>Name <input value="Example record"></label><form method="dialog"><button>Close</button></form></dialog>
+  </main>
+</body>
+</html>

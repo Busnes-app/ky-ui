@@ -29,9 +29,14 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   await rm(join(first, 'tokens.css'));
   run();
   run('--check');
+  assert.throws(() => run('--check', '--consumer=unknown'), /Unknown consumer/);
+  assert.throws(() => run('--consumer=KyForge-Server'), /only supported with --check/);
   const checker = join(first, 'check-vendor.mjs');
   execFileSync(process.execPath, [checker]);
   await writeFile(join(first, 'tokens.css'), 'stale');
+  // An explicitly scoped check never needs access to the other repositories.
+  run('--check', '--consumer=KyForge-Server');
+  assert.throws(() => run('--check', `--consumer=${entries[0][0]}`), /Stale consumer file/);
   assert.throws(() => run('--check'), /Stale consumer file/);
   assert.throws(() => execFileSync(process.execPath, [checker], { stdio: 'pipe' }));
 });
