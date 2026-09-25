@@ -30,7 +30,7 @@ Done when selected, hovered, focused, and disabled states are distinct in both t
 
 ## 3. Replace gallery-only screenshots with real states
 
-- Capture rendered desktop and mobile states from KyDNS, KyRecovery, KySignOn, KyMark, KyVault, KyNotes, and KyPost.
+- Capture rendered desktop and mobile states from KyDNS, KyRecovery, KySignOn (KyIdentity), KyMark, KyVault, KyNotes, KyPost, KyYard, and KyForge.
 - Cover Busnes Light, Busnes Dark, selected navigation, empty/loading/error, and one representative application screen per product.
 - Store the images beside the owning product or in a clearly versioned visual-regression fixture directory.
 
@@ -55,7 +55,24 @@ Done when a clean build produces the checked-in asset set and the editor loads w
 - Remove dead duplicate shell rules after each product is migrated; KyYard's redundant legacy shell block is an early cleanup candidate.
 - Add a versioned release/copy step so servers consume a known `ky-ui` version rather than remote runtime CSS.
 
-Done when all seven web products use one token source, each product still owns its layout, and visual checks pass in both themes.
+### Complete the product scope
+
+- KyYard: add the actual repository and asset path to the consumer manifest, map shell variables to shared tokens, remove the redundant legacy shell block after checking its callers, and preserve deployment controls and responsive navigation. Deliver in its own worktree and PR with light/dark desktop/mobile screenshots.
+- KyForge: identify every served shell and CSS entry point, add its repository and asset path to the consumer manifest, and migrate token and navigation state ownership while preserving build/job/log layouts. Deliver in its own worktree and PR with the same visual evidence.
+- Suggested follow-up: migrate `ky-server-base` so newly created servers inherit the shared layer. Track it separately from the nine existing products.
+
+### Repair and verify the existing migration first
+
+Review baseline: ky-ui #1 and consumer PRs KyMark #43, KyDNS #39, KyRecovery #29, KyIdentity #63, KyVault #57, KyNotes #26, KyPost #227.
+
+1. Fix KyRecovery's theme selector mismatch. The script selects `busnes-light`/`busnes-dark`, but the light warning/error overrides still select `light`. Verify the rendered warning, error, muted text and wash contrast in both themes. Replace the contrast check's first-literal lookup with checks of the active palette; preserving unused fallback literals does not validate what users see.
+2. Remove competing Busnes definitions. KyMark's attribute-qualified local variables outrank shared `:root` aliases, and KyPost still writes literal Busnes values inline. Keep one palette source and adapt stylesheet-free tests to that source instead of retaining production duplication to satisfy tests. Preserve mail-specific semantic aliases.
+3. Make shared navigation styles effective. Importing `.ky-nav-item` rules does nothing for markup that lacks that class. Migrate actual navigation states, preserving each product's geometry and named-theme colors. Verify keyboard focus, current-page semantics, disabled states and stable item height on mobile.
+4. Harden the existing copy workflow. Replace machine-specific checkout assumptions such as `kyvault-audit` with explicit repository/path configuration; validate all destinations before writing so a missing checkout does not silently become a new directory. Pin an identifiable release or content digest and check freshness in CI. A published npm package is optional; build-time vendoring is sufficient.
+5. Consolidate theme choice handling only through adapters that preserve existing storage keys, named choices, OS following and cross-tab changes. Verify first paint, unavailable storage, named-to-Busnes switching and system preference changes. Keep product layouts local.
+6. Capture real rendered evidence before calling the migration complete. Include both themes, desktop/mobile, a representative operational screen and focus/selected/error states. Validate the served embedded bundles as well as the frontend source builds.
+
+Done when all nine named web products use the shared token source and active navigation treatment, each product still owns its layout, and rendered checks pass in both themes. Copied files and green compilation alone do not satisfy this gate.
 
 ## Release gates
 
