@@ -4,6 +4,9 @@
 
 It deliberately does not provide a framework, router, component runtime, or product page layouts. Each server keeps its own composition and imports the shared CSS/JS primitives.
 
+- [Contributing](CONTRIBUTING.md) — how changes land, the test policy and the coding standard.
+- [Assurance case](docs/ASSURANCE-CASE.md) — threat model, trust boundaries, and why the shipped files and tooling are safe to adopt.
+
 ## Use
 
 Serve these files from the application's own origin. Put this markup in the
