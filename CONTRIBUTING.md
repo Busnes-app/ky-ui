@@ -1,42 +1,56 @@
-# Contributing
+# Contributing to ky-ui
 
-[Overview](README.md) · [Assurance case](docs/ASSURANCE-CASE.md) · [Rollout plan](PLAN.md)
+ky-ui is the small shared browser foundation for the Ky servers: Busnes Light/Dark design tokens, OS-aware theme selection, and the selected-navigation treatment. Contributions must stay small and framework-light and keep the tokens and theme behavior consistent across every product that embeds it.
 
-## How changes land
+## Before contributing
 
-- Open a pull request against `main`. Every change goes through one; the branch ruleset
-  requires the `test` and `browser` jobs of `.github/workflows/ci.yml` to pass.
-- Report bugs and propose features in [GitHub issues](https://github.com/Busnes-app/ky-ui/issues).
-  Report vulnerabilities privately, as the organisation's
-  [security policy](https://github.com/Busnes-app/.github/blob/main/SECURITY.md) explains.
-- A change to shipped files (`src/`) is a release: bump `version` in `package.json`, sync the
-  consumer copies, and open one PR per consumer, as [README.md](README.md) and
-  [AGENTS.md](AGENTS.md) describe. Update [PLAN.md](PLAN.md) when a rollout step changes.
+Read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) and [SECURITY.md](SECURITY.md),
+the [README](README.md), and any AGENTS.md in the subtree you are about to
+touch. Open an issue before proposing a feature larger than a bug fix or
+documentation change.
 
-## Tests
+Keep changes small, reuse existing code, and fix the shared root cause rather
+than the reported symptom. New non-trivial logic ships with a runnable test or
+self-check.
 
-A change in behaviour comes with a test that fails without it: `test/` for theme logic and the
-sync tool, `browser/` for anything a browser renders. Run what CI runs:
+## Security requirements
 
-```bash
-npm test
-npm ci && npx playwright install chromium && npm run test:browser
-```
+- This is shared front-end code loaded by many products; a defect ships everywhere. Keep it minimal and avoid dependencies that parse untrusted input.
+- Do not introduce inline-script or eval patterns, or anything that would force a product to weaken its Content Security Policy.
+- Preserve existing named themes and saved user choices.
+- Do not add telemetry, phone-home, analytics, or unconfigured third-party
+  services.
+- Do not add silent security fallbacks; fail closed with a readable error and a
+  remediation step.
+- Name and document any security trade-off in [SECURITY.md](SECURITY.md) before
+  it merges.
 
-Before merging consumer changes, also run
-`npm run check:consumers -- --root=<suite worktree root>`.
+## Verification
 
-## Coding standard
+Run the checks that apply to the files you changed, and the repository's
+full required checks before hand-off. Record the exact commands and their
+results in the pull request.
 
-There is no adopted external style guide, and no linter or formatter runs in CI. The rules
-below are this repository's own; the right-hand column says what, if anything, checks each.
+## AI attribution
 
-| Rule | Checked by |
-|---|---|
-| JavaScript is ECMAScript modules (`"type": "module"`), so it always runs in strict mode | Node and the browser, on every `npm test` and `npm run test:browser` |
-| Shipped files use no runtime dependencies and no build step; Playwright is a development dependency only | Review (`package.json` has no `dependencies`) |
-| Shared selectors start with `ky-` or use `data-ky-*` / ARIA state | Review; the `browser` job exercises the shipped selectors |
-| Integration code works under `script-src 'self'`: no inline script, no `unsafe-inline` | `browser/readme.spec.js` serves the README snippet under that policy |
-| `src/theme.d.ts` matches `src/theme.js`'s exports | Review only |
+AI-assisted contributions are welcome; undisclosed ones are not. Disclose
+material AI assistance in the pull request — the tool, what it changed, and what
+you personally ran, read, and verified — and add a commit trailer naming any
+tool that materially contributed. You are the author of the code you submit for
+every purpose, regardless of how it was produced.
 
-Beyond that: keep to the naming, quoting and comment density of the file you are editing.
+## Pull requests
+
+Branch off `main` with a focused name, and use a Conventional Commit subject
+(`fix:`, `feat:`, `docs:`, `refactor:`, `test:`, or `chore:`). The pull request
+explains why the change exists, the verification performed, the security impact,
+and any known limitations.
+
+Every pull request gets an adversarial review pass; see
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md#hostile-reviews-are-about-code-never-people)
+for what that is and the boundary it keeps.
+
+## Licence
+
+ky-ui is licensed under the MIT License. See [LICENSE.txt](LICENSE.txt).
+
