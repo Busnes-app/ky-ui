@@ -43,7 +43,13 @@ for (const [label, id] of [['Busnes Light', 'busnes-light'], ['Busnes Dark', 'bu
 }
 bytes['palettes.ts'] = Buffer.from(`// Generated from ky-ui tokens.css; refresh with sync-consumers.mjs.\nexport const busnesPalettes = ${JSON.stringify(palettes, null, 2)};\n`);
 bytes['palettes-browser.js'] = Buffer.from(`// Generated from ky-ui tokens.css.\nwindow.kyBusnesPalettes = ${JSON.stringify(palettes)};\n`);
-files.push('palettes.ts', 'palettes-browser.js');
+// A classic-script copy of the catalog, so a synchronous head script can apply a saved
+// theme before first paint. themes.js stays the only source and must stay import-free.
+const themes = bytes['themes.js'].toString();
+const exported = [...themes.matchAll(/^export (?:const|function) (\w+)/gm)].map(match => match[1]);
+if (/^\s*import\b/m.test(themes) || themes.match(/^export\b/gm).length !== exported.length) throw new Error('themes.js must use only import-free `export const`/`export function`');
+bytes['themes-browser.js'] = Buffer.from(`// Generated from ky-ui themes.js; refresh with sync-consumers.mjs.\nwindow.kyThemes = (() => {\n'use strict';\n${themes.replace(/^export /gm, '')}\nreturn Object.freeze({ ${exported.join(', ')} });\n})();\n`);
+files.push('palettes.ts', 'palettes-browser.js', 'themes-browser.js');
 const manifest = { version: pkg.version, source: 'https://github.com/Busnes-app/ky-ui', files: Object.fromEntries(files.map(file => [file, createHash('sha256').update(bytes[file]).digest('hex')])) };
 bytes.VERSION = Buffer.from(JSON.stringify(manifest, null, 2) + '\n');
 

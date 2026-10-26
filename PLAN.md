@@ -38,6 +38,9 @@ outside this web pass. Record any additional discovered surface explicitly.
   product adapters keep saved keys, legacy aliases, OS following, cross-tab updates
   and restricted-storage behavior. The picker applies choices immediately and states
   that they are stored in this browser.
+- Version 0.4.1 adds the generated classic catalog `themes-browser.js`. KyDNS and
+  KyRecovery apply saved choices from synchronous head scripts again, restoring their
+  first-paint guarantee; other products keep their module or bundle adapters.
 - Shared runtime colors, typography, control geometry and navigation states remain
   in ky-ui. Page composition, routing, authorization and content stay product-owned.
   Preserve existing accessible responsive navigation instead of imposing a sidebar

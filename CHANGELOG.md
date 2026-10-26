@@ -13,6 +13,15 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.4.1 — first-paint theme bootstrap (pending)
+
+Based on 0.4.0 source `ab7a039`. Sync now generates `themes-browser.js`, a classic-script
+copy of `themes.js` that defines `window.kyThemes` with the same exports. A synchronous
+head script can then apply a saved named theme before first paint; KyDNS and KyRecovery
+use it to restore their pre-0.4.0 first-paint guarantee. `themes.js` stays the only
+catalog source. Upgrade impact: every consumer refreshes its complete copy; products that
+keep deferred modules are unchanged. No known vulnerability IDs apply.
+
 ### 0.4.0 — fleet Appearance (pending)
 
 Preview swatches have a hairline boundary so their sidebar remains visible when

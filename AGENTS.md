@@ -11,7 +11,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/navigation.css` owns reusable selected, hover, focus, and responsive navigation states.
 - `src/appearance.css` owns the shared responsive Appearance radio-card grid and preview styling; products retain persistence adapters, compatibility exports and page composition.
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
-- `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
+- `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, the classic catalog copy `themes-browser.js` (from `src/themes.js`), and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
 - `skills/` owns the reusable suite design skill; `reviews/` owns comparative screenshot evidence and staged acceptance records.
 - `scripts/check-suite.mjs` checks public consumer default branches read-only with credential helpers disabled; no consumer code runs. Archived products stay outside the active inventory; no cross-repository private token is used.
@@ -25,7 +25,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - Compatibility aliases map existing product variables to shared tokens. Product adapters retain saved theme keys and named palettes. Navigation primitives own state styling only; products own geometry.
 - The selected page remains obvious without relying on color alone: use a surface change and an accent rail.
 - This package is browser-facing and stays separate from the Go-only `ky-primitives` library.
-- Integration examples use same-origin external scripts compatible with `script-src 'self'`; deferred modules do not promise saved-choice application before first paint.
+- Integration examples use same-origin external scripts compatible with `script-src 'self'`; deferred modules do not promise saved-choice application before first paint. Products that promise it load the generated classic `themes-browser.js` (`window.kyThemes`) and their adapter synchronously in the head, building pickers after `DOMContentLoaded`.
 
 ## Work Guidance
 

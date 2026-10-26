@@ -11,6 +11,7 @@ It deliberately does not provide a framework, router, component runtime, or prod
 
 Version 0.3.0 also supplies type, space, control, field-border and overlay tokens.
 Version 0.4.0 adds the shared responsive Appearance theme-preview radio cards.
+Version 0.4.1 adds the generated classic catalog `themes-browser.js` for first-paint theme application.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -47,7 +48,10 @@ Do not add `unsafe-inline` to the script policy for theme initialization.
 Modules are deferred: putting this tag in the head does not guarantee that a
 saved theme is applied before first paint. Check saved-choice first paint in the
 product; server-render a validated theme attribute when that preference is
-available to the server. The token stylesheet follows the OS before an override
+available to the server, or load the generated `ky-ui/themes-browser.js` and a
+product-owned classic script synchronously in the head. `themes-browser.js` defines
+`window.kyThemes` with the `themes.js` exports; build pickers after `DOMContentLoaded`.
+The token stylesheet follows the OS before an override
 is applied. Existing products should retain their adapter, saved key and named
 themes rather than replace them with this minimal default-key example.
 
@@ -57,7 +61,7 @@ Refresh the checked-in consumer copies with `npm run sync:consumers -- --root=/p
 
 The copy includes CSS, theme preference helpers, generated palette previews and `VERSION` with SHA-256 hashes. `npm run check:consumers -- --paths=/path/to/paths.json` compares copies to the source. Each consumer runs `node path/to/ky-ui/check-vendor.mjs` in CI to detect accidental local edits. That check verifies the recorded copy; it does not claim a newer release is available. Bump the package version when releasing changes.
 
-`tokens.css` is the palette source. Generated `palettes.ts` and `palettes-browser.js` support swatches and consumers that require literal values without duplicating maintained palettes. Product adapters use `readChoice` and `saveChoice` with their existing storage keys. Navigation uses `.ky-nav-item` plus ARIA state or existing active/selected classes and product colors; spacing and orientation stay local.
+`tokens.css` is the palette source and `themes.js` the catalog source. Generated `themes-browser.js` is the catalog as a classic script. Generated `palettes.ts` and `palettes-browser.js` support swatches and consumers that require literal values without duplicating maintained palettes. Product adapters use `readChoice` and `saveChoice` with their existing storage keys. Navigation uses `.ky-nav-item` plus ARIA state or existing active/selected classes and product colors; spacing and orientation stay local.
 
 
 ## Appearance
