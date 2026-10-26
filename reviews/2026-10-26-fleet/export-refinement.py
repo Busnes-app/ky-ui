@@ -52,6 +52,7 @@ responses = read('refinement-review-responses.json', {})
 if followup_review:
     responses.update({row['id']: {'disposition': row.get('disposition'), 'evidence': row.get('evidence')} for row in followup_review.get('findings', [])})
 prs = read('refinement-pr-status.json', [])
+progress = read('refinement-progress.json')
 by_file = {row['file']: row for row in ratings}
 assert set(by_file) == {row['file'] for row in inputs}
 for row in captures + followup_captures:
@@ -110,6 +111,9 @@ sheet('Read first', ['topic', 'detail'], [
     {'topic': 'Baseline', 'detail': 'Published baseline workbook and ratings remain unchanged. New scores must not silently replace that round.'},
 ])
 sheet('Cohorts', ['product', 'cohort', 'task_view', 'phase', 'n', 'quality_mean', 'quality_min', 'quality_max', 'ky_fit_mean', 'ky_fit_min', 'ky_fit_max'], cohorts['cohort_product_phase'])
+if progress:
+    sheet('Progress', ['product', 'views', 'quality_before', 'quality_after', 'ky_fit_before', 'ky_fit_after', 'improvement'], progress['matched'])
+    sheet('Earlier products', ['product', 'historical_start_range', 'latest_range'], progress['historical_context'])
 sheet('Matched pairs', ['product', 'surface', 'viewport', 'theme', 'quality_before', 'quality_after', 'quality_delta', 'ky_fit_before', 'ky_fit_after', 'ky_fit_delta', 'byte_identical', 'comparison_limit', 'before', 'after'], pairs)
 sheet('Ratings', ['file', 'product', 'phase', 'stage', 'observed_surface', 'cohort', 'theme', 'viewport', 'total', 'brand_total', 'scores', 'observations', 'ky_fit', 'confidence', 'artifacts', 'caveat', 'duplicate_of', 'sha256'], [dict(row, brand_total=row['ky_fit']['total']) for row in ratings])
 sheet('Captures', ['file', 'product', 'surface', 'stage', 'phase', 'viewport', 'theme', 'width', 'height', 'source_revision', 'source_diff_sha256', 'driver', 'fixture', 'sha256', 'caveat'], captures)
