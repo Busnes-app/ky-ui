@@ -1,0 +1,30 @@
+[
+  {
+    "file": "detail-before-dark.png",
+    "phase": "before",
+    "source_file": "../shared-release/appearance-dark-390.png",
+    "source_sha256": "b2068a6ee4eb8dc930ab8bf73e89695e3fe3af380a63875e1acef3a2eeebe170",
+    "sha256": "f4ef3f3789ba938db2b2e6e060d77cbcee321cbd60288652aa1dc26256293d46",
+    "crop_rect": [
+      0,
+      0,
+      358,
+      300
+    ],
+    "purpose": "Detail showing only the first two card rows; not a full catalog or product capture"
+  },
+  {
+    "file": "detail-after-dark.png",
+    "phase": "after",
+    "source_file": "../shared-preview-edge/appearance-dark-390.png",
+    "source_sha256": "67f4f10979364266ee029641c621e374a571a83ca2fcff5f68f28585dc8389b7",
+    "sha256": "d42358aa4e0cbde6cd9ddede15f5c04b7247f00eddda4722d1fe5715b2cd6d7c",
+    "crop_rect": [
+      0,
+      0,
+      358,
+      300
+    ],
+    "purpose": "Detail showing only the first two card rows; not a full catalog or product capture"
+  }
+]

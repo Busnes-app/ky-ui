@@ -1,0 +1,46 @@
+// Independent v2 harness: real committed product CSS + vendored ky-ui tokens + generated classic catalog
+// at the pinned heads. Emulates each product's applyTheme (data-theme=<id>; Drive LEGACY/warning special case).
+// Measures status text vs --bg/--panel and .btn-danger text (--button-text, fallback #fff) on --danger,
+// for every catalog palette under OS light and OS dark.
+import { execFileSync } from 'node:child_process';
+import { chromium } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+const R = '/home/yoshi/git/busnes.app/';
+const show = (repo, rev, p) => execFileSync('git', ['-C', R + repo + '/.claude/worktrees/fleet-appearance', 'show', `${rev}:${p}`], { encoding: 'utf8' });
+const T = [
+  ['ky-server-base', 'ky_server_base', '651a7b41', ['web/src/styles/theme.css'], 'base'],
+  ['KyPulse', 'kyPulse-server', 'a955d6de', ['web/src/styles/theme.css'], 'base'],
+  ['KyDrive', 'KyDrive-server', '57765378', ['web/src/styles/theme.css'], 'drive'],
+  ['KyCalendar', 'KyCalendar', 'bad000f1', ['web/src/styles/theme.css', 'web/src/styles/ui.css'], 'base'],
+  ['KyMessages', 'KyMessage-Server', 'ab600d98', ['web/src/styles/theme.css'], 'base'],
+  ['ky-server-base PRE-F1', 'ky_server_base', '6c296a2', ['web/src/styles/theme.css'], 'base'],
+];
+const browser = await chromium.launch();
+const out = [];
+for (const [name, repo, rev, cssFiles, mode] of T) for (const os of ['light', 'dark']) {
+  const page = await browser.newPage({ colorScheme: os });
+  const css = cssFiles.map(f => show(repo, rev, f)).join('\n') + '\n' + show(repo, rev, 'web/src/ky-ui/tokens.css');
+  const classic = show(repo, rev === '6c296a2' ? '651a7b41' : rev, 'web/src/ky-ui/themes-browser.js');
+  await page.setContent(`<style>${css}</style><p id="probe">x</p><b id="probe2">y</b>`);
+  await page.addScriptTag({ content: classic });
+  const rows = await page.evaluate(([mode]) => {
+    const k = window.kyThemes, root = document.documentElement, p = document.getElementById('probe'), q = document.getElementById('probe2');
+    const rgb = (el, v) => { el.style.color = ''; el.style.color = v; const c = getComputedStyle(el).color; const n = c.match(/-?[\d.]+(e-?\d+)?/g).map(Number);
+      return c.startsWith('color(') ? n.slice(0, 3).map(x => x * 255) : n.slice(0, 3); };
+    const lum = ([r, g, b]) => [r, g, b].map(x => x / 255).map(x => x <= 0.04045 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4).reduce((s, x, i) => s + x * [0.2126, 0.7152, 0.0722][i], 0);
+    const ratio = (a, b) => { const [x, y] = [lum(rgb(p, a)), lum(rgb(q, b))]; return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+    const LEGACY = new Set(['patina', 'cyber', 'nord', 'paper', 'oled']);
+    return k.THEME_CATALOG.filter(t => !t.id.startsWith('busnes-')).map(t => {
+      root.removeAttribute('style');
+      const named = k.applyThemeVariables(mode === 'drive' && LEGACY.has(t.id) ? 'system' : t.id, root);
+      root.dataset.theme = t.id;
+      if (mode === 'drive') { if (named === 'light') root.style.setProperty('--warning', '#a16207'); else root.style.removeProperty('--warning'); }
+      const s = st => Math.min(ratio(`var(${st})`, 'var(--bg)'), ratio(`var(${st})`, 'var(--panel)'));
+      const btext = getComputedStyle(root).getPropertyValue('--button-text').trim() || '#ffffff';
+      return { id: t.id, scheme: t.scheme, danger: +s('--danger').toFixed(2), success: +s('--success').toFixed(2), warning: +s('--warning').toFixed(2), btnDanger: +ratio(btext, 'var(--danger)').toFixed(2) };
+    });
+  }, [mode]);
+  for (const r of rows) out.push({ product: name, rev, os, ...r });
+  await page.close();
+}
+await browser.close();
+console.log(JSON.stringify(out));

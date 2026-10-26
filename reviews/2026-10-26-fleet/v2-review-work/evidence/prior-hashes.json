@@ -1,0 +1,1272 @@
+{
+ "KyDNS-server": [
+  {
+   "path": "internal/web/pages.go",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "8a427574e56fd3bbdf8c0ecd68f3ee0cc3d62fdb",
+   "blob_head": "8a427574e56fd3bbdf8c0ecd68f3ee0cc3d62fdb",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/render_test.go",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "9faf66f49fb0d6debbf0101e71a245fdd939a035",
+   "blob_head": "4d4e58ce1132281428997aecf996667b527bcf23",
+   "unchanged": false
+  },
+  {
+   "path": "internal/web/static/app.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "eaf2c1bff8fa90f3f749d0fabd00af9df7a0477a",
+   "blob_head": "eaf2c1bff8fa90f3f749d0fabd00af9df7a0477a",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/static/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "internal/web/static/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/static/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/static/ky-ui/navigation.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "blob_head": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/static/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/static/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/static/ky-ui/tokens.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "blob_head": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/static/theme.js",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "72806b54992e37643c083176f240daccc061b7be",
+   "blob_head": "624c7afa26bace3b3df1101adf7213146cb6c5aa",
+   "unchanged": false
+  },
+  {
+   "path": "internal/web/templates/appearance.html",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "4a6d7a9707fb591d576b943a604bc0bca09b0351",
+   "blob_head": "4a6d7a9707fb591d576b943a604bc0bca09b0351",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/templates/base.html",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "da71790cfe2248c8c4089d051c4936437634f640",
+   "blob_head": "502f6929203162a2f28d7cb2a2022f5a28d02438",
+   "unchanged": false
+  },
+  {
+   "path": "internal/web/templates/layout.html",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "2c13b0709788f1dd94527ab29682a150b224d139",
+   "blob_head": "2c13b0709788f1dd94527ab29682a150b224d139",
+   "unchanged": true
+  },
+  {
+   "path": "internal/web/templates/settings.html",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "2a3b6d62373d7b6063c2c59f2b8165617c3b3cf0",
+   "blob_head": "2a3b6d62373d7b6063c2c59f2b8165617c3b3cf0",
+   "unchanged": true
+  }
+ ],
+ "KyRecovery-server": [
+  {
+   "path": "CHANGELOG.md",
+   "prior_coverage": "docs-read",
+   "blob_prev": "c0bed5c7d6c9da975e079b5df6ba34693300dafd",
+   "blob_head": "d996cbcd9354281f3d8adac6b7e56eb34cd90b86",
+   "unchanged": false
+  },
+  {
+   "path": "internal/server/static/ceremony.html",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "65b06c875c66373980563dc629f57a1ef2f47324",
+   "blob_head": "f538abbbff4156563ce80b1d1f1984c8977a4773",
+   "unchanged": false
+  },
+  {
+   "path": "internal/server/static/css/styles.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "b40b83ad572b63c38ec965ed642b8c65c143be33",
+   "blob_head": "b40b83ad572b63c38ec965ed642b8c65c143be33",
+   "unchanged": true
+  },
+  {
+   "path": "internal/server/static/index.html",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "abbf4b47bc91eb712e0ae1a0f8bf0bf61d099c20",
+   "blob_head": "f65123a8afaf9514226898742756c5276de48067",
+   "unchanged": false
+  },
+  {
+   "path": "internal/server/static/js/theme.js",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "b0c7d244fc1bae2904b200b6cdd2f41ed2d838df",
+   "blob_head": "5b8ef6e317d9c81f7ff8f1fb3eef0ff10bfba62e",
+   "unchanged": false
+  },
+  {
+   "path": "internal/server/static/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "internal/server/static/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "internal/server/static/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "internal/server/static/ky-ui/navigation.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "blob_head": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "unchanged": true
+  },
+  {
+   "path": "internal/server/static/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "internal/server/static/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "internal/server/static/ky-ui/tokens.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "blob_head": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "unchanged": true
+  }
+ ],
+ "KyIdentity-server": [
+  {
+   "path": "web/src/components/Appearance.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "117aa88f67606de4622d7267ddff82f303e2cec4",
+   "blob_head": "fc4afe19eceebbd71e61a0524e599b41d69d9bcc",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/index.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "c400a418572e12928806ae1edd891d078e9f1933",
+   "blob_head": "c400a418572e12928806ae1edd891d078e9f1933",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/navigation.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "blob_head": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/tokens.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "blob_head": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/main.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "d6e50207cb580723de1f7db9e844e212922aed66",
+   "blob_head": "d6e50207cb580723de1f7db9e844e212922aed66",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/theme.test.ts",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "09f367f20df66cdbb0d1ba50dbe76e03f65efe27",
+   "blob_head": "09f367f20df66cdbb0d1ba50dbe76e03f65efe27",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "89c341e7a8704cad73196e7932eb324314ecfb23",
+   "blob_head": "89c341e7a8704cad73196e7932eb324314ecfb23",
+   "unchanged": true
+  }
+ ],
+ "KyNotes-server": [
+  {
+   "path": "AGENTS.md",
+   "prior_coverage": "docs-read",
+   "blob_prev": "cc5243366295e1cca065f4b605bc8143b9922aef",
+   "blob_head": "ec9383d30cd8b9ab4cc33c203366cef9ddfdd778",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/navigation.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "blob_head": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/tokens.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "blob_head": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/main.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "a6e3f64ccf5b1fb5d25b977d377319565bd9aa2b",
+   "blob_head": "8c64d4e104310826ed714724abf4b3cc82ef44d1",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/styles.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "662f402ce75d5ecb056f5c61e793587e5618d230",
+   "blob_head": "662f402ce75d5ecb056f5c61e793587e5618d230",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/theme.test.ts",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "e7afa37819bfcf668ee492d4a560742deabb184c",
+   "blob_head": "e7afa37819bfcf668ee492d4a560742deabb184c",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "ed213ac4d3e7bae4376f2739b60965fff4d3e4aa",
+   "blob_head": "ed213ac4d3e7bae4376f2739b60965fff4d3e4aa",
+   "unchanged": true
+  }
+ ],
+ "KyPost-Server": [
+  {
+   "path": "frontend/AGENTS.md",
+   "prior_coverage": "docs-read",
+   "blob_prev": "099f721f9cd679fb25334baf64ac52394309c8a0",
+   "blob_head": "099f721f9cd679fb25334baf64ac52394309c8a0",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "frontend/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/main.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "756dd5eb94829880883e35d707a578267ed2ac28",
+   "blob_head": "756dd5eb94829880883e35d707a578267ed2ac28",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/pages/settings/AppearancePanel.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "de5271e352e842c9c77353101f57b05dfdf2232a",
+   "blob_head": "de5271e352e842c9c77353101f57b05dfdf2232a",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/settings/sections/Appearance.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "e20a08a477c0ec777492149a4361af410b92946b",
+   "blob_head": "e20a08a477c0ec777492149a4361af410b92946b",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/settings/sections/Appearance.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "ef68987a39972ddec5997263dc8b74794aae9ed5",
+   "blob_head": "ef68987a39972ddec5997263dc8b74794aae9ed5",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/styles.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "073d1f4aad2a55c52e947de144018f25b5c1d38d",
+   "blob_head": "073d1f4aad2a55c52e947de144018f25b5c1d38d",
+   "unchanged": true
+  },
+  {
+   "path": "frontend/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "e3f13bca283e0c5239bb502a840497ab4ee068b4",
+   "blob_head": "e3f13bca283e0c5239bb502a840497ab4ee068b4",
+   "unchanged": true
+  }
+ ],
+ "KyCalendar": [
+  {
+   "path": "web/browser/AGENTS.md",
+   "prior_coverage": "docs-read",
+   "blob_prev": "4f885d8b539a1640e1b2187076591871190a4ea1",
+   "blob_head": "4f885d8b539a1640e1b2187076591871190a4ea1",
+   "unchanged": true
+  },
+  {
+   "path": "web/browser/appearance.spec.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "d37b543a2816324f0c2d13d3b46e5e50785e36d5",
+   "blob_head": "d37b543a2816324f0c2d13d3b46e5e50785e36d5",
+   "unchanged": true
+  },
+  {
+   "path": "web/browser/nav.spec.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "89945a62a9bf38f69905d19c8923957807e0d291",
+   "blob_head": "89945a62a9bf38f69905d19c8923957807e0d291",
+   "unchanged": true
+  },
+  {
+   "path": "web/browser/ui.spec.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "2e0de320d9dc878f8283f734771856f9a53cfc02",
+   "blob_head": "2e0de320d9dc878f8283f734771856f9a53cfc02",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/App.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "08a4b7495e3e7a3326c16a8f57ba9c202115793b",
+   "blob_head": "08a4b7495e3e7a3326c16a8f57ba9c202115793b",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/AppHeader.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "4ec4e487d0519b7e4c6b0eac63cf12ad871620de",
+   "blob_head": "4ec4e487d0519b7e4c6b0eac63cf12ad871620de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/ThemeSwitcher.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "0a8d40b269e937498f69e007a3cc10b164d33738",
+   "blob_head": "0a8d40b269e937498f69e007a3cc10b164d33738",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "2edf2ce875c892f49ad14c8ed04b348711c04353",
+   "blob_head": "2edf2ce875c892f49ad14c8ed04b348711c04353",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "7637dcb5b7e352e94d909791759c3cb799c9923e",
+   "blob_head": "7637dcb5b7e352e94d909791759c3cb799c9923e",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Settings.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "1bc6366e91182f828089b19dc7862c4a7c8827f3",
+   "blob_head": "1bc6366e91182f828089b19dc7862c4a7c8827f3",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/styles/theme.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "0560696e45afe11ea38b028a42a3fa6c951d030e",
+   "blob_head": "0560696e45afe11ea38b028a42a3fa6c951d030e",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "4d76b005cdb6dd2c4fd5d039eddf81e2cdb6eddb",
+   "blob_head": "4d76b005cdb6dd2c4fd5d039eddf81e2cdb6eddb",
+   "unchanged": true
+  }
+ ],
+ "KyMessage-Server": [
+  {
+   "path": "web/browser/appearance.spec.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "5db70dccf6794bdbd3e797457b64eec0dcb45782",
+   "blob_head": "5db70dccf6794bdbd3e797457b64eec0dcb45782",
+   "unchanged": true
+  },
+  {
+   "path": "web/browser/ui.spec.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "1ca88c3308e7395a4f000992129d5a7d0fd3f8d2",
+   "blob_head": "1ca88c3308e7395a4f000992129d5a7d0fd3f8d2",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/App.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "71ece16a00efdc33d0a32599217ba9271ed6f0a5",
+   "blob_head": "71ece16a00efdc33d0a32599217ba9271ed6f0a5",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/AppHeader.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "725c8a18a3cd80ee9c9bc0e2d2fec245384e1d35",
+   "blob_head": "725c8a18a3cd80ee9c9bc0e2d2fec245384e1d35",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/AppHeader.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "3f735fa6bc22e8f793a85231019568c0f8c9f9a9",
+   "blob_head": "3f735fa6bc22e8f793a85231019568c0f8c9f9a9",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/ThemeSwitcher.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "0a8d40b269e937498f69e007a3cc10b164d33738",
+   "blob_head": "0a8d40b269e937498f69e007a3cc10b164d33738",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "2edf2ce875c892f49ad14c8ed04b348711c04353",
+   "blob_head": "2edf2ce875c892f49ad14c8ed04b348711c04353",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "053eb62a4add8be9eb9b405917029538c40f1f02",
+   "blob_head": "053eb62a4add8be9eb9b405917029538c40f1f02",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Settings.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "9abb6ab5f6757340018da06adc154e0c3adcb83c",
+   "blob_head": "9abb6ab5f6757340018da06adc154e0c3adcb83c",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/styles/theme.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "4e0c7102a7fcd525e93c7c66216c38e7a64b27b4",
+   "blob_head": "4e0c7102a7fcd525e93c7c66216c38e7a64b27b4",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "4d76b005cdb6dd2c4fd5d039eddf81e2cdb6eddb",
+   "blob_head": "4d76b005cdb6dd2c4fd5d039eddf81e2cdb6eddb",
+   "unchanged": true
+  }
+ ],
+ "KyYard-server": [
+  {
+   "path": "web/AGENTS.md",
+   "prior_coverage": "docs-read",
+   "blob_prev": "0c4c9ebcb9aa924b70f483ec08b8f01dd1b9dd6e",
+   "blob_head": "0c4c9ebcb9aa924b70f483ec08b8f01dd1b9dd6e",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/App.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "b85809bd347fec6d26a66c2f4bcccbdd80010d58",
+   "blob_head": "b85809bd347fec6d26a66c2f4bcccbdd80010d58",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/ThemeSwitcher.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "762bf4af14a2cdaf6f84513d66ab5535a417da2b",
+   "blob_head": "762bf4af14a2cdaf6f84513d66ab5535a417da2b",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/ThemeSwitcher.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "00c242ffbbf784a72d8c35243a2cd5d16437a0cc",
+   "blob_head": "7d5585a97a598490f5da2e5af4300ba9fe4e6263",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/navigation.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "blob_head": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/tokens.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "blob_head": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Settings.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "5272180c9c1b6ee7e4f35df82f79d59431e52bc3",
+   "blob_head": "5272180c9c1b6ee7e4f35df82f79d59431e52bc3",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Settings.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "484b3151e45ba5f963e89ec64391b17b7df746b5",
+   "blob_head": "484b3151e45ba5f963e89ec64391b17b7df746b5",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/styles/theme.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "de1cd149b97c7336ef6c34acd72e525d09a27d1f",
+   "blob_head": "de1cd149b97c7336ef6c34acd72e525d09a27d1f",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "21a6d3fccd188724ec957ea9fdfaea959c009fb7",
+   "blob_head": "21a6d3fccd188724ec957ea9fdfaea959c009fb7",
+   "unchanged": true
+  }
+ ],
+ "ky-server-base": [
+  {
+   "path": "web/browser/ui.spec.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "78f2a8d5f711b2cb8d88b88d8bdea5411cc17cf4",
+   "blob_head": "b4bc1cd43a72014ed371b51072114faa78d24ad8",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/App.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "ce344dfd46f52506100d923db8d3a973d40d0087",
+   "blob_head": "ce344dfd46f52506100d923db8d3a973d40d0087",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/AppHeader.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "18c47d57cf80910e042bae82ea34ba34b3725dcd",
+   "blob_head": "fcae62a0833dc9b88ffbe091deedafa45f32a3be",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/components/ThemeSwitcher.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "b2d2ddf1e4850bd481acc162255261af99bc0ea6",
+   "blob_head": "b2d2ddf1e4850bd481acc162255261af99bc0ea6",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/navigation.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "blob_head": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/tokens.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "blob_head": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "93d61ec6580d4a5c639d34dd3fbe8eebd77a7671",
+   "blob_head": "93d61ec6580d4a5c639d34dd3fbe8eebd77a7671",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "7cc651fe9890eff593195fa010f69ca26b2c2612",
+   "blob_head": "7cc651fe9890eff593195fa010f69ca26b2c2612",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Dashboard.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "13e5e5ced26ac6c4e111833c8d39934b933edd25",
+   "blob_head": "13e5e5ced26ac6c4e111833c8d39934b933edd25",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/SCIMAdmin.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "1b2d51d803e508149973aeacbcdf2d96d6c32578",
+   "blob_head": "1b2d51d803e508149973aeacbcdf2d96d6c32578",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Settings.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "f23d690de7f34f2d6d77e8cf03342fe7eab41114",
+   "blob_head": "f23d690de7f34f2d6d77e8cf03342fe7eab41114",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/styles/theme.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "457c4004f8b65b4ba5d6f384fc4a964b9a90880e",
+   "blob_head": "5a7296caa60527df0b29c0bbc69b818168440bac",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "da06e2af27d5aaa04cf81eb9a5d106cabf13d047",
+   "blob_head": "da06e2af27d5aaa04cf81eb9a5d106cabf13d047",
+   "unchanged": true
+  }
+ ],
+ "KyDrive-server": [
+  {
+   "path": "web/browser/ui.spec.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "a8672d47f104372082a97df4fa4163fa601e388c",
+   "blob_head": "745cffc7c4f5070ca0a40fce73dbdec6bcfdabba",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/App.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "ec5ca17d23c163daab9a8573be6639c5388c0fbb",
+   "blob_head": "ec5ca17d23c163daab9a8573be6639c5388c0fbb",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/AppHeader.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "26a427159f9720702f5bb84663e73ba387d35204",
+   "blob_head": "26a427159f9720702f5bb84663e73ba387d35204",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/ThemeSwitcher.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "39037ffebffa9039bacc77d733e1f13be8bcf117",
+   "blob_head": "39037ffebffa9039bacc77d733e1f13be8bcf117",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/navigation.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "blob_head": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/tokens.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "blob_head": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "e8c6810871637d916d19e08413ef8788851881e1",
+   "blob_head": "e8c6810871637d916d19e08413ef8788851881e1",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "a23653bbdf6ee7013bbb9ffcc6f2655e8dca48c8",
+   "blob_head": "edf51a54d1b9c0d10ac635b86f025cd89d18fa3f",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/styles/theme.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "98146bc4e126f10121a3be5a001960a856ae0081",
+   "blob_head": "f61d543644753cb669d149d716aaa0d326d87d4c",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "c91ead046ca8ddbfc3b5495218b15952e5525174",
+   "blob_head": "c91ead046ca8ddbfc3b5495218b15952e5525174",
+   "unchanged": true
+  }
+ ],
+ "KyPulse-server": [
+  {
+   "path": "web/browser/ui.spec.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "4cdbac2570a3b72fa536479ecdebd9c9916206e9",
+   "blob_head": "f164b3f26ca32cb588efbe688eab75575a329f7f",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/App.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "d1a3c42d710239c1177c1bbd0b1db32c1e747f2f",
+   "blob_head": "d1a3c42d710239c1177c1bbd0b1db32c1e747f2f",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/components/AppHeader.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "6d6f9e69e72baf22f778574d145abee97c3c011c",
+   "blob_head": "5b0d0b64c6eb6a57b31576279c5ba1af104bfd38",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/components/ThemeSwitcher.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "b2d2ddf1e4850bd481acc162255261af99bc0ea6",
+   "blob_head": "b2d2ddf1e4850bd481acc162255261af99bc0ea6",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/VERSION",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "c5c3c406fb7edab75a5902d6bf52fbea93dc6a92",
+   "blob_head": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/ky-ui/appearance-themes.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/appearance.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/navigation.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "blob_head": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.d.ts",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/themes.js",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/ky-ui/tokens.css",
+   "prior_coverage": "vendor-bytes-checked",
+   "blob_prev": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "blob_head": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Alerts.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "03d95ede2bf7de63660eb3f30cbcc1405fa0c727",
+   "blob_head": "03d95ede2bf7de63660eb3f30cbcc1405fa0c727",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.test.tsx",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "93d61ec6580d4a5c639d34dd3fbe8eebd77a7671",
+   "blob_head": "93d61ec6580d4a5c639d34dd3fbe8eebd77a7671",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Appearance.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "ccd497264d994479d70ddf5d0ec2556fdaf13826",
+   "blob_head": "ccd497264d994479d70ddf5d0ec2556fdaf13826",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Settings.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "5d56a6cdaca20bfa788b0804c9b885509205d9d8",
+   "blob_head": "5d56a6cdaca20bfa788b0804c9b885509205d9d8",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/pages/Status.tsx",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "28a35543df9324a06f26707a6abfa17619eb13f7",
+   "blob_head": "28a35543df9324a06f26707a6abfa17619eb13f7",
+   "unchanged": true
+  },
+  {
+   "path": "web/src/styles/theme.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "58e1d79f7ae084aea14a8a0138c4c91946bec0e6",
+   "blob_head": "de4feaa3f33963147468a45ae1251e8c1505044d",
+   "unchanged": false
+  },
+  {
+   "path": "web/src/theme.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "da06e2af27d5aaa04cf81eb9a5d106cabf13d047",
+   "blob_head": "da06e2af27d5aaa04cf81eb9a5d106cabf13d047",
+   "unchanged": true
+  }
+ ],
+ "ky-ui": [
+  {
+   "path": "browser/appearance.spec.js",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "55a1b54c50e9c679d3bb7e247598fd1d02f69040",
+   "blob_head": "55a1b54c50e9c679d3bb7e247598fd1d02f69040",
+   "unchanged": true
+  },
+  {
+   "path": "browser/fixture.html",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "96c6f7e687eb9d1db40a0b157df95d55e004c05b",
+   "blob_head": "96c6f7e687eb9d1db40a0b157df95d55e004c05b",
+   "unchanged": true
+  },
+  {
+   "path": "browser/fixture.js",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "69484e434992d815389063bab9efcb3fa734ca51",
+   "blob_head": "69484e434992d815389063bab9efcb3fa734ca51",
+   "unchanged": true
+  },
+  {
+   "path": "browser/server.mjs",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "9912f5ffd8da85002f859ebbf3c7bdb6d5411b3d",
+   "blob_head": "9912f5ffd8da85002f859ebbf3c7bdb6d5411b3d",
+   "unchanged": true
+  },
+  {
+   "path": "consumers.json",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "2795bb4bd1c91667d9674c4f540caa3c3d8b0dd9",
+   "blob_head": "2795bb4bd1c91667d9674c4f540caa3c3d8b0dd9",
+   "unchanged": true
+  },
+  {
+   "path": "package-lock.json",
+   "prior_coverage": "reviewed",
+   "blob_prev": "7e2c0005a2a2a1025de66a09aeeef291c1d8ca9f",
+   "blob_head": "29465a730759e8c46b82a6c44e4f07d7545258c6",
+   "unchanged": false
+  },
+  {
+   "path": "package.json",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "3828920c663164d39d0880696d7e52e84e750a17",
+   "blob_head": "b6b8acada5d80b302836a83f982352527c8d0009",
+   "unchanged": false
+  },
+  {
+   "path": "scripts/appearance-themes.mjs",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "8b3e048e6a8e9cba54197dab413484db153653c3",
+   "blob_head": "8b3e048e6a8e9cba54197dab413484db153653c3",
+   "unchanged": true
+  },
+  {
+   "path": "scripts/check-suite.mjs",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "937bd1bd34da93a1d2119b79b0adb16aa34ff943",
+   "blob_head": "937bd1bd34da93a1d2119b79b0adb16aa34ff943",
+   "unchanged": true
+  },
+  {
+   "path": "scripts/sync-consumers.mjs",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "aee0832205defd4c4d3ab30b52b092ba692ced4a",
+   "blob_head": "e0f8ef53187a84cc2ee5909505efd4f56f668d90",
+   "unchanged": false
+  },
+  {
+   "path": "src/appearance-themes.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "blob_head": "54253248244f2b5301c363f6c25f9887bb9c7733",
+   "unchanged": true
+  },
+  {
+   "path": "src/appearance.css",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "blob_head": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+   "unchanged": true
+  },
+  {
+   "path": "src/themes.d.ts",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "blob_head": "ec0255274ef09f357c22f0959c98557db699a8fa",
+   "unchanged": true
+  },
+  {
+   "path": "src/themes.js",
+   "prior_coverage": "runtime-reviewed",
+   "blob_prev": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "blob_head": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+   "unchanged": true
+  },
+  {
+   "path": "test/sync.test.js",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "1bd8c1dfa75f0e1eda3fd20ca720edb5ee4525e7",
+   "blob_head": "f67de60f43153c3319f46dcc5d8c600107799c4d",
+   "unchanged": false
+  },
+  {
+   "path": "test/themes.test.js",
+   "prior_coverage": "test-reviewed",
+   "blob_prev": "f3374409ab9a3407a5d34a4995fd4a88e3e9e484",
+   "blob_head": "f3374409ab9a3407a5d34a4995fd4a88e3e9e484",
+   "unchanged": true
+  }
+ ]
+}

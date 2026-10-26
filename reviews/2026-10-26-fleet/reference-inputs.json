@@ -1,0 +1,13 @@
+{
+  "visibility": "Owner-provided originals remain outside public repo; account identifiers present",
+  "references": [
+    {
+      "file": "81feb0de-e1be-4aa8-8c87-6d3102ce7f1d-a40dd0d1-5215-4a49-aa2b-e957cded1898.png",
+      "sha256": "1192ff180acd63b5e5358521bc5ee930044174849a9800c98106400e6d8ea31e"
+    },
+    {
+      "file": "81feb0de-e1be-4aa8-8c87-6d3102ce7f1d-18bf5409-87a8-4ea8-9231-dbeed6a56fd7.png",
+      "sha256": "5ffbe92e55036f7bd281a01b1182e4e9667902fc9ae9cf9612d8e943dbec8aaf"
+    }
+  ]
+}

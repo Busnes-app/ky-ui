@@ -1,0 +1,17 @@
+npm notice run ky-server-base-web@1.0.0 npx
+npm notice run 'playwright' test ui.spec.mjs --reporter=line --output=../../base-head-ui-out
+[WebServer] 2026/10/26 11:26:14 [KY-BASE] Busnes.app listening on http://127.0.0.1:5391 (DB: sqlite)
+
+
+Running 4 tests using 1 worker
+
+[1/4] [light-390] › browser/ui.spec.mjs:15:1 › production CSP, worker, themes, keyboard, dialog and responsive shell
+[2/4] [light-1280] › browser/ui.spec.mjs:15:1 › production CSP, worker, themes, keyboard, dialog and responsive shell
+[3/4] [dark-390] › browser/ui.spec.mjs:15:1 › production CSP, worker, themes, keyboard, dialog and responsive shell
+[4/4] [dark-1280] › browser/ui.spec.mjs:15:1 › production CSP, worker, themes, keyboard, dialog and responsive shell
+[WebServer] 2026/10/26 11:26:31 [KY-BASE] Shutting down gracefully...
+
+[WebServer] 2026/10/26 11:26:31 [KY-BASE] waiting for the scheduled backup in flight...
+[WebServer] 2026/10/26 11:26:31 [KY-BASE] Server stopped
+
+  4 passed (17.3s)

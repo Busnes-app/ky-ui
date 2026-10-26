@@ -1,0 +1,12 @@
+{
+  "ky-server-base": {
+    "head": "63b3b4c10c90ad80eac89c8da091e30f0a3d7e8c",
+    "pinned_ui_review_head": "651a7b41082b868b4d4ea6a863a6ec8f02842453",
+    "merge_from": "73cdf19442de (origin/master)",
+    "conflict": "CHANGELOG.md only, resolved preserving UI + upstream security/library notes and upgrade impact; previously shipped Appearance summary already archived by master",
+    "checks": "notes validator vs origin/master and frontend build pass; gitdiff confirms web/src,web/dist,packageinputs,browsertests byte-identical to pinned651a7b4",
+    "full_ci_log": "/tmp/base-appearance-merged-ci.log",
+    "full_ci_state": "running",
+    "note": "Do not mutate runtime-review-inputs-v2.json; review UI source remains exact. New Go dependency versions from upstream master are integration changes, not silently covered by pinned UI council review."
+  }
+}

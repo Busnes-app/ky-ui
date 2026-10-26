@@ -1,0 +1,7 @@
+﻿Topic,Meaning
+Status,Scored rollout baseline: 142 unique images score5.2–8.2; none reaches9.0. Targeted visual refinement remains required.
+Scope,Ten active Ky web products plus server template
+Scores,Visual scores describe captured screens only. Missing scores are blank; cohort summaries are not whole-product rankings. No competitor superiority or 9/10 acceptance is implied.
+Behavior,Screenshot quality and behavior gates are separate. Untested gates prevent acceptance.
+Capture conditions,Synthetic fixtures; see individual source manifests and hashes. Viewport captures and full-page images are distinguished.
+Merge and deployment,Each PR needs passing CI and autonomous clearance at its current head. Nothing here authorizes merging or deployment.

@@ -1,0 +1,27 @@
+// Independent parity: generated classic themes-browser.js (consumer copy at pinned head) vs ky-ui src/themes.js module.
+import { execFileSync } from 'node:child_process';
+import { runInNewContext } from 'node:vm';
+import { writeFileSync, mkdtempSync } from 'node:fs';
+import { join } from 'node:path'; import { tmpdir } from 'node:os';
+const KY = '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance';
+const show = (repo, rev, p) => execFileSync('git', ['-C', repo, 'show', `${rev}:${p}`], { encoding: 'utf8' });
+const dir = mkdtempSync(join(tmpdir(), 'kyparity-'));
+writeFileSync(join(dir, 'themes.mjs'), show(KY, 'f9fb930', 'src/themes.js'));
+const mod = await import(join(dir, 'themes.mjs'));
+const classic = show('/home/yoshi/git/busnes.app/kydns-server/.claude/worktrees/fleet-appearance', 'c9ba6deb', 'internal/web/static/ky-ui/themes-browser.js');
+const window = {}; runInNewContext(classic, { window });
+const k = window.kyThemes; let fail = 0;
+const eq = (a, b, m) => { if (JSON.stringify(a) !== JSON.stringify(b)) { fail++; console.log('MISMATCH', m, a, b); } };
+eq(Object.keys(k).sort(), Object.keys(mod).sort(), 'export names');
+for (const n of ['SYSTEM_THEME', 'THEME_CATALOG', 'THEME_PALETTES', 'THEME_VARIABLES']) eq(k[n], mod[n], n);
+console.log('frozen', Object.isFrozen(k), Object.isFrozen(k.THEME_CATALOG), 'catalog', k.THEME_CATALOG.length, 'palettes', Object.keys(k.THEME_PALETTES).length);
+const inputs = [null, undefined, '', 'system', 'Match system', 'nope', '__proto__', 'constructor', 'toString', ' Ocean', 'ocean', 'OCEAN', 'patina', 'Patina Ky', 'Patina Ky (base)', 'patina-ky', 'light', 'dark'];
+for (const t of [...mod.THEME_CATALOG, mod.SYSTEM_THEME]) inputs.push(t.id, t.name, ...t.aliases);
+const fake = () => { const props = {}; return { props, el: { style: { setProperty: (a, b) => props[a] = b, removeProperty: a => delete props[a], colorScheme: '' } } }; };
+for (const v of inputs) {
+  eq(k.findTheme(v) ?? null, mod.findTheme(v) ?? null, `findTheme(${v})`);
+  const A = fake(), B = fake();
+  let ra, rb; try { ra = k.applyThemeVariables(v, A.el); } catch (e) { ra = 'throw ' + e.message; } try { rb = mod.applyThemeVariables(v, B.el); } catch (e) { rb = 'throw ' + e.message; }
+  eq([ra, A.props, A.el.style.colorScheme], [rb, B.props, B.el.style.colorScheme], `apply(${v})`);
+}
+console.log('inputs', inputs.length, 'mismatches', fail);

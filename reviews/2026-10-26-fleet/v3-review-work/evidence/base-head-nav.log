@@ -1,0 +1,18 @@
+npm notice run ky-server-base-web@1.0.0 npx
+npm notice run 'playwright' test nav.spec.mjs --reporter=line --output=../../base-head-nav-out
+[WebServer] 2026/10/26 11:26:41 [KY-BASE] Busnes.app listening on http://127.0.0.1:5391 (DB: sqlite)
+
+
+Running 4 tests using 1 worker
+
+[1/4] [light-390] › browser/nav.spec.mjs:6:1 › phone navigation reveals the current row after an Overview action
+[2/4] [light-1280] › browser/nav.spec.mjs:6:1 › phone navigation reveals the current row after an Overview action
+[3/4] [dark-390] › browser/nav.spec.mjs:6:1 › phone navigation reveals the current row after an Overview action
+[4/4] [dark-1280] › browser/nav.spec.mjs:6:1 › phone navigation reveals the current row after an Overview action
+[WebServer] 2026/10/26 11:26:44 [KY-BASE] Shutting down gracefully...
+
+[WebServer] 2026/10/26 11:26:44 [KY-BASE] waiting for the scheduled backup in flight...
+[WebServer] 2026/10/26 11:26:44 [KY-BASE] Server stopped
+
+  2 skipped
+  2 passed (2.8s)

@@ -1,0 +1,2686 @@
+[
+  {
+    "product": "KyDNS-server",
+    "gate": "all catalog themes plus Match system render as native radios",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 radio count = 23",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "no saved choice checks Match system and follows the OS",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 data-theme = busnes-light",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "legacy saved value \"Patina Ky\" resolves to patina-ky unchanged",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 stored value untouched = Patina Ky",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "legacy saved value \"Ocean\" resolves to ocean unchanged",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 stored value untouched = Ocean",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "legacy saved value \"Busnes Dark\" resolves to busnes-dark unchanged",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 stored value untouched = Busnes Dark",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "keyboard arrows move the choice and persist it",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 saved = Coffee",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "a light named theme keeps light nav hover and selected surfaces",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 hover color(srgb 0.905098 0.936784 0.955529) / rgb(24, 49, 66); selected rgb(182, 220, 237)",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "Match system clears the named palette and the saved choice",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 body background = rgb(248, 246, 240)",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "the picker is in sync with another tab",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 forest checked after storage event",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "no console errors or CSP violations",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "3dca9bc8e1b2d2a786cf3406096ee5a88d09fd8d978d4d5027ca41fe4cb15b81",
+    "stage": "01",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 none",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "all catalog themes plus Match system render as native radios",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 radio count = 23",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "no saved choice checks Match system and follows the OS",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 data-theme = busnes-light",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "legacy saved value \"Patina Ky\" resolves to patina-ky unchanged",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 stored value untouched = Patina Ky",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "legacy saved value \"Ocean\" resolves to ocean unchanged",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 stored value untouched = Ocean",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "legacy saved value \"Busnes Dark\" resolves to busnes-dark unchanged",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 stored value untouched = Busnes Dark",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "keyboard arrows move the choice and persist it",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 saved = Coffee",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "a light named theme keeps light nav hover and selected surfaces",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 hover color(srgb 0.905098 0.936784 0.955529) / rgb(24, 49, 66); selected rgb(182, 220, 237)",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "Match system clears the named palette and the saved choice",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 body background = rgb(248, 246, 240)",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "the picker is in sync with another tab",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 forest checked after storage event",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDNS-server",
+    "gate": "no console errors or CSP violations",
+    "result": "pass",
+    "revision": "d435baeee5737e20122829f55eaf399e47b5d9f0",
+    "source_diff_sha256": "a6b6f259c72ae5f8e958c631eee7cfa18552bf41934a5883d3ae358f8fe7cb2a",
+    "stage": "02",
+    "evidence": "products/KyDNS-server/behaviour-checks.csv \u2014 none",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "all catalog themes plus Match system render as native radios",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 radio count = 23",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "no saved choice checks Match system and follows the OS",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 data-theme = busnes-light",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "legacy saved value \"light\" resolves to busnes-light unchanged",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 stored value untouched = light",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "legacy saved value \"dark\" resolves to busnes-dark unchanged",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 stored value untouched = dark",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "legacy saved value \"ocean\" resolves to ocean unchanged",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 stored value untouched = ocean",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "keyboard arrows move the choice and persist it",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 saved = coffee",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "a light named theme keeps light nav hover and selected surfaces",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 hover color(srgb 0.896471 0.928863 0.948118) / rgb(24, 49, 66); selected rgb(182, 220, 237)",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "Match system clears the named palette and the saved choice",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 body background = rgb(248, 246, 240)",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "the picker is in sync with another tab",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 forest checked after storage event",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "no console errors or CSP violations",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "fe8606c16aa0690cb139d9a766bfb6d30b621ac4b82ed72e67f353cd8fe1926c",
+    "stage": "01",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 none",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "all catalog themes plus Match system render as native radios",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 radio count = 23",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "no saved choice checks Match system and follows the OS",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 data-theme = busnes-light",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "legacy saved value \"light\" resolves to busnes-light unchanged",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 stored value untouched = light",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "legacy saved value \"dark\" resolves to busnes-dark unchanged",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 stored value untouched = dark",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "legacy saved value \"ocean\" resolves to ocean unchanged",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 stored value untouched = ocean",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "keyboard arrows move the choice and persist it",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 saved = coffee",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "a light named theme keeps light nav hover and selected surfaces",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 hover color(srgb 0.896471 0.928863 0.948118) / rgb(24, 49, 66); selected rgb(182, 220, 237)",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "Match system clears the named palette and the saved choice",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 body background = rgb(248, 246, 240)",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "the picker is in sync with another tab",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 forest checked after storage event",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyRecovery-server",
+    "gate": "no console errors or CSP violations",
+    "result": "pass",
+    "revision": "b60e5710b920fdca012179615ad278fbca6cf206",
+    "source_diff_sha256": "52fff7e6d20ec30101bbac296bf244c5d3673b77964f30a3e1b9377ccb5928a2",
+    "stage": "02",
+    "evidence": "products/KyRecovery-server/behaviour-checks.csv \u2014 none",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "e7a40de3edd5f5312043fdaff814992ddda07021",
+    "source_diff_sha256": "6c39307a0aaa42373a3fda8dc684b0469d4f0bbe7ee99f4172be615bc11cd970",
+    "stage": "kyidentity-01-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "70c147d6d8dff6b3fc56076a85f2bed29d966ebe",
+    "source_diff_sha256": "",
+    "stage": "kyidentity-02-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "every named preview matches the applied palette",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 []",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "phone: two card columns and no overflow at 390px",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"columns\":2,\"grid_px\":358,\"left_px\":16,\"overflow_px\":0}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyIdentity-server",
+    "gate": "phone: keyboard choice survives a reload",
+    "result": "pass",
+    "revision": "29783e487579fbd942c4bff73c479b79d56aab11",
+    "source_diff_sha256": "da2ce0bb04afbc7914c1228e68264397c0932a75210dd94123621eb31d9fbbc0",
+    "stage": "kyidentity-03-after",
+    "evidence": "products/KyIdentity-server/checks.csv \u2014 {\"chosen\":\"busnes-light\",\"kept\":\"busnes-light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "83d9750d58cda3eba5a90194ece262722f3acea3",
+    "source_diff_sha256": "8037736037f08a63387ad372ad80cafbd4d566953a24480e29fcc885672f2b9c",
+    "stage": "kynotes-01-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "8b8a6eed32ceb59b0776a400a376af8f0382cf9a",
+    "source_diff_sha256": "",
+    "stage": "kynotes-02-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "every named preview matches the applied palette",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 []",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "phone: two card columns and no overflow at 390px",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"columns\":2,\"grid_px\":358,\"left_px\":16,\"overflow_px\":0}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyNotes-server",
+    "gate": "phone: keyboard choice survives a reload",
+    "result": "pass",
+    "revision": "31e91fdea4908b00076fc4d6cc2fb9e4af710b44",
+    "source_diff_sha256": "86f4839a9e8b84c476186e13d2b658c82171d0d2a8b0f62372ad5a9aa814b60d",
+    "stage": "kynotes-03-after",
+    "evidence": "products/KyNotes-server/checks.csv \u2014 {\"chosen\":\"busnes-light\",\"kept\":\"busnes-light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.896471 0.928863 0.948118)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"11.37\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.945647 0.918549 0.865373)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"12.05\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(242, 239, 231)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"13.98\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "038fb4ad67e4f7789800953d650b25a46e205e1c",
+    "source_diff_sha256": "b424025ed9a38d50fe6a174499ce1e503e7693ee07aafed76774225c5145930f",
+    "stage": "kyyard-01-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.896471 0.928863 0.948118)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"11.37\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.945647 0.918549 0.865373)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"12.05\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(242, 239, 231)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"13.98\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "59dd637e7f124dbebb5d0deb894ca8cc2a9e8964",
+    "source_diff_sha256": "",
+    "stage": "kyyard-02-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.896471 0.928863 0.948118)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"11.37\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.945647 0.918549 0.865373)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"12.05\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(242, 239, 231)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"13.98\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "every named preview matches the applied palette",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 []",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "phone: two card columns and no overflow at 390px",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"columns\":2,\"grid_px\":358,\"left_px\":16,\"overflow_px\":0}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyYard-server",
+    "gate": "phone: keyboard choice survives a reload",
+    "result": "pass",
+    "revision": "0cb1810712a90aa976a293e0dfbd3248fcb5f1d1",
+    "source_diff_sha256": "d9c0e7eb70b80ab0aada523108bf1892bdb623a82a47f94af5921fe97db1a740",
+    "stage": "kyyard-03-after",
+    "evidence": "products/KyYard-server/checks.csv \u2014 {\"chosen\":\"busnes-light\",\"kept\":\"busnes-light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "ky-server-base",
+    "gate": "New light themes: danger/success contrast >=4.5 on page and panel",
+    "result": "fail (baseline)",
+    "revision": "461f25f155fa16da4fd20584d0de31bbcd3581cf",
+    "stage": "F1 before",
+    "evidence": "products/ky-server-base/f1-before/manifest.json",
+    "acceptance_gate": false
+  },
+  {
+    "product": "ky-server-base",
+    "gate": "New light themes: danger/success contrast >=4.5 on page and panel",
+    "result": "pass",
+    "revision": "461f25f155fa16da4fd20584d0de31bbcd3581cf",
+    "stage": "F1 after",
+    "evidence": "products/ky-server-base/f1-after/manifest.json",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.896471 0.928863 0.948118)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"11.37\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.945647 0.918549 0.865373)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"12.05\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(242, 239, 231)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"13.98\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "f82abfa40a9bce63c43882e9fd35de61df5fce5a",
+    "source_diff_sha256": "9446f8bccea072a14714218c8108d1b649cb7491584b93a8d143be46d38a17ee",
+    "stage": "kydrive-01-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.896471 0.928863 0.948118)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"11.37\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.945647 0.918549 0.865373)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"12.05\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(242, 239, 231)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"13.98\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "e9de227d3237b30d6523bcedec41d5102dfed0e2",
+    "source_diff_sha256": "",
+    "stage": "kydrive-02-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.896471 0.928863 0.948118)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"11.37\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.945647 0.918549 0.865373)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"12.05\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(242, 239, 231)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"13.98\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "every named preview matches the applied palette",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 []",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "phone: two card columns and no overflow at 390px",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"columns\":2,\"grid_px\":358,\"left_px\":16,\"overflow_px\":0}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "phone: keyboard choice survives a reload",
+    "result": "pass",
+    "revision": "d5d2be112aa48a97065d5958c9a5e7d4ca6a5480",
+    "source_diff_sha256": "4fd571c39e5e6c6f8ae5b72f1566ac2e5c835dea013cd25f90eb2e28c411f0c3",
+    "stage": "kydrive-03-after",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"chosen\":\"busnes-light\",\"kept\":\"busnes-light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: page background",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"#dff1ff\",\"body\":\"rgb(223, 241, 255)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: hovered nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.896471 0.928863 0.948118)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"11.37\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sky: selected nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(182, 220, 237)\",\"ink\":\"rgb(24, 49, 66)\",\"ratio\":\"9.28\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: page background",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"#fff3dc\",\"body\":\"rgb(255, 243, 220)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: hovered nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"color(srgb 0.945647 0.918549 0.865373)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"12.05\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Sun: selected nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(241, 217, 162)\",\"ink\":\"rgb(57, 38, 17)\",\"ratio\":\"10.41\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: page background",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: hovered nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Dark: selected nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: page background",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(248, 246, 240)\",\"scheme\":\"light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: hovered nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(242, 239, 231)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"13.98\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Busnes Light: selected nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(251, 240, 236)\",\"ink\":\"rgb(24, 35, 38)\",\"ratio\":\"14.36\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: page background",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"inlineBg\":\"\",\"body\":\"rgb(24, 35, 38)\",\"scheme\":\"dark\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: hovered nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 56, 58)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"10.57\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "Match system: selected nav row contrast",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"bg\":\"rgb(43, 38, 34)\",\"ink\":\"rgb(242, 239, 232)\",\"ratio\":\"13.03\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "keyboard arrow selects the next card with a visible focus ring",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"value\":\"busnes-light\",\"checked\":true,\"outline\":\"solid\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "every named preview matches the applied palette",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 []",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "phone: two card columns and no overflow at 390px",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"columns\":2,\"grid_px\":358,\"left_px\":16,\"overflow_px\":0}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "phone: keyboard choice survives a reload",
+    "result": "pass",
+    "revision": "ad49c4494a9cf036ac8fe1853f2908d8d184ac18",
+    "source_diff_sha256": "",
+    "stage": "kydrive-03-confirm",
+    "evidence": "products/KyDrive-server/checks.csv \u2014 {\"chosen\":\"busnes-light\",\"kept\":\"busnes-light\"}",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "New light themes: danger/success contrast >=4.5 on page and panel",
+    "result": "fail (baseline)",
+    "revision": "91c312b3136c64d00793f429fc9580c8caa962c3",
+    "stage": "F1 before",
+    "evidence": "products/KyDrive-server/f1-before/manifest.json",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyDrive-server",
+    "gate": "New light themes: danger/success contrast >=4.5 on page and panel",
+    "result": "pass",
+    "revision": "91c312b3136c64d00793f429fc9580c8caa962c3",
+    "stage": "F1 after",
+    "evidence": "products/KyDrive-server/f1-after/manifest.json",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyPulse-server",
+    "gate": "New light themes: danger/success contrast >=4.5 on page and panel",
+    "result": "fail (baseline)",
+    "revision": "0f294e66dbf8bc27deae95a8fc51a9bfbca3a985",
+    "stage": "F1 before",
+    "evidence": "products/KyPulse-server/f1-before/manifest.json",
+    "acceptance_gate": false
+  },
+  {
+    "product": "KyPulse-server",
+    "gate": "New light themes: danger/success contrast >=4.5 on page and panel",
+    "result": "pass",
+    "revision": "0f294e66dbf8bc27deae95a8fc51a9bfbca3a985",
+    "stage": "F1 after",
+    "evidence": "products/KyPulse-server/f1-after/manifest.json",
+    "acceptance_gate": false
+  }
+]

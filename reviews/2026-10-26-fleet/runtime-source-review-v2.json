@@ -1,0 +1,3516 @@
+{
+ "schema": "ky-fleet-runtime-source-review/2",
+ "date": "2026-10-26",
+ "reviewed_at": "2026-10-26T14:30:21+00:00",
+ "reviewer_model": "claude-opus-5-5",
+ "reviewer": "Claude Opus 5.5 (claude-opus-5-5), independent review sub-agent; did not implement any change under review",
+ "kind": "follow-up source and behaviour review at fixed heads; not visual acceptance; no screenshot scores",
+ "inputs": "reviews/2026-10-26-fleet/runtime-review-inputs-v2.json",
+ "prior_review": "reviews/2026-10-26-fleet/runtime-source-review.json (heads listed as previous_review_head)",
+ "verdict": "NOT READY: one new medium regression (F7) introduced by the F1 fix in KyPulse and KyDrive (ky-server-base carries the same CSS, unused). Stop before phase 2 per brief; root to fix and re-pin.",
+ "phase2_started": false,
+ "findings": [
+  {
+   "id": "F7",
+   "severity": "medium",
+   "verdict": "CONFIRMED",
+   "regression": true,
+   "introduced_by": "F1 fix (ky-server-base 504c319, KyPulse db0c7a5, KyDrive 5d06f9e)",
+   "title": "F1 tint makes filled danger-button labels unreadable on the six light suite palettes (KyPulse, KyDrive)",
+   "repositories": [
+    "KyPulse-server",
+    "KyDrive-server",
+    "ky-server-base (rule and .btn-danger defined; no .btn-danger element in source)"
+   ],
+   "locations": [
+    "kyPulse-server web/src/styles/theme.css:104-109 (F1 :not() rule) with :203-206 (.btn-danger background var(--danger), color var(--button-text, #fff))",
+    "KyDrive-server web/src/styles/theme.css:69-74 (F1 rule) with :211 (.btn-danger)",
+    "ky_server_base web/src/styles/theme.css:104-109 with :202-205",
+    "Used by: KyPulse KyYardCard.tsx:76 Unpair, WebhookForm.tsx:119 Remove webhook, AppDetail.tsx:118 Delete; KyDrive Dialog.tsx:43 (danger confirm), Devices.tsx:63 Revoke computer"
+   ],
+   "what": "The F1 rule mixes --danger 50% toward the palette --ink-strong. On light palettes that makes --danger dark, and the filled .btn-danger keeps the palette --button-text, which is also dark. Status text now passes, but the destructive-action button label sits dark-on-dark-red.",
+   "evidence": {
+    "harness": "v2-review-work/harness/danger-button.mjs and danger-button-dist.mjs (real element, computed colour vs computed background, canvas colour conversion, transitions disabled)",
+    "pulse_shipped_dist_css": {
+     "head a955d6de index-D8LPBoJk.css": {
+      "light-matter": 1.59,
+      "tropics": 1.22,
+      "white-cliffs": 1.24,
+      "sky": 1.3,
+      "sun": 1.66,
+      "polished-ky": 1.18
+     },
+     "pre-F1 88fbeba index-CdJyouto.css": {
+      "light-matter": 4.63,
+      "tropics": 3.69,
+      "white-cliffs": 3.56,
+      "sky": 3.76,
+      "sun": 4.53,
+      "polished-ky": 3.85
+     }
+    },
+    "drive_source_css": "head 57765378 identical to Pulse (1.18-1.66); pre-F1 62f9743 3.56-4.63",
+    "dark_palettes": "5.45-6.59 at head (pass)",
+    "screenshot": "v2-review-work/evidence/f7-pulse-dist-danger-button-preF1-vs-head.png (synthetic strip, shipped Pulse CSS; pre-F1 row above head row for sky, polished-ky, sun)",
+    "why_tests_missed": "web/browser/ui.spec.mjs F1 assertions measure only --danger/--success text against --bg/--panel, not button label on danger fill."
+   },
+   "note": "Pre-F1 values were already below 4.5 for five light palettes (rollout gap); the F1 fix made them roughly 3x worse.",
+   "fix_options_measured": {
+    "label = var(--bg) on suite palettes": "min 5.83, 0/15 below 4.5",
+    "Calendar/Messages outline style (panel background, danger text, danger border)": "min 5.01, 0/15 below 4.5",
+    "plain #fff label": "fails 9 dark palettes (2.71-2.97); not sufficient"
+   },
+   "verification": "Re-run danger-button.mjs and danger-button-dist.mjs (rebuilt Pulse dist): every suite palette >= 4.5. Add a ui.spec assertion on a rendered .btn-danger."
+  },
+  {
+   "id": "G1",
+   "severity": "low",
+   "verdict": "CONFIRMED",
+   "regression": false,
+   "title": "Pre-existing tracked gap: KyYard filled danger-button label below AA on light suite palettes",
+   "repositories": [
+    "KyYard-server"
+   ],
+   "locations": [
+    "KyYard-Server web/src/theme.ts:26-27 (inline --danger #b91c1c for light named palettes)",
+    "web/src/styles/theme.css:178-181 (.btn-danger)"
+   ],
+   "evidence": "danger-button.mjs: light palettes 2.07-2.86 at 18ec0f6d; dark 5.86-6.92. Files unchanged since the previous review head. Not measured at review_base.",
+   "what": "Tracked acceptance gap, not introduced in this follow-up. Same family as F7; the same fix options apply."
+  }
+ ],
+ "prior_findings_disposition": {
+  "F1": {
+   "status": "text contrast FIXED and independently verified; fix introduced F7",
+   "evidence": "status-contrast-v2.mjs: Base/Pulse/Drive suite --danger/--success min 5.00 (forest danger) over all 15 suite palettes, OS light and OS dark; pre-F1 Base 3.25/2.19. Root-reported min 7.6998 covers only six light palettes; my all-palette minimum is 5.00 (dark palettes)."
+  },
+  "F2": {
+   "status": "FIXED, independently verified",
+   "evidence": "first-paint-v2.mjs (head streamed, body held 1500 ms, theme scripts delayed 600 ms): pinned heads applied the saved choice before <body> was parsed in 11/11 cases (DNS Ocean/OS light, Busnes Light/OS dark, Cliffs alias, none, restricted storage; Recovery light/OS dark, ocean/OS light, system, restricted storage; ceremony sky, restricted storage); prior heads 0/5. Final checked radios match saved values; restricted storage gives no page errors and follows the OS. Generator: temp-copy regeneration byte-equal, guard rejects async function/let/import mutations; vm parity 68 inputs, 0 mismatches. Tests: render_test.go and check-contrast.mjs assert classic in-order head scripts and no type=module. Chromium only."
+  },
+  "F3": {
+   "status": "UNCHANGED pre-existing acceptance gap; no 9/10",
+   "evidence": "Identity web/src/theme.ts, index.css and ky-ui tokens.css are blob-identical to the prior review heads, so the prior measurement (danger 2.10-2.30, success 1.78-1.95, Identity OS dark) stands. Not re-executed."
+  },
+  "F4": {
+   "status": "FIXED in KyNotes (independently executed); KyIdentity source-verified only",
+   "evidence": "KyNotes: product e2e appearance-cross-tab passed against the committed embed at a2296af; a reviewer-owned spec run against the same throwaway server passed: removeItem returns Match system; legacy alias Cliffs checks white-cliffs; clear() (event.key null) returns Match system; saved format remains the name (\"Ocean\"). KyIdentity: same storage listener plus storedTheme() try/catch (restricted storage returns Match system). No Identity browser CI; implementer capture-core 0/4 -> 4/4 not re-run."
+  },
+  "F5": {
+   "status": "ACCEPTED as recorded placement (owner/root decision); not a defect",
+   "evidence": "Yard and Notes Appearance remain in Settings for every role; the Notes e2e reaches it via the Settings button. No compact nav selector found in changed shell files."
+  },
+  "F6": {
+   "status": "FIXED in Base/Pulse (source + implementer tests); Recovery source-verified, harness inconclusive; Drive not reproduced and unchanged (accepted)",
+   "evidence": "Base/Pulse useEffect scrollIntoView({block:nearest,inline:nearest}) on activeTab/activePath; .app-header is sticky at every width, so nearest is a no-op for a visible item. nav.spec.mjs read (phone only). Recovery revealTab adjusts only the row scrollLeft on click; reviewer harness could not reproduce the overflow (dashboard hidden without auth data, row 0x0); implementer real-server check 10/11 -> 11/11 not re-run."
+  }
+ },
+ "other_checks": {
+  "follows_device": "\"Follows device\" in all 11 consumer sources; \"Light or dark\" absent. Committed dist bundles (binary-attributed) contain the new label (Yard checked directly).",
+  "notes_merge_a2296af": "internal/web/dist identical to pre-merge 451016e; the merge adds only VERSION and themes-browser.js.",
+  "csp": "KyDNS policy unchanged (frame-ancestors only). KyRecovery server.go untouched since review_base. Classic same-origin scripts only; no inline script/style added by the product changes.",
+  "unchanged_prior_areas": "Calendar/Messages hover fix, KyPost reader, Drive five local palettes/previews, Yard Polished Ky override, Recovery --ink adapter tokens map, adapters/keys/aliases: their files are blob-identical to the previous review heads (see prior_covered_files), except Drive theme.css (F1 rule only; legacy blocks/previews unchanged by diff) and Recovery theme.js (IIFE wrapper and DOMContentLoaded only).",
+  "compact_theme_controls": "Changed shell files (Base/Pulse AppHeader.tsx) add no select; unchanged shell files keep the prior verdict by hash. KyRecovery ceremony select remains (outside navigation; owner-allowed)."
+ },
+ "upstream_backend_not_certified": [
+  {
+   "repository": "KyIdentity-server",
+   "commits": "2d7fc73 (#166)",
+   "summary": "Backup deposit step-up removed (permAdmin only); AdminBackup.tsx no longer requests a grant."
+  },
+  {
+   "repository": "KyNotes-server",
+   "commits": "937573e (#111)",
+   "summary": "Backup deposit RequireAdmin + CSRF instead of RequireStepUp."
+  },
+  {
+   "repository": "KyYard-server",
+   "commits": "d69a64de, 26305324, a4c4ea30 (#154)",
+   "summary": "Strong-crypto profile: signing-key floors, TLS, JWKS strength, CI/Makefile/go.mod/docs."
+  }
+ ],
+ "executed_checks": [
+  "pins.py: 12/12 heads exist, worktree HEAD == pin, merge-base(review_base, head) == review_base, previous_review_head is an ancestor, listed changes == git diff prev..head",
+  "hashes.py: blob comparison of 178 previously covered files at previous head vs pinned head",
+  "vendor.py: 13-file ky-ui tree identical across 11 consumers; 9 shared files equal ky-ui f9fb930:src",
+  "node scripts/sync-consumers.mjs --check --paths=fleet-paths.local.json -> Checked 11 consumers at 0.4.1",
+  "temp-copy regeneration (git archive f9fb930) byte-equal themes-browser.js; 3 guard mutations throw",
+  "parity.mjs: 68 inputs, 0 mismatches",
+  "ky-ui npm test: 14/14 pass",
+  "status-contrast-v2.mjs (6 product revisions x 2 OS schemes x 20 palettes)",
+  "danger-button.mjs (source CSS) and danger-button-dist.mjs (KyPulse shipped dist CSS) + screenshot",
+  "f7-options.mjs: three fix candidates measured",
+  "first-paint-v2.mjs: 16 runs",
+  "KyNotes e2e appearance-cross-tab (product spec) 1/1 pass; reviewer removal/clear spec 1/1 pass (loopback 18080 throwaway server, 6G scope)",
+  "recovery-f6.mjs: inconclusive (row hidden without auth data)"
+ ],
+ "reported_not_reexecuted": [
+  "Product unit/race/full browser suites and CI (implementers/root)",
+  "Base/Pulse nav.spec and ui.spec runs",
+  "KyIdentity capture-core F4 verify 0/4 -> 4/4",
+  "KyRecovery phone check 10/11 -> 11/11",
+  "Implementer first-paint timing runs (results-*.jsonl)",
+  "Yard mode-copy captures and 563 unit tests",
+  "Notes 599 unit tests and build"
+ ],
+ "limits": [
+  "Chromium only.",
+  "Contrast harnesses use real committed CSS (Pulse also the shipped dist CSS) on synthetic pages, not full product apps.",
+  "Generated bundles were not reviewed beyond string presence; source is the reviewed artifact.",
+  "Upstream backend merges are identified, not reviewed or certified.",
+  "F3 is carried by hash identity, not re-executed.",
+  "No fixed 5391/5392 ports used; harnesses used ephemeral loopback ports; Notes e2e used its own 127.0.0.1:18080 (free before use).",
+  "Tool output truncation was not treated as coverage; files counted as read were read in full or as complete diffs."
+ ],
+ "harness_dir": "reviews/2026-10-26-fleet/v2-review-work/harness/",
+ "repositories": [
+  {
+   "repository": "KyDNS-server",
+   "checkout": "/home/yoshi/git/busnes.app/kydns-server/.claude/worktrees/fleet-appearance",
+   "head": "c9ba6deb9f0254b260759d0ec1fea3fc232931ac",
+   "review_base": "e301d07b9cb2623a0aa048df5b5b7b131833b0ef",
+   "previous_review_head": "28bf59e35583bf4e04eb7b21486ea6c1531b2bd8",
+   "new_changes_count": 27,
+   "new_change_coverage_counts": {
+    "docs-diff-read": 1,
+    "evidence-omitted": 21,
+    "test-read-full": 1,
+    "vendor-bytes-checked": 2,
+    "runtime-read-full": 2
+   },
+   "new_changes": [
+    {
+     "path": "AGENTS.md",
+     "coverage": "docs-diff-read",
+     "note": "documentation"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/README.md",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/behaviour-checks.csv",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/captures.csv",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-03-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-04-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-03-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-03-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-03-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-03-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-03-after-dashboard-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-03-after-dashboard-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-03-after-dashboard-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-03-after-dashboard-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-04-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-04-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-04-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-04-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-04-after-dashboard-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-04-after-dashboard-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-04-after-dashboard-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydns-04-after-dashboard-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "internal/web/render_test.go",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    },
+    {
+     "path": "internal/web/static/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "internal/web/static/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "internal/web/static/theme.js",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "internal/web/templates/base.html",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "internal/web/pages.go",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "8a427574e56fd3bbdf8c0ecd68f3ee0cc3d62fdb",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/render_test.go",
+     "prior_coverage": "test-reviewed",
+     "blob": "4d4e58ce1132281428997aecf996667b527bcf23",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/web/static/app.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "eaf2c1bff8fa90f3f749d0fabd00af9df7a0477a",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/static/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/web/static/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/static/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/static/ky-ui/navigation.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/static/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/static/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/static/ky-ui/tokens.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/static/theme.js",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "624c7afa26bace3b3df1101adf7213146cb6c5aa",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/web/templates/appearance.html",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "4a6d7a9707fb591d576b943a604bc0bca09b0351",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/templates/base.html",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "502f6929203162a2f28d7cb2a2022f5a28d02438",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/web/templates/layout.html",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "2c13b0709788f1dd94527ab29682a150b224d139",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/web/templates/settings.html",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "2a3b6d62373d7b6063c2c59f2b8165617c3b3cf0",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 11,
+   "upstream_backend": null
+  },
+  {
+   "repository": "KyRecovery-server",
+   "checkout": "/home/yoshi/git/busnes.app/kyrecovery-server/.claude/worktrees/fleet-appearance",
+   "head": "e0614508fdadc788268c33a0e5d0b6c8b74a54f3",
+   "review_base": "b60e5710b920fdca012179615ad278fbca6cf206",
+   "previous_review_head": "2738beb742cec16c569c45cc2e929d2e8e74621a",
+   "new_changes_count": 57,
+   "new_change_coverage_counts": {
+    "docs-omitted": 2,
+    "evidence-omitted": 48,
+    "runtime-read-full": 4,
+    "vendor-bytes-checked": 2,
+    "test-read-full": 1
+   },
+   "new_changes": [
+    {
+     "path": "AGENTS.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "CHANGELOG.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/README.md",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/behaviour-checks.csv",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/capture.mjs",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/captures.csv",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-03-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-04-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-05-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-06-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-03-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-03-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-03-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-03-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-03-after-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-03-after-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-03-after-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-03-after-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-04-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-04-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-04-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-04-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-04-after-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-04-after-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-04-after-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-04-after-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-replication-via-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-replication-via-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-replication-via-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-05-after-replication-via-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-replication-via-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-replication-via-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-replication-via-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyrecovery-06-after-replication-via-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "internal/server/static/ceremony.html",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "internal/server/static/index.html",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "internal/server/static/js/app.js",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "internal/server/static/js/theme.js",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "internal/server/static/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "internal/server/static/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "scripts/check-contrast.mjs",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "CHANGELOG.md",
+     "prior_coverage": "docs-read",
+     "blob": "d996cbcd9354281f3d8adac6b7e56eb34cd90b86",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/server/static/ceremony.html",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "f538abbbff4156563ce80b1d1f1984c8977a4773",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/server/static/css/styles.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "b40b83ad572b63c38ec965ed642b8c65c143be33",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/server/static/index.html",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "f65123a8afaf9514226898742756c5276de48067",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/server/static/js/theme.js",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "5b8ef6e317d9c81f7ff8f1fb3eef0ff10bfba62e",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/server/static/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "internal/server/static/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/server/static/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/server/static/ky-ui/navigation.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/server/static/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/server/static/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "internal/server/static/ky-ui/tokens.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 7,
+   "upstream_backend": null
+  },
+  {
+   "repository": "KyIdentity-server",
+   "checkout": "/home/yoshi/git/busnes.app/KyIdentity-server/.claude/worktrees/fleet-appearance",
+   "head": "35d8e42a3052414dda61f5c8add7227b7fb826d7",
+   "review_base": "ba43fbe9829aca788878153b504d87d6dc18a386",
+   "previous_review_head": "cf986204a755f477e66f2ec71f32a9acf5e62162",
+   "new_changes_count": 41,
+   "new_change_coverage_counts": {
+    "docs-omitted": 3,
+    "evidence-omitted": 29,
+    "upstream-backend-identified-not-certified": 4,
+    "generated-omitted": 2,
+    "runtime-read-full": 1,
+    "vendor-bytes-checked": 2
+   },
+   "new_changes": [
+    {
+     "path": "AGENTS.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "CHANGELOG.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "UI-VERIFICATION.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/README.md",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/capture-core.mjs",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/capture.mjs",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-cross-tab-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-cross-tab-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-cross-tab-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-cross-tab-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-keyboard-focus-desktop.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-phone-grid-mobile.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-sky-hover-desktop.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-verify.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-cross-tab-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-cross-tab-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-cross-tab-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-cross-tab-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-keyboard-focus-desktop.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-phone-grid-mobile.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-sky-hover-desktop.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-verify.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "internal/api/backup_api_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "2d7fc73 (PR #166 fix/deposit-admin-only, merged via 67b6f52)"
+    },
+    {
+     "path": "internal/api/hardening_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "2d7fc73 (PR #166 fix/deposit-admin-only, merged via 67b6f52)"
+    },
+    {
+     "path": "internal/api/server.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "2d7fc73 (PR #166 fix/deposit-admin-only, merged via 67b6f52)"
+    },
+    {
+     "path": "web/dist/assets/index-BTzus_2y.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/index.html",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/src/components/AdminBackup.tsx",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "2d7fc73 (PR #166 fix/deposit-admin-only, merged via 67b6f52)"
+    },
+    {
+     "path": "web/src/components/Appearance.tsx",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "web/src/components/Appearance.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "fc4afe19eceebbd71e61a0524e599b41d69d9bcc",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/index.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "c400a418572e12928806ae1edd891d078e9f1933",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/navigation.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/tokens.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/main.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "d6e50207cb580723de1f7db9e844e212922aed66",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/theme.test.ts",
+     "prior_coverage": "test-reviewed",
+     "blob": "09f367f20df66cdbb0d1ba50dbe76e03f65efe27",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "89c341e7a8704cad73196e7932eb324314ecfb23",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 10,
+   "upstream_backend": {
+    "commits": "2d7fc73 (PR #166 fix/deposit-admin-only, merged via 67b6f52)",
+    "summary": "POST /api/admin/backup/deposit no longer requires step-up (permAdmin only); AdminBackup.tsx stops requesting a grant; tests updated and TestDepositNeedsAdminButNotStepUp added. Security-relevant authorization change. Diff read to identify it; not reviewed or certified here.",
+    "files": [
+     "internal/api/server.go",
+     "internal/api/backup_api_test.go",
+     "internal/api/hardening_test.go",
+     "web/src/components/AdminBackup.tsx"
+    ]
+   }
+  },
+  {
+   "repository": "KyNotes-server",
+   "checkout": "/home/yoshi/git/busnes.app/kynotes-server/.claude/worktrees/fleet-appearance",
+   "head": "a2296af3dd50723eab812bd0a6c033f7215d7871",
+   "review_base": "d172a514e47de2d1abd3e851c3191a5abdd85d2e",
+   "previous_review_head": "22f51a10882d99c060c71bb3fa41b43dab71b2ae",
+   "new_changes_count": 47,
+   "new_change_coverage_counts": {
+    "docs-omitted": 1,
+    "upstream-backend-identified-not-certified": 8,
+    "evidence-omitted": 29,
+    "generated-omitted": 5,
+    "test-read-full": 1,
+    "vendor-bytes-checked": 2,
+    "runtime-read-full": 1
+   },
+   "new_changes": [
+    {
+     "path": "AGENTS.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "CHANGELOG.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)"
+    },
+    {
+     "path": "IMPLEMENTATION_PLAN.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)"
+    },
+    {
+     "path": "docs/ASSURANCE-CASE.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)"
+    },
+    {
+     "path": "docs/DEPLOYMENT.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)"
+    },
+    {
+     "path": "docs/SSO.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/README.md",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/capture-core.mjs",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/capture.mjs",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-cross-tab-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-cross-tab-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-cross-tab-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-cross-tab-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-keyboard-focus-desktop.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-phone-grid-mobile.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-sky-hover-desktop.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-verify.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-cross-tab-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-cross-tab-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-cross-tab-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-cross-tab-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-keyboard-focus-desktop.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-phone-grid-mobile.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-sky-hover-desktop.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-verify.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "internal/backup/AGENTS.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)"
+    },
+    {
+     "path": "internal/httpapi/backup_routes.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)"
+    },
+    {
+     "path": "internal/httpapi/backup_routes_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)"
+    },
+    {
+     "path": "internal/web/dist/assets/CanvasPage-B7AEy4SL.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "internal/web/dist/assets/blocknote-CYTBGfi0.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "internal/web/dist/assets/exportNotebook-wik5jMed.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "internal/web/dist/assets/index-DBKaEo1B.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "internal/web/dist/index.html",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/e2e/appearance-cross-tab.e2e.ts",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/main.tsx",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "AGENTS.md",
+     "prior_coverage": "docs-read",
+     "blob": "ec9383d30cd8b9ab4cc33c203366cef9ddfdd778",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/navigation.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/tokens.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/main.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "8c64d4e104310826ed714724abf4b3cc82ef44d1",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/styles.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "662f402ce75d5ecb056f5c61e793587e5618d230",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/theme.test.ts",
+     "prior_coverage": "test-reviewed",
+     "blob": "e7afa37819bfcf668ee492d4a560742deabb184c",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "ed213ac4d3e7bae4376f2739b60965fff4d3e4aa",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 9,
+   "upstream_backend": {
+    "commits": "937573e (PR #111 fix/deposit-admin-only, in 21063dd base of the F4 branch)",
+    "summary": "POST /api/v1/admin/backup/deposit now RequireAdmin + CSRF instead of RequireStepUp. Security-relevant authorization change. Diff read to identify it; not reviewed or certified here.",
+    "files": [
+     "internal/httpapi/backup_routes.go",
+     "internal/httpapi/backup_routes_test.go",
+     "internal/backup/AGENTS.md",
+     "docs/ASSURANCE-CASE.md",
+     "docs/DEPLOYMENT.md",
+     "docs/SSO.md",
+     "IMPLEMENTATION_PLAN.md",
+     "CHANGELOG.md"
+    ]
+   }
+  },
+  {
+   "repository": "KyPost-Server",
+   "checkout": "/home/yoshi/git/busnes.app/kypost-server/.claude/worktrees/fleet-appearance",
+   "head": "7963701a342bc920a8cb71185ff5e18a89cffad7",
+   "review_base": "7aea66f888ec3f251ab1b68b66378bd5c3e144c8",
+   "previous_review_head": "7b0892f05bbde24995de3191bd666191006266b5",
+   "new_changes_count": 2,
+   "new_change_coverage_counts": {
+    "vendor-bytes-checked": 2
+   },
+   "new_changes": [
+    {
+     "path": "frontend/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "frontend/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "frontend/AGENTS.md",
+     "prior_coverage": "docs-read",
+     "blob": "099f721f9cd679fb25334baf64ac52394309c8a0",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "frontend/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/main.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "756dd5eb94829880883e35d707a578267ed2ac28",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/pages/settings/AppearancePanel.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "de5271e352e842c9c77353101f57b05dfdf2232a",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/settings/sections/Appearance.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "e20a08a477c0ec777492149a4361af410b92946b",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/settings/sections/Appearance.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "ef68987a39972ddec5997263dc8b74794aae9ed5",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/styles.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "073d1f4aad2a55c52e947de144018f25b5c1d38d",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "frontend/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "e3f13bca283e0c5239bb502a840497ab4ee068b4",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 11,
+   "upstream_backend": null
+  },
+  {
+   "repository": "KyCalendar",
+   "checkout": "/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/fleet-appearance",
+   "head": "bad000f1832892abc7d0b0b29f341dffb126aa61",
+   "review_base": "21c3d7925e84cda321788f7ec08a591765567e23",
+   "previous_review_head": "00f7243269d5e5b503465eb9ba2c7e6c1ef9b9cb",
+   "new_changes_count": 2,
+   "new_change_coverage_counts": {
+    "vendor-bytes-checked": 2
+   },
+   "new_changes": [
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "web/browser/AGENTS.md",
+     "prior_coverage": "docs-read",
+     "blob": "4f885d8b539a1640e1b2187076591871190a4ea1",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/browser/appearance.spec.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "d37b543a2816324f0c2d13d3b46e5e50785e36d5",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/browser/nav.spec.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "89945a62a9bf38f69905d19c8923957807e0d291",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/browser/ui.spec.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "2e0de320d9dc878f8283f734771856f9a53cfc02",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/App.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "08a4b7495e3e7a3326c16a8f57ba9c202115793b",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/AppHeader.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "4ec4e487d0519b7e4c6b0eac63cf12ad871620de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/ThemeSwitcher.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "0a8d40b269e937498f69e007a3cc10b164d33738",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "2edf2ce875c892f49ad14c8ed04b348711c04353",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "7637dcb5b7e352e94d909791759c3cb799c9923e",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Settings.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "1bc6366e91182f828089b19dc7862c4a7c8827f3",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "0560696e45afe11ea38b028a42a3fa6c951d030e",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "4d76b005cdb6dd2c4fd5d039eddf81e2cdb6eddb",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 16,
+   "upstream_backend": null
+  },
+  {
+   "repository": "KyMessage-Server",
+   "checkout": "/home/yoshi/git/busnes.app/KyMessage-Server/.claude/worktrees/fleet-appearance",
+   "head": "ab600d980107839deb2ad2124b459c35f49122e6",
+   "review_base": "feb4f956e1d1022ae6405a94594fac010e1b50c8",
+   "previous_review_head": "8fe1c977f4ac958cf59e14cd9680e842c92ce97f",
+   "new_changes_count": 2,
+   "new_change_coverage_counts": {
+    "vendor-bytes-checked": 2
+   },
+   "new_changes": [
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "web/browser/appearance.spec.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "5db70dccf6794bdbd3e797457b64eec0dcb45782",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/browser/ui.spec.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "1ca88c3308e7395a4f000992129d5a7d0fd3f8d2",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/App.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "71ece16a00efdc33d0a32599217ba9271ed6f0a5",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/AppHeader.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "725c8a18a3cd80ee9c9bc0e2d2fec245384e1d35",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/AppHeader.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "3f735fa6bc22e8f793a85231019568c0f8c9f9a9",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/ThemeSwitcher.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "0a8d40b269e937498f69e007a3cc10b164d33738",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "2edf2ce875c892f49ad14c8ed04b348711c04353",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "053eb62a4add8be9eb9b405917029538c40f1f02",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Settings.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "9abb6ab5f6757340018da06adc154e0c3adcb83c",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "4e0c7102a7fcd525e93c7c66216c38e7a64b27b4",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "4d76b005cdb6dd2c4fd5d039eddf81e2cdb6eddb",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 15,
+   "upstream_backend": null
+  },
+  {
+   "repository": "KyYard-server",
+   "checkout": "/home/yoshi/git/busnes.app/KyYard-Server/.claude/worktrees/fleet-appearance",
+   "head": "18ec0f6d192fb2be52ea69b3fc029144359d417a",
+   "review_base": "996c59a1c4f55844a96ac9d7d6505961a8eebb8c",
+   "previous_review_head": "3925b30a4bb881b46b66ff8cc528bb4af2280d09",
+   "new_changes_count": 56,
+   "new_change_coverage_counts": {
+    "upstream-backend-identified-not-certified": 35,
+    "docs-omitted": 2,
+    "evidence-omitted": 12,
+    "generated-omitted": 4,
+    "runtime-read-full": 1,
+    "vendor-bytes-checked": 2
+   },
+   "new_changes": [
+    {
+     "path": ".github/workflows/ci.yml",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "AGENTS.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "CONTRIBUTING.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "INSTALL.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "Makefile",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "README.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "SECURITY.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "UI-VERIFICATION.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "cmd/agent/key_strength_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "docker-compose.strong-crypto.yml",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "docs/ASSURANCE-CASE.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "docs/STRONG-CRYPTO.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "docs/check-strong-crypto-compose.py",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/README.md",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/mode-copy-04-after.patch",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-after-manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-before-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-before-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-before-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-before-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kyyard-04-before-manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "go.mod",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "go.sum",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/auth/AGENTS.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/auth/key_strength_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/config/AGENTS.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/config/config.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/config/key_strength_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/crypto/AGENTS.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/crypto/crypto.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/registry/AGENTS.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/registry/key_strength_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/sso/AGENTS.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/sso/jwks_member_parsing_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/sso/jwks_strength.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/sso/jwks_strength_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/sso/kysignon.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/sso/oauth.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/sso/sso_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/sso/webhook_key_strength_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/store/AGENTS.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/store/samples_prune_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/store/tenancy_federation_test.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/testdb/AGENTS.md",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "internal/testdb/testdb.go",
+     "coverage": "upstream-backend-identified-not-certified",
+     "note": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125"
+    },
+    {
+     "path": "web/dist/assets/ContainerTerminal-DQ1C6PAi.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/assets/PodTerminal-DCyby44s.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/assets/index-BWwatG5H.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/index.html",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/src/components/ThemeSwitcher.tsx",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "web/AGENTS.md",
+     "prior_coverage": "docs-read",
+     "blob": "0c4c9ebcb9aa924b70f483ec08b8f01dd1b9dd6e",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/App.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "b85809bd347fec6d26a66c2f4bcccbdd80010d58",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/ThemeSwitcher.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "762bf4af14a2cdaf6f84513d66ab5535a417da2b",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/ThemeSwitcher.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "7d5585a97a598490f5da2e5af4300ba9fe4e6263",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/navigation.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/tokens.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Settings.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "5272180c9c1b6ee7e4f35df82f79d59431e52bc3",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Settings.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "484b3151e45ba5f963e89ec64391b17b7df746b5",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "de1cd149b97c7336ef6c34acd72e525d09a27d1f",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "21a6d3fccd188724ec957ea9fdfaea959c009fb7",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 13,
+   "upstream_backend": {
+    "commits": "d69a64de, 26305324, a4c4ea30 (PR #154 security/strong-crypto-profile), merged into the rollout via 6ecb621d/f7404125",
+    "summary": "Signing-key floors, strong TLS profile, JWKS strength checks, crypto/config/registry/sso/testdb changes, CI/Makefile/go.mod updates and docs. Not UI; identified only, not reviewed or certified here.",
+    "files": null
+   }
+  },
+  {
+   "repository": "ky-server-base",
+   "checkout": "/home/yoshi/git/busnes.app/ky_server_base/.claude/worktrees/fleet-appearance",
+   "head": "651a7b41082b868b4d4ea6a863a6ec8f02842453",
+   "review_base": "95a3f114712d43151a4a1bc14a1299cbdd8be0b8",
+   "previous_review_head": "461f25f155fa16da4fd20584d0de31bbcd3581cf",
+   "new_changes_count": 53,
+   "new_change_coverage_counts": {
+    "docs-omitted": 3,
+    "evidence-omitted": 40,
+    "test-read-full": 2,
+    "generated-omitted": 4,
+    "runtime-read-full": 2,
+    "vendor-bytes-checked": 2
+   },
+   "new_changes": [
+    {
+     "path": "CHANGELOG.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "UI-VERIFICATION.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/README.md",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/capture.mjs",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/captures.csv",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/ky_server_base-f1-after-sky-appearance-dark-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/ky_server_base-f1-after-sky-appearance-dark-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/ky_server_base-f1-after-sky-appearance-light-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/ky_server_base-f1-after-sky-appearance-light-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/source.patch",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/ky_server_base-f1-before-sky-appearance-dark-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/ky_server_base-f1-before-sky-appearance-dark-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/ky_server_base-f1-before-sky-appearance-light-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/ky_server_base-f1-before-sky-appearance-light-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-03-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-04-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-settings-via-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-settings-via-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-settings-via-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-03-after-settings-via-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-settings-via-overview-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-settings-via-overview-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-settings-via-overview-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kybase-04-after-settings-via-overview-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "web/AGENTS.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "web/browser/nav.spec.mjs",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    },
+    {
+     "path": "web/browser/ui.spec.mjs",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    },
+    {
+     "path": "web/dist/assets/index-43YBVUqL.css",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/assets/index-BuGx53Gp.css",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/assets/index-CvsEmC-I.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/index.html",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/src/components/AppHeader.tsx",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "web/browser/ui.spec.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "b4bc1cd43a72014ed371b51072114faa78d24ad8",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/App.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "ce344dfd46f52506100d923db8d3a973d40d0087",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/AppHeader.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "fcae62a0833dc9b88ffbe091deedafa45f32a3be",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/components/ThemeSwitcher.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "b2d2ddf1e4850bd481acc162255261af99bc0ea6",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/navigation.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/tokens.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "93d61ec6580d4a5c639d34dd3fbe8eebd77a7671",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "7cc651fe9890eff593195fa010f69ca26b2c2612",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Dashboard.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "13e5e5ced26ac6c4e111833c8d39934b933edd25",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/SCIMAdmin.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "1b2d51d803e508149973aeacbcdf2d96d6c32578",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Settings.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "f23d690de7f34f2d6d77e8cf03342fe7eab41114",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "5a7296caa60527df0b29c0bbc69b818168440bac",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "da06e2af27d5aaa04cf81eb9a5d106cabf13d047",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 14,
+   "upstream_backend": null
+  },
+  {
+   "repository": "KyDrive-server",
+   "checkout": "/home/yoshi/git/busnes.app/KyDrive-server/.claude/worktrees/fleet-appearance",
+   "head": "57765378bee563f300e6409876b530751a7eb784",
+   "review_base": "e772e28629bddba9363550677343a86d5d0c0e88",
+   "previous_review_head": "91c312b3136c64d00793f429fc9580c8caa962c3",
+   "new_changes_count": 30,
+   "new_change_coverage_counts": {
+    "docs-omitted": 2,
+    "evidence-omitted": 23,
+    "test-read-full": 1,
+    "vendor-bytes-checked": 2,
+    "runtime-read-full": 2
+   },
+   "new_changes": [
+    {
+     "path": "UI-VERIFICATION.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/README.md",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/capture-core.mjs",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/KyDrive-server-f1-after-sky-appearance-dark-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/KyDrive-server-f1-after-sky-appearance-dark-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/KyDrive-server-f1-after-sky-appearance-light-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/KyDrive-server-f1-after-sky-appearance-light-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/source.patch",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/KyDrive-server-f1-before-sky-appearance-dark-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/KyDrive-server-f1-before-sky-appearance-dark-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/KyDrive-server-f1-before-sky-appearance-light-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/KyDrive-server-f1-before-sky-appearance-light-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-after-manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-before-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-before-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-before-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-before-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-before-manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "web/AGENTS.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "web/browser/ui.spec.mjs",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/pages/Appearance.tsx",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "web/browser/ui.spec.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "745cffc7c4f5070ca0a40fce73dbdec6bcfdabba",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/App.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "ec5ca17d23c163daab9a8573be6639c5388c0fbb",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/AppHeader.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "26a427159f9720702f5bb84663e73ba387d35204",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/ThemeSwitcher.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "39037ffebffa9039bacc77d733e1f13be8bcf117",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/navigation.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/tokens.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "e8c6810871637d916d19e08413ef8788851881e1",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "edf51a54d1b9c0d10ac635b86f025cd89d18fa3f",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "f61d543644753cb669d149d716aaa0d326d87d4c",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "c91ead046ca8ddbfc3b5495218b15952e5525174",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 11,
+   "upstream_backend": null
+  },
+  {
+   "repository": "KyPulse-server",
+   "checkout": "/home/yoshi/git/busnes.app/kyPulse-server/.claude/worktrees/fleet-appearance",
+   "head": "a955d6de186f4a510f20bd903c5d4db1eac78952",
+   "review_base": "01accf34db69b51f7aabb3989d6af91c7dc3f9ed",
+   "previous_review_head": "0f294e66dbf8bc27deae95a8fc51a9bfbca3a985",
+   "new_changes_count": 43,
+   "new_change_coverage_counts": {
+    "docs-omitted": 2,
+    "evidence-omitted": 31,
+    "test-read-full": 2,
+    "generated-omitted": 4,
+    "runtime-read-full": 2,
+    "vendor-bytes-checked": 2
+   },
+   "new_changes": [
+    {
+     "path": "UI-VERIFICATION.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/README.md",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/captures.csv",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/kyPulse-server-f1-after-sky-appearance-dark-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/kyPulse-server-f1-after-sky-appearance-dark-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/kyPulse-server-f1-after-sky-appearance-light-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/kyPulse-server-f1-after-sky-appearance-light-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-after/source.patch",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/kyPulse-server-f1-before-sky-appearance-dark-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/kyPulse-server-f1-before-sky-appearance-dark-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/kyPulse-server-f1-before-sky-appearance-light-1280.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/kyPulse-server-f1-before-sky-appearance-light-390.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/f1-before/manifest.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-03-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/manifest-04-after.json",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-03-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-03-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-03-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-03-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-03-after-status-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-03-after-status-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-03-after-status-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-03-after-status-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-04-after-appearance-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-04-after-appearance-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-04-after-appearance-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-04-after-appearance-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-04-after-status-desktop-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-04-after-status-desktop-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-04-after-status-mobile-dark.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "docs/ui-fleet-2026-10-26/screenshots/kypulse-04-after-status-mobile-light.png",
+     "coverage": "evidence-omitted",
+     "note": "capture evidence/scripts/manifests; not runtime"
+    },
+    {
+     "path": "web/AGENTS.md",
+     "coverage": "docs-omitted",
+     "note": "documentation"
+    },
+    {
+     "path": "web/browser/nav.spec.mjs",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    },
+    {
+     "path": "web/browser/ui.spec.mjs",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    },
+    {
+     "path": "web/dist/assets/index-CdJyouto.css",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/assets/index-D8LPBoJk.css",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/assets/index-DwTFpAw_.js",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/dist/index.html",
+     "coverage": "generated-omitted",
+     "note": "generated bundle; label/listener string presence checked only"
+    },
+    {
+     "path": "web/src/components/AppHeader.tsx",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/ky-ui/themes-browser.js",
+     "coverage": "vendor-bytes-checked",
+     "note": "blob equal across 11 consumers; regenerated byte-equal from ky-ui f9fb930 in a temp copy; sync --check passed; classic/module parity 68 inputs"
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "web/browser/ui.spec.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "f164b3f26ca32cb588efbe688eab75575a329f7f",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/App.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "d1a3c42d710239c1177c1bbd0b1db32c1e747f2f",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/components/AppHeader.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "5b0d0b64c6eb6a57b31576279c5ba1af104bfd38",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/components/ThemeSwitcher.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "b2d2ddf1e4850bd481acc162255261af99bc0ea6",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/VERSION",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6bc401d6b7d203c1449d0eb6daf87810d60a5349",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/ky-ui/appearance-themes.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/appearance.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/navigation.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "f9bdf846159f0f25db0202a5ed57bf15d0458653",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.d.ts",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/themes.js",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/ky-ui/tokens.css",
+     "prior_coverage": "vendor-bytes-checked",
+     "blob": "6b6dace6be00465254c1b0c19e6f95dc84f87f67",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Alerts.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "03d95ede2bf7de63660eb3f30cbcc1405fa0c727",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.test.tsx",
+     "prior_coverage": "test-reviewed",
+     "blob": "93d61ec6580d4a5c639d34dd3fbe8eebd77a7671",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Appearance.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "ccd497264d994479d70ddf5d0ec2556fdaf13826",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Settings.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "5d56a6cdaca20bfa788b0804c9b885509205d9d8",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/pages/Status.tsx",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "28a35543df9324a06f26707a6abfa17619eb13f7",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "web/src/styles/theme.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "de4feaa3f33963147468a45ae1251e8c1505044d",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "web/src/theme.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "da06e2af27d5aaa04cf81eb9a5d106cabf13d047",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 14,
+   "upstream_backend": null
+  },
+  {
+   "repository": "ky-ui",
+   "checkout": "/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance",
+   "head": "f9fb93063722f12bd76e79f6f643aed9aaf5231e",
+   "review_base": "09622601e223034ae2a1836e3cdeadb7644ba40b",
+   "previous_review_head": "ab7a039851df5887fee22ca261d941e4f35ae825",
+   "new_changes_count": 38,
+   "new_change_coverage_counts": {
+    "docs-diff-read": 7,
+    "runtime-read-full": 3,
+    "evidence-omitted": 26,
+    "evidence-script-read": 1,
+    "test-read-full": 1
+   },
+   "new_changes": [
+    {
+     "path": "AGENTS.md",
+     "coverage": "docs-diff-read",
+     "note": "documentation"
+    },
+    {
+     "path": "CHANGELOG.md",
+     "coverage": "docs-diff-read",
+     "note": "documentation"
+    },
+    {
+     "path": "PLAN.md",
+     "coverage": "docs-diff-read",
+     "note": "documentation"
+    },
+    {
+     "path": "README.md",
+     "coverage": "docs-diff-read",
+     "note": "documentation"
+    },
+    {
+     "path": "docs/ASSURANCE-CASE.md",
+     "coverage": "docs-diff-read",
+     "note": "documentation"
+    },
+    {
+     "path": "eslint.config.mjs",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "package-lock.json",
+     "coverage": "docs-diff-read",
+     "note": "documentation"
+    },
+    {
+     "path": "package.json",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/README.md",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/ceremony-check.mjs",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/f2-response.json",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/first-paint.mjs",
+     "coverage": "evidence-script-read",
+     "note": "implementer harness read; reviewer used an independent method"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/results-ceremony.jsonl",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/results-d800.jsonl",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/results-timing-d0.jsonl",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/results-timing-d800.jsonl",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/dns-base-Busnes_Light-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/dns-base-Ocean-oslight-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/dns-fix-Busnes_Light-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/dns-fix-Cliffs-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/dns-fix-Ocean-oslight-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/dns-fix-null-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/dns-head-Busnes_Light-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/dns-head-Ocean-oslight-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/recovery-base-light-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/recovery-fix-dark-oslight-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/recovery-fix-light-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/recovery-fix-null-oslight-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/recovery-fix-ocean-oslight-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/recovery-fix-sky-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/recovery-head-light-osdark-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/screenshots/recovery-head-ocean-oslight-d800.png",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/stderr-d800.txt",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/stderr-timing-d0.txt",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "reviews/2026-10-26-fleet/f2-first-paint/stderr-timing-d800.txt",
+     "coverage": "evidence-omitted",
+     "note": "implementer evidence record; not used as proof"
+    },
+    {
+     "path": "scripts/sync-consumers.mjs",
+     "coverage": "runtime-read-full",
+     "note": "full file at head read plus diff since previous review head"
+    },
+    {
+     "path": "skills/ky-suite-ui/references/design-contract.md",
+     "coverage": "docs-diff-read",
+     "note": "documentation"
+    },
+    {
+     "path": "test/sync.test.js",
+     "coverage": "test-read-full",
+     "note": "new/changed test read in full"
+    }
+   ],
+   "prior_covered_files": [
+    {
+     "path": "browser/appearance.spec.js",
+     "prior_coverage": "test-reviewed",
+     "blob": "55a1b54c50e9c679d3bb7e247598fd1d02f69040",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "browser/fixture.html",
+     "prior_coverage": "test-reviewed",
+     "blob": "96c6f7e687eb9d1db40a0b157df95d55e004c05b",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "browser/fixture.js",
+     "prior_coverage": "test-reviewed",
+     "blob": "69484e434992d815389063bab9efcb3fa734ca51",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "browser/server.mjs",
+     "prior_coverage": "test-reviewed",
+     "blob": "9912f5ffd8da85002f859ebbf3c7bdb6d5411b3d",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "consumers.json",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "2795bb4bd1c91667d9674c4f540caa3c3d8b0dd9",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "package-lock.json",
+     "prior_coverage": "reviewed",
+     "blob": "29465a730759e8c46b82a6c44e4f07d7545258c6",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "package.json",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "b6b8acada5d80b302836a83f982352527c8d0009",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "scripts/appearance-themes.mjs",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "8b3e048e6a8e9cba54197dab413484db153653c3",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "scripts/check-suite.mjs",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "937bd1bd34da93a1d2119b79b0adb16aa34ff943",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "scripts/sync-consumers.mjs",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "e0f8ef53187a84cc2ee5909505efd4f56f668d90",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "src/appearance-themes.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "54253248244f2b5301c363f6c25f9887bb9c7733",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "src/appearance.css",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "4209234625d7767fce20e5b3925f59dc8cfd06de",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "src/themes.d.ts",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "ec0255274ef09f357c22f0959c98557db699a8fa",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "src/themes.js",
+     "prior_coverage": "runtime-reviewed",
+     "blob": "dd08394fcf3ef9b82f2aea5a84f1f68c1be13b21",
+     "hash_unchanged_since_previous_review": true
+    },
+    {
+     "path": "test/sync.test.js",
+     "prior_coverage": "test-reviewed",
+     "blob": "f67de60f43153c3319f46dcc5d8c600107799c4d",
+     "hash_unchanged_since_previous_review": false
+    },
+    {
+     "path": "test/themes.test.js",
+     "prior_coverage": "test-reviewed",
+     "blob": "f3374409ab9a3407a5d34a4995fd4a88e3e9e484",
+     "hash_unchanged_since_previous_review": true
+    }
+   ],
+   "prior_covered_unchanged": 12,
+   "upstream_backend": null
+  }
+ ],
+ "after_pin_movement": {
+  "ky-server-base": {
+   "pinned": "651a7b41082b868b4d4ea6a863a6ec8f02842453",
+   "observed_worktree_head": "63b3b4c1",
+   "by": "another actor (merge master #70 TOTP key minimum)",
+   "files": [
+    "CHANGELOG.md",
+    "docs/ASSURANCE-CASE.md",
+    "docs/STRONG-CRYPTO.md",
+    "go.mod",
+    "go.sum",
+    "internal/auth/AGENTS.md",
+    "internal/auth/totp_strength_test.go"
+   ],
+   "web_files_touched": 0,
+   "covered": false
+  }
+ }
+}

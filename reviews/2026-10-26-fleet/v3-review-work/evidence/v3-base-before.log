@@ -1,0 +1,18 @@
+npm notice run ky-server-base-web@1.0.0 npx
+npm notice run 'playwright' test v3-check.spec.mjs --reporter=line --output=../../base-before-v3-out
+[WebServer] 2026/10/26 11:20:11 [KY-BASE] Busnes.app listening on http://127.0.0.1:5391 (DB: sqlite)
+
+
+Running 4 tests using 1 worker
+
+[1/4] [light-390] › browser/v3-check.spec.mjs:83:1 › v3 danger button cross-check
+[2/4] [light-1280] › browser/v3-check.spec.mjs:83:1 › v3 danger button cross-check
+[3/4] [dark-390] › browser/v3-check.spec.mjs:83:1 › v3 danger button cross-check
+[4/4] [dark-1280] › browser/v3-check.spec.mjs:83:1 › v3 danger button cross-check
+[WebServer] 2026/10/26 11:21:19 [KY-BASE] Shutting down gracefully...
+
+[WebServer] 2026/10/26 11:21:19 [KY-BASE] waiting for the scheduled backup in flight...
+[WebServer] 2026/10/26 11:21:19 [KY-BASE] Server stopped
+
+  2 skipped
+  2 passed (1.1m)

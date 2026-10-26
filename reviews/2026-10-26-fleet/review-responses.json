@@ -1,0 +1,87 @@
+{
+  "observed_at": "2026-10-26T13:24:48.085288+00:00",
+  "F1": {
+    "state": "implemented; independent follow-up and current-head CI pending",
+    "prs": [
+      "https://github.com/Busnes-app/ky-server-base/pull/72",
+      "https://github.com/Busnes-app/KyPulse-server/pull/48",
+      "https://github.com/Busnes-app/kydrive-server/pull/80"
+    ],
+    "evidence": "products/*/f1-after/manifest.json; original product UI-VERIFICATION.md",
+    "minimum_contrast": 7.699806855863114
+  },
+  "F2": {
+    "state": "implemented; independent follow-up pending",
+    "response": "f2-first-paint/f2-response.json",
+    "pr": "https://github.com/Busnes-app/ky-ui/pull/21",
+    "evidence": "f2-first-paint/README.md; DNS/Recovery stages03 and04"
+  },
+  "F3": {
+    "state": "tracked pre-existing acceptance gap; no 9/10 claim",
+    "reason": "Palette status contrast on a dark OS predates this rollout. Original reviewer recommends separate follow-up. Canonical legacy palettes remain unchanged."
+  },
+  "F4": {
+    "state": "implemented; independent verification pending",
+    "task": "node:delegated-task:command%3Amcp%3A13a5f7c0-4e97-4a4d-86e6-b02756845867%3Athread-send%3Afleet-f4-f6-usability-fixes-20261026-r1",
+    "response": "f4-f6-response.json"
+  },
+  "F5": {
+    "state": "documented design placement; no new primary route in this pass",
+    "reason": "Notes and Yard retain their existing Settings navigation, with an Appearance link/tab accessible for every role and the shared picker. No compact selector remains in navigation. The visible placement will be reviewed and scored as captured, without treating it as missing functionality."
+  },
+  "F6": {
+    "state": "implemented; independent verification pending",
+    "response": "f4-f6-response.json",
+    "disposition": "Confirmed/fixed Base, Pulse, Recovery; not reproduced Drive, whose navigation is unchanged."
+  },
+  "Notes_vendor_merge": {
+    "commit": "a2296af",
+    "result": "Merged latest origin/master to bring 0.4.1 generated catalog into F4 follow-up. Unit599 and build pass; tracked embed unchanged. No hand-edited vendor files."
+  },
+  "Yard_mode_copy": {
+    "state": "fixed/pushed",
+    "commit": "18ec0f6",
+    "pr": "https://github.com/Busnes-app/KyYard-server/pull/156",
+    "evidence": "products/KyYard-server/screenshots/kyyard-04-after-manifest.json; mode-copy-04-after.patch",
+    "checks": "563unit,typecheck/build,4 matching before+4after actual app captures; backend unchanged from complete localCIpass6ecb621 and defaultmergef7404125"
+  },
+  "F7": {
+    "state": "independently verified fixed (round3)",
+    "cause": "Root F1 status color tint also colored destructive-button fill while retaining a dark palette button-text value. Status-only test missed filled-button contrast.",
+    "source": "runtime-source-review-v2.json",
+    "plan": "Correct suite danger-button foreground; rendered-button contrast regression and matching screenshots. Preserveoriginalpalettesandstatusfix. Freshindependentreviewbeforevisuals.",
+    "response": "f7-response.json",
+    "scope": "Pulse49,Drive82,Base73; label var(--bg) scoped15suitepalettes; real-pixel tests rest/hover/focus and originalF1status tests pass; Busnes+legacy unchanged.",
+    "evidence": "runtime-source-review-v3.json; actualTab/rest/hover suite min>=4.97; newtests fail before/passafter"
+  },
+  "G1": {
+    "state": "pre-existing acceptance gap",
+    "source": "runtime-source-review-v2.json",
+    "note": "Yard filleddangerbuttoncontrastlightnamedthemes; notintroducedorchangedbyF7."
+  },
+  "G2": {
+    "state": "pre-existing acceptance gap",
+    "detail": "Filled danger button on some preserved legacy palettes is below 4.5:1 (pre-existing; identical before and after F7)",
+    "source": "runtime-source-review-v3.json"
+  },
+  "N1": {
+    "state": "pre-existing acceptance gap",
+    "detail": "F7 specs and UI-VERIFICATION call the focus state \"keyboard focus\" but use programmatic element.focus()",
+    "source": "runtime-source-review-v3.json"
+  },
+  "N2": {
+    "state": "pre-existing acceptance gap",
+    "detail": "Drive browser specs reuse test-results/file-management-session.json across server runs",
+    "source": "runtime-source-review-v3.json"
+  },
+  "G3": {
+    "state": "pre-existing acceptance gap",
+    "detail": "KyDrive admin Settings keeps a compact theme <select> (\"Theme on this browser\") beside the Appearance cards",
+    "source": "runtime-source-review-v3.json"
+  },
+  "G4": {
+    "state": "pre-existing acceptance gap",
+    "detail": "KyPulse app-detail back link uses browser-default link colours (blue/violet)",
+    "source": "runtime-source-review-v3.json"
+  }
+}

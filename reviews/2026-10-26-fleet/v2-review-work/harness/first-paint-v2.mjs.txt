@@ -1,0 +1,71 @@
+// Independent F2 check (different method from the implementer's FCP timing harness):
+// serve committed bytes; stream the HTML head immediately, hold the <body> back 1500 ms, delay the
+// theme scripts 600 ms. At 1100 ms (scripts loaded, body not yet parsed) read the root theme state.
+// A classic head script must have applied the saved choice by then; a deferred module cannot have.
+// Also: restricted storage (localStorage getter throws) must not break the page and must follow the OS.
+import { createServer } from 'node:http';
+import { execFileSync } from 'node:child_process';
+import { chromium } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+const ROOT = '/home/yoshi/git/busnes.app';
+const show = (repo, rev, path) => { try { return execFileSync('git', ['-C', `${ROOT}/${repo}`, 'show', `${rev}:${path}`]); } catch { return null; } };
+const BODY = '<div class="app"><main class="app-main"><h1>Dashboard</h1><div data-theme-picker><div class="ky-appearance-grid"></div></div></main></div>';
+const P = {
+  dns: { repo: 'kydns-server/.claude/worktrees/fleet-appearance', dir: 'internal/web/static', key: 'kydns-theme',
+    page: rev => show(P.dns.repo, rev, 'internal/web/templates/base.html').toString().replace('{{template "body" .}}', BODY)
+      .replace(/\{\{define "mark"\}\}[\s\S]*?\{\{end\}\}/, '').replace(/\{\{[^}]*\}\}/g, '') },
+  recovery: { repo: 'kyrecovery-server/.claude/worktrees/fleet-appearance', dir: 'internal/server/static', key: 'kyrecovery-theme',
+    page: rev => show(P.recovery.repo, rev, 'internal/server/static/index.html').toString().replace(/<script src="\/static\/js\/app\.js"><\/script>/, '') },
+  ceremony: { repo: 'kyrecovery-server/.claude/worktrees/fleet-appearance', dir: 'internal/server/static', key: 'kyrecovery-theme',
+    page: rev => show(P.ceremony.repo, rev, 'internal/server/static/ceremony.html').toString().replace(/<script src="\/static\/js\/ceremony[^"]*"><\/script>/g, '') },
+};
+const THEME_JS = ['/static/theme.js', '/static/js/theme.js', '/static/ky-ui/themes.js', '/static/ky-ui/themes-browser.js'];
+const types = { js: 'text/javascript', css: 'text/css', html: 'text/html', svg: 'image/svg+xml', ttf: 'font/ttf', woff2: 'font/woff2', wasm: 'application/wasm' };
+const browser = await chromium.launch();
+async function run(product, label, rev, saved, os, restricted = false) {
+  const p = P[product];
+  const html = p.page(rev); const cut = html.indexOf('<body');
+  const server = createServer(async (req, res) => {
+    const url = new URL(req.url, 'http://x').pathname;
+    if (url === '/') { res.writeHead(200, { 'content-type': 'text/html' }); res.write(html.slice(0, cut)); await new Promise(r => setTimeout(r, 1500)); return res.end(html.slice(cut)); }
+    const body = url.startsWith('/static/') ? show(p.repo, rev, p.dir + url.slice(7)) : null;
+    if (!body) { res.writeHead(404); return res.end(); }
+    if (THEME_JS.includes(url)) await new Promise(r => setTimeout(r, 600));
+    res.writeHead(200, { 'content-type': types[url.split('.').pop()] ?? 'application/octet-stream' }); res.end(body);
+  });
+  await new Promise(r => server.listen(0, '127.0.0.1', r));
+  const ctx = await browser.newContext({ colorScheme: os });
+  const page = await ctx.newPage(); const errors = [];
+  page.on('pageerror', e => errors.push(String(e).slice(0, 120)));
+  await page.addInitScript(([key, value, restricted]) => {
+    if (restricted) Object.defineProperty(window, 'localStorage', { get() { throw new DOMException('denied', 'SecurityError'); } });
+    else if (value !== null) localStorage.setItem(key, value);
+  }, [p.key, saved, restricted]);
+  const state = () => page.evaluate(() => { const r = document.documentElement, s = getComputedStyle(r);
+    return { bodyParsed: !!document.body, theme: r.dataset.theme ?? null, inlineBg: r.style.getPropertyValue('--bg') || r.style.getPropertyValue('--ky-bg') || null, scheme: r.style.colorScheme || null, kyBg: s.getPropertyValue('--ky-bg').trim(), radios: document.querySelectorAll('[data-theme-picker] input').length, checked: document.querySelector('[data-theme-picker] input:checked')?.value ?? null }; });
+  const nav = page.goto(`http://127.0.0.1:${server.address().port}/`, { waitUntil: 'load' });
+  await page.waitForTimeout(1100);
+  const early = await state().catch(e => ({ error: e.message.slice(0, 80) }));
+  await nav; await page.waitForTimeout(300);
+  const late = await state();
+  await ctx.close(); server.close();
+  const row = { product, label, rev: rev.slice(0, 8), saved, os, restricted, early, late, errors };
+  row.appliedBeforeBody = early.bodyParsed === false && JSON.stringify([early.theme, early.inlineBg, early.scheme]) === JSON.stringify([late.theme, late.inlineBg, late.scheme]);
+  console.log(JSON.stringify(row));
+  return row;
+}
+const DNS = { prior: '28bf59e35583bf4e04eb7b21486ea6c1531b2bd8', head: 'c9ba6deb9f0254b260759d0ec1fea3fc232931ac' };
+const REC = { prior: '2738beb742cec16c569c45cc2e929d2e8e74621a', head: 'e0614508fdadc788268c33a0e5d0b6c8b74a54f3' };
+for (const l of ['prior', 'head']) {
+  await run('dns', l, DNS[l], 'Ocean', 'light');
+  await run('dns', l, DNS[l], 'Busnes Light', 'dark');
+  await run('recovery', l, REC[l], 'light', 'dark');
+  await run('recovery', l, REC[l], 'ocean', 'light');
+  await run('ceremony', l, REC[l], 'sky', 'dark');
+}
+await run('dns', 'head', DNS.head, 'Cliffs', 'dark');
+await run('dns', 'head', DNS.head, null, 'dark');
+await run('dns', 'head', DNS.head, null, 'light', true);
+await run('recovery', 'head', REC.head, 'system', 'dark');
+await run('recovery', 'head', REC.head, null, 'dark', true);
+await run('ceremony', 'head', REC.head, null, 'light', true);
+await browser.close();

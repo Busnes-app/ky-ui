@@ -1,0 +1,83 @@
+{
+  "surface": "Shared contract fixture; not an app redesign or scored screen",
+  "revision": "ccfabf4294609bd8390c026943d4f56729da43ad",
+  "working_tree_assets": {
+    "src/check-vendor.mjs": "1fdca377e486e52d9e660893ebfc2f1a90ddb6578eca24d8f844bb5485f3e053",
+    "src/navigation.css": "cc6dbaa07a01f4ed088d38d41ff6cf95155a480bcb29327f413cbfa1ec11ac55",
+    "src/theme.d.ts": "f83e4fb841e98b7b443bc78aa699f9044d395ff622258cf8bee85b5e0608fd4a",
+    "src/theme.js": "9f0e57c86783924a19fa9923be42d7f14b24cec46c95383f251e18ab69b0176a",
+    "src/tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+    "src/appearance.css": "730095ffcefec3a4dfba96cbe08549ed7f21937355018827d2d4287c81636167",
+    "src/themes.js": "71ec241cfa18deb88dbcdf736def75cd71586f3542af78065f56e856be1ad8fa",
+    "src/themes.d.ts": "1e27204f883cba1caea35517e2c12a86e46de55420d58c9c2be05ed41b031f69",
+    "src/appearance-themes.css": "d613ff56d13ed0c634200e13ac02db913980104bd610b163fa28bfc35d411e3e",
+    "browser/AGENTS.md": "0925ccf8ff6bb7cf920a99d2b037b9264efee0d9fc6389c38d44683355768f25",
+    "browser/fixture.css": "5a4c2bd54f244c9c7c42d030c8c336ba5672883a383176d6347ee7940e7190a7",
+    "browser/fixture.html": "23115ae5ddb08dc78226dac03871cb383d1607f925f85e5e1f010c38b04603f9",
+    "browser/fixture.js": "2d2469de6c17513882a4c6a7a7874ca5e6d4b91ca9e5bb9c8dcf5ecd2ac9683d",
+    "browser/readme.spec.js": "1b52357e10dc5baa6d7dfe85bada197bd11722296393bd94072cd4004782467b",
+    "browser/server.mjs": "60e7bb175010438546f19c937fd48a62f99bda11804d5a16c83c040834ee251b",
+    "browser/theme.spec.js": "de3a4aaeeaa8a6a73f72f013fa1e12a31a9e79ce41abb4ce7a296d64cccd011a",
+    "browser/appearance.spec.js": "3e71593cc79e90f08f26e4453bdaf86785f9d9e3fc8c9065bacfa16f4c6c675d"
+  },
+  "fixture": "Native radio cards from SYSTEM_THEME and THEME_CATALOG; synthetic component fixture; no API/backend",
+  "browser": "Playwright1.63 Chromium, Linux; scale1; Node26.12.1",
+  "command": "npm run test:browser",
+  "result": "32 passed",
+  "captures": [
+    {
+      "file": "appearance-dark-1280.png",
+      "sha256": "a8bc1c5e4133c536850b2d55b871f7c02761fd362a5adb167069ad30f434bd5d",
+      "width": 1000,
+      "height": 681,
+      "project": "dark-1280",
+      "viewport_height": 900,
+      "capture": "Component crop; trims empty fixture space to the right of the 1000px theme grid",
+      "captured_at_utc": "2026-10-26T11:04:40.226774+00:00",
+      "source_sha256": "0fd6ea967c13779f651d0cc3895239d6bc21e53a9f42096f71682361617356c0",
+      "crop_rect": [
+        0,
+        0,
+        1000,
+        681
+      ]
+    },
+    {
+      "file": "appearance-dark-390.png",
+      "sha256": "93dbb30b2b8dd24676905f336f60197061cf772f848541c976e27f34d301828c",
+      "width": 358,
+      "height": 1471,
+      "project": "dark-390",
+      "viewport_height": 900,
+      "capture": "Full fieldset element screenshot, not viewport or product capture",
+      "captured_at_utc": "2026-10-26T11:04:40.105387+00:00"
+    },
+    {
+      "file": "appearance-light-1280.png",
+      "sha256": "a5ff01b48a1de2ceb6b67103678456160d41d9435399532ec3e608c20d4b80be",
+      "width": 1000,
+      "height": 681,
+      "project": "light-1280",
+      "viewport_height": 900,
+      "capture": "Component crop; trims empty fixture space to the right of the 1000px theme grid",
+      "captured_at_utc": "2026-10-26T11:04:40.281698+00:00",
+      "source_sha256": "d8fa4ff32894648900dfc1e8354bf76dc21c71038a59c4474802e1fc3bd33db6",
+      "crop_rect": [
+        0,
+        0,
+        1000,
+        681
+      ]
+    },
+    {
+      "file": "appearance-light-390.png",
+      "sha256": "51556390b70b6cf77899e24f4ee956eefc3994ddd2bb1e929a8dad67f0a28fdb",
+      "width": 358,
+      "height": 1471,
+      "project": "light-390",
+      "viewport_height": 900,
+      "capture": "Full fieldset element screenshot, not viewport or product capture",
+      "captured_at_utc": "2026-10-26T11:04:40.053388+00:00"
+    }
+  ]
+}

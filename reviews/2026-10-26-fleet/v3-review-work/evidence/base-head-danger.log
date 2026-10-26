@@ -1,0 +1,24 @@
+npm notice run ky-server-base-web@1.0.0 npx
+npm notice run 'playwright' test danger-button.spec.mjs --reporter=line --output=../../base-head-pw-out
+[WebServer] 2026/10/26 11:14:58 [KY-BASE] Busnes.app listening on http://127.0.0.1:5391 (DB: sqlite)
+
+
+Running 4 tests using 1 worker
+
+[1/4] [light-390] › browser/danger-button.spec.mjs:38:1 › diagnostic: a filled danger button label reads on its fill in every suite palette
+[2/4] [light-1280] › browser/danger-button.spec.mjs:38:1 › diagnostic: a filled danger button label reads on its fill in every suite palette
+[light-1280] › browser/danger-button.spec.mjs:38:1 › diagnostic: a filled danger button label reads on its fill in every suite palette
+light-1280 [{"id":"dark-matter","rest":5.83,"hover":4.97,"focus":5.83},{"id":"light-matter","rest":9.5,"hover":7.6,"focus":9.5},{"id":"tropics","rest":10.1,"hover":8.03,"focus":10.1},{"id":"tropic-night","rest":6.19,"hover":5.22,"focus":6.19},{"id":"ocean","rest":6.3,"hover":5.33,"focus":6.3},{"id":"coffee","rest":6.02,"hover":5.1,"focus":6.02},{"id":"white-cliffs","rest":10.26,"hover":7.9,"focus":10.26},{"id":"cyber-punk","rest":7.21,"hover":5.98,"focus":7.21},{"id":"neon-purple","rest":6.86,"hover":5.76,"focus":6.86},{"id":"space","rest":6.91,"hover":5.77,"focus":6.91},{"id":"sky","rest":9.39,"hover":7.43,"focus":9.39},{"id":"forest","rest":6,"hover":5.1,"focus":6},{"id":"sun","rest":9.28,"hover":7.36,"focus":9.28},{"id":"patina-ky","rest":6.65,"hover":5.57,"focus":6.65},{"id":"polished-ky","rest":10.87,"hover":8.62,"focus":10.87}]
+
+[3/4] [dark-390] › browser/danger-button.spec.mjs:38:1 › diagnostic: a filled danger button label reads on its fill in every suite palette
+[4/4] [dark-1280] › browser/danger-button.spec.mjs:38:1 › diagnostic: a filled danger button label reads on its fill in every suite palette
+[dark-1280] › browser/danger-button.spec.mjs:38:1 › diagnostic: a filled danger button label reads on its fill in every suite palette
+dark-1280 [{"id":"dark-matter","rest":5.83,"hover":4.97,"focus":5.83},{"id":"light-matter","rest":9.5,"hover":7.6,"focus":9.5},{"id":"tropics","rest":10.1,"hover":8.03,"focus":10.1},{"id":"tropic-night","rest":6.19,"hover":5.22,"focus":6.19},{"id":"ocean","rest":6.3,"hover":5.33,"focus":6.3},{"id":"coffee","rest":6.02,"hover":5.1,"focus":6.02},{"id":"white-cliffs","rest":10.26,"hover":7.9,"focus":10.26},{"id":"cyber-punk","rest":7.21,"hover":5.98,"focus":7.21},{"id":"neon-purple","rest":6.86,"hover":5.76,"focus":6.86},{"id":"space","rest":6.91,"hover":5.77,"focus":6.91},{"id":"sky","rest":9.39,"hover":7.43,"focus":9.39},{"id":"forest","rest":6,"hover":5.1,"focus":6},{"id":"sun","rest":9.28,"hover":7.36,"focus":9.28},{"id":"patina-ky","rest":6.65,"hover":5.57,"focus":6.65},{"id":"polished-ky","rest":10.87,"hover":8.62,"focus":10.87}]
+
+[WebServer] 2026/10/26 11:15:07 [KY-BASE] Shutting down gracefully...
+
+[WebServer] 2026/10/26 11:15:07 [KY-BASE] waiting for the scheduled backup in flight...
+[WebServer] 2026/10/26 11:15:07 [KY-BASE] Server stopped
+
+  2 skipped
+  2 passed (9.2s)
