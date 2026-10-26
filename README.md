@@ -62,8 +62,9 @@ The copy includes CSS, theme preference helpers, generated palette previews and 
 
 ## Appearance
 
-Import `appearance.css` after product field/control styles. Keep the product's
-existing theme catalog and storage adapter; the shared stylesheet supplies the
+Import `appearance.css` and `appearance-themes.css` after product field/control
+styles. `themes.js` supplies the common 22-theme catalog plus Match system; keep
+the product's existing storage key and legacy-choice adapter; the shared stylesheet supplies the
 same card geometry and keyboard-visible selection across React and server-rendered
 pages. Use native radios inside labels, rather than implementing a custom keyboard
 widget. Each picker needs its own radio group name.
@@ -74,7 +75,7 @@ widget. Each picker needs its own radio group name.
   <div class="ky-appearance-grid">
     <label class="ky-appearance-option">
       <input class="ky-appearance-radio" type="radio" name="appearance" value="busnes-light">
-      <span class="ky-appearance-preview" aria-hidden="true"></span>
+      <span class="ky-appearance-preview" data-ky-preview="busnes-light" aria-hidden="true"></span>
       <span class="ky-appearance-name">Busnes Light</span>
       <small class="ky-appearance-mode">Light</small>
     </label>
@@ -82,8 +83,12 @@ widget. Each picker needs its own radio group name.
 </fieldset>
 ```
 
-Populate each preview's `--ky-preview-bg`, `--ky-preview-sidebar`,
-`--ky-preview-ink` and `--ky-preview-accent` from that theme's actual palette.
+Set `data-ky-preview` to the canonical theme ID; generated preview CSS owns its
+four color properties, with Busnes values read directly from `tokens.css`. Run
+`npm run generate:appearance` after a catalog or token change; tests verify the
+output. `findTheme` resolves canonical IDs, names and legacy aliases.
+`applyThemeVariables` sets or clears named product variables through the CSSOM;
+products retain theme attributes, persistence and OS-following behavior.
 The product's existing external script or React handler applies changes immediately
 and persists with its existing key. Keep an existing system-mode option reachable;
 selecting a card records an explicit browser-local choice. Sync checked state when

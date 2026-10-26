@@ -9,7 +9,9 @@
     ".": "./src/theme.js",
     "./tokens.css": "./src/tokens.css",
     "./navigation.css": "./src/navigation.css",
-    "./appearance.css": "./src/appearance.css"
+    "./appearance.css": "./src/appearance.css",
+    "./themes": "./src/themes.js",
+    "./appearance-themes.css": "./src/appearance-themes.css"
   },
   "scripts": {
     "test": "node --test test/*.test.js",
@@ -18,7 +20,8 @@
     "test:browser": "playwright test",
     "check:suite": "node scripts/check-suite.mjs",
     "sync:consumers": "node scripts/sync-consumers.mjs",
-    "check:consumers": "node scripts/sync-consumers.mjs --check"
+    "check:consumers": "node scripts/sync-consumers.mjs --check",
+    "generate:appearance": "node scripts/appearance-themes.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

@@ -8,6 +8,8 @@ const files = {
   '/tokens.css': ['../src/tokens.css', 'text/css'],
   '/navigation.css': ['../src/navigation.css', 'text/css'],
   '/appearance.css': ['../src/appearance.css', 'text/css'],
+  '/appearance-themes.css': ['../src/appearance-themes.css', 'text/css'],
+  '/themes.js': ['../src/themes.js', 'text/javascript'],
   '/theme.js': ['../src/theme.js', 'text/javascript'],
 };
 createServer(async (req, res) => {
