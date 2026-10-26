@@ -1,0 +1,227 @@
+{
+ "schema": "ky-fleet-implementer-response/1",
+ "finding": "F2",
+ "date": "2026-10-26",
+ "implementer": "Claude Opus 5.5 (claude-opus-5-5), implementation sub-agent; not a reviewer",
+ "summary": "ky-ui 0.4.1 generates themes-browser.js (classic window.kyThemes) from src/themes.js; KyDNS and KyRecovery load it and theme.js synchronously in <head>, building pickers after DOMContentLoaded. Storage formats, the Recovery --ky-* adapter, all 22 palettes, legacy aliases and CSP are unchanged.",
+ "ky_ui": {
+  "branch": "ui/fleet-theme-bootstrap",
+  "base": "origin/main 256cc25 (tree equals ab7a039)",
+  "version": "0.4.1",
+  "commits": {
+   "393d64b80ba279855df15a40e0ed187a113177f2": "generator, parity test, version, docs",
+   "50a910216eff0e4858af29d9a6ccdc0afe5e6fd3": "eslint globals for reviews/**/*.mjs"
+  },
+  "pr": "https://github.com/Busnes-app/ky-ui/pull/21"
+ },
+ "consumers": {
+  "KyDNS-server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-theme-bootstrap (from origin/main 2f104c8; #83 merged)",
+   "commits": {
+    "0949de59031709905f1a1e048a1d8139b20d4799": "classic head bootstrap + vendor",
+    "c9ba6deb9f0254b260759d0ec1fea3fc232931ac": "stage 03/04 captures"
+   },
+   "pr": "https://github.com/Busnes-app/KyDNS-server/pull/84"
+  },
+  "KyRecovery-server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-appearance (open)",
+   "commits": {
+    "71affc90c0597df81153aba62788fac43f4c1585": "classic head bootstrap + vendor",
+    "ef53cd2cd162efcff0b7679f34d7ad31f4525d9d": "stage 03/04 captures"
+   },
+   "pr": "https://github.com/Busnes-app/KyRecovery-server/pull/70"
+  },
+  "KyIdentity-server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-appearance (open)",
+   "commits": {
+    "3ae56815b337241c48b48cc51f902e071fa69985": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/KyIdentity-server/pull/167"
+  },
+  "KyYard-server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-appearance (open; root merging master after this push)",
+   "commits": {
+    "16ec9ce426f555daf60b138be7c055d10f8b6625": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/KyYard-server/pull/155"
+  },
+  "KyNotes-server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-theme-bootstrap (from origin/master; #112 merged)",
+   "commits": {
+    "c82e696a6d0dc9c8e14b8c5d7b1c4cf4f845affb": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/KyNotes-server/pull/113"
+  },
+  "KyPost-Server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-theme-bootstrap (from origin/main; #481 merged)",
+   "commits": {
+    "7963701a342bc920a8cb71185ff5e18a89cffad7": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/KyPost-Server/pull/483"
+  },
+  "KyCalendar": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-theme-bootstrap (from origin/main; #81 merged)",
+   "commits": {
+    "bad000f1832892abc7d0b0b29f341dffb126aa61": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/KyCalendar/pull/82"
+  },
+  "KyMessage-Server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-theme-bootstrap (from origin/master; #95 merged)",
+   "commits": {
+    "ab600d980107839deb2ad2124b459c35f49122e6": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/KyMessage-Server/pull/96"
+  },
+  "ky-server-base": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-review-fixes (root F1 PR; vendor commit on top of root 504c319)",
+   "commits": {
+    "30776fc0b59d8f6bd591d59b7ff106f8ee41edf8": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/ky-server-base/pull/72"
+  },
+  "KyPulse-server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-review-fixes (root F1 PR; on top of root db0c7a5)",
+   "commits": {
+    "fa4a13c67faa5ed1f17493397e3c1f37816a05bc": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/KyPulse-server/pull/48"
+  },
+  "KyDrive-server": {
+   "sync": "0.4.1 checked",
+   "branch": "ui/fleet-review-fixes (root F1 PR; on top of root 5d06f9e)",
+   "commits": {
+    "8f1b4f846a9cf0ab98046871b1161743d726c2ad": "vendor only"
+   },
+   "pr": "https://github.com/Busnes-app/kydrive-server/pull/80"
+  }
+ },
+ "vendor_commit_paths": "only <asset dir>/VERSION and <asset dir>/themes-browser.js; no root-owned path staged; tracked dist/ bundles unchanged by rebuild in all 9 vendor-only repos",
+ "checks": [
+  {
+   "what": "ky-ui npm run check (eslint 0 warnings + 14 unit tests)",
+   "result": "pass",
+   "rev": "50a9102"
+  },
+  {
+   "what": "ky-ui parity-test mutation (drop one export from generated object)",
+   "result": "test fails as expected; restored"
+  },
+  {
+   "what": "ky-ui npm run test:browser (port 5390)",
+   "result": "32 passed",
+   "rev": "393d64b"
+  },
+  {
+   "what": "sync-consumers --check, all 11",
+   "result": "Checked 11 consumers at 0.4.1"
+  },
+  {
+   "what": "KyDNS check-vendor, gofmt, go vet, go mod tidy, go test -race ./..., GODEBUG=fips140=on go test -race ./...",
+   "result": "pass",
+   "rev": "0949de5"
+  },
+  {
+   "what": "KyDNS head test mutation (type=module restored)",
+   "result": "TestThemeScriptIsLinkedAndEmbedded fails as expected; restored"
+  },
+  {
+   "what": "KyRecovery check-vendor, check-contrast (new head assertion), gofmt, go vet, go test -race -count=1 ./..., fips140=on",
+   "result": "pass",
+   "rev": "71affc9"
+  },
+  {
+   "what": "KyRecovery check-contrast mutation (ceremony theme.js as module)",
+   "result": "fails as expected; restored"
+  },
+  {
+   "what": "Identity, Notes, Post, Calendar, Messages, Yard: check-vendor, npm run build, vitest run (Post also typecheck + lint)",
+   "result": "pass; dist unchanged"
+  },
+  {
+   "what": "Base, Pulse, Drive: npm run build (prebuild check-vendor), npm test",
+   "result": "pass; dist unchanged",
+   "note": "after root's F1 slot; browser suites not rerun (no runtime file changed)"
+  },
+  {
+   "what": "delayed-fetch first-paint harness (first-paint.mjs NOSHOT=1 DELAY=800)",
+   "result": "head 4/4 flash; fix 0/10 flash; base 0/3 flash"
+  },
+  {
+   "what": "first-paint harness DELAY=0",
+   "result": "0/16 flash"
+  },
+  {
+   "what": "reviewer's unmodified /tmp/claude-fleet-review/first-paint.mjs on pre-fix revs",
+   "result": "reproduced: base rows false, head rows true (4/4)"
+  },
+  {
+   "what": "KyRecovery ceremony page under real CSP, head vs fix",
+   "result": "pass both; identical behaviour, no CSP violations"
+  },
+  {
+   "what": "product capture drivers stage 03 (pre-fix) vs 04 (fix), real servers on 5493/5494",
+   "result": "10/10 behaviour checks each; Recovery 8/8 PNGs byte-identical; DNS Appearance 4/4 identical, dashboard differs only in live uptime counter"
+  }
+ ],
+ "evidence": {
+  "first_paint_dir": "ky-ui reviews/2026-10-26-fleet/f2-first-paint/",
+  "captures": {
+   "KyDNS-server": "docs/ui-fleet-2026-10-26/manifest-03-after.json, manifest-04-after.json",
+   "KyRecovery-server": "docs/ui-fleet-2026-10-26/manifest-03-after.json, manifest-04-after.json"
+  },
+  "file_sha256": {
+   "ceremony-check.mjs": "995e617aa38c4d4cceb1bed44a2364812e83350e5ea2a5fd694085eb0a45890f",
+   "first-paint.mjs": "703a9af0e8761f52d83648220d35158e702e2bba00d55df56e7bf6d2a2524d5e",
+   "results-ceremony.jsonl": "bd54a689254c64dcba8ffbb2a1f9017d25d307ff0b7d549b66f09d159b1b0a31",
+   "results-d800.jsonl": "6ef56c33727de85db0a6dd28b3f9c041e973c4b51d0ca61aa2e055deaad14033",
+   "results-timing-d0.jsonl": "3caf0d5c15175b328b480ad803c317d5008b5e4d79808b764ddaa91c6f0d243e",
+   "results-timing-d800.jsonl": "0fe9bc3747aeb26d435d6163a7fb465535b88c986a5b0f9de3a5960387167ff9",
+   "screenshots/dns-base-Busnes_Light-osdark-d800.png": "dec52576accb2be7b80de0af5f2e34d0b63f31c59669a27397572e96b4520f1b",
+   "screenshots/dns-base-Ocean-oslight-d800.png": "91b6592c8351981b98eef8018df79272549ad63ade9be2ead0f62f87dda14056",
+   "screenshots/dns-fix-Busnes_Light-osdark-d800.png": "44d43366901e6ef312df787caaaf380dc3e71f3c0bed9ee46c7813e318a9b229",
+   "screenshots/dns-fix-Cliffs-osdark-d800.png": "2fc8899ceec89f8ec8e315a50fc1fc4baf0ae99d69933315cb4b9e28ef06f977",
+   "screenshots/dns-fix-Ocean-oslight-d800.png": "640ee2afcb479caaef09edfda365efc9745dd7a7a9502059a3ac722aaa4fac7d",
+   "screenshots/dns-fix-null-osdark-d800.png": "4100d00b6c687295cb0e59b999dfccf49c7e5a5db07c60c0c259d8b084af28bb",
+   "screenshots/dns-head-Busnes_Light-osdark-d800.png": "fbdb2bc1b508ba76465d7572688ab7777aef3d987e9eed81f7490bf8ec751dc1",
+   "screenshots/dns-head-Ocean-oslight-d800.png": "23395d6a59928da816d3c4e21091ebcca3d8bfb557955e918404ade11a9461ae",
+   "screenshots/recovery-base-light-osdark-d800.png": "4ff96e4fab627646935986e5eb6944e005f91d2ef30d672e069e192aadcc9671",
+   "screenshots/recovery-fix-dark-oslight-d800.png": "0fa5be88bd02c84c5fcc59040c5da7dca3f4dc31b83508f7784e2932fe736429",
+   "screenshots/recovery-fix-light-osdark-d800.png": "b4aca154d08fe021764d4392060284c8bee317a4fc1380133bf062257b7b120b",
+   "screenshots/recovery-fix-null-oslight-d800.png": "b4aca154d08fe021764d4392060284c8bee317a4fc1380133bf062257b7b120b",
+   "screenshots/recovery-fix-ocean-oslight-d800.png": "bc51cc34cef973fc7204259482ea2790544cfc1c1fb68e665f7094effde3536f",
+   "screenshots/recovery-fix-sky-osdark-d800.png": "c1f2962886cf495e731373a683b444b2da4640323bce93253acd557f2448401c",
+   "screenshots/recovery-head-light-osdark-d800.png": "f5af7b20a22a4a0fb5196af8d3aff7d2a9362dd85fed831abf336d5dc078116a",
+   "screenshots/recovery-head-ocean-oslight-d800.png": "2ce9f5ebfcb31bec9ef417b7fe9ee2785af28a80eed3d30008bee72ee04142b0"
+  }
+ },
+ "not_checked": [
+  "Engines other than Chromium",
+  "Base/Pulse/Drive browser suites after the vendor sync (root ran them before it; the new file is not imported)",
+  "Full product Playwright suites for vendor-only repos"
+ ],
+ "decisions": [
+  "Version 0.4.1 rather than amending 0.4.0, because 0.4.0 copies were already merged in consumer defaults",
+  "Generated classic copy rather than Chromium-only blocking=render",
+  "ky-ui branch placed at 393d64b (parent ab7a039; main tree identical) rather than cherry-picked, preserving the SHA cited in 9 consumer commits"
+ ],
+ "mistakes": [
+  "A zsh word-splitting slip produced a malformed duplicate harness run (results-.jsonl, effective 0 ms delay); deleted it and reran explicitly",
+  "First ceremony-check expectations were wrong (select shows catalog IDs; WASM error filter); fixed the check, not the product, and ran head as control"
+ ],
+ "not_edited": [
+  "root inventory, captures, workbook and shared records in reviews/2026-10-26-fleet/",
+  "ky-ui .github/workflows",
+  "F1 CSS/tests/docs in Base, Pulse and Drive"
+ ]
+}
