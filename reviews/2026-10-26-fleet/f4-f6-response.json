@@ -1,0 +1,246 @@
+{
+ "schema": "ky-fleet-implementer-response/1",
+ "findings": [
+  "F4",
+  "F6"
+ ],
+ "date": "2026-10-26",
+ "implementer": "Claude Opus 5.5 (claude-opus-5-5), implementation sub-agent; not a reviewer; no independent review in this task",
+ "source_review": "reviews/2026-10-26-fleet/runtime-source-review.json",
+ "summary": "F4 fixed in KyIdentity and KyNotes: Appearance re-reads the saved choice on storage events (KyCalendar's listener), so another tab's choice checks its card without a reload. Match system reads 'Follows device' in KyIdentity, KyNotes and KyDrive. F6 fixed in ky-server-base and KyPulse with KyMessages' scrollIntoView nearest pattern (sticky headers, page scroll proven unchanged), and in KyRecovery with a row-only scroll, because its tab row is not sticky and the Messages pattern measurably scrolled the page. F6 was not reproduced in KyDrive, so its navigation is unchanged.",
+ "reproduction": {
+  "F4": {
+   "KyIdentity-server": "capture-core --verify cross-tab check, pre-fix embed: 0/4 (Match system stays checked after Sun saved in another tab); fixed: 4/4, verify 23/23",
+   "KyNotes-server": "same check 0/4 -> 4/4, verify 19/23 -> 23/23; new e2e appearance-cross-tab fails on old embed, passes on new"
+  },
+  "F6": {
+   "ky-server-base": "web/browser/nav.spec.mjs at 390px fails on 30776fc (Settings & DB off-screen after the Overview 'Database Config' action), passes after",
+   "KyPulse-server": "nav.spec.mjs fails on fa4a13c (reload of #/appearance leaves Appearance off-screen), passes after",
+   "KyRecovery-server": "capture-driver phone check fails on ef53cd2 (10/11; 'View replication' leaves Offsite Replication off-screen), 11/11 after",
+   "KyDrive-server": "not reproduced: real-app probe at 390px, Workspaces row 358/358px (no overflow); Primary row overflows but its current row is only reached by a click that scrolls it into view; reload, sign-out and pending links select rows that stay in view"
+  }
+ },
+ "decisions": [
+  "KyRecovery uses a row-only scrollLeft adjustment instead of KyMessages' scrollIntoView: its tab row is not sticky, and the Messages pattern scrolled the page 944px -> 181px on a tall test page (measured).",
+  "ky-server-base and KyPulse reuse the Messages pattern: their phone header is sticky; specs assert page scroll unchanged on a tall test-only page (CSSOM height, CSP-safe) and no focus in the nav.",
+  "KyNotes F4 uses a new branch ui/fleet-review-fixes from origin/master because its only open PR was the F2 vendor sync (#113, since merged).",
+  "KyDrive and KyRecovery follow-ups use new branches ui/fleet-review-followup because #80 and #70 were merged during the task.",
+  "Base/Pulse F6 commits were appended to root's open F1 PRs (#72, #48); they touch web/AGENTS.md (and Base CHANGELOG) after root's F1 was pushed."
+ ],
+ "repositories": {
+  "ky-server-base": {
+   "findings": [
+    "F6"
+   ],
+   "branch": "ui/fleet-review-fixes",
+   "base": "30776fc 30776fc",
+   "head": "651a7b41082b868b4d4ea6a863a6ec8f02842453",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "6e7af3758085cb79c0ff3fdeeee576db2c5026e8",
+     "subject": "keep the current page in view in the phone navigation"
+    },
+    {
+     "sha": "74405c735902ee83d5b795c6056871b87ffd0ed5",
+     "subject": "record phone navigation captures for the F6 fix"
+    },
+    {
+     "sha": "651a7b41082b868b4d4ea6a863a6ec8f02842453",
+     "subject": "prove the phone nav fix leaves the page scroll alone"
+    }
+   ],
+   "pr": "https://github.com/Busnes-app/ky-server-base/pull/72 (open; root F1 branch)",
+   "evidence": {
+    "docs/ui-fleet-2026-10-26/manifest-03-after.json": "068e5313c606ab01493ef0f528904a988991fa5461012ad52e55bcb2be7bc5db",
+    "docs/ui-fleet-2026-10-26/manifest-04-after.json": "f7d9187354a240eab65f7975c54d5144b8cd67354b1276e6092ea04e7eaef79e",
+    "web/browser/nav.spec.mjs": "3b57a3f6d929425636852a703da14575d959ac0a21ace36fd443232afa68499e"
+   }
+  },
+  "KyPulse-server": {
+   "findings": [
+    "F6"
+   ],
+   "branch": "ui/fleet-review-fixes",
+   "base": "fa4a13c fa4a13c",
+   "head": "a955d6de186f4a510f20bd903c5d4db1eac78952",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "6fda19950d40cc6a712a020858e0e97a3d6e64e3",
+     "subject": "keep the current page in view in the phone navigation"
+    },
+    {
+     "sha": "b0574a53478cffd1b2271c32c9432c43145455c7",
+     "subject": "record phone navigation captures for the F6 fix"
+    },
+    {
+     "sha": "a955d6de186f4a510f20bd903c5d4db1eac78952",
+     "subject": "prove the phone nav fix leaves the page scroll alone"
+    }
+   ],
+   "pr": "https://github.com/Busnes-app/KyPulse-server/pull/48 (open; root F1 branch)",
+   "evidence": {
+    "docs/ui-fleet-2026-10-26/manifest-03-after.json": "56f8ae6e01c809e84c3b98c6c415412b67d06853b7041e6d960bda144356640b",
+    "docs/ui-fleet-2026-10-26/manifest-04-after.json": "77d7de34bd3db15b4662dd545d4b1c19a9655f1ca7777da1beb6e9d8d104a753",
+    "web/browser/nav.spec.mjs": "d9793810676c841d78c47f2f605683a19d6304c4721ba0d8a84c5b0dbe199970"
+   }
+  },
+  "KyRecovery-server": {
+   "findings": [
+    "F6"
+   ],
+   "branch": "ui/fleet-review-followup",
+   "base": "ef53cd2 ef53cd2",
+   "head": "e0614508fdadc788268c33a0e5d0b6c8b74a54f3",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "a629bd0ece2b50aa2d7358f97a85f8e840efc83a",
+     "subject": "keep the current tab in view in the phone tab row"
+    },
+    {
+     "sha": "e0614508fdadc788268c33a0e5d0b6c8b74a54f3",
+     "subject": "record F6 tab row captures and phone check"
+    }
+   ],
+   "pr": "https://github.com/Busnes-app/KyRecovery-server/pull/71 (new; #70 merged)",
+   "evidence": {
+    "docs/ui-fleet-2026-10-26/manifest-05-after.json": "fd78a49a91d0b07176d66edb9be17266acb4e3879f2ba7e155b5fed170444b32",
+    "docs/ui-fleet-2026-10-26/manifest-06-after.json": "a74fdbd26093092d65dfc5d08dca5403aed11eeb3ad76db9ad85052705d6c400",
+    "docs/ui-fleet-2026-10-26/capture.mjs": "fc460c7da4aaeb4988662b8e3d347b147232ffd21ad1cd7856c5fe1ce189b1dd"
+   }
+  },
+  "KyDrive-server": {
+   "findings": [
+    "F6 not reproduced",
+    "Follows device copy"
+   ],
+   "branch": "ui/fleet-review-followup",
+   "base": "8f1b4f8 8f1b4f8",
+   "head": "57765378bee563f300e6409876b530751a7eb784",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "bc7c0b65a1efe65317bba9b7f06c7d76a2a758fe",
+     "subject": "label Match system \"Follows device\" like the other products"
+    },
+    {
+     "sha": "57765378bee563f300e6409876b530751a7eb784",
+     "subject": "record Appearance label captures and the F6 probe result"
+    }
+   ],
+   "pr": "https://github.com/Busnes-app/kydrive-server/pull/81 (new; #80 merged)",
+   "evidence": {
+    "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-before-manifest.json": "e76645e2aec7b5503896739673054622a8c87e2cdce5db3195d2349ea64b3657",
+    "docs/ui-fleet-2026-10-26/screenshots/kydrive-04-after-manifest.json": "6886dbb9cb099606b17fa02014de1809213c38d7c4f92aa6da0c4dbe17aa82b6",
+    "docs/ui-fleet-2026-10-26/capture-core.mjs": "27ca1979b680ff4c7778e6eaa1007a74a9f3c54e3b35d45b5471d729b9c3f85e"
+   }
+  },
+  "KyIdentity-server": {
+   "findings": [
+    "F4",
+    "Follows device copy"
+   ],
+   "branch": "ui/fleet-appearance",
+   "base": "3ae5681 3ae5681",
+   "head": "35d8e42a3052414dda61f5c8add7227b7fb826d7",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "4c3d1971609063a552ee018492f5de70168afd4d",
+     "subject": "follow another tab's theme choice in Appearance"
+    },
+    {
+     "sha": "35d8e42a3052414dda61f5c8add7227b7fb826d7",
+     "subject": "record F4 cross-tab captures and verify runs"
+    }
+   ],
+   "pr": "https://github.com/Busnes-app/KyIdentity-server/pull/167 (open)",
+   "evidence": {
+    "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-verify.json": "0403eef2b12c227e8f9cda29706348404c2d7bd126f30f25c052d55cb0c9d68d",
+    "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-verify.json": "715d8a8ac20131dd770628d698d1b261d6e255b5d2e41f9cfb467735a1daf7a8",
+    "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-before-manifest.json": "f528aa317c853d2b35827c90779f03e018406a0fc98d640914d51dadd9604d26",
+    "docs/ui-fleet-2026-10-26/screenshots/kyidentity-04-after-manifest.json": "87552c28a4fe2b05c7446d458bcfa0cd0af2f41322126ffcc2802436bf365f2a",
+    "docs/ui-fleet-2026-10-26/capture-core.mjs": "27ca1979b680ff4c7778e6eaa1007a74a9f3c54e3b35d45b5471d729b9c3f85e"
+   }
+  },
+  "KyNotes-server": {
+   "findings": [
+    "F4",
+    "Follows device copy"
+   ],
+   "branch": "ui/fleet-review-fixes",
+   "base": "21063dd 21063dd",
+   "head": "451016e781d7fa4160946146d79f2c3755eb96fe",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "465910aee2e6e43e594c43eb623a5f7616b629dc",
+     "subject": "follow another tab's theme choice in Appearance"
+    },
+    {
+     "sha": "451016e781d7fa4160946146d79f2c3755eb96fe",
+     "subject": "record F4 cross-tab captures and verify runs"
+    }
+   ],
+   "pr": "https://github.com/Busnes-app/KyNotes-server/pull/114 (new; branch from origin/master 21063dd)",
+   "evidence": {
+    "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-verify.json": "5f12cae1ffac58b97866dee4c583c8b0b77964bed2819d0235d9e165aa606852",
+    "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-verify.json": "cb55279209a413088798a8f9b80da2791331b48e9a958997f138f75a1da4a47b",
+    "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-before-manifest.json": "e97802f0e94e60b15ded9ea90eb725b6ce201de8680dd2f31f418357e32811a6",
+    "docs/ui-fleet-2026-10-26/screenshots/kynotes-04-after-manifest.json": "5fbf0a217a293b39916330f5daa482b466aa1abff831f285b91ffeb111425053",
+    "web/e2e/appearance-cross-tab.e2e.ts": "1b7857adfa769e61f37912d49e17c7cc7ef9a360063c131a0514cc8e273d0c8a"
+   }
+  }
+ },
+ "checks": [
+  {
+   "repo": "ky-server-base",
+   "what": "make lint, make tidy-check, release-notes tests + check-release-notes --base origin/master, make test-race, vitest, reproducible web/dist rebuild, full test:browser",
+   "result": "pass; browser 6 passed (phone-only nav spec skipped on desktop); nav spec tightened afterwards and re-run alone: 2 passed"
+  },
+  {
+   "repo": "KyPulse-server",
+   "what": "make lint, tidy-check, test-race, vitest, reproducible web/dist rebuild, full test:browser",
+   "result": "pass; browser 18 passed, 2 skipped; nav spec extended afterwards and re-run alone: 2 passed"
+  },
+  {
+   "repo": "KyRecovery-server",
+   "what": "node --check app.js, vendor, check-contrast, gofmt, vet, go test -race ./..., GODEBUG=fips140=on go test -race ./...",
+   "result": "pass; fips run needed -p 2 after two runs were OOM-killed at the 6 GB scope cap (no test failure)"
+  },
+  {
+   "repo": "KyDrive-server",
+   "what": "vendor, vitest, build, full test:browser",
+   "result": "pass; vitest 100/100; browser 48/48"
+  },
+  {
+   "repo": "KyIdentity-server",
+   "what": "vendor, rebuilt web/dist equals fresh build, vitest, npm audit --omit=dev, go build, vet, gofmt, go test -p 2 -race ./...",
+   "result": "pass; vitest 194/194; race 18 packages ok"
+  },
+  {
+   "repo": "KyNotes-server",
+   "what": "vendor (0.4.0 on this branch), vitest, rebuilt web/dist synced and diff -qr equal, go build, vet, gofmt, full npm run e2e, go test -p 2 -race ./...",
+   "result": "pass; vitest 599/599; embed equals fresh build; e2e 11/11; race 20 packages ok"
+  }
+ ],
+ "not_checked": [
+  "Engines other than Chromium",
+  "KyIdentity has no browser CI suite; its F4 regression is the scripted capture-core verify check",
+  "KyRecovery has no Playwright CI; its F6 check runs in the scripted capture driver",
+  "Yard (not touched by instruction): its Appearance still reads 'Light or dark'"
+ ],
+ "unchanged": [
+  "F3 (pre-existing status colours on light named themes): out of scope, unchanged",
+  "F5 (Settings placement in KyYard/KyNotes): out of scope, unchanged",
+  "KyYard-server: not touched",
+  "ky-ui shared source and root's untracked evidence records: not touched"
+ ],
+ "mistakes": [
+  "My first Recovery phone check passed vacuously because the short Replication tab clamped page scroll; tightened with a test-only tall page, which then exposed the Messages pattern's page scroll",
+  "Notes stage note first claimed ky-ui's Chromium 153; the manifest showed the product's own Playwright 1.64.1 / Chromium 156, corrected before commit",
+  "Recovery README stage rows were inserted out of order once; reordered before commit"
+ ]
+}

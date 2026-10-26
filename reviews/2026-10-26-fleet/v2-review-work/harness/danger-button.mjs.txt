@@ -1,0 +1,40 @@
+// Real-element check: computed colour vs computed background of an actual <button class="btn-danger">
+// under the full committed product theme.css + vendored tokens, per suite palette, at given revisions.
+import { execFileSync } from 'node:child_process';
+import { chromium } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+const R = '/home/yoshi/git/busnes.app/';
+const show = (repo, rev, p) => execFileSync('git', ['-C', R + repo + '/.claude/worktrees/fleet-appearance', 'show', `${rev}:${p}`], { encoding: 'utf8' });
+const CLASSIC = show('kyPulse-server', 'a955d6de', 'web/src/ky-ui/themes-browser.js');
+const T = [
+  ['KyPulse head', 'kyPulse-server', 'a955d6de', 'base'], ['KyPulse pre-F1 (0.4.0 merged)', 'kyPulse-server', '88fbeba', 'base'],
+  ['KyDrive head', 'KyDrive-server', '57765378', 'drive'], ['KyDrive pre-F1 (0.4.0 merged)', 'KyDrive-server', '62f9743', 'drive'],
+  ['ky-server-base head (class defined, unused)', 'ky_server_base', '651a7b41', 'base'],
+  ['KyYard head (control, own inline status)', 'KyYard-Server', '18ec0f6d', 'yard'],
+];
+const browser = await chromium.launch();
+const res = [];
+for (const [name, repo, rev, mode] of T) {
+  const page = await browser.newPage({ colorScheme: 'light' });
+  await page.setContent(`<style>${show(repo, rev, 'web/src/styles/theme.css')}\n${show(repo, rev, 'web/src/ky-ui/tokens.css')}</style><style>*{transition:none!important}</style><main><div class="dr-actions"><button type="button" class="btn-danger">Delete</button></div></main>`);
+  await page.addScriptTag({ content: CLASSIC });
+  const rows = await page.evaluate(([mode]) => {
+    const k = window.kyThemes, root = document.documentElement, b = document.querySelector('button');
+    const cv = document.createElement('canvas'); cv.width = cv.height = 1; const cx = cv.getContext('2d', { willReadFrequently: true });
+    const parse = c => { cx.clearRect(0, 0, 1, 1); cx.fillStyle = '#000'; cx.fillStyle = c; cx.fillRect(0, 0, 1, 1); return [...cx.getImageData(0, 0, 1, 1).data].slice(0, 3); };
+    const lum = ([r, g, bb]) => [r, g, bb].map(x => x / 255).map(x => x <= 0.04045 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4).reduce((s, x, i) => s + x * [0.2126, 0.7152, 0.0722][i], 0);
+    const LEGACY = new Set(['patina', 'cyber', 'nord', 'paper', 'oled']);
+    return k.THEME_CATALOG.filter(t => !t.id.startsWith('busnes-') && !LEGACY.has(t.id)).map(t => {
+      root.removeAttribute('style');
+      const named = k.applyThemeVariables(t.id, root); root.dataset.theme = t.id;
+      if (mode === 'drive' && named === 'light') root.style.setProperty('--warning', '#a16207');
+      if (mode === 'yard') { root.style.setProperty('--danger', named === 'light' ? '#b91c1c' : '#f87171'); if (t.id === 'polished-ky') root.style.setProperty('--button-text', '#021716'); }
+      const cs = getComputedStyle(b); const fg = lum(parse(cs.color)), bg = lum(parse(cs.backgroundColor));
+      return { id: t.id, scheme: t.scheme, color: cs.color, background: cs.backgroundColor, ratio: +((Math.max(fg, bg) + 0.05) / (Math.min(fg, bg) + 0.05)).toFixed(2) };
+    });
+  }, [mode]);
+  res.push({ name, rev, rows });
+  console.log(name.padEnd(46), rev, rows.map(r => `${r.id}:${r.ratio}`).join(' '));
+  await page.close();
+}
+await browser.close();
+(await import('node:fs')).writeFileSync('/tmp/claude-fleet-review-v2/danger-button.json', JSON.stringify(res, null, 1));

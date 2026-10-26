@@ -1,0 +1,554 @@
+[
+  {
+    "scope": "Shared CSS prototype",
+    "check": "npm run check",
+    "result": "pass",
+    "detail": "Zero-warning ESLint and 8 unit tests; before catalog addition",
+    "current_release_gate": false
+  },
+  {
+    "scope": "Shared CSS prototype",
+    "check": "npm run test:browser",
+    "result": "pass",
+    "detail": "28 Chromium contracts, 390/1280 widths \u00d7 light/dark; keyboard, focus, persistence, cross-tab, forced colors and legacy-theme label ink",
+    "current_release_gate": false
+  },
+  {
+    "scope": "Shared catalog prototype",
+    "check": "Node26 npm run check and npm run test:browser",
+    "result": "pass",
+    "detail": "Zero-warninglint,13unit,32Chromium;21named+system historicalprototype. DistinctPatina and derivedaliascorrections pending; rerun finalgates aftercodefreeze.",
+    "current_release_gate": false
+  },
+  {
+    "scope": "Fleet",
+    "check": "Product full checks and current-head CI/review",
+    "result": "pending",
+    "detail": "Implementation in progress",
+    "current_release_gate": false
+  },
+  {
+    "scope": "Fleet",
+    "check": "9/10 visual and behavior acceptance",
+    "result": "not evaluated",
+    "detail": "No current fleet screenshot ratings or complete behavior gates yet",
+    "current_release_gate": false
+  },
+  {
+    "scope": "Coordination",
+    "check": "MySlop board",
+    "result": "unavailable",
+    "detail": "HTTP 401 for configured token; no board post was created",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost / KyCalendar / KyMessages vendor copies",
+    "check": "Scoped sync-consumers --check and independent SHA-256 verification",
+    "result": "pass",
+    "detail": "0.4.0 frozen runtime f48e7a0; all 11 manifest files in each of three task worktrees match canonical bytes. Product builds, interaction tests and final captures remain pending.",
+    "current_release_gate": false,
+    "observed_at": "2026-10-26T11:24:38.231212+00:00"
+  },
+  {
+    "scope": "Shared wrapping/preview correction and three consumer copies",
+    "check": "Node26 npm run check; npm run test:browser; scoped sync-consumers --check",
+    "result": "pass",
+    "detail": "Source4f83f34: zero-warning lint,14unit,32browser; Post/Calendar/Messages all match current shared assets. Product nav removals, description usage, final captures and full checks still pending.",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost final phone Appearance composition",
+    "check": "keyboard-06-after.json and direct screenshot inspection",
+    "result": "pass",
+    "detail": "At390\u00d7844 light/dark: two173px columns, gridx16, arrow selection/focus, solid focus outline, Sky persists after reload, system persists and overflow0. Source0572ca49; PR headc4a97c3f addsdocs only. Reported frontend full1218tests/typecheck/build/lint pass; backend checks stillqueued.",
+    "current_release_gate": false
+  },
+  {
+    "scope": "Local full-check harness coordination",
+    "check": "Calendar version stamp and browser ports",
+    "result": "rerun required",
+    "detail": "Calendar first makeci stamped dirtybase while commits changed midrun; rerun from committed tree.5391/5392 were free at parent observation; workers asked to serialize Calendar\u2192Messages then Pulse/Base/Drive browser runs. No code workaround or unrelated process termination.",
+    "current_release_gate": false
+  },
+  {
+    "scope": "ky-ui PR20 at ab7a039",
+    "check": "GitHub PR browser job121549160887, run40316158065",
+    "result": "retry requested",
+    "detail": "Cancelled at the10minute job limit during slow Azure Ubuntu font downloads in Playwright dependency installation; browser tests did not start. Same-head push browser jobpassed and autonomous security review cleared. Re-ran only the cancelled PR job; all checks must be green before handback. No workflow/code change.",
+    "current_release_gate": false,
+    "observed_at": "2026-10-26T11:54:40.916345+00:00"
+  },
+  {
+    "scope": "KyCalendar",
+    "check": "Final production browser suite at1e78b53",
+    "result": "pass",
+    "detail": "Worker reports36 Chromium tests in1.5min; Appearance light/dark\u00d7390/1280. Final committed-tree makeci rerun still pending.",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyMessages",
+    "check": "Final production browser suite and makeci atd9c0f1d",
+    "result": "pass",
+    "detail": "Worker reports13 browser tests including all6Appearance projects with Firefox, plus makeci pass. PR CI/review still pending.",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost backend",
+    "check": "gofmt,vet,go test -race -count=1 -timeout=20m ./... at0572ca49",
+    "result": "pass",
+    "detail": "Worker reports fresh9.5minute race run; backend unchanged. PR headc4a97c3f addsdocs only.",
+    "current_release_gate": false
+  },
+  {
+    "scope": "ky-ui PR20 browser retry",
+    "check": "run40316158065 attempt2 job121557250026",
+    "result": "cancelled during dependency setup",
+    "detail": "Again reached job timeout during slow Ubuntu Azure mirror/font downloads; browser tests never started. GitHub core/GraphQL API quotas currently available. No third retry or extra delegation launched while clarifying the reported rate limit; existing workers/watchers continue.",
+    "current_release_gate": false,
+    "observed_at": "2026-10-26T12:14:15.314843+00:00"
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "npm run lint",
+    "result": "pass",
+    "revision": "0572ca49",
+    "detail": "0 errors, 0 warnings \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "npm run typecheck",
+    "result": "pass",
+    "revision": "0572ca49",
+    "detail": " \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "npx vitest run",
+    "result": "pass",
+    "revision": "0572ca49",
+    "detail": "1218/1218, incl. readability.test.tsx over all 22 themes and Appearance.test.tsx \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "npm run build",
+    "result": "pass",
+    "revision": "0572ca49",
+    "detail": " \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "sh -c test -z \"$(gofmt -l .)\"",
+    "result": "pass",
+    "revision": "0572ca49",
+    "detail": "backend unchanged by this branch \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "go vet ./...",
+    "result": "pass",
+    "revision": "0572ca49",
+    "detail": " \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "go test -race -count=1 -timeout=20m ./...",
+    "result": "pass",
+    "revision": "0572ca49",
+    "detail": "fresh run (-count=1), 9.5 min \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "npx vitest run src/settings/sections/MailExport.test.tsx (x3)",
+    "result": "pass",
+    "revision": "69c4a764",
+    "detail": "failed once inside a subset run at load average 48 (\"Unable to find option Work\"); 3/3 alone; passes in both full runs \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "node keyboard-post.mjs (drivers/)",
+    "result": "pass",
+    "revision": "0572ca49",
+    "detail": "keyboard-06-after.json: arrow selection+focus, solid outline, Sky persists, 2x173px columns, 0 overflow, light+dark \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "n/a",
+    "result": "notrun",
+    "revision": "",
+    "detail": "KyPost has no Playwright suite; covered by vitest, the keyboard check and captures \u2014 products/KyPost-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyCalendar",
+    "check": "make ci",
+    "result": "fail",
+    "revision": "1e78b53",
+    "detail": "smoke version stamp: binary stamped 0.4.3-18-g21c3d79-dirty while commits landed mid-run; want 0.4.3-21-g1e78b53. Process artifact, superseded by the rerun \u2014 products/KyCalendar/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyCalendar",
+    "check": "make ci",
+    "result": "pass",
+    "revision": "1e78b53",
+    "detail": "tidy-check, gofmt/vet, go test -race (18/20 packages cached from the fresh 11:26 run on identical Go source; no Go change since base), test-fork, npm ci + vitest 159/159, smoke passed \u2014 products/KyCalendar/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyCalendar",
+    "check": "make ci",
+    "result": "pass",
+    "revision": "uncommitted",
+    "detail": "11:26 run: 20/20 Go packages fresh, 0 cached; its web step overlapped later source edits, so only its Go results are relied on \u2014 products/KyCalendar/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyCalendar",
+    "check": "go build -o .browser/server ./cmd/server",
+    "result": "pass",
+    "revision": "1e78b53",
+    "detail": " \u2014 products/KyCalendar/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyCalendar",
+    "check": "npm run test:browser",
+    "result": "pass",
+    "revision": "1e78b53",
+    "detail": "36 passed in 1.5m (Chromium light/dark x 390/1280), incl. appearance.spec.mjs x4; earlier attempt could not bind :5391 (another worker held it) \u2014 products/KyCalendar/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyCalendar",
+    "check": "git status --short -- web/dist",
+    "result": "pass",
+    "revision": "",
+    "detail": "git status --short -- web/dist empty after builds \u2014 products/KyCalendar/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyMessage-Server",
+    "check": "make ci",
+    "result": "pass",
+    "revision": "d9c0f1d",
+    "detail": "tidy-check, gofmt/vet/compose-proxy, go test -race (0 cached), npm ci + vitest 161/161, smoke \u2014 products/KyMessage-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyMessage-Server",
+    "check": "go build -o .browser/server ./cmd/server",
+    "result": "pass",
+    "revision": "d9c0f1d",
+    "detail": " \u2014 products/KyMessage-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyMessage-Server",
+    "check": "npm run test:browser",
+    "result": "pass",
+    "revision": "d9c0f1d",
+    "detail": "13 passed in 1.0m (Chromium x4 + Firefox light-1280/dark-390), incl. appearance.spec.mjs x6; earlier attempt could not bind :5391 (another worker held it) \u2014 products/KyMessage-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyMessage-Server",
+    "check": "git status --short -- web/dist",
+    "result": "pass",
+    "revision": "d9c0f1d",
+    "detail": "git status --short -- web/dist empty after builds \u2014 products/KyMessage-Server/checks.csv",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "ky-ui npm run check (eslint 0 warnings + 14 unit tests)",
+    "result": "pass",
+    "revision": "50a9102",
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "ky-ui parity-test mutation (drop one export from generated object)",
+    "result": "test fails as expected; restored",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "ky-ui npm run test:browser (port 5390)",
+    "result": "32 passed",
+    "revision": "393d64b",
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "sync-consumers --check, all 11",
+    "result": "Checked 11 consumers at 0.4.1",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "KyDNS check-vendor, gofmt, go vet, go mod tidy, go test -race ./..., GODEBUG=fips140=on go test -race ./...",
+    "result": "pass",
+    "revision": "0949de5",
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "KyDNS head test mutation (type=module restored)",
+    "result": "TestThemeScriptIsLinkedAndEmbedded fails as expected; restored",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "KyRecovery check-vendor, check-contrast (new head assertion), gofmt, go vet, go test -race -count=1 ./..., fips140=on",
+    "result": "pass",
+    "revision": "71affc9",
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "KyRecovery check-contrast mutation (ceremony theme.js as module)",
+    "result": "fails as expected; restored",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "Identity, Notes, Post, Calendar, Messages, Yard: check-vendor, npm run build, vitest run (Post also typecheck + lint)",
+    "result": "pass; dist unchanged",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "Base, Pulse, Drive: npm run build (prebuild check-vendor), npm test",
+    "result": "pass; dist unchanged",
+    "revision": null,
+    "detail": "after root's F1 slot; browser suites not rerun (no runtime file changed) \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "delayed-fetch first-paint harness (first-paint.mjs NOSHOT=1 DELAY=800)",
+    "result": "head 4/4 flash; fix 0/10 flash; base 0/3 flash",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "first-paint harness DELAY=0",
+    "result": "0/16 flash",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "reviewer's unmodified /tmp/claude-fleet-review/first-paint.mjs on pre-fix revs",
+    "result": "reproduced: base rows false, head rows true (4/4)",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "KyRecovery ceremony page under real CSP, head vs fix",
+    "result": "pass both; identical behaviour, no CSP violations",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "F2 theme bootstrap",
+    "check": "product capture drivers stage 03 (pre-fix) vs 04 (fix), real servers on 5493/5494",
+    "result": "10/10 behaviour checks each; Recovery 8/8 PNGs byte-identical; DNS Appearance 4/4 identical, dashboard differs only in live uptime counter",
+    "revision": null,
+    "detail": " \u2014 f2-first-paint/f2-response.json; implementer-reported, independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyYard-server",
+    "check": "make ci on merged committed branch",
+    "result": "pass",
+    "revision": "6ecb621d7fa8ffc334f817c6eb1e9b1c3364cd02",
+    "detail": "Exit0: tidy, gofmt/vet, complete race suite (no cached package results),563 frontend tests, smoke. Production frontend build passed and tracked assets unchanged. Actual matching SSO JWK-member test passes3 fresh race-enabled runs. No backend code/test changes authored for the UI branch. PR comment https://github.com/Busnes-app/KyYard-server/pull/155#issuecomment-6417145569. PostgreSQL/configured suites and autonomous reviewer are still pending in current-head CI.",
+    "current_release_gate": false,
+    "observed_at": "2026-10-26T13:26:51.361243+00:00",
+    "log_sha256": "87ee5074b5c30fe38d68d42b46563f73a47dcef1127314235651d8169c51ff49"
+  },
+  {
+    "scope": "ky-server-base",
+    "check": "make lint, make tidy-check, release-notes tests + check-release-notes --base origin/master, make test-race, vitest, reproducible web/dist rebuild, full test:browser",
+    "result": "pass; browser 6 passed (phone-only nav spec skipped on desktop); nav spec tightened afterwards and re-run alone: 2 passed",
+    "detail": "f4-f6-response.json; implementer-reported; independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPulse-server",
+    "check": "make lint, tidy-check, test-race, vitest, reproducible web/dist rebuild, full test:browser",
+    "result": "pass; browser 18 passed, 2 skipped; nav spec extended afterwards and re-run alone: 2 passed",
+    "detail": "f4-f6-response.json; implementer-reported; independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyRecovery-server",
+    "check": "node --check app.js, vendor, check-contrast, gofmt, vet, go test -race ./..., GODEBUG=fips140=on go test -race ./...",
+    "result": "pass; fips run needed -p 2 after two runs were OOM-killed at the 6 GB scope cap (no test failure)",
+    "detail": "f4-f6-response.json; implementer-reported; independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyDrive-server",
+    "check": "vendor, vitest, build, full test:browser",
+    "result": "pass; vitest 100/100; browser 48/48",
+    "detail": "f4-f6-response.json; implementer-reported; independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyIdentity-server",
+    "check": "vendor, rebuilt web/dist equals fresh build, vitest, npm audit --omit=dev, go build, vet, gofmt, go test -p 2 -race ./...",
+    "result": "pass; vitest 194/194; race 18 packages ok",
+    "detail": "f4-f6-response.json; implementer-reported; independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyNotes-server",
+    "check": "vendor (0.4.0 on this branch), vitest, rebuilt web/dist synced and diff -qr equal, go build, vet, gofmt, full npm run e2e, go test -p 2 -race ./...",
+    "result": "pass; vitest 599/599; embed equals fresh build; e2e 11/11; race 20 packages ok",
+    "detail": "f4-f6-response.json; implementer-reported; independent review pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "ky-server-base merged branch63b3b4c",
+    "check": "make ci",
+    "result": "pass",
+    "detail": "Exit0; notes-check, tidy-check, gofmt/vet, complete race suite, frontend tests and smoke. Backend dependency updates from master included; frontend source/build byte-identical to pinned651a7b4. See integration-heads.json. Package-cache reuse is recorded in local log /tmp/base-appearance-merged-ci.log; not advertised as fresh execution for cached packages.",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyPulse-server",
+    "check": "make lint, make tidy-check, make test-race, vitest, reproducible web/dist rebuild (committed), full test:browser",
+    "result": "pass; vitest 96/96; browser 20 passed, 4 skipped; new spec fails before and passes after",
+    "detail": "f7-response.json; implementer report, independent verification pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "KyDrive-server",
+    "check": "vendor check, vitest, build, full test:browser",
+    "result": "pass; vitest 100/100; browser 50 passed, 2 skipped; new spec fails before and passes after",
+    "detail": "f7-response.json; implementer report, independent verification pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "ky-server-base",
+    "check": "make lint, make tidy-check, release-notes tests + check-release-notes --base origin/master (925bfe3), make test-race, vitest, reproducible web/dist rebuild (committed), full test:browser",
+    "result": "pass; vitest 10/10; browser 8 passed, 4 skipped; new spec fails before and passes after",
+    "detail": "f7-response.json; implementer report, independent verification pending",
+    "current_release_gate": false
+  },
+  {
+    "scope": "ky-ui",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/ky-ui/pull/21 at f9fb93063722f12bd76e79f6f643aed9aaf5231e; ; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyDNS-server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyDNS-server/pull/84 at c9ba6deb9f0254b260759d0ec1fea3fc232931ac; ; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyRecovery-server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyRecovery-server/pull/71 at e0614508fdadc788268c33a0e5d0b6c8b74a54f3; ; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyIdentity-server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyIdentity-server/pull/167 at 35d8e42a3052414dda61f5c8add7227b7fb826d7; Automated input truncated; independent UI source coverage is separate; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyNotes-server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyNotes-server/pull/114 at a2296af3dd50723eab812bd0a6c033f7215d7871; Automated input truncated; independent UI source coverage is separate; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyPost-Server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyPost-Server/pull/483 at 7963701a342bc920a8cb71185ff5e18a89cffad7; ; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyCalendar",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyCalendar/pull/82 at bad000f1832892abc7d0b0b29f341dffb126aa61; ; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyMessage-Server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyMessage-Server/pull/96 at ab600d980107839deb2ad2124b459c35f49122e6; ; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyYard-server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyYard-server/pull/156 at 18ec0f6d192fb2be52ea69b3fc029144359d417a; Automated input truncated; independent UI source coverage is separate; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "ky-server-base",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/ky-server-base/pull/73 at 922869ac9ab50f263a4757788a6368a8adc5ff0d; ; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "KyPulse-server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/KyPulse-server/pull/49 at 414d08bca371848619d2c51a392bd493faeb97b7; ; independent source coverage remains separate",
+    "current_release_gate": true
+  },
+  {
+    "scope": "kydrive-server",
+    "check": "Current-head GitHub CI and automated reviewer",
+    "result": "pass / cleared",
+    "detail": "https://github.com/Busnes-app/kydrive-server/pull/82 at 7bd15a8853a116e3a870bf4b02b9133d8f9b40bf; ; independent source coverage remains separate",
+    "current_release_gate": true
+  }
+]

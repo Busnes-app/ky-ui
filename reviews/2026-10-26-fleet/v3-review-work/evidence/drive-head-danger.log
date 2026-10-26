@@ -1,0 +1,27 @@
+npm notice run npx
+npm notice run 'playwright' test danger-button.spec.mjs --reporter=line --output=../../drive-head-pw-out
+[WebServer] 2026/10/26 11:14:33 [SECURITY] encryption key loaded from the data directory: a copy of the data directory can decrypt its files; move the key to KY_ENCRYPTION_KEY
+
+[WebServer] 2026/10/26 11:14:33 [KY-BASE] KyDrive listening on http://127.0.0.1:5391 (DB: sqlite)
+
+
+Running 4 tests using 1 worker
+
+[1/4] [light-390] › browser/danger-button.spec.mjs:54:1 › the filled danger button label reads on its fill in every suite palette
+[2/4] [light-1280] › browser/danger-button.spec.mjs:54:1 › the filled danger button label reads on its fill in every suite palette
+[light-1280] › browser/danger-button.spec.mjs:54:1 › the filled danger button label reads on its fill in every suite palette
+light-1280 [{"id":"dark-matter","rest":5.83,"hover":6.6,"focus":5.83},{"id":"light-matter","rest":9.5,"hover":9.98,"focus":9.5},{"id":"tropics","rest":10.1,"hover":10.56,"focus":10.1},{"id":"tropic-night","rest":6.19,"hover":7.03,"focus":6.19},{"id":"ocean","rest":6.3,"hover":7.15,"focus":6.3},{"id":"coffee","rest":6.02,"hover":6.83,"focus":6.02},{"id":"white-cliffs","rest":10.26,"hover":10.05,"focus":10.26},{"id":"cyber-punk","rest":7.21,"hover":8.31,"focus":7.21},{"id":"neon-purple","rest":6.86,"hover":7.91,"focus":6.86},{"id":"space","rest":6.91,"hover":7.94,"focus":6.91},{"id":"sky","rest":9.39,"hover":9.84,"focus":9.39},{"id":"forest","rest":6,"hover":6.74,"focus":6},{"id":"sun","rest":9.28,"hover":9.24,"focus":9.28},{"id":"patina-ky","rest":6.65,"hover":7.66,"focus":6.65},{"id":"polished-ky","rest":10.87,"hover":11.45,"focus":10.87}]
+
+[3/4] [dark-390] › browser/danger-button.spec.mjs:54:1 › the filled danger button label reads on its fill in every suite palette
+[4/4] [dark-1280] › browser/danger-button.spec.mjs:54:1 › the filled danger button label reads on its fill in every suite palette
+[dark-1280] › browser/danger-button.spec.mjs:54:1 › the filled danger button label reads on its fill in every suite palette
+dark-1280 [{"id":"dark-matter","rest":5.83,"hover":6.6,"focus":5.83},{"id":"light-matter","rest":9.5,"hover":9.98,"focus":9.5},{"id":"tropics","rest":10.1,"hover":10.56,"focus":10.1},{"id":"tropic-night","rest":6.19,"hover":7.03,"focus":6.19},{"id":"ocean","rest":6.3,"hover":7.15,"focus":6.3},{"id":"coffee","rest":6.02,"hover":6.83,"focus":6.02},{"id":"white-cliffs","rest":10.26,"hover":10.05,"focus":10.26},{"id":"cyber-punk","rest":7.21,"hover":8.31,"focus":7.21},{"id":"neon-purple","rest":6.86,"hover":7.91,"focus":6.86},{"id":"space","rest":6.91,"hover":7.94,"focus":6.91},{"id":"sky","rest":9.39,"hover":9.84,"focus":9.39},{"id":"forest","rest":6,"hover":6.74,"focus":6},{"id":"sun","rest":9.28,"hover":9.24,"focus":9.28},{"id":"patina-ky","rest":6.65,"hover":7.66,"focus":6.65},{"id":"polished-ky","rest":10.87,"hover":11.45,"focus":10.87}]
+
+[WebServer] 2026/10/26 11:14:46 [KY-BASE] Shutting down gracefully...
+
+[WebServer] 2026/10/26 11:14:46 [KY-BASE] waiting for the scheduled backup in flight...
+
+[WebServer] 2026/10/26 11:14:46 [KY-BASE] Server stopped
+
+  2 skipped
+  2 passed (13.4s)

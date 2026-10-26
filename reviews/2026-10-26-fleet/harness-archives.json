@@ -1,0 +1,42 @@
+[
+  {
+    "original": "reviews/2026-10-26-fleet/v3-review-work/harness/v3-check.spec.mjs",
+    "archive": "reviews/2026-10-26-fleet/v3-review-work/harness/v3-check.spec.mjs.txt",
+    "sha256": "d3152bf27a96135deab2038cffa0f42c32d1d9512dd3c613052493e55b399193"
+  },
+  {
+    "original": "reviews/2026-10-26-fleet/v2-review-work/harness/parity.mjs",
+    "archive": "reviews/2026-10-26-fleet/v2-review-work/harness/parity.mjs.txt",
+    "sha256": "d4f9ae3398d4655a99469ad5a49cca17d7d960cdd951256a9f47b1738d048a2f"
+  },
+  {
+    "original": "reviews/2026-10-26-fleet/v2-review-work/harness/status-contrast-v2.mjs",
+    "archive": "reviews/2026-10-26-fleet/v2-review-work/harness/status-contrast-v2.mjs.txt",
+    "sha256": "3b033717bf2161763bf43d2fb8cd80d47853743ad5c87a90c1ad2a6a38b8eacd"
+  },
+  {
+    "original": "reviews/2026-10-26-fleet/v2-review-work/harness/danger-button.mjs",
+    "archive": "reviews/2026-10-26-fleet/v2-review-work/harness/danger-button.mjs.txt",
+    "sha256": "4fc7b2fbc6ea2e1c0946a68468728b5610c3f291c62674f234d2a60c4100563b"
+  },
+  {
+    "original": "reviews/2026-10-26-fleet/v2-review-work/harness/danger-button-dist.mjs",
+    "archive": "reviews/2026-10-26-fleet/v2-review-work/harness/danger-button-dist.mjs.txt",
+    "sha256": "ad634a9fd08769495826d839a13016d9ce7cbdc866b7eb0624a9f3c16cee7136"
+  },
+  {
+    "original": "reviews/2026-10-26-fleet/v2-review-work/harness/f7-options.mjs",
+    "archive": "reviews/2026-10-26-fleet/v2-review-work/harness/f7-options.mjs.txt",
+    "sha256": "b81242006a3602e338bc93c91540d781ac3e82a36d1c58487f2355bbf28e0bee"
+  },
+  {
+    "original": "reviews/2026-10-26-fleet/v2-review-work/harness/recovery-f6.mjs",
+    "archive": "reviews/2026-10-26-fleet/v2-review-work/harness/recovery-f6.mjs.txt",
+    "sha256": "2d8d44c973b83507b83a9efc9a6fc0853abc79735ab3f28c8381370bbafed9d2"
+  },
+  {
+    "original": "reviews/2026-10-26-fleet/v2-review-work/harness/first-paint-v2.mjs",
+    "archive": "reviews/2026-10-26-fleet/v2-review-work/harness/first-paint-v2.mjs.txt",
+    "sha256": "eb7e6782e0bebe0922ab30e227f50a7736ba3d65d685a9d09741bb85d9613e71"
+  }
+]

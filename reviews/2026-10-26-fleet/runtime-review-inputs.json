@@ -1,0 +1,101 @@
+{
+  "scope": "Fixed committed runtime diff at these heads; no generated bundles or evidence counted as reviewed source",
+  "repositories": [
+    {
+      "repository": "KyDNS-server",
+      "checkout": "/home/yoshi/git/busnes.app/kydns-server/.claude/worktrees/fleet-appearance",
+      "head": "28bf59e35583bf4e04eb7b21486ea6c1531b2bd8",
+      "review_base": "e301d07b9cb2623a0aa048df5b5b7b131833b0ef",
+      "default_branch": "main",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyRecovery-server",
+      "checkout": "/home/yoshi/git/busnes.app/kyrecovery-server/.claude/worktrees/fleet-appearance",
+      "head": "2738beb742cec16c569c45cc2e929d2e8e74621a",
+      "review_base": "b60e5710b920fdca012179615ad278fbca6cf206",
+      "default_branch": "main",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyIdentity-server",
+      "checkout": "/home/yoshi/git/busnes.app/KyIdentity-server/.claude/worktrees/fleet-appearance",
+      "head": "cf986204a755f477e66f2ec71f32a9acf5e62162",
+      "review_base": "ba43fbe9829aca788878153b504d87d6dc18a386",
+      "default_branch": "master",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyNotes-server",
+      "checkout": "/home/yoshi/git/busnes.app/kynotes-server/.claude/worktrees/fleet-appearance",
+      "head": "22f51a10882d99c060c71bb3fa41b43dab71b2ae",
+      "review_base": "d172a514e47de2d1abd3e851c3191a5abdd85d2e",
+      "default_branch": "master",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyPost-Server",
+      "checkout": "/home/yoshi/git/busnes.app/kypost-server/.claude/worktrees/fleet-appearance",
+      "head": "7b0892f05bbde24995de3191bd666191006266b5",
+      "review_base": "7aea66f888ec3f251ab1b68b66378bd5c3e144c8",
+      "default_branch": "main",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyCalendar",
+      "checkout": "/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/fleet-appearance",
+      "head": "00f7243269d5e5b503465eb9ba2c7e6c1ef9b9cb",
+      "review_base": "21c3d7925e84cda321788f7ec08a591765567e23",
+      "default_branch": "main",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyMessage-Server",
+      "checkout": "/home/yoshi/git/busnes.app/KyMessage-Server/.claude/worktrees/fleet-appearance",
+      "head": "8fe1c977f4ac958cf59e14cd9680e842c92ce97f",
+      "review_base": "feb4f956e1d1022ae6405a94594fac010e1b50c8",
+      "default_branch": "master",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyYard-server",
+      "checkout": "/home/yoshi/git/busnes.app/KyYard-Server/.claude/worktrees/fleet-appearance",
+      "head": "3925b30a4bb881b46b66ff8cc528bb4af2280d09",
+      "review_base": "996c59a1c4f55844a96ac9d7d6505961a8eebb8c",
+      "default_branch": "master",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "ky-server-base",
+      "checkout": "/home/yoshi/git/busnes.app/ky_server_base/.claude/worktrees/fleet-appearance",
+      "head": "461f25f155fa16da4fd20584d0de31bbcd3581cf",
+      "review_base": "95a3f114712d43151a4a1bc14a1299cbdd8be0b8",
+      "default_branch": "master",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyDrive-server",
+      "checkout": "/home/yoshi/git/busnes.app/KyDrive-server/.claude/worktrees/fleet-appearance",
+      "head": "91c312b3136c64d00793f429fc9580c8caa962c3",
+      "review_base": "e772e28629bddba9363550677343a86d5d0c0e88",
+      "default_branch": "master",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "KyPulse-server",
+      "checkout": "/home/yoshi/git/busnes.app/kyPulse-server/.claude/worktrees/fleet-appearance",
+      "head": "0f294e66dbf8bc27deae95a8fc51a9bfbca3a985",
+      "review_base": "01accf34db69b51f7aabb3989d6af91c7dc3f9ed",
+      "default_branch": "master",
+      "evidence": "docs/ui-fleet-2026-10-26/"
+    },
+    {
+      "repository": "ky-ui",
+      "checkout": "/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance",
+      "head": "ab7a039851df5887fee22ca261d941e4f35ae825",
+      "review_base": "09622601e223034ae2a1836e3cdeadb7644ba40b",
+      "default_branch": "main",
+      "evidence": "reviews/2026-10-26-fleet/"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+// v3 reviewer cross-check (not product code). Copied into a scratch export's web/browser/.
+// For all 22 catalog palettes: settled computed label/fill and root status tokens (for a
+// head-vs-before diff), rest contrast from computed colours, and hover plus REAL keyboard
+// (Tab) focus contrast from screenshot pixels using a conservative median label estimate.
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { test, expect } from '@playwright/test';
+import { THEME_CATALOG } from '../src/ky-ui/themes.js';
+
+const TARGET = process.env.V3_TARGET;
+const OUT = process.env.V3_OUT;
+const IDS = THEME_CATALOG.map(t => t.id);
+
+const lum = ([r, g, b]) => [r, g, b].map(v => v / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4).reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0);
+const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+
+// Pixels: fill = mode; label = median contrast of the pixels far from the fill (top half of
+// colour distance). Lower than a max-pixel estimate, so it is the stricter of the two.
+const pixels = (decoder, png) => decoder.evaluate(async b64 => {
+  const img = new Image(); img.src = `data:image/png;base64,${b64}`; await img.decode();
+  const c = Object.assign(document.createElement('canvas'), { width: img.width, height: img.height });
+  const ctx = c.getContext('2d'); ctx.drawImage(img, 0, 0);
+  const d = ctx.getImageData(0, 0, img.width, img.height).data;
+  const px = []; for (let i = 0; i < d.length; i += 4) px.push([d[i], d[i + 1], d[i + 2]]);
+  return px;
+}, png.toString('base64'));
+const pixelContrast = px => {
+  const counts = new Map(); for (const p of px) { const k = p.join(); counts.set(k, (counts.get(k) ?? 0) + 1); }
+  const fill = [...counts].sort((a, b) => b[1] - a[1])[0][0].split(',').map(Number);
+  const dist = p => Math.hypot(p[0] - fill[0], p[1] - fill[1], p[2] - fill[2]);
+  const max = Math.max(...px.map(dist));
+  const far = px.filter(p => dist(p) >= max / 2).map(p => ratio(p, fill)).sort((a, b) => a - b);
+  return { fill, median: +far[Math.floor(far.length / 2)].toFixed(2), max: +far[far.length - 1].toFixed(2), n: far.length };
+};
+const shot = async (page, el) => { const b = await el.boundingBox(); return page.screenshot({ animations: 'disabled', clip: { x: b.x + 8, y: b.y + 4, width: b.width - 16, height: b.height - 8 } }); };
+
+async function login(page) {
+  await page.goto('/');
+  await page.getByPlaceholder('admin', { exact: true }).fill('admin');
+  await page.locator('input[type=password]').fill('BrowserUpdated456!');
+  await page.getByRole('button', { name: 'Sign In', exact: true }).click();
+}
+
+async function open(page, context, name) {
+  if (TARGET === 'pulse') {
+    await login(page);
+    await expect(page.getByRole('navigation', { name: 'Primary' })).toBeVisible();
+    const headers = { 'X-CSRF-Token': (await context.cookies()).find(c => c.name === 'ky_csrf').value };
+    const created = await page.request.post('/api/targets', { headers, data: { name: `v3-${name}`, url: 'https://example.com/healthz', interval_sec: 30, enabled: false } });
+    expect(created.status()).toBe(201);
+    const { target } = await created.json();
+    await page.goto(`/#/apps/${target.id}`);
+    return { button: page.getByRole('button', { name: 'Delete' }), cleanup: () => page.request.delete(`/api/targets/${target.id}`, { headers }), neutral: page.locator('main h1, main h2').first() };
+  }
+  if (TARGET === 'drive') {
+    await page.goto('/');
+    const sessionFile = 'test-results/file-management-session.json';
+    const saved = await readFile(sessionFile, 'utf8').then(JSON.parse, () => null);
+    let headers;
+    if (saved) { await context.addCookies(saved); if ((await page.request.get('/api/auth/me')).ok()) headers = { 'X-CSRF-Token': saved.find(c => c.name === 'ky_csrf').value }; }
+    if (!headers) {
+      expect((await page.request.post('/api/auth/login', { data: { username: 'admin', password: 'BrowserUpdated456!' } })).ok()).toBe(true);
+      const cookies = await context.cookies(); await mkdir('test-results', { recursive: true }); await writeFile(sessionFile, JSON.stringify(cookies));
+      headers = { 'X-CSRF-Token': cookies.find(c => c.name === 'ky_csrf').value };
+    }
+    expect((await page.request.post('/api/drive/personal-workspace', { headers, data: {} })).ok()).toBe(true);
+    const mine = (await (await page.request.get('/api/drive/workspaces')).json()).find(w => w.kind === 'personal');
+    const folder = `V3 ${name.replace(/\W/g, '')}`;
+    expect((await page.request.post(`/api/drive/workspaces/${mine.id}/folders`, { headers, data: { parent: '', name: folder } })).ok()).toBe(true);
+    await page.reload();
+    await page.getByLabel(`Actions for folder ${folder}`).click();
+    await page.getByRole('menuitem', { name: 'Move to trash' }).click();
+    await page.getByRole('button', { name: 'Trash', exact: true }).click();
+    await page.getByRole('row', { name: new RegExp(folder) }).getByRole('button', { name: 'Delete permanently' }).click();
+    const dialog = page.getByRole('dialog');
+    return { button: dialog.getByRole('button', { name: 'Delete permanently' }), cleanup: async () => { await dialog.getByRole('button', { name: 'Cancel' }).click(); await expect(dialog).toHaveCount(0); }, neutral: dialog.getByRole('heading').first() };
+  }
+  await login(page);
+  await expect(page.getByRole('heading', { name: /Welcome/ })).toBeVisible();
+  await page.locator('main').evaluate(main => { const b = main.insertBefore(document.createElement('button'), main.firstChild); b.type = 'button'; b.className = 'btn-danger'; b.textContent = 'v3 diagnostic .btn-danger'; });
+  return { button: page.getByRole('button', { name: 'v3 diagnostic .btn-danger' }), cleanup: async () => {}, neutral: page.getByRole('heading', { name: /Welcome/ }) };
+}
+
+test('v3 danger button cross-check', async ({ page, context }, testInfo) => {
+  test.skip(testInfo.project.use.viewport.width < 1280, 'colour only');
+  test.setTimeout(240000);
+  const { button, cleanup, neutral } = await open(page, context, testInfo.project.name);
+  await expect(button).toHaveClass(/(^| )btn-danger( |$)/);
+  const helper = await context.newPage(); const decoder = await context.newPage();
+  const rows = [];
+  try {
+    await helper.goto('/app-icon.png');
+    for (const id of IDS) {
+      await helper.evaluate(id => localStorage.setItem('ky_theme', id), id);
+      await expect.poll(() => page.evaluate(() => document.documentElement.dataset.theme)).toBe(id);
+      await neutral.hover();
+      if (TARGET !== 'drive') await page.evaluate(() => document.activeElement?.blur());
+      const read = () => button.evaluate(el => {
+        const s = getComputedStyle(el), r = getComputedStyle(document.documentElement);
+        const v = n => r.getPropertyValue(n).trim();
+        const probe = document.body.appendChild(document.createElement('i'));
+        const norm = x => { probe.style.color = ''; probe.style.color = x; return getComputedStyle(probe).color; };
+        const out = { color: s.color, background: s.backgroundColor, opacity: s.opacity, filter: s.filter, danger: norm(v('--danger')), success: norm(v('--success')), bg: norm(v('--bg')), buttonText: v('--button-text') ? norm(v('--button-text')) : null };
+        probe.remove(); return JSON.stringify(out);
+      });
+      let prev = '', cur = await read();
+      for (let i = 0; i < 20 && cur !== prev; i++) { prev = cur; await page.waitForTimeout(150); cur = await read(); }
+      const st = JSON.parse(cur);
+      const rgb = x => x.match(/[\d.]+/g).slice(0, 3).map(Number);
+      const rest = +ratio(rgb(st.color), rgb(st.background)).toFixed(2);
+      const restPx = pixelContrast(await pixels(decoder, await shot(page, button)));
+      await button.hover();
+      await page.waitForTimeout(400);
+      const hoverPx = pixelContrast(await pixels(decoder, await shot(page, button)));
+      await neutral.hover();
+      // Real keyboard focus: Tab until the button is active.
+      let focusVisible = false;
+      for (let i = 0; i < 80; i++) {
+        await page.keyboard.press('Tab');
+        if (await button.evaluate(el => document.activeElement === el)) { focusVisible = await button.evaluate(el => el.matches(':focus-visible')); break; }
+      }
+      await page.waitForTimeout(300);
+      const focusPx = pixelContrast(await pixels(decoder, await shot(page, button)));
+      rows.push({ id, ...st, rest, restPx: restPx.median, restPxMax: restPx.max, hoverPx: hoverPx.median, hoverPxMax: hoverPx.max, focusVisible, focusPx: focusPx.median, focusPxMax: focusPx.max });
+    }
+  } finally {
+    await writeFile(`${OUT}-${testInfo.project.name}.json`, JSON.stringify(rows, null, 1));
+    await cleanup(); await helper.close(); await decoder.close();
+  }
+});

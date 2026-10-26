@@ -1,0 +1,36 @@
+{
+  "input_files": 148,
+  "same_dimension_pairs": 3242,
+  "full_resolution_candidates": 5,
+  "rule": "Same dimensions, <0.1% changed pixels and maximum channel delta<=8. Thumbnail max difference>8 excludes max original delta<=8; full-resolution comparison for remaining pairs.",
+  "comparisons": [
+    {
+      "first": "products/KyCalendar/screenshots/kycalendar-03-after-admin-appearance-mobile-dark.png",
+      "second": "products/KyCalendar/screenshots/kycalendar-03-after-appearance-mobile-dark.png",
+      "changed_fraction": 1.2152144853566655e-05,
+      "max_channel_delta": 1,
+      "near_duplicate": true
+    },
+    {
+      "first": "products/KyCalendar/screenshots/kycalendar-03-after-admin-appearance-mobile-light.png",
+      "second": "products/KyCalendar/screenshots/kycalendar-03-after-appearance-mobile-light.png",
+      "changed_fraction": 4.860857941426662e-05,
+      "max_channel_delta": 1,
+      "near_duplicate": true
+    },
+    {
+      "first": "products/KyDrive-server/screenshots/kydrive-05-after-delete-dialog-sky-desktop-light.png",
+      "second": "products/KyDrive-server/screenshots/kydrive-05-after-delete-dialog-sky-desktop-dark.png",
+      "changed_fraction": 2.6041666666666666e-06,
+      "max_channel_delta": 1,
+      "near_duplicate": true
+    },
+    {
+      "first": "products/KyDrive-server/screenshots/kydrive-05-after-delete-dialog-forest-desktop-light.png",
+      "second": "products/KyDrive-server/screenshots/kydrive-05-after-delete-dialog-forest-desktop-dark.png",
+      "changed_fraction": 8.680555555555556e-06,
+      "max_channel_delta": 1,
+      "near_duplicate": true
+    }
+  ]
+}

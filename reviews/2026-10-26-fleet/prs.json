@@ -1,0 +1,986 @@
+[
+  {
+    "repository": "ky-ui",
+    "url": "https://github.com/Busnes-app/ky-ui/pull/21",
+    "state": "MERGED",
+    "head": "f9fb93063722f12bd76e79f6f643aed9aaf5231e",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:04.134618+00:00",
+    "checks": [
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-ui/actions/runs/40328898596/job/121592754947"
+      },
+      {
+        "name": "test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-ui/actions/runs/40328908506/job/121592783189"
+      },
+      {
+        "name": "test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-ui/actions/runs/40328896019/job/121592740780"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-ui/actions/runs/40328898596/job/121592754920"
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-ui/actions/runs/40328898596/job/121592754436"
+      },
+      {
+        "name": "browser",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-ui/actions/runs/40328908506/job/121592783382"
+      },
+      {
+        "name": "browser",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-ui/actions/runs/40328896019/job/121592740511"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-ui/runs/121603043045"
+      }
+    ]
+  },
+  {
+    "repository": "KyDNS-server",
+    "url": "https://github.com/Busnes-app/KyDNS-server/pull/84",
+    "state": "MERGED",
+    "head": "c9ba6deb9f0254b260759d0ec1fea3fc232931ac",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:05.034877+00:00",
+    "checks": [
+      {
+        "name": "test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591979520"
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328671527/job/121591971067"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328671527/job/121591970616"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328671527/job/121591971034"
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328671527/job/121591971100"
+      },
+      {
+        "name": "build",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591980655"
+      },
+      {
+        "name": "docker",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591979705"
+      },
+      {
+        "name": "package (ubuntu-latest, amd64)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591979552"
+      },
+      {
+        "name": "package (ubuntu-24.04-arm, arm64)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591979476"
+      },
+      {
+        "name": "rpi-image",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591979336"
+      },
+      {
+        "name": "package-rpm (ubuntu-latest, amd64, x86_64, fedora:latest)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591979358"
+      },
+      {
+        "name": "package-rpm (ubuntu-24.04-arm, arm64, aarch64, fedora:latest)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591979107"
+      },
+      {
+        "name": "package-rpm (ubuntu-latest, amd64, x86_64, rockylinux:9)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121591979467"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/actions/runs/40328675657/job/121606960218"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyDNS-server/runs/121599482051"
+      }
+    ]
+  },
+  {
+    "repository": "KyRecovery-server",
+    "url": "https://github.com/Busnes-app/KyRecovery-server/pull/71",
+    "state": "MERGED",
+    "head": "e0614508fdadc788268c33a0e5d0b6c8b74a54f3",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:05.644293+00:00",
+    "checks": [
+      {
+        "name": "go",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/actions/runs/40334567423/job/121612568502"
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/actions/runs/40334563668/job/121612562760"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/actions/runs/40334563668/job/121612562412"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/actions/runs/40334563668/job/121612562769"
+      },
+      {
+        "name": "security",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/actions/runs/40334567423/job/121612568228"
+      },
+      {
+        "name": "docker",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/actions/runs/40334567423/job/121612567919"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/actions/runs/40334567423/job/121630222681"
+      },
+      {
+        "name": "promote",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/actions/runs/40334567423/job/121630222813"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyRecovery-server/runs/121622662733"
+      }
+    ]
+  },
+  {
+    "repository": "KyIdentity-server",
+    "url": "https://github.com/Busnes-app/KyIdentity-server/pull/167",
+    "state": "MERGED",
+    "head": "35d8e42a3052414dda61f5c8add7227b7fb826d7",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "Automated input truncated; independent UI source coverage is separate",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:06.331928+00:00",
+    "checks": [
+      {
+        "name": "go",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/actions/runs/40335780664/job/121616821859"
+      },
+      {
+        "name": "analyze (go, autobuild)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/actions/runs/40335780863/job/121616822294"
+      },
+      {
+        "name": "analyze (javascript-typescript, none)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/actions/runs/40335780863/job/121616822034"
+      },
+      {
+        "name": "web",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/actions/runs/40335780664/job/121616821749"
+      },
+      {
+        "name": "relay",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/actions/runs/40335780664/job/121616821714"
+      },
+      {
+        "name": "docker",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/actions/runs/40335780664/job/121616821244"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/actions/runs/40335780664/job/121642602945"
+      },
+      {
+        "name": "promote",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/actions/runs/40335780664/job/121642603395"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyIdentity-server/runs/121623334114"
+      }
+    ]
+  },
+  {
+    "repository": "KyNotes-server",
+    "url": "https://github.com/Busnes-app/KyNotes-server/pull/114",
+    "state": "MERGED",
+    "head": "a2296af3dd50723eab812bd0a6c033f7215d7871",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "Automated input truncated; independent UI source coverage is separate",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:06.987195+00:00",
+    "checks": [
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337080017/job/121621438549"
+      },
+      {
+        "name": "test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337088570/job/121621457632"
+      },
+      {
+        "name": "test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337078105/job/121652287543"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337080017/job/121621438002"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337080017/job/121621438627"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337088570/job/121650203741"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337078105/job/121665841922"
+      },
+      {
+        "name": "promote",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337088570/job/121650203512"
+      },
+      {
+        "name": "promote",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/actions/runs/40337078105/job/121665842550"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyNotes-server/runs/121634267856"
+      }
+    ]
+  },
+  {
+    "repository": "KyPost-Server",
+    "url": "https://github.com/Busnes-app/KyPost-Server/pull/483",
+    "state": "MERGED",
+    "head": "7963701a342bc920a8cb71185ff5e18a89cffad7",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:07.707199+00:00",
+    "checks": [
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687076/job/121592016883"
+      },
+      {
+        "name": "ci-backend-api",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687061/job/121592017338"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687076/job/121592017319"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687076/job/121592017368"
+      },
+      {
+        "name": "ci-backend-other",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687061/job/121592017077"
+      },
+      {
+        "name": "ci-frontend",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687061/job/121592017042"
+      },
+      {
+        "name": "ci-relay",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687061/job/121592017235"
+      },
+      {
+        "name": "ci-scripts",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687061/job/121592016965"
+      },
+      {
+        "name": "ci-docker",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40328687061/job/121592016432"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPost-Server/runs/121601509840"
+      }
+    ]
+  },
+  {
+    "repository": "KyCalendar",
+    "url": "https://github.com/Busnes-app/KyCalendar/pull/82",
+    "state": "MERGED",
+    "head": "bad000f1832892abc7d0b0b29f341dffb126aa61",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:08.316108+00:00",
+    "checks": [
+      {
+        "name": "Go build, vet & tests (SQLite)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121592033077"
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328688297/job/121592028095"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328688297/job/121592027738"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328688297/job/121592028191"
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328688297/job/121592028159"
+      },
+      {
+        "name": "Go tests (PostgreSQL)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121592032989"
+      },
+      {
+        "name": "Frontend typecheck & build",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121592033124"
+      },
+      {
+        "name": "Browser regressions (production server)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121592033169"
+      },
+      {
+        "name": "Vulnerability scan",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121592033193"
+      },
+      {
+        "name": "End-to-end smoke test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121592033047"
+      },
+      {
+        "name": "Docker image build & run",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121592032640"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121613338415"
+      },
+      {
+        "name": "promote",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/actions/runs/40328691748/job/121613339652"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyCalendar/runs/121601157403"
+      }
+    ]
+  },
+  {
+    "repository": "KyMessage-Server",
+    "url": "https://github.com/Busnes-app/KyMessage-Server/pull/96",
+    "state": "MERGED",
+    "head": "ab600d980107839deb2ad2124b459c35f49122e6",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:08.968741+00:00",
+    "checks": [
+      {
+        "name": "Go build, vet & tests (SQLite)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625855590"
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328692958/job/121592044313"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328692958/job/121592043869"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328692958/job/121592044496"
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328692958/job/121592044270"
+      },
+      {
+        "name": "Go tests (PostgreSQL)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625856876"
+      },
+      {
+        "name": "Frontend typecheck & build",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625817344"
+      },
+      {
+        "name": "Browser regressions (production server)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625762684"
+      },
+      {
+        "name": "Matrix acceptance (encrypted storage, closed server)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625852844"
+      },
+      {
+        "name": "Vulnerability scan",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625766517"
+      },
+      {
+        "name": "End-to-end smoke test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625853172"
+      },
+      {
+        "name": "Docker image build & run",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625765878"
+      },
+      {
+        "name": "Meeting-notes bot (tests & image)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40328697617/job/121625826719"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyMessage-Server/runs/121596874738"
+      }
+    ]
+  },
+  {
+    "repository": "KyYard-server",
+    "url": "https://github.com/Busnes-app/KyYard-server/pull/156",
+    "state": "MERGED",
+    "head": "18ec0f6d192fb2be52ea69b3fc029144359d417a",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "Automated input truncated; independent UI source coverage is separate",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:09.611808+00:00",
+    "checks": [
+      {
+        "name": "Go build, vet & tests (SQLite)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337516859/job/121622966672"
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337515471/job/121622968146"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337515471/job/121622969493"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337515471/job/121622970023"
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337515471/job/121622968962"
+      },
+      {
+        "name": "Go tests (PostgreSQL)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337516859/job/121622966825"
+      },
+      {
+        "name": "Frontend typecheck & build",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337516859/job/121622967253"
+      },
+      {
+        "name": "Vulnerability scan",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337516859/job/121622966666"
+      },
+      {
+        "name": "End-to-end smoke test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337516859/job/121622966771"
+      },
+      {
+        "name": "Docker image build & run",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337516859/job/121622966671"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337516859/job/121646850840"
+      },
+      {
+        "name": "promote",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/actions/runs/40337516859/job/121646851920"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyYard-server/runs/121627289079"
+      }
+    ]
+  },
+  {
+    "repository": "ky-server-base",
+    "url": "https://github.com/Busnes-app/ky-server-base/pull/73",
+    "state": "MERGED",
+    "head": "922869ac9ab50f263a4757788a6368a8adc5ff0d",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:10.466040+00:00",
+    "checks": [
+      {
+        "name": "Go build, vet & tests (SQLite)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121650107427"
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345183029/job/121650105328"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345183029/job/121650104740"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345183029/job/121650104211"
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345183029/job/121650104794"
+      },
+      {
+        "name": "Go tests (PostgreSQL)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121650107577"
+      },
+      {
+        "name": "Frontend typecheck & build",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121650107453"
+      },
+      {
+        "name": "Browser regressions (production server)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121650106838"
+      },
+      {
+        "name": "Vulnerability scan",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121650107279"
+      },
+      {
+        "name": "End-to-end smoke test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121650107214"
+      },
+      {
+        "name": "Docker image build & run",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121650107262"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121657527130"
+      },
+      {
+        "name": "promote",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/actions/runs/40345186251/job/121657529169"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/ky-server-base/runs/121651964236"
+      }
+    ]
+  },
+  {
+    "repository": "KyPulse-server",
+    "url": "https://github.com/Busnes-app/KyPulse-server/pull/49",
+    "state": "MERGED",
+    "head": "414d08bca371848619d2c51a392bd493faeb97b7",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:11.135588+00:00",
+    "checks": [
+      {
+        "name": "Go build, vet & tests (SQLite)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121648271097"
+      },
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344659344/job/121648270691"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344659344/job/121648269866"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344659344/job/121648270498"
+      },
+      {
+        "name": "Go tests (PostgreSQL)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121648270686"
+      },
+      {
+        "name": "Frontend typecheck & build",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121648271420"
+      },
+      {
+        "name": "Browser regressions (production server)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121648271025"
+      },
+      {
+        "name": "Vulnerability scan",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121648271357"
+      },
+      {
+        "name": "End-to-end smoke test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121648271000"
+      },
+      {
+        "name": "Docker image build & run",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121648271988"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121654087487"
+      },
+      {
+        "name": "promote",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/actions/runs/40344662590/job/121654087953"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/KyPulse-server/runs/121648841829"
+      }
+    ]
+  },
+  {
+    "repository": "kydrive-server",
+    "url": "https://github.com/Busnes-app/kydrive-server/pull/82",
+    "state": "MERGED",
+    "head": "7bd15a8853a116e3a870bf4b02b9133d8f9b40bf",
+    "ci": "pass",
+    "review": "cleared",
+    "review_caveat": "",
+    "merge_order": "ky-ui source first (already merged); consumer follow-ups independent",
+    "observed_at": "2026-10-26T15:53:11.674149+00:00",
+    "checks": [
+      {
+        "name": "Analyze (actions)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/actions/runs/40344609922/job/121648090555"
+      },
+      {
+        "name": "test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/actions/runs/40344612883/job/121648094387"
+      },
+      {
+        "name": "test",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/actions/runs/40344575081/job/121647962764"
+      },
+      {
+        "name": "Analyze (go)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/actions/runs/40344609922/job/121648089984"
+      },
+      {
+        "name": "Analyze (javascript-typescript)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/actions/runs/40344609922/job/121648090063"
+      },
+      {
+        "name": "Analyze (python)",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/actions/runs/40344609922/job/121648089607"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/actions/runs/40344612883/job/121660509830"
+      },
+      {
+        "name": "publish",
+        "status": "COMPLETED",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/actions/runs/40344575081/job/121662672525"
+      },
+      {
+        "name": "CodeQL",
+        "status": "COMPLETED",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/Busnes-app/kydrive-server/runs/121648409644"
+      }
+    ]
+  }
+]

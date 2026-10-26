@@ -1,0 +1,218 @@
+[
+  {
+    "product": "KyCalendar",
+    "cohort": "calendar-grid",
+    "n": 4,
+    "mean": 7.8,
+    "brand_fit": 8.4,
+    "lowest_file": 7.4,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyCalendar",
+    "cohort": "calendar-list",
+    "n": 4,
+    "mean": 7.2,
+    "brand_fit": 7.8,
+    "lowest_file": 6.9,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyCalendar",
+    "cohort": "settings",
+    "n": 12,
+    "mean": 7.7,
+    "brand_fit": 8.4,
+    "lowest_file": 7.5,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyDNS-server",
+    "cohort": "admin-console",
+    "n": 4,
+    "mean": 6.8,
+    "brand_fit": 7.4,
+    "lowest_file": 6.3,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyDNS-server",
+    "cohort": "settings",
+    "n": 4,
+    "mean": 7.7,
+    "brand_fit": 8.3,
+    "lowest_file": 7.3,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyDrive-server",
+    "cohort": "drive",
+    "n": 8,
+    "mean": 7.9,
+    "brand_fit": 7.9,
+    "lowest_file": 7.3,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyDrive-server",
+    "cohort": "settings",
+    "n": 8,
+    "mean": 7.4,
+    "brand_fit": 8.1,
+    "lowest_file": 6.9,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyIdentity-server",
+    "cohort": "admin-console",
+    "n": 4,
+    "mean": 6.2,
+    "brand_fit": 6.8,
+    "lowest_file": 6.0,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyIdentity-server",
+    "cohort": "member-home",
+    "n": 4,
+    "mean": 6.5,
+    "brand_fit": 6.4,
+    "lowest_file": 6.5,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyIdentity-server",
+    "cohort": "settings",
+    "n": 4,
+    "mean": 7.5,
+    "brand_fit": 7.5,
+    "lowest_file": 7.2,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyMessage-Server",
+    "cohort": "admin-console",
+    "n": 6,
+    "mean": 7.8,
+    "brand_fit": 8.2,
+    "lowest_file": 7.7,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyMessage-Server",
+    "cohort": "settings",
+    "n": 10,
+    "mean": 7.5,
+    "brand_fit": 8.2,
+    "lowest_file": 6.8,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyNotes-server",
+    "cohort": "notes",
+    "n": 4,
+    "mean": 5.5,
+    "brand_fit": 4.8,
+    "lowest_file": 5.2,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyNotes-server",
+    "cohort": "settings",
+    "n": 4,
+    "mean": 7.1,
+    "brand_fit": 6.9,
+    "lowest_file": 6.7,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyPost-Server",
+    "cohort": "mail-list",
+    "n": 8,
+    "mean": 7.4,
+    "brand_fit": 7.8,
+    "lowest_file": 7.2,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyPost-Server",
+    "cohort": "settings",
+    "n": 6,
+    "mean": 7.5,
+    "brand_fit": 8.3,
+    "lowest_file": 7.4,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyPulse-server",
+    "cohort": "admin-console",
+    "n": 12,
+    "mean": 6.7,
+    "brand_fit": 6.8,
+    "lowest_file": 6.2,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyPulse-server",
+    "cohort": "settings",
+    "n": 4,
+    "mean": 7.6,
+    "brand_fit": 8.3,
+    "lowest_file": 7.3,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyRecovery-server",
+    "cohort": "admin-console",
+    "n": 8,
+    "mean": 7.0,
+    "brand_fit": 6.7,
+    "lowest_file": 6.1,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyRecovery-server",
+    "cohort": "settings",
+    "n": 4,
+    "mean": 7.8,
+    "brand_fit": 7.8,
+    "lowest_file": 7.5,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyYard-server",
+    "cohort": "admin-console",
+    "n": 4,
+    "mean": 7.2,
+    "brand_fit": 8.4,
+    "lowest_file": 7.2,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "KyYard-server",
+    "cohort": "settings",
+    "n": 4,
+    "mean": 7.9,
+    "brand_fit": 8.6,
+    "lowest_file": 7.7,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "ky-server-base",
+    "cohort": "admin-console",
+    "n": 4,
+    "mean": 7.4,
+    "brand_fit": 7.3,
+    "lowest_file": 7.4,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  },
+  {
+    "product": "ky-server-base",
+    "cohort": "settings",
+    "n": 8,
+    "mean": 7.3,
+    "brand_fit": 7.7,
+    "lowest_file": 6.7,
+    "comparison": "Ky captured surfaces only; states, schemes and viewports may differ. No competitor comparison or whole-product ranking."
+  }
+]
