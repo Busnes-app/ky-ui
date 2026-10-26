@@ -99,6 +99,11 @@ The native radio, border and focus outline carry selection without relying only 
 color. The grid fits five cards in a 1000px content region and reflows on phones.
 The cards sit directly on the page, without a shadowed container.
 
+Keep the Appearance navigation link and remove the compact theme dropdown from
+the navigation/sidebar, including its phone-header presentation. Descriptions use
+`ky-appearance-description` and the same copy and 72ch width across products. Theme
+names and mode labels wrap normally, without product-specific nowrap or clipping.
+
 ## Boundary
 
 The package is browser UI infrastructure. `ky-primitives` remains the home for Go protocol, crypto, and recovery primitives; it should not absorb CSS or browser behavior.

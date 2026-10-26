@@ -4,7 +4,9 @@
 
 Apply the approved Busnes cream/charcoal/orange web identity to the ten active Ky
 web products and the server template. Every application exposes the same Appearance
-theme-preview card picker. Native clients follow in a separate pass.
+theme-preview card picker through a navigation link, without a compact theme
+dropdown in the navigation/sidebar or its phone-header presentation. Appearance
+descriptions, theme names and mode text wrap consistently in shared styles. Native clients follow in a separate pass.
 
 `consumers.json` owns the active repository/asset paths. Use one isolated worktree
 and reviewable PR per repository, preserving product workflows and authorization.

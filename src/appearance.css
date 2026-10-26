@@ -15,6 +15,16 @@
   font-weight: 600;
 }
 
+.ky-appearance-description {
+  max-inline-size: 72ch;
+  margin: 0 0 24px;
+  color: var(--ink, var(--ky-ink));
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .ky-appearance .ky-appearance-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 172px), 1fr));
@@ -103,6 +113,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
+  white-space: normal;
   overflow-wrap: anywhere;
 }
 
@@ -112,6 +123,8 @@
   color: var(--ink, var(--ky-ink-muted));
   font-size: 12px;
   line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 @media (forced-colors: active) {
