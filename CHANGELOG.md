@@ -20,6 +20,7 @@ field-border and overlay tokens; aligns the font stack with the existing
 self-hosted Space Grotesk. Existing palettes, theme keys and navigation remain.
 Named palettes without a local hover token derive their navigation hover from
 their own surface and ink, preserving readable hover when the OS theme differs.
+Hover keeps the selected surface and accent rail instead of overriding selection.
 KyCalendar and KyMessages join the active consumer inventory. Sync can target
 selected consumers, preflighting all selected destinations before writing.
 

@@ -7,6 +7,12 @@ test('layout, selected/disabled states, keyboard focus and dialog', async ({ pag
   await page.getByRole('button', { name: 'Activity', exact: true }).click();
   expect(await selected.boundingBox()).toEqual(before);
   await expect(page.getByRole('button', { name: 'Activity', exact: true })).toHaveAttribute('aria-current', 'page');
+  await page.mouse.move(0, 0);
+  const activity = page.getByRole('button', { name: 'Activity', exact: true });
+  const selectedSurface = await activity.evaluate(el => getComputedStyle(el).backgroundColor);
+  await activity.hover();
+  await page.screenshot({ path: testInfo.outputPath('selected-hover.png') });
+  await expect(activity).toHaveCSS('background-color', selectedSurface);
   await expect(page.getByRole('button', { name: 'Unavailable' })).toBeDisabled();
   await selected.focus();
   await page.keyboard.press('Tab');
