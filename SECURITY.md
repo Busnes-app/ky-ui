@@ -5,7 +5,7 @@ ky-ui is shared browser code (theme tokens, theme selection, navigation styling)
 ## Reporting vulnerabilities
 
 Report security vulnerabilities privately through GitHub Security Advisories:
-<https://github.com/Yoshiofthewire/ky-ui/security/advisories>. Do not open a public issue.
+<https://github.com/Busnes-app/ky-ui/security/advisories/new>. Do not open a public issue.
 Include the affected area, reproduction steps, impact, and affected versions.
 We aim to acknowledge reports within two business days and will coordinate a fix
 and disclosure.
