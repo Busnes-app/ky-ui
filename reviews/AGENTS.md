@@ -25,6 +25,7 @@ Keep competitive screenshot reviews and staged implementation evidence reproduci
 - Dated council exports use their local `export-*.py` scripts. Keep review rounds distinct in workbook scores and gates; retain their source JSON alongside generated artifacts.
 - Correct provenance in a new inventory version. Dirty-worktree captures identify the rendered bundle hash as well as the checkout revision and source diff.
 - Capture and runtime-review drivers are immutable archival text (`.mjs.txt`, `.sh.txt`), with original paths and checksums in their dated archive manifest. They require the recorded product harness and are not runnable shared-package tools.
+- When a security correction supersedes an archived driver, retain its bytes and direct reproduction instructions to the corrected version.
 
 ## Verification
 
