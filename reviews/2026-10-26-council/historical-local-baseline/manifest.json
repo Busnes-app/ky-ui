@@ -1,0 +1,38 @@
+[
+  {
+    "file": "screenshots/kymessages-00-before-overview-desktop-dark.png",
+    "sha256": "b73c9a1c6e26204fe905ea2fc3a0d3aa9cfb5bc0ed28a0010847ebcd9af57709",
+    "canonical_conflict": true,
+    "meaning": "Earlier local-checkout baseline; not the current implementation comparison base"
+  },
+  {
+    "file": "screenshots/kymessages-00-before-overview-desktop-light.png",
+    "sha256": "f3de6925b79e7bf0e7304c908332c38fd664327e4b5c8defee39988c3617761e",
+    "canonical_conflict": true,
+    "meaning": "Earlier local-checkout baseline; not the current implementation comparison base"
+  },
+  {
+    "file": "screenshots/kymessages-00-before-overview-mobile-dark.png",
+    "sha256": "854a546a8316d5703cb5b138aa3e58836defe20ef6cdfac8e870a160dcf9bbe6",
+    "canonical_conflict": true,
+    "meaning": "Earlier local-checkout baseline; not the current implementation comparison base"
+  },
+  {
+    "file": "screenshots/kymessages-00-before-overview-mobile-light.png",
+    "sha256": "10a72fd0fb8ebfcf5e109d84e81ff798111d9cca05e946d57eaf3b81cdb9ffaf",
+    "canonical_conflict": true,
+    "meaning": "Earlier local-checkout baseline; not the current implementation comparison base"
+  },
+  {
+    "file": "screenshots/kymessages-00-before-settings-desktop-dark.png",
+    "sha256": "b25182a069b08b2dfaa89f718213d1bde80c660bb62ad700daa54acf5547d59c",
+    "canonical_conflict": true,
+    "meaning": "Earlier local-checkout baseline; not the current implementation comparison base"
+  },
+  {
+    "file": "screenshots/kymessages-00-before-settings-desktop-light.png",
+    "sha256": "4590b8988174330840b54006af2e36dc9ff63ced7ef97ce53e1c350539ed4aff",
+    "canonical_conflict": true,
+    "meaning": "Earlier local-checkout baseline; not the current implementation comparison base"
+  }
+]

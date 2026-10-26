@@ -1,6 +1,6 @@
 ﻿Repository,PR URL,Base,Branch,Status,Merge / rollout note
-ky-ui,https://github.com/Busnes-app/ky-ui/pull/18,main,ui/council-cohesion,Open; final evidence and review pending,Shared 0.3.0; remaining inventory rollout pending.
-kypost-server,https://github.com/Busnes-app/KyPost-Server/pull/480,main,ui/council-cohesion,Open; CI/review pending,Head d1395936;1189 frontendtests pass; scoped initial-query wait; performance causation unresolved.
-KyCalendar,https://github.com/Busnes-app/KyCalendar/pull/79,main,ui/council-cohesion,Updated; CI/review pending,"Head95be60c; stage06contrast/phone/state corrections,28 Chromium checks pass."
-KyMessage-Server,https://github.com/Busnes-app/KyMessage-Server/pull/93,master,ui/council-cohesion,Open; CI/review pending,"Head e3556c4; console/auth stages01–03,05–06. Stock Element and Matrix-on remain unverified."
-ky-ui (evidence),,ui/council-cohesion,ui/council-evidence,Preparing,"Spreadsheet, screenshots and source records; merge shared foundation first."
+ky-ui,https://github.com/Busnes-app/ky-ui/pull/18,main,ui/council-cohesion,CI passed; reviewer cleared at recorded head,Head 4c9746017fdc02487f0e62cec17a12be8c74c246; independent full source review resolved both findings. Check live PR before merging.
+kypost-server,https://github.com/Busnes-app/KyPost-Server/pull/480,main,ui/council-cohesion,CI passed; reviewer cleared at recorded head,Head bfbe8439c8680155d78adb1defb996336d7a6e28; independent full source review resolved both findings. Check live PR before merging.
+KyCalendar,https://github.com/Busnes-app/KyCalendar/pull/79,main,ui/council-cohesion,CI passed; reviewer cleared at recorded head,Head 5b9ae3f0bb65aa426a9444a1cd1999cafcac9fab; independent full source review resolved both findings. Check live PR before merging.
+KyMessage-Server,https://github.com/Busnes-app/KyMessage-Server/pull/93,master,ui/council-cohesion,CI passed; reviewer cleared at recorded head,Head 2f6d6d0a9a91b2125bd55d99d5f0a7594275e48c; independent full source review resolved both findings. Check live PR before merging.
+ky-ui (evidence),https://github.com/Busnes-app/ky-ui/pull/19,ui/council-cohesion,ui/council-evidence,Live gate: open linked PR,Snapshot/exports cannot certify their own subsequent commit. Consult liveCI/review; merge shared#18 first.

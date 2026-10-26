@@ -29,3 +29,22 @@
 ## Product checks
 
 Product-specific implementation records report staged screenshots, source hashes, executed checks and remaining limitations. A target of 9/10 is not a measured outcome.
+
+## Final implementation review and PR verification
+
+- Claude Opus 5.5 reviewed 118 unique final viewport captures: KyPost 28, KyCalendar 30, KyMessages 60. Codex independently checked every image hash, weighted total, unrounded cohort mean and equal-cohort summary.
+- Final visual quality is 7.52 / 7.54 / 7.72; separate Ky brand fit is 8.08 / 8.16 / 8.51. No product achieves 9/10 acceptance. These are scoped visual summaries, not provider rankings; missing states and behavior coverage remain explicit.
+- The scored pixels retain their recorded stage 05/06 source revisions. Later hover and DOM-identity corrections are described in capture-followups.json, with stage 08 hover evidence. The frozen scores were not raised after those fixes.
+- Final runtime source heads are shared 4c97460, KyPost bfbe8439, KyCalendar 5b9ae3f and KyMessages 2f6d6d0. pr-gates-snapshot.json records a timestamped CI/reviewer observation. Always read the live PR before merging; a snapshot does not certify later pushes.
+- The complete source review found F1 (navigation hover contrast) and F2 (reader focus loss). The independent follow-up verifies both resolved, with no new actionable findings. Each regression passes on the fix and fails when the old code is restored; consumer bytes match and rebuilt Calendar/Messages bundles match the committed output.
+- All 44 archived source patch records apply to their explicit bases (43 non-empty, one empty). source-patch-bases.json distinguishes full snapshots from incremental corrections, including the reverted test warm-up.
+- The 14-sheet XLSX reopens successfully and preserves 40 original rows and 240 dimension observations. Current-score arithmetic is independently verified. The workbook indexes 503 after captures with paired files or explicit unmatched status; manifests own capture comparability.
+- The offline gallery embeds 981 synthetic previews. Browser checks find no network requests, console errors or page overflow at 390/1280px; its text/control color pairs pass the standalone offline/contrast checker. This verifies the report, not product-wide accessibility.
+- Historical local baseline records with six differing/missing canonical files are preserved under historical-local-baseline/ with their original notes. They do not enter current comparisons or quality means.
+
+## Documentation and cleanup
+
+- Product web/browser ownership docs and UI-VERIFICATION.md describe final behavior and checks. Shared root/skills/reviews docs describe the design and evidence workflows. Backend and product-root contracts remain unchanged because authority, APIs, storage and deployment boundaries did not change.
+- The workspace root records the owner's Busnes identity, single-sidebar, screenshots, spreadsheet and PR preferences.
+- The owned KyPost scratch app and demo-IMAP fixture were stopped; fixture ownership was verified from its checkout and port 5993. Calendar/Messages actors stopped their disposable services. The unrelated KyNotes service was left untouched.
+- MySlop still rejects its configured token with HTTP 401; no board handoff or completed-folder update was posted.

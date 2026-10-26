@@ -1,0 +1,113 @@
+diff --git a/UI-VERIFICATION.md b/UI-VERIFICATION.md
+index c32ce5d..528008b 100644
+--- a/UI-VERIFICATION.md
++++ b/UI-VERIFICATION.md
+@@ -68,4 +68,4 @@ Capture conditions: the built server on disposable SQLite data, the fictional ev
+ 
+ Four staged changes toward the Ky suite design contract (shell; calendar views; forms and dialogs; one left column, replacing the separate calendar-list column) on ky-ui 0.3.0 tokens. Before and after captures for every stage, in Busnes Light and Dark at 1280×900 and 390×844 CSS pixels, with source hashes, fixture and capture conditions, are in the ky-ui council record `reviews/2026-10-26-council/kycalendar-implementation.md` (images `kycalendar-0{1,2,3,4}-{before,after}-*`). The baseline is `origin/main` at `9a527d2` with the ky-ui 0.3.0 vendor sync.
+ 
+-Capture conditions: the built server on disposable SQLite data, real sign-in per capture, the browser clock fixed at 2026-10-27 10:15 America/Chicago, fictional events. A Nord capture checks that saved named palettes reach the calendar. Stage 6 (review corrections) pairs before and after captures of Month, Subscribe, the landing view, the phone calendar disclosure, the New event dialog and the empty, loading (3s emulated network latency) and offline states, `kycalendar-06-{before,after}-*`. Stage 4 also records a draft-resize sequence (rename and subscribe drafts typed, the window crossing 720px and back, both starting widths) and enlarged date-field focus crops (field root ring; Chromium's own ring on the calendar-picker icon).
++Capture conditions: the built server on disposable SQLite data, real sign-in per capture, the browser clock fixed at 2026-10-27 10:15 America/Chicago, fictional events. A Nord capture checks that saved named palettes reach the calendar. Stage 8 (runtime review F1) pairs hovered primary-navigation captures before and after the global primary-hover fix, at both sizes in both Busnes themes, with computed colours and contrast in each manifest (`kycalendar-08-{before,after}-nav-hover-*`). Stage 6 (review corrections) pairs before and after captures of Month, Subscribe, the landing view, the phone calendar disclosure, the New event dialog and the empty, loading (3s emulated network latency) and offline states, `kycalendar-06-{before,after}-*`. Stage 4 also records a draft-resize sequence (rename and subscribe drafts typed, the window crossing 720px and back, both starting widths) and enlarged date-field focus crops (field root ring; Chromium's own ring on the calendar-picker icon).
+diff --git a/web/AGENTS.md b/web/AGENTS.md
+index fcdef27..3285bc3 100644
+--- a/web/AGENTS.md
++++ b/web/AGENTS.md
+@@ -10,7 +10,7 @@ Owns user interface components, service worker caching, PWA installation manifes
+ - Web themes default to the Busnes.app cream/light and charcoal/dark palettes with orange accents, following the OS until a browser-local choice is saved. Preserve existing named themes and saved choices.
+ - A signed-in user with `must_change_password` sees only password replacement and sign-out. Replacement uses `secureFetch`, returns to login after session revocation, and never exposes the normal navigation before completion.
+ - The product name is `KyCalendar`: the brand, title and manifest use it, and `app_name` (`KY_APP_NAME`, default `config.DefaultAppName`) falls back to it.
+-- `src/styles/theme.css` holds fonts, named palettes, the app shell, buttons, fields and badges; it resets every margin, so it restores `dialog { margin: auto }` for modal centring. Its spacing, radius, field-border and modal-shadow variables alias the ky-ui geometry tokens (8px rhythm); body text is 15px. Button hierarchy: a bare `button` is primary; `.btn-secondary`, `.btn-ghost` and `.btn-danger` (every destructive action) step down; `.btn-sm` is the row style, with smaller text but the same 40px height as every button, input and select. Inputs keep a 3:1 `--field-border`; `:focus-visible` draws a 2px accent ring at a 2px offset; `prefers-reduced-motion` stops transitions and animations.
++- `src/styles/theme.css` holds fonts, named palettes, the app shell, buttons, fields and badges; it resets every margin, so it restores `dialog { margin: auto }` for modal centring. Its spacing, radius, field-border and modal-shadow variables alias the ky-ui geometry tokens (8px rhythm); body text is 15px. Button hierarchy: a bare `button` is primary (its accent hover excludes `.ky-nav-item` through `:where()`, keeping its specificity: navigation rows take ky-ui's neutral hover, which sits below this rule since ky-ui 0.3.0; `browser/nav.spec.mjs`); `.btn-secondary`, `.btn-ghost` and `.btn-danger` (every destructive action) step down; `.btn-sm` is the row style, with smaller text but the same 40px height as every button, input and select. Inputs keep a 3:1 `--field-border`; `:focus-visible` draws a 2px accent ring at a 2px offset; `prefers-reduced-motion` stops transitions and animations.
+ - `src/styles/ui.css` is the shared page layer, following KyIdentity's house style on ky-ui tokens: `.page` (max 72rem), `PageHeader`, `.card`, `.form`/`.field`/`.inline-form` (constrained widths), `.table-card` + `.data-table` (right-aligned `.row-actions`; `.stacked` turns rows into labelled blocks at 720px or less, so tables never scroll the page), `.record-list`, `EmptyState`, `p[role=alert|status|note]` messages, `Modal` (`dialog.modal`: title, description, body, `.modal-actions` with the primary action last and destructive ones `push-start`) and `CodeBlock` (scrolls inside its own box, with Copy). Pages compose these from `src/components/ui.tsx` rather than inline styles. Calendar forms use `.kc-form`, `.kc-check` and `.kc-actions` from `src/styles/calendar.css`.
+ - `src/calendarColors.ts` keeps calendars apart: a new personal calendar (sidebar) or subscription takes the first `PALETTE` colour none of the user's calendars shows, a new group calendar (admin) the first unused by group calendars from a later start, and a calendar stored without a colour is shown in the next unused one (`calendarColors`), consistently in the sidebar and on events. Event text is charcoal or white by contrast (`textOn`). No server default is involved.
+ - Strict TypeScript type safety without unused imports.
+diff --git a/web/browser/AGENTS.md b/web/browser/AGENTS.md
+index 2e4e6e6..c62f2bb 100644
+--- a/web/browser/AGENTS.md
++++ b/web/browser/AGENTS.md
+@@ -17,6 +17,7 @@ This directory owns test setup, disposable server launch and UI assertions. The
+ - `calendar.spec.mjs` signs in as `walter` and covers the calendar under the production CSP: the calendar list in the app sidebar at 1280px and behind the header's Calendars disclosure at 390px (one left column), create by form, Enter on the focused list event opens it, Escape closes the event dialog, delete (checked again after a reload), week view opening scrolled to 07:00 after a switch from month, the agent form's three access levels (Read only chosen), the AI agent setup's commands scrolling inside their own blocks, and no horizontal scroll.
+ - `resize.spec.mjs` signs in as `walter` (own `X-Forwarded-For`, 203.0.113.23), half-fills the rename and subscribe forms, then crosses 720px both ways: the same list node stays in the app sidebar with every draft, the phone disclosure closes on Escape (focus back on its summary) and reopens with the drafts, and an add-calendar draft survives the same trip. Nothing is saved.
+ - `month.spec.mjs` signs in as `walter` (own `X-Forwarded-For`, 203.0.113.24), creates an event, and in Month checks the composited contrast of other-month day numbers (≥ 4.5:1, recorded as an annotation), that the event is a button named with its title (also where the phone month hides it) and opens the same form (then deletes it), and that offline the alert names the failure and the list says "Events could not be loaded.".
++- `nav.spec.mjs` signs in as `walter` (own `X-Forwarded-For`, 203.0.113.25), selects the Busnes theme matching the project, hovers each unselected primary-navigation row and, once its transitions have finished, requires the neutral `--panel-hover` surface at ≥ 4.5:1 (recorded as annotations); hovering the selected row keeps `--accent-soft` and the accent rail.
+ - `groups.spec.mjs` signs in as `admin`, creates a group, adds `walter` by search, grants the group a new group calendar, then signs `walter` in through a separate browser context and finds the calendar in his sidebar. It sends its own `X-Forwarded-For` (the harness sets `KY_TRUSTED_PROXIES=127.0.0.1`) so its sign-ins do not spend the shared per-IP login limit (20 a minute) the other specs rely on; the limiter itself stays on.
+ - `people.spec.mjs` has `admin` add a person, reads the one-time password from the dialog, then signs that person in through a separate context, replaces the password and lands on the calendar. It uses its own `X-Forwarded-For` (203.0.113.21), distinct from `groups.spec.mjs`.
+ - `twofactor.spec.mjs` has `admin` add a person who replaces the password, opens Two-step verification, reads the setup key, fails with a wrong code, confirms with the previous 30-second step's code (computed in the spec, RFC 6238), saves the recovery codes, signs out, and signs in again through the code prompt with the current step's code. It uses its own `X-Forwarded-For` (203.0.113.22).
+diff --git a/web/browser/nav.spec.mjs b/web/browser/nav.spec.mjs
+new file mode 100644
+index 0000000..d9bf04b
+--- /dev/null
++++ b/web/browser/nav.spec.mjs
+@@ -0,0 +1,58 @@
++import { test, expect } from '@playwright/test';
++
++// Own client address (the harness trusts loopback as a proxy) so these sign-ins do not spend
++// the login budget the other specs share.
++const ownIP = { 'X-Forwarded-For': '203.0.113.25' };
++
++// Hover on the primary navigation stays neutral: the product's global primary-button hover
++// (an accent fill) must never reach a navigation row, whose ink would sit on orange.
++test('navigation hover: idle rows stay neutral, the selected row keeps its rail', async ({ browser }, testInfo) => {
++  const { viewport, colorScheme } = testInfo.project.use;
++  const context = await browser.newContext({ extraHTTPHeaders: ownIP, viewport, colorScheme });
++  const page = await context.newPage();
++  await page.goto('/');
++  await page.getByLabel('Username', { exact: true }).fill('walter');
++  await page.locator('input[type=password]').fill('WalterUpdated456!');
++  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
++  await page.getByLabel('Color theme').selectOption(`busnes-${colorScheme}`);
++  // The calendar page mounts the header's Calendars disclosure, which narrows the phone row: hover
++  // only once that layout is final.
++  await expect(page.locator('.fc')).toBeVisible();
++  const nav = page.getByRole('navigation', { name: 'Primary' });
++
++  // Colours after the hover transition has finished, normalised through a 1px canvas (the hover
++  // mixes colours, which compute to color(srgb …)), with the text's contrast on its background.
++  const hovered = async (name) => {
++    const item = nav.getByRole('button', { name, exact: true });
++    await item.hover();
++    return item.evaluate(async (el) => {
++      // A transition cancelled mid-way (the phone row scrolls on hover) is replaced by a new one.
++      while (el.getAnimations().length) await Promise.all(el.getAnimations().map((a) => a.finished.catch(() => {})));
++      const g = new OffscreenCanvas(1, 1).getContext('2d');
++      const rgb = (css) => { g.clearRect(0, 0, 1, 1); g.fillStyle = css; g.fillRect(0, 0, 1, 1); return [...g.getImageData(0, 0, 1, 1).data.slice(0, 3)]; };
++      const lum = (c) => c.map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }).reduce((t, v, i) => t + v * [0.2126, 0.7152, 0.0722][i], 0);
++      const root = getComputedStyle(document.documentElement);
++      const cs = getComputedStyle(el);
++      const [bg, fg] = [rgb(cs.backgroundColor), rgb(cs.color)];
++      const [hi, lo] = [lum(fg), lum(bg)].sort((x, y) => y - x);
++      return {
++        hover: el.matches(':hover'), bg, contrast: (hi + 0.05) / (lo + 0.05), shadow: cs.boxShadow,
++        panelHover: rgb(root.getPropertyValue('--panel-hover')), accentSoft: rgb(root.getPropertyValue('--accent-soft')), accent: rgb(root.getPropertyValue('--accent')),
++      };
++    });
++  };
++
++  for (const name of ['Phones & apps', 'Two-step verification']) {
++    const s = await hovered(name);
++    testInfo.annotations.push({ type: `hover contrast: ${name}`, description: s.contrast.toFixed(2) });
++    expect(s.hover).toBe(true);
++    expect(s.bg).toEqual(s.panelHover);
++    expect(s.contrast).toBeGreaterThanOrEqual(4.5);
++  }
++  const selected = await hovered('Calendar');
++  expect(selected.bg).toEqual(selected.accentSoft);
++  expect(selected.shadow).toContain(`rgb(${selected.accent.join(', ')})`);
++  expect(selected.shadow).toContain('inset');
++  expect(selected.contrast).toBeGreaterThanOrEqual(4.5);
++  await context.close();
++});
+diff --git a/web/src/styles/theme.css b/web/src/styles/theme.css
+index ec1b41d..2c00b6f 100644
+--- a/web/src/styles/theme.css
++++ b/web/src/styles/theme.css
+@@ -239,7 +239,8 @@ button, .btn {
+   text-decoration: none;
+   transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .1s ease;
+ }
+-button:hover:not(:disabled), .btn:hover { background: color-mix(in srgb, var(--accent) 86%, var(--ink-strong)); }
++/* Navigation rows take ky-ui's neutral hover; :where keeps this rule's specificity unchanged. */
++button:not(:where(.ky-nav-item)):hover:not(:disabled), .btn:hover { background: color-mix(in srgb, var(--accent) 86%, var(--ink-strong)); }
+ button:active:not(:disabled), .btn:active { transform: translateY(1px); }
+ button:disabled, .btn:disabled { background: var(--panel-hover); color: var(--ink); border-color: var(--line); cursor: not-allowed; }
+ 

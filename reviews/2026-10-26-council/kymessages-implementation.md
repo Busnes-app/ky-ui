@@ -388,3 +388,80 @@ At the parent's request, the stage also captures the complete console and auth s
 - **Page titles.** "System Settings & Architecture" and the SCIM title differ from their navigation labels; the browser suite asserts them.
 - **Audit on desktop.** Target column rows can be tall.
 - MemberHome and Element remain `N/A`. Named themes were not captured.
+
+## Stage 08: navigation hover contrast (runtime-source review F1)
+
+This stage fixes one defect, finding F1 in `runtime-source-review.md`, with no other polish. It runs on worktree HEAD `e3556c4`, the committed PR #93. Stage 05 and 06 files are untouched.
+
+### Cause, confirmed in the real app
+
+- ky-ui's shared hover is `.ky-nav-item:where(…):hover`, at specificity (0,2,0).
+- This PR's global primary hover `button:hover:not(:disabled), .btn:hover` is (0,2,1). It sits later in `theme.css` than `.app-nav button:hover`, which is also (0,2,1), so it wins on an unselected nav row and paints `color-mix(accent 86%, ink-strong)`.
+- The selected row (0,3,0) is unaffected.
+
+### Fix (`web/src/styles/theme.css`, one selector)
+
+`button:not(:where(.ky-nav-item)):hover:not(:disabled), .btn:hover`. Specificity stays (0,2,1), so every other button keeps the primary hover. `.btn-secondary`, `.btn-ghost` and `.btn-danger` keep their own higher-specificity hovers. Nothing renders `.ky-nav-item` with `.btn`.
+
+What is unchanged:
+
+- The vendored ky-ui files (`check-vendor` passes, `git diff HEAD -- web/src/ky-ui` is empty).
+- The Busnes Light `.app-header` aliases (`--accent-soft: var(--panel)` and the 7% ink `--panel-hover`).
+- Non-hover appearance (see the evidence below).
+
+### Capture (`/tmp/ky-msg-cohesion/capture08.mjs` via `rebuild08.sh <phase>`)
+
+- **Setup.**
+  - A real signed-in app on a disposable 5598 server: SQLite, Matrix off, captcha none, init-admin with the password replaced through the API, nothing seeded.
+  - Theme chosen in the product select; Overview selected.
+  - Chromium 153.0.8010.12, 1280×900 and 390×844, Busnes Light and Dark.
+- **Images per combination.**
+  - `nav-pointer-away`: pointer at (0, 0).
+  - `nav-hover-idle`: Playwright hover on Users.
+  - `nav-hover-selected`: hover on Overview.
+- **Measurement.** Taken once the element's transitions settle (`getAnimations()` settled). The background is composited over `--sidebar-start`, and the WCAG ratio is of the computed text colour against it. No response is mocked, and no fixture page stands in for the app.
+- **Manifests.** `screenshots/kymessages-08-{before,after}-manifest.json` hold each image's hash and measurements, plus `theme.css`, vendor `navigation.css` (`cc6dbaa0…`, same in both), binary and dist hashes.
+  - **Before:** `theme.css` `650d7f87…`, binary `775e3121…`.
+  - **After:** `theme.css` `9f3ef528…`, binary `d1dc0cdf…`.
+- **Patches.**
+  - `kymessages-08-before-web-src.patch` is empty, because before equals HEAD.
+  - `kymessages-08-after-web-src.patch` is `6f4393cc…`, 902 bytes, `web/src` against HEAD.
+  - `kymessages-08-after-source.patch` is `c88514a9…`, 4,170 bytes, `web/src` plus `web/browser` against HEAD.
+
+| Busnes theme | Idle row hovered, before | Idle row hovered, after | Selected row hovered, before = after |
+|---|---|---|---|
+| Light (1280 and 390) | `rgb(168,59,26)`, **2.53:1** | `rgb(227,225,217)`, **12.27:1** | `rgb(255,255,255)`, 16.06:1 |
+| Dark (1280 and 390) | `rgb(245,149,114)`, **1.94:1** | `rgb(43,56,58)`, **10.57:1** | `rgb(43,38,34)`, 13.03:1 |
+
+The idle row at rest is 5.39:1 (Light) and 7.48:1 (Dark), both before and after.
+
+**Non-hover appearance.**
+
+- `nav-pointer-away` is byte-identical before and after in 3 of 4 combinations.
+- Mobile Dark differs in 8 pixels at x 16–18, y 556–585, with a maximum channel delta of 1. That is anti-aliasing on a body control edge, not the navigation.
+- The `nav-hover-selected` images differ only in the Users row (y 132–172 on desktop). It was still fading out of the previous idle hover when the shot was taken: from orange before, from neutral after. The selected row's measured surface is identical.
+
+### Regression test (`web/browser/ui.spec.mjs`, the existing 7-project suite)
+
+- **What it does.** In each of the 6 Chromium and Firefox projects (light and dark × 390 and 1280), with the OS-following Busnes theme, it hovers the idle Users row. It asserts that the surface changes from rest and that text contrast is at least 4.5:1. It then hovers the selected Overview row and asserts its surface, contrast and rail equal the at-rest values.
+- **Helper.** `navSurface` waits for transitions to settle with `Promise.allSettled` in a bounded loop. A first version used `Promise.all`, which failed in Chromium Dark with an AbortError from the transition cancelled by the theme switch. That was a harness flaw, fixed before the proof runs.
+- **Negative proof.** With HEAD's `theme.css` restored and dist and server rebuilt, all 6 UI projects fail on the contrast assertion: Received 2.53 (Light) and 1.94 (Dark). Captcha passes. Log: `/tmp/ky-msg-cohesion/browser08-prefix.log`.
+- **Positive.** With the fix restored (hash-checked), all 7 projects pass. Log: `/tmp/ky-msg-cohesion/browser08.log`.
+
+### Checks (final source)
+
+- `npm run test:browser`: 7/7 on 5391/5392. The ports were checked before each run. One attempt aborted unrun because the Calendar actor held 5391; it was re-run once the port was free.
+- `KY_SMOKE_PORT=18097 make ci` exits 0:
+  - tidy, gofmt and vet, plus the compose checks;
+  - race tests at 76.4% coverage;
+  - `npm ci`, 0 vulnerabilities, 157 vitest;
+  - smoke, all checks passed (85 `[ok]`).
+- `check-vendor`: ky-ui 0.3.0 verified.
+- Two `npm run build` runs give identical `web/dist`. The JS asset name also changes, because the bundle references the renamed CSS.
+- **Not run:** WebKit (missing host libraries), `make matrix-acceptance`, `make test-postgres`.
+
+### Notes
+
+- `runtime-source-review.md` belongs to its reviewer and is not edited here. This section records F1's resolution for KyMessages.
+- KyCalendar's copy of the same rule is that actor's to fix.
+- The stage 06 scored captures predate this fix. They show no hovered navigation (pointer at 0, 0), so their content is unaffected.

@@ -192,13 +192,33 @@ Rebuilt and served. On the real build:
 - The selected row keeps its background under hover, and an idle row's background still changes, in Busnes Light and Dark at 1280×900 and 390×844 (`kypost-06-followup-hover.json`).
 - The stage-05 browser checks gave the same results (`kypost-06-followup-checks.json`): 105px phone header, every Tab stop in view with a 2px ring, reader and editor focus return, Quill contrast 16.06 / 12.67, and overflow 0.
 
+## Follow-up: F2 reader focus fix (`runtime-source-review.md`)
+
+The worktree is at PR #480's commit `d1395936`, plus uncommitted changes in two files.
+
+- **Cause:** the reader tool buttons were mapped with `key={label}`. Activating Show/Hide Remote Content flips its label, so React unmounted the focused button and mounted a new one, and keyboard focus fell to `<body>`.
+- **Fix** (`ReadPage.tsx`): every tool record has a stable id (`archive`, `snooze`, `read`, `spam`, `print`, `remote-content`, `delete`), and the buttons are keyed by it. `aria-label`, `title`, the visible label, the handlers, the disabled rules and the danger styling are unchanged. So are the PGP, phishing and remote-image logic, the body frame and the downloads.
+- **Regression test** (`ReadPage.test.tsx`, "keeps keyboard focus on the remote-content tool when its label flips"): it focuses Show Remote Content and presses Enter, then waits for the tracker to load. It then checks three things:
+  - the button found by "Hide Remote Content" is the same node as before;
+  - `document.activeElement` is that node;
+  - its `title` changed to "Hide Remote Content".
+
+  The test failed on `d1395936` (the `toBe` identity assertion) and passes with the fix.
+- **Patches:**
+  - `source-stages/kypost/source-08-f2-focus.patch` (`9823c643…`) is against `3037caf8`. Compared with `source-07-test-wait.patch`, only those two files differ.
+  - `source-08-f2-focus-vs-d1395936.patch` (`e3a9e830…`) holds the incremental change.
+  - The parent's `source-08-committed.patch` is untouched.
+- **Preserved:** the scoped 5 s first-query waits and every earlier change.
+- **No new captures.** The change affects only DOM identity: the same buttons render with the same classes, labels and order, so every stage-05 image stays valid.
+- **Not run:** a real-browser check. The scratch KyPost server (port 5596) and its mail fixture were no longer running, and they are the parent's processes, so I did not restart them. The jsdom test is the recorded evidence.
+
 ## Checks (final source, superseding earlier check notes)
 
-The lint-only change (`kypost-lint-review.md`) resolved all 18 warnings that the stage 1–3 notes recorded as matching HEAD. The figures below are for `source-06-followup.patch` on HEAD `3037caf8` (and, for the two test-file changes, `source-07-test-wait.patch`), Node 26.12.1 first on PATH, with heavy runs capped at 6G.
+The lint-only change (`kypost-lint-review.md`) resolved all 18 warnings that the stage 1–3 notes recorded as matching HEAD. The figures below are for `source-08-f2-focus.patch` on HEAD `3037caf8` unless a line says otherwise, Node 26.12.1 first on PATH, with heavy runs capped at 6G.
 
 - `npm run lint -- --max-warnings 0`: 0 errors, 0 warnings.
 - `npm run typecheck`: clean. `node src/ky-ui/check-vendor.mjs`: ky-ui 0.3.0 verified.
-- `npm test -- --run`: 109 files, 1189/1189 passed. That is two full runs on `source-05-final`, one on `source-06-followup` and one on `source-07-test-wait`.
+- `npm test -- --run`: 109 files. On `source-08-f2-focus` it passed 1190/1190, which is the earlier 1189 plus the F2 test. Earlier full runs passed 1189/1189: two on `source-05-final`, one on `source-06-followup` and one on `source-07-test-wait`.
 - `npm run build` (to `/tmp`): passes. The only notice is the documented `@hpke/common` "crypto externalized" false positive.
 - `npm audit`: 0 vulnerabilities each for runtime `--omit=dev --audit-level=low`, dev `--audit-level=high` and `lint/`.
 - `scripts/check-toolchains.sh` and `scripts/check-env-example.sh`: pass.

@@ -10,6 +10,7 @@ import hashlib
 import json
 import math
 import re
+import textwrap
 
 from openpyxl import Workbook, load_workbook
 from openpyxl.drawing.image import Image as SheetImage
@@ -67,6 +68,10 @@ def sheet(name, headers, rows, widths=None):
                 cell.number_format = '0.00'
     for n in range(1, len(headers) + 1):
         ws.column_dimensions[get_column_letter(n)].width = (widths or {}).get(n, 20)
+    # Keep wrapped evidence readable in spreadsheet viewers that do not auto-fit on open.
+    for row in ws.iter_rows(min_row=2):
+        lines = max(sum(max(1, len(textwrap.wrap(part, width=max(8, int(ws.column_dimensions[cell.column_letter].width))))) for part in str(cell.value or '').split('\n')) for cell in row)
+        ws.row_dimensions[row[0].row].height = min(390, max(20, lines * 15 + 4))
     if ws.max_row > 1:
         table = Table(displayName='T' + re.sub('[^a-zA-Z0-9]', '', name), ref=ws.dimensions)
         table.tableStyleInfo = TableStyleInfo(name='TableStyleMedium2', showRowStripes=True)
@@ -94,7 +99,7 @@ sheet('Start here', ['Item', 'Result / meaning'], [
     ['Observed baseline gaps', 'Most competitor comparisons mix theme, state or viewport; unmatched comparisons are flagged. Outlook captures are desktop clients of different generations.'],
     ['Missing evidence', 'Original set has no KyMessages. New KyMessages captures cover the console and authentication, not MemberHome or Element chat; absent cohorts are N/A, not zero.'],
     ['Owner correction', 'KyCalendar uses one left navigation region. The rejected double-left-panel layout was removed in stage 04.'],
-    ['Stages', '01 Shell; 02 Task views; 03 Forms/dialogs; 04 Calendar single-sidebar correction; 05 usability refinements; 06 review corrections. See Stage evidence and Screenshot gallery.'],
+    ['Stages', '01 Shell; 02 Task views; 03 Forms/dialogs; 04 Calendar single-sidebar correction; 05 usability refinements; 06 review corrections; 08 hover regressions. Test-only and DOM-identity fixes do not change screenshot pixels.'],
     ['Verification', 'Recorded tests are scoped evidence. Missing states, named-theme and full integration checks remain explicit; PR CI/review are separate gates.'],
     ['PRs', 'The PRs sheet records mergeable work and its live links when created. No merge or deployment is authorized by this report.'],
     ['Local image links', 'Stage evidence links are relative to this workbook. Download the screenshots folder beside it to use those links. The gallery embeds selected examples.'],
@@ -121,6 +126,8 @@ for file in sorted(by_final):
         evidence_rows.append([file, r['observed_product'], dimension, weights[dimension], r['scores'][dimension], r['observations'][dimension], bool(raw.get('duplicate_of'))])
 ws = sheet('Original scores', ['File', 'Product', 'Surface', 'Cohort', 'State', 'Theme', 'Width px', 'Height px', 'Initial quality', 'V2 quality', 'Method delta', *DIMS, 'Ky fit (separate)', 'Confidence', 'Duplicate of', 'Caveat', 'SHA-256'], score_rows, {1: 40, 2: 34, 3: 35, 4: 24, 6: 30, 20: 40, 21: 90, 22: 70})
 ws.freeze_panes = 'E2'
+for row in ws.iter_rows(min_row=2):
+    row[8].number_format = row[9].number_format = '0.0'
 sheet('Rating evidence', ['File', 'Product', 'Dimension', 'Weight', 'Score', 'Visible evidence', 'Inherited duplicate'], evidence_rows, {1: 40, 2: 34, 3: 25, 6: 110})
 sheet('Rubric', ['Dimension / gate', 'Weight / requirement', 'Meaning'], [[k, weights[k], 'Fixed brand-neutral visual quality dimension'] for k in DIMS] + [
     ['Anchor 3', '', 'Broken: overlap, clipping, unreadable text or no primary action.'],
@@ -179,6 +186,8 @@ for p in sorted(ROOT.glob('implemented-*-scores.json')):
     review = json.loads(p.read_text())
     round_name = review.get('round', p.stem)
     review_weights = review.get('rubric', {}).get('weights', weights)
+    assert set(review_weights) == set(DIMS)
+    assert all(Decimal(str(review_weights[k])) == Decimal(str(weights[k])) for k in DIMS), p.name
     for product, result in review.get('product_visual_summary', {}).items():
         acceptance.append([p.name, round_status.get(p.name, 'Recorded round; see source revision'), product, 'Product visual summary', result.get('equal_cohort_weight_mean'), result.get('ky_fit_mean'), result.get('files'), result.get('meets_9_quality_every_cohort', False), result.get('label', '')])
     for product, cohorts in review.get('cohort_aggregates', {}).items():
@@ -200,7 +209,9 @@ for p in sorted(ROOT.glob('implemented-*-scores.json')):
         for dimension in DIMS:
             implementation_evidence.append([p.name, result['file'], dimension, review_weights[dimension], scores[dimension], result.get('observations', {}).get(dimension, '')])
 sheet('Acceptance', ['Record / review round', 'Evidence status', 'Product', 'Cohort / scope', 'Quality / 10', 'Ky fit (separate)', 'Scored captures', 'Scope meets 9', 'Comparison / limitation'], acceptance or [['Pending', 'Pending', 'All', 'Fresh review', None, None, 0, False, 'The 9/10 target is not yet certified.']], {1: 55, 2: 45, 3: 24, 4: 32, 9: 100})
-sheet('Implementation scores', ['Record', 'Round', 'File', 'Product', 'Surface', 'Cohort', 'State', 'Theme', 'Viewport', 'Quality / 10', 'Ky fit (separate)', *DIMS, 'Capture revision', 'SHA-256', 'Caveat'], implementation_rows, {1: 48, 2: 50, 3: 65, 4: 35, 18: 75, 19: 70, 20: 95})
+ws = sheet('Implementation scores', ['Record', 'Round', 'File', 'Product', 'Surface', 'Cohort', 'State', 'Theme', 'Viewport', 'Quality / 10', 'Ky fit (separate)', *DIMS, 'Capture revision', 'SHA-256', 'Caveat'], implementation_rows, {1: 48, 2: 50, 3: 65, 4: 35, 18: 75, 19: 70, 20: 95})
+for row in ws.iter_rows(min_row=2):
+    row[9].number_format = row[10].number_format = '0.0'
 sheet('Implementation evidence', ['Record', 'File', 'Dimension', 'Weight', 'Score', 'Visible evidence'], implementation_evidence, {1: 48, 2: 65, 3: 26, 6: 115})
 sheet('Behavior gates', ['Record', 'Product', 'Gate', 'Status', 'Evidence / limitation'], gate_rows, {1: 55, 2: 26, 3: 26, 4: 24, 5: 125})
 
@@ -218,6 +229,7 @@ pairs = [
     ('kymessages', '05', 'audit-mobile-light'), ('kymessages', '05', 'health-desktop-dark'),
     ('kycalendar', '06', 'month-mobile-light'), ('kycalendar', '06', 'new-event-mobile-dark'),
     ('kymessages', '06', 'health-offline-mobile-light'),
+    ('kycalendar', '08', 'nav-hover-desktop-light'), ('kymessages', '08', 'nav-hover-idle-mobile-light'),
 ]
 row = 4
 for product, stage, surface in pairs:

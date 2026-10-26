@@ -1,0 +1,18 @@
+{
+  "meaning": "Final visual scores retain their frozen capture sources; later code corrections affect states absent from those scored pixels. This is not a new rating or a claim of full acceptance.",
+  "KyPost": {
+    "scored_stage": "05",
+    "final_head": "bfbe8439",
+    "followup": "Shared hover and stable DOM keys; no non-hover pixel changes; keyboard focus regression added."
+  },
+  "KyCalendar": {
+    "scored_stage": "06",
+    "final_head": "5b9ae3f",
+    "followup": "Stage08 captures idle navigation hover correction; other captured states unchanged."
+  },
+  "KyMessages": {
+    "scored_stage": "06",
+    "final_head": "2f6d6d0",
+    "followup": "Stage08 hover correction; pointer-away images identical in3/4 cases, tiny8px antialias variance in remainingcase."
+  }
+}

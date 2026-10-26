@@ -1,0 +1,379 @@
+{
+  "captured_utc": "2026-10-26T07:37:09.661301+00:00",
+  "pull_requests": [
+    {
+      "repository": "Busnes-app/ky-ui",
+      "number": 18,
+      "url": "https://github.com/Busnes-app/ky-ui/pull/18",
+      "head": "4c9746017fdc02487f0e62cec17a12be8c74c246",
+      "state": "OPEN",
+      "mergeable": "MERGEABLE",
+      "checks": [
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/runs/121425411932",
+          "name": "CodeQL",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40278153986/job/121425273037",
+          "name": "test",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40278153986/job/121425273267",
+          "name": "browser",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40278149575/job/121425262181",
+          "name": "Analyze (actions)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40278149575/job/121425261912",
+          "name": "Analyze (javascript-typescript)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40278148101/job/121425253547",
+          "name": "test",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40278148101/job/121425253732",
+          "name": "browser",
+          "state": "SUCCESS"
+        }
+      ],
+      "ci_pass": true,
+      "review": {
+        "head": "4c9746017fdc02487f0e62cec17a12be8c74c246",
+        "verdict": "cleared"
+      },
+      "review_current_clear": true
+    },
+    {
+      "repository": "Busnes-app/KyCalendar",
+      "number": 79,
+      "url": "https://github.com/Busnes-app/KyCalendar/pull/79",
+      "head": "5b9ae3f0bb65aa426a9444a1cd1999cafcac9fab",
+      "state": "OPEN",
+      "mergeable": "MERGEABLE",
+      "checks": [
+        {
+          "bucket": "skipping",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121446922912",
+          "name": "publish",
+          "state": "SKIPPED"
+        },
+        {
+          "bucket": "skipping",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121446923117",
+          "name": "promote",
+          "state": "SKIPPED"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/runs/121444280901",
+          "name": "CodeQL",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121444105704",
+          "name": "End-to-end smoke test",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121444105725",
+          "name": "Go tests (PostgreSQL)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121444105753",
+          "name": "Frontend typecheck & build",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121444105620",
+          "name": "Browser regressions (production server)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121444105679",
+          "name": "Vulnerability scan",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121444105703",
+          "name": "Go build, vet & tests (SQLite)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284252179/job/121444105848",
+          "name": "Docker image build & run",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284249272/job/121444101459",
+          "name": "Analyze (python)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284249272/job/121444101305",
+          "name": "Analyze (javascript-typescript)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284249272/job/121444101543",
+          "name": "Analyze (go)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyCalendar/actions/runs/40284249272/job/121444101562",
+          "name": "Analyze (actions)",
+          "state": "SUCCESS"
+        }
+      ],
+      "ci_pass": true,
+      "review": {
+        "head": "5b9ae3f0bb65aa426a9444a1cd1999cafcac9fab",
+        "verdict": "cleared"
+      },
+      "review_current_clear": true
+    },
+    {
+      "repository": "Busnes-app/KyMessage-Server",
+      "number": 93,
+      "url": "https://github.com/Busnes-app/KyMessage-Server/pull/93",
+      "head": "2f6d6d0a9a91b2125bd55d99d5f0a7594275e48c",
+      "state": "OPEN",
+      "mergeable": "MERGEABLE",
+      "checks": [
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/runs/121443221263",
+          "name": "CodeQL",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044524",
+          "name": "Frontend typecheck & build",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044709",
+          "name": "Meeting-notes bot (tests & image)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044463",
+          "name": "Docker image build & run",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044400",
+          "name": "Go build, vet & tests (SQLite)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044374",
+          "name": "Vulnerability scan",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044244",
+          "name": "Go tests (PostgreSQL)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044330",
+          "name": "Browser regressions (production server)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044318",
+          "name": "Matrix acceptance (encrypted storage, closed server)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283912983/job/121443044031",
+          "name": "End-to-end smoke test",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283909520/job/121443037729",
+          "name": "Analyze (go)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283909520/job/121443037772",
+          "name": "Analyze (python)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283909520/job/121443037404",
+          "name": "Analyze (javascript-typescript)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyMessage-Server/actions/runs/40283909520/job/121443037714",
+          "name": "Analyze (actions)",
+          "state": "SUCCESS"
+        }
+      ],
+      "ci_pass": true,
+      "review": {
+        "head": "2f6d6d0a9a91b2125bd55d99d5f0a7594275e48c",
+        "verdict": "cleared"
+      },
+      "review_current_clear": true
+    },
+    {
+      "repository": "Busnes-app/KyPost-Server",
+      "number": 480,
+      "url": "https://github.com/Busnes-app/KyPost-Server/pull/480",
+      "head": "bfbe8439c8680155d78adb1defb996336d7a6e28",
+      "state": "OPEN",
+      "mergeable": "MERGEABLE",
+      "checks": [
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/runs/121440706459",
+          "name": "CodeQL",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091663/job/121440527018",
+          "name": "ci-backend-api",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091658/job/121440526918",
+          "name": "Analyze (javascript-typescript)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091663/job/121440526985",
+          "name": "ci-backend-other",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091663/job/121440526977",
+          "name": "ci-frontend",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091663/job/121440527011",
+          "name": "ci-relay",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091658/job/121440526980",
+          "name": "Analyze (actions)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091658/job/121440526859",
+          "name": "Analyze (go)",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091663/job/121440526929",
+          "name": "ci-scripts",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/KyPost-Server/actions/runs/40283091663/job/121440526669",
+          "name": "ci-docker",
+          "state": "SUCCESS"
+        }
+      ],
+      "ci_pass": true,
+      "review": {
+        "head": "bfbe8439c8680155d78adb1defb996336d7a6e28",
+        "verdict": "cleared"
+      },
+      "review_current_clear": true
+    },
+    {
+      "repository": "Busnes-app/ky-ui",
+      "number": 19,
+      "url": "https://github.com/Busnes-app/ky-ui/pull/19",
+      "head": "2699773c32fc89d1628d2539032450137634baa1",
+      "state": "OPEN",
+      "mergeable": "MERGEABLE",
+      "checks": [
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40282086912/job/121437413954",
+          "name": "browser",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40282086912/job/121437413621",
+          "name": "test",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40281956804/job/121437008476",
+          "name": "test",
+          "state": "SUCCESS"
+        },
+        {
+          "bucket": "pass",
+          "link": "https://github.com/Busnes-app/ky-ui/actions/runs/40281956804/job/121437008873",
+          "name": "browser",
+          "state": "SUCCESS"
+        }
+      ],
+      "ci_pass": true,
+      "review": {
+        "head": "2699773c32fc89d1628d2539032450137634baa1",
+        "verdict": "cleared"
+      },
+      "review_current_clear": true
+    }
+  ]
+}

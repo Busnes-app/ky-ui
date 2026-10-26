@@ -1,0 +1,293 @@
+{
+  "prefix": "kymessages-08-before",
+  "worktree": "/home/yoshi/git/busnes.app/KyMessage-Server/.claude/worktrees/ui-cohesion",
+  "branch": "ui/council-cohesion",
+  "head": "e3556c45fa3957def6a056d06e582ea0436629d0",
+  "web_src_patch_vs_head_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "web_src_patch_vs_head_bytes": 0,
+  "theme_css_sha256": "650d7f87ab75f3cef2c1ba93955cb412c9487abb7a083cb7327b5ba3cc2145a5",
+  "vendor_navigation_css_sha256": "cc6dbaa07a01f4ed088d38d41ff6cf95155a480bcb29327f413cbfa1ec11ac55",
+  "server_binary_sha256": "775e3121b0652591c0df473e2f807915aca9aae3f95c31d8c1f614a8e93ec107",
+  "dist_index_sha256": "4104f2b649c76ea7c796d574d9fc9949635cb41a8fc21e81b60e4f9da496b086",
+  "captured": "2026-10-26T06:59:02.904Z",
+  "browser": "chromium 153.0.8010.12",
+  "conditions": "real signed-in app on a disposable SQLite server (Matrix off, captcha none, nothing seeded); theme chosen in the product select; Overview selected; pointer moved by Playwright (0,0 for pointer-away, then hover on Users, then on Overview); measured after element.getAnimations() finish; viewport-only images",
+  "files": [
+    {
+      "file": "kymessages-08-before-nav-pointer-away-desktop-light.png",
+      "sha256": "cadacba78d5bfb1955bfc3a95c407f2d278b835034413a56677a1cf2714ff786",
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "state": "pointer-away",
+      "idle": {
+        "background": "rgba(0, 0, 0, 0)",
+        "composited": "rgb(242,239,231)",
+        "color": "rgba(86,100,97,255)",
+        "ratio": 5.39,
+        "rail": "none",
+        "hovered": false
+      },
+      "selected": {
+        "background": "rgb(255, 255, 255)",
+        "composited": "rgb(255,255,255)",
+        "color": "rgba(24,35,38,255)",
+        "ratio": 16.06,
+        "rail": "rgb(191, 63, 24) 3px 0px 0px 0px inset",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-hover-idle-desktop-light.png",
+      "sha256": "b22f849be539a28733d88dcba4248136d1cbc609c72e81894928b270a14b7972",
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "state": "hover-idle",
+      "idle": {
+        "background": "color(srgb 0.657333 0.231686 0.101804)",
+        "composited": "rgb(168,59,26)",
+        "color": "rgba(24,35,38,255)",
+        "ratio": 2.53,
+        "rail": "none",
+        "hovered": true
+      },
+      "idle_at_rest": {
+        "background": "rgba(0, 0, 0, 0)",
+        "composited": "rgb(242,239,231)",
+        "color": "rgba(86,100,97,255)",
+        "ratio": 5.39,
+        "rail": "none",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-hover-selected-desktop-light.png",
+      "sha256": "0865d3fe11360c75c1af0cf08cf8a732d7cd7dd2539c2982322aa732d38d510d",
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "state": "hover-selected",
+      "selected": {
+        "background": "rgb(255, 255, 255)",
+        "composited": "rgb(255,255,255)",
+        "color": "rgba(24,35,38,255)",
+        "ratio": 16.06,
+        "rail": "rgb(191, 63, 24) 3px 0px 0px 0px inset",
+        "hovered": true
+      },
+      "selected_at_rest": {
+        "background": "rgb(255, 255, 255)",
+        "composited": "rgb(255,255,255)",
+        "color": "rgba(24,35,38,255)",
+        "ratio": 16.06,
+        "rail": "rgb(191, 63, 24) 3px 0px 0px 0px inset",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-pointer-away-mobile-light.png",
+      "sha256": "7d058fbe49137367e77ca1f58bef78207ec42c52c729bd56806a11de99c29153",
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "state": "pointer-away",
+      "idle": {
+        "background": "rgba(0, 0, 0, 0)",
+        "composited": "rgb(242,239,231)",
+        "color": "rgba(86,100,97,255)",
+        "ratio": 5.39,
+        "rail": "none",
+        "hovered": false
+      },
+      "selected": {
+        "background": "rgb(255, 255, 255)",
+        "composited": "rgb(255,255,255)",
+        "color": "rgba(24,35,38,255)",
+        "ratio": 16.06,
+        "rail": "rgb(191, 63, 24) 0px -3px 0px 0px inset",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-hover-idle-mobile-light.png",
+      "sha256": "fcf894056ef0282f79927869bbb611f7fc9e00c2429e39a09372c895d51eea7a",
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "state": "hover-idle",
+      "idle": {
+        "background": "color(srgb 0.657333 0.231686 0.101804)",
+        "composited": "rgb(168,59,26)",
+        "color": "rgba(24,35,38,255)",
+        "ratio": 2.53,
+        "rail": "none",
+        "hovered": true
+      },
+      "idle_at_rest": {
+        "background": "rgba(0, 0, 0, 0)",
+        "composited": "rgb(242,239,231)",
+        "color": "rgba(86,100,97,255)",
+        "ratio": 5.39,
+        "rail": "none",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-hover-selected-mobile-light.png",
+      "sha256": "533882859802287d55f3752e4722faeffff6cc8ead4353aaafc54cf27b29d5c5",
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "state": "hover-selected",
+      "selected": {
+        "background": "rgb(255, 255, 255)",
+        "composited": "rgb(255,255,255)",
+        "color": "rgba(24,35,38,255)",
+        "ratio": 16.06,
+        "rail": "rgb(191, 63, 24) 0px -3px 0px 0px inset",
+        "hovered": true
+      },
+      "selected_at_rest": {
+        "background": "rgb(255, 255, 255)",
+        "composited": "rgb(255,255,255)",
+        "color": "rgba(24,35,38,255)",
+        "ratio": 16.06,
+        "rail": "rgb(191, 63, 24) 0px -3px 0px 0px inset",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-pointer-away-desktop-dark.png",
+      "sha256": "8eb00bc566a4a2d812838264f7ebff9a10202115a3c521f24acc4fe84cde102f",
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "state": "pointer-away",
+      "idle": {
+        "background": "rgba(0, 0, 0, 0)",
+        "composited": "rgb(31,43,46)",
+        "color": "rgba(179,188,184,255)",
+        "ratio": 7.48,
+        "rail": "none",
+        "hovered": false
+      },
+      "selected": {
+        "background": "rgb(43, 38, 34)",
+        "composited": "rgb(43,38,34)",
+        "color": "rgba(242,239,232,255)",
+        "ratio": 13.03,
+        "rail": "rgb(245, 134, 95) 3px 0px 0px 0px inset",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-hover-idle-desktop-dark.png",
+      "sha256": "8109e2c5ee43a5d495704865db1a4f9c651396141d0ae159f83b8a8d9e46d690",
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "state": "hover-idle",
+      "idle": {
+        "background": "color(srgb 0.959137 0.583137 0.447765)",
+        "composited": "rgb(245,149,114)",
+        "color": "rgba(242,239,232,255)",
+        "ratio": 1.94,
+        "rail": "none",
+        "hovered": true
+      },
+      "idle_at_rest": {
+        "background": "rgba(0, 0, 0, 0)",
+        "composited": "rgb(31,43,46)",
+        "color": "rgba(179,188,184,255)",
+        "ratio": 7.48,
+        "rail": "none",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-hover-selected-desktop-dark.png",
+      "sha256": "c523f408338058bffa4b34891573a447c2023b8b19278bd294f870fc299d1313",
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "state": "hover-selected",
+      "selected": {
+        "background": "rgb(43, 38, 34)",
+        "composited": "rgb(43,38,34)",
+        "color": "rgba(242,239,232,255)",
+        "ratio": 13.03,
+        "rail": "rgb(245, 134, 95) 3px 0px 0px 0px inset",
+        "hovered": true
+      },
+      "selected_at_rest": {
+        "background": "rgb(43, 38, 34)",
+        "composited": "rgb(43,38,34)",
+        "color": "rgba(242,239,232,255)",
+        "ratio": 13.03,
+        "rail": "rgb(245, 134, 95) 3px 0px 0px 0px inset",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-pointer-away-mobile-dark.png",
+      "sha256": "020562df35bc2e03e57cb9e7798f9c3f185ddc924f8e1cd8b2ba092ca873eb42",
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "state": "pointer-away",
+      "idle": {
+        "background": "rgba(0, 0, 0, 0)",
+        "composited": "rgb(31,43,46)",
+        "color": "rgba(179,188,184,255)",
+        "ratio": 7.48,
+        "rail": "none",
+        "hovered": false
+      },
+      "selected": {
+        "background": "rgb(43, 38, 34)",
+        "composited": "rgb(43,38,34)",
+        "color": "rgba(242,239,232,255)",
+        "ratio": 13.03,
+        "rail": "rgb(245, 134, 95) 0px -3px 0px 0px inset",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-hover-idle-mobile-dark.png",
+      "sha256": "9c4ce284d3ad984440fd55f2511a8d07916bb8538577279f536bd00c7e33a41a",
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "state": "hover-idle",
+      "idle": {
+        "background": "color(srgb 0.959137 0.583137 0.447765)",
+        "composited": "rgb(245,149,114)",
+        "color": "rgba(242,239,232,255)",
+        "ratio": 1.94,
+        "rail": "none",
+        "hovered": true
+      },
+      "idle_at_rest": {
+        "background": "rgba(0, 0, 0, 0)",
+        "composited": "rgb(31,43,46)",
+        "color": "rgba(179,188,184,255)",
+        "ratio": 7.48,
+        "rail": "none",
+        "hovered": false
+      }
+    },
+    {
+      "file": "kymessages-08-before-nav-hover-selected-mobile-dark.png",
+      "sha256": "742f290af8a63eafffad118799c8a282388f00a8bf0d08d5b176bb461231f11e",
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "state": "hover-selected",
+      "selected": {
+        "background": "rgb(43, 38, 34)",
+        "composited": "rgb(43,38,34)",
+        "color": "rgba(242,239,232,255)",
+        "ratio": 13.03,
+        "rail": "rgb(245, 134, 95) 0px -3px 0px 0px inset",
+        "hovered": true
+      },
+      "selected_at_rest": {
+        "background": "rgb(43, 38, 34)",
+        "composited": "rgb(43,38,34)",
+        "color": "rgba(242,239,232,255)",
+        "ratio": 13.03,
+        "rail": "rgb(245, 134, 95) 0px -3px 0px 0px inset",
+        "hovered": false
+      }
+    }
+  ]
+}

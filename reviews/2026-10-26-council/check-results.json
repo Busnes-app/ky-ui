@@ -38,7 +38,7 @@
     "KyCalendar",
     "Chromium real-server browser",
     "Pass",
-    "28 passed; resize retention, Monthdate contrast and accessibleevent labels; currentstage06",
+    "32 browser checks passed; final navigation hover regression fails old selector and passesfixed in4projects",
     "kycalendar-implementation.md"
   ],
   [
@@ -47,13 +47,6 @@
     "Pass",
     "Repeated production build byte-identical; vendor hashes pass",
     "kycalendar-implementation.md"
-  ],
-  [
-    "KyCalendar",
-    "Docker / Postgres",
-    "Prior revision passed; new CI pending",
-    "All CI passed4cacdb7 including Docker/Postgres;95be60c needs current-head results",
-    "pull-requests.json"
   ],
   [
     "KyMessages",
@@ -94,7 +87,7 @@
     "KyPost",
     "Final frontend stage05/06 checks",
     "Pass",
-    "1189 tests; zero-warning lint; typecheck/build/vendor/audit0 pass after shared sync",
+    "1,190 frontend tests after focus fix;366 affected tests;zero-warning lint, typecheck, build, vendor check and audit (0 findings) pass",
     "kypost-implementation.md"
   ],
   [
@@ -124,5 +117,40 @@
     "Below9 target",
     "Claude Opus5.5:quality7.54,brandfit8.16;30uniqueimages;responsivepass,statesfail,othergatesuntested",
     "implemented-calendar-release-review.md"
+  ],
+  [
+    "All runtime",
+    "Complete source review",
+    "Pass after corrections",
+    "F1/F2 independently verified old-fail/new-pass; all changedruntime source covered by two rounds; bundles rebuilt exact",
+    "runtime-source-review-followup.md"
+  ],
+  [
+    "Busnes-app/ky-ui",
+    "Current-head CI and reviewer",
+    "Pass at snapshot",
+    "2026-10-26T07:37:09.661301+00:00; head 4c9746017fdc02487f0e62cec17a12be8c74c246; all CI passes and reviewer cleared same head",
+    "https://github.com/Busnes-app/ky-ui/pull/18"
+  ],
+  [
+    "Busnes-app/KyCalendar",
+    "Current-head CI and reviewer",
+    "Pass at snapshot",
+    "2026-10-26T07:37:09.661301+00:00; head 5b9ae3f0bb65aa426a9444a1cd1999cafcac9fab; all CI passes and reviewer cleared same head",
+    "https://github.com/Busnes-app/KyCalendar/pull/79"
+  ],
+  [
+    "Busnes-app/KyMessage-Server",
+    "Current-head CI and reviewer",
+    "Pass at snapshot",
+    "2026-10-26T07:37:09.661301+00:00; head 2f6d6d0a9a91b2125bd55d99d5f0a7594275e48c; all CI passes and reviewer cleared same head",
+    "https://github.com/Busnes-app/KyMessage-Server/pull/93"
+  ],
+  [
+    "Busnes-app/KyPost-Server",
+    "Current-head CI and reviewer",
+    "Pass at snapshot",
+    "2026-10-26T07:37:09.661301+00:00; head bfbe8439c8680155d78adb1defb996336d7a6e28; all CI passes and reviewer cleared same head",
+    "https://github.com/Busnes-app/KyPost-Server/pull/480"
   ]
 ]

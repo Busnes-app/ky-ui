@@ -1,0 +1,93 @@
+{
+  "prefix": "kycalendar-08-before",
+  "worktree": "/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/ui-cohesion",
+  "captured": "2026-10-26T06:58:58.150Z",
+  "browser": "chromium chromium",
+  "clock": "2026-10-27T15:15:00.000Z",
+  "timezone": "America/Chicago",
+  "locale": "en-US",
+  "theme_source": "product \"Color theme\" select (browser localStorage), context colorScheme matching",
+  "fixture": "walter: default Calendar (no stored colour) + Personal #3f7f6e, 13 events in the week of 2026-10-25; admin: nothing seeded",
+  "files": [
+    {
+      "file": "kycalendar-08-before-nav-hover-desktop-light.png",
+      "sha256": "da3ea6ef3676576a232d9db578c85f46925588737f3c53f396a3933447cb0a5c",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "nav-hover",
+      "hovered": "Phones & apps",
+      "matches_hover": true,
+      "background": "color(srgb 0.657333 0.231686 0.101804)",
+      "background_rgba": [
+        168,
+        59,
+        26,
+        1
+      ],
+      "composited_background": "rgb(168, 59, 26)",
+      "color": "rgb(24, 35, 38)",
+      "contrast": 2.53
+    },
+    {
+      "file": "kycalendar-08-before-nav-hover-mobile-light.png",
+      "sha256": "458822202b6dde7e8b322911c91755c7ba46f36cbb8171ea613e0b5c70630397",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "nav-hover",
+      "hovered": "Phones & apps",
+      "matches_hover": true,
+      "background": "color(srgb 0.657333 0.231686 0.101804)",
+      "background_rgba": [
+        168,
+        59,
+        26,
+        1
+      ],
+      "composited_background": "rgb(168, 59, 26)",
+      "color": "rgb(24, 35, 38)",
+      "contrast": 2.53
+    },
+    {
+      "file": "kycalendar-08-before-nav-hover-desktop-dark.png",
+      "sha256": "0c54da7d2bccbba8a26c8f1df87999b3db13fc7b025cf697e61fb1e7bde67fc8",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "nav-hover",
+      "hovered": "Phones & apps",
+      "matches_hover": true,
+      "background": "color(srgb 0.959137 0.583137 0.447765)",
+      "background_rgba": [
+        245,
+        149,
+        114,
+        1
+      ],
+      "composited_background": "rgb(245, 149, 114)",
+      "color": "rgb(242, 239, 232)",
+      "contrast": 1.94
+    },
+    {
+      "file": "kycalendar-08-before-nav-hover-mobile-dark.png",
+      "sha256": "25c8b2c2dc348dddabf6e6e173f45344243c53d6465d3d0187225df674a01b2b",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "nav-hover",
+      "hovered": "Phones & apps",
+      "matches_hover": true,
+      "background": "color(srgb 0.959137 0.583137 0.447765)",
+      "background_rgba": [
+        245,
+        149,
+        114,
+        1
+      ],
+      "composited_background": "rgb(245, 149, 114)",
+      "color": "rgb(242, 239, 232)",
+      "contrast": 1.94
+    }
+  ]
+}

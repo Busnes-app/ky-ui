@@ -3,36 +3,36 @@
     "repository": "ky-ui",
     "url": "https://github.com/Busnes-app/ky-ui/pull/18",
     "base": "main",
-    "status": "Open; final evidence and review pending",
-    "note": "Shared 0.3.0; remaining inventory rollout pending."
+    "status": "CI passed; reviewer cleared at recorded head",
+    "note": "Head 4c9746017fdc02487f0e62cec17a12be8c74c246; independent full source review resolved both findings. Check live PR before merging."
   },
   {
     "repository": "kypost-server",
     "url": "https://github.com/Busnes-app/KyPost-Server/pull/480",
     "base": "main",
-    "status": "Open; CI/review pending",
-    "note": "Head d1395936;1189 frontendtests pass; scoped initial-query wait; performance causation unresolved."
+    "status": "CI passed; reviewer cleared at recorded head",
+    "note": "Head bfbe8439c8680155d78adb1defb996336d7a6e28; independent full source review resolved both findings. Check live PR before merging."
   },
   {
     "repository": "KyCalendar",
     "url": "https://github.com/Busnes-app/KyCalendar/pull/79",
     "base": "main",
-    "status": "Updated; CI/review pending",
-    "note": "Head95be60c; stage06contrast/phone/state corrections,28 Chromium checks pass."
+    "status": "CI passed; reviewer cleared at recorded head",
+    "note": "Head 5b9ae3f0bb65aa426a9444a1cd1999cafcac9fab; independent full source review resolved both findings. Check live PR before merging."
   },
   {
     "repository": "KyMessage-Server",
     "url": "https://github.com/Busnes-app/KyMessage-Server/pull/93",
     "base": "master",
-    "status": "Open; CI/review pending",
-    "note": "Head e3556c4; console/auth stages01\u201303,05\u201306. Stock Element and Matrix-on remain unverified."
+    "status": "CI passed; reviewer cleared at recorded head",
+    "note": "Head 2f6d6d0a9a91b2125bd55d99d5f0a7594275e48c; independent full source review resolved both findings. Check live PR before merging."
   },
   {
     "repository": "ky-ui (evidence)",
-    "url": "",
+    "url": "https://github.com/Busnes-app/ky-ui/pull/19",
     "base": "ui/council-cohesion",
     "branch": "ui/council-evidence",
-    "status": "Preparing",
-    "note": "Spreadsheet, screenshots and source records; merge shared foundation first."
+    "status": "Live gate: open linked PR",
+    "note": "Snapshot/exports cannot certify their own subsequent commit. Consult liveCI/review; merge shared#18 first."
   }
 ]

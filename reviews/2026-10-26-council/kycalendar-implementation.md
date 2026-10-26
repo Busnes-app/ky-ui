@@ -405,6 +405,72 @@ Remaining gaps:
   were checked in Chromium only.
 - No scores: this record carries none.
 
+## Stage 8: runtime review F1 (navigation hover)
+
+Responds to `runtime-source-review.md` F1. HEAD `95be60c` (PR #79) was clean and its source
+equals stage-6 after (`stage-08-before.src.patch` is byte-identical to
+`stage-06-after.src.patch`, `2d1d4822…e0d0`; dist `84fe0ddf…fc4f`).
+
+Cause, as the review found. ky-ui 0.3.0's nav hover is
+`.ky-nav-item:where(…):hover` (0,2,0). KyCalendar's global primary hover,
+`button:hover:not(:disabled), .btn:hover` (0,2,1, `theme.css`), now outranks it. The product's
+own `.app-nav button:hover` is also (0,2,1) but comes earlier, so an unselected navigation row
+hovered to the accent fill. The selected row ((0,3,0)) was unaffected.
+
+Fix (one selector, `web/src/styles/theme.css`): `button:not(:where(.ky-nav-item)):hover:not(:disabled), .btn:hover`.
+Specificity stays (0,2,1), so every other button's hover is unchanged; `.btn-secondary`,
+`.btn-ghost` and `.btn-danger` keep their own higher rules. `.ky-nav-item` appears only on the
+primary navigation buttons (`AppHeader.tsx`), which are never `.btn`. The vendored ky-ui bytes
+are unchanged (`git diff HEAD -- web/src/ky-ui` empty; `check-vendor.mjs` passes).
+
+Regression test `browser/nav.spec.mjs` runs in all four projects (Busnes Light/Dark × 390/1280,
+real server and sign-in, own `X-Forwarded-For` 203.0.113.25). It selects the Busnes theme
+matching the project, waits for the calendar layout (the phone disclosure narrows the row), and
+hovers each unselected row. Once that row's transitions have finished (`getAnimations()`; a
+transition cancelled by the phone row's scroll is replaced and waited for again), it requires
+the neutral `--panel-hover` surface and ≥ 4.5:1 text, recording the ratio. Hovering the selected
+row must keep `--accent-soft` and the inset accent rail. The final test version was run against
+HEAD's build (dist `84fe0ddf…`, `theme.css` temporarily restored from HEAD) and failed in all four
+projects (accent `168,59,26` where `242,239,231` was expected). On the fix all four pass: idle-row
+hover is 13.98:1 light and 10.57:1 dark for both rows at both sizes.
+
+Captures (`nav-hover` surface in `capture-08.mjs.txt`). These are the real signed-in app on the
+real server with the fixed fixture and clock. The pointer is over the unselected "Phones & apps"
+row, and the frame is taken 500ms after hover, past the 150ms transition. Each manifest records
+`:hover`, the computed background (canvas-normalised, since the mix computes to
+`color(srgb …)`), text colour and contrast. There are no mock responses.
+
+| | Busnes Light bg / ratio | Busnes Dark bg / ratio |
+|---|---|---|
+| before (`kycalendar-08-before-nav-hover-{desktop,mobile}-*`) | 168,59,26 / **2.53** | 245,149,114 / **1.94** |
+| after (`kycalendar-08-after-nav-hover-{desktop,mobile}-*`) | 242,239,231 / **13.98** | 43,56,58 / **10.57** |
+
+Identical at 1280×900 and 390×844. Comparison crop: `screenshots/kycalendar-08-nav-hover-compare.png`
+(top row before, bottom after; desktop light, desktop dark, phone light, phone dark).
+
+![](screenshots/kycalendar-08-nav-hover-compare.png)
+
+Sources:
+
+| State | Patch | SHA-256 | Build |
+|---|---|---|---|
+| before (HEAD `95be60c`) | `stage-08-before.src.patch` | `2d1d4822…e0d0` | dist `84fe0ddf…fc4f`, server `73a3502d…5576` |
+| after | `stage-08-after.src.patch` | `e25a0220…8d2a` | dist `139d4217…a153`, server `33ac3db9…67ca` |
+
+`stage-08-final.product.patch` (`dd50cff8…1dbf`) is the full product diff from `9a527d2`
+without `web/dist`. `stage-08-vs-95be60c.product.patch` (`1e7ac3a6…d1d`) is just this change
+against the PR head, 5 files: `theme.css`, `nav.spec.mjs`, `web/AGENTS.md`,
+`web/browser/AGENTS.md` and `UI-VERIFICATION.md`. All apply cleanly to their bases. The after
+capture and the browser suite ran on dist `139d4217…` and server `33ac3db9…`, which the final
+rebuild reproduced byte for byte. Manifests: `kycalendar-08-{before,after}-manifest.json`.
+
+Checks: `make ci` passed (22 files / 155 tests, Go race/vet/tidy, fork tests, smoke; run after
+the CSS fix, before the spec-only and doc edits). `npm run test:browser`: 32 passed (28 before
+plus `nav.spec.mjs` × 4). Ports 5391/5392 were checked free before each run (once found busy and
+waited). Appearance outside hover is unchanged: the only product CSS change is this selector,
+so the stage-6 scored frames stand. Not run: Firefox/WebKit, touch devices (no hover),
+`make test-postgres`, Docker build.
+
 ## Final source (stage 4; Stage 6 above supersedes it)
 
 - HEAD `9a527d2`, uncommitted. Source state `web/src` + `web/browser` including the untracked

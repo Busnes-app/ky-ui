@@ -17,7 +17,10 @@ gallery; the spreadsheet is the primary result.
 - Original screenshots remain outside Git. Only new synthetic application
   captures and explicitly labeled shared primitive fixtures are embedded here.
 - `screenshots/` holds stage manifests and before/after PNGs. `source-stages/`
-  holds source patches and hashes; archived capture scripts end in `.mjs.txt`.
+  holds source patches and hashes; `source-patch-bases.json` identifies each full
+  or incremental patch's actual base. Archived capture scripts end in `.mjs.txt`.
+- `historical-local-baseline/` preserves earlier local-checkout captures whose
+  stage00 names were later recaptured. They are separate from current comparisons.
 - Product implementation notes and `verification.md` distinguish executed
   checks, capture conditions and limitations. CI and autonomous PR review are
   separate current-head gates; consult the live PR before merging.
