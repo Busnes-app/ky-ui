@@ -29,7 +29,8 @@ own worktree and PR. The base is required so new servers inherit the foundation.
   iteration. Remaining inventory consumers must advance before suite freshness
   can pass against 0.3.0; no fleet rollout is claimed by this focused pass.
 - `skills/ky-suite-ui/` owns the review/design contract. `reviews/2026-10-26-council/`
-  owns original-input rankings, rubric drift and screenshots for each design stage.
+  owns original-input rankings, rubric drift and screenshots for each design stage,
+  delivered in a separate evidence PR alongside the shared and product changes.
 
 ### Existing foundation
 

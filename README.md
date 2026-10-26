@@ -12,8 +12,8 @@ It deliberately does not provide a framework, router, component runtime, or prod
 Version 0.3.0 also supplies type, space, control, field-border and overlay tokens.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
-evidence-based 9/10 acceptance target; [the council](reviews/2026-10-26-council/initial-review.md)
-records the initial comparative screenshots and staged implementation evidence.
+evidence-based 9/10 acceptance target. The dated records under `reviews/` are
+delivered in a companion evidence PR so runtime changes remain easy to review.
 
 For a focused release copy, pass `--consumer=<inventory name>` once per selected
 product to either sync or check, with `--paths` mapping those products to their
