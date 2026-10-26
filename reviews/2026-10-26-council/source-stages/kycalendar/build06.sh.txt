@@ -1,0 +1,21 @@
+#!/bin/sh
+# Rebuild dist and server, then write the web/src + web/browser source patch against 9a527d2
+# (untracked files included through a scratch index; the real index is untouched).
+# Usage: build06.sh <patch-name>
+set -eu
+W=/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/ui-cohesion
+P=/tmp/ky-ui-council-kycalendar/patches
+IDX=/tmp/ky-ui-council-kycalendar/scratch06.index
+export PATH=/home/yoshi/.local/share/ky-toolchains/node-v26.12.1-linux-x64/bin:$PATH
+mkdir -p "$P"
+(cd "$W/web" && systemd-run --user --scope -q -p MemoryMax=6G -p MemorySwapMax=0 -- npm run build >/tmp/ky-ui-council-kycalendar/build06.log 2>&1) || { tail -30 /tmp/ky-ui-council-kycalendar/build06.log; exit 1; }
+(cd "$W" && systemd-run --user --scope -q -p MemoryMax=6G -p MemorySwapMax=0 -- go build -o .browser/server ./cmd/server)
+rm -f "$IDX"
+GIT_INDEX_FILE="$IDX" git -C "$W" read-tree HEAD
+GIT_INDEX_FILE="$IDX" git -C "$W" add -A -- web/src web/browser
+GIT_INDEX_FILE="$IDX" git -C "$W" diff --cached 9a527d2 -- web/src web/browser > "$P/$1.src.patch"
+rm -f "$IDX"
+echo "HEAD $(git -C "$W" rev-parse HEAD)"
+echo "src patch vs 9a527d2 $(sha256sum < "$P/$1.src.patch" | cut -c1-64) ($P/$1.src.patch)"
+echo "server $(sha256sum < "$W/.browser/server" | cut -c1-64)"
+echo "dist $(cd "$W/web/dist" && find . -type f | sort | xargs sha256sum | sha256sum | cut -c1-64)"

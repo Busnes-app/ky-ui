@@ -1,0 +1,1912 @@
+{
+  "worktree": "/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/ui-cohesion",
+  "clock": "2026-10-27T15:15:00.000Z",
+  "runs": [
+    {
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "overflow_px": 0,
+      "tab_chrome_wraps": 1,
+      "tab_stops": 39,
+      "tab_stops_without_ring": [],
+      "dialog_kc_start_outline": null,
+      "tab_order_first_12": [
+        "Calendar",
+        "Phones & apps",
+        "Two-step verification",
+        "Show Calendar",
+        "Edit Calendar",
+        "Delete Calendar",
+        "New calendar",
+        "Subscribe to a calendar",
+        "Color theme",
+        "Sign out",
+        "New event",
+        "Previous week"
+      ],
+      "dialog_initial_focus": "kc-title",
+      "date_focus": [
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-picker-icon.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-end-picker-icon.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1159,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-light-kc-start-picker-icon.png"
+        }
+      ],
+      "dialog_tab_order": [
+        "INPUT",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-location",
+        "kc-description",
+        "kc-calendar",
+        "Cancel",
+        "Save",
+        "KyCalendarCalendarPhones",
+        "kc-title",
+        "INPUT",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start"
+      ],
+      "dialog_focus_left_dialog": [
+        "KyCalendarCalendarPhones"
+      ],
+      "dialog_stops_without_ring": [],
+      "date_focus_unverified": [],
+      "dialog_contrast": [
+        {
+          "label": "dialog title",
+          "ratio": 16.06,
+          "need": 4.5,
+          "pass": true,
+          "size": "20px"
+        },
+        {
+          "label": "field label",
+          "ratio": 16.06,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "optional marker",
+          "ratio": 6.19,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "field border",
+          "ratio": 3.63,
+          "need": 3,
+          "pass": true,
+          "size": "15px"
+        },
+        {
+          "label": "Save (primary)",
+          "ratio": 5.33,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "Cancel (secondary) border",
+          "ratio": 3.63,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "focus ring on panel",
+          "ratio": 5.33,
+          "need": 3,
+          "pass": true,
+          "size": "15px"
+        }
+      ],
+      "dialog_targets_under_40": [
+        {
+          "name": "checkbox",
+          "h": 16,
+          "w": 16,
+          "labelled_box": true
+        }
+      ],
+      "dialog_closed": true,
+      "focus_returned_to": "New event",
+      "page_contrast": [
+        {
+          "label": "page title",
+          "ratio": 14.86,
+          "need": 3,
+          "pass": true,
+          "size": "24px"
+        },
+        {
+          "label": "zone line (13px)",
+          "ratio": 5.73,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "nav selected",
+          "ratio": 14.36,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "nav idle",
+          "ratio": 5.73,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "account role (13px)",
+          "ratio": 5.73,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "sign out",
+          "ratio": 14.86,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "New event (primary)",
+          "ratio": 5.33,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "toolbar title",
+          "ratio": 14.86,
+          "need": 4.5,
+          "pass": true,
+          "size": "20px"
+        },
+        {
+          "label": "view button border",
+          "ratio": 3.36,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "selected view rail",
+          "ratio": 4.64,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "today header (accent)",
+          "ratio": 4.93,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "weekday header",
+          "ratio": 5.73,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "time axis (13px)",
+          "ratio": 5.73,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "calendar name",
+          "ratio": 14.86,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "focus ring vs page",
+          "ratio": 4.93,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        }
+      ],
+      "event_text_contrast": [
+        {
+          "title": "9:00 - 9:15Team standup",
+          "ratio": 5.17
+        },
+        {
+          "title": "9:00 - 9:15Team standup",
+          "ratio": 5.17
+        },
+        {
+          "title": "10:00 - 11:30Design revi",
+          "ratio": 5.17
+        },
+        {
+          "title": "9:00 - 9:15Team standup",
+          "ratio": 5.17
+        },
+        {
+          "title": "9:00 - 9:15Team standup",
+          "ratio": 5.17
+        },
+        {
+          "title": "10:00 - 11:30Overnight d",
+          "ratio": 5.17
+        }
+      ],
+      "page_targets_under_40": [
+        {
+          "name": "Show Calendar",
+          "h": 16,
+          "w": 16,
+          "labelled_box": true
+        }
+      ]
+    },
+    {
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "overflow_px": 0,
+      "tab_chrome_wraps": 1,
+      "tab_stops": 39,
+      "tab_stops_without_ring": [],
+      "dialog_kc_start_outline": null,
+      "tab_order_first_12": [
+        "Calendar",
+        "Phones & apps",
+        "Two-step verification",
+        "Calendars",
+        "Color theme",
+        "Sign out",
+        "New event",
+        "Previous week",
+        "Next week",
+        "month",
+        "week",
+        "day"
+      ],
+      "dialog_initial_focus": "kc-title",
+      "date_focus": [
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-picker-icon.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-end-picker-icon.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1499,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-light-kc-start-picker-icon.png"
+        }
+      ],
+      "dialog_tab_order": [
+        "INPUT",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-location",
+        "kc-description",
+        "kc-calendar",
+        "Cancel",
+        "Save",
+        "KyCalendarCalendarPhones",
+        "kc-title",
+        "INPUT",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start"
+      ],
+      "dialog_focus_left_dialog": [
+        "KyCalendarCalendarPhones"
+      ],
+      "dialog_stops_without_ring": [],
+      "date_focus_unverified": [],
+      "dialog_contrast": [
+        {
+          "label": "dialog title",
+          "ratio": 16.06,
+          "need": 4.5,
+          "pass": true,
+          "size": "20px"
+        },
+        {
+          "label": "field label",
+          "ratio": 16.06,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "optional marker",
+          "ratio": 6.19,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "field border",
+          "ratio": 3.63,
+          "need": 3,
+          "pass": true,
+          "size": "15px"
+        },
+        {
+          "label": "Save (primary)",
+          "ratio": 5.33,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "Cancel (secondary) border",
+          "ratio": 3.63,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "focus ring on panel",
+          "ratio": 5.33,
+          "need": 3,
+          "pass": true,
+          "size": "15px"
+        }
+      ],
+      "dialog_targets_under_40": [
+        {
+          "name": "checkbox",
+          "h": 16,
+          "w": 16,
+          "labelled_box": true
+        }
+      ],
+      "dialog_closed": true,
+      "focus_returned_to": "New event",
+      "page_contrast": [
+        {
+          "label": "page title",
+          "ratio": 14.86,
+          "need": 3,
+          "pass": true,
+          "size": "24px"
+        },
+        {
+          "label": "zone line (13px)",
+          "ratio": 5.73,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "nav selected",
+          "ratio": 14.36,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "nav idle",
+          "ratio": 5.73,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "New event (primary)",
+          "ratio": 5.33,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "toolbar title",
+          "ratio": 14.86,
+          "need": 4.5,
+          "pass": true,
+          "size": "18px"
+        },
+        {
+          "label": "view button border",
+          "ratio": 3.36,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "selected view rail",
+          "ratio": 4.64,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "list time (mobile)",
+          "ratio": 5.73,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "list title (mobile)",
+          "ratio": 14.86,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "calendar name",
+          "ratio": 13.98,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "focus ring vs page",
+          "ratio": 4.93,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        }
+      ],
+      "event_text_contrast": [],
+      "page_targets_under_40": [],
+      "mobile_nav": {
+        "scrolls": true,
+        "overflow_x": "auto",
+        "items": [
+          "Calendar",
+          "Phones & apps",
+          "Two-step verification"
+        ]
+      },
+      "mobile_nav_reachable": true
+    },
+    {
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "overflow_px": 0,
+      "tab_chrome_wraps": 1,
+      "tab_stops": 39,
+      "tab_stops_without_ring": [],
+      "dialog_kc_start_outline": null,
+      "tab_order_first_12": [
+        "Calendar",
+        "Phones & apps",
+        "Two-step verification",
+        "Show Calendar",
+        "Edit Calendar",
+        "Delete Calendar",
+        "New calendar",
+        "Subscribe to a calendar",
+        "Color theme",
+        "Sign out",
+        "New event",
+        "Previous week"
+      ],
+      "dialog_initial_focus": "kc-title",
+      "date_focus": [
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-picker-icon.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-end-picker-icon.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1157,
+          "iconRegion": 6,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "255x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-1280-busnes-dark-kc-start-picker-icon.png"
+        }
+      ],
+      "dialog_tab_order": [
+        "INPUT",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-location",
+        "kc-description",
+        "kc-calendar",
+        "Cancel",
+        "Save",
+        "KyCalendarCalendarPhones",
+        "kc-title",
+        "INPUT",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start"
+      ],
+      "dialog_focus_left_dialog": [
+        "KyCalendarCalendarPhones"
+      ],
+      "dialog_stops_without_ring": [],
+      "date_focus_unverified": [],
+      "dialog_contrast": [
+        {
+          "label": "dialog title",
+          "ratio": 12.67,
+          "need": 4.5,
+          "pass": true,
+          "size": "20px"
+        },
+        {
+          "label": "field label",
+          "ratio": 12.67,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "optional marker",
+          "ratio": 7.48,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "field border",
+          "ratio": 4.77,
+          "need": 3,
+          "pass": true,
+          "size": "15px"
+        },
+        {
+          "label": "Save (primary)",
+          "ratio": 6.47,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "Cancel (secondary) border",
+          "ratio": 4.77,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "focus ring on panel",
+          "ratio": 5.86,
+          "need": 3,
+          "pass": true,
+          "size": "15px"
+        }
+      ],
+      "dialog_targets_under_40": [
+        {
+          "name": "checkbox",
+          "h": 16,
+          "w": 16,
+          "labelled_box": true
+        }
+      ],
+      "dialog_closed": true,
+      "focus_returned_to": "New event",
+      "page_contrast": [
+        {
+          "label": "page title",
+          "ratio": 13.99,
+          "need": 3,
+          "pass": true,
+          "size": "24px"
+        },
+        {
+          "label": "zone line (13px)",
+          "ratio": 8.26,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "nav selected",
+          "ratio": 13.03,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "nav idle",
+          "ratio": 8.26,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "account role (13px)",
+          "ratio": 8.26,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "sign out",
+          "ratio": 13.99,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "New event (primary)",
+          "ratio": 6.47,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "toolbar title",
+          "ratio": 13.99,
+          "need": 4.5,
+          "pass": true,
+          "size": "20px"
+        },
+        {
+          "label": "view button border",
+          "ratio": 5.27,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "selected view rail",
+          "ratio": 4.89,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "today header (accent)",
+          "ratio": 6.47,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "weekday header",
+          "ratio": 8.26,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "time axis (13px)",
+          "ratio": 8.26,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "calendar name",
+          "ratio": 13.99,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "focus ring vs page",
+          "ratio": 6.47,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        }
+      ],
+      "event_text_contrast": [
+        {
+          "title": "9:00 - 9:15Team standup",
+          "ratio": 5.17
+        },
+        {
+          "title": "9:00 - 9:15Team standup",
+          "ratio": 5.17
+        },
+        {
+          "title": "10:00 - 11:30Design revi",
+          "ratio": 5.17
+        },
+        {
+          "title": "9:00 - 9:15Team standup",
+          "ratio": 5.17
+        },
+        {
+          "title": "9:00 - 9:15Team standup",
+          "ratio": 5.17
+        },
+        {
+          "title": "10:00 - 11:30Overnight d",
+          "ratio": 5.17
+        }
+      ],
+      "page_targets_under_40": [
+        {
+          "name": "Show Calendar",
+          "h": 16,
+          "w": 16,
+          "labelled_box": true
+        }
+      ]
+    },
+    {
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "overflow_px": 0,
+      "tab_chrome_wraps": 1,
+      "tab_stops": 39,
+      "tab_stops_without_ring": [],
+      "dialog_kc_start_outline": null,
+      "tab_order_first_12": [
+        "Calendar",
+        "Phones & apps",
+        "Two-step verification",
+        "Calendars",
+        "Color theme",
+        "Sign out",
+        "New event",
+        "Previous week",
+        "Next week",
+        "month",
+        "week",
+        "day"
+      ],
+      "dialog_initial_focus": "kc-title",
+      "date_focus": [
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-picker-icon.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-end-field-root.png"
+        },
+        {
+          "field": "kc-end",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-end-picker-icon.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "field root",
+          "computed_ring": true,
+          "ringBand": 1497,
+          "iconRegion": 6,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-field-root.png"
+        },
+        {
+          "field": "kc-start",
+          "part": "picker icon",
+          "computed_ring": false,
+          "ringBand": 0,
+          "iconRegion": 136,
+          "size": "340x56",
+          "scale": 1,
+          "visible": true,
+          "crop": "/tmp/ky-ui-council-kycalendar/probe/focus-390-busnes-dark-kc-start-picker-icon.png"
+        }
+      ],
+      "dialog_tab_order": [
+        "INPUT",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-end",
+        "kc-location",
+        "kc-description",
+        "kc-calendar",
+        "Cancel",
+        "Save",
+        "KyCalendarCalendarPhones",
+        "kc-title",
+        "INPUT",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start",
+        "kc-start"
+      ],
+      "dialog_focus_left_dialog": [
+        "KyCalendarCalendarPhones"
+      ],
+      "dialog_stops_without_ring": [],
+      "date_focus_unverified": [],
+      "dialog_contrast": [
+        {
+          "label": "dialog title",
+          "ratio": 12.67,
+          "need": 4.5,
+          "pass": true,
+          "size": "20px"
+        },
+        {
+          "label": "field label",
+          "ratio": 12.67,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "optional marker",
+          "ratio": 7.48,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "field border",
+          "ratio": 4.77,
+          "need": 3,
+          "pass": true,
+          "size": "15px"
+        },
+        {
+          "label": "Save (primary)",
+          "ratio": 6.47,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "Cancel (secondary) border",
+          "ratio": 4.77,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "focus ring on panel",
+          "ratio": 5.86,
+          "need": 3,
+          "pass": true,
+          "size": "15px"
+        }
+      ],
+      "dialog_targets_under_40": [
+        {
+          "name": "checkbox",
+          "h": 16,
+          "w": 16,
+          "labelled_box": true
+        }
+      ],
+      "dialog_closed": true,
+      "focus_returned_to": "New event",
+      "page_contrast": [
+        {
+          "label": "page title",
+          "ratio": 13.99,
+          "need": 3,
+          "pass": true,
+          "size": "24px"
+        },
+        {
+          "label": "zone line (13px)",
+          "ratio": 8.26,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "nav selected",
+          "ratio": 13.03,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "nav idle",
+          "ratio": 8.26,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "New event (primary)",
+          "ratio": 6.47,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "toolbar title",
+          "ratio": 13.99,
+          "need": 4.5,
+          "pass": true,
+          "size": "18px"
+        },
+        {
+          "label": "view button border",
+          "ratio": 5.27,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "selected view rail",
+          "ratio": 4.89,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "list time (mobile)",
+          "ratio": 8.26,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "list title (mobile)",
+          "ratio": 13.99,
+          "need": 4.5,
+          "pass": true,
+          "size": "13px"
+        },
+        {
+          "label": "calendar name",
+          "ratio": 12.67,
+          "need": 4.5,
+          "pass": true,
+          "size": "14px"
+        },
+        {
+          "label": "focus ring vs page",
+          "ratio": 6.47,
+          "need": 3,
+          "pass": true,
+          "size": "14px"
+        }
+      ],
+      "event_text_contrast": [],
+      "page_targets_under_40": [],
+      "mobile_nav": {
+        "scrolls": true,
+        "overflow_x": "auto",
+        "items": [
+          "Calendar",
+          "Phones & apps",
+          "Two-step verification"
+        ]
+      },
+      "mobile_nav_reachable": true
+    }
+  ],
+  "named_theme": {
+    "select": "nord",
+    "data_theme": "nord",
+    "storage_keys": [
+      "ky_theme"
+    ],
+    "body_bg": "rgb(46, 52, 64)"
+  }
+}

@@ -1,0 +1,4362 @@
+{
+ "schema": "ky-ui-council-scores/2",
+ "round": "implemented-messages-release (independent final screenshot review of KyMessages stage 06 final capture)",
+ "reviewer": {
+  "model": "Claude Opus 5.5 (claude-opus-5-5)",
+  "role": "independent review sub-agent, Claude Code in T3 Code; did not implement, commit, push or open PRs",
+  "date": "2026-10-26",
+  "blind": {
+   "procedure": "All 60 viewport representatives viewed at full resolution, full-page variants consulted, and scores written to a scratch file and hashed before reading implemented-post-messages-*, kymessages-implementation.md or kymessages-06-after-checks.json. Two other-product captures (one KyPost, one KyCalendar) were viewed before the freeze solely to judge suite_cohesion.",
+   "frozen_scores_sha256": "18f0f9f71b4c0033bd53a87a15f4f408a322e0ff3c390b463c4bc307372b0921",
+   "frozen_at": "2026-10-26T02:26:28-04:00",
+   "post_blind_revisions": 0
+  },
+  "inputs_read": {
+   "AGENTS.md (workspace root)": "895c52846ae5df4d34a752cce3a3addaa0bc2ef997baf3556000dbc0cf0a0f63",
+   "ky-ui AGENTS.md": "529793a3f6922dbe1b33cc87cc0f646d872e2ea38545460664b7fe002872c034",
+   "reviews/AGENTS.md": "a28d025bf14ffc0d027989527a4578578736b6b6b276f8e173546527bab1b01e",
+   "skills/ky-suite-ui/SKILL.md": "6010ea39ac6e4e21926eb2a45d8a5a4894cd9e5e6eec07aca4cf60423233dcc2",
+   "skills/ky-suite-ui/references/rubric.md": "ad3516620420fbdc30f5273f82b7c72c76e1365d1b6296fcaa56be3cbebf2c41",
+   "skills/ky-suite-ui/references/design-contract.md": "392afb88c51fb3cfad6c94d6b841804b194d107a0431c31f35ff81d3a7a444d3",
+   "src/tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+   "screenshots/kymessages-06-after-manifest.json": "1fbf8f0f37b45899e150ae3347e9a7f344bf348661ea14d0b97bd661f5dcf148",
+   "kymessages-06-after-web-src.patch": "a5430c0de07a58e4402cc9f440a749e37a45371655aa3d32cbe9eaeba937873e",
+   "screenshots/kypost-05-after-inbox-desktop-light.png (suite_cohesion reference, viewed pre-freeze)": "69fbc387ed67d3b4b3fef054a375a0ad69c61c4c1fc89987a4a766eec8c2abab",
+   "screenshots/kycalendar-06-confirm1-month-desktop-light.png (suite_cohesion reference, viewed pre-freeze)": "0596d097c9204aff36aff6c84c9747b41597d26b42370a8a1dc93bb46c079d35",
+   "implemented-post-messages-scores.json (post-freeze)": "89c8d55b87401e2e101438d58d013344315c73bc6d57f65178482957b953a9b5",
+   "implemented-post-messages-review.md (post-freeze)": "46dd50136648802646b50b184a7c57c787cbd859286585937629ce845230ef35",
+   "kymessages-implementation.md (post-freeze; sections Not captured, Checks, Stage 05, Stage 06)": "d1299307790ed50ae7e682312d294f159885f97495d9702b82a1452a4af10b15",
+   "kymessages-06-after-checks.json (post-freeze)": "299e4cf532c61316939a10966358e1870cbc1ee919914ed5c8ef59b1683d25e4",
+   "kymessages-05-after-keyboard-chromium.json (post-freeze, hashed only)": "7c18811b01c6cb34e4830ab138db8a73d98f5cd1868110c8b4022c0aa8290009",
+   "kymessages-05-after-keyboard-firefox.json (post-freeze, hashed only)": "2d45f8e2120166240c2668078f1f017d450bb3b4d1972160c1a0520bf292792f"
+  }
+ },
+ "provenance": {
+  "product_worktree": "/home/yoshi/git/busnes.app/KyMessage-Server/.claude/worktrees/ui-cohesion",
+  "branch": "ui/council-cohesion",
+  "head": "051474931960d629c8e8d659ab9d8d0bfb073ca8",
+  "web_src_patch_sha256": "a5430c0de07a58e4402cc9f440a749e37a45371655aa3d32cbe9eaeba937873e",
+  "web_src_patch_bytes": 96999,
+  "web_src_patch_verified": true,
+  "server_binary_sha256": "73591be117d59023e238336e2ac67bf35178e1fc046043557f250777d9db90ac",
+  "dist_index_sha256": "4104f2b649c76ea7c796d574d9fc9949635cb41a8fc21e81b60e4f9da496b086",
+  "captured": "2026-10-26T06:12:35.796Z",
+  "browser": "chromium 153.0.8010.12",
+  "timezone": "America/Chicago",
+  "locale": "en-US",
+  "theme_source": "product \"Color theme\" select (browser localStorage) after real sign-in; context colorScheme matching",
+  "pointer": "moved to 0,0 and 300ms settle before every capture (no stuck hover)",
+  "fixture": "fresh SQLite; init-admin admin; one refused sign-in (wrong password) via /api/auth/login; login and forced change-password captured with the bootstrap password; password then replaced via /api/auth/change-password; Matrix not configured; captcha none; KY_BACKUP_DIR set. Pass A: users, agents, rooms, health, scim, settings, backup-empty. Then pins internal/backup/testdata/pairing-v050.json PublicKey (2 of 3) via /api/backup/pin-key and runs one /api/backup/deposit; pass B: overview, audit, backup-written; pass C: health-loading (CDP latency), health-offline and overview-offline (context offline)",
+  "manifest_hashes_verified": "78 of 78 file hashes match the manifest"
+ },
+ "rubric": {
+  "version": "ky-suite-v2",
+  "weights": {
+   "hierarchy": 0.2,
+   "typography": 0.15,
+   "density_layout": 0.2,
+   "color": 0.15,
+   "visible_affordances": 0.15,
+   "coherence": 0.15
+  },
+  "ky_fit_weights": {
+   "palette_tokens": 0.2,
+   "type_geometry": 0.2,
+   "shell": 0.2,
+   "accent_discipline": 0.2,
+   "suite_cohesion": 0.2
+  },
+  "rounding": "per file: Decimal(str(x)).quantize(Decimal('0.1'), ROUND_HALF_UP); means from unrounded weighted sums, rounded half-up to 0.01",
+  "state_extension": "state uses empty/populated per rubric plus 'loading' and 'error' for the CDP-latency and offline captures; their condition string is copied from the manifest",
+  "ky_fit_note": "suite_cohesion scored (not N/A): judged against kypost-05-after-inbox-desktop-light.png and kycalendar-06-confirm1-month-desktop-light.png"
+ },
+ "inventory": {
+  "files": 78,
+  "viewport_representatives_scored": 60,
+  "full_page_variants": 18,
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "near_duplicate_rule": "same dims, <0.1% pixels differ, max channel delta <=8; closest measured pair overview vs overview-offline desktop light at 0.519% differing pixels (not a near duplicate)",
+  "rows": [
+   {
+    "file": "kymessages-06-after-login-desktop-light.png",
+    "sha256": "5b7399c75a9b51cf84b185b5e17c443ee8d6bd18ce63f7ed5789e986902fedaf",
+    "bytes": 26943,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-change-password-desktop-light.png",
+    "sha256": "18a5a3f87d6274b51adc47e9113c4af050ae2b8ca36fdb406ee59101eaea8cf0",
+    "bytes": 28008,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-login-mobile-light.png",
+    "sha256": "dd4becc3f34c5bab97355384ad92cf2e45d221fe13c51fac8d732084b27b43d3",
+    "bytes": 23163,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-change-password-mobile-light.png",
+    "sha256": "20df4e438a349a8fa8b41840d0897b9c8f628a71b7d71a136ac11dc92b35577f",
+    "bytes": 23073,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-login-desktop-dark.png",
+    "sha256": "55d50b39102dfefa472c76bedae378727987fdecdc14999f71e203becd062151",
+    "bytes": 27192,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-change-password-desktop-dark.png",
+    "sha256": "e1b60d4608212167f4885ba9e5c95063c644c8a999ea1083b0b0499e247610ac",
+    "bytes": 28365,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-login-mobile-dark.png",
+    "sha256": "c33bfc159bcb31801680806174b856396ec90afa11387d911d479b885bb10449",
+    "bytes": 23468,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-change-password-mobile-dark.png",
+    "sha256": "4d2c51e91ea7f02907f02e18bc9c188304a5ee7c1605a866c2406e56369c9ab0",
+    "bytes": 23428,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-users-desktop-light.png",
+    "sha256": "352a6b8aaa8f6f1ad5bcc66090e934bfe62c08f0cb6863061b50eb5772b8d679",
+    "bytes": 38823,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-agents-desktop-light.png",
+    "sha256": "971808c4258aae240e300690ed2217760b2404dd231b0257a3fbd8c44586886f",
+    "bytes": 39561,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-rooms-desktop-light.png",
+    "sha256": "eb2057be6e04ae00d9fab573d457bfe5b41392589704c2e17a556841beefbc24",
+    "bytes": 38940,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-desktop-light.png",
+    "sha256": "f3aee42ebc38677bbde9347c9206eda85bd7b7b870b36ae6b41708c4dd9c1c65",
+    "bytes": 70330,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-scim-desktop-light.png",
+    "sha256": "15d7bbc9f421b17dc1519154a77ba7d45992cae740969cb6b854bef6daa1fa7e",
+    "bytes": 65887,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-settings-desktop-light-full.png",
+    "sha256": "2c4fbfb97863bc9058a39a0ee9aad8dae19cf640824f95fc7caf32fdfe810759",
+    "bytes": 94026,
+    "width": 1280,
+    "height": 926,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-settings-desktop-light.png",
+    "sha256": "318579fd4afc781106b85a7b0c95cfab510732f045d4d51e09fa597ad19c3236",
+    "bytes": 93807,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-backup-empty-desktop-light-full.png",
+    "sha256": "9154df224d1d422d9e1411be585cfd9cc502f5e0ec3236b87475bc6d9c40ee3e",
+    "bytes": 145679,
+    "width": 1280,
+    "height": 1325,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-backup-empty-desktop-light.png",
+    "sha256": "dd1b1c280f62ec7a2bc8fcd4e6356e441e3d127ed607eb656baeb28309a2db3a",
+    "bytes": 106294,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-users-mobile-light.png",
+    "sha256": "2556317542182b2d6ebb32194315b95264f238376de18958f238f2db50570899",
+    "bytes": 22251,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-agents-mobile-light.png",
+    "sha256": "c26e38a1dc933068d350b6b86ff47380a4bd844e24dc85f079fbd27bcdd90c71",
+    "bytes": 22596,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-rooms-mobile-light.png",
+    "sha256": "857f03595a8fc017464bf4291b61763ced64c4da61c31985f6909bbf640b36b2",
+    "bytes": 22045,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-mobile-light-full.png",
+    "sha256": "822de9a69d072a3e14a226bd4adef1162f9fbbdc6dae7467e30929eb576ce387",
+    "bytes": 56514,
+    "width": 390,
+    "height": 877,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-health-mobile-light.png",
+    "sha256": "359d7cade9d869ebfd4814c9f123284f81c65d915d3d7ff51d4cdf89ca9126c8",
+    "bytes": 56332,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-scim-mobile-light.png",
+    "sha256": "158c24f1acfc22497d771be25425f921027420efa9e917287a340f3ab5a80d3e",
+    "bytes": 50683,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-settings-mobile-light-full.png",
+    "sha256": "c5eeb6b11d2683c440e501424d5cd13a38daab708e8f4ade9e7a4691a37ed44d",
+    "bytes": 77239,
+    "width": 390,
+    "height": 1318,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-settings-mobile-light.png",
+    "sha256": "57596be8c51ddc1d89630afa810e3fc780d949e0553c528f9faea907a3d02f29",
+    "bytes": 51729,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-backup-empty-mobile-light-full.png",
+    "sha256": "7975dd96e5e55e47df9bba6a5e22f6f82d70ca5c5b3f2ff0fae746bf706e25ca",
+    "bytes": 133886,
+    "width": 390,
+    "height": 2384,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-backup-empty-mobile-light.png",
+    "sha256": "3579561098a3d6aa6013dc955ea7f9d882dd7f051110e78e233425c58516f060",
+    "bytes": 53169,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-users-desktop-dark.png",
+    "sha256": "62a1c47f2895ceaa9e91ddce6d4faf60b5d6ad805ff4aca7e8731227e2bfb611",
+    "bytes": 39012,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-agents-desktop-dark.png",
+    "sha256": "de73baa88ce953b5270e3ca15cc49a0396fa6bbc8a0bed341c9eea776d3870bf",
+    "bytes": 39620,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-rooms-desktop-dark.png",
+    "sha256": "7ac01c24762246eabdf7fe51c49014a03ca127db047af20e236fe3ab2afc84f2",
+    "bytes": 39006,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-desktop-dark.png",
+    "sha256": "02d903edc6f0b79ab95ab980c2f8e0bd45b0fff3dd284f6f8a471d0aa6c50dce",
+    "bytes": 70772,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-scim-desktop-dark.png",
+    "sha256": "d73d3f61e171596604c7abd05f3161138d2f93c76429644e22401600dcb52f00",
+    "bytes": 66223,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-settings-desktop-dark-full.png",
+    "sha256": "abd3bc9c45992b17fb4d750da230334563957f3c020a6161fffca7e14a13ce85",
+    "bytes": 94020,
+    "width": 1280,
+    "height": 926,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-settings-desktop-dark.png",
+    "sha256": "a2c4483f29c16abd65082a46c64fcf05c0fb7a76f3eeffdbbbc29e1beb68d916",
+    "bytes": 93799,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-backup-empty-desktop-dark-full.png",
+    "sha256": "d4b8d09cd849ccc3b809f957a61eb546d52d65e3a63449e03b20d7672a90f325",
+    "bytes": 146475,
+    "width": 1280,
+    "height": 1325,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-backup-empty-desktop-dark.png",
+    "sha256": "b436469bb49da38064eb21c8bcc6670682f1b5520f9d83dd2f11ff6be38f85bd",
+    "bytes": 106890,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-users-mobile-dark.png",
+    "sha256": "cdf71d20fa1b2fb07dbdfbd4dbe94d79efb66b8327af89ae6e303e6a931dec18",
+    "bytes": 22303,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-agents-mobile-dark.png",
+    "sha256": "7c1aad7874c02404dfce96efafa90e8cd2b47db2fe0ffac196462d7317b87b53",
+    "bytes": 22701,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-rooms-mobile-dark.png",
+    "sha256": "e9fea95bb7bbcd617ef2578df62aab2893c7c9f8e5b4325b5df62a5ec79260b9",
+    "bytes": 22120,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-mobile-dark-full.png",
+    "sha256": "f10890762d748ce0d15d58cfe53eef84ce6fa069d2a9846f61995fe5fa301814",
+    "bytes": 57082,
+    "width": 390,
+    "height": 877,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-health-mobile-dark.png",
+    "sha256": "b7873a3b77e1e98b96574689095d09cedb642554e696d7f8e1d206ac67dc42d8",
+    "bytes": 56894,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-scim-mobile-dark.png",
+    "sha256": "7e73058d88332a1ab023365b5a00e7336d7e88fa248611a7bf8129b019b670f7",
+    "bytes": 51420,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-settings-mobile-dark-full.png",
+    "sha256": "4cc64ae5b984ea63ff8d20fdda2727592c8ee04d82eebdb7f72479908e57fe44",
+    "bytes": 77457,
+    "width": 390,
+    "height": 1318,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-settings-mobile-dark.png",
+    "sha256": "639e8757309fb4a78db295053cf26b4ee8c820c3aab07a9d020d8ec978c9ad9f",
+    "bytes": 52107,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-backup-empty-mobile-dark-full.png",
+    "sha256": "f3811d16789c19a2ec734d049e2576fc81e70e9ea418726c5198f1dfcd878ed3",
+    "bytes": 136972,
+    "width": 390,
+    "height": 2384,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-backup-empty-mobile-dark.png",
+    "sha256": "6f4f858f550bff251db4d90caa630ac532c31639962c9012d9e5186548727d7e",
+    "bytes": 54151,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-overview-desktop-light.png",
+    "sha256": "f17b2687f4ff4860eea39dc0796f9a4b04bb24df1726d6b18d4b300646f0614d",
+    "bytes": 59656,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-audit-desktop-light-full.png",
+    "sha256": "7b182180c3b0783078ed49c08a6d49476060dda11172fd356431596077966165",
+    "bytes": 124746,
+    "width": 1280,
+    "height": 1319,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-audit-desktop-light.png",
+    "sha256": "1398f07807a8ae5359c65bae57d5aeb0e50ad95c1f5ff3c6e458ce310007d76b",
+    "bytes": 93833,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-backup-written-desktop-light-full.png",
+    "sha256": "223ade8bac00f2e81366ec549a06363c4f04882bea5a72f894a03a5750f2545c",
+    "bytes": 153681,
+    "width": 1280,
+    "height": 1313,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-backup-written-desktop-light.png",
+    "sha256": "2c4daff5a7a79c4fcd1752c88e53dcd1bbe60f3b42e5f0b5ec0a4203b56f1898",
+    "bytes": 116977,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-overview-mobile-light.png",
+    "sha256": "b00d82c7ab2c9bdd2386a5758c028849ddb1993bce800283b5817f9dfaa61a8b",
+    "bytes": 41205,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-audit-mobile-light-full.png",
+    "sha256": "8b5b8efc488c4d236e9f1a7f6df10ca4f9f72ab8802341cc83654c770f288106",
+    "bytes": 165664,
+    "width": 390,
+    "height": 3756,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-audit-mobile-light.png",
+    "sha256": "b6f1d5ec42c9823bc100d10ecdc8ed9318f7fd7c097b55812ce810f1b0372a51",
+    "bytes": 40524,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-backup-written-mobile-light-full.png",
+    "sha256": "40b238b7e0869a264da93ad4a059ed113ea1896489ffc91adad2e31977b50f11",
+    "bytes": 140222,
+    "width": 390,
+    "height": 2263,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-backup-written-mobile-light.png",
+    "sha256": "f676728d90f021d24bb5bf3abd6632dff761eb07f620e520db75d96ed503a259",
+    "bytes": 60375,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-overview-desktop-dark.png",
+    "sha256": "cec39d322beb86258bd53b8af4daec11dc57aa9cc1e9b41f1f49e026e9eb76f4",
+    "bytes": 59726,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-audit-desktop-dark-full.png",
+    "sha256": "d60b8f73ad67e1f92b2f1d1d4bf91522e07165f358eeb2e62a9b8bdd939825fc",
+    "bytes": 135829,
+    "width": 1280,
+    "height": 1403,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-audit-desktop-dark.png",
+    "sha256": "263b28d209c795c50e10da7e935504fd5fe7cd9e41b31aab35fb4ace4c4e00f3",
+    "bytes": 95758,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-backup-written-desktop-dark-full.png",
+    "sha256": "5eac929113771a178fa11b02c679b2a70ff6bded55630ebe3fa2a7f9cc8e8514",
+    "bytes": 154768,
+    "width": 1280,
+    "height": 1313,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-backup-written-desktop-dark.png",
+    "sha256": "8fd0dffb97425d8ee9f8aacf4f0e4d01b4adecf306f4a2c0a0fb15386a1d7024",
+    "bytes": 117943,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-overview-mobile-dark.png",
+    "sha256": "00ccc0226fb9e9f141637167995d1d16ef41f320e9beae1dc5a5c4d34fc52984",
+    "bytes": 41337,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-audit-mobile-dark-full.png",
+    "sha256": "3f087b2e50b122ef576d5fd549351b5a685c96dd8aa6d64973b24ea0a83c9304",
+    "bytes": 183959,
+    "width": 390,
+    "height": 4168,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-audit-mobile-dark.png",
+    "sha256": "e20ab4825d365990862bb87e6765249ef91aa4c0ddaf24f0652ceeaa9092dd65",
+    "bytes": 39263,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-backup-written-mobile-dark-full.png",
+    "sha256": "51b5bd779f456956746ebac608a17fc930636b061a869823ac7b490f4c6d7f02",
+    "bytes": 142282,
+    "width": 390,
+    "height": 2263,
+    "full_page": true
+   },
+   {
+    "file": "kymessages-06-after-backup-written-mobile-dark.png",
+    "sha256": "bcae9ad6a6f11451560bc3784a4086fe4f5d0f3f66bfa2435787c3fc7bf963f8",
+    "bytes": 60345,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-loading-desktop-light.png",
+    "sha256": "e769c373850d83f4da483b4325aca67e69129d1f1137deaac2576cf0199ab492",
+    "bytes": 37625,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-offline-desktop-light.png",
+    "sha256": "2e64016be628560408744253b98c710405aca8ba15bb744fac750d4a817ae92b",
+    "bytes": 40091,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-overview-offline-desktop-light.png",
+    "sha256": "41441e66be34bcc05ac552811d06d083371ab8066fceeec67bd5664780ff46f7",
+    "bytes": 58151,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-loading-mobile-light.png",
+    "sha256": "f866d1954fcbb81b94bd3538e6733cc7058b3bb91c6f91c43d89dc7ebc7c8415",
+    "bytes": 20786,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-offline-mobile-light.png",
+    "sha256": "cbcdef0d2e9d9081d54d305337c8880e3192e6c515a439412fabc625d944357d",
+    "bytes": 23127,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-overview-offline-mobile-light.png",
+    "sha256": "4856d592c8e15d549e51990b0283e66fd3cc319c0e783fa24ad0650bd2f217dd",
+    "bytes": 39868,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-loading-desktop-dark.png",
+    "sha256": "6c5b0c6a9800a9c7db3ae748b1e0d5b66dcef0f5c68a362c0734c24bb3d90c47",
+    "bytes": 37810,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-offline-desktop-dark.png",
+    "sha256": "135809f481b9d85169678117c15023c8ef88b149439355025af7787583d64572",
+    "bytes": 40032,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-overview-offline-desktop-dark.png",
+    "sha256": "14242c524b67fca3992410acdb264020da28a370101e805c5d2977c8f539e3ae",
+    "bytes": 58185,
+    "width": 1280,
+    "height": 900,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-loading-mobile-dark.png",
+    "sha256": "abc1713fcf7f88f9af020a2af31ddc6ba88dda66ec567e8d907f62dc684aea21",
+    "bytes": 21006,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-health-offline-mobile-dark.png",
+    "sha256": "1a08254ce4135cc5c718b6294ef2024f1a1c14ff337bfb2473f7a850c192d94b",
+    "bytes": 23320,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   },
+   {
+    "file": "kymessages-06-after-overview-offline-mobile-dark.png",
+    "sha256": "e541f8bfa691c74462250d7c87649bf41b3936b6e30e18161a710b093ede1e6a",
+    "bytes": 40171,
+    "width": 390,
+    "height": 844,
+    "full_page": false
+   }
+  ]
+ },
+ "files": [
+  {
+   "file": "kymessages-06-after-login-desktop-light.png",
+   "sha256": "5b7399c75a9b51cf84b185b5e17c443ee8d6bd18ce63f7ed5789e986902fedaf",
+   "bytes": 26943,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages console sign-in",
+   "observed_surface": "login",
+   "observed_surface_label": "sign-in",
+   "cohort": "auth",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "autofocus ring on username field"
+   ],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Stamp + 'KyMessages' wordmark, then one filled 'Sign In' primary and an outlined 'Sign in with KyIdentity' secondary under a divider.",
+    "typography": "Clear 13px labels over 15px fields and a single title; 'Sign In' is Title Case while the rest of the console uses sentence case.",
+    "density_layout": "Centred 420px card with even 16/24px rhythm; the theme select floats alone in the top-right corner, detached from the card.",
+    "color": "Neutral cream card, orange only on the primary and the focused field; green 'Security check verified.' paired with a shield icon.",
+    "visible_affordances": "Focused username shows a 2px accent ring; inputs, primary and secondary read distinctly.",
+    "coherence": "One button/field vocabulary; native theme select is the only unstyled control."
+   },
+   "weighted_sum": 8.35,
+   "total": 8.4,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pre-shell auth screen; keyboard, autofill and error states not shown. Focus ring on username is the captured autofocus state. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-change-password-desktop-light.png",
+   "sha256": "18a5a3f87d6274b51adc47e9113c4af050ae2b8ca36fdb406ee59101eaea8cf0",
+   "bytes": 28008,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages console sign-in",
+   "observed_surface": "change-password",
+   "observed_surface_label": "forced password change",
+   "cohort": "auth",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Change your password' title, one explanatory line, three fields, filled primary and outlined 'Sign out'.",
+    "typography": "24px title, 13px labels and helper text; consistent with the login card.",
+    "density_layout": "Single card with even field rhythm; nothing crowded.",
+    "color": "Neutral surfaces; orange only on 'Change password'.",
+    "visible_affordances": "Three bordered 40px fields and two distinct button kinds; required/length rules are only in the paragraph, not by the fields.",
+    "coherence": "Unlike the login screen it has no stamp, wordmark or theme select, so it reads as a different, unbranded page."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 5,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "ky_fit_weighted_sum": 7.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pre-shell auth screen; keyboard, autofill and error states not shown. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-login-mobile-light.png",
+   "sha256": "dd4becc3f34c5bab97355384ad92cf2e45d221fe13c51fac8d732084b27b43d3",
+   "bytes": 23163,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages console sign-in",
+   "observed_surface": "login",
+   "observed_surface_label": "sign-in",
+   "cohort": "auth",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "autofocus ring on username field"
+   ],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Stamp + 'KyMessages' wordmark, then one filled 'Sign In' primary and an outlined 'Sign in with KyIdentity' secondary under a divider.",
+    "typography": "Clear 13px labels over 15px fields and a single title; 'Sign In' is Title Case while the rest of the console uses sentence case.",
+    "density_layout": "Card fills the width with even rhythm, but the theme select sits 16px above the stamp and crowds the header.",
+    "color": "Neutral cream card, orange only on the primary and the focused field; green 'Security check verified.' paired with a shield icon.",
+    "visible_affordances": "Focused username shows a 2px accent ring; inputs, primary and secondary read distinctly.",
+    "coherence": "One button/field vocabulary; native theme select is the only unstyled control."
+   },
+   "weighted_sum": 8.15,
+   "total": 8.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pre-shell auth screen; keyboard, autofill and error states not shown. Focus ring on username is the captured autofocus state. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-change-password-mobile-light.png",
+   "sha256": "20df4e438a349a8fa8b41840d0897b9c8f628a71b7d71a136ac11dc92b35577f",
+   "bytes": 23073,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages console sign-in",
+   "observed_surface": "change-password",
+   "observed_surface_label": "forced password change",
+   "cohort": "auth",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Change your password' title, one explanatory line, three fields, filled primary and outlined 'Sign out'.",
+    "typography": "24px title, 13px labels and helper text; consistent with the login card.",
+    "density_layout": "Single card with even field rhythm; nothing crowded.",
+    "color": "Neutral surfaces; orange only on 'Change password'.",
+    "visible_affordances": "Three bordered 40px fields and two distinct button kinds; required/length rules are only in the paragraph, not by the fields.",
+    "coherence": "Unlike the login screen it has no stamp, wordmark or theme select, so it reads as a different, unbranded page."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 5,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "ky_fit_weighted_sum": 7.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pre-shell auth screen; keyboard, autofill and error states not shown. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-login-desktop-dark.png",
+   "sha256": "55d50b39102dfefa472c76bedae378727987fdecdc14999f71e203becd062151",
+   "bytes": 27192,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages console sign-in",
+   "observed_surface": "login",
+   "observed_surface_label": "sign-in",
+   "cohort": "auth",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "autofocus ring on username field"
+   ],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Stamp + 'KyMessages' wordmark, then one filled 'Sign In' primary and an outlined 'Sign in with KyIdentity' secondary under a divider.",
+    "typography": "Clear 13px labels over 15px fields and a single title; 'Sign In' is Title Case while the rest of the console uses sentence case.",
+    "density_layout": "Centred 420px card with even 16/24px rhythm; the theme select floats alone in the top-right corner, detached from the card.",
+    "color": "Neutral cream card, orange only on the primary and the focused field; green 'Security check verified.' paired with a shield icon.",
+    "visible_affordances": "Focused username shows a 2px accent ring; inputs, primary and secondary read distinctly.",
+    "coherence": "One button/field vocabulary; native theme select is the only unstyled control."
+   },
+   "weighted_sum": 8.35,
+   "total": 8.4,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pre-shell auth screen; keyboard, autofill and error states not shown. Focus ring on username is the captured autofocus state. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-change-password-desktop-dark.png",
+   "sha256": "e1b60d4608212167f4885ba9e5c95063c644c8a999ea1083b0b0499e247610ac",
+   "bytes": 28365,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages console sign-in",
+   "observed_surface": "change-password",
+   "observed_surface_label": "forced password change",
+   "cohort": "auth",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Change your password' title, one explanatory line, three fields, filled primary and outlined 'Sign out'.",
+    "typography": "24px title, 13px labels and helper text; consistent with the login card.",
+    "density_layout": "Single card with even field rhythm; nothing crowded.",
+    "color": "Neutral surfaces; orange only on 'Change password'.",
+    "visible_affordances": "Three bordered 40px fields and two distinct button kinds; required/length rules are only in the paragraph, not by the fields.",
+    "coherence": "Unlike the login screen it has no stamp, wordmark or theme select, so it reads as a different, unbranded page."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 5,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "ky_fit_weighted_sum": 7.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pre-shell auth screen; keyboard, autofill and error states not shown. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-login-mobile-dark.png",
+   "sha256": "c33bfc159bcb31801680806174b856396ec90afa11387d911d479b885bb10449",
+   "bytes": 23468,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages console sign-in",
+   "observed_surface": "login",
+   "observed_surface_label": "sign-in",
+   "cohort": "auth",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "autofocus ring on username field"
+   ],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Stamp + 'KyMessages' wordmark, then one filled 'Sign In' primary and an outlined 'Sign in with KyIdentity' secondary under a divider.",
+    "typography": "Clear 13px labels over 15px fields and a single title; 'Sign In' is Title Case while the rest of the console uses sentence case.",
+    "density_layout": "Card fills the width with even rhythm, but the theme select sits 16px above the stamp and crowds the header.",
+    "color": "Neutral cream card, orange only on the primary and the focused field; green 'Security check verified.' paired with a shield icon.",
+    "visible_affordances": "Focused username shows a 2px accent ring; inputs, primary and secondary read distinctly.",
+    "coherence": "One button/field vocabulary; native theme select is the only unstyled control."
+   },
+   "weighted_sum": 8.15,
+   "total": 8.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pre-shell auth screen; keyboard, autofill and error states not shown. Focus ring on username is the captured autofocus state. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-change-password-mobile-dark.png",
+   "sha256": "4d2c51e91ea7f02907f02e18bc9c188304a5ee7c1605a866c2406e56369c9ab0",
+   "bytes": 23428,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages console sign-in",
+   "observed_surface": "change-password",
+   "observed_surface_label": "forced password change",
+   "cohort": "auth",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Change your password' title, one explanatory line, three fields, filled primary and outlined 'Sign out'.",
+    "typography": "24px title, 13px labels and helper text; consistent with the login card.",
+    "density_layout": "Single card with even field rhythm; nothing crowded.",
+    "color": "Neutral surfaces; orange only on 'Change password'.",
+    "visible_affordances": "Three bordered 40px fields and two distinct button kinds; required/length rules are only in the paragraph, not by the fields.",
+    "coherence": "Unlike the login screen it has no stamp, wordmark or theme select, so it reads as a different, unbranded page."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 5,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "ky_fit_weighted_sum": 7.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pre-shell auth screen; keyboard, autofill and error states not shown. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-users-desktop-light.png",
+   "sha256": "352a6b8aaa8f6f1ad5bcc66090e934bfe62c08f0cb6863061b50eb5772b8d679",
+   "bytes": 38823,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "users",
+   "observed_surface_label": "users (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state block sits between two quiet rules at the top; consistent but the guidance is a single small line on an empty canvas.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.75,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-agents-desktop-light.png",
+   "sha256": "971808c4258aae240e300690ed2217760b2404dd231b0257a3fbd8c44586886f",
+   "bytes": 39561,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "agents",
+   "observed_surface_label": "agents (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state block sits between two quiet rules at the top; consistent but the guidance is a single small line on an empty canvas.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.75,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-rooms-desktop-light.png",
+   "sha256": "eb2057be6e04ae00d9fab573d457bfe5b41392589704c2e17a556841beefbc24",
+   "bytes": 38940,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "rooms",
+   "observed_surface_label": "rooms (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state block sits between two quiet rules at the top; consistent but the guidance is a single small line on an empty canvas.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.75,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-desktop-light.png",
+   "sha256": "f3aee42ebc38677bbde9347c9206eda85bd7b7b870b36ae6b41708c4dd9c1c65",
+   "bytes": 70330,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health",
+   "observed_surface_label": "health",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Health' h1 with 'Check again' at top right, a scope note, two component cards with 'Up' pills, then a 'Network path' section.",
+    "typography": "Clear title and card labels; four long amber warning lines at body size make the network section read heavy.",
+    "density_layout": "Two component cards leave large empty interiors beside a full-width network card; structure differs from Overview's flat rows.",
+    "color": "Amber 'Warn' lines with triangle icons and green 'Pass' with check icon; status always paired with text and icon.",
+    "visible_affordances": "'Check again' is a clear outlined action with refresh icon; pills read as status, not buttons.",
+    "coherence": "Bordered cards here versus flat rule-divided rows on Overview and Settings."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-scim-desktop-light.png",
+   "sha256": "15d7bbc9f421b17dc1519154a77ba7d45992cae740969cb6b854bef6daa1fa7e",
+   "bytes": 65887,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "scim",
+   "observed_surface_label": "directory & SCIM",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Long title 'SCIM 2.0 Directory & Inbound Provisioning' does not match the nav label 'Directory & SCIM'; the amber 'SCIM is off' callout is the real message but sits mid-card.",
+    "typography": "Title Case headings ('Connection Details', 'Provisioned Accounts (0)') differ from sentence case elsewhere; mono env vars are clear.",
+    "density_layout": "Two bordered cards with a bordered callout nested inside the first; acceptable spacing but box-in-box.",
+    "color": "Amber callout for the disabled state, neutral otherwise.",
+    "visible_affordances": "Read-only base URL shown in a recessed field that reads as non-editable; no copy action visible.",
+    "coherence": "Card-and-callout composition and Title Case set this page apart from Overview and Settings."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.2,
+   "ky_fit_weighted_sum": 8.2,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "SCIM disabled and zero provisioned accounts in the fixture; populated account list not captured. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-settings-desktop-light-full.png",
+   "sha256": "2c4fbfb97863bc9058a39a0ee9aad8dae19cf640824f95fc7caf32fdfe810759",
+   "bytes": 94026,
+   "width": 1280,
+   "height": 926,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-settings-desktop-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-settings-desktop-light.png",
+   "sha256": "318579fd4afc781106b85a7b0c95cfab510732f045d4d51e09fa597ad19c3236",
+   "bytes": 93807,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "settings",
+   "observed_surface_label": "settings & DB",
+   "cohort": "settings",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'System Settings & Architecture' title differs from nav 'Settings & DB'; flat sections with icon headings (Database, Appearance, Branding, Account security) scan well.",
+    "typography": "Consistent 17px section headings, 13px helpers; Title Case page title only.",
+    "density_layout": "Flat sections divided by quiet rules with even rhythm; no boxes around fields.",
+    "color": "Orange only on 'Save name'; neutral pill for 'sqlite'.",
+    "visible_affordances": "Disabled 'Use default', 'Upload logo', 'Reset logo' are grey-filled and distinct from the outlined enabled 'Set up two-factor sign-in'; native file input styling differs.",
+    "coherence": "Two theme selects on one page (sidebar and Appearance) and a native file picker break the otherwise single vocabulary."
+   },
+   "weighted_sum": 7.7,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-desktop-light-full.png",
+   "sha256": "9154df224d1d422d9e1411be585cfd9cc502f5e0ec3236b87475bc6d9c40ee3e",
+   "bytes": 145679,
+   "width": 1280,
+   "height": 1325,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-backup-empty-desktop-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-desktop-light.png",
+   "sha256": "dd1b1c280f62ec7a2bc8fcd4e6356e441e3d127ed607eb656baeb28309a2db3a",
+   "bytes": 106294,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup-empty",
+   "observed_surface_label": "backup & recovery, no key",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Amber banner says no backups and points 'below'; the 'Back up now' primary is disabled, and the pin/pair forms that are the real next step are below the fold.",
+    "typography": "Mono paths in the status cards are larger than body text; card labels, pills, helper text and chips create many sizes.",
+    "density_layout": "Banner, four status cards, a status line, then stacked section cards; many boxes and the 'Back up now' heading repeats the button label.",
+    "color": "Red 'None' pill, neutral 'Not paired'/'0 of 7'/'Daily' pills, amber banner; semantic but busy.",
+    "visible_affordances": "Disabled 'Back up now' is a tan filled button that can read as pressed; disabled 'Download capsule' differs from enabled 'Run restore drill' only by text tone.",
+    "coherence": "Banners, status cards, pills, chips and section cards mix several component styles on one page."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Below-fold KyRecovery and 'Recovery key by hand' forms checked in the full-page capture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-users-mobile-light.png",
+   "sha256": "2556317542182b2d6ebb32194315b95264f238376de18958f238f2db50570899",
+   "bytes": 22251,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "users",
+   "observed_surface_label": "users (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state text fills the narrow column comfortably beneath the tab bar; nothing crowded.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.95,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-agents-mobile-light.png",
+   "sha256": "c26e38a1dc933068d350b6b86ff47380a4bd844e24dc85f079fbd27bcdd90c71",
+   "bytes": 22596,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "agents",
+   "observed_surface_label": "agents (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state text fills the narrow column comfortably beneath the tab bar; nothing crowded.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.95,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-rooms-mobile-light.png",
+   "sha256": "857f03595a8fc017464bf4291b61763ced64c4da61c31985f6909bbf640b36b2",
+   "bytes": 22045,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "rooms",
+   "observed_surface_label": "rooms (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state text fills the narrow column comfortably beneath the tab bar; nothing crowded.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.95,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-mobile-light-full.png",
+   "sha256": "822de9a69d072a3e14a226bd4adef1162f9fbbdc6dae7467e30929eb576ce387",
+   "bytes": 56514,
+   "width": 390,
+   "height": 877,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-health-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-health-mobile-light.png",
+   "sha256": "359d7cade9d869ebfd4814c9f123284f81c65d915d3d7ff51d4cdf89ca9126c8",
+   "bytes": 56332,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health",
+   "observed_surface_label": "health",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Health' h1 with 'Check again' at top right, a scope note, two component cards with 'Up' pills, then a 'Network path' section.",
+    "typography": "Clear title and card labels; four long amber warning lines at body size make the network section read heavy.",
+    "density_layout": "Cards stack full width; each warning wraps to 2-3 lines so the network section runs below the fold.",
+    "color": "Amber 'Warn' lines with triangle icons and green 'Pass' with check icon; status always paired with text and icon.",
+    "visible_affordances": "'Check again' is a clear outlined action with refresh icon; pills read as status, not buttons.",
+    "coherence": "Bordered cards here versus flat rule-divided rows on Overview and Settings."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Full-page capture shows only the last warning below the fold. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-scim-mobile-light.png",
+   "sha256": "158c24f1acfc22497d771be25425f921027420efa9e917287a340f3ab5a80d3e",
+   "bytes": 50683,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "scim",
+   "observed_surface_label": "directory & SCIM",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Long title 'SCIM 2.0 Directory & Inbound Provisioning' does not match the nav label 'Directory & SCIM'; the amber 'SCIM is off' callout is the real message but sits mid-card.",
+    "typography": "Title Case headings ('Connection Details', 'Provisioned Accounts (0)') differ from sentence case elsewhere; mono env vars are clear.",
+    "density_layout": "Title wraps to two lines; cards stack with callout nested inside, still within the width.",
+    "color": "Amber callout for the disabled state, neutral otherwise.",
+    "visible_affordances": "Read-only base URL shown in a recessed field that reads as non-editable; no copy action visible.",
+    "coherence": "Card-and-callout composition and Title Case set this page apart from Overview and Settings."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.2,
+   "ky_fit_weighted_sum": 8.2,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "SCIM disabled and zero provisioned accounts in the fixture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-settings-mobile-light-full.png",
+   "sha256": "c5eeb6b11d2683c440e501424d5cd13a38daab708e8f4ade9e7a4691a37ed44d",
+   "bytes": 77239,
+   "width": 390,
+   "height": 1318,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-settings-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-settings-mobile-light.png",
+   "sha256": "57596be8c51ddc1d89630afa810e3fc780d949e0553c528f9faea907a3d02f29",
+   "bytes": 51729,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "settings",
+   "observed_surface_label": "settings & DB",
+   "cohort": "settings",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'System Settings & Architecture' title differs from nav 'Settings & DB'; flat sections with icon headings (Database, Appearance, Branding, Account security) scan well.",
+    "typography": "Consistent 17px section headings, 13px helpers; Title Case page title only.",
+    "density_layout": "Sections stack cleanly, but in the full page the Branding row wraps unevenly: truncated 'N…' file input, 'Reset logo' on its own line.",
+    "color": "Orange only on 'Save name'; neutral pill for 'sqlite'.",
+    "visible_affordances": "Disabled 'Use default', 'Upload logo', 'Reset logo' are grey-filled and distinct from the outlined enabled 'Set up two-factor sign-in'; native file input styling differs.",
+    "coherence": "Two theme selects on one page (sidebar and Appearance) and a native file picker break the otherwise single vocabulary."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Branding wrap seen in the 1318px full-page capture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-mobile-light-full.png",
+   "sha256": "7975dd96e5e55e47df9bba6a5e22f6f82d70ca5c5b3f2ff0fae746bf706e25ca",
+   "bytes": 133886,
+   "width": 390,
+   "height": 2384,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-backup-empty-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-mobile-light.png",
+   "sha256": "3579561098a3d6aa6013dc955ea7f9d882dd7f051110e78e233425c58516f060",
+   "bytes": 53169,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup-empty",
+   "observed_surface_label": "backup & recovery, no key",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Amber banner says no backups and points 'below'; the 'Back up now' primary is disabled, and the pin/pair forms that are the real next step are below the fold.",
+    "typography": "Mono paths in the status cards are larger than body text; card labels, pills, helper text and chips create many sizes.",
+    "density_layout": "Four stacked status cards fill the first screen; the disabled primary only appears at the bottom edge and forms are ~1500px down.",
+    "color": "Red 'None' pill, neutral 'Not paired'/'0 of 7'/'Daily' pills, amber banner; semantic but busy.",
+    "visible_affordances": "Disabled 'Back up now' is a tan filled button that can read as pressed; disabled 'Download capsule' differs from enabled 'Run restore drill' only by text tone.",
+    "coherence": "Banners, status cards, pills, chips and section cards mix several component styles on one page."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Full-page capture is 2384px; forms below the fold. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-users-desktop-dark.png",
+   "sha256": "62a1c47f2895ceaa9e91ddce6d4faf60b5d6ad805ff4aca7e8731227e2bfb611",
+   "bytes": 39012,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "users",
+   "observed_surface_label": "users (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state block sits between two quiet rules at the top; consistent but the guidance is a single small line on an empty canvas.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.75,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-agents-desktop-dark.png",
+   "sha256": "de73baa88ce953b5270e3ca15cc49a0396fa6bbc8a0bed341c9eea776d3870bf",
+   "bytes": 39620,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "agents",
+   "observed_surface_label": "agents (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state block sits between two quiet rules at the top; consistent but the guidance is a single small line on an empty canvas.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.75,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-rooms-desktop-dark.png",
+   "sha256": "7ac01c24762246eabdf7fe51c49014a03ca127db047af20e236fe3ab2afc84f2",
+   "bytes": 39006,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "rooms",
+   "observed_surface_label": "rooms (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state block sits between two quiet rules at the top; consistent but the guidance is a single small line on an empty canvas.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.75,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-desktop-dark.png",
+   "sha256": "02d903edc6f0b79ab95ab980c2f8e0bd45b0fff3dd284f6f8a471d0aa6c50dce",
+   "bytes": 70772,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health",
+   "observed_surface_label": "health",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Health' h1 with 'Check again' at top right, a scope note, two component cards with 'Up' pills, then a 'Network path' section.",
+    "typography": "Clear title and card labels; four long amber warning lines at body size make the network section read heavy.",
+    "density_layout": "Two component cards leave large empty interiors beside a full-width network card; structure differs from Overview's flat rows.",
+    "color": "Dark-theme amber warning text is close in hue and weight to the orange accent rail; still paired with icons and 'Warn:' text.",
+    "visible_affordances": "'Check again' is a clear outlined action with refresh icon; pills read as status, not buttons.",
+    "coherence": "Bordered cards here versus flat rule-divided rows on Overview and Settings."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-scim-desktop-dark.png",
+   "sha256": "d73d3f61e171596604c7abd05f3161138d2f93c76429644e22401600dcb52f00",
+   "bytes": 66223,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "scim",
+   "observed_surface_label": "directory & SCIM",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Long title 'SCIM 2.0 Directory & Inbound Provisioning' does not match the nav label 'Directory & SCIM'; the amber 'SCIM is off' callout is the real message but sits mid-card.",
+    "typography": "Title Case headings ('Connection Details', 'Provisioned Accounts (0)') differ from sentence case elsewhere; mono env vars are clear.",
+    "density_layout": "Two bordered cards with a bordered callout nested inside the first; acceptable spacing but box-in-box.",
+    "color": "Amber callout for the disabled state, neutral otherwise.",
+    "visible_affordances": "Read-only base URL shown in a recessed field that reads as non-editable; no copy action visible.",
+    "coherence": "Card-and-callout composition and Title Case set this page apart from Overview and Settings."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.2,
+   "ky_fit_weighted_sum": 8.2,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "SCIM disabled and zero provisioned accounts in the fixture; populated account list not captured. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-settings-desktop-dark-full.png",
+   "sha256": "abd3bc9c45992b17fb4d750da230334563957f3c020a6161fffca7e14a13ce85",
+   "bytes": 94020,
+   "width": 1280,
+   "height": 926,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-settings-desktop-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-settings-desktop-dark.png",
+   "sha256": "a2c4483f29c16abd65082a46c64fcf05c0fb7a76f3eeffdbbbc29e1beb68d916",
+   "bytes": 93799,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "settings",
+   "observed_surface_label": "settings & DB",
+   "cohort": "settings",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'System Settings & Architecture' title differs from nav 'Settings & DB'; flat sections with icon headings (Database, Appearance, Branding, Account security) scan well.",
+    "typography": "Consistent 17px section headings, 13px helpers; Title Case page title only.",
+    "density_layout": "Flat sections divided by quiet rules with even rhythm; no boxes around fields.",
+    "color": "Orange only on 'Save name'; neutral pill for 'sqlite'.",
+    "visible_affordances": "In dark theme the disabled 'Use default', 'Upload logo', 'Reset logo' look nearly the same as the enabled outlined 'Set up two-factor sign-in'.",
+    "coherence": "Two theme selects on one page (sidebar and Appearance) and a native file picker break the otherwise single vocabulary."
+   },
+   "weighted_sum": 7.55,
+   "total": 7.6,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-desktop-dark-full.png",
+   "sha256": "d4b8d09cd849ccc3b809f957a61eb546d52d65e3a63449e03b20d7672a90f325",
+   "bytes": 146475,
+   "width": 1280,
+   "height": 1325,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-backup-empty-desktop-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-desktop-dark.png",
+   "sha256": "b436469bb49da38064eb21c8bcc6670682f1b5520f9d83dd2f11ff6be38f85bd",
+   "bytes": 106890,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup-empty",
+   "observed_surface_label": "backup & recovery, no key",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Amber banner says no backups and points 'below'; the 'Back up now' primary is disabled, and the pin/pair forms that are the real next step are below the fold.",
+    "typography": "Mono paths in the status cards are larger than body text; card labels, pills, helper text and chips create many sizes.",
+    "density_layout": "Banner, four status cards, a status line, then stacked section cards; many boxes and the 'Back up now' heading repeats the button label.",
+    "color": "Red 'None' pill, neutral 'Not paired'/'0 of 7'/'Daily' pills, amber banner; semantic but busy.",
+    "visible_affordances": "Disabled 'Back up now' is a tan filled button that can read as pressed; disabled 'Download capsule' differs from enabled 'Run restore drill' only by text tone.",
+    "coherence": "Banners, status cards, pills, chips and section cards mix several component styles on one page."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Below-fold KyRecovery and 'Recovery key by hand' forms checked in the full-page capture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-users-mobile-dark.png",
+   "sha256": "cdf71d20fa1b2fb07dbdfbd4dbe94d79efb66b8327af89ae6e303e6a931dec18",
+   "bytes": 22303,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "users",
+   "observed_surface_label": "users (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state text fills the narrow column comfortably beneath the tab bar; nothing crowded.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.95,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-agents-mobile-dark.png",
+   "sha256": "7c1aad7874c02404dfce96efafa90e8cd2b47db2fe0ffac196462d7317b87b53",
+   "bytes": 22701,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "agents",
+   "observed_surface_label": "agents (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state text fills the narrow column comfortably beneath the tab bar; nothing crowded.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.95,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-rooms-mobile-dark.png",
+   "sha256": "e9fea95bb7bbcd617ef2578df62aab2893c7c9f8e5b4325b5df62a5ec79260b9",
+   "bytes": 22120,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "rooms",
+   "observed_surface_label": "rooms (Matrix off empty state)",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 9
+   },
+   "observations": {
+    "hierarchy": "Page title, then one line stating chat is not set up and how; the next step is a CLI command and a docs path, neither clickable.",
+    "typography": "15px statement over 13px helper, mono only for `matrix-init`; clean.",
+    "density_layout": "Empty-state text fills the narrow column comfortably beneath the tab bar; nothing crowded.",
+    "color": "No colour beyond the selected-nav rail; neutral and calm.",
+    "visible_affordances": "Navigation selection is unambiguous; the empty state offers no button or link to act on.",
+    "coherence": "Same flat rule-divided layout as Overview; identical across the three pages."
+   },
+   "weighted_sum": 7.95,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Matrix not configured in the fixture: populated tables, dialogs and 2FA flows are not captured (N/A). Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-mobile-dark-full.png",
+   "sha256": "f10890762d748ce0d15d58cfe53eef84ce6fa069d2a9846f61995fe5fa301814",
+   "bytes": 57082,
+   "width": 390,
+   "height": 877,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-health-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-health-mobile-dark.png",
+   "sha256": "b7873a3b77e1e98b96574689095d09cedb642554e696d7f8e1d206ac67dc42d8",
+   "bytes": 56894,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health",
+   "observed_surface_label": "health",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Health' h1 with 'Check again' at top right, a scope note, two component cards with 'Up' pills, then a 'Network path' section.",
+    "typography": "Clear title and card labels; four long amber warning lines at body size make the network section read heavy.",
+    "density_layout": "Cards stack full width; each warning wraps to 2-3 lines so the network section runs below the fold.",
+    "color": "Dark-theme amber warning text is close in hue to the orange accent; still paired with icons and 'Warn:' text.",
+    "visible_affordances": "'Check again' is a clear outlined action with refresh icon; pills read as status, not buttons.",
+    "coherence": "Bordered cards here versus flat rule-divided rows on Overview and Settings."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Full-page capture shows only the last warning below the fold. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-scim-mobile-dark.png",
+   "sha256": "7e73058d88332a1ab023365b5a00e7336d7e88fa248611a7bf8129b019b670f7",
+   "bytes": 51420,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "scim",
+   "observed_surface_label": "directory & SCIM",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Long title 'SCIM 2.0 Directory & Inbound Provisioning' does not match the nav label 'Directory & SCIM'; the amber 'SCIM is off' callout is the real message but sits mid-card.",
+    "typography": "Title Case headings ('Connection Details', 'Provisioned Accounts (0)') differ from sentence case elsewhere; mono env vars are clear.",
+    "density_layout": "Title wraps to two lines; cards stack with callout nested inside, still within the width.",
+    "color": "Amber callout for the disabled state, neutral otherwise.",
+    "visible_affordances": "Read-only base URL shown in a recessed field that reads as non-editable; no copy action visible.",
+    "coherence": "Card-and-callout composition and Title Case set this page apart from Overview and Settings."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.2,
+   "ky_fit_weighted_sum": 8.2,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "SCIM disabled and zero provisioned accounts in the fixture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-settings-mobile-dark-full.png",
+   "sha256": "4cc64ae5b984ea63ff8d20fdda2727592c8ee04d82eebdb7f72479908e57fe44",
+   "bytes": 77457,
+   "width": 390,
+   "height": 1318,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-settings-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-settings-mobile-dark.png",
+   "sha256": "639e8757309fb4a78db295053cf26b4ee8c820c3aab07a9d020d8ec978c9ad9f",
+   "bytes": 52107,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "settings",
+   "observed_surface_label": "settings & DB",
+   "cohort": "settings",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'System Settings & Architecture' title differs from nav 'Settings & DB'; flat sections with icon headings (Database, Appearance, Branding, Account security) scan well.",
+    "typography": "Consistent 17px section headings, 13px helpers; Title Case page title only.",
+    "density_layout": "Sections stack cleanly, but in the full page the Branding row wraps unevenly: truncated 'N…' file input, 'Reset logo' on its own line.",
+    "color": "Orange only on 'Save name'; neutral pill for 'sqlite'.",
+    "visible_affordances": "In dark theme the disabled 'Use default', 'Upload logo', 'Reset logo' look nearly the same as the enabled outlined 'Set up two-factor sign-in'.",
+    "coherence": "Two theme selects on one page (sidebar and Appearance) and a native file picker break the otherwise single vocabulary."
+   },
+   "weighted_sum": 7.35,
+   "total": 7.4,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Branding wrap seen in the 1318px full-page capture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-mobile-dark-full.png",
+   "sha256": "f3811d16789c19a2ec734d049e2576fc81e70e9ea418726c5198f1dfcd878ed3",
+   "bytes": 136972,
+   "width": 390,
+   "height": 2384,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-backup-empty-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-mobile-dark.png",
+   "sha256": "6f4f858f550bff251db4d90caa630ac532c31639962c9012d9e5186548727d7e",
+   "bytes": 54151,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup-empty",
+   "observed_surface_label": "backup & recovery, no key",
+   "cohort": "admin-console",
+   "state": "empty",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Amber banner says no backups and points 'below'; the 'Back up now' primary is disabled, and the pin/pair forms that are the real next step are below the fold.",
+    "typography": "Mono paths in the status cards are larger than body text; card labels, pills, helper text and chips create many sizes.",
+    "density_layout": "Four stacked status cards fill the first screen; the disabled primary only appears at the bottom edge and forms are ~1500px down.",
+    "color": "Red 'None' pill, neutral 'Not paired'/'0 of 7'/'Daily' pills, amber banner; semantic but busy.",
+    "visible_affordances": "Disabled 'Back up now' is a tan filled button that can read as pressed; disabled 'Download capsule' differs from enabled 'Run restore drill' only by text tone.",
+    "coherence": "Banners, status cards, pills, chips and section cards mix several component styles on one page."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Full-page capture is 2384px; forms below the fold. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-overview-desktop-light.png",
+   "sha256": "f17b2687f4ff4860eea39dc0796f9a4b04bb24df1726d6b18d4b300646f0614d",
+   "bytes": 59656,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview",
+   "observed_surface_label": "overview",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "'Overview' h1 with role subtitle and intro, then three labelled status rows each with an 'Open …' action; no single primary, which suits a summary.",
+    "typography": "One title size, 15px row labels in semibold, status text regular; restrained.",
+    "density_layout": "Three full-width rows with label/status/action columns aligned; the lower half of the 1280px canvas is empty.",
+    "color": "'2 of 2 components up (chat not set up)' is entirely success-green although part of it reports chat is not set up.",
+    "visible_affordances": "Outlined 'Open …' buttons with arrows read as navigation; selected nav row has white surface plus orange rail.",
+    "coherence": "Flat rows divided by quiet lines, same button vocabulary as the rest of the console."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-audit-desktop-light-full.png",
+   "sha256": "7b182180c3b0783078ed49c08a6d49476060dda11172fd356431596077966165",
+   "bytes": 124746,
+   "width": 1280,
+   "height": 1319,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-audit-desktop-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-audit-desktop-light.png",
+   "sha256": "1398f07807a8ae5359c65bae57d5aeb0e50ad95c1f5ff3c6e458ce310007d76b",
+   "bytes": 93833,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "audit",
+   "observed_surface_label": "audit log",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Audit log' title, 'Read-only. Newest first.', a Kind filter, then the table; clear reading order.",
+    "typography": "Sans dates and names with mono event keys; long mono targets and details wrap character-by-character into 7-10 line cells.",
+    "density_layout": "Column widths are misallocated: wide When column while Target wraps a 64-char key into seven lines, making two rows ~4x taller than the rest.",
+    "color": "Neutral throughout; outcome 'success' is plain text.",
+    "visible_affordances": "Kind select is a clear 40px control; pagination (full page) has Newer/Older buttons and a '1-14 of 14' count.",
+    "coherence": "Table sits inside a bordered card, unlike the flat full-bleed rows elsewhere."
+   },
+   "weighted_sum": 7.45,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pagination visible only in the full-page capture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-desktop-light-full.png",
+   "sha256": "223ade8bac00f2e81366ec549a06363c4f04882bea5a72f894a03a5750f2545c",
+   "bytes": 153681,
+   "width": 1280,
+   "height": 1313,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-backup-written-desktop-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-desktop-light.png",
+   "sha256": "2c4daff5a7a79c4fcd1752c88e53dcd1bbe60f3b42e5f0b5ec0a4203b56f1898",
+   "bytes": 116977,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup-written",
+   "observed_surface_label": "backup & recovery, one capsule written",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Orange 'Back up now' is now the clear primary beside two outlined secondaries; status cards lead the page.",
+    "typography": "Pinned key shown as wrapped mono hex in a small card; several text sizes across cards, banners and chips.",
+    "density_layout": "Two stacked success banners say related things one after the other, above four cards and stacked section cards.",
+    "color": "Two green banners plus green 'Pinned', '1 of 7' and 'Daily' pills; success colour is overused for neutral facts.",
+    "visible_affordances": "Enabled primary, secondaries and Save read correctly; capsule file line uses a dashed divider.",
+    "coherence": "Same multi-component composition as the empty state."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Below-fold forms checked in the full-page capture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-overview-mobile-light.png",
+   "sha256": "b00d82c7ab2c9bdd2386a5758c028849ddb1993bce800283b5817f9dfaa61a8b",
+   "bytes": 41205,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview",
+   "observed_surface_label": "overview",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "'Overview' h1 with role subtitle and intro, then three labelled status rows each with an 'Open …' action; no single primary, which suits a summary.",
+    "typography": "One title size, 15px row labels in semibold, status text regular; restrained.",
+    "density_layout": "Rows stack label, status and button with even 16/24px rhythm; horizontally scrolling tab bar is clipped at the right edge as a scroll cue.",
+    "color": "'2 of 2 components up (chat not set up)' is entirely success-green although part of it reports chat is not set up.",
+    "visible_affordances": "Outlined 'Open …' buttons with arrows read as navigation; selected nav row has white surface plus orange rail.",
+    "coherence": "Flat rows divided by quiet lines, same button vocabulary as the rest of the console."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Mobile tab bar scrolls horizontally; later tabs are off-screen. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-audit-mobile-light-full.png",
+   "sha256": "8b5b8efc488c4d236e9f1a7f6df10ca4f9f72ab8802341cc83654c770f288106",
+   "bytes": 165664,
+   "width": 390,
+   "height": 3756,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-audit-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-audit-mobile-light.png",
+   "sha256": "b6f1d5ec42c9823bc100d10ecdc8ed9318f7fd7c097b55812ce810f1b0372a51",
+   "bytes": 40524,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "audit",
+   "observed_surface_label": "audit log",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Audit log' title, 'Read-only. Newest first.', a Kind filter, then the table; clear reading order.",
+    "typography": "Each entry stacks a bold timestamp over Who/What/Target/Outcome/Details/IP labels; long targets wrap but stay legible.",
+    "density_layout": "All seven fields retained as label/value pairs; entries are tall but evenly spaced, with extra padding above the first entry.",
+    "color": "Neutral throughout; outcome 'success' is plain text.",
+    "visible_affordances": "Kind select is a clear 40px control; pagination (full page) has Newer/Older buttons and a '1-14 of 14' count.",
+    "coherence": "Table sits inside a bordered card, unlike the flat full-bleed rows elsewhere."
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Full-page capture runs 3756-4168px; later entries and pagination only visible there. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-mobile-light-full.png",
+   "sha256": "40b238b7e0869a264da93ad4a059ed113ea1896489ffc91adad2e31977b50f11",
+   "bytes": 140222,
+   "width": 390,
+   "height": 2263,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-backup-written-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-mobile-light.png",
+   "sha256": "f676728d90f021d24bb5bf3abd6632dff761eb07f620e520db75d96ed503a259",
+   "bytes": 60375,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup-written",
+   "observed_surface_label": "backup & recovery, one capsule written",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Orange 'Back up now' is now the clear primary beside two outlined secondaries; status cards lead the page.",
+    "typography": "Pinned key shown as wrapped mono hex in a small card; several text sizes across cards, banners and chips.",
+    "density_layout": "Four stacked cards and two green banners occupy the first screen; the primary is off-screen.",
+    "color": "Two green banners plus green 'Pinned', '1 of 7' and 'Daily' pills; success colour is overused for neutral facts.",
+    "visible_affordances": "Enabled primary, secondaries and Save read correctly; capsule file line uses a dashed divider.",
+    "coherence": "Same multi-component composition as the empty state."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Full-page capture is 2263px. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-overview-desktop-dark.png",
+   "sha256": "cec39d322beb86258bd53b8af4daec11dc57aa9cc1e9b41f1f49e026e9eb76f4",
+   "bytes": 59726,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview",
+   "observed_surface_label": "overview",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "'Overview' h1 with role subtitle and intro, then three labelled status rows each with an 'Open …' action; no single primary, which suits a summary.",
+    "typography": "One title size, 15px row labels in semibold, status text regular; restrained.",
+    "density_layout": "Three full-width rows with label/status/action columns aligned; the lower half of the 1280px canvas is empty.",
+    "color": "'2 of 2 components up (chat not set up)' is entirely success-green although part of it reports chat is not set up.",
+    "visible_affordances": "Outlined 'Open …' buttons with arrows; selected nav row has a dark warm surface plus orange rail, quieter than light but visible.",
+    "coherence": "Flat rows divided by quiet lines, same button vocabulary as the rest of the console."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-audit-desktop-dark-full.png",
+   "sha256": "d60b8f73ad67e1f92b2f1d1d4bf91522e07165f358eeb2e62a9b8bdd939825fc",
+   "bytes": 135829,
+   "width": 1280,
+   "height": 1403,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-audit-desktop-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-audit-desktop-dark.png",
+   "sha256": "263b28d209c795c50e10da7e935504fd5fe7cd9e41b31aab35fb4ace4c4e00f3",
+   "bytes": 95758,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "audit",
+   "observed_surface_label": "audit log",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Audit log' title, 'Read-only. Newest first.', a Kind filter, then the table; clear reading order.",
+    "typography": "Sans dates and names with mono event keys; long mono targets and details wrap character-by-character into 7-10 line cells.",
+    "density_layout": "Column widths are misallocated: wide When column while Target wraps a 64-char key into seven lines, making two rows ~4x taller than the rest.",
+    "color": "Neutral throughout; outcome 'success' is plain text.",
+    "visible_affordances": "Kind select is a clear 40px control; pagination (full page) has Newer/Older buttons and a '1-14 of 14' count.",
+    "coherence": "Table sits inside a bordered card, unlike the flat full-bleed rows elsewhere."
+   },
+   "weighted_sum": 7.45,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Pagination visible only in the full-page capture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-desktop-dark-full.png",
+   "sha256": "5eac929113771a178fa11b02c679b2a70ff6bded55630ebe3fa2a7f9cc8e8514",
+   "bytes": 154768,
+   "width": 1280,
+   "height": 1313,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-backup-written-desktop-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-desktop-dark.png",
+   "sha256": "8fd0dffb97425d8ee9f8aacf4f0e4d01b4adecf306f4a2c0a0fb15386a1d7024",
+   "bytes": 117943,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup-written",
+   "observed_surface_label": "backup & recovery, one capsule written",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Orange 'Back up now' is now the clear primary beside two outlined secondaries; status cards lead the page.",
+    "typography": "Pinned key shown as wrapped mono hex in a small card; several text sizes across cards, banners and chips.",
+    "density_layout": "Two stacked success banners say related things one after the other, above four cards and stacked section cards.",
+    "color": "Two green banners plus green 'Pinned', '1 of 7' and 'Daily' pills; success colour is overused for neutral facts.",
+    "visible_affordances": "Enabled primary, secondaries and Save read correctly; capsule file line uses a dashed divider.",
+    "coherence": "Same multi-component composition as the empty state."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Below-fold forms checked in the full-page capture. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-overview-mobile-dark.png",
+   "sha256": "00ccc0226fb9e9f141637167995d1d16ef41f320e9beae1dc5a5c4d34fc52984",
+   "bytes": 41337,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview",
+   "observed_surface_label": "overview",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "'Overview' h1 with role subtitle and intro, then three labelled status rows each with an 'Open …' action; no single primary, which suits a summary.",
+    "typography": "One title size, 15px row labels in semibold, status text regular; restrained.",
+    "density_layout": "Rows stack label, status and button with even 16/24px rhythm; horizontally scrolling tab bar is clipped at the right edge as a scroll cue.",
+    "color": "'2 of 2 components up (chat not set up)' is entirely success-green although part of it reports chat is not set up.",
+    "visible_affordances": "Outlined 'Open …' buttons with arrows read as navigation; selected nav row has white surface plus orange rail.",
+    "coherence": "Flat rows divided by quiet lines, same button vocabulary as the rest of the console."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Mobile tab bar scrolls horizontally; later tabs are off-screen. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-audit-mobile-dark-full.png",
+   "sha256": "3f087b2e50b122ef576d5fd549351b5a685c96dd8aa6d64973b24ea0a83c9304",
+   "bytes": 183959,
+   "width": 390,
+   "height": 4168,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-audit-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-audit-mobile-dark.png",
+   "sha256": "e20ab4825d365990862bb87e6765249ef91aa4c0ddaf24f0652ceeaa9092dd65",
+   "bytes": 39263,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "audit",
+   "observed_surface_label": "audit log",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Audit log' title, 'Read-only. Newest first.', a Kind filter, then the table; clear reading order.",
+    "typography": "Each entry stacks a bold timestamp over Who/What/Target/Outcome/Details/IP labels; long targets wrap but stay legible.",
+    "density_layout": "All seven fields retained as label/value pairs; entries are tall but evenly spaced, with extra padding above the first entry.",
+    "color": "Neutral throughout; outcome 'success' is plain text.",
+    "visible_affordances": "Kind select is a clear 40px control; pagination (full page) has Newer/Older buttons and a '1-14 of 14' count.",
+    "coherence": "Table sits inside a bordered card, unlike the flat full-bleed rows elsewhere."
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Full-page capture runs 3756-4168px; later entries and pagination only visible there. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-mobile-dark-full.png",
+   "sha256": "51b5bd779f456956746ebac608a17fc930636b061a869823ac7b490f4c6d7f02",
+   "bytes": 142282,
+   "width": 390,
+   "height": 2263,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-06-after-backup-written-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-mobile-dark.png",
+   "sha256": "bcae9ad6a6f11451560bc3784a4086fe4f5d0f3f66bfa2435787c3fc7bf963f8",
+   "bytes": 60345,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup-written",
+   "observed_surface_label": "backup & recovery, one capsule written",
+   "cohort": "admin-console",
+   "state": "populated",
+   "condition": "online",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Orange 'Back up now' is now the clear primary beside two outlined secondaries; status cards lead the page.",
+    "typography": "Pinned key shown as wrapped mono hex in a small card; several text sizes across cards, banners and chips.",
+    "density_layout": "Four stacked cards and two green banners occupy the first screen; the primary is off-screen.",
+    "color": "Two green banners plus green 'Pinned', '1 of 7' and 'Daily' pills; success colour is overused for neutral facts.",
+    "visible_affordances": "Enabled primary, secondaries and Save read correctly; capsule file line uses a dashed divider.",
+    "coherence": "Same multi-component composition as the empty state."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.4,
+   "ky_fit_weighted_sum": 8.4,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Full-page capture is 2263px. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-loading-desktop-light.png",
+   "sha256": "e769c373850d83f4da483b4325aca67e69129d1f1137deaac2576cf0199ab492",
+   "bytes": 37625,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health-loading",
+   "observed_surface_label": "health, loading",
+   "cohort": "admin-console",
+   "state": "loading",
+   "condition": "CDP latency 2500ms, request in flight",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title, disabled 'Check again', 'Checking components…' note and a 'Checking the network path…' card; clear that work is in progress.",
+    "typography": "Same scale as the loaded page.",
+    "density_layout": "Loading text in place of the content, but no skeleton of the cards to come; the page jumps when results arrive.",
+    "color": "Neutral only.",
+    "visible_affordances": "'Check again' is visibly disabled (muted text and icon); no spinner or progress mark visible in the still.",
+    "coherence": "Uses the same card style as the loaded state."
+   },
+   "weighted_sum": 7.6,
+   "total": 7.6,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Still frame of a 2500ms CDP-latency request; animation, if any, is not visible. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-offline-desktop-light.png",
+   "sha256": "2e64016be628560408744253b98c710405aca8ba15bb744fac750d4a817ae92b",
+   "bytes": 40091,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health-offline",
+   "observed_surface_label": "health, check failed offline",
+   "cohort": "admin-console",
+   "state": "error",
+   "condition": "loaded online, then Check again with the browser context offline (transport failure)",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Error banner directly under the title says what failed and how to recover, with 'Check again' beside the title; stale 'Up' cards are gone.",
+    "typography": "13px banner text with icon, body-size 'Network check unavailable.'",
+    "density_layout": "Banner and one card, compact and aligned to the same edges as the loaded page.",
+    "color": "Danger tint, border, icon and text used once for the failure.",
+    "visible_affordances": "Recovery action is the enabled 'Check again' button; nothing else competes.",
+    "coherence": "Banner style matches the backup page banners; the components area simply disappears rather than showing an 'unknown' status."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Transport failure after an online load; server-side error responses are not captured. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-overview-offline-desktop-light.png",
+   "sha256": "41441e66be34bcc05ac552811d06d083371ab8066fceeec67bd5664780ff46f7",
+   "bytes": 58151,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview-offline",
+   "observed_surface_label": "overview, offline",
+   "cohort": "admin-console",
+   "state": "error",
+   "condition": "browser context offline (transport failure)",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "No page-level failure summary; the same 'Unavailable: the server could not be reached' line repeats in all three rows.",
+    "typography": "Same row typography as online.",
+    "density_layout": "Row layout unchanged; three identical status strings make the column read as noise.",
+    "color": "Red status text without an icon, three times; danger used for one cause repeated.",
+    "visible_affordances": "'Open …' buttons stay enabled and there is no retry action on the page.",
+    "coherence": "Health uses a banner with icon for the same failure while Overview uses bare red text, two error vocabularies for one condition."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Browser context offline from load; no Ky Identity sync row is shown, which is correct for an unreachable server. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-loading-mobile-light.png",
+   "sha256": "f866d1954fcbb81b94bd3538e6733cc7058b3bb91c6f91c43d89dc7ebc7c8415",
+   "bytes": 20786,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health-loading",
+   "observed_surface_label": "health, loading",
+   "cohort": "admin-console",
+   "state": "loading",
+   "condition": "CDP latency 2500ms, request in flight",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title, disabled 'Check again', 'Checking components…' note and a 'Checking the network path…' card; clear that work is in progress.",
+    "typography": "Same scale as the loaded page.",
+    "density_layout": "Loading text in place of the content, but no skeleton of the cards to come; the page jumps when results arrive.",
+    "color": "Neutral only.",
+    "visible_affordances": "'Check again' is visibly disabled (muted text and icon); no spinner or progress mark visible in the still.",
+    "coherence": "Uses the same card style as the loaded state."
+   },
+   "weighted_sum": 7.6,
+   "total": 7.6,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Still frame of a 2500ms CDP-latency request; animation, if any, is not visible. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-offline-mobile-light.png",
+   "sha256": "cbcdef0d2e9d9081d54d305337c8880e3192e6c515a439412fabc625d944357d",
+   "bytes": 23127,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health-offline",
+   "observed_surface_label": "health, check failed offline",
+   "cohort": "admin-console",
+   "state": "error",
+   "condition": "loaded online, then Check again with the browser context offline (transport failure)",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Error banner directly under the title says what failed and how to recover, with 'Check again' beside the title; stale 'Up' cards are gone.",
+    "typography": "13px banner text with icon, body-size 'Network check unavailable.'",
+    "density_layout": "Banner and one card, compact and aligned to the same edges as the loaded page.",
+    "color": "Danger tint, border, icon and text used once for the failure.",
+    "visible_affordances": "Recovery action is the enabled 'Check again' button; nothing else competes.",
+    "coherence": "Banner style matches the backup page banners; the components area simply disappears rather than showing an 'unknown' status."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Transport failure after an online load; server-side error responses are not captured. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-overview-offline-mobile-light.png",
+   "sha256": "4856d592c8e15d549e51990b0283e66fd3cc319c0e783fa24ad0650bd2f217dd",
+   "bytes": 39868,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview-offline",
+   "observed_surface_label": "overview, offline",
+   "cohort": "admin-console",
+   "state": "error",
+   "condition": "browser context offline (transport failure)",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "No page-level failure summary; the same 'Unavailable: the server could not be reached' line repeats in all three rows.",
+    "typography": "Same row typography as online.",
+    "density_layout": "Stacked rows unchanged from online; three identical red lines down the page.",
+    "color": "Red status text without an icon, three times; danger used for one cause repeated.",
+    "visible_affordances": "'Open …' buttons stay enabled and there is no retry action on the page.",
+    "coherence": "Health uses a banner with icon for the same failure while Overview uses bare red text, two error vocabularies for one condition."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.8,
+   "ky_fit_weighted_sum": 8.8,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Browser context offline from load. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-loading-desktop-dark.png",
+   "sha256": "6c5b0c6a9800a9c7db3ae748b1e0d5b66dcef0f5c68a362c0734c24bb3d90c47",
+   "bytes": 37810,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health-loading",
+   "observed_surface_label": "health, loading",
+   "cohort": "admin-console",
+   "state": "loading",
+   "condition": "CDP latency 2500ms, request in flight",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title, disabled 'Check again', 'Checking components…' note and a 'Checking the network path…' card; clear that work is in progress.",
+    "typography": "Same scale as the loaded page.",
+    "density_layout": "Loading text in place of the content, but no skeleton of the cards to come; the page jumps when results arrive.",
+    "color": "Neutral only.",
+    "visible_affordances": "'Check again' is visibly disabled (muted text and icon); no spinner or progress mark visible in the still.",
+    "coherence": "Uses the same card style as the loaded state."
+   },
+   "weighted_sum": 7.6,
+   "total": 7.6,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Still frame of a 2500ms CDP-latency request; animation, if any, is not visible. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-offline-desktop-dark.png",
+   "sha256": "135809f481b9d85169678117c15023c8ef88b149439355025af7787583d64572",
+   "bytes": 40032,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health-offline",
+   "observed_surface_label": "health, check failed offline",
+   "cohort": "admin-console",
+   "state": "error",
+   "condition": "loaded online, then Check again with the browser context offline (transport failure)",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Error banner directly under the title says what failed and how to recover, with 'Check again' beside the title; stale 'Up' cards are gone.",
+    "typography": "13px banner text with icon, body-size 'Network check unavailable.'",
+    "density_layout": "Banner and one card, compact and aligned to the same edges as the loaded page.",
+    "color": "Dark-theme danger salmon sits close to the orange accent hue; the icon and 'failed' wording carry the meaning.",
+    "visible_affordances": "Recovery action is the enabled 'Check again' button; nothing else competes.",
+    "coherence": "Banner style matches the backup page banners; the components area simply disappears rather than showing an 'unknown' status."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Transport failure after an online load; server-side error responses are not captured. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-overview-offline-desktop-dark.png",
+   "sha256": "14242c524b67fca3992410acdb264020da28a370101e805c5d2977c8f539e3ae",
+   "bytes": 58185,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview-offline",
+   "observed_surface_label": "overview, offline",
+   "cohort": "admin-console",
+   "state": "error",
+   "condition": "browser context offline (transport failure)",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "No page-level failure summary; the same 'Unavailable: the server could not be reached' line repeats in all three rows.",
+    "typography": "Same row typography as online.",
+    "density_layout": "Row layout unchanged; three identical status strings make the column read as noise.",
+    "color": "Dark-theme danger salmon repeated three times is close to the orange accent rail on the selected nav item.",
+    "visible_affordances": "'Open …' buttons stay enabled and there is no retry action on the page.",
+    "coherence": "Health uses a banner with icon for the same failure while Overview uses bare red text, two error vocabularies for one condition."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Browser context offline from load; no Ky Identity sync row is shown, which is correct for an unreachable server. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-loading-mobile-dark.png",
+   "sha256": "abc1713fcf7f88f9af020a2af31ddc6ba88dda66ec567e8d907f62dc684aea21",
+   "bytes": 21006,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health-loading",
+   "observed_surface_label": "health, loading",
+   "cohort": "admin-console",
+   "state": "loading",
+   "condition": "CDP latency 2500ms, request in flight",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title, disabled 'Check again', 'Checking components…' note and a 'Checking the network path…' card; clear that work is in progress.",
+    "typography": "Same scale as the loaded page.",
+    "density_layout": "Loading text in place of the content, but no skeleton of the cards to come; the page jumps when results arrive.",
+    "color": "Neutral only.",
+    "visible_affordances": "'Check again' is visibly disabled (muted text and icon); no spinner or progress mark visible in the still.",
+    "coherence": "Uses the same card style as the loaded state."
+   },
+   "weighted_sum": 7.6,
+   "total": 7.6,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Still frame of a 2500ms CDP-latency request; animation, if any, is not visible. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-health-offline-mobile-dark.png",
+   "sha256": "1a08254ce4135cc5c718b6294ef2024f1a1c14ff337bfb2473f7a850c192d94b",
+   "bytes": 23320,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health-offline",
+   "observed_surface_label": "health, check failed offline",
+   "cohort": "admin-console",
+   "state": "error",
+   "condition": "loaded online, then Check again with the browser context offline (transport failure)",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Error banner directly under the title says what failed and how to recover, with 'Check again' beside the title; stale 'Up' cards are gone.",
+    "typography": "13px banner text with icon, body-size 'Network check unavailable.'",
+    "density_layout": "Banner and one card, compact and aligned to the same edges as the loaded page.",
+    "color": "Dark-theme danger salmon sits close to the orange accent hue; the icon and 'failed' wording carry the meaning.",
+    "visible_affordances": "Recovery action is the enabled 'Check again' button; nothing else competes.",
+    "coherence": "Banner style matches the backup page banners; the components area simply disappears rather than showing an 'unknown' status."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Transport failure after an online load; server-side error responses are not captured. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-06-after-overview-offline-mobile-dark.png",
+   "sha256": "e541f8bfa691c74462250d7c87649bf41b3936b6e30e18161a710b093ede1e6a",
+   "bytes": 40171,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview-offline",
+   "observed_surface_label": "overview, offline",
+   "cohort": "admin-console",
+   "state": "error",
+   "condition": "browser context offline (transport failure)",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "No page-level failure summary; the same 'Unavailable: the server could not be reached' line repeats in all three rows.",
+    "typography": "Same row typography as online.",
+    "density_layout": "Stacked rows unchanged from online; three identical red lines down the page.",
+    "color": "Dark-theme danger salmon repeated three times is close to the orange accent tab rail.",
+    "visible_affordances": "'Open …' buttons stay enabled and there is no retry action on the page.",
+    "coherence": "Health uses a banner with icon for the same failure while Overview uses bare red text, two error vocabularies for one condition."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.6,
+   "ky_fit_weighted_sum": 8.6,
+   "confidence": "high",
+   "capture": "KyMessage-Server 0514749319 + web/src patch a5430c0d…, binary 73591be1…, chromium 153.0.8010.12, 2026-10-26T06:12:35.796Z",
+   "caveat": "Browser context offline from load. Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  }
+ ],
+ "cohort_aggregates": {
+  "kymessages": {
+   "admin-console": {
+    "n": 48,
+    "mean": 7.5,
+    "min": 6.8,
+    "max": 8.0,
+    "min_file": "kymessages-06-after-backup-empty-desktop-dark.png",
+    "ky_fit_mean": 8.61,
+    "ky_fit_min": 8.2,
+    "by_viewport": {
+     "desktop": 7.46,
+     "mobile": 7.55
+    },
+    "by_theme": {
+     "light": 7.52,
+     "dark": 7.49
+    },
+    "by_condition": {
+     "online": 7.49,
+     "loading": 7.6,
+     "error": 7.5
+    },
+    "surfaces": [
+     "agents",
+     "audit",
+     "backup-empty",
+     "backup-written",
+     "health",
+     "health-loading",
+     "health-offline",
+     "overview",
+     "overview-offline",
+     "rooms",
+     "scim",
+     "users"
+    ],
+    "matched": "within-product only; no matched competitor screenshots in this source set, so no Ky gap or competitor win"
+   },
+   "auth": {
+    "n": 8,
+    "mean": 8.13,
+    "min": 8.0,
+    "max": 8.4,
+    "min_file": "kymessages-06-after-change-password-desktop-dark.png",
+    "ky_fit_mean": 7.9,
+    "ky_fit_min": 7.4,
+    "by_viewport": {
+     "desktop": 8.18,
+     "mobile": 8.08
+    },
+    "by_theme": {
+     "light": 8.13,
+     "dark": 8.13
+    },
+    "by_condition": {
+     "online": 8.13
+    },
+    "surfaces": [
+     "change-password",
+     "login"
+    ],
+    "matched": "within-product only; no matched competitor screenshots in this source set, so no Ky gap or competitor win"
+   },
+   "settings": {
+    "n": 4,
+    "mean": 7.53,
+    "min": 7.4,
+    "max": 7.7,
+    "min_file": "kymessages-06-after-settings-mobile-dark.png",
+    "ky_fit_mean": 8.6,
+    "ky_fit_min": 8.6,
+    "by_viewport": {
+     "desktop": 7.63,
+     "mobile": 7.43
+    },
+    "by_theme": {
+     "light": 7.6,
+     "dark": 7.45
+    },
+    "by_condition": {
+     "online": 7.53
+    },
+    "surfaces": [
+     "settings"
+    ],
+    "matched": "within-product only; no matched competitor screenshots in this source set, so no Ky gap or competitor win"
+   }
+  }
+ },
+ "surface_aggregates": {
+  "kymessages": {
+   "agents": {
+    "n": 4,
+    "mean": 7.85,
+    "min": 7.8,
+    "max": 8.0,
+    "min_file": "kymessages-06-after-agents-desktop-dark.png",
+    "ky_fit_mean": 8.8,
+    "ky_fit_min": 8.8,
+    "cohort": "admin-console"
+   },
+   "audit": {
+    "n": 4,
+    "mean": 7.63,
+    "min": 7.5,
+    "max": 7.8,
+    "min_file": "kymessages-06-after-audit-desktop-dark.png",
+    "ky_fit_mean": 8.6,
+    "ky_fit_min": 8.6,
+    "cohort": "admin-console"
+   },
+   "backup-empty": {
+    "n": 4,
+    "mean": 6.8,
+    "min": 6.8,
+    "max": 6.8,
+    "min_file": "kymessages-06-after-backup-empty-desktop-dark.png",
+    "ky_fit_mean": 8.4,
+    "ky_fit_min": 8.4,
+    "cohort": "admin-console"
+   },
+   "backup-written": {
+    "n": 4,
+    "mean": 7.0,
+    "min": 7.0,
+    "max": 7.0,
+    "min_file": "kymessages-06-after-backup-written-desktop-dark.png",
+    "ky_fit_mean": 8.4,
+    "ky_fit_min": 8.4,
+    "cohort": "admin-console"
+   },
+   "change-password": {
+    "n": 4,
+    "mean": 8.0,
+    "min": 8.0,
+    "max": 8.0,
+    "min_file": "kymessages-06-after-change-password-desktop-dark.png",
+    "ky_fit_mean": 7.4,
+    "ky_fit_min": 7.4,
+    "cohort": "auth"
+   },
+   "health": {
+    "n": 4,
+    "mean": 7.58,
+    "min": 7.5,
+    "max": 7.7,
+    "min_file": "kymessages-06-after-health-desktop-dark.png",
+    "ky_fit_mean": 8.5,
+    "ky_fit_min": 8.4,
+    "cohort": "admin-console"
+   },
+   "health-loading": {
+    "n": 4,
+    "mean": 7.6,
+    "min": 7.6,
+    "max": 7.6,
+    "min_file": "kymessages-06-after-health-loading-desktop-dark.png",
+    "ky_fit_mean": 8.6,
+    "ky_fit_min": 8.6,
+    "cohort": "admin-console"
+   },
+   "health-offline": {
+    "n": 4,
+    "mean": 7.93,
+    "min": 7.9,
+    "max": 8.0,
+    "min_file": "kymessages-06-after-health-offline-desktop-dark.png",
+    "ky_fit_mean": 8.7,
+    "ky_fit_min": 8.6,
+    "cohort": "admin-console"
+   },
+   "login": {
+    "n": 4,
+    "mean": 8.25,
+    "min": 8.2,
+    "max": 8.4,
+    "min_file": "kymessages-06-after-login-mobile-dark.png",
+    "ky_fit_mean": 8.4,
+    "ky_fit_min": 8.4,
+    "cohort": "auth"
+   },
+   "overview": {
+    "n": 4,
+    "mean": 7.75,
+    "min": 7.7,
+    "max": 7.9,
+    "min_file": "kymessages-06-after-overview-desktop-dark.png",
+    "ky_fit_mean": 8.8,
+    "ky_fit_min": 8.8,
+    "cohort": "admin-console"
+   },
+   "overview-offline": {
+    "n": 4,
+    "mean": 7.08,
+    "min": 7.0,
+    "max": 7.2,
+    "min_file": "kymessages-06-after-overview-offline-desktop-dark.png",
+    "ky_fit_mean": 8.7,
+    "ky_fit_min": 8.6,
+    "cohort": "admin-console"
+   },
+   "rooms": {
+    "n": 4,
+    "mean": 7.85,
+    "min": 7.8,
+    "max": 8.0,
+    "min_file": "kymessages-06-after-rooms-desktop-dark.png",
+    "ky_fit_mean": 8.8,
+    "ky_fit_min": 8.8,
+    "cohort": "admin-console"
+   },
+   "scim": {
+    "n": 4,
+    "mean": 7.15,
+    "min": 7.2,
+    "max": 7.2,
+    "min_file": "kymessages-06-after-scim-desktop-dark.png",
+    "ky_fit_mean": 8.2,
+    "ky_fit_min": 8.2,
+    "cohort": "admin-console"
+   },
+   "settings": {
+    "n": 4,
+    "mean": 7.53,
+    "min": 7.4,
+    "max": 7.7,
+    "min_file": "kymessages-06-after-settings-mobile-dark.png",
+    "ky_fit_mean": 8.6,
+    "ky_fit_min": 8.6,
+    "cohort": "settings"
+   },
+   "users": {
+    "n": 4,
+    "mean": 7.85,
+    "min": 7.8,
+    "max": 8.0,
+    "min_file": "kymessages-06-after-users-desktop-dark.png",
+    "ky_fit_mean": 8.8,
+    "ky_fit_min": 8.8,
+    "cohort": "admin-console"
+   }
+  }
+ },
+ "product_visual_summary": {
+  "kymessages": {
+   "label": "within-product visual summary, equal cohort weight; NOT a ranking and NOT a product certification",
+   "cohorts": 3,
+   "equal_cohort_weight_mean": 7.72,
+   "lowest_cohort_mean": 7.5,
+   "lowest_cohort": "admin-console",
+   "lowest_file_total": 6.8,
+   "files_at_or_above_9": 0,
+   "files": 60,
+   "ky_fit_mean": 8.51,
+   "ky_fit_min": 7.4,
+   "meets_9_quality_every_cohort": false,
+   "ky_fit_meets_9": false
+  }
+ },
+ "cohort_rankings": "Not published: only KyMessages files are scored here and no matched competitor screenshots exist, so there is no competitor win, Ky gap or cross-provider rank.",
+ "drift": "Not applicable: these 78 images are new captures of a changed build (a5430c0d vs 51231a71). The comparison below is product change plus reviewer difference, not rubric drift.",
+ "comparison_with_prior_round": {
+  "label": "different images and build; not drift",
+  "prior_round": "implemented-post-messages (fresh visual acceptance of completed KyPost stage 03 + KyMessages final)",
+  "cohorts": {
+   "admin-console": {
+    "prior_mean": 6.78,
+    "mean": 7.5,
+    "delta": 0.72,
+    "prior_ky_fit_mean": 7.59,
+    "ky_fit_mean": 8.61
+   },
+   "auth": {
+    "prior_mean": 7.93,
+    "mean": 8.13,
+    "delta": 0.2,
+    "prior_ky_fit_mean": 7.6,
+    "ky_fit_mean": 7.9
+   },
+   "settings": {
+    "prior_mean": 6.79,
+    "mean": 7.53,
+    "delta": 0.74,
+    "prior_ky_fit_mean": 7.25,
+    "ky_fit_mean": 8.6
+   }
+  },
+  "product": {
+   "prior_equal_cohort_weight_mean": 7.17,
+   "equal_cohort_weight_mean": 7.72,
+   "prior_ky_fit_mean": 7.56,
+   "ky_fit_mean": 8.51
+  },
+  "surfaces": [
+   {
+    "surface": "agents",
+    "prior_surface": "agents",
+    "prior_mean": 6.91,
+    "mean": 7.85,
+    "delta": 0.94,
+    "prior_ky_fit_mean": 7.85,
+    "ky_fit_mean": 8.8
+   },
+   {
+    "surface": "audit",
+    "prior_surface": "audit",
+    "prior_mean": 6.16,
+    "mean": 7.63,
+    "delta": 1.47,
+    "prior_ky_fit_mean": 7.35,
+    "ky_fit_mean": 8.6
+   },
+   {
+    "surface": "backup-empty",
+    "prior_surface": "backup",
+    "prior_mean": 6.11,
+    "mean": 6.8,
+    "delta": 0.69,
+    "prior_ky_fit_mean": 7.05,
+    "ky_fit_mean": 8.4
+   },
+   {
+    "surface": "backup-written",
+    "prior_surface": "backup",
+    "prior_mean": 6.11,
+    "mean": 7.0,
+    "delta": 0.89,
+    "prior_ky_fit_mean": 7.05,
+    "ky_fit_mean": 8.4
+   },
+   {
+    "surface": "change-password",
+    "prior_surface": "change-password",
+    "prior_mean": 7.65,
+    "mean": 8.0,
+    "delta": 0.35,
+    "prior_ky_fit_mean": 7.2,
+    "ky_fit_mean": 7.4
+   },
+   {
+    "surface": "health",
+    "prior_surface": "health",
+    "prior_mean": 6.66,
+    "mean": 7.58,
+    "delta": 0.92,
+    "prior_ky_fit_mean": 7.45,
+    "ky_fit_mean": 8.5
+   },
+   {
+    "surface": "health-loading",
+    "prior_surface": null,
+    "prior_mean": null,
+    "mean": 7.6,
+    "delta": null,
+    "prior_ky_fit_mean": null,
+    "ky_fit_mean": 8.6
+   },
+   {
+    "surface": "health-offline",
+    "prior_surface": null,
+    "prior_mean": null,
+    "mean": 7.93,
+    "delta": null,
+    "prior_ky_fit_mean": null,
+    "ky_fit_mean": 8.7
+   },
+   {
+    "surface": "login",
+    "prior_surface": "login",
+    "prior_mean": 8.2,
+    "mean": 8.25,
+    "delta": 0.05,
+    "prior_ky_fit_mean": 8.0,
+    "ky_fit_mean": 8.4
+   },
+   {
+    "surface": "overview",
+    "prior_surface": "overview",
+    "prior_mean": 7.49,
+    "mean": 7.75,
+    "delta": 0.26,
+    "prior_ky_fit_mean": 7.85,
+    "ky_fit_mean": 8.8
+   },
+   {
+    "surface": "overview-offline",
+    "prior_surface": null,
+    "prior_mean": null,
+    "mean": 7.08,
+    "delta": null,
+    "prior_ky_fit_mean": null,
+    "ky_fit_mean": 8.7
+   },
+   {
+    "surface": "rooms",
+    "prior_surface": "rooms",
+    "prior_mean": 6.91,
+    "mean": 7.85,
+    "delta": 0.94,
+    "prior_ky_fit_mean": 7.85,
+    "ky_fit_mean": 8.8
+   },
+   {
+    "surface": "scim",
+    "prior_surface": "scim",
+    "prior_mean": 7.11,
+    "mean": 7.15,
+    "delta": 0.04,
+    "prior_ky_fit_mean": 7.45,
+    "ky_fit_mean": 8.2
+   },
+   {
+    "surface": "settings",
+    "prior_surface": "settings",
+    "prior_mean": 6.79,
+    "mean": 7.53,
+    "delta": 0.74,
+    "prior_ky_fit_mean": 7.25,
+    "ky_fit_mean": 8.6
+   },
+   {
+    "surface": "users",
+    "prior_surface": "users",
+    "prior_mean": 6.91,
+    "mean": 7.85,
+    "delta": 0.94,
+    "prior_ky_fit_mean": 7.85,
+    "ky_fit_mean": 8.8
+   }
+  ],
+  "new_surfaces_without_prior": [
+   "health-loading",
+   "health-offline",
+   "overview-offline"
+  ]
+ },
+ "coverage_not_applicable": {
+  "kymessages": {
+   "member-home": "N/A: not captured (needs a KyIdentity SSO member; harness has no console SSO client)",
+   "chat": "N/A: stock Element not captured",
+   "admin-console Matrix-on tables, dialogs, 2FA enrolment, SCIM with users": "N/A: Matrix and SCIM off in the fixture",
+   "named themes": "N/A: only Busnes Light and Busnes Dark captured"
+  }
+ },
+ "gates": {
+  "kymessages": {
+   "keyboard": {
+    "status": "untested",
+    "evidence": "Recorded only (not executed by this reviewer): kymessages-05-after-keyboard-{chromium,firefox}.json at 1280/390 cover Tab+Enter nav selection, the Audit focus order and Backup chip visibility; they predate the stage 06 source (a5430c0d). No recorded walk of every task path (Backup pin/pair/schedule forms, Settings branding, change password) and no dialog focus-return evidence; Matrix-on dialogs, 2FA enrolment and MemberHome not captured. WebKit not run (host libraries missing)."
+   },
+   "focus": {
+    "status": "untested",
+    "evidence": "Recorded in kymessages-06-after-checks.json (not executed by this reviewer): 0 focus stops without an indicator across 48 online Busnes Light/Dark states; minimum focus-ring ratio on page 4.93 light / 6.47 dark. The 12 loading/offline rows carry no focus measurements; named themes, Matrix-on tables/dialogs, 2FA and MemberHome are unmeasured. The login captures show a visible accent ring on the autofocused field."
+   },
+   "contrast": {
+    "status": "untested",
+    "evidence": "Recorded in kymessages-06-after-checks.json (not executed by this reviewer): 48 online states, text >= 4.99:1 light / 5.11:1 dark, control borders >= 3.38:1 / 4.78:1, 0 text or border failures. Not measured: the 12 loading/offline states (including the danger banners and red status text), named themes (the rubric requires every shipped theme). Visual concern, unmeasured: dark-theme danger salmon and warning amber sit close to the orange accent hue."
+   },
+   "states": {
+    "status": "fail",
+    "evidence": "Coverage failure, not an observed defect: loading and error are captured for Health and Overview only (health-loading, health-offline, overview-offline); none for Users, Agents, Rooms, Audit, SCIM, Backup or Settings, and no inline field validation or server form error is captured. Empty states captured for Users/Agents/Rooms/SCIM/Backup. The captured loading state is a status line, not the contract's in-place skeleton. Error announcement (role/aria-live) is not recorded for the error banner."
+   },
+   "responsive": {
+    "status": "untested",
+    "evidence": "Recorded (not executed by this reviewer): 0 px horizontal overflow and no control under 40 px in all 48 online states at 390 and 1280; current_tab_in_view true for all 78 manifest rows. Visually confirmed in the 390 captures: Audit stacks all seven fields, phone tab strip shows the current page. Not covered: Matrix-on Users/Agents/Rooms tables (implementation notes say their phone tables still scroll sideways, unverified), 2FA, MemberHome; full-page settings-mobile shows the Branding row wrapping with a truncated file input."
+   },
+   "status_truth_offline": {
+    "status": "pass",
+    "evidence": "Supplementary, not a ky-suite-v2 rubric gate. Visual: health-offline-* shows no Up badges or Pass line after a failed check and 'Network check unavailable.'; overview-offline-* shows three rows and no KyIdentity sync row. Recorded (not executed by this reviewer): Health and Dashboard regression tests that fail on the stage 05 code and pass on a5430c0d, within Vitest 157/157."
+   }
+  }
+ },
+ "checks_recorded": {
+  "kymessages": "Recorded in kymessages-implementation.md stage 06 (not executed by this reviewer): tsc -b clean; Vitest 157/157; check-vendor ky-ui 0.3.0; npm run test:browser 7/7 (Chromium light/dark x 390/1280, Firefox light-1280 and dark-390, captcha); KY_SMOKE_PORT=18097 make ci exit 0 (tidy, gofmt/vet/compose, race 76.4%, npm ci 0 vulnerabilities, smoke 85 ok); two byte-identical npm run build outputs; two regression tests fail on stage 05 code and pass now. NOT run: make matrix-acceptance, make test-postgres, WebKit, MemberHome/Element captures."
+ },
+ "unscored": [
+  {
+   "file": "kymessages-06-after-settings-desktop-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-desktop-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-health-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-settings-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-settings-desktop-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-desktop-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-health-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-settings-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-empty-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-audit-desktop-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-desktop-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-audit-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-audit-desktop-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-desktop-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-audit-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  },
+  {
+   "file": "kymessages-06-after-backup-written-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content, scored once with its viewport representative and excluded from every count and mean. The fixed sidebar ends at 900px and the sticky phone header renders mid-page (full-page capture artifact)."
+  }
+ ],
+ "arithmetic_checks": {
+  "inventory_matches_files": true,
+  "files_listed": 78,
+  "scored": 60,
+  "unscored": 18,
+  "totals_recomputed": true,
+  "total_mismatches": [],
+  "integer_recompute": "each total also recomputed as (sum(weight*100*score)+5)//10/10 in build.py; all match",
+  "cohort_means_recomputed_from_unrounded": {
+   "admin-console": 7.5,
+   "auth": 8.13,
+   "settings": 7.53
+  },
+  "equal_cohort_weight_mean_recomputed": 7.72,
+  "every_dimension_observed": true,
+  "note": "Surface min/max are rounded per-file totals and the mean is from unrounded sums, so scim shows mean 7.15 with every file at 7.2 (each weighted sum is exactly 7.15)."
+ }
+}

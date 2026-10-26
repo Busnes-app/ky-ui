@@ -1,0 +1,3416 @@
+[
+  {
+    "surface": "login",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 3,
+    "focus_without_indicator": [
+      "input:",
+      "button:Sign In",
+      "a:Sign in with KyIdentity"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "KyMessages",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.33,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "a:Sign in with KyIdentity",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 14.86,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Sign In",
+        "h": 34
+      },
+      {
+        "el": "a:Sign in with KyIdentity",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "change-password",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 1,
+    "focus_without_indicator": [
+      "input:"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Change your password",
+        "size": "32px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.33,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.57,
+    "border_failures": [
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 14.86,
+    "short_controls": [
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Change password",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "login",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 3,
+    "focus_without_indicator": [
+      "input:",
+      "button:Sign In",
+      "a:Sign in with KyIdentity"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "KyMessages",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.33,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "a:Sign in with KyIdentity",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 14.86,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Sign In",
+        "h": 34
+      },
+      {
+        "el": "a:Sign in with KyIdentity",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "change-password",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 1,
+    "focus_without_indicator": [
+      "input:"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Change your password",
+        "size": "32px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.33,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.57,
+    "border_failures": [
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 14.86,
+    "short_controls": [
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Change password",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "login",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 3,
+    "focus_without_indicator": [
+      "input:",
+      "button:Sign In",
+      "a:Sign in with KyIdentity"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "KyMessages",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 6.47,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "a:Sign in with KyIdentity",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 13.85,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Sign In",
+        "h": 34
+      },
+      {
+        "el": "a:Sign in with KyIdentity",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "change-password",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 1,
+    "focus_without_indicator": [
+      "input:"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Change your password",
+        "size": "32px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 6.47,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 13.99,
+    "short_controls": [
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Change password",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "login",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 3,
+    "focus_without_indicator": [
+      "input:",
+      "button:Sign In",
+      "a:Sign in with KyIdentity"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "KyMessages",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 6.47,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "a:Sign in with KyIdentity",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 13.85,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Sign In",
+        "h": 34
+      },
+      {
+        "el": "a:Sign in with KyIdentity",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "change-password",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 1,
+    "focus_without_indicator": [
+      "input:"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Change your password",
+        "size": "32px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 6.47,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 13.99,
+    "short_controls": [
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Change password",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "overview",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 13,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Open Health",
+      "button:Open Users",
+      "button:Open Backup & recovery"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "28px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.31,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Open Health",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Open Users",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Open Backup & recovery",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "users",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 9,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Users",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "agents",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 8,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Agents",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "rooms",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Rooms",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "health",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Check again"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Check again",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "button:Check again",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "audit",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 6,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "select:AllSign-inBackupBrandingMatrixSCIM"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Audit log",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "select:AllSign-inBackupBrandingMatrix",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "select:AllSign-inBackupBrandingMatrix",
+        "h": 38
+      },
+      {
+        "el": "button:Newer",
+        "h": 36
+      },
+      {
+        "el": "button:Older",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "scim",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 5,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "input:"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "SCIM 2.0 Directory & Inbound Provisionin",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "input:",
+        "h": 35
+      }
+    ]
+  },
+  {
+    "surface": "backup",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 13,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Refresh",
+      "button:Run restore drill",
+      "select:OffEvery hourEvery 6 hoursEvery 12 hours",
+      "input:",
+      "input:",
+      "button:Pair",
+      "textarea:",
+      "input:",
+      "input:",
+      "button:Pin key"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Backup & recovery",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Refresh",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Run restore drill",
+        "ratio": 1.57
+      },
+      {
+        "el": "select:OffEvery hourEvery 6 hoursEver",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "textarea:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "button:Refresh",
+        "h": 36
+      },
+      {
+        "el": "button:Back up now",
+        "h": 36
+      },
+      {
+        "el": "button:Download capsule",
+        "h": 36
+      },
+      {
+        "el": "button:Run restore drill",
+        "h": 36
+      },
+      {
+        "el": "select:OffEvery hourEvery 6 hoursEver",
+        "h": 38
+      },
+      {
+        "el": "button:Save",
+        "h": 34
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Pair",
+        "h": 34
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Pin key",
+        "h": 34
+      }
+    ]
+  },
+  {
+    "surface": "settings",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 2,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "System Settings & Architecture",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 4.77,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "select:Color theme",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Save name",
+        "h": 34
+      },
+      {
+        "el": "button:Use default (KyMessages)",
+        "h": 36
+      },
+      {
+        "el": "button:Upload logo",
+        "h": 34
+      },
+      {
+        "el": "button:Reset logo",
+        "h": 36
+      },
+      {
+        "el": "button:Set up two-factor sign-in",
+        "h": 34
+      }
+    ]
+  },
+  {
+    "surface": "overview",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 13,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Open Health",
+      "button:Open Users",
+      "button:Open Backup & recovery"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "28px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.31,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Open Health",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Open Users",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Open Backup & recovery",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "users",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 9,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Users",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "agents",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 8,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Agents",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "rooms",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Rooms",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "health",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Check again"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Check again",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "button:Check again",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "audit",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "select:AllSign-inBackupBrandingMatrixSCIM",
+      "div:WhenWhoWhatTargetOutcomeDetailsIP10/25/2"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Audit log",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "select:AllSign-inBackupBrandingMatrix",
+        "ratio": 1.56
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "select:AllSign-inBackupBrandingMatrix",
+        "h": 38
+      },
+      {
+        "el": "button:Newer",
+        "h": 36
+      },
+      {
+        "el": "button:Older",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "scim",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 5,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "input:"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "SCIM 2.0 Directory & Inbound Provisionin",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "input:",
+        "h": 35
+      }
+    ]
+  },
+  {
+    "surface": "backup",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 13,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Refresh",
+      "button:Run restore drill",
+      "select:OffEvery hourEvery 6 hoursEvery 12 hours",
+      "input:",
+      "input:",
+      "button:Pair",
+      "textarea:",
+      "input:",
+      "input:",
+      "button:Pin key"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Backup & recovery",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Refresh",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Run restore drill",
+        "ratio": 1.57
+      },
+      {
+        "el": "select:OffEvery hourEvery 6 hoursEver",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "textarea:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "button:Refresh",
+        "h": 36
+      },
+      {
+        "el": "button:Back up now",
+        "h": 34
+      },
+      {
+        "el": "button:Download capsule",
+        "h": 36
+      },
+      {
+        "el": "button:Run restore drill",
+        "h": 36
+      },
+      {
+        "el": "select:OffEvery hourEvery 6 hoursEver",
+        "h": 38
+      },
+      {
+        "el": "button:Save",
+        "h": 34
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Pair",
+        "h": 34
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Pin key",
+        "h": 34
+      }
+    ]
+  },
+  {
+    "surface": "settings",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 2,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "System Settings & Architecture",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 4.77,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 1.56,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 1.56
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 1.56
+      },
+      {
+        "el": "select:Color theme",
+        "ratio": 1.57
+      },
+      {
+        "el": "input:",
+        "ratio": 1.57
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Save name",
+        "h": 34
+      },
+      {
+        "el": "button:Use default (KyMessages)",
+        "h": 36
+      },
+      {
+        "el": "button:Upload logo",
+        "h": 34
+      },
+      {
+        "el": "button:Reset logo",
+        "h": 36
+      },
+      {
+        "el": "button:Set up two-factor sign-in",
+        "h": 34
+      }
+    ]
+  },
+  {
+    "surface": "overview",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 13,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Open Health",
+      "button:Open Users",
+      "button:Open Backup & recovery"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "28px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Open Health",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Open Users",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Open Backup & recovery",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "users",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 9,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Users",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "agents",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 8,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Agents",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "rooms",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Rooms",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "health",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Check again"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.5,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Check again",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "button:Check again",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "audit",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 6,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "select:AllSign-inBackupBrandingMatrixSCIM"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Audit log",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.48,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "select:AllSign-inBackupBrandingMatrix",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "select:AllSign-inBackupBrandingMatrix",
+        "h": 38
+      },
+      {
+        "el": "button:Newer",
+        "h": 36
+      },
+      {
+        "el": "button:Older",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "scim",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 5,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "input:"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "SCIM 2.0 Directory & Inbound Provisionin",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.48,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "input:",
+        "h": 35
+      }
+    ]
+  },
+  {
+    "surface": "backup",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 13,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Refresh",
+      "button:Run restore drill",
+      "select:OffEvery hourEvery 6 hoursEvery 12 hours",
+      "input:",
+      "input:",
+      "button:Pair",
+      "textarea:",
+      "input:",
+      "input:",
+      "button:Pin key"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Backup & recovery",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.24,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Refresh",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Run restore drill",
+        "ratio": 2.05
+      },
+      {
+        "el": "select:OffEvery hourEvery 6 hoursEver",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "textarea:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "button:Refresh",
+        "h": 36
+      },
+      {
+        "el": "button:Back up now",
+        "h": 36
+      },
+      {
+        "el": "button:Download capsule",
+        "h": 36
+      },
+      {
+        "el": "button:Run restore drill",
+        "h": 36
+      },
+      {
+        "el": "select:OffEvery hourEvery 6 hoursEver",
+        "h": 38
+      },
+      {
+        "el": "button:Save",
+        "h": 34
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Pair",
+        "h": 34
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Pin key",
+        "h": 34
+      }
+    ]
+  },
+  {
+    "surface": "settings",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 2,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "System Settings & Architecture",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 6.03,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "select:Color theme",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "button:Overview",
+        "h": 37
+      },
+      {
+        "el": "button:Users",
+        "h": 37
+      },
+      {
+        "el": "button:Agents",
+        "h": 37
+      },
+      {
+        "el": "button:Rooms",
+        "h": 37
+      },
+      {
+        "el": "button:Health",
+        "h": 37
+      },
+      {
+        "el": "button:Audit",
+        "h": 37
+      },
+      {
+        "el": "button:Directory & SCIM",
+        "h": 37
+      },
+      {
+        "el": "button:Backup & recovery",
+        "h": 37
+      },
+      {
+        "el": "button:Settings & DB",
+        "h": 37
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Save name",
+        "h": 34
+      },
+      {
+        "el": "button:Use default (KyMessages)",
+        "h": 36
+      },
+      {
+        "el": "button:Upload logo",
+        "h": 34
+      },
+      {
+        "el": "button:Reset logo",
+        "h": 36
+      },
+      {
+        "el": "button:Set up two-factor sign-in",
+        "h": 34
+      }
+    ]
+  },
+  {
+    "surface": "overview",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 13,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Open Health",
+      "button:Open Users",
+      "button:Open Backup & recovery"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "28px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Open Health",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Open Users",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Open Backup & recovery",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "users",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 9,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Users",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "agents",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 8,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Agents",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "rooms",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Rooms",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      }
+    ]
+  },
+  {
+    "surface": "health",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Check again"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.5,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Check again",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "button:Check again",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "audit",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "select:AllSign-inBackupBrandingMatrixSCIM",
+      "div:WhenWhoWhatTargetOutcomeDetailsIP10/25/2"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Audit log",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.48,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.06,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "select:AllSign-inBackupBrandingMatrix",
+        "ratio": 2.06
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "select:AllSign-inBackupBrandingMatrix",
+        "h": 38
+      },
+      {
+        "el": "button:Newer",
+        "h": 36
+      },
+      {
+        "el": "button:Older",
+        "h": 36
+      }
+    ]
+  },
+  {
+    "surface": "scim",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 5,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "input:"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "SCIM 2.0 Directory & Inbound Provisionin",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.48,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "input:",
+        "h": 35
+      }
+    ]
+  },
+  {
+    "surface": "backup",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 13,
+    "focus_without_indicator": [
+      "button:Sign out",
+      "button:Refresh",
+      "button:Run restore drill",
+      "select:OffEvery hourEvery 6 hoursEvery 12 hours",
+      "input:",
+      "input:",
+      "button:Pair",
+      "textarea:",
+      "input:",
+      "input:",
+      "button:Pin key"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Backup & recovery",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.24,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Refresh",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Run restore drill",
+        "ratio": 2.05
+      },
+      {
+        "el": "select:OffEvery hourEvery 6 hoursEver",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "textarea:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "button:Refresh",
+        "h": 36
+      },
+      {
+        "el": "button:Back up now",
+        "h": 34
+      },
+      {
+        "el": "button:Download capsule",
+        "h": 36
+      },
+      {
+        "el": "button:Run restore drill",
+        "h": 36
+      },
+      {
+        "el": "select:OffEvery hourEvery 6 hoursEver",
+        "h": 38
+      },
+      {
+        "el": "button:Save",
+        "h": 34
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Pair",
+        "h": 34
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Pin key",
+        "h": 34
+      }
+    ]
+  },
+  {
+    "surface": "settings",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 2,
+    "focus_without_indicator": [
+      "button:Sign out"
+    ],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "System Settings & Architecture",
+        "size": "24px",
+        "weight": "700",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 6.03,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 2.05,
+    "border_failures": [
+      {
+        "el": "select:Color theme",
+        "ratio": 2.06
+      },
+      {
+        "el": "button:Sign out",
+        "ratio": 2.06
+      },
+      {
+        "el": "select:Color theme",
+        "ratio": 2.05
+      },
+      {
+        "el": "input:",
+        "ratio": 2.05
+      }
+    ],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": [
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "button:Sign out",
+        "h": 32
+      },
+      {
+        "el": "select:Color theme",
+        "h": 36
+      },
+      {
+        "el": "input:",
+        "h": 36
+      },
+      {
+        "el": "button:Save name",
+        "h": 34
+      },
+      {
+        "el": "button:Use default (KyMessages)",
+        "h": 36
+      },
+      {
+        "el": "button:Upload logo",
+        "h": 34
+      },
+      {
+        "el": "button:Reset logo",
+        "h": 36
+      },
+      {
+        "el": "button:Set up two-factor sign-in",
+        "h": 34
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "scope": "Shared primitive contract fixture, not a product application",
+  "browser": "Playwright Chromium",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "theme": "Busnes Light",
+  "fixture": "browser/fixture.html; Activity selected and hovered",
+  "source_before": "639e588 navigation.css",
+  "source_after": "639e588 + :where specificity correction",
+  "checks": "Regression fails before, passes after; full20 browser and8unit/lint pass",
+  "files": [
+    {
+      "file": "shared-06-before-selected-hover-desktop-light.png",
+      "sha256": "a66559057c7465b35d70816b36e43dafb6e1f393ee0b620d86bfc71fb4202ccd"
+    },
+    {
+      "file": "shared-06-after-selected-hover-desktop-light.png",
+      "sha256": "f983d729b2d713dc15090206622613ffbc5f7fc0a139606556f1f9e34a598362"
+    }
+  ]
+}

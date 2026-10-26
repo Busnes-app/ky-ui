@@ -1,0 +1,3858 @@
+{
+ "schema": "ky-ui-council-scores/2",
+ "round": "2026-10-26-council re-rank (ky-suite-v2)",
+ "reviewer": {
+  "model": "claude-opus-5-5 (Claude Opus 5.5)",
+  "role": "design sub-agent, Rate mode of skills/ky-suite-ui",
+  "harness": "Claude Code in T3 Code",
+  "date": "2026-10-26",
+  "independent_of_prior_numbers": true,
+  "blind_procedure": "All 39 unique originals viewed at full resolution and scored into rows.py; blind snapshot hashed before initial-scores.json was opened.",
+  "inputs_read": {
+   "AGENTS.md": "d6115a1608dd5542ec8f456dc8e4a955d9da94ec97e870e5b27897969879913c",
+   "reviews/AGENTS.md": "92911d25f8de3e2ead0336686f47920ff8bb95f77943cf0e494ae4a53ddf5dc7",
+   "skills/AGENTS.md": "e911bced9b8ff89ae0e39ba9a27a82f848f4c2ee2146378927b6acb6e661ba11",
+   "skills/ky-suite-ui/SKILL.md": "cbbb9b4f8513b92b48edbb0f056d4ca50f5180d743e7763ea9f1338798b3431b",
+   "skills/ky-suite-ui/references/rubric.md": "ad3516620420fbdc30f5273f82b7c72c76e1365d1b6296fcaa56be3cbebf2c41",
+   "skills/ky-suite-ui/references/design-contract.md": "10c7b9f7c3fd1be776ced96b3a7fe4dced1f05781095a046063aa1551550dd60",
+   "src/tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+   "/home/yoshi/git/busnes.app/AGENTS.md": "107501a468e582ab55cbd69b833c56e1b3fd59feb431abcca02958dc8cf6a925"
+  },
+  "worktree": {
+   "path": "/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/ui-cohesion",
+   "head": "41daa936e220489e10d4df1724a173da583dbdba",
+   "uncommitted_paths": 14,
+   "note": "skills/, reviews/ and src/tokens.css are uncommitted in this worktree; hashes above pin the exact text used."
+  },
+  "not_read": [
+   "source-evidence.md",
+   "baseline-capture-notes.md",
+   "skill-author-notes.md",
+   "screenshots/ (new implementation captures, out of scope)"
+  ],
+  "scripts": {
+   "rows.py (blind rows)": "037d17f86455a1e9e5ad93180aad93e74417181584af378b05473fc35ae70b6b",
+   "blind.json (blind snapshot)": "a0ecef77a963962f504f7577051161d16dfa8e43045d253fdfd6b6ce9ab38818"
+  }
+ },
+ "rubric": {
+  "version": "ky-suite-v2",
+  "source": "skills/ky-suite-ui/references/rubric.md",
+  "weights": {
+   "hierarchy": 0.2,
+   "typography": 0.15,
+   "density_layout": 0.2,
+   "color": 0.15,
+   "visible_affordances": 0.15,
+   "coherence": 0.15
+  },
+  "ky_fit_weights": {
+   "palette_tokens": 0.2,
+   "type_geometry": 0.2,
+   "shell": 0.2,
+   "accent_discipline": 0.2,
+   "suite_cohesion": 0.2
+  },
+  "rounding": "Decimal(str(x)).quantize(Decimal('0.1'), ROUND_HALF_UP); cohort means at 0.01 from unrounded weighted sums"
+ },
+ "inputs": {
+  "directory": "/home/yoshi/Pictures/KyPost-UI-Councel/",
+  "files": 40,
+  "unique": 39,
+  "near_duplicate_groups": [
+   [
+    "KyPost-live-03.png",
+    "KyPost-live-Contacts-01.png"
+   ]
+  ],
+  "exact_duplicate_groups": [],
+  "originals_modified": false,
+  "originals_uploaded": false
+ },
+ "inventory": [
+  {
+   "file": "Gmail-01.png",
+   "sha256": "f4e8e9fecdd53bb6889c6fa12c260283ff199fab70af5e61231b8f5d0e07b602",
+   "bytes": 1551945,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Gmail-02.png",
+   "sha256": "97c01a15a882ef4dafd04803c38f85f6a123b47f5edcc35b9f85ceca17811642",
+   "bytes": 1343998,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Gmail-Calendar-01.png",
+   "sha256": "2f587bdba44f6942092ecb42a967b11943c3ed811f02c9fa528bdffcf4dfbe5a",
+   "bytes": 170042,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Gmail-Calendar-02.png",
+   "sha256": "877817df5556989c874b7f9eb3794b631b599acb37bc52e02ed6cea4caed1c26",
+   "bytes": 198801,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Gmail-Contacts-01.png",
+   "sha256": "fb90c18070a69c5bb19ab5df1b1ee4161368e95c6f1afaa43b8490ad28418b7a",
+   "bytes": 123809,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-01.png",
+   "sha256": "3a927094f884b74733327001778635391e88c44aa12ac5a5cba226ff7779381d",
+   "bytes": 112517,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-02.png",
+   "sha256": "fb38260befcfbf79af884b834590ba7efaecc55adec1073b83dbb3bb2f653b3c",
+   "bytes": 102673,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-03.png",
+   "sha256": "91004af6915e2823954b5064ec82130a385a754f5dfed934c28bdc240e9ed86f",
+   "bytes": 215900,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-04.png",
+   "sha256": "fe3264232d35a6445b25d51dc72e7291499dff6daee3d702cadc1415e3e5d4ea",
+   "bytes": 112630,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-05.png",
+   "sha256": "5b85a7c87eab077cecb00f0cbcf2ef86a6be3a70c6770a8a0c4a047f3c3cd8c0",
+   "bytes": 176795,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-06.png",
+   "sha256": "3521843022115e9598cc1f07c2fb46460444f61bc18171d4c3c21022fa067931",
+   "bytes": 157627,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-Calendar-01.png",
+   "sha256": "627266351f462b57476249b29a835adb911a5e3ddccf03be9d6396e2575969bc",
+   "bytes": 80419,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-Calendar-02.png",
+   "sha256": "dd4d516c42c5a929d0c2be8063a3bbd351a8cb40dbc11de3d81a8a4db97ae7cf",
+   "bytes": 95055,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-Contacts-01.png",
+   "sha256": "4abbc11966f17e8f071f2b875ea199ea7d36302d697f2d355f5de8a7ecb2ae90",
+   "bytes": 215896,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-Contacts-02.png",
+   "sha256": "c6e15317a4084a7867ce87d89855537176dbf2fe82e32b83f1ae1055c6045ab8",
+   "bytes": 166012,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "KyPost-live-Notes-01.png",
+   "sha256": "510b2fd72fe6039487e5e338bdd4ea75a070218b95eea057355c23c120517cc7",
+   "bytes": 74355,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Outlook-01.png",
+   "sha256": "7c95a3777f1b4c0902b8785946a2bda86596865a7ea1c418d008fe135b25fbb3",
+   "bytes": 530944,
+   "width": 1543,
+   "height": 822,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Outlook-02.png",
+   "sha256": "ff073ad56c0a6a5d81af2a538b190938ac26e892bec954a5472c79f17443c1a1",
+   "bytes": 295247,
+   "width": 1543,
+   "height": 822,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Outlook-03.png",
+   "sha256": "ffb69f8dd75c0e779893b2825a0a0d6eee6574c0e57bf2c89358fc2137fb36c4",
+   "bytes": 331249,
+   "width": 1090,
+   "height": 581,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Proton-01.png",
+   "sha256": "950f9bcfafac4af76b471d8df5c5141b963688406012a02b4bedc729ec29d0fa",
+   "bytes": 127220,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Proton-02.png",
+   "sha256": "14cab75c61115a147e142e7a1006e1622f1172e487249f76860598e0b056e59d",
+   "bytes": 171885,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Proton-Drive-01.png",
+   "sha256": "9de9c93f1473c7f4c48c155743ee774d770046422600350144313ec4a99e5da0",
+   "bytes": 102610,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Proton-calendar-01.png",
+   "sha256": "70f6ac9144c44443aabafe79ad6d3ec474306a5de9073a38b3a5121ae8bce4b6",
+   "bytes": 97555,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "Proton-calendar-02.png",
+   "sha256": "f1f728989cbc569f88c34b7abe2f6f9bbb342d4a382114ba1afa7a899a7c6715",
+   "bytes": 148077,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-01.png",
+   "sha256": "d61d58fd3039f1cdabc9708b0fdd52495148b5de659c2b3d982c06db1dfc284d",
+   "bytes": 1192305,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-02.png",
+   "sha256": "33248abbf455a3d07e1557e0cab709e1ae532747251ec61eb118b85d8dd45e4a",
+   "bytes": 925411,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-03.png",
+   "sha256": "b7e91ac40318c864c1beeb30f528374da28cf03b8a07c92398b64d7b064dfb47",
+   "bytes": 528202,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-04.png",
+   "sha256": "28670924932a46e2f3b03d3eb975c8d0e0958d28e30b20caf1c72b43a8870620",
+   "bytes": 442769,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-address_book-02.png",
+   "sha256": "4c9dc8f983a370880c0f1f3510a70ee70173e0067eb5d7ae88efe34864b949aa",
+   "bytes": 1072551,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-calendar-01.png",
+   "sha256": "a3ae9ec47a3fdb07d794a0e075fa3ef28e2e434cc5ebb78657bc351238a9d185",
+   "bytes": 939586,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-calendar-02.png",
+   "sha256": "43e81c6c455996dee041ad668ce940c9c73695baf54ea2a0f189d8d36966dc44",
+   "bytes": 760302,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-drive-01.png",
+   "sha256": "0702cf5306ae652c0eb69471e77205eca645d1bf47d07cb8734d0e1d7b5dc63a",
+   "bytes": 939593,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-notes-01.png",
+   "sha256": "068be784542b779dbdd4e5b4f3635384c93e49ff49ad9a81733414d620827235",
+   "bytes": 146309,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "mailboxorg-notes-02.png",
+   "sha256": "cfa6080cb366edf2a8e644bf728d8bffa562dd65f81e0f26797bc84ba72fe5ff",
+   "bytes": 149341,
+   "width": 1548,
+   "height": 1096,
+   "mode": "RGBA"
+  },
+  {
+   "file": "tuta-01.png",
+   "sha256": "78e40b571b172acb53def49157150e2240b793ded1f5a66aebd65c36dbb84c7e",
+   "bytes": 64788,
+   "width": 1541,
+   "height": 1092,
+   "mode": "RGBA"
+  },
+  {
+   "file": "tuta-02.png",
+   "sha256": "9bb695f3f191d3f742e8891e9f65581e4f476a016198519b0fd17d9ed1942a53",
+   "bytes": 67853,
+   "width": 1541,
+   "height": 1092,
+   "mode": "RGBA"
+  },
+  {
+   "file": "tuta-03.png",
+   "sha256": "389e9e267d7a10e10ca33196998d08feb6a508e596294dfe6276b45796008af2",
+   "bytes": 53113,
+   "width": 1541,
+   "height": 1092,
+   "mode": "RGBA"
+  },
+  {
+   "file": "tuta-04.png",
+   "sha256": "8f56c2ccf872649f9a9c4ebe4bbaff79a4ad4fc9fff1e41f9dd7c9c024f75ca4",
+   "bytes": 88353,
+   "width": 1541,
+   "height": 1092,
+   "mode": "RGBA"
+  },
+  {
+   "file": "tuta-05.png",
+   "sha256": "ccd0bf66e68c181670a16e01f380c3ab65af0681b4efb92a9f7371d72e518345",
+   "bytes": 72918,
+   "width": 1541,
+   "height": 1092,
+   "mode": "RGBA"
+  },
+  {
+   "file": "tuta-06.png",
+   "sha256": "4c66cb66d806fa1d323be8bdf6e4ed1a24183f74bde0ec2ec57b3b30e63bbe2c",
+   "bytes": 93336,
+   "width": 1541,
+   "height": 1092,
+   "mode": "RGBA"
+  }
+ ],
+ "near_duplicate_measurements": [
+  {
+   "a": "KyPost-live-03.png",
+   "b": "KyPost-live-Contacts-01.png",
+   "diff_pixels_fraction": 1e-06,
+   "max_channel_delta": 1
+  },
+  {
+   "a": "tuta-01.png",
+   "b": "tuta-03.png",
+   "diff_pixels_fraction": 0.017513,
+   "max_channel_delta": 231
+  },
+  {
+   "a": "tuta-02.png",
+   "b": "tuta-04.png",
+   "diff_pixels_fraction": 0.0409,
+   "max_channel_delta": 225
+  }
+ ],
+ "files": [
+  {
+   "file": "Gmail-01.png",
+   "sha256": "f4e8e9fecdd53bb6889c6fa12c260283ff199fab70af5e61231b8f5d0e07b602",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Gmail (web, 2026)",
+   "observed_surface": "Inbox list, Primary tab",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "light UI over user photo wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "user wallpaper",
+    "account avatar",
+    "personal names in rows"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 6,
+    "color": 5,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Compose is the single white filled control top-left; Primary tab underlined as current view.",
+    "typography": "Clear weight steps: bold unread sender/subject vs grey snippet; consistent sans.",
+    "density_layout": "'Happening soon' card nests a box inside the list panel; two rows leave the list to scale unseen.",
+    "color": "Read-folder labels in regular weight lose legibility over bright cloud areas of the wallpaper.",
+    "visible_affordances": "Row checkboxes, star, Track package pill and tab indicator all read as controls.",
+    "coherence": "Tabs, chips, card and translucent panel mostly share one vocabulary; the order card is a separate style."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "confidence": "high",
+   "caveat": "Wallpaper is a user choice; two rows cannot show scaling of a populated inbox; no interaction or real contrast measurement.",
+   "blind_scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "blind_total": 7.2
+  },
+  {
+   "file": "Gmail-02.png",
+   "sha256": "97c01a15a882ef4dafd04803c38f85f6a123b47f5edcc35b9f85ceca17811642",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Gmail (web, 2026)",
+   "observed_surface": "New Message composer over inbox",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "light UI over user photo wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "user wallpaper",
+    "sender address visible"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Filled blue Send with split menu is the only filled control in the composer.",
+    "typography": "Field labels and title share one size step; title weight separates the header.",
+    "density_layout": "From/To/Subject rows divided by hairlines; toolbar icons evenly spaced along the bottom.",
+    "color": "Composer itself is neutral white with one blue; wallpaper still shows around it.",
+    "visible_affordances": "Cc/Bcc text toggles, icon toolbar and trash read clearly; AI prompt field is a distinct pill.",
+    "coherence": "One composer vocabulary; no nested boxes inside the form."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "confidence": "high",
+   "caveat": "Composer docked over list; body, attachment and send-later flows not shown."
+  },
+  {
+   "file": "Gmail-Calendar-01.png",
+   "sha256": "2f587bdba44f6942092ecb42a967b11943c3ed811f02c9fa528bdffcf4dfbe5a",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Google Calendar (web, 2026)",
+   "observed_surface": "Month grid",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "personal calendar names and events"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Create button is the single raised control; month title sits beside navigation.",
+    "typography": "Event labels are small and truncated ('Philadelphia Unic'); past events render in dim grey.",
+    "density_layout": "Even 7x5 grid, mini-month and calendar list aligned on a shared left edge.",
+    "color": "User calendar colors dominate; dimmed past events reduce apparent contrast.",
+    "visible_affordances": "View selector, today badge and checkbox calendar toggles read correctly.",
+    "coherence": "Pill buttons and chips consistent across header, sidebar and grid."
+   },
+   "weighted_sum": 7.7,
+   "total": 7.7,
+   "confidence": "high",
+   "caveat": "Event text truncation is content-driven; no keyboard or contrast measurement."
+  },
+  {
+   "file": "Gmail-Calendar-02.png",
+   "sha256": "877817df5556989c874b7f9eb3794b631b599acb37bc52e02ed6cea4caed1c26",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Google Calendar (web, 2026)",
+   "observed_surface": "Quick event creation popover",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "account name in popover"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Save is the one filled button bottom-right; 'Add title' large at top.",
+    "typography": "Title field large, rows at body size, meta at small size; three clean steps.",
+    "density_layout": "Icon gutter aligns every row; vertical rhythm even.",
+    "color": "Neutral dark surface with a single blue accent family.",
+    "visible_affordances": "Event/Task segmented choice shows selected state; 'Add time' outlined secondary.",
+    "coherence": "One popover vocabulary; More options as text tertiary."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "confidence": "high",
+   "caveat": "Quick-create popover, not the full editor; validation not shown."
+  },
+  {
+   "file": "Gmail-Contacts-01.png",
+   "sha256": "fb90c18070a69c5bb19ab5df1b1ee4161368e95c6f1afaa43b8490ad28418b7a",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Google Contacts (web, 2026)",
+   "observed_surface": "Contacts table with birthday suggestion card",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "personal names and addresses in suggestion card"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Create contact tonal button and 'Contacts (3)' title are clear.",
+    "typography": "Title, column headers and rows use distinct weights and sizes.",
+    "density_layout": "Table rows evenly spaced, but the empty Email column and wide blank area leave the table unbalanced.",
+    "color": "Neutral surfaces; color limited to avatars and blue actions.",
+    "visible_affordances": "Selected nav row filled; header icons and add-birthday icons readable.",
+    "coherence": "Shadowed suggestion card beside a flat table panel introduces a second surface style."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "confidence": "high",
+   "caveat": "Three rows; Email column empty for all rows."
+  },
+  {
+   "file": "KyPost-live-01.png",
+   "sha256": "3a927094f884b74733327001778635391e88c44aa12ac5a5cba226ff7779381d",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "KyPost",
+   "observed_surface": "Inbox list",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "personal address in one row"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 5,
+    "visible_affordances": 5,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "New Email and Search are both filled orange, and six faded-orange toolbar buttons compete with them.",
+    "typography": "Bold 'Inbox' title and a clear table header; a letter-spaced 'MAILBOXES' label adds a stray style.",
+    "density_layout": "Shadowed panel holds a separately bordered table; search input is thinner than the adjacent buttons.",
+    "color": "Orange fills primary, Search, the Primary tab and every toolbar button.",
+    "visible_affordances": "Toolbar buttons are pale orange, ambiguous between disabled and enabled.",
+    "coherence": "Pill tabs, faded fills, filled buttons and an outlined select mix on one screen."
+   },
+   "weighted_sum": 5.65,
+   "total": 5.7,
+   "confidence": "high",
+   "caveat": "Two rows; whether the faded toolbar buttons are disabled cannot be confirmed from a still.",
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 7,
+     "type_geometry": 5,
+     "shell": 5,
+     "accent_discipline": 3,
+     "suite_cohesion": 5
+    },
+    "observations": {
+     "palette_tokens": "Cream page, white panel and orange accent read as the token palette.",
+     "type_geometry": "Space Grotesk used; eyebrow label and thin search field depart from the 40px control rule.",
+     "shell": "Sidebar with selected rail, but Logout is a nav link and there is no account region; envelope icon, not the stamp.",
+     "accent_discipline": "Orange on six toolbar buttons, Search, tab and primary.",
+     "suite_cohesion": "Shares palette with the KyCalendar captures but differs in panel card, button kinds and account region."
+    },
+    "mean_raw": 5.0,
+    "value": 5.0,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-02.png",
+   "sha256": "fb38260befcfbf79af884b834590ba7efaecc55adec1073b83dbb3bb2f653b3c",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "KyPost",
+   "observed_surface": "New message compose dialog",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 5
+   },
+   "observations": {
+    "hierarchy": "Filled orange Send is the only filled button; 'New message' title clear.",
+    "typography": "Field labels are tiny uppercase 'TO:'/'CC:'; notice text is small.",
+    "density_layout": "To/Cc/Bcc show an input nested inside an outer box; banded sections stack three separators.",
+    "color": "Orange reserved for Send; neutral cream fields.",
+    "visible_affordances": "Double-bordered recipient fields read oddly; Trash is a neutral outline, not distinct as destructive.",
+    "coherence": "Recipient fields use nested borders while Subject uses one; outline, text and filled buttons mixed in one row."
+   },
+   "weighted_sum": 6.2,
+   "total": 6.2,
+   "confidence": "high",
+   "caveat": "Dialog over dimmed inbox; send flow and validation not shown.",
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 8,
+     "type_geometry": 5,
+     "shell": 5,
+     "accent_discipline": 8,
+     "suite_cohesion": 4
+    },
+    "observations": {
+     "palette_tokens": "Panel, cream inputs and orange Send match token roles.",
+     "type_geometry": "Uppercase small labels and nested inputs depart from labels-above plain fields.",
+     "shell": "Same KyPost shell behind the overlay; no account region.",
+     "accent_discipline": "Orange limited to Send inside the dialog.",
+     "suite_cohesion": "KyCalendar's event dialog uses labels above plain inputs and Cancel/Save at the right; this dialog does neither."
+    },
+    "mean_raw": 6.0,
+    "value": 6.0,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-03.png",
+   "sha256": "91004af6915e2823954b5064ec82130a385a754f5dfed934c28bdc240e9ed86f",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "KyPost",
+   "observed_surface": "Contacts address book",
+   "cohort": "contacts-list",
+   "state": "populated",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "personal names, addresses and phone numbers"
+   ],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 5,
+    "visible_affordances": 5,
+    "coherence": 5
+   },
+   "observations": {
+    "hierarchy": "New Contact is the filled primary, but count pill, pagination, links and outlined buttons all compete in the header.",
+    "typography": "Tiny letter-spaced uppercase column headers; header controls in several small sizes.",
+    "density_layout": "Panel, Address Book box and table border nest three boxes; rows themselves are even.",
+    "color": "Every avatar, the active page and row chevrons are orange.",
+    "visible_affordances": "Row Delete buttons are pale pink and read as disabled; Export links are underlined text inside boxes.",
+    "coherence": "Header mixes a pill, outlined buttons, underlined links in boxes and a filled button."
+   },
+   "weighted_sum": 5.55,
+   "total": 5.6,
+   "confidence": "high",
+   "caveat": "Near-duplicate KyPost-live-Contacts-01.png scored here.",
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 7,
+     "type_geometry": 5,
+     "shell": 5,
+     "accent_discipline": 3,
+     "suite_cohesion": 5
+    },
+    "observations": {
+     "palette_tokens": "Token cream and orange; a faint warm glow in the panel corner.",
+     "type_geometry": "Uppercase letter-spaced headers; small header controls under 40px.",
+     "shell": "Selected Contacts row uses rail and surface; Logout as nav link, no account region.",
+     "accent_discipline": "Orange avatars, pagination and chevrons on every row.",
+     "suite_cohesion": "Palette shared with other Ky captures; nested card layout unlike KyCalendar."
+    },
+    "mean_raw": 5.0,
+    "value": 5.0,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-04.png",
+   "sha256": "fe3264232d35a6445b25d51dc72e7291499dff6daee3d702cadc1415e3e5d4ea",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "KyPost",
+   "observed_surface": "Settings > Appearance theme picker",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "One title with a one-line description; selected swatch is the only accented element in the panel.",
+    "typography": "Panel type is clean, but the letter-spaced 'MAILBOXES' eyebrow in the same frame is a stray style.",
+    "density_layout": "Even 7-column swatch grid; panel is a shadowed card on the page.",
+    "color": "Orange only on the selected swatch and New Email.",
+    "visible_affordances": "Selected swatch outlined in accent; unselected swatches give no other state cue.",
+    "coherence": "Text '+'/'-' expanders and a shadowed floating card beside a flat sidebar."
+   },
+   "weighted_sum": 7.35,
+   "total": 7.4,
+   "confidence": "high",
+   "caveat": "Theme swatches show other named themes as content; not judged as off-palette.",
+   "blind_scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "blind_total": 7.7,
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 8,
+     "type_geometry": 6,
+     "shell": 5,
+     "accent_discipline": 8,
+     "suite_cohesion": 6
+    },
+    "observations": {
+     "palette_tokens": "Cream, white and orange used per token roles.",
+     "type_geometry": "Title and body sizes close to contract; eyebrow label in sidebar.",
+     "shell": "Settings expander uses '-' instead of a chevron; no account region.",
+     "accent_discipline": "Accent on selection and the primary only.",
+     "suite_cohesion": "Flat swatch grid could sit in KyCalendar; the shadowed card cannot."
+    },
+    "mean_raw": 6.6,
+    "value": 6.6,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-05.png",
+   "sha256": "5b85a7c87eab077cecb00f0cbcf2ef86a6be3a70c6770a8a0c4a047f3c3cd8c0",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "KyPost",
+   "observed_surface": "Settings > Mail connection form",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "password-manager sign-in prompt over the subtitle",
+    "mail server and account details"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 7,
+    "density_layout": 5,
+    "color": 5,
+    "visible_affordances": 5,
+    "coherence": 5
+   },
+   "observations": {
+    "hierarchy": "Save, Test and Delete Stored Email Settings are three identical filled orange buttons.",
+    "typography": "Clear title and section heading; labels legible.",
+    "density_layout": "Each field sits in its own bordered box inside a bordered section inside a card.",
+    "color": "Destructive Delete uses the same orange as Save.",
+    "visible_affordances": "Delete Stored Email Settings is indistinguishable from Save: an ambiguous state.",
+    "coherence": "Box-per-field, pill tabs and a separate status box stack three container styles."
+   },
+   "weighted_sum": 5.3,
+   "total": 5.3,
+   "confidence": "medium",
+   "caveat": "Password-manager overlay hides part of the description line.",
+   "blind_scores": {
+    "hierarchy": 5,
+    "typography": 7,
+    "density_layout": 5,
+    "color": 5,
+    "visible_affordances": 6,
+    "coherence": 5
+   },
+   "blind_total": 5.5,
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 7,
+     "type_geometry": 6,
+     "shell": 5,
+     "accent_discipline": 3,
+     "suite_cohesion": 5
+    },
+    "observations": {
+     "palette_tokens": "Token colors, but no danger color on Delete.",
+     "type_geometry": "Inputs approach 40px; box around every field violates the flat surface rule.",
+     "shell": "Same KyPost shell gaps.",
+     "accent_discipline": "Orange on Delete, Test, Save and the selected tab.",
+     "suite_cohesion": "Field boxes differ from KyCalendar's plain fields."
+    },
+    "mean_raw": 5.2,
+    "value": 5.2,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-06.png",
+   "sha256": "3521843022115e9598cc1f07c2fb46460444f61bc18171d4c3c21022fa067931",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "KyPost",
+   "observed_surface": "Settings > Security, scrolled",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "scrolled: sidebar wordmark clipped",
+    "account identifiers"
+   ],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 5,
+    "density_layout": 6,
+    "color": 5,
+    "visible_affordances": 7,
+    "coherence": 5
+   },
+   "observations": {
+    "hierarchy": "Update password is the clear primary, but 'SIGN-IN' / 'Password' / 'Choose a new password' stack three headings.",
+    "typography": "Letter-spaced mono eyebrows on every section and field label.",
+    "density_layout": "Status grid, tab pills and left-ruled sections each use different spacing.",
+    "color": "Cyan 'SSO Identity Linked' box with low-contrast cyan text; orange section rails as decoration.",
+    "visible_affordances": "Unlink SSO is an outlined danger button set apart; inputs readable.",
+    "coherence": "Cyan info box, orange and grey rails, and mono eyebrows on one screen."
+   },
+   "weighted_sum": 5.7,
+   "total": 5.7,
+   "confidence": "high",
+   "caveat": "Page scrolled; lower sections not visible.",
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 4,
+     "type_geometry": 4,
+     "shell": 5,
+     "accent_discipline": 5,
+     "suite_cohesion": 5
+    },
+    "observations": {
+     "palette_tokens": "Cyan info box is off-palette.",
+     "type_geometry": "Eyebrows and stacked headings break the type contract.",
+     "shell": "Same KyPost shell gaps.",
+     "accent_discipline": "Orange rails used decoratively beside primary and selection.",
+     "suite_cohesion": "Eyebrow-heavy style not seen in KyCalendar."
+    },
+    "mean_raw": 4.6,
+    "value": 4.6,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-Calendar-01.png",
+   "sha256": "627266351f462b57476249b29a835adb911a5e3ddccf03be9d6396e2575969bc",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "Week grid",
+   "cohort": "calendar-grid",
+   "state": "empty",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "New event is the single filled primary, but the 'Calendar' h1 renders in muted ink, weaker than the date range.",
+    "typography": "Clean scale, but the muted title and the darker range label invert emphasis.",
+    "density_layout": "Three-column composition with even hour rows; calendars column mostly empty.",
+    "color": "Orange limited to New event, the Week segment and the checkbox; today column lightly tinted.",
+    "visible_affordances": "Today renders as grey text in a grey box and reads as disabled; possibly correct for the current week, but ambiguous.",
+    "coherence": "One button and border vocabulary throughout."
+   },
+   "weighted_sum": 7.3,
+   "total": 7.3,
+   "confidence": "high",
+   "caveat": "No events in the week; empty-state guidance is judged on the grid itself.",
+   "filename_note": "Filename says KyPost; screen shows the KyCalendar wordmark and app.",
+   "blind_scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "blind_total": 7.5,
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 8,
+     "type_geometry": 7,
+     "shell": 8,
+     "accent_discipline": 7,
+     "suite_cohesion": 5
+    },
+    "observations": {
+     "palette_tokens": "Cream, white and orange per tokens; today tint is accent-soft.",
+     "type_geometry": "Controls near 40px with 8px radius; title in muted ink.",
+     "shell": "Sidebar with wordmark and stamp, selected rail, and a bottom account region with role, sign-out and theme select.",
+     "accent_discipline": "Accent on primary and selection; also on the calendar checkbox and today column.",
+     "suite_cohesion": "Flat layout and account region differ from KyPost's card and Logout link."
+    },
+    "mean_raw": 7.0,
+    "value": 7.0,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-Calendar-02.png",
+   "sha256": "dd4d516c42c5a929d0c2be8063a3bbd351a8cb40dbc11de3d81a8a4db97ae7cf",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "New event dialog",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "'New event' title; Save filled at the right with Cancel outlined beside it.",
+    "typography": "Native date-time fields render spaced separators ('10 / 26 / 2026 , 12 : 00 AM'), a visible type slip.",
+    "density_layout": "Labels above plain inputs on an even 8px rhythm; date pair on one row.",
+    "color": "Orange only on Save.",
+    "visible_affordances": "Input borders visible; Save and Cancel are distinct kinds.",
+    "coherence": "Single form vocabulary; native date fields match the input style."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "confidence": "high",
+   "caveat": "Validation and error states not shown.",
+   "filename_note": "Filename says KyPost; screen shows KyCalendar.",
+   "blind_scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "blind_total": 8.0,
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 8,
+     "type_geometry": 8,
+     "shell": 8,
+     "accent_discipline": 8,
+     "suite_cohesion": 6
+    },
+    "observations": {
+     "palette_tokens": "Token surfaces and accent.",
+     "type_geometry": "Labels above, 40px fields, 8px radius.",
+     "shell": "KyCalendar shell visible behind the overlay.",
+     "accent_discipline": "Accent on Save only.",
+     "suite_cohesion": "Matches the contract more closely than the KyPost compose and contact dialogs, which use other patterns."
+    },
+    "mean_raw": 7.6,
+    "value": 7.6,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-Contacts-01.png",
+   "sha256": "4abbc11966f17e8f071f2b875ea199ea7d36302d697f2d355f5de8a7ecb2ae90",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": "KyPost-live-03.png",
+   "inherits_scores_from": "KyPost-live-03.png",
+   "observed_product": "KyPost",
+   "observed_surface": "Contacts address book",
+   "cohort": "contacts-list",
+   "total": 5.6,
+   "excluded_from_counts_and_means": true
+  },
+  {
+   "file": "KyPost-live-Contacts-02.png",
+   "sha256": "c6e15317a4084a7867ce87d89855537176dbf2fe82e32b83f1ae1055c6045ab8",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "KyPost",
+   "observed_surface": "Add Contact dialog, scrolled",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "dialog scrolled; actions off-screen"
+   ],
+   "scores": {
+    "hierarchy": 4,
+    "typography": 7,
+    "density_layout": 5,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 5
+   },
+   "observations": {
+    "hierarchy": "No primary action in the captured frame; scored as captured even though it is likely below the fold.",
+    "typography": "Legible labels; title one clear step up.",
+    "density_layout": "Each field in its own bordered box inside the dialog; one box is taller than its row partner.",
+    "color": "Mostly neutral; orange placeholder avatar.",
+    "visible_affordances": "Inputs clear; native file control and small pronoun chips use other styles.",
+    "coherence": "Box-per-field, native file picker and chip buttons mixed."
+   },
+   "weighted_sum": 5.55,
+   "total": 5.6,
+   "confidence": "medium",
+   "caveat": "Save and cancel are below the fold, so the primary action cannot be judged from this frame.",
+   "blind_scores": {
+    "hierarchy": 5,
+    "typography": 7,
+    "density_layout": 5,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 5
+   },
+   "blind_total": 5.8,
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 7,
+     "type_geometry": 5,
+     "shell": 5,
+     "accent_discipline": 6,
+     "suite_cohesion": 4
+    },
+    "observations": {
+     "palette_tokens": "Token neutrals; orange avatar placeholder.",
+     "type_geometry": "Box around every field breaks the plain-field contract.",
+     "shell": "KyPost shell behind the overlay.",
+     "accent_discipline": "Orange used decoratively on the placeholder avatar.",
+     "suite_cohesion": "Unlike KyCalendar's plain-field dialog."
+    },
+    "mean_raw": 5.4,
+    "value": 5.4,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "KyPost-live-Notes-01.png",
+   "sha256": "510b2fd72fe6039487e5e338bdd4ea75a070218b95eea057355c23c120517cc7",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": false,
+   "observed_product": "KyNotes",
+   "observed_surface": "Workspace, no notebook selected",
+   "cohort": "notes",
+   "state": "empty",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 5,
+    "coherence": 5
+   },
+   "observations": {
+    "hierarchy": "New notebook and Set up encryption key are both filled orange; a faded orange + adds a third.",
+    "typography": "Uppercase labels, mono status text and two competing headings ('Select a notebook', 'Your private desk.').",
+    "density_layout": "Sidebar section labels stack with no content; middle column mostly empty.",
+    "color": "Pink alert box, orange decorative star and green status text.",
+    "visible_affordances": "Faded + button is ambiguous; small pill action cramped inside the alert.",
+    "coherence": "Top bar plus sidebar shell, pink box and pill buttons use different vocabularies."
+   },
+   "weighted_sum": 5.7,
+   "total": 5.7,
+   "confidence": "high",
+   "caveat": "Empty account; encryption key not set up.",
+   "filename_note": "Filename says KyPost; screen shows the KyNotes wordmark and app.",
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 6,
+     "type_geometry": 5,
+     "shell": 4,
+     "accent_discipline": 4,
+     "suite_cohesion": 4
+    },
+    "observations": {
+     "palette_tokens": "Pink alert tint and green status outside the token roles.",
+     "type_geometry": "Uppercase eyebrows and mono status label.",
+     "shell": "Top header bar instead of the sidebar wordmark; account region without sign-out.",
+     "accent_discipline": "Decorative orange star and two filled orange actions.",
+     "suite_cohesion": "Layout and header differ from both KyPost and KyCalendar."
+    },
+    "mean_raw": 4.6,
+    "value": 4.6,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "Outlook-01.png",
+   "sha256": "7c95a3777f1b4c0902b8785946a2bda86596865a7ea1c418d008fe135b25fbb3",
+   "width": 1543,
+   "height": 822,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Outlook 2013 desktop (video still)",
+   "observed_surface": "Inbox list with reading pane",
+   "cohort": "mail-list",
+   "state": "populated",
+   "theme": "light (Office 2013)",
+   "theme_class": "light",
+   "viewport": "desktop, 1543x822 video still, scale unknown",
+   "artifacts": [
+    "video compression",
+    "cursor",
+    "'Product Activation Failed' red title bar",
+    "broken remote images in message"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 4,
+    "visible_affordances": 6,
+    "coherence": 5
+   },
+   "observations": {
+    "hierarchy": "About thirty ribbon commands share equal weight; New Email is a small icon among them.",
+    "typography": "List uses a consistent three-line row (sender, subject, preview); ribbon labels are tiny.",
+    "density_layout": "Today/Yesterday grouping and even three-line rows; ribbon takes a fifth of the height.",
+    "color": "Red activation bar, multicolored ribbon icons and purple links.",
+    "visible_affordances": "Selected row clearly highlighted; ribbon buttons read as buttons.",
+    "coherence": "Broken-image placeholders and mixed icon styles."
+   },
+   "weighted_sum": 5.35,
+   "total": 5.4,
+   "confidence": "medium",
+   "caveat": "Video still of a 2013-generation client; compression softens text; reading pane included.",
+   "blind_scores": {
+    "hierarchy": 5,
+    "typography": 5,
+    "density_layout": 5,
+    "color": 4,
+    "visible_affordances": 6,
+    "coherence": 5
+   },
+   "blind_total": 5.0
+  },
+  {
+   "file": "Outlook-02.png",
+   "sha256": "ff073ad56c0a6a5d81af2a538b190938ac26e892bec954a5472c79f17443c1a1",
+   "width": 1543,
+   "height": 822,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Outlook 2013 desktop (video still)",
+   "observed_surface": "New message window",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "light (Office 2013)",
+   "theme_class": "light",
+   "viewport": "desktop, 1543x822 video still, scale unknown",
+   "artifacts": [
+    "video compression",
+    "cursor",
+    "red activation title bar behind"
+   ],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 5,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Large Send tile is distinct, but the ribbon above competes.",
+    "typography": "Tiny ribbon labels against larger tab labels.",
+    "density_layout": "Fields aligned; body area large and plain.",
+    "color": "Restrained inside the window; red bar behind.",
+    "visible_affordances": "Disabled formatting reads as disabled; To/Cc are button-styled.",
+    "coherence": "Ribbon groups, field buttons and window chrome follow one Office 2013 style."
+   },
+   "weighted_sum": 5.85,
+   "total": 5.9,
+   "confidence": "medium",
+   "caveat": "Separate window over the main client; formatting tools greyed because the body is unfocused."
+  },
+  {
+   "file": "Outlook-03.png",
+   "sha256": "ffb69f8dd75c0e779893b2825a0a0d6eee6574c0e57bf2c89358fc2137fb36c4",
+   "width": 1090,
+   "height": 581,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Outlook classic desktop (Microsoft 365, 2025)",
+   "observed_surface": "Week calendar, View ribbon",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "light",
+   "theme_class": "light",
+   "viewport": "desktop, 1090x581 capture, scale unknown",
+   "artifacts": [
+    "blur redactions on some events",
+    "low resolution",
+    "red window frame"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 5,
+    "density_layout": 5,
+    "color": 6,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "View ribbon dominates; no create action visible on this tab.",
+    "typography": "Event text is tiny and truncated at this resolution.",
+    "density_layout": "Ribbon takes a fifth of the height; events crowd with '+6' overflow badges.",
+    "color": "Restrained blue for today and selection.",
+    "visible_affordances": "Selected day and view clear; ribbon commands readable.",
+    "coherence": "Ribbon, mini-months and grid follow one Office style."
+   },
+   "weighted_sum": 5.45,
+   "total": 5.5,
+   "confidence": "medium",
+   "caveat": "Low resolution and redactions; event text barely legible."
+  },
+  {
+   "file": "Proton-01.png",
+   "sha256": "950f9bcfafac4af76b471d8df5c5141b963688406012a02b4bedc729ec29d0fa",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Proton Mail (web, 2026)",
+   "observed_surface": "Inbox list",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "account name in header"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "New message is the clear primary, but a purple Upgrade button matches its fill.",
+    "typography": "Clean weight steps for title, sender and subject.",
+    "density_layout": "Even rows; upsell banner interrupts the list top.",
+    "color": "Purple upsell button and banner compete with the primary.",
+    "visible_affordances": "Tabs, checkboxes and filter buttons read correctly.",
+    "coherence": "Single component vocabulary."
+   },
+   "weighted_sum": 7.45,
+   "total": 7.5,
+   "confidence": "high",
+   "caveat": "Four rows."
+  },
+  {
+   "file": "Proton-02.png",
+   "sha256": "14cab75c61115a147e142e7a1006e1622f1172e487249f76860598e0b056e59d",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Proton Mail (web, 2026)",
+   "observed_surface": "Composer over inbox",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "onboarding tooltip over formatting toolbar",
+    "sender address"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Filled purple Send with split menu at bottom-right.",
+    "typography": "Field labels and AI action row in similar sizes.",
+    "density_layout": "Rows divided cleanly; AI row adds a band.",
+    "color": "Bright white editor body inside a dark composer.",
+    "visible_affordances": "AI actions render faint and look disabled.",
+    "coherence": "White body, tooltip and dark chrome mix surfaces."
+   },
+   "weighted_sum": 7.05,
+   "total": 7.1,
+   "confidence": "medium",
+   "caveat": "Promotional tooltip covers part of the toolbar."
+  },
+  {
+   "file": "Proton-Drive-01.png",
+   "sha256": "9de9c93f1473c7f4c48c155743ee774d770046422600350144313ec4a99e5da0",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Proton Drive (web, 2026)",
+   "observed_surface": "My files, empty",
+   "cohort": "drive",
+   "state": "empty",
+   "theme": "light with dark sidebar",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "promotional countdown"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Upload file filled primary with Upload folder outlined beside it.",
+    "typography": "Heading, highlight line and body step clearly.",
+    "density_layout": "Centered empty state in a dashed drop zone; toolbar icons unlabeled.",
+    "color": "Purple highlight text and multicolored toolbar icons.",
+    "visible_affordances": "Unlabeled toolbar icons; buttons clear.",
+    "coherence": "Countdown tiles are a one-off style."
+   },
+   "weighted_sum": 7.35,
+   "total": 7.4,
+   "confidence": "high",
+   "caveat": "Empty account; countdown is product promotion."
+  },
+  {
+   "file": "Proton-calendar-01.png",
+   "sha256": "70f6ac9144c44443aabafe79ad6d3ec474306a5de9073a38b3a5121ae8bce4b6",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Proton Calendar (web, 2026)",
+   "observed_surface": "Week grid",
+   "cohort": "calendar-grid",
+   "state": "empty",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "in-app notification permission banner"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "New event filled primary; month title prominent.",
+    "typography": "Day headers, title and hour labels step well.",
+    "density_layout": "Even grid; banner takes a row.",
+    "color": "Cyan banner, purple primary, orange checkbox and pink upsell border.",
+    "visible_affordances": "Today, selection and checkbox states clear.",
+    "coherence": "Upsell button is a separate style."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "confidence": "high",
+   "caveat": "No events."
+  },
+  {
+   "file": "Proton-calendar-02.png",
+   "sha256": "f1f728989cbc569f88c34b7abe2f6f9bbb342d4a382114ba1afa7a899a7c6715",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Proton Calendar (web, 2026)",
+   "observed_surface": "Event editor dialog",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "password-manager prompt in header (outside dialog)"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Save filled at bottom-right, but the dialog has no title.",
+    "typography": "Even sizes; underlined links at body size.",
+    "density_layout": "Icon gutter aligned; notification row crowded.",
+    "color": "Purple links and an orange calendar dot (user data).",
+    "visible_affordances": "Bordered fields and trash icons read clearly.",
+    "coherence": "Underlined text links mixed with bordered buttons."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "confidence": "high",
+   "caveat": "Overlay sits above the dialog, not on it."
+  },
+  {
+   "file": "mailboxorg-01.png",
+   "sha256": "d61d58fd3039f1cdabc9708b0fdd52495148b5de659c2b3d982c06db1dfc284d",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org (web, 2026)",
+   "observed_surface": "Inbox list",
+   "cohort": "mail-list",
+   "state": "populated",
+   "theme": "light over 'Mountains' wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "user wallpaper",
+    "personal senders and subjects"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 6,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "New email teal primary; small Inbox title; dense top icon row.",
+    "typography": "Sender and subject both bold; title small.",
+    "density_layout": "Even row rhythm; tiny letter avatars.",
+    "color": "Wallpaper behind rows; teal unread dots on every row.",
+    "visible_affordances": "Selected tab and unread dots clear; disabled toolbar icons grey.",
+    "coherence": "Teal pill tabs, round letter avatars and flat rows share one style."
+   },
+   "weighted_sum": 6.7,
+   "total": 6.7,
+   "confidence": "high",
+   "caveat": "Wallpaper chosen in settings."
+  },
+  {
+   "file": "mailboxorg-02.png",
+   "sha256": "33248abbf455a3d07e1557e0cab709e1ae532747251ec61eb118b85d8dd45e4a",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org (web, 2026)",
+   "observed_surface": "New email composer",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "light over wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "browser mailto-handler prompt bottom-right",
+    "sender address"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Teal Send at the bottom-left; small header title.",
+    "typography": "Bold small labels; body clean.",
+    "density_layout": "Large body, toolbar and action bar aligned.",
+    "color": "Teal limited to Send; neutral white composer.",
+    "visible_affordances": "White on teal Send looks low contrast; icons readable.",
+    "coherence": "Composer uses the same teal button and hairline field style as the app."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "confidence": "high",
+   "caveat": "Browser prompt is outside the product."
+  },
+  {
+   "file": "mailboxorg-03.png",
+   "sha256": "b7e91ac40318c864c1beeb30f528374da28cf03b8a07c92398b64d7b064dfb47",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org (web, 2026)",
+   "observed_surface": "Settings > General > Theme",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "light over wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "settings dialog over a second drawer"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Settings and General titles clear; no primary needed.",
+    "typography": "Clear title and section steps.",
+    "density_layout": "Cards inside a dialog; nav icons each boxed in tiles.",
+    "color": "Rainbow swatches dominate (content); teal selection.",
+    "visible_affordances": "Selected swatch outlined.",
+    "coherence": "Dialog over a drawer: nested chrome visible at the right."
+   },
+   "weighted_sum": 6.5,
+   "total": 6.5,
+   "confidence": "high",
+   "caveat": "Accent swatches are content."
+  },
+  {
+   "file": "mailboxorg-04.png",
+   "sha256": "28670924932a46e2f3b03d3eb975c8d0e0958d28e30b20caf1c72b43a8870620",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org (web, 2026)",
+   "observed_surface": "Settings > Mail index",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "light over wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "settings dialog over a second drawer"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Clear 'Mail' title over disclosure rows; no competing action.",
+    "typography": "Bold row title over a smaller description line.",
+    "density_layout": "Even card stack with matching padding.",
+    "color": "Teal used only for the selected layout and nav item.",
+    "visible_affordances": "Chevrons and selected layout clear.",
+    "coherence": "Nested chrome behind the dialog."
+   },
+   "weighted_sum": 6.85,
+   "total": 6.9,
+   "confidence": "high",
+   "caveat": ""
+  },
+  {
+   "file": "mailboxorg-address_book-02.png",
+   "sha256": "4c9dc8f983a370880c0f1f3510a70ee70173e0067eb5d7ae88efe34864b949aa",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org (web, 2026)",
+   "observed_surface": "Address book list with contact detail",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "light over wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "user wallpaper",
+    "personal contact details and photo"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "New contact primary; contact name is the largest text.",
+    "typography": "Name, labels and values step.",
+    "density_layout": "Single row in a three-pane layout over a large wallpaper area.",
+    "color": "Wallpaper shows through every pane.",
+    "visible_affordances": "Selected row and round action buttons clear.",
+    "coherence": "Round teal action buttons and list selection match the mail app styling."
+   },
+   "weighted_sum": 6.65,
+   "total": 6.7,
+   "confidence": "high",
+   "caveat": "One contact."
+  },
+  {
+   "file": "mailboxorg-calendar-01.png",
+   "sha256": "a3ae9ec47a3fdb07d794a0e075fa3ef28e2e434cc5ebb78657bc351238a9d185",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org (web, 2026)",
+   "observed_surface": "Week grid",
+   "cohort": "calendar-grid",
+   "state": "empty",
+   "theme": "light over wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "user wallpaper",
+    "personal calendar names"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "New appointment primary; month title.",
+    "typography": "Clear date numerals.",
+    "density_layout": "Wallpaper behind the grid; grey off-hours shading over the photo.",
+    "color": "Red today and now-line, teal primary and user calendar colors.",
+    "visible_affordances": "Today and checkbox states clear.",
+    "coherence": "Mini-month, calendar checkboxes and header controls share one style."
+   },
+   "weighted_sum": 6.65,
+   "total": 6.7,
+   "confidence": "high",
+   "caveat": "Visible hours empty; grid starts at 2 PM."
+  },
+  {
+   "file": "mailboxorg-calendar-02.png",
+   "sha256": "43e81c6c455996dee041ad668ce940c9c73695baf54ea2a0f189d8d36966dc44",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org (web, 2026)",
+   "observed_surface": "Create appointment dialog",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "light over wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "user wallpaper",
+    "personal calendar names"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 6,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Create filled at the bottom-left beside Discard; small dialog title.",
+    "typography": "Dialog title is tiny; labels bold small.",
+    "density_layout": "Labels above inputs; date, time and zone segments.",
+    "color": "Teal limited to Create and one link.",
+    "visible_affordances": "Inputs bordered; Create low contrast.",
+    "coherence": "Dialog fields and buttons match the app's teal and grey vocabulary."
+   },
+   "weighted_sum": 6.85,
+   "total": 6.9,
+   "confidence": "high",
+   "caveat": "Participants section cut off by the dialog scroll."
+  },
+  {
+   "file": "mailboxorg-drive-01.png",
+   "sha256": "0702cf5306ae652c0eb69471e77205eca645d1bf47d07cb8734d0e1d7b5dc63a",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org (web, 2026)",
+   "observed_surface": "My files",
+   "cohort": "drive",
+   "state": "sparse",
+   "theme": "light over wallpaper",
+   "theme_class": "wallpaper",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [
+    "user wallpaper"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "New primary; breadcrumb title small.",
+    "typography": "Folder names and dates in one size; breadcrumb bold.",
+    "density_layout": "Small rows; empty detail pane; wallpaper fills the rest.",
+    "color": "Wallpaper shows through the list and detail panes.",
+    "visible_affordances": "Toolbar icons unlabeled; trash disabled.",
+    "coherence": "File rows, breadcrumb and storage card match the suite shell."
+   },
+   "weighted_sum": 6.5,
+   "total": 6.5,
+   "confidence": "high",
+   "caveat": "Four folders."
+  },
+  {
+   "file": "mailboxorg-notes-01.png",
+   "sha256": "068be784542b779dbdd4e5b4f3635384c93e49ff49ad9a81733414d620827235",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "mailbox.org Notes (web, 2026)",
+   "observed_surface": "Notes overview, no notes",
+   "cohort": "notes",
+   "state": "empty",
+   "theme": "light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 5,
+    "density_layout": 4,
+    "color": 4,
+    "visible_affordances": 4,
+    "coherence": 4
+   },
+   "observations": {
+    "hierarchy": "Lime Create is the only action, but a grey 'Info' block looks like a larger button.",
+    "typography": "Thin title; body copy has a typo ('muss').",
+    "density_layout": "Narrow left column with a small inline name field; the rest of the page is empty.",
+    "color": "White 'Info' text on mid-grey is visibly low contrast; lime Create is off the app palette.",
+    "visible_affordances": "Info block reads as a disabled button; small input.",
+    "coherence": "Looks like a separate legacy app inside the suite shell."
+   },
+   "weighted_sum": 4.35,
+   "total": 4.4,
+   "confidence": "high",
+   "caveat": "Legacy module within the suite shell.",
+   "blind_scores": {
+    "hierarchy": 5,
+    "typography": 5,
+    "density_layout": 4,
+    "color": 5,
+    "visible_affordances": 4,
+    "coherence": 4
+   },
+   "blind_total": 4.5
+  },
+  {
+   "file": "mailboxorg-notes-02.png",
+   "sha256": "cfa6080cb366edf2a8e644bf728d8bffa562dd65f81e0f26797bc84ba72fe5ff",
+   "width": 1548,
+   "height": 1096,
+   "duplicate_of": null,
+   "filename_matches_content": false,
+   "observed_product": "KyNotes",
+   "observed_surface": "Settings (Appearance, Reminders)",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "theme_class": "light",
+   "viewport": "desktop, 1548x1096 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 5,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Oversized 'Settings' title under a 'PREFERENCES' eyebrow; Apply theme is the orange primary.",
+    "typography": "Title far larger than the contract scale; mono eyebrows and inline mono.",
+    "density_layout": "Narrow card stack leaves half the width empty; large card radius.",
+    "color": "Orange only on Apply theme.",
+    "visible_affordances": "Select and checkboxes clear; checkboxes small.",
+    "coherence": "Large-radius cards beside 8px controls; shell differs from the other Ky apps."
+   },
+   "weighted_sum": 6.3,
+   "total": 6.3,
+   "confidence": "high",
+   "caveat": "Page scrolled partway.",
+   "filename_note": "Filename says mailbox.org; screen shows the KyNotes wordmark and settings.",
+   "ky_fit": {
+    "scores": {
+     "palette_tokens": 8,
+     "type_geometry": 4,
+     "shell": 4,
+     "accent_discipline": 8,
+     "suite_cohesion": 4
+    },
+    "observations": {
+     "palette_tokens": "Token cream, white and orange.",
+     "type_geometry": "Title far above 24px; eyebrows; large card radius.",
+     "shell": "Top bar and back link; no account region with sign-out.",
+     "accent_discipline": "Accent on the primary only.",
+     "suite_cohesion": "Differs from KyPost and KyCalendar layouts."
+    },
+    "mean_raw": 5.6,
+    "value": 5.6,
+    "suite_cohesion_basis": "KyPost, KyCalendar and KyNotes captures (3 Ky products)"
+   }
+  },
+  {
+   "file": "tuta-01.png",
+   "sha256": "78e40b571b172acb53def49157150e2240b793ded1f5a66aebd65c36dbb84c7e",
+   "width": 1541,
+   "height": 1092,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Tuta (web, 2026)",
+   "observed_surface": "Inbox list, no message selected",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1541x1092 window capture, device scale unknown",
+   "artifacts": [
+    "account address in sidebar"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "New email primary; selected nav clear.",
+    "typography": "Uppercase section labels; clean rows.",
+    "density_layout": "Narrow floating list cards; empty toolbar band; large empty pane.",
+    "color": "Dull maroon primary; pink badge.",
+    "visible_affordances": "Low-contrast primary; empty toolbar band.",
+    "coherence": "Rounded list cards, nav rows and icon buttons share one dark style."
+   },
+   "weighted_sum": 6.5,
+   "total": 6.5,
+   "confidence": "high",
+   "caveat": "Two rows."
+  },
+  {
+   "file": "tuta-02.png",
+   "sha256": "9bb695f3f191d3f742e8891e9f65581e4f476a016198519b0fd17d9ed1942a53",
+   "width": 1541,
+   "height": 1092,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Tuta (web, 2026)",
+   "observed_surface": "New email composer",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1541x1092 window capture, device scale unknown",
+   "artifacts": [
+    "sender address"
+   ],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 5,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Send is a pink text button top-right mirroring Close.",
+    "typography": "Italic labels; tiny caption.",
+    "density_layout": "Large empty body; fields aligned.",
+    "color": "Pink text actions.",
+    "visible_affordances": "Text-only Send/Close; unlabeled toolbar icons.",
+    "coherence": "Underline fields and text actions match Tuta's dialog pattern."
+   },
+   "weighted_sum": 6.0,
+   "total": 6.0,
+   "confidence": "high",
+   "caveat": ""
+  },
+  {
+   "file": "tuta-03.png",
+   "sha256": "389e9e267d7a10e10ca33196998d08feb6a508e596294dfe6276b45796008af2",
+   "width": 1541,
+   "height": 1092,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Tuta (web, 2026)",
+   "observed_surface": "Contacts list, none selected",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1541x1092 window capture, device scale unknown",
+   "artifacts": [
+    "contact addresses"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "New contact primary.",
+    "typography": "Name and address step clearly in each row.",
+    "density_layout": "Narrow list cards; empty pane.",
+    "color": "Dull maroon primary.",
+    "visible_affordances": "Low-contrast primary.",
+    "coherence": "Same list cards and nav row style as the mail view."
+   },
+   "weighted_sum": 6.5,
+   "total": 6.5,
+   "confidence": "high",
+   "caveat": "Two rows."
+  },
+  {
+   "file": "tuta-04.png",
+   "sha256": "8f56c2ccf872649f9a9c4ebe4bbaff79a4ad4fc9fff1e41f9dd7c9c024f75ca4",
+   "width": 1541,
+   "height": 1092,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Tuta (web, 2026)",
+   "observed_surface": "New contact editor",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1541x1092 window capture, device scale unknown",
+   "artifacts": [
+    "password-manager autofill popup over first field"
+   ],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 5,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 5,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Save is a text button top-right; section headings outweigh it.",
+    "typography": "Every label italic; large light section headings.",
+    "density_layout": "Two columns of underline fields with large gaps.",
+    "color": "Pink text actions.",
+    "visible_affordances": "Underline-only fields and empty dropdowns are ambiguous.",
+    "coherence": "Underline fields and text actions match the composer dialog."
+   },
+   "weighted_sum": 5.85,
+   "total": 5.9,
+   "confidence": "medium",
+   "caveat": "Autofill popup covers the first field."
+  },
+  {
+   "file": "tuta-05.png",
+   "sha256": "ccd0bf66e68c181670a16e01f380c3ab65af0681b4efb92a9f7371d72e518345",
+   "width": 1541,
+   "height": 1092,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Tuta (web, 2026)",
+   "observed_surface": "Month grid",
+   "cohort": "calendar-grid",
+   "state": "empty",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1541x1092 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "New event primary; large month title.",
+    "typography": "Large light month title beside small uppercase sidebar labels.",
+    "density_layout": "Even grid.",
+    "color": "Gold selected view, pink today, blue and orange calendars, maroon primary.",
+    "visible_affordances": "View switcher is icon-only.",
+    "coherence": "Grid, mini-month and calendar list share one dark style."
+   },
+   "weighted_sum": 6.85,
+   "total": 6.9,
+   "confidence": "high",
+   "caveat": "No events.",
+   "blind_scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "blind_total": 7.0
+  },
+  {
+   "file": "tuta-06.png",
+   "sha256": "4c66cb66d806fa1d323be8bdf6e4ed1a24183f74bde0ec2ec57b3b30e63bbe2c",
+   "width": 1541,
+   "height": 1092,
+   "duplicate_of": null,
+   "filename_matches_content": true,
+   "observed_product": "Tuta (web, 2026)",
+   "observed_surface": "Event editor dialog",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "dark",
+   "theme_class": "dark",
+   "viewport": "desktop, 1541x1092 window capture, device scale unknown",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Save is a text button top-right; title 'Event'.",
+    "typography": "Title, row labels and date chips use distinct steps.",
+    "density_layout": "Grouped rows on an even rhythm.",
+    "color": "Neutral dark rows; pink limited to Save/Cancel text and a blue calendar dot.",
+    "visible_affordances": "Text-only Save/Cancel; rows ambiguous between inputs and buttons.",
+    "coherence": "Grouped rows and bordered date chips match Tuta's dialog pattern."
+   },
+   "weighted_sum": 6.85,
+   "total": 6.9,
+   "confidence": "high",
+   "caveat": ""
+  }
+ ],
+ "cohort_rankings": {
+  "calendar-grid": {
+   "matched": false,
+   "unmatched_reason": "files differ in state, theme",
+   "ranking": [
+    {
+     "product": "Google Calendar (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Gmail-Calendar-01.png"
+     ],
+     "mean": 7.7,
+     "states": [
+      "populated"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "Proton Calendar (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Proton-calendar-01.png"
+     ],
+     "mean": 7.5,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 2
+    },
+    {
+     "product": "KyCalendar",
+     "ky": true,
+     "n": 1,
+     "files": [
+      "KyPost-live-Calendar-01.png"
+     ],
+     "mean": 7.3,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 3
+    },
+    {
+     "product": "Tuta (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "tuta-05.png"
+     ],
+     "mean": 6.85,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 4
+    },
+    {
+     "product": "mailbox.org (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "mailboxorg-calendar-01.png"
+     ],
+     "mean": 6.65,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 5
+    },
+    {
+     "product": "Outlook classic desktop (Microsoft 365, 2025)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Outlook-03.png"
+     ],
+     "mean": 5.45,
+     "states": [
+      "populated"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 6
+    }
+   ],
+   "best_competitor": "Google Calendar (web, 2026)",
+   "ky_gap": {
+    "KyCalendar": -0.4
+   },
+   "ky_gap_matched": false
+  },
+  "compose": {
+   "matched": false,
+   "unmatched_reason": "files differ in theme",
+   "ranking": [
+    {
+     "product": "Gmail (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Gmail-02.png"
+     ],
+     "mean": 7.85,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "Proton Mail (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Proton-02.png"
+     ],
+     "mean": 7.05,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 2
+    },
+    {
+     "product": "mailbox.org (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "mailboxorg-02.png"
+     ],
+     "mean": 7.0,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 3
+    },
+    {
+     "product": "KyPost",
+     "ky": true,
+     "n": 1,
+     "files": [
+      "KyPost-live-02.png"
+     ],
+     "mean": 6.2,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 4
+    },
+    {
+     "product": "Tuta (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "tuta-02.png"
+     ],
+     "mean": 6.0,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 5
+    },
+    {
+     "product": "Outlook 2013 desktop (video still)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Outlook-02.png"
+     ],
+     "mean": 5.85,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 6
+    }
+   ],
+   "best_competitor": "Gmail (web, 2026)",
+   "ky_gap": {
+    "KyPost": -1.65
+   },
+   "ky_gap_matched": false
+  },
+  "contact-editor": {
+   "matched": false,
+   "unmatched_reason": "files differ in theme",
+   "ranking": [
+    {
+     "product": "Tuta (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "tuta-04.png"
+     ],
+     "mean": 5.85,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "KyPost",
+     "ky": true,
+     "n": 1,
+     "files": [
+      "KyPost-live-Contacts-02.png"
+     ],
+     "mean": 5.55,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 2
+    }
+   ],
+   "best_competitor": "Tuta (web, 2026)",
+   "ky_gap": {
+    "KyPost": -0.3
+   },
+   "ky_gap_matched": false
+  },
+  "contacts-list": {
+   "matched": false,
+   "unmatched_reason": "files differ in state, theme",
+   "ranking": [
+    {
+     "product": "Google Contacts (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Gmail-Contacts-01.png"
+     ],
+     "mean": 7.65,
+     "states": [
+      "sparse"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "mailbox.org (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "mailboxorg-address_book-02.png"
+     ],
+     "mean": 6.65,
+     "states": [
+      "sparse"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 2
+    },
+    {
+     "product": "Tuta (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "tuta-03.png"
+     ],
+     "mean": 6.5,
+     "states": [
+      "sparse"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 3
+    },
+    {
+     "product": "KyPost",
+     "ky": true,
+     "n": 1,
+     "files": [
+      "KyPost-live-03.png"
+     ],
+     "mean": 5.55,
+     "states": [
+      "populated"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 4
+    }
+   ],
+   "best_competitor": "Google Contacts (web, 2026)",
+   "ky_gap": {
+    "KyPost": -2.1
+   },
+   "ky_gap_matched": false
+  },
+  "drive": {
+   "matched": false,
+   "unmatched_reason": "files differ in state, theme",
+   "ranking": [
+    {
+     "product": "Proton Drive (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Proton-Drive-01.png"
+     ],
+     "mean": 7.35,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "mailbox.org (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "mailboxorg-drive-01.png"
+     ],
+     "mean": 6.5,
+     "states": [
+      "sparse"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 2
+    }
+   ],
+   "best_competitor": "Proton Drive (web, 2026)",
+   "ky_gap": "N/A: no Ky file",
+   "ky_gap_matched": null
+  },
+  "event-editor": {
+   "matched": false,
+   "unmatched_reason": "files differ in theme",
+   "ranking": [
+    {
+     "product": "Google Calendar (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Gmail-Calendar-02.png"
+     ],
+     "mean": 8.0,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "KyCalendar",
+     "ky": true,
+     "n": 1,
+     "files": [
+      "KyPost-live-Calendar-02.png"
+     ],
+     "mean": 7.85,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 2
+    },
+    {
+     "product": "Proton Calendar (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Proton-calendar-02.png"
+     ],
+     "mean": 7.15,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 3
+    },
+    {
+     "product": "mailbox.org (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "mailboxorg-calendar-02.png"
+     ],
+     "mean": 6.85,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 4
+    },
+    {
+     "product": "Tuta (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "tuta-06.png"
+     ],
+     "mean": 6.85,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 4
+    }
+   ],
+   "best_competitor": "Google Calendar (web, 2026)",
+   "ky_gap": {
+    "KyCalendar": -0.15
+   },
+   "ky_gap_matched": false
+  },
+  "mail-list": {
+   "matched": false,
+   "unmatched_reason": "files differ in state, theme",
+   "ranking": [
+    {
+     "product": "Proton Mail (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Proton-01.png"
+     ],
+     "mean": 7.45,
+     "states": [
+      "sparse"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "Gmail (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Gmail-01.png"
+     ],
+     "mean": 7.0,
+     "states": [
+      "sparse"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 2
+    },
+    {
+     "product": "mailbox.org (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "mailboxorg-01.png"
+     ],
+     "mean": 6.7,
+     "states": [
+      "populated"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 3
+    },
+    {
+     "product": "Tuta (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "tuta-01.png"
+     ],
+     "mean": 6.5,
+     "states": [
+      "sparse"
+     ],
+     "theme_classes": [
+      "dark"
+     ],
+     "rank": 4
+    },
+    {
+     "product": "KyPost",
+     "ky": true,
+     "n": 1,
+     "files": [
+      "KyPost-live-01.png"
+     ],
+     "mean": 5.65,
+     "states": [
+      "sparse"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 5
+    },
+    {
+     "product": "Outlook 2013 desktop (video still)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "Outlook-01.png"
+     ],
+     "mean": 5.35,
+     "states": [
+      "populated"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 6
+    }
+   ],
+   "best_competitor": "Proton Mail (web, 2026)",
+   "ky_gap": {
+    "KyPost": -1.8
+   },
+   "ky_gap_matched": false
+  },
+  "notes": {
+   "matched": true,
+   "unmatched_reason": null,
+   "ranking": [
+    {
+     "product": "KyNotes",
+     "ky": true,
+     "n": 1,
+     "files": [
+      "KyPost-live-Notes-01.png"
+     ],
+     "mean": 5.7,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "mailbox.org Notes (web, 2026)",
+     "ky": false,
+     "n": 1,
+     "files": [
+      "mailboxorg-notes-01.png"
+     ],
+     "mean": 4.35,
+     "states": [
+      "empty"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 2
+    }
+   ],
+   "best_competitor": "mailbox.org Notes (web, 2026)",
+   "ky_gap": {
+    "KyNotes": 1.35
+   },
+   "ky_gap_matched": true
+  },
+  "settings": {
+   "matched": false,
+   "unmatched_reason": "files differ in theme",
+   "ranking": [
+    {
+     "product": "mailbox.org (web, 2026)",
+     "ky": false,
+     "n": 2,
+     "files": [
+      "mailboxorg-03.png",
+      "mailboxorg-04.png"
+     ],
+     "mean": 6.68,
+     "states": [
+      "populated"
+     ],
+     "theme_classes": [
+      "wallpaper"
+     ],
+     "rank": 1
+    },
+    {
+     "product": "KyNotes",
+     "ky": true,
+     "n": 1,
+     "files": [
+      "mailboxorg-notes-02.png"
+     ],
+     "mean": 6.3,
+     "states": [
+      "populated"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 2
+    },
+    {
+     "product": "KyPost",
+     "ky": true,
+     "n": 3,
+     "files": [
+      "KyPost-live-04.png",
+      "KyPost-live-05.png",
+      "KyPost-live-06.png"
+     ],
+     "mean": 6.12,
+     "states": [
+      "populated"
+     ],
+     "theme_classes": [
+      "light"
+     ],
+     "rank": 3
+    }
+   ],
+   "best_competitor": "mailbox.org (web, 2026)",
+   "ky_gap": {
+    "KyNotes": -0.38,
+    "KyPost": -0.56
+   },
+   "ky_gap_matched": false
+  }
+ },
+ "unscored": [
+  {
+   "file": "KyPost-live-Contacts-01.png",
+   "reason": "near duplicate of KyPost-live-03.png"
+  }
+ ],
+ "drift": {
+  "prior_round": "initial-scores.json (schema ky-ui-council-scores/1, rubric initial-2026-10-26)",
+  "prior_sha256": "e89d1c9525f0791d760fda230e91d3c7f29aa707826d29d2a980645ae468b619",
+  "opened_after_blind_snapshot": true,
+  "note": "Same unchanged images rescored: every delta measures the rubric and reviewer change, not a product improvement.",
+  "mean_delta_ky": 0.57,
+  "n_ky": 11,
+  "mean_delta_competitor": 0.13,
+  "n_competitor": 28,
+  "post_blind_revisions": {
+   "KyPost-live-Calendar-01.png": {
+    "visible_affordances": {
+     "blind": 8,
+     "final": 7,
+     "reason": "Today renders as grey text in a grey box and reads as disabled; possibly correct for the current week, but ambiguous."
+    }
+   },
+   "KyPost-live-Calendar-02.png": {
+    "typography": {
+     "blind": 8,
+     "final": 7,
+     "reason": "Native date-time fields render spaced separators ('10 / 26 / 2026 , 12 : 00 AM'), a visible type slip."
+    }
+   },
+   "KyPost-live-04.png": {
+    "typography": {
+     "blind": 8,
+     "final": 7,
+     "reason": "Panel type is clean, but the letter-spaced 'MAILBOXES' eyebrow in the same frame is a stray style."
+    },
+    "coherence": {
+     "blind": 8,
+     "final": 7,
+     "reason": "Text '+'/'-' expanders and a shadowed floating card beside a flat sidebar."
+    }
+   },
+   "KyPost-live-05.png": {
+    "visible_affordances": {
+     "blind": 6,
+     "final": 5,
+     "reason": "Delete Stored Email Settings is indistinguishable from Save: an ambiguous state."
+    }
+   },
+   "KyPost-live-Contacts-02.png": {
+    "hierarchy": {
+     "blind": 5,
+     "final": 4,
+     "reason": "No primary action in the captured frame; scored as captured even though it is likely below the fold."
+    }
+   },
+   "Gmail-01.png": {
+    "color": {
+     "blind": 6,
+     "final": 5,
+     "reason": "Read-folder labels in regular weight lose legibility over bright cloud areas of the wallpaper."
+    }
+   },
+   "mailboxorg-notes-01.png": {
+    "color": {
+     "blind": 5,
+     "final": 4,
+     "reason": "White 'Info' text on mid-grey is visibly low contrast; lime Create is off the app palette."
+    }
+   },
+   "Outlook-01.png": {
+    "typography": {
+     "blind": 5,
+     "final": 6,
+     "reason": "List uses a consistent three-line row (sender, subject, preview); ribbon labels are tiny."
+    },
+    "density_layout": {
+     "blind": 5,
+     "final": 6,
+     "reason": "Today/Yesterday grouping and even three-line rows; ribbon takes a fifth of the height."
+    }
+   },
+   "tuta-05.png": {
+    "typography": {
+     "blind": 8,
+     "final": 7,
+     "reason": "Large light month title beside small uppercase sidebar labels."
+    }
+   }
+  },
+  "files": [
+   {
+    "file": "Gmail-01.png",
+    "observed_product": "Gmail (web, 2026)",
+    "prior_cohort": "mail",
+    "cohort": "mail-list",
+    "prior_total": 6.6,
+    "blind_total": 7.2,
+    "total": 7.0,
+    "delta": 0.4,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": -1,
+     "color": 1,
+     "visible_affordances": 1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "Gmail-02.png",
+    "observed_product": "Gmail (web, 2026)",
+    "prior_cohort": "compose",
+    "cohort": "compose",
+    "prior_total": 7.4,
+    "blind_total": 7.9,
+    "total": 7.9,
+    "delta": 0.5,
+    "cause": "anchor",
+    "explanation": "The v2 9-anchor rewards the composer's single Send and hairline rows; the prior round had no anchors.",
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 1
+    }
+   },
+   {
+    "file": "Gmail-Calendar-01.png",
+    "observed_product": "Google Calendar (web, 2026)",
+    "prior_cohort": "calendar",
+    "cohort": "calendar-grid",
+    "prior_total": 7.7,
+    "blind_total": 7.7,
+    "total": 7.7,
+    "delta": 0.0,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "Gmail-Calendar-02.png",
+    "observed_product": "Google Calendar (web, 2026)",
+    "prior_cohort": "calendar",
+    "cohort": "event-editor",
+    "prior_total": 7.7,
+    "blind_total": 8.0,
+    "total": 8.0,
+    "delta": 0.3,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "Gmail-Contacts-01.png",
+    "observed_product": "Google Contacts (web, 2026)",
+    "prior_cohort": "contacts",
+    "cohort": "contacts-list",
+    "prior_total": 7.0,
+    "blind_total": 7.7,
+    "total": 7.7,
+    "delta": 0.7,
+    "cause": "anchor",
+    "explanation": "v2 judges a sparse list by how its rows scale, not by its empty space; prior density 6 and hierarchy 7 under-read a clear title and primary.",
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 1,
+     "color": 0,
+     "visible_affordances": 1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "KyPost-live-01.png",
+    "observed_product": "KyPost",
+    "prior_cohort": "mail",
+    "cohort": "mail-list",
+    "prior_total": 5.2,
+    "blind_total": 5.7,
+    "total": 5.7,
+    "delta": 0.5,
+    "cause": "anchor",
+    "explanation": "Orange on nine controls is 'competing emphasis' (anchor 5), not broken; prior color 4 sat below that anchor.",
+    "dimension_deltas": {
+     "hierarchy": -1,
+     "typography": 1,
+     "density_layout": 1,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 1
+    }
+   },
+   {
+    "file": "KyPost-live-02.png",
+    "observed_product": "KyPost",
+    "prior_cohort": "compose",
+    "cohort": "compose",
+    "prior_total": 5.6,
+    "blind_total": 6.2,
+    "total": 6.2,
+    "delta": 0.6,
+    "cause": "anchor",
+    "explanation": "Send is the only filled control in the dialog (hierarchy 7); prior hierarchy 6 and color 6 did not credit the single primary.",
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "KyPost-live-03.png",
+    "observed_product": "KyPost",
+    "prior_cohort": "contacts",
+    "cohort": "contacts-list",
+    "prior_total": 5.3,
+    "blind_total": 5.6,
+    "total": 5.6,
+    "delta": 0.3,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": 1,
+     "coherence": 1
+    }
+   },
+   {
+    "file": "KyPost-live-04.png",
+    "observed_product": "KyPost",
+    "prior_cohort": "settings",
+    "cohort": "settings",
+    "prior_total": 6.7,
+    "blind_total": 7.7,
+    "total": 7.4,
+    "delta": 0.7,
+    "cause": "anchor",
+    "explanation": "The theme picker panel meets the 8 anchor for hierarchy, typography and color; the sidebar eyebrow and text expanders still cost a point each on typography and coherence.",
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 1
+    }
+   },
+   {
+    "file": "KyPost-live-05.png",
+    "observed_product": "KyPost",
+    "prior_cohort": "settings",
+    "cohort": "settings",
+    "prior_total": 5.0,
+    "blind_total": 5.5,
+    "total": 5.3,
+    "delta": 0.3,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": 1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "KyPost-live-06.png",
+    "observed_product": "KyPost",
+    "prior_cohort": "settings",
+    "cohort": "settings",
+    "prior_total": 5.6,
+    "blind_total": 5.7,
+    "total": 5.7,
+    "delta": 0.1,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": 1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "KyPost-live-Calendar-01.png",
+    "observed_product": "KyCalendar",
+    "prior_cohort": "calendar",
+    "cohort": "calendar-grid",
+    "prior_total": 6.0,
+    "blind_total": 7.5,
+    "total": 7.3,
+    "delta": 1.3,
+    "cause": "anchor",
+    "explanation": "Prior coherence 5 penalised KyCalendar for a shell unlike KyPost's; v2 scores cross-product shell under ky_fit.suite_cohesion (5), and empty-state density no longer loses for having no events.",
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 1,
+     "color": 1,
+     "visible_affordances": 1,
+     "coherence": 3
+    }
+   },
+   {
+    "file": "KyPost-live-Calendar-02.png",
+    "observed_product": "KyCalendar",
+    "prior_cohort": "calendar",
+    "cohort": "event-editor",
+    "prior_total": 6.7,
+    "blind_total": 8.0,
+    "total": 7.9,
+    "delta": 1.2,
+    "cause": "anchor",
+    "explanation": "Labels above plain fields with one primary meet the 8 anchor; prior coherence 6 again counted cross-product differences now in ky_fit.",
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 1,
+     "color": 1,
+     "visible_affordances": 1,
+     "coherence": 2
+    }
+   },
+   {
+    "file": "KyPost-live-Contacts-02.png",
+    "observed_product": "KyPost",
+    "prior_cohort": "contacts",
+    "cohort": "contact-editor",
+    "prior_total": 4.6,
+    "blind_total": 5.8,
+    "total": 5.6,
+    "delta": 1.0,
+    "cause": "anchor",
+    "explanation": "Box-per-field is 'nested boxes' (anchor 5); prior density 3 used the 'broken' anchor for a legible form.",
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": 2,
+     "color": 1,
+     "visible_affordances": 1,
+     "coherence": 1
+    }
+   },
+   {
+    "file": "KyPost-live-Notes-01.png",
+    "observed_product": "KyNotes",
+    "prior_cohort": "secondary",
+    "cohort": "notes",
+    "prior_total": 5.5,
+    "blind_total": 5.7,
+    "total": 5.7,
+    "delta": 0.2,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 1,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "Outlook-01.png",
+    "observed_product": "Outlook 2013 desktop (video still)",
+    "prior_cohort": "mail",
+    "cohort": "mail-list",
+    "prior_total": 6.1,
+    "blind_total": 5.0,
+    "total": 5.4,
+    "delta": -0.7,
+    "cause": "anchor",
+    "explanation": "v2 labels vintage and keeps equal-weight ribbon commands at the 5 anchor; prior hierarchy 6 and affordances 7 credited the ribbon more.",
+    "dimension_deltas": {
+     "hierarchy": -1,
+     "typography": 0,
+     "density_layout": -1,
+     "color": 0,
+     "visible_affordances": -1,
+     "coherence": -1
+    }
+   },
+   {
+    "file": "Outlook-02.png",
+    "observed_product": "Outlook 2013 desktop (video still)",
+    "prior_cohort": "compose",
+    "cohort": "compose",
+    "prior_total": 5.9,
+    "blind_total": 5.9,
+    "total": 5.9,
+    "delta": 0.0,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": -1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "Outlook-03.png",
+    "observed_product": "Outlook classic desktop (Microsoft 365, 2025)",
+    "prior_cohort": "calendar",
+    "cohort": "calendar-grid",
+    "prior_total": 6.0,
+    "blind_total": 5.5,
+    "total": 5.5,
+    "delta": -0.5,
+    "cause": "anchor",
+    "explanation": "No create action is visible on the View ribbon, and the low-resolution event text is scored as captured.",
+    "dimension_deltas": {
+     "hierarchy": -1,
+     "typography": 0,
+     "density_layout": -1,
+     "color": 0,
+     "visible_affordances": -1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "Proton-01.png",
+    "observed_product": "Proton Mail (web, 2026)",
+    "prior_cohort": "mail",
+    "cohort": "mail-list",
+    "prior_total": 7.7,
+    "blind_total": 7.5,
+    "total": 7.5,
+    "delta": -0.2,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": -1,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "Proton-02.png",
+    "observed_product": "Proton Mail (web, 2026)",
+    "prior_cohort": "compose",
+    "cohort": "compose",
+    "prior_total": 7.2,
+    "blind_total": 7.1,
+    "total": 7.1,
+    "delta": -0.1,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": -1,
+     "coherence": -1
+    }
+   },
+   {
+    "file": "Proton-Drive-01.png",
+    "observed_product": "Proton Drive (web, 2026)",
+    "prior_cohort": "secondary",
+    "cohort": "drive",
+    "prior_total": 7.0,
+    "blind_total": 7.4,
+    "total": 7.4,
+    "delta": 0.4,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 1,
+     "color": 0,
+     "visible_affordances": -1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "Proton-calendar-01.png",
+    "observed_product": "Proton Calendar (web, 2026)",
+    "prior_cohort": "calendar",
+    "cohort": "calendar-grid",
+    "prior_total": 7.7,
+    "blind_total": 7.5,
+    "total": 7.5,
+    "delta": -0.2,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": -1
+    }
+   },
+   {
+    "file": "Proton-calendar-02.png",
+    "observed_product": "Proton Calendar (web, 2026)",
+    "prior_cohort": "calendar",
+    "cohort": "event-editor",
+    "prior_total": 7.5,
+    "blind_total": 7.2,
+    "total": 7.2,
+    "delta": -0.3,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": -1,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": -1
+    }
+   },
+   {
+    "file": "mailboxorg-01.png",
+    "observed_product": "mailbox.org (web, 2026)",
+    "prior_cohort": "mail",
+    "cohort": "mail-list",
+    "prior_total": 6.4,
+    "blind_total": 6.7,
+    "total": 6.7,
+    "delta": 0.3,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 0,
+     "density_layout": -1,
+     "color": 1,
+     "visible_affordances": 1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "mailboxorg-02.png",
+    "observed_product": "mailbox.org (web, 2026)",
+    "prior_cohort": "compose",
+    "cohort": "compose",
+    "prior_total": 6.7,
+    "blind_total": 7.0,
+    "total": 7.0,
+    "delta": 0.3,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "mailboxorg-03.png",
+    "observed_product": "mailbox.org (web, 2026)",
+    "prior_cohort": "settings",
+    "cohort": "settings",
+    "prior_total": 6.7,
+    "blind_total": 6.5,
+    "total": 6.5,
+    "delta": -0.2,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": -1,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": -1
+    }
+   },
+   {
+    "file": "mailboxorg-04.png",
+    "observed_product": "mailbox.org (web, 2026)",
+    "prior_cohort": "settings",
+    "cohort": "settings",
+    "prior_total": 7.2,
+    "blind_total": 6.9,
+    "total": 6.9,
+    "delta": -0.3,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": -1,
+     "coherence": -1
+    }
+   },
+   {
+    "file": "mailboxorg-address_book-02.png",
+    "observed_product": "mailbox.org (web, 2026)",
+    "prior_cohort": "contacts",
+    "cohort": "contacts-list",
+    "prior_total": 6.3,
+    "blind_total": 6.7,
+    "total": 6.7,
+    "delta": 0.4,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 1,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "mailboxorg-calendar-01.png",
+    "observed_product": "mailbox.org (web, 2026)",
+    "prior_cohort": "calendar",
+    "cohort": "calendar-grid",
+    "prior_total": 6.5,
+    "blind_total": 6.7,
+    "total": 6.7,
+    "delta": 0.2,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "mailboxorg-calendar-02.png",
+    "observed_product": "mailbox.org (web, 2026)",
+    "prior_cohort": "calendar",
+    "cohort": "event-editor",
+    "prior_total": 6.5,
+    "blind_total": 6.9,
+    "total": 6.9,
+    "delta": 0.4,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "mailboxorg-drive-01.png",
+    "observed_product": "mailbox.org (web, 2026)",
+    "prior_cohort": "secondary",
+    "cohort": "drive",
+    "prior_total": 6.0,
+    "blind_total": 6.5,
+    "total": 6.5,
+    "delta": 0.5,
+    "cause": "anchor",
+    "explanation": "New primary and clean folder rows meet the 7 anchor; the move from 'secondary' to 'drive' changes its comparison set, not its score.",
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "mailboxorg-notes-01.png",
+    "observed_product": "mailbox.org Notes (web, 2026)",
+    "prior_cohort": "secondary",
+    "cohort": "notes",
+    "prior_total": 3.6,
+    "blind_total": 4.5,
+    "total": 4.4,
+    "delta": 0.8,
+    "cause": "anchor",
+    "explanation": "Anchor 3 is reserved for broken screens; this legacy page is legible and offers Create, so color and coherence rise to 4.",
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 0,
+     "coherence": 2
+    }
+   },
+   {
+    "file": "mailboxorg-notes-02.png",
+    "observed_product": "KyNotes",
+    "prior_cohort": "secondary",
+    "cohort": "settings",
+    "prior_total": 6.2,
+    "blind_total": 6.3,
+    "total": 6.3,
+    "delta": 0.1,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": -1,
+     "typography": -1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": 1,
+     "coherence": 1
+    }
+   },
+   {
+    "file": "tuta-01.png",
+    "observed_product": "Tuta (web, 2026)",
+    "prior_cohort": "mail",
+    "cohort": "mail-list",
+    "prior_total": 6.4,
+    "blind_total": 6.5,
+    "total": 6.5,
+    "delta": 0.1,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "tuta-02.png",
+    "observed_product": "Tuta (web, 2026)",
+    "prior_cohort": "compose",
+    "cohort": "compose",
+    "prior_total": 6.0,
+    "blind_total": 6.0,
+    "total": 6.0,
+    "delta": 0.0,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "tuta-03.png",
+    "observed_product": "Tuta (web, 2026)",
+    "prior_cohort": "contacts",
+    "cohort": "contacts-list",
+    "prior_total": 6.2,
+    "blind_total": 6.5,
+    "total": 6.5,
+    "delta": 0.3,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 1,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "tuta-04.png",
+    "observed_product": "Tuta (web, 2026)",
+    "prior_cohort": "contacts",
+    "cohort": "contact-editor",
+    "prior_total": 6.1,
+    "blind_total": 5.9,
+    "total": 5.9,
+    "delta": -0.2,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 0,
+     "density_layout": -1,
+     "color": 0,
+     "visible_affordances": 0,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "tuta-05.png",
+    "observed_product": "Tuta (web, 2026)",
+    "prior_cohort": "calendar",
+    "cohort": "calendar-grid",
+    "prior_total": 6.4,
+    "blind_total": 7.0,
+    "total": 6.9,
+    "delta": 0.5,
+    "cause": "anchor",
+    "explanation": "Empty-month density is no longer penalised for lacking events; typography credited for clear weekday and numeral steps.",
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": 1,
+     "color": 0,
+     "visible_affordances": 1,
+     "coherence": 0
+    }
+   },
+   {
+    "file": "tuta-06.png",
+    "observed_product": "Tuta (web, 2026)",
+    "prior_cohort": "calendar",
+    "cohort": "event-editor",
+    "prior_total": 6.7,
+    "blind_total": 6.9,
+    "total": 6.9,
+    "delta": 0.2,
+    "cause": "anchor",
+    "explanation": null,
+    "dimension_deltas": {
+     "hierarchy": 0,
+     "typography": 1,
+     "density_layout": 0,
+     "color": 1,
+     "visible_affordances": -1,
+     "coherence": 0
+    }
+   }
+  ]
+ },
+ "coverage": {
+  "label": "not a ranking",
+  "by_product_cohorts": {
+   "Gmail (web, 2026)": [
+    "compose",
+    "mail-list"
+   ],
+   "Google Calendar (web, 2026)": [
+    "calendar-grid",
+    "event-editor"
+   ],
+   "Google Contacts (web, 2026)": [
+    "contacts-list"
+   ],
+   "KyCalendar": [
+    "calendar-grid",
+    "event-editor"
+   ],
+   "KyNotes": [
+    "notes",
+    "settings"
+   ],
+   "KyPost": [
+    "compose",
+    "contact-editor",
+    "contacts-list",
+    "mail-list",
+    "settings"
+   ],
+   "Outlook 2013 desktop (video still)": [
+    "compose",
+    "mail-list"
+   ],
+   "Outlook classic desktop (Microsoft 365, 2025)": [
+    "calendar-grid"
+   ],
+   "Proton Calendar (web, 2026)": [
+    "calendar-grid",
+    "event-editor"
+   ],
+   "Proton Drive (web, 2026)": [
+    "drive"
+   ],
+   "Proton Mail (web, 2026)": [
+    "compose",
+    "mail-list"
+   ],
+   "Tuta (web, 2026)": [
+    "calendar-grid",
+    "compose",
+    "contact-editor",
+    "contacts-list",
+    "event-editor",
+    "mail-list"
+   ],
+   "mailbox.org (web, 2026)": [
+    "calendar-grid",
+    "compose",
+    "contacts-list",
+    "drive",
+    "event-editor",
+    "mail-list",
+    "settings"
+   ],
+   "mailbox.org Notes (web, 2026)": [
+    "notes"
+   ]
+  },
+  "ky_cohorts_missing": [
+   "mail-read",
+   "calendar-list",
+   "admin-console",
+   "member-home",
+   "chat",
+   "drive",
+   "auth"
+  ],
+  "kymessages": "N/A: no KyMessages console, MemberHome or Element chat original supplied"
+ },
+ "ky_fit_summary": {
+  "KyPost-live-01.png": 5.0,
+  "KyPost-live-02.png": 6.0,
+  "KyPost-live-03.png": 5.0,
+  "KyPost-live-04.png": 6.6,
+  "KyPost-live-05.png": 5.2,
+  "KyPost-live-06.png": 4.6,
+  "KyPost-live-Calendar-01.png": 7.0,
+  "KyPost-live-Calendar-02.png": 7.6,
+  "KyPost-live-Contacts-02.png": 5.4,
+  "KyPost-live-Notes-01.png": 4.6,
+  "mailboxorg-notes-02.png": 5.6
+ },
+ "checks": {
+  "files_equal_inventory": true,
+  "files": 40,
+  "unique_scored": 39,
+  "ky_unique": 11,
+  "competitor_unique": 28,
+  "totals_recomputed": true,
+  "every_dimension_observed": true
+ }
+}

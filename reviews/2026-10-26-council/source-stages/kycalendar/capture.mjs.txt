@@ -1,0 +1,241 @@
+// KyCalendar staged captures for the 2026-10-26 council. Adapted from
+// /tmp/ky-ui-council-baseline/calendar.mjs: 1280x900 and 390x844, a fixed browser clock and
+// fixed-date synthetic events, so every stage's before and after show the same state.
+// Usage: node capture.mjs <worktree> <prefix e.g. kycalendar-01-before> <surface,surface,...>
+// Surfaces: calendar calendars-open admin-overview week month list new-event edit-recurring
+// calendar-edit subscribe draft-resize settings devices
+process.env.TZ = 'America/Chicago';
+import { randomBytes, createHash } from 'node:crypto';
+import { mkdtemp, rm, readFile, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawn, spawnSync } from 'node:child_process';
+
+const [wt, prefix, surfaceArg] = process.argv.slice(2);
+if (!wt || !prefix || !surfaceArg) throw new Error('usage: node capture.mjs <worktree> <prefix> <surfaces>');
+const surfaces = surfaceArg.split(',');
+const OUT = '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/ui-cohesion/reviews/2026-10-26-council/screenshots';
+const SERVICES = '/tmp/ky-ui-council-kycalendar/services.json';
+// Tuesday 2026-10-27 10:15 CDT: "today" is a weekday inside the seeded week.
+const NOW = new Date('2026-10-27T10:15:00-05:00');
+const SUNDAY = new Date('2026-10-25T00:00:00-05:00');
+
+const { chromium, request } = await import(`${wt}/web/node_modules/@playwright/test/index.mjs`);
+const PORT = '5597';
+const baseURL = `http://127.0.0.1:${PORT}`;
+const binary = `${wt}/.browser/server`;
+const dir = await mkdtemp(join(tmpdir(), 'ky-council-cal-'));
+const env = {
+  PATH: process.env.PATH, KY_APP_URL: baseURL, KY_HOST: '127.0.0.1', KY_PORT: PORT, KY_DB_DRIVER: 'sqlite',
+  KY_DATA_DIR: join(dir, 'data'), KYCALENDAR_BACKUP_DIR: join(dir, 'backups'),
+  KY_CAPTCHA_PROVIDER: 'none', KY_TRUSTED_PROXIES: '127.0.0.1',
+};
+const secret = () => `Cap-${randomBytes(18).toString('base64url')}9!`;
+const pw = { adminInit: secret(), admin: secret(), walterInit: secret(), walter: secret() };
+const run = (args, input) => {
+  const r = spawnSync(binary, args, { cwd: dir, env, input: `${input}\n`, stdio: ['pipe', 'inherit', 'inherit'] });
+  if (r.status !== 0) throw new Error(`${args[0]} exited ${r.status}`);
+};
+
+async function recordService(value) {
+  let all = {};
+  try { all = JSON.parse(await readFile(SERVICES, 'utf8')); } catch { /* first writer */ }
+  all.kycalendar = { ...all.kycalendar, ...value, updated: new Date().toISOString() };
+  await writeFile(SERVICES, JSON.stringify(all, null, 2) + '\n');
+}
+
+async function waitReady(url, ms = 30000) {
+  const end = Date.now() + ms;
+  while (Date.now() < end) {
+    try { if ((await fetch(url)).ok) return; } catch { /* not up yet */ }
+    await new Promise((r) => setTimeout(r, 250));
+  }
+  throw new Error(`server at ${url} not ready`);
+}
+
+async function apiSession(username, password) {
+  const api = await request.newContext({ baseURL });
+  await api.get('/');
+  const login = await api.post('/api/auth/login', { data: { username, password } });
+  if (!login.ok()) throw new Error(`${username} login ${login.status()}`);
+  const csrf = (await api.storageState()).cookies.find((c) => c.name === 'ky_csrf')?.value;
+  return { api, headers: { 'X-CSRF-Token': csrf } };
+}
+
+async function replacePassword(username, current, next) {
+  const { api, headers } = await apiSession(username, current);
+  try {
+    const r = await api.post('/api/auth/change-password', { headers, data: { current_password: current, new_password: next } });
+    if (!r.ok()) throw new Error(`${username} change-password ${r.status()}`);
+  } finally { await api.dispose(); }
+}
+
+let server;
+const stop = async () => {
+  if (server && server.exitCode === null) {
+    server.kill('SIGTERM');
+    await new Promise((r) => server.once('exit', r));
+  }
+  await rm(dir, { recursive: true, force: true });
+  await recordService({ state: 'stopped' });
+};
+
+const results = [];
+try {
+  run(['init-admin'], pw.adminInit);
+  run(['create-user', '-username', 'walter'], pw.walterInit);
+  server = spawn(binary, [], { cwd: dir, env, stdio: ['ignore', 'ignore', 'inherit'] });
+  await recordService({ state: 'running', pid: server.pid, driver_pid: process.pid, port: Number(PORT), data_dir: dir, stop: `kill -TERM ${process.pid} ${server.pid}` });
+  await waitReady(baseURL);
+  await replacePassword('admin', pw.adminInit, pw.admin);
+  await replacePassword('walter', pw.walterInit, pw.walter);
+  await seed();
+
+  const browser = await chromium.launch();
+  // Each context signs in from its own documentation address (trusted loopback proxy, as the
+  // browser harness does), so the per-IP login limiter stays on without throttling captures.
+  let client = 0;
+  const open = async (user, theme, width, height) => {
+    const ctx = await browser.newContext({ viewport: { width, height }, colorScheme: ['busnes-light', 'paper'].includes(theme) ? 'light' : 'dark', timezoneId: 'America/Chicago', locale: 'en-US', extraHTTPHeaders: { 'X-Forwarded-For': `198.51.100.${++client}` } });
+    const page = await ctx.newPage();
+    await page.clock.setFixedTime(NOW);
+    await page.goto(`${baseURL}/`);
+    await page.getByLabel('Username').fill(user);
+    await page.getByLabel('Password', { exact: true }).fill(user === 'admin' ? pw.admin : pw.walter);
+    await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+    await page.getByRole('navigation', { name: 'Primary' }).waitFor();
+    await page.getByLabel('Color theme').selectOption(theme);
+    if (user === 'walter') await page.locator('.fc-event, .fc-list-event').first().waitFor();
+    await settle(page);
+    return { ctx, page };
+  };
+  const nav = async (page, name) => {
+    await page.getByRole('navigation', { name: 'Primary' }).getByRole('button', { name, exact: true }).click();
+    await settle(page);
+  };
+  const view = async (page, cls) => {
+    await page.locator(`.fc-${cls}-button`).click();
+    await page.locator('.fc-event, .fc-list-event').first().waitFor();
+    await settle(page);
+  };
+  // Phones keep the calendar list behind the header's Calendars disclosure (when there is one).
+  const openList = async (p) => {
+    const summary = p.locator('.app-header summary', { hasText: 'Calendars' });
+    if (await summary.isVisible()) { await summary.click(); await settle(p); }
+  };
+  const steps = {
+    calendar: async () => {},
+    'calendars-open': async (p) => openList(p),
+    'admin-overview': async () => {},
+    week: async (p) => view(p, 'timeGridWeek'),
+    month: async (p) => view(p, 'dayGridMonth'),
+    list: async (p) => view(p, 'listWeek'),
+    'new-event': async (p) => { await p.getByRole('button', { name: 'New event' }).click(); await p.getByRole('dialog').waitFor(); await settle(p); },
+    'edit-recurring': async (p) => {
+      await p.locator('.fc-event, .fc-list-event').filter({ hasText: 'Team standup' }).first().click();
+      await p.getByRole('dialog').waitFor();
+      await settle(p);
+    },
+    'calendar-edit': async (p) => { await openList(p); await p.getByRole('button', { name: 'Edit Personal' }).click(); await p.getByLabel('Name', { exact: true }).waitFor(); await settle(p); },
+    subscribe: async (p) => { await openList(p); await p.getByRole('button', { name: 'Subscribe to a calendar' }).click(); await p.getByRole('form', { name: 'Subscribe to a calendar' }).scrollIntoViewIfNeeded(); await settle(p); },
+    settings: async (p) => nav(p, 'Settings'),
+    // Half-typed rename and subscription, then the window crosses 720px and comes back.
+    'draft-resize': async (p, name, meta) => {
+      await openList(p);
+      await p.getByRole('button', { name: 'Edit Personal' }).click();
+      await p.locator('input[id^="name-"]').fill('Personal (draft)');
+      await p.getByRole('button', { name: 'Subscribe to a calendar' }).click();
+      const sub = p.getByRole('form', { name: 'Subscribe to a calendar' });
+      await sub.getByLabel('Link').fill('https://example.test/team.ics');
+      await sub.getByLabel('Name', { exact: true }).fill('Team feed (draft)');
+      const [w, h] = meta.viewport.split('x').map(Number);
+      const [ow, oh] = w > 720 ? [390, 844] : [1280, 900];
+      await settle(p);
+      results.push(await shot(p, `${name}-1-typed`, meta));
+      await p.setViewportSize({ width: ow, height: oh });
+      await settle(p);
+      await sub.getByLabel('Link').scrollIntoViewIfNeeded().catch(() => {});
+      results.push(await shot(p, `${name}-2-crossed`, { ...meta, viewport: `${ow}x${oh}` }));
+      await p.setViewportSize({ width: w, height: h });
+      await settle(p);
+      await sub.getByLabel('Link').scrollIntoViewIfNeeded().catch(() => {});
+      results.push(await shot(p, `${name}-3-back`, meta));
+      return 'shot';
+    },
+    devices: async (p) => nav(p, 'Phones & apps'),
+  };
+  const ADMIN = new Set(['admin-overview', 'settings']);
+
+  // KY_THEMES lists extra saved named themes to check (for example nord); Busnes by default.
+  for (const theme of (process.env.KY_THEMES ?? 'busnes-light,busnes-dark').split(',')) {
+    for (const [w, h, label] of [[1280, 900, 'desktop'], [390, 844, 'mobile']]) {
+      for (const s of surfaces) {
+        if (!steps[s]) throw new Error(`unknown surface ${s}`);
+        const { ctx, page } = await open(ADMIN.has(s) ? 'admin' : 'walter', theme, w, h);
+        const name = `${prefix}-${s}-${label}-${theme.replace('busnes-', '')}`;
+        const meta = { theme, viewport: `${w}x${h}`, surface: s };
+        if ((await steps[s](page, name, meta)) !== 'shot') results.push(await shot(page, name, meta));
+        await ctx.close();
+      }
+    }
+  }
+  await browser.close();
+  const manifest = {
+    prefix, worktree: wt, captured: new Date().toISOString(), browser: `chromium ${chromium.name()}`,
+    clock: NOW.toISOString(), timezone: 'America/Chicago', locale: 'en-US',
+    theme_source: 'product "Color theme" select (browser localStorage), context colorScheme matching',
+    fixture: 'walter: default Calendar (no stored colour) + Personal #3f7f6e, 13 events in the week of 2026-10-25; admin: nothing seeded',
+    files: results,
+  };
+  await writeFile(`${OUT}/${prefix}-manifest.json`, JSON.stringify(manifest, null, 2) + '\n');
+  console.log(`wrote ${results.length} captures, manifest ${prefix}-manifest.json`);
+} finally {
+  await stop();
+}
+
+async function settle(page) {
+  await page.waitForLoadState('networkidle');
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(400);
+}
+
+async function shot(page, name, meta) {
+  const path = `${OUT}/${name}.png`;
+  const buf = await page.screenshot({ path });
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  const sha256 = createHash('sha256').update(buf).digest('hex');
+  console.log(`saved ${name}.png (overflow ${overflow}px)`);
+  return { file: `${name}.png`, sha256, overflow_px: overflow, ...meta };
+}
+
+// Fixed synthetic week (Sunday 2026-10-25, America/Chicago), created through the real API as walter.
+async function seed() {
+  const { api, headers } = await apiSession('walter', pw.walter);
+  try {
+    const ok = async (res, what) => { if (!res.ok()) throw new Error(`${what}: ${res.status()} ${await res.text()}`); return res.status() === 204 ? null : res.json(); };
+    const cals = await ok(await api.get('/api/calendars'), 'list calendars');
+    const work = cals[0];
+    if (!work) throw new Error('walter has no default calendar');
+    const home = await ok(await api.post('/api/calendars', { headers, data: { name: 'Personal', color: '#3f7f6e', description: '' } }), 'create Personal');
+    const at = (day, h, m = 0) => { const d = new Date(SUNDAY); d.setDate(d.getDate() + day); d.setHours(h, m, 0, 0); return d.toISOString(); };
+    const date = (day) => { const d = new Date(SUNDAY); d.setDate(d.getDate() + day); return d.toLocaleDateString('en-CA'); };
+    const timed = (cal, title, day, h1, m1, h2, m2, extra = {}) => ({ cal, body: { title, location: '', description: '', all_day: false, zone: 'America/Chicago', repeat: { freq: '' }, start: at(day, h1, m1), end: at(day, h2, m2), ...extra } });
+    const events = [
+      timed(work.id, 'Team standup', 1, 9, 0, 9, 15, { repeat: { freq: 'weekly', weekdays: ['MO', 'TU', 'WE', 'TH', 'FR'] }, location: 'Video call' }),
+      timed(work.id, 'Design review: onboarding', 2, 10, 0, 11, 30, { location: 'Room 2B', description: 'Review the onboarding flow mockups.' }),
+      timed(work.id, 'Vendor call', 2, 14, 0, 14, 45),
+      timed(home.id, 'Lunch with Priya', 3, 12, 0, 13, 0, { location: 'Corner Bistro' }),
+      timed(work.id, 'Quarterly planning', 4, 13, 0, 15, 30, { location: 'Main conference room' }),
+      timed(home.id, 'Dentist', 5, 8, 0, 8, 45),
+      timed(work.id, 'Sprint retro', 5, 15, 0, 16, 0),
+      timed(home.id, 'Climbing gym', 2, 18, 0, 19, 30),
+      timed(home.id, 'Farmers market', 6, 9, 0, 10, 30),
+      timed(work.id, 'Early flight to Denver', 3, 5, 30, 7, 0),
+      timed(work.id, 'Overnight deploy window', 4, 22, 0, 23, 30),
+      { cal: work.id, body: { title: 'Release freeze', location: '', description: '', all_day: true, repeat: { freq: '' }, start: date(4), end: date(6) } },
+      { cal: home.id, body: { title: "Sam's birthday", location: '', description: '', all_day: true, repeat: { freq: '' }, start: date(3), end: date(4) } },
+    ];
+    for (const e of events) await ok(await api.post(`/api/calendars/${encodeURIComponent(e.cal)}/events`, { headers, data: e.body }), `event ${e.body.title}`);
+    console.log(`seeded ${events.length} events, week of ${date(0)}`);
+  } finally { await api.dispose(); }
+}

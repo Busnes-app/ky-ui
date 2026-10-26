@@ -1,0 +1,269 @@
+{
+  "prefix": "kycalendar-06-confirm1",
+  "worktree": "/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/ui-cohesion",
+  "captured": "2026-10-26T06:14:04.334Z",
+  "browser": "chromium chromium",
+  "clock": "2026-10-27T15:15:00.000Z",
+  "timezone": "America/Chicago",
+  "locale": "en-US",
+  "theme_source": "product \"Color theme\" select (browser localStorage), context colorScheme matching",
+  "fixture": "walter: default Calendar (no stored colour) + Personal #3f7f6e, 13 events in the week of 2026-10-25; admin: nothing seeded",
+  "files": [
+    {
+      "file": "kycalendar-06-confirm1-month-desktop-light.png",
+      "sha256": "0596d097c9204aff36aff6c84c9747b41597d26b42370a8a1dc93bb46c079d35",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "month"
+    },
+    {
+      "file": "kycalendar-06-confirm1-subscribe-desktop-light.png",
+      "sha256": "3c76f1eb7637fdbb4891baf18d1502663a85ea2acdf582354b354f19358ec591",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "subscribe"
+    },
+    {
+      "file": "kycalendar-06-confirm1-calendar-desktop-light.png",
+      "sha256": "3bcb25b134558d905c35687a48c38f1f8a68d9cefa601347d618aecea7cc33e9",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "calendar"
+    },
+    {
+      "file": "kycalendar-06-confirm1-calendars-open-desktop-light.png",
+      "sha256": "3bcb25b134558d905c35687a48c38f1f8a68d9cefa601347d618aecea7cc33e9",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "calendars-open"
+    },
+    {
+      "file": "kycalendar-06-confirm1-new-event-desktop-light.png",
+      "sha256": "8d3c613d72f5847e23da6aa5c0ba6e749002268b4359ebac27239992e943705f",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "new-event"
+    },
+    {
+      "file": "kycalendar-06-confirm1-empty-desktop-light.png",
+      "sha256": "4fa4b79fd78c7e98cd4a6d1d396df50a2ee15a9cb32da33be733ca392177cd9b",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "empty"
+    },
+    {
+      "file": "kycalendar-06-confirm1-loading-desktop-light.png",
+      "sha256": "9bea13831d48a8018bc184e066b005896e65ef0fbcfeab289136cf3347098d10",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "loading"
+    },
+    {
+      "file": "kycalendar-06-confirm1-error-desktop-light.png",
+      "sha256": "adb9245c36f006aa1a5f8ea480193d73560b2c32489a996908ca54c6acb93261",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "error"
+    },
+    {
+      "file": "kycalendar-06-confirm1-month-mobile-light.png",
+      "sha256": "f5ca2bab16ee4108e885feabdb543bb6837af50ae8baa7e29999572896c1af93",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "month"
+    },
+    {
+      "file": "kycalendar-06-confirm1-subscribe-mobile-light.png",
+      "sha256": "18b55723ec2947d2febe500166d3b9d559ba1059c54749499a9945f4d1e8b0e5",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "subscribe"
+    },
+    {
+      "file": "kycalendar-06-confirm1-calendar-mobile-light.png",
+      "sha256": "dbb1771aafd8ccf7917cf1f18c189022d981923316fc6607175c13d2333520d0",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "calendar"
+    },
+    {
+      "file": "kycalendar-06-confirm1-calendars-open-mobile-light.png",
+      "sha256": "15cb3578db8dcce4bdf2150a9d6f18f710f51d973ba54e7ae197379e1fda7d13",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "calendars-open"
+    },
+    {
+      "file": "kycalendar-06-confirm1-new-event-mobile-light.png",
+      "sha256": "8008d17ff3f5f349a2dfbcf2d36875342739644897e9b62d1d892041ba22d80d",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "new-event"
+    },
+    {
+      "file": "kycalendar-06-confirm1-empty-mobile-light.png",
+      "sha256": "2d8cf49e977f5036b6b3af50b86d22729cebab5fdf41e42a4a41c2b30d65050b",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "empty"
+    },
+    {
+      "file": "kycalendar-06-confirm1-loading-mobile-light.png",
+      "sha256": "3410436a769811f9670bf0ed3a56a8ceec235f6d0548fcc1fad36bcaf0547c56",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "loading"
+    },
+    {
+      "file": "kycalendar-06-confirm1-error-mobile-light.png",
+      "sha256": "047926b2d9ecd1b919fdff62aa0afdb894fa65677c8d2d3dba6db7652583aa6a",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "error"
+    },
+    {
+      "file": "kycalendar-06-confirm1-month-desktop-dark.png",
+      "sha256": "307bc6145f1f09ef3097a80f969ed4fc4d2f6f88c4505bcd519012b0b66f990c",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "month"
+    },
+    {
+      "file": "kycalendar-06-confirm1-subscribe-desktop-dark.png",
+      "sha256": "1d32e3f748666a3ee205f36f3e12a8164bf294a2d40a69c68b2fa8dae008d6ae",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "subscribe"
+    },
+    {
+      "file": "kycalendar-06-confirm1-calendar-desktop-dark.png",
+      "sha256": "a5f806347d4012dea8aff6f63cae51713874685fd8d76920ed39e18538ad9f09",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "calendar"
+    },
+    {
+      "file": "kycalendar-06-confirm1-calendars-open-desktop-dark.png",
+      "sha256": "a5f806347d4012dea8aff6f63cae51713874685fd8d76920ed39e18538ad9f09",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "calendars-open"
+    },
+    {
+      "file": "kycalendar-06-confirm1-new-event-desktop-dark.png",
+      "sha256": "a5a74a6c0cf6aa78436b86ca297fd9533f5a6ca89efc1e0446ddf9027838053f",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "new-event"
+    },
+    {
+      "file": "kycalendar-06-confirm1-empty-desktop-dark.png",
+      "sha256": "88702a3ad90f386f3d89fd12ef7ff61cceb8ea1044ff64bb5d0bf11c629ddf17",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "empty"
+    },
+    {
+      "file": "kycalendar-06-confirm1-loading-desktop-dark.png",
+      "sha256": "0fa95eb0a82c8c325cfbbe2bc9b92258ee04c69840951aa94daa5b6faa2c1c02",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "loading"
+    },
+    {
+      "file": "kycalendar-06-confirm1-error-desktop-dark.png",
+      "sha256": "04c289c1d8f84b8f541856ea835558a303cff797b1c3e9ec9cfea0d4942d71c7",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "error"
+    },
+    {
+      "file": "kycalendar-06-confirm1-month-mobile-dark.png",
+      "sha256": "17b9a1772ddb1e4f0dfe0fe915ab32392de89f5c82f87fa5ddc10cccecfa878d",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "month"
+    },
+    {
+      "file": "kycalendar-06-confirm1-subscribe-mobile-dark.png",
+      "sha256": "59ef59154915f777971526ecf7b788583f4e8596c90c26db230f64d92eb3e13f",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "subscribe"
+    },
+    {
+      "file": "kycalendar-06-confirm1-calendar-mobile-dark.png",
+      "sha256": "c6edbc3299b599172206ebde6ccb0dc3c25299292e42156b5010ae734d812fad",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "calendar"
+    },
+    {
+      "file": "kycalendar-06-confirm1-calendars-open-mobile-dark.png",
+      "sha256": "b4441e32df31e9cda3ae1d7c3ae08f6b6d868ebffbf04beca904539dae73032a",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "calendars-open"
+    },
+    {
+      "file": "kycalendar-06-confirm1-new-event-mobile-dark.png",
+      "sha256": "423119d940e5afb02d9f9da7741d0d65300edda50e1b0dcdc6ce1bbbafff5cf1",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "new-event"
+    },
+    {
+      "file": "kycalendar-06-confirm1-empty-mobile-dark.png",
+      "sha256": "b82127c5382a51aebac708158ff80f4f281354d245ae9c906ce7ef0e0c822972",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "empty"
+    },
+    {
+      "file": "kycalendar-06-confirm1-loading-mobile-dark.png",
+      "sha256": "53f703b308f435c4c5e6d8e0977d54409ee808a59a9c844b13a34f37db4d7124",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "loading"
+    },
+    {
+      "file": "kycalendar-06-confirm1-error-mobile-dark.png",
+      "sha256": "653799020e2bd182bf8bdb533772fd071c8cab303585d43b4ca068a97e9ecf3b",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "error"
+    }
+  ]
+}

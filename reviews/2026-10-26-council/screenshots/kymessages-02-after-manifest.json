@@ -1,0 +1,382 @@
+{
+  "prefix": "kymessages-02-after",
+  "worktree": "/home/yoshi/git/busnes.app/KyMessage-Server/.claude/worktrees/ui-cohesion",
+  "branch": "ui/council-cohesion",
+  "head": "051474931960d629c8e8d659ab9d8d0bfb073ca8",
+  "web_src_patch_sha256": "2ac4ab2c2d4c111b6e2864c8d59c2161f449ff46c5939aaefed9467ddc94fffc",
+  "web_src_patch_bytes": 49300,
+  "changed_files": [
+    "web/dist/assets/index-DOSd2noB.css",
+    "web/dist/assets/index-DQrtpeBi.js",
+    "web/dist/index.html",
+    "web/src/App.tsx",
+    "web/src/components/AppHeader.test.tsx",
+    "web/src/components/AppHeader.tsx",
+    "web/src/components/NetworkCheck.tsx",
+    "web/src/components/TwoFactorSetup.tsx",
+    "web/src/ky-ui/VERSION",
+    "web/src/ky-ui/tokens.css",
+    "web/src/pages/Agents.tsx",
+    "web/src/pages/Audit.tsx",
+    "web/src/pages/Backup.tsx",
+    "web/src/pages/Dashboard.tsx",
+    "web/src/pages/MemberHome.tsx",
+    "web/src/pages/Rooms.tsx",
+    "web/src/pages/SCIMAdmin.tsx",
+    "web/src/pages/Settings.tsx",
+    "web/src/pages/Users.tsx",
+    "web/src/styles/theme.css"
+  ],
+  "server_binary_sha256": "f368212bbc471b16136dac8ce4e587bcc6b1a1780bda7601f09ef2f002ca077a",
+  "dist_index_sha256": "6e3eb27692a8c7364e617f99532f294e0ae57d74b4608ca76e98955f9d085b47",
+  "captured": "2026-10-26T05:02:52.596Z",
+  "browser": "chromium 153.0.8010.12",
+  "timezone": "America/Chicago",
+  "locale": "en-US",
+  "theme_source": "product \"Color theme\" select (browser localStorage) after real sign-in; context colorScheme matching",
+  "fixture": "fresh SQLite, init-admin admin (password replaced through /api/auth/change-password), Matrix not configured, captcha none, nothing else seeded",
+  "files": [
+    {
+      "file": "kymessages-02-after-overview-desktop-light.png",
+      "sha256": "3ed3ef58c9a08250639e9cc11824188f08c8e2ac90f012dd08ec29fdea60350f",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "overview",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-users-desktop-light.png",
+      "sha256": "8c32af667d6443931445aec4a593aa20997b6ca59f1888ff6461857f2e2ef319",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "users",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-agents-desktop-light.png",
+      "sha256": "41586d21d380e820d5369540673fb5371bd96f83a921b5cc6cf967dbddc735af",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "agents",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-rooms-desktop-light.png",
+      "sha256": "412a79d0b548282eb529d3af9cda0a714f4fe31a0262ba655728fb1ce844a293",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "rooms",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-health-desktop-light.png",
+      "sha256": "a46e68d96282251119c1fbb178de9d1eaf5f487161e167551d665186c3c6e90d",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "health",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-audit-desktop-light.png",
+      "sha256": "94a7a8e0634deb540aa8111663371f2b2da61930376a5a9594aa812bb60823fa",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "audit",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-scim-desktop-light.png",
+      "sha256": "b474af89c446a72e18461b324aca0c2f71a615e4780ffec00bf22d5740c1ef0d",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "scim",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-backup-desktop-light.png",
+      "sha256": "53410c7754b55f405c96883415efa75ef395134e1b5fbe5d84e93f506f91ff3d",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "backup",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-backup-desktop-light-full.png",
+      "sha256": "ca0f12569cd6e1efdb2f650389e7a3ab64c8ae94811b7fb93d97da91a538d7e7",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "backup",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-02-after-overview-mobile-light.png",
+      "sha256": "678a18e3082ed3d45bfbb1e58704c527bb4d08fcc1c20d76036360ee8594d65b",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "overview",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-users-mobile-light.png",
+      "sha256": "dcd2cc342981d48b11ff248071a1d875480fcfbd667a17a423f4193f61bb2804",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "users",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-agents-mobile-light.png",
+      "sha256": "5ff886793f8a3224b4fcdd52ae219660fb8e49864cb032f4702cf457075f3e66",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "agents",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-rooms-mobile-light.png",
+      "sha256": "c3c6b48cf929cf1f90086f1a9a64bcf8bf7277b5129f404bd13b56ce8ad56fd4",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "rooms",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-health-mobile-light.png",
+      "sha256": "4df42912784f6e93f2d5c77dff9965c4c8b9003f7314b7a286b8a535eaa1070a",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "health",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-health-mobile-light-full.png",
+      "sha256": "dc5bbd6724f6ca3f1f59f04a59e1761dd67d431a603d11e598372cbbc3f40322",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "health",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-02-after-audit-mobile-light.png",
+      "sha256": "5e9dee4a7b527cd26736277df62eb02d9815635ee59671f98c38970c64126a60",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "audit",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-scim-mobile-light.png",
+      "sha256": "0e0b6f84fb04f710394a4caecf83d956ab1b97d525859d3d299c50e9061d2a44",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "scim",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-backup-mobile-light.png",
+      "sha256": "9ee7c9f06465ca675a2c142b90a7d9535ea7378def5bf4cd77e96d6c7e8e6e17",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "backup",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-backup-mobile-light-full.png",
+      "sha256": "99d8e03ba5efceb3e4c07d5021c54b9e94ce9817faa5baa508a064e4e9165fb4",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "backup",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-02-after-overview-desktop-dark.png",
+      "sha256": "716b83604825421198f236f12f9cf72c5f8ed2ecc044cbfbaf6432964c605a24",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "overview",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-users-desktop-dark.png",
+      "sha256": "a1e6a6f7c6e1ef1d855a38be77c6a479237b1bf408665c13ecdb3a7eb0116a1d",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "users",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-agents-desktop-dark.png",
+      "sha256": "0c735008e50e3be367bcf13d4ad50febde1e25cc1a8292c44142901e5fd75427",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "agents",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-rooms-desktop-dark.png",
+      "sha256": "01bab1c45138b755824c7f56f37e3f4a3940a160c7e08041714fdfdbb2174366",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "rooms",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-health-desktop-dark.png",
+      "sha256": "5025b4ef2ff3d01108651b81ef591f171af0167d494f7d5ce2af4885ec0b787d",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "health",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-audit-desktop-dark.png",
+      "sha256": "d0b56beaedc26eded4e2eabaf781439b427f7a3a9fb706501c304a615b06125f",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "audit",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-scim-desktop-dark.png",
+      "sha256": "e8ba80a531e35dc1a5210bd3e006c6023041288c4f48c48ce375bac272283194",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "scim",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-backup-desktop-dark.png",
+      "sha256": "56b97cb68738c419cf83a83bfde494f6c17e5834e09f38b253ce418459c3d0a4",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "backup",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-backup-desktop-dark-full.png",
+      "sha256": "966d2225901ae6726bffb8fcc3b59fb5a7d0e88d730dd1091d03e221df7a303d",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "backup",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-02-after-overview-mobile-dark.png",
+      "sha256": "dd0bf0bce52adf9ae619f52a8eabf1fa58bf7a1cc6940e22dd741568dc1394f4",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "overview",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-users-mobile-dark.png",
+      "sha256": "fe2723d3baa94b3bc31866ee3e26a3f08d83993032a29bc12b37215ada3cfa0d",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "users",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-agents-mobile-dark.png",
+      "sha256": "1f7bb7d08743d799cf1172154c2d5013b24fbc05062958439372a26c2ff4c9d8",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "agents",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-rooms-mobile-dark.png",
+      "sha256": "1a9f75bdcd4ff7c4dde7400dedd545abca49bb10e8a38222a42ae30a1378914a",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "rooms",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-health-mobile-dark.png",
+      "sha256": "143b6d41cd5db1865dd138163bf1d2a13e7199c3d9fdfc58be2c9be6a399bbd8",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "health",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-health-mobile-dark-full.png",
+      "sha256": "7817a448993e996a3c227bf2557c7c188e51510c2ec2287abc7628ad45d41a32",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "health",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-02-after-audit-mobile-dark.png",
+      "sha256": "054236ce082989fb10dd4ada7eb7d9a8e5ae66625e3baf5a19519657d86c5e54",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "audit",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-scim-mobile-dark.png",
+      "sha256": "c58e93248ab46c75fe7e915942edba4a625ea7ba10a2e0991c2521507183f2eb",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "scim",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-backup-mobile-dark.png",
+      "sha256": "4c25c89c3a2e8720ec12d482693f22c531e9f22d0f5be93c630dda983bb6c655",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "backup",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-02-after-backup-mobile-dark-full.png",
+      "sha256": "b1a8e9b252fd1b839b3e576f28aec6e8a75fa8b7ce0561bf836b54e310f0d053",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "backup",
+      "full_page": true
+    }
+  ]
+}

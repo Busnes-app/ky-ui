@@ -1,0 +1,28 @@
+{
+  "desktop": {
+    "audit_selected_by_keyboard": "page",
+    "audit_focus_walk_after_heading": [
+      "select:AllSign-inBackupBrandingMatrix"
+    ],
+    "audit_scroller_focusable": false,
+    "audit_aria_has_table": true,
+    "audit_aria_rows": 4,
+    "audit_aria_first_row": "      - row \"10/26/2026, 1:49:44 AM admin auth.login session — — —\":",
+    "audit_what_cell_names": 2,
+    "audit_labelled_name_cells": 0,
+    "backup_chip_in_view": true
+  },
+  "mobile": {
+    "audit_selected_by_keyboard": "page",
+    "audit_focus_walk_after_heading": [
+      "select:AllSign-inBackupBrandingMatrix"
+    ],
+    "audit_scroller_focusable": false,
+    "audit_aria_has_table": true,
+    "audit_aria_rows": 5,
+    "audit_aria_first_row": "      - row \"10/26/2026, 1:49:45 AM admin auth.login session — — —\":",
+    "audit_what_cell_names": 3,
+    "audit_labelled_name_cells": 0,
+    "backup_chip_in_view": true
+  }
+}

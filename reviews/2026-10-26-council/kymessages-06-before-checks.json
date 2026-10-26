@@ -1,0 +1,778 @@
+[
+  {
+    "surface": "health",
+    "viewport": "desktop",
+    "theme": "light",
+    "condition": "online",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))",
+      "network_lines": [
+        {
+          "text": "Warn: the direct peer is",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Warn: no trusted X-Forwa",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_APP_URL is not ",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Pass: the request host m",
+          "color": "rgb(38, 116, 66)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_TRUSTED_PROXIES",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        }
+      ]
+    },
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 4.99,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "health",
+    "viewport": "mobile",
+    "theme": "light",
+    "condition": "online",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))",
+      "network_lines": [
+        {
+          "text": "Warn: the direct peer is",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Warn: no trusted X-Forwa",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_APP_URL is not ",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Pass: the request host m",
+          "color": "rgb(38, 116, 66)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_TRUSTED_PROXIES",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        }
+      ]
+    },
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 4.99,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "health",
+    "viewport": "desktop",
+    "theme": "dark",
+    "condition": "online",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))",
+      "network_lines": [
+        {
+          "text": "Warn: the direct peer is",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Warn: no trusted X-Forwa",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_APP_URL is not ",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Pass: the request host m",
+          "color": "rgb(123, 196, 156)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_TRUSTED_PROXIES",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        }
+      ]
+    },
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "health",
+    "viewport": "mobile",
+    "theme": "dark",
+    "condition": "online",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))",
+      "network_lines": [
+        {
+          "text": "Warn: the direct peer is",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Warn: no trusted X-Forwa",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_APP_URL is not ",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Pass: the request host m",
+          "color": "rgb(123, 196, 156)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_TRUSTED_PROXIES",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        }
+      ]
+    },
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "overview",
+    "viewport": "desktop",
+    "theme": "light",
+    "condition": "online",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))",
+      "overview": [
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        }
+      ]
+    },
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.31,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "overview",
+    "viewport": "mobile",
+    "theme": "light",
+    "condition": "online",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))",
+      "overview": [
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 147
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 139
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 230
+        }
+      ]
+    },
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.31,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "overview",
+    "viewport": "desktop",
+    "theme": "dark",
+    "condition": "online",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))",
+      "overview": [
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        }
+      ]
+    },
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "overview",
+    "viewport": "mobile",
+    "theme": "dark",
+    "condition": "online",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))",
+      "overview": [
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 147
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 139
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 230
+        }
+      ]
+    },
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "health-loading",
+    "viewport": "desktop",
+    "theme": "light",
+    "condition": "CDP latency 2500ms, request in flight",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))"
+    }
+  },
+  {
+    "surface": "health-offline",
+    "viewport": "desktop",
+    "theme": "light",
+    "condition": "loaded online, then Check again with the browser context offline (transport failure)",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))",
+      "network_lines": [
+        {
+          "text": "Warn: the direct peer is",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Warn: no trusted X-Forwa",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_APP_URL is not ",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Pass: the request host m",
+          "color": "rgb(38, 116, 66)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_TRUSTED_PROXIES",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        }
+      ]
+    }
+  },
+  {
+    "surface": "overview-offline",
+    "viewport": "desktop",
+    "theme": "light",
+    "condition": "browser context offline (transport failure)",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))",
+      "overview": [
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        }
+      ]
+    }
+  },
+  {
+    "surface": "health-loading",
+    "viewport": "mobile",
+    "theme": "light",
+    "condition": "CDP latency 2500ms, request in flight",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))"
+    }
+  },
+  {
+    "surface": "health-offline",
+    "viewport": "mobile",
+    "theme": "light",
+    "condition": "loaded online, then Check again with the browser context offline (transport failure)",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))",
+      "network_lines": [
+        {
+          "text": "Warn: the direct peer is",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Warn: no trusted X-Forwa",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_APP_URL is not ",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        },
+        {
+          "text": "Pass: the request host m",
+          "color": "rgb(38, 116, 66)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_TRUSTED_PROXIES",
+          "color": "rgb(135, 91, 18)",
+          "icon": true
+        }
+      ]
+    }
+  },
+  {
+    "surface": "overview-offline",
+    "viewport": "mobile",
+    "theme": "light",
+    "condition": "browser context offline (transport failure)",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(255, 255, 255)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(191, 63, 24) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))",
+      "overview": [
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 147
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 139
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 230
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 160
+        }
+      ]
+    }
+  },
+  {
+    "surface": "health-loading",
+    "viewport": "desktop",
+    "theme": "dark",
+    "condition": "CDP latency 2500ms, request in flight",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))"
+    }
+  },
+  {
+    "surface": "health-offline",
+    "viewport": "desktop",
+    "theme": "dark",
+    "condition": "loaded online, then Check again with the browser context offline (transport failure)",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))",
+      "network_lines": [
+        {
+          "text": "Warn: the direct peer is",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Warn: no trusted X-Forwa",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_APP_URL is not ",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Pass: the request host m",
+          "color": "rgb(123, 196, 156)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_TRUSTED_PROXIES",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        }
+      ]
+    }
+  },
+  {
+    "surface": "overview-offline",
+    "viewport": "desktop",
+    "theme": "dark",
+    "condition": "browser context offline (transport failure)",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 3px 0px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))",
+      "overview": [
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        },
+        {
+          "status_x": 517,
+          "button_x": 1018,
+          "button_w": 230
+        }
+      ]
+    }
+  },
+  {
+    "surface": "health-loading",
+    "viewport": "mobile",
+    "theme": "dark",
+    "condition": "CDP latency 2500ms, request in flight",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))"
+    }
+  },
+  {
+    "surface": "health-offline",
+    "viewport": "mobile",
+    "theme": "dark",
+    "condition": "loaded online, then Check again with the browser context offline (transport failure)",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))",
+      "network_lines": [
+        {
+          "text": "Warn: the direct peer is",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Warn: no trusted X-Forwa",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_APP_URL is not ",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        },
+        {
+          "text": "Pass: the request host m",
+          "color": "rgb(123, 196, 156)",
+          "icon": true
+        },
+        {
+          "text": "Warn: KY_TRUSTED_PROXIES",
+          "color": "rgb(216, 166, 87)",
+          "icon": true
+        }
+      ]
+    }
+  },
+  {
+    "surface": "overview-offline",
+    "viewport": "mobile",
+    "theme": "dark",
+    "condition": "browser context offline (transport failure)",
+    "extras": {
+      "current_tab_in_view": true,
+      "nav_selected_bg": "rgb(43, 38, 34)",
+      "nav_selected_hovered": false,
+      "nav_selected_rail": "rgb(245, 134, 95) 0px -3px 0px 0px inset",
+      "sidebar_bg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))",
+      "overview": [
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 147
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 139
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 230
+        },
+        {
+          "status_x": 16,
+          "button_x": 16,
+          "button_w": 160
+        }
+      ]
+    }
+  }
+]

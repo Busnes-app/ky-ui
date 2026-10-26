@@ -1,0 +1,324 @@
+// Behaviour-gate evidence for the KyCalendar council stages: keyboard path and focus return,
+// focus rings on a Tab walk, computed contrast, target sizes, overflow and saved named themes.
+// Same disposable server and fixture approach as capture.mjs. Usage: node gates.mjs <worktree>
+process.env.TZ = 'America/Chicago';
+import { randomBytes } from 'node:crypto';
+import { mkdtemp, rm, readFile, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawn, spawnSync } from 'node:child_process';
+
+const wt = process.argv[2];
+const { chromium, request } = await import(`${wt}/web/node_modules/@playwright/test/index.mjs`);
+const NOW = new Date('2026-10-27T10:15:00-05:00');
+const SUNDAY = new Date('2026-10-25T00:00:00-05:00');
+const PORT = '5597';
+const baseURL = `http://127.0.0.1:${PORT}`;
+const binary = `${wt}/.browser/server`;
+const SERVICES = '/tmp/ky-ui-council-kycalendar/services.json';
+const dir = await mkdtemp(join(tmpdir(), 'ky-council-gates-'));
+const env = {
+  PATH: process.env.PATH, KY_APP_URL: baseURL, KY_HOST: '127.0.0.1', KY_PORT: PORT, KY_DB_DRIVER: 'sqlite',
+  KY_DATA_DIR: join(dir, 'data'), KYCALENDAR_BACKUP_DIR: join(dir, 'backups'),
+  KY_CAPTCHA_PROVIDER: 'none', KY_TRUSTED_PROXIES: '127.0.0.1',
+};
+const secret = () => `Cap-${randomBytes(18).toString('base64url')}9!`;
+const pw = { init: secret(), walter: secret() };
+const run = (args, input) => {
+  const r = spawnSync(binary, args, { cwd: dir, env, input: `${input}\n`, stdio: ['pipe', 'inherit', 'inherit'] });
+  if (r.status !== 0) throw new Error(`${args[0]} exited ${r.status}`);
+};
+async function recordService(value) {
+  let all = {};
+  try { all = JSON.parse(await readFile(SERVICES, 'utf8')); } catch { /* first writer */ }
+  all.kycalendar = { ...all.kycalendar, ...value, updated: new Date().toISOString() };
+  await writeFile(SERVICES, JSON.stringify(all, null, 2) + '\n');
+}
+
+let server;
+const out = { worktree: wt, clock: NOW.toISOString(), runs: [] };
+try {
+  run(['init-admin'], secret());
+  run(['create-user', '-username', 'walter'], pw.init);
+  server = spawn(binary, [], { cwd: dir, env, stdio: ['ignore', 'ignore', 'inherit'] });
+  await recordService({ state: 'running', pid: server.pid, driver_pid: process.pid, port: Number(PORT), data_dir: dir, stop: `kill -TERM ${process.pid} ${server.pid}` });
+  for (let i = 0; i < 120; i++) { try { if ((await fetch(baseURL)).ok) break; } catch { /* starting */ } await new Promise((r) => setTimeout(r, 250)); }
+  const api = await request.newContext({ baseURL });
+  await api.get('/');
+  if (!(await api.post('/api/auth/login', { data: { username: 'walter', password: pw.init } })).ok()) throw new Error('login');
+  const headers = { 'X-CSRF-Token': (await api.storageState()).cookies.find((c) => c.name === 'ky_csrf')?.value };
+  if (!(await api.post('/api/auth/change-password', { headers, data: { current_password: pw.init, new_password: pw.walter } })).ok()) throw new Error('change-password');
+  await api.dispose();
+  const s = await request.newContext({ baseURL });
+  await s.get('/');
+  await s.post('/api/auth/login', { data: { username: 'walter', password: pw.walter } });
+  const h = { 'X-CSRF-Token': (await s.storageState()).cookies.find((c) => c.name === 'ky_csrf')?.value };
+  const cal = (await (await s.get('/api/calendars')).json())[0];
+  const at = (day, hh, mm) => { const d = new Date(SUNDAY); d.setDate(d.getDate() + day); d.setHours(hh, mm, 0, 0); return d.toISOString(); };
+  for (const [title, day, h1, h2] of [['Team standup', 1, 9, 9.25], ['Design review', 2, 10, 11.5], ['Overnight deploy window', 4, 22, 23.5]]) {
+    const r = await s.post(`/api/calendars/${cal.id}/events`, { headers: h, data: { title, location: '', description: '', all_day: false, zone: 'America/Chicago', repeat: title === 'Team standup' ? { freq: 'weekly', weekdays: ['MO', 'TU', 'WE', 'TH', 'FR'] } : { freq: '' }, start: at(day, Math.floor(h1), (h1 % 1) * 60), end: at(day, Math.floor(h2), (h2 % 1) * 60) } });
+    if (!r.ok()) throw new Error(`seed ${title} ${r.status()}`);
+  }
+  await s.dispose();
+
+  const browser = await chromium.launch();
+  let client = 0;
+  for (const theme of ['busnes-light', 'busnes-dark']) {
+    for (const [w, hgt] of [[1280, 900], [390, 844]]) {
+      const ctx = await browser.newContext({ viewport: { width: w, height: hgt }, colorScheme: theme === 'busnes-dark' ? 'dark' : 'light', timezoneId: 'America/Chicago', locale: 'en-US', extraHTTPHeaders: { 'X-Forwarded-For': `198.51.100.${200 + ++client}` } });
+      const page = await ctx.newPage();
+      await page.clock.setFixedTime(NOW);
+      await page.goto(baseURL);
+      await page.getByLabel('Username').fill('walter');
+      await page.getByLabel('Password', { exact: true }).fill(pw.walter);
+      await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+      await page.getByLabel('Color theme').selectOption(theme);
+      await page.locator('.fc-event, .fc-list-event').first().waitFor();
+      await page.waitForLoadState('networkidle');
+      out.runs.push({ theme, viewport: `${w}x${hgt}`, ...(await gates(page, w)) });
+      await ctx.close();
+    }
+  }
+  // Saved named theme survives a reload and keeps its palette.
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, extraHTTPHeaders: { 'X-Forwarded-For': '198.51.100.250' } });
+  const page = await ctx.newPage();
+  await page.goto(baseURL);
+  await page.getByLabel('Username').fill('walter');
+  await page.getByLabel('Password', { exact: true }).fill(pw.walter);
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await page.getByLabel('Color theme').selectOption('nord');
+  await page.reload();
+  await page.getByLabel('Color theme').waitFor();
+  await page.waitForTimeout(600); // the body background transitions for 0.2s
+  out.named_theme = await page.evaluate(() => ({
+    select: document.querySelector('select[aria-label="Color theme"]').value,
+    data_theme: document.documentElement.dataset.theme,
+    storage_keys: Object.keys(localStorage),
+    body_bg: getComputedStyle(document.body).backgroundColor,
+  }));
+  await ctx.close();
+  await browser.close();
+  await writeFile('/tmp/ky-ui-council-kycalendar/gates.json', JSON.stringify(out, null, 2) + '\n');
+  console.log(JSON.stringify(out, null, 1));
+} finally {
+  if (server && server.exitCode === null) { server.kill('SIGTERM'); await new Promise((r) => server.once('exit', r)); }
+  await rm(dir, { recursive: true, force: true });
+  await recordService({ state: 'stopped' });
+}
+
+// A crop of a field with 8px around it, so a ring at a 2px offset is inside the image.
+async function crop(page, id) {
+  const b = await page.locator(`#${id}`).boundingBox();
+  const clip = { x: b.x - 8, y: b.y - 8, width: b.width + 16, height: b.height + 16 };
+  return { buf: await page.screenshot({ clip }), w: Math.round(clip.width), h: Math.round(clip.height) };
+}
+
+// Changed pixels between two crops (channel delta > 48), counted in the band outside the field's
+// box (where its ring draws) and over the picker icon (the field's right 44px). Decoded in a
+// blank page: the product's CSP does not allow data: images.
+async function diff(page, a, b) {
+  const scratch = await page.context().newPage();
+  try {
+    return await scratch.evaluate(async ([a64, b64, w, h]) => {
+      const px = async (src) => {
+        const img = new Image(); img.src = `data:image/png;base64,${src}`; await img.decode();
+        const c = new OffscreenCanvas(img.width, img.height); const g = c.getContext('2d'); g.drawImage(img, 0, 0);
+        return g.getImageData(0, 0, img.width, img.height);
+      };
+      const [A, B] = [await px(a64), await px(b64)];
+      let ringBand = 0, iconRegion = 0;
+      for (let y = 0; y < A.height; y++) for (let x = 0; x < A.width; x++) {
+        const i = (y * A.width + x) * 4;
+        if (Math.max(Math.abs(A.data[i] - B.data[i]), Math.abs(A.data[i + 1] - B.data[i + 1]), Math.abs(A.data[i + 2] - B.data[i + 2])) <= 48) continue;
+        const outside = x < 8 || y < 8 || x >= A.width - 8 || y >= A.height - 8;
+        if (outside) ringBand++;
+        else if (x >= A.width - 8 - 44) iconRegion++;
+      }
+      return { ringBand, iconRegion, size: `${A.width}x${A.height}`, scale: A.width / w };
+    }, [a.buf.toString('base64'), b.buf.toString('base64'), a.w, a.h]);
+  } finally { await scratch.close(); }
+}
+
+async function gates(page, width) {
+  const r = {};
+  r.overflow_px = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  // Keyboard: Tab from the top of the page; every focus stop must draw a ring.
+  await page.evaluate(() => document.activeElement?.blur());
+  await page.keyboard.press('Tab');
+  const stops = [];
+  for (let i = 0; i < 40; i++) {
+    stops.push(await page.evaluate(() => {
+      const e = document.activeElement;
+      const cs = getComputedStyle(e);
+      const ring = cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) >= 2;
+      const name = (e.getAttribute('aria-label') || e.textContent || e.getAttribute('title') || e.id || e.tagName).trim().slice(0, 40);
+      return { name, tag: e.tagName.toLowerCase(), chrome: e === document.body, interactive: e.matches('button, a[href], input, select, textarea, [tabindex]'), ring, outline: `${cs.outlineWidth} ${cs.outlineStyle} ${cs.outlineColor} offset ${cs.outlineOffset}` };
+    }));
+    await page.keyboard.press('Tab');
+  }
+  // Focus on <body> means Tab left the page for the browser chrome: a wrap, not a page stop.
+  r.tab_chrome_wraps = stops.filter((s) => s.chrome).length;
+  r.tab_stops = stops.length - r.tab_chrome_wraps;
+  r.tab_stops_without_ring = stops.filter((s) => !s.chrome && !s.ring);
+  r.dialog_kc_start_outline = null;
+  r.tab_order_first_12 = stops.slice(0, 12).map((s) => s.name);
+  // Dialog: keyboard open, initial focus, Tab stays inside, Escape closes and focus returns.
+  const newEvent = page.getByRole('button', { name: 'New event' });
+  await newEvent.focus();
+  await page.keyboard.press('Enter');
+  await page.getByRole('dialog').waitFor();
+  r.dialog_initial_focus = await page.evaluate(() => document.activeElement.id);
+  // Date fields: unfocused crops to compare each focused state against.
+  const dateIds = ['kc-start', 'kc-end'];
+  const theme = await page.evaluate(() => document.documentElement.dataset.theme);
+  const base = {};
+  // The dialog fades in: take each baseline once two crops in a row are identical.
+  for (const id of dateIds) {
+    let prev = await crop(page, id);
+    for (let i = 0; i < 20; i++) {
+      await page.waitForTimeout(100);
+      const next = await crop(page, id);
+      if (next.buf.equals(prev.buf)) break;
+      prev = next;
+    }
+    base[id] = prev;
+    await writeFile(`/tmp/ky-ui-council-kycalendar/probe/focus-${width}-${theme}-${id}-unfocused.png`, prev.buf);
+  }
+  r.date_focus = [];
+  const inside = [];
+  for (let i = 0; i < 30; i++) {
+    await page.keyboard.press('Tab');
+    inside.push(await page.evaluate(() => {
+      const e = document.activeElement;
+      const cs = getComputedStyle(e);
+      return { inDialog: !!e.closest('dialog[open]'), name: (e.id || e.textContent || e.tagName).trim().slice(0, 24), ring: cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) >= 2, outline: `${cs.outlineWidth} ${cs.outlineStyle}`, fv: e.matches(':focus-visible'), focus: e.matches(':focus'), type: e.type, shadowFocus: !!e.shadowRoot?.activeElement };
+    }));
+    const last = inside.at(-1);
+    // The field root (a segment focused) must draw the 2px ring outside its box. With the
+    // calendar-picker icon focused (inside the UA shadow, so the input is not :focus) Chromium
+    // draws its own focus ring around the icon: valid focus, but only if it is visibly there.
+    if (dateIds.includes(last.name)) {
+      const now = await crop(page, last.name);
+      const part = last.focus ? 'field root' : 'picker icon';
+      const d = await diff(page, base[last.name], now);
+      const visible = part === 'field root' ? last.ring && d.ringBand >= 40 : d.iconRegion >= 20;
+      const file = `/tmp/ky-ui-council-kycalendar/probe/focus-${width}-${theme}-${last.name}-${part.replace(' ', '-')}.png`;
+      if (!r.date_focus.some((x) => x.field === last.name && x.part === part)) await writeFile(file, now.buf);
+      r.date_focus.push({ field: last.name, part, computed_ring: last.ring, ...d, visible, crop: file });
+      last.ring = visible;
+    }
+    if (last.inDialog && !last.ring && width > 720 && !r.noring_shot) { r.noring_shot = `/tmp/ky-ui-council-kycalendar/probe/noring-${Date.now()}.png`; await page.locator('dialog[open]').screenshot({ path: r.noring_shot }); }
+  }
+  r.dialog_tab_order = inside.map((x) => x.name);
+  r.dialog_focus_left_dialog = inside.filter((x) => !x.inDialog).map((x) => x.name);
+  r.dialog_stops_without_ring = inside.filter((x) => x.inDialog && !x.ring);
+  r.date_focus_unverified = r.date_focus.filter((d) => !d.visible);
+  r.dialog_contrast = await contrast(page, [
+    ['dialog title', 'dialog[open] h2', 'text'],
+    ['field label', 'dialog[open] label[for="kc-title"]', 'text'],
+    ['optional marker', 'dialog[open] .field-optional', 'text'],
+    ['field border', 'dialog[open] #kc-location', 'border'],
+    ['Save (primary)', 'dialog[open] button[type="submit"]', 'text'],
+    ['Cancel (secondary) border', 'dialog[open] .modal-actions .btn-secondary', 'border'],
+    ['focus ring on panel', 'dialog[open] #kc-title', 'outline'],
+  ]);
+  r.dialog_targets_under_40 = await small(page, 'dialog[open]');
+  await page.keyboard.press('Escape');
+  await page.getByRole('dialog').waitFor({ state: 'detached' }).catch(() => {});
+  r.dialog_closed = (await page.locator('dialog[open]').count()) === 0;
+  r.focus_returned_to = await page.evaluate(() => document.activeElement.textContent.trim());
+  if (width > 720) {
+    await page.locator('.fc-timeGridWeek-button').click();
+    await page.locator('.fc-timeGridWeek-button').focus();
+    await page.keyboard.press('Tab'); await page.keyboard.press('Shift+Tab');
+  } else {
+    await page.locator('.fc-listWeek-button').focus();
+  }
+  r.page_contrast = await contrast(page, [
+    ['page title', '.kc-workspace-heading h1', 'text'],
+    ['zone line (13px)', '.kc-workspace-heading p', 'text'],
+    ['nav selected', '.app-nav [aria-current="page"]', 'text'],
+    ['nav idle', '.app-nav button:not([aria-current])', 'text'],
+    ['account role (13px)', '.app-user-role', 'text', width <= 720],
+    ['sign out', '.app-logout', 'text', width <= 720],
+    ['New event (primary)', 'button.kc-new', 'text'],
+    ['toolbar title', '.fc-toolbar-title', 'text'],
+    ['view button border', '.fc-dayGridMonth-button', 'border'],
+    ['selected view rail', '.fc-button-active', 'rail'],
+    ['today header (accent)', '.fc-col-header-cell.fc-day-today .fc-col-header-cell-cushion', 'text', width <= 720],
+    ['weekday header', '.fc-col-header-cell:not(.fc-day-today) .fc-col-header-cell-cushion', 'text', width <= 720],
+    ['time axis (13px)', '.fc-timegrid-slot-label-cushion', 'text', width <= 720],
+    ['list time (mobile)', '.fc-list-event-time', 'text', width > 720],
+    ['list title (mobile)', '.fc-list-event-title', 'text', width > 720],
+    ['calendar name', '.kc-cal-name span:last-child', 'text'],
+    ['focus ring vs page', '.fc-button:focus-visible, .fc-button-active', 'outline'],
+  ]);
+  r.event_text_contrast = await page.evaluate(() => [...document.querySelectorAll('.fc-timegrid-event, .fc-daygrid-block-event')].slice(0, 6).map((e) => {
+    const p = (c) => (c.match(/[\d.]+/g) || []).map(Number);
+    const L = (rgb) => { const [r, g, b] = rgb.slice(0, 3).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+    const fg = p(getComputedStyle(e.querySelector('.fc-event-title') || e).color);
+    const bg = p(getComputedStyle(e).backgroundColor);
+    const [a, b] = [L(fg), L(bg)].sort((x, y) => y - x);
+    return { title: e.textContent.trim().slice(0, 24), ratio: +((a + 0.05) / (b + 0.05)).toFixed(2) };
+  }));
+  r.page_targets_under_40 = await small(page, 'body');
+  if (width <= 720) {
+    r.mobile_nav = await page.evaluate(() => {
+      const n = document.querySelector('.app-nav');
+      return { scrolls: n.scrollWidth > n.clientWidth, overflow_x: getComputedStyle(n).overflowX, items: [...n.querySelectorAll('button')].map((b) => b.textContent.trim()) };
+    });
+    // Each nav item is reachable: scroll it into view and check it is inside the viewport.
+    r.mobile_nav_reachable = await page.evaluate(() => [...document.querySelectorAll('.app-nav button')].every((b) => { b.scrollIntoView({ inline: 'nearest' }); const x = b.getBoundingClientRect(); return x.left >= 0 && x.right <= innerWidth; }));
+  }
+  return r;
+}
+
+// WCAG contrast from computed styles; translucent colours are composited on the nearest opaque ancestor background.
+async function contrast(page, checks) {
+  return page.evaluate((checks) => {
+    const canvas = document.createElement('canvas').getContext('2d');
+    const rgba = (c) => { const m0 = c.match(/^color\(srgb ([\d.]+) ([\d.]+) ([\d.]+)(?: \/ ([\d.]+))?\)$/); if (m0) return [m0[1] * 255, m0[2] * 255, m0[3] * 255, m0[4] === undefined ? 1 : +m0[4]]; canvas.fillStyle = '#000'; canvas.fillStyle = c; const s = canvas.fillStyle; if (s.startsWith('#')) return [parseInt(s.slice(1, 3), 16), parseInt(s.slice(3, 5), 16), parseInt(s.slice(5, 7), 16), 1]; const m = s.match(/[\d.]+/g).map(Number); return [m[0], m[1], m[2], m[3] ?? 1]; };
+    const over = (top, base) => top.slice(0, 3).map((v, i) => v * top[3] + base[i] * (1 - top[3])).concat(1);
+    const bgOf = (el) => {
+      const chain = [];
+      for (let e = el; e; e = e.parentElement) chain.push(rgba(getComputedStyle(e).backgroundColor));
+      let base = [255, 255, 255, 1];
+      const root = rgba(getComputedStyle(document.body).backgroundColor);
+      if (root[3] === 1) base = root;
+      for (const c of chain.reverse()) if (c[3] > 0) base = over(c, base);
+      return base;
+    };
+    const L = (c) => { const [r, g, b] = c.slice(0, 3).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+    const ratio = (a, b) => { const [x, y] = [L(a), L(b)].sort((p, q) => q - p); return +((x + 0.05) / (y + 0.05)).toFixed(2); };
+    return checks.filter(([, , , skip]) => !skip).map(([label, sel, kind]) => {
+      const el = document.querySelector(sel);
+      if (!el) return { label, missing: sel };
+      const cs = getComputedStyle(el);
+      const parentBg = bgOf(el.parentElement);
+      const ownBg = bgOf(el);
+      let fg; let bg; let need;
+      if (kind === 'text') { fg = over(rgba(cs.color), ownBg); bg = ownBg; const px = parseFloat(cs.fontSize); need = px >= 24 || (px >= 18.66 && +cs.fontWeight >= 700) ? 3 : 4.5; }
+      if (kind === 'border') { fg = over(rgba(cs.borderTopColor), parentBg); bg = parentBg; need = 3; }
+      if (kind === 'outline') { fg = rgba(getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || cs.outlineColor); bg = parentBg; need = 3; }
+      if (kind === 'rail') { const m = cs.boxShadow.match(/(rgba?\([^)]*\)|color\([^)]*\))/); fg = rgba(m ? m[1] : cs.color); bg = ownBg; need = 3; }
+      const r = ratio(fg, bg);
+      return { label, ratio: r, need, pass: r >= need, size: cs.fontSize };
+    });
+  }, checks);
+}
+
+// Visible interactive controls smaller than 40px in either dimension (checkboxes and radios
+// are reported apart: their label is the target).
+async function small(page, scope) {
+  return page.evaluate((scope) => {
+    const root = document.querySelector(scope);
+    return [...root.querySelectorAll('button, select, input, textarea, a[href]')].filter((e) => {
+      const r = e.getBoundingClientRect();
+      return r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth && !e.closest('.fc-event');
+    }).map((e) => {
+      const r = e.getBoundingClientRect();
+      const t = e.type;
+      return { name: (e.getAttribute('aria-label') || e.textContent || e.id || t).trim().slice(0, 28), h: Math.round(r.height), w: Math.round(r.width), labelled_box: t === 'checkbox' || t === 'radio' };
+    }).filter((x) => x.h < 40 || x.w < 40);
+  }, scope);
+}

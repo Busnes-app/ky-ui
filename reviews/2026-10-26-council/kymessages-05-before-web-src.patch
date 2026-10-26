@@ -1,0 +1,1300 @@
+diff --git a/web/src/App.tsx b/web/src/App.tsx
+index 3266b74..ce77783 100644
+--- a/web/src/App.tsx
++++ b/web/src/App.tsx
+@@ -138,8 +138,9 @@ export const App: React.FC = () => {
+         {isAdmin && activeTab === 'audit' && <Audit />}
+         {isAdmin && activeTab === 'scim' && <SCIMAdmin />}
+         {isAdmin && activeTab === 'backup' && <Backup />}
+-        {isAdmin && activeTab === 'settings' && <Settings settings={settings} onBrandingChanged={() => void loadSettings()} />}
+-        {isAdmin && activeTab === 'settings' && <TwoFactorSetup />}
++        {isAdmin && activeTab === 'settings' && (
++          <Settings settings={settings} onBrandingChanged={() => void loadSettings()}><TwoFactorSetup /></Settings>
++        )}
+         </ErrorBoundary>
+       </main>
+     </div>
+diff --git a/web/src/components/AppHeader.test.tsx b/web/src/components/AppHeader.test.tsx
+index cf26b62..d938b12 100644
+--- a/web/src/components/AppHeader.test.tsx
++++ b/web/src/components/AppHeader.test.tsx
+@@ -20,3 +20,11 @@ it('member gets no admin navigation', () => {
+ it('admin sees the admin pages', () => {
+   expect(navItemsFor('admin').map(i => i.id)).toEqual(['dashboard', 'users', 'agents', 'rooms', 'health', 'audit', 'scim', 'backup', 'settings']);
+ });
++
++it('names the account and its role once', () => {
++  const { rerender } = render(<AppHeader appName="KyMessages" activeTab="dashboard" onTabChange={() => {}} user={{ username: 'admin', display_name: 'Administrator', role: 'admin' }} onLogout={() => {}} />);
++  expect(screen.getAllByText('Administrator')).toHaveLength(1);
++  rerender(<AppHeader appName="KyMessages" activeTab="dashboard" onTabChange={() => {}} user={{ username: 'alice', role: 'user' }} onLogout={() => {}} />);
++  expect(screen.getByText('alice')).toBeTruthy();
++  expect(screen.getByText('Everyday account')).toBeTruthy();
++});
+diff --git a/web/src/components/AppHeader.tsx b/web/src/components/AppHeader.tsx
+index 63efcb7..54c1230 100644
+--- a/web/src/components/AppHeader.tsx
++++ b/web/src/components/AppHeader.tsx
+@@ -28,6 +28,8 @@ export function navItemsFor(role: string) {
+ 
+ export const AppHeader: React.FC<AppHeaderProps> = ({ appName, activeTab, onTabChange, user, onLogout }) => {
+   const navItems = navItemsFor(user?.role ?? '');
++  const name = user?.display_name || user?.username;
++  const role = user?.role === 'admin' ? 'Administrator' : 'Everyday account';
+ 
+   return (
+     <header className="app-header">
+@@ -47,7 +49,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ appName, activeTab, onTabC
+                 className={active ? 'ky-nav-item active' : 'ky-nav-item'}
+                 aria-current={active ? 'page' : undefined}
+               >
+-                <Icon size={16} />
++                <Icon size={16} aria-hidden="true" />
+                 <span>{item.label}</span>
+               </button>
+             );
+@@ -59,16 +61,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ appName, activeTab, onTabC
+         {user && (
+           <div className="app-user">
+             <div className="app-user-copy">
+-              <div style={{ fontWeight: 600, color: 'var(--ink-strong)' }}>{user.display_name || user.username}</div>
+-              <div style={{ fontSize: '11px', color: 'var(--ink)' }}>{user.role}</div>
++              <div className="app-user-name">{name}</div>
++              {role !== name && <div className="app-user-role">{role}</div>}
+             </div>
+-            <button
+-              className="btn-secondary app-logout"
+-              onClick={onLogout}
+-              title="Sign out"
+-              aria-label="Sign out"
+-            >
+-              <LogOut size={16} />
++            <button type="button" className="btn-ghost app-logout" onClick={onLogout}>
++              <LogOut size={16} aria-hidden="true" />
++              <span className="app-logout-label">Sign out</span>
+             </button>
+           </div>
+         )}
+diff --git a/web/src/components/BrandingPanel.tsx b/web/src/components/BrandingPanel.tsx
+index 33b6e72..80c9d67 100644
+--- a/web/src/components/BrandingPanel.tsx
++++ b/web/src/components/BrandingPanel.tsx
+@@ -153,7 +153,7 @@ export const BrandingPanel: React.FC<{ onChanged: () => void }> = ({ onChanged }
+               <span>Logo (PNG, at most 1 MiB and 1024×1024)</span>
+               <input type="file" accept="image/png" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+             </label>
+-            <button type="button" disabled={busy || !file} onClick={upload}>Upload logo</button>
++            <button type="button" className="btn-secondary" disabled={busy || !file} onClick={upload}>Upload logo</button>
+             <button type="button" className="btn-secondary" disabled={busy || !state.logo.custom}
+               onClick={() => void change('/api/admin/branding/logo', { method: 'DELETE' }, 'Logo reset to the KyMessages stamp.')}>
+               Reset logo
+diff --git a/web/src/components/CaptchaWidget.tsx b/web/src/components/CaptchaWidget.tsx
+index dace637..07f4302 100644
+--- a/web/src/components/CaptchaWidget.tsx
++++ b/web/src/components/CaptchaWidget.tsx
+@@ -100,30 +100,22 @@ export const CaptchaWidget: React.FC<CaptchaProps> = ({ onToken, round }) => {
+   }, [round, expired]);
+ 
+   return (
+-    <div
+-      style={{
+-        background: 'var(--panel)',
+-        border: '1px solid var(--line)',
+-        borderRadius: '6px',
+-        padding: '12px',
+-        margin: '12px 0',
+-      }}
+-    >
++    <div className="auth-check">
+       {status === 'working' && (
+-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--ink)' }}>
+-          <Loader2 size={16} className="animate-spin" style={{ color: 'var(--accent)' }} />
++        <div>
++          <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+           <span>Verifying security check ({progress}%)...</span>
+         </div>
+       )}
+       {status === 'done' && (
+-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--success)' }}>
+-          <ShieldCheck size={16} />
++        <div className="dr-ok">
++          <ShieldCheck size={16} aria-hidden="true" />
+           <span>Security check verified.</span>
+         </div>
+       )}
+       {status === 'failed' && (
+-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--danger)' }}>
+-          <AlertCircle size={16} />
++        <div className="dr-danger">
++          <AlertCircle size={16} aria-hidden="true" />
+           <span>{errorMsg}</span>
+         </div>
+       )}
+diff --git a/web/src/components/NetworkCheck.tsx b/web/src/components/NetworkCheck.tsx
+index 43951eb..d769aeb 100644
+--- a/web/src/components/NetworkCheck.tsx
++++ b/web/src/components/NetworkCheck.tsx
+@@ -23,7 +23,7 @@ export function NetworkCheck() {
+   if (check === 'error') return <p role="alert">Network check unavailable.</p>;
+   return <section aria-labelledby="network-check"><h3 id="network-check">Network path</h3>
+     <p>Your address as seen by the server: {check.client_ip} (direct peer {check.peer_ip}).</p>
+-    <ul>
++    <ul className="dr-bullets">
+       {mark(check.forwarded_trusted, 'the request came through a trusted proxy', 'the direct peer is not in KY_TRUSTED_PROXIES; forwarded headers are ignored')}
+       {mark(check.forwarded_trusted && check.forwarded_proto === 'https', 'the proxy reports https', 'no trusted X-Forwarded-Proto: https from the proxy')}
+       {mark(check.app_url_https, 'KY_APP_URL is https', 'KY_APP_URL is not https')}
+diff --git a/web/src/components/TwoFactorSetup.tsx b/web/src/components/TwoFactorSetup.tsx
+index 07f2c70..25de552 100644
+--- a/web/src/components/TwoFactorSetup.tsx
++++ b/web/src/components/TwoFactorSetup.tsx
+@@ -79,56 +79,54 @@ export const TwoFactorSetup: React.FC = () => {
+     </label>
+   );
+   return (
+-    <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '0 20px 32px' }}>
+-      <section className="panel dr-section" aria-label="Account security">
+-        <div className="panel-header">
+-          <h3><KeyRound size={16} /> Account security</h3>
+-        </div>
+-        <p className="dr-hint">
+-          Two-factor sign-in asks for a code from an authenticator app after your password, at every sign-in and every confirmation. Changes need a sign-in from the last 10 minutes.
+-        </p>
++    <section className="panel dr-section" aria-label="Account security">
++      <div className="panel-header">
++        <h3><KeyRound size={16} /> Account security</h3>
++      </div>
++      <p className="dr-hint">
++        Two-factor sign-in asks for a code from an authenticator app after your password, at every sign-in and every confirmation. Changes need a sign-in from the last 10 minutes.
++      </p>
+ 
+-        {stage.kind === 'codes' && (
+-          <div className="dr-alert dr-alert-warn" role="status">
+-            <p>Two-factor sign-in is on. Save these recovery codes somewhere safe: each signs in once without your phone, and they are not shown again.</p>
+-            <ul aria-label="Recovery codes" className="font-mono">
+-              {stage.codes.map((c) => <li key={c}>{c}</li>)}
+-            </ul>
+-            <button type="button" onClick={() => setStage({ kind: 'idle' })}>I have saved them</button>
+-          </div>
+-        )}
++      {stage.kind === 'codes' && (
++        <div className="dr-alert dr-alert-warn" role="status">
++          <p>Two-factor sign-in is on. Save these recovery codes somewhere safe: each signs in once without your phone, and they are not shown again.</p>
++          <ul aria-label="Recovery codes" className="font-mono">
++            {stage.codes.map((c) => <li key={c}>{c}</li>)}
++          </ul>
++          <button type="button" onClick={() => setStage({ kind: 'idle' })}>I have saved them</button>
++        </div>
++      )}
+ 
+-        {stage.kind === 'enrolling' && (
+-          <form className="dr-row" onSubmit={(e) => { e.preventDefault(); void confirm(); }}>
+-            <img src={stage.qr} width={200} height={200} alt="QR code for your authenticator app" />
+-            <div>
+-              <p className="dr-hint">Scan the code, or enter this key: <code>{stage.secret}</code></p>
+-              {codeField('Code from the app')}
+-              <div className="dr-actions">
+-                <button type="submit" disabled={busy || !code.trim()}>Turn on</button>
+-                <button type="button" className="btn-secondary" disabled={busy} onClick={() => setStage({ kind: 'idle' })}>Cancel</button>
+-              </div>
++      {stage.kind === 'enrolling' && (
++        <form className="dr-row" onSubmit={(e) => { e.preventDefault(); void confirm(); }}>
++          <img src={stage.qr} width={200} height={200} alt="QR code for your authenticator app" />
++          <div>
++            <p className="dr-hint">Scan the code, or enter this key: <code>{stage.secret}</code></p>
++            {codeField('Code from the app')}
++            <div className="dr-actions">
++              <button type="submit" disabled={busy || !code.trim()}>Turn on</button>
++              <button type="button" className="btn-secondary" disabled={busy} onClick={() => setStage({ kind: 'idle' })}>Cancel</button>
+             </div>
+-          </form>
+-        )}
+-
+-        {stage.kind === 'idle' && !enabled && (
+-          <div className="dr-row">
+-            <span>Two-factor sign-in is off.</span>
+-            <button type="button" disabled={busy} onClick={() => void begin()}>Set up two-factor sign-in</button>
+           </div>
+-        )}
++        </form>
++      )}
++
++      {stage.kind === 'idle' && !enabled && (
++        <div className="dr-row">
++          <span>Two-factor sign-in is off.</span>
++          <button type="button" className="btn-secondary" disabled={busy} onClick={() => void begin()}>Set up two-factor sign-in</button>
++        </div>
++      )}
+ 
+-        {stage.kind === 'idle' && enabled && (
+-          <form className="dr-row" onSubmit={(e) => { e.preventDefault(); void disable(); }}>
+-            <span>Two-factor sign-in is on.</span>
+-            {codeField('Code or recovery code')}
+-            <button type="submit" className="btn-secondary" disabled={busy || !code.trim()}>Turn off</button>
+-          </form>
+-        )}
++      {stage.kind === 'idle' && enabled && (
++        <form className="dr-row" onSubmit={(e) => { e.preventDefault(); void disable(); }}>
++          <span>Two-factor sign-in is on.</span>
++          {codeField('Code or recovery code')}
++          <button type="submit" className="btn-secondary" disabled={busy || !code.trim()}>Turn off</button>
++        </form>
++      )}
+ 
+-        {error && <div className="dr-alert dr-alert-error" role="alert">{error}</div>}
+-      </section>
+-    </div>
++      {error && <div className="dr-alert dr-alert-error" role="alert">{error}</div>}
++    </section>
+   );
+ };
+diff --git a/web/src/ky-ui/VERSION b/web/src/ky-ui/VERSION
+index fa27aae..746748c 100644
+--- a/web/src/ky-ui/VERSION
++++ b/web/src/ky-ui/VERSION
+@@ -1,9 +1,9 @@
+ {
+-  "version": "0.2.0",
++  "version": "0.3.0",
+   "source": "https://github.com/Busnes-app/ky-ui",
+   "files": {
+-    "tokens.css": "61ce6af854fc85c87af35eef46f362a2bfca1da114b61dcec6704237b6b4d533",
+-    "navigation.css": "1a552f03f0497cd0edc31dfdcaa76dd9a287a5f0d30073f6074c14e93ef6db91",
++    "tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
++    "navigation.css": "fbd0aea3e45fa818f916ad1bc35832f6ac26e37124208ffde029b809048b4380",
+     "theme.js": "9f0e57c86783924a19fa9923be42d7f14b24cec46c95383f251e18ab69b0176a",
+     "theme.d.ts": "f83e4fb841e98b7b443bc78aa699f9044d395ff622258cf8bee85b5e0608fd4a",
+     "check-vendor.mjs": "1fdca377e486e52d9e660893ebfc2f1a90ddb6578eca24d8f844bb5485f3e053",
+diff --git a/web/src/ky-ui/navigation.css b/web/src/ky-ui/navigation.css
+index 8376ae0..30fd319 100644
+--- a/web/src/ky-ui/navigation.css
++++ b/web/src/ky-ui/navigation.css
+@@ -1,7 +1,7 @@
+ /* State only: products own spacing, orientation and typography. Local aliases
+    keep named product palettes usable as well as Busnes Light/Dark. */
+ .ky-nav-item:not(:disabled):not([aria-disabled="true"]):hover {
+-  background: var(--panel-hover, var(--ky-panel-hover));
++  background: var(--panel-hover, color-mix(in srgb, var(--ink-strong, var(--ky-ink-strong)) 8%, var(--panel, var(--ky-panel))));
+   color: var(--ink-strong, var(--ky-ink-strong));
+ }
+ .ky-nav-item:focus-visible {
+diff --git a/web/src/ky-ui/tokens.css b/web/src/ky-ui/tokens.css
+index e5b3798..6b6dace 100644
+--- a/web/src/ky-ui/tokens.css
++++ b/web/src/ky-ui/tokens.css
+@@ -1,3 +1,23 @@
++/* Product geometry stays local; these values give each composition the same rhythm. */
++:root {
++  --ky-type-title: 1.5rem;
++  --ky-type-section: 1.0625rem;
++  --ky-type-body: 0.9375rem;
++  --ky-type-nav: 0.875rem;
++  --ky-type-meta: 0.8125rem;
++  --ky-space-1: 0.25rem;
++  --ky-space-2: 0.5rem;
++  --ky-space-3: 1rem;
++  --ky-space-4: 1.5rem;
++  --ky-space-5: 2rem;
++  --ky-control-size: 2.5rem;
++  --ky-control-radius: 0.5rem;
++  --ky-sidebar-size: 15rem;
++  /* Product ink/bg aliases preserve existing named palettes as well as Busnes. */
++  --ky-field-border: color-mix(in srgb, var(--ink) 75%, var(--bg));
++  --ky-shadow-overlay: 0 18px 48px rgb(0 0 0 / 0.26), 0 2px 8px rgb(0 0 0 / 0.12);
++}
++
+ /* Busnes Light/Dark tokens. Product layouts should consume these, not redefine them. */
+ :root,
+ :root:not([data-theme]):not([data-ky-theme]),
+@@ -21,7 +41,7 @@
+   --ky-sidebar-end: #f2efe7;
+   --ky-button-text: #ffffff;
+   --ky-radius: 10px;
+-  --ky-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
++  --ky-font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+   --ky-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+ }
+ 
+diff --git a/web/src/pages/Agents.tsx b/web/src/pages/Agents.tsx
+index 6e5eae4..96568cc 100644
+--- a/web/src/pages/Agents.tsx
++++ b/web/src/pages/Agents.tsx
+@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+ import { Bot, Copy, Download, KeyRound, Trash2, X } from 'lucide-react';
+ import { adminFetch, errorMessage, isMatrixDisabled } from '../api';
+ import { arr, bool, count, iso, obj, oneOf, opt, str } from '../dto';
++import { ChatNotSetUp } from '../components/ChatNotSetUp';
+ 
+ const TOKEN_STATES = ['active', 'revoked', 'expired'] as const;
+ export interface AgentOwner { id: string; username: string; display_name: string; mxid: string; status: string }
+@@ -190,7 +191,7 @@ export const Agents: React.FC = () => {
+     return (
+       <div className="dr-page">
+         <div className="dr-header"><h1>Agents</h1></div>
+-        <p role="status">Chat (Matrix) is not set up on this server.</p>
++        <ChatNotSetUp />
+       </div>
+     );
+   }
+diff --git a/web/src/pages/Audit.tsx b/web/src/pages/Audit.tsx
+index 2c01596..aaf11c9 100644
+--- a/web/src/pages/Audit.tsx
++++ b/web/src/pages/Audit.tsx
+@@ -73,7 +73,7 @@ export const Audit: React.FC = () => {
+                     <td className="dr-mono">{r.action}</td>
+                     <td className="dr-mono">{r.target || '—'}</td>
+                     <td className={bad(r.outcome) ? 'dr-danger' : ''}>{r.outcome || '—'}</td>
+-                    <td className="dr-mono" style={{ fontSize: '12px', color: 'var(--ink)' }}>{r.details || '—'}</td>
++                    <td className="dr-mono dr-muted">{r.details || '—'}</td>
+                     <td className="dr-mono">{r.ip || '—'}</td>
+                   </tr>
+                 ))}
+diff --git a/web/src/pages/Backup.tsx b/web/src/pages/Backup.tsx
+index b0b18c4..4231438 100644
+--- a/web/src/pages/Backup.tsx
++++ b/web/src/pages/Backup.tsx
+@@ -546,7 +546,7 @@ export const Backup: React.FC = () => {
+           {status.last_run.outcome !== 'success' && ' Check the service logs for details; existing copies are listed above.'}
+           {status.last_run.capsule_id && <> Capsule: <code>{status.last_run.capsule_id}</code>.</>}
+         </Alert>
+-      ) : status && !status.last_run_error && <p className="text-muted">No recorded backup attempts.</p>}
++      ) : status && !status.last_run_error && <p className="dr-hint">No recorded backup attempts.</p>}
+ 
+       {status?.capsule_size && (
+         <Alert kind={status.capsule_size.warning ? 'warn' : 'success'}>
+@@ -642,7 +642,7 @@ export const Backup: React.FC = () => {
+               ))}
+             </select>
+           </label>
+-          <button type="submit" disabled={scheduleSaving || scheduleSec === (status?.interval_sec ?? -1)}>
++          <button type="submit" className="btn-secondary" disabled={scheduleSaving || scheduleSec === (status?.interval_sec ?? -1)}>
+             {scheduleSaving ? <Loader2 size={14} className="animate-spin" /> : <Clock size={14} />}
+             <span>Save</span>
+           </button>
+@@ -686,7 +686,7 @@ export const Backup: React.FC = () => {
+                   required
+                 />
+               </label>
+-              <button type="submit" disabled={pairing}>
++              <button type="submit" className="btn-secondary" disabled={pairing}>
+                 {pairing ? <Loader2 size={14} className="animate-spin" /> : <Link2 size={14} />}
+                 <span>{paired ? 'Re-pair' : 'Pair'}</span>
+               </button>
+@@ -734,7 +734,7 @@ export const Backup: React.FC = () => {
+                     <span>Of</span>
+                     <input type="number" min={2} max={255} value={pinN} onChange={(e) => setPinN(e.target.value)} required />
+                   </label>
+-                  <button type="submit" disabled={pinning}>
++                  <button type="submit" className="btn-secondary" disabled={pinning}>
+                     {pinning ? <Loader2 size={14} className="animate-spin" /> : <KeyRound size={14} />}
+                     <span>Pin key</span>
+                   </button>
+diff --git a/web/src/pages/ChangePassword.tsx b/web/src/pages/ChangePassword.tsx
+index faabb19..5b754c0 100644
+--- a/web/src/pages/ChangePassword.tsx
++++ b/web/src/pages/ChangePassword.tsx
+@@ -38,21 +38,27 @@ export function ChangePassword({ onComplete, onLogout }: ChangePasswordProps) {
+   }
+ 
+   return (
+-    <main style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 20 }}>
+-      <form onSubmit={submit} className="panel" style={{ width: '100%', maxWidth: 440 }}>
++    <main className="auth-page">
++      <form onSubmit={submit} className="panel auth-card auth-column">
+         <h1>Change your password</h1>
+-        <p>Replace your temporary password before continuing. Use at least 12 characters. You will sign in again afterward.</p>
+-        <label htmlFor="current-password">Current password</label>
+-        <input id="current-password" type="password" autoComplete="current-password" required maxLength={1024}
+-          value={currentPassword} onChange={(event) => setCurrentPassword(event.target.value)} />
+-        <label htmlFor="new-password">New password</label>
+-        <input id="new-password" type="password" autoComplete="new-password" required minLength={12} maxLength={1024}
+-          value={newPassword} onChange={(event) => setNewPassword(event.target.value)} />
+-        <label htmlFor="confirm-password">Confirm new password</label>
+-        <input id="confirm-password" type="password" autoComplete="new-password" required minLength={12} maxLength={1024}
+-          value={confirmation} onChange={(event) => setConfirmation(event.target.value)} />
+-        {error && <p role="alert">{error}</p>}
+-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 16 }}>
++        <p className="dr-hint">Replace your temporary password before continuing. Use at least 12 characters. You will sign in again afterward.</p>
++        {error && <p role="alert" className="dr-alert dr-alert-error">{error}</p>}
++        <div className="auth-field">
++          <label htmlFor="current-password">Current password</label>
++          <input id="current-password" type="password" autoComplete="current-password" required maxLength={1024}
++            value={currentPassword} onChange={(event) => setCurrentPassword(event.target.value)} />
++        </div>
++        <div className="auth-field">
++          <label htmlFor="new-password">New password</label>
++          <input id="new-password" type="password" autoComplete="new-password" required minLength={12} maxLength={1024}
++            value={newPassword} onChange={(event) => setNewPassword(event.target.value)} />
++        </div>
++        <div className="auth-field">
++          <label htmlFor="confirm-password">Confirm new password</label>
++          <input id="confirm-password" type="password" autoComplete="new-password" required minLength={12} maxLength={1024}
++            value={confirmation} onChange={(event) => setConfirmation(event.target.value)} />
++        </div>
++        <div className="dr-actions">
+           <button type="submit" disabled={busy}>{busy ? 'Changing password…' : 'Change password'}</button>
+           <button type="button" className="btn-secondary" disabled={busy} onClick={onLogout}>Sign out</button>
+         </div>
+diff --git a/web/src/pages/Dashboard.tsx b/web/src/pages/Dashboard.tsx
+index 64f3d23..7e7d40e 100644
+--- a/web/src/pages/Dashboard.tsx
++++ b/web/src/pages/Dashboard.tsx
+@@ -74,8 +74,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ settings, user, onNavigate
+     ...(sync ? [{ title: 'KyIdentity sync', card: sync, Icon: RefreshCw, tab: 'settings', action: 'Open Settings' }] : []),
+   ];
+   return (
+-    <div className="operator-overview">
+-      <header className="operator-heading">
++    <div className="dr-page">
++      <header className="dr-header">
+         <h1>Overview</h1>
+         <p>{settings?.app_name || 'KyMessages'} operator console · {user?.display_name || user?.username || 'Administrator'}</p>
+       </header>
+diff --git a/web/src/pages/Login.tsx b/web/src/pages/Login.tsx
+index 425fc37..086f75f 100644
+--- a/web/src/pages/Login.tsx
++++ b/web/src/pages/Login.tsx
+@@ -96,103 +96,63 @@ export const Login: React.FC<LoginProps> = ({ onSuccess, appName }) => {
+   };
+ 
+   return (
+-    <div
+-      style={{
+-        minHeight: '100vh',
+-        display: 'flex',
+-        flexDirection: 'column',
+-        alignItems: 'center',
+-        justifyContent: 'center',
+-        padding: '20px',
+-        background: 'var(--bg)',
+-      }}
+-    >
+-      <div style={{ position: 'absolute', top: 20, right: 20 }}>
++    <div className="auth-page">
++      <div className="auth-theme">
+         <ThemeSwitcher />
+       </div>
+ 
+-      <div style={{ width: '100%', maxWidth: '420px' }}>
+-        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+-          <div
+-            style={{
+-              display: 'inline-flex',
+-              padding: '12px',
+-              background: 'var(--accent-soft)',
+-              borderRadius: '12px',
+-              color: 'var(--accent)',
+-              marginBottom: '12px',
+-            }}
+-          >
+-            <img src="/app-icon.png" width={56} height={56} alt="" />
+-          </div>
+-          <h1 style={{ fontSize: '24px', fontWeight: 'bold', overflowWrap: 'anywhere' }}>{appName || 'KyMessages'}</h1>
++      <div className="auth-column">
++        <div className="auth-brand">
++          <img src="/app-icon.png" width={56} height={56} alt="" />
++          <h1>{appName || 'KyMessages'}</h1>
+         </div>
+ 
+-        <div className="panel">
++        <div className="panel auth-card">
+           {error && (
+-            <div
+-              role="alert"
+-              style={{
+-                display: 'flex',
+-                alignItems: 'center',
+-                gap: '8px',
+-                background: 'rgba(239, 68, 68, 0.1)',
+-                border: '1px solid var(--danger)',
+-                borderRadius: '6px',
+-                padding: '10px',
+-                color: 'var(--danger)',
+-                fontSize: '13px',
+-                marginBottom: '16px',
+-              }}
+-            >
+-              <AlertCircle size={16} />
++            <div role="alert" className="dr-alert dr-alert-error">
++              <AlertCircle size={16} aria-hidden="true" />
+               <span>{error}</span>
+             </div>
+           )}
+ 
+           {mfaChallenge ? (
+             <form onSubmit={handleMFASubmit}>
+-              <h2 style={{ fontSize: '18px', marginBottom: '8px' }}>Two-Factor Verification</h2>
+-              <p style={{ color: 'var(--ink)', fontSize: '13px', marginBottom: '16px' }}>
++              <h2>Two-Factor Verification</h2>
++              <p className="dr-hint">
+                 {isRecoveryCode ? 'Enter one of your single-use recovery codes.' : 'Enter the 6-digit code from your authenticator app.'}
+               </p>
+ 
+-              <div style={{ marginBottom: '16px' }}>
+-                <label htmlFor="login-mfa-code" style={{ display: 'block', fontSize: '13px', color: 'var(--ink)', marginBottom: '6px' }}>
++              <div className="auth-field">
++                <label htmlFor="login-mfa-code">
+                   {isRecoveryCode ? 'Recovery Code' : 'Authenticator Code'}
+                 </label>
+                 <input
+                   id="login-mfa-code"
++                  className="auth-code"
+                   type="text"
+                   autoComplete="one-time-code"
+                   autoFocus
+                   value={mfaCode}
+                   onChange={(e) => setMfaCode(e.target.value)}
+                   placeholder={isRecoveryCode ? 'XXXX-XXXX' : '123456'}
+-                  style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', letterSpacing: '2px', textAlign: 'center' }}
+                   required
+                 />
+               </div>
+ 
+-              <button type="submit" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}>
++              <button type="submit" className="btn-block" disabled={loading}>
+                 {loading ? 'Verifying...' : 'Verify & Sign In'}
+               </button>
+ 
+-              <div style={{ textAlign: 'center', marginTop: '16px' }}>
+-                <button
+-                  type="button"
+-                  className="btn-secondary"
+-                  style={{ background: 'transparent', border: 'none', color: 'var(--accent)', fontSize: '12px' }}
+-                  onClick={() => setIsRecoveryCode(!isRecoveryCode)}
+-                >
++              <div className="auth-switch">
++                <button type="button" className="btn-ghost" onClick={() => setIsRecoveryCode(!isRecoveryCode)}>
+                   {isRecoveryCode ? 'Use Authenticator App' : 'Use a Recovery Code'}
+                 </button>
+               </div>
+             </form>
+           ) : (
+             <form onSubmit={handleLogin}>
+-              <div style={{ marginBottom: '16px' }}>
+-                <label htmlFor="login-username" style={{ display: 'block', fontSize: '13px', color: 'var(--ink)', marginBottom: '6px' }}>Username</label>
++              <div className="auth-field">
++                <label htmlFor="login-username">Username</label>
+                 <input
+                   id="login-username"
+                   type="text"
+@@ -205,8 +165,8 @@ export const Login: React.FC<LoginProps> = ({ onSuccess, appName }) => {
+                 />
+               </div>
+ 
+-              <div style={{ marginBottom: '16px' }}>
+-                <label htmlFor="login-password" style={{ display: 'block', fontSize: '13px', color: 'var(--ink)', marginBottom: '6px' }}>Password</label>
++              <div className="auth-field">
++                <label htmlFor="login-password">Password</label>
+                 <input
+                   id="login-password"
+                   type="password"
+@@ -220,21 +180,15 @@ export const Login: React.FC<LoginProps> = ({ onSuccess, appName }) => {
+ 
+               <CaptchaWidget onToken={setCaptchaToken} round={captchaRound} />
+ 
+-              <button type="submit" style={{ width: '100%', justifyContent: 'center', marginTop: '8px' }} disabled={loading}>
+-                <LogIn size={16} />
++              <button type="submit" className="btn-block auth-submit" disabled={loading}>
++                <LogIn size={16} aria-hidden="true" />
+                 <span>{loading ? 'Signing in...' : 'Sign In'}</span>
+               </button>
+ 
+-              <div style={{ marginTop: '20px', borderTop: '1px solid var(--line)', paddingTop: '16px' }}>
+-                <div style={{ fontSize: '12px', color: 'var(--ink)', textAlign: 'center', marginBottom: '12px' }}>
+-                  Or continue with Single Sign-On
+-                </div>
+-                <a
+-                  href="/api/sso/kyidentity/login"
+-                  className="btn btn-secondary"
+-                  style={{ width: '100%', justifyContent: 'center', textDecoration: 'none' }}
+-                >
+-                  <Key size={16} style={{ color: 'var(--accent)' }} />
++              <div className="auth-sso">
++                <p>Or continue with Single Sign-On</p>
++                <a href="/api/sso/kyidentity/login" className="btn btn-secondary btn-block">
++                  <Key size={16} aria-hidden="true" />
+                   <span>Sign in with KyIdentity</span>
+                 </a>
+               </div>
+diff --git a/web/src/pages/MemberHome.tsx b/web/src/pages/MemberHome.tsx
+index 5ef7cd9..f9324e7 100644
+--- a/web/src/pages/MemberHome.tsx
++++ b/web/src/pages/MemberHome.tsx
+@@ -1,7 +1,7 @@
+ // Members chat in Element (Matrix sub-project 2); the console is for administrators.
+ export function MemberHome({user, chatUrl, onLogout}: {user: {display_name?: string; username: string}; chatUrl?: string; onLogout: () => void}) {
+-  return <section className="card member-home" aria-labelledby="member-home">
+-    <h2 id="member-home">{user.display_name || user.username}</h2>
++  return <section className="member-home" aria-labelledby="member-home">
++    <h1 id="member-home">{user.display_name || user.username}</h1>
+     <p className="member-home-intro">Your conversations are in chat. This page connects you to your account.</p>
+     <p>Signed in as {user.username}.</p>
+     {chatUrl
+diff --git a/web/src/pages/Rooms.tsx b/web/src/pages/Rooms.tsx
+index 6db9ed5..666f082 100644
+--- a/web/src/pages/Rooms.tsx
++++ b/web/src/pages/Rooms.tsx
+@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
+ import { Loader2, Lock, Search, Trash2, X } from 'lucide-react';
+ import { adminFetch, errorMessage, isMatrixDisabled } from '../api';
+ import { arr, bool, count, obj, oneOf, str } from '../dto';
++import { ChatNotSetUp } from '../components/ChatNotSetUp';
+ 
+ const JOB_STATUSES = ['scheduled', 'active', 'complete', 'failed', 'cancelled', 'unknown'] as const;
+ const JOIN_RULES = ['public', 'invite', 'knock', 'restricted', 'knock_restricted', 'private', 'other', ''] as const;
+@@ -231,7 +232,7 @@ export const Rooms: React.FC<{ pollMs?: number }> = ({ pollMs = 2000 }) => {
+     return (
+       <div className="dr-page">
+         <div className="dr-header"><h1>Rooms</h1></div>
+-        <p role="status">Chat (Matrix) is not set up on this server.</p>
++        <ChatNotSetUp />
+       </div>
+     );
+   }
+diff --git a/web/src/pages/SCIMAdmin.tsx b/web/src/pages/SCIMAdmin.tsx
+index 38867e5..492d59e 100644
+--- a/web/src/pages/SCIMAdmin.tsx
++++ b/web/src/pages/SCIMAdmin.tsx
+@@ -1,5 +1,4 @@
+ import React, { useEffect, useState } from 'react';
+-import { Users } from 'lucide-react';
+ import { errorMessage } from '../api';
+ import { arr, bool, obj, opt, str } from '../dto';
+ 
+@@ -21,8 +20,6 @@ export function parseSCIMDirectory(v: unknown): SCIMDirectory {
+   };
+ }
+ 
+-const cell = { padding: '10px 12px' };
+-
+ /** SCIM-provisioned accounts, from the admin route; the bearer token is never shown here. */
+ export const SCIMAdmin: React.FC = () => {
+   const [dir, setDir] = useState<SCIMDirectory | null>(null);
+@@ -43,77 +40,66 @@ export const SCIMAdmin: React.FC = () => {
+   }, []);
+ 
+   return (
+-    <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '32px 20px' }}>
+-      <div style={{ marginBottom: '24px' }}>
+-        <h1 style={{ fontSize: '24px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '10px' }}>
+-          <Users size={24} style={{ color: 'var(--accent)' }} />
+-          <span>SCIM 2.0 Directory & Inbound Provisioning</span>
+-        </h1>
+-        <p style={{ color: 'var(--ink)', fontSize: '14px', marginTop: '4px' }}>
++    <div className="dr-page">
++      <div className="dr-header">
++        <h1>SCIM 2.0 Directory & Inbound Provisioning</h1>
++        <p>
+           RFC 7643 and RFC 7644 inbound provisioning from an identity provider.
+         </p>
+       </div>
+ 
+       {error && <div className="dr-alert dr-alert-error" role="alert" style={{ marginBottom: '24px' }}><span>{error}</span></div>}
+ 
+-      <div className="panel" style={{ marginBottom: '24px' }}>
+-        <h3 style={{ fontSize: '16px', marginBottom: '8px' }}>SCIM 2.0 Connection Details</h3>
+-        <label htmlFor="scim-base-url" style={{ display: 'block', fontSize: '12px', color: 'var(--ink)', marginBottom: '4px' }}>
+-          SCIM Base URL
+-        </label>
+-        <input
+-          id="scim-base-url"
+-          type="text"
+-          readOnly
+-          value={`${window.location.origin}/scim/v2`}
+-          style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', marginBottom: '12px' }}
+-        />
+-        <p style={{ color: 'var(--ink)', fontSize: '13px' }}>
++      <section className="panel dr-section">
++        <h3>SCIM 2.0 Connection Details</h3>
++        <label className="dr-field" htmlFor="scim-base-url">SCIM Base URL</label>
++        <input id="scim-base-url" className="dr-mono" type="text" readOnly value={`${window.location.origin}/scim/v2`} />
++        <p className="dr-hint">
+           The provider authenticates with the bearer token set in <code>KY_SCIM_TOKEN</code>. This console never shows it:
+           copy it from where you set it.
+         </p>
+         {dir && !dir.enabled && (
+-          <div className="dr-alert dr-alert-warn" role="status" style={{ marginTop: '12px' }}>
++          <div className="dr-alert dr-alert-warn" role="status">
+             <span>SCIM is off on this server. Set <code>KY_SCIM_ENABLED=true</code> and restart to turn it on.</span>
+           </div>
+         )}
+         {dir?.enabled && !dir.token_set && (
+-          <div className="dr-alert dr-alert-warn" role="status" style={{ marginTop: '12px' }}>
++          <div className="dr-alert dr-alert-warn" role="status">
+             <span>
+               <code>KY_SCIM_TOKEN</code> is not set, so no provider can authenticate. Set it to a long random value and restart.
+             </span>
+           </div>
+         )}
+         {dir?.enabled && dir.token_set && (
+-          <p style={{ color: 'var(--success)', fontSize: '13px', marginTop: '12px' }}>KY_SCIM_TOKEN is set.</p>
++          <p className="dr-hint dr-ok">KY_SCIM_TOKEN is set.</p>
+         )}
+-      </div>
++      </section>
+ 
+-      <div className="panel">
+-        <h3 style={{ fontSize: '16px', marginBottom: '16px' }}>Provisioned Accounts{dir ? ` (${dir.users.length})` : ''}</h3>
++      <section className="panel dr-section">
++        <h3>Provisioned Accounts{dir ? ` (${dir.users.length})` : ''}</h3>
+ 
+         {!dir ? (
+-          !error && <p style={{ color: 'var(--ink)', fontSize: '13px' }}>Loading directory...</p>
++          !error && <p className="dr-hint">Loading directory...</p>
+         ) : dir.users.length === 0 ? (
+-          <p style={{ color: 'var(--ink)', fontSize: '13px' }}>No accounts have been provisioned through SCIM.</p>
++          <p className="dr-hint">No accounts have been provisioned through SCIM.</p>
+         ) : (
+-          <div style={{ overflowX: 'auto' }}>
+-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
++          <div className="console-table-wrap">
++            <table className="console-table">
+               <thead>
+-                <tr style={{ borderBottom: '1px solid var(--line)', textAlign: 'left', color: 'var(--ink)' }}>
+-                  <th style={{ padding: '8px 12px' }}>Username</th>
+-                  <th style={{ padding: '8px 12px' }}>Display Name</th>
+-                  <th style={{ padding: '8px 12px' }}>Email</th>
+-                  <th style={{ padding: '8px 12px' }}>Status</th>
++                <tr>
++                  <th scope="col">Username</th>
++                  <th scope="col">Display Name</th>
++                  <th scope="col">Email</th>
++                  <th scope="col">Status</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 {dir.users.map((u) => (
+-                  <tr key={u.id} style={{ borderBottom: '1px solid var(--line)' }}>
+-                    <td style={{ ...cell, fontFamily: 'var(--font-mono)', fontWeight: 600 }}>{u.username}</td>
+-                    <td style={cell}>{u.display_name || '—'}</td>
+-                    <td style={{ ...cell, color: 'var(--ink)' }}>{u.email || '—'}</td>
+-                    <td style={cell}>
++                  <tr key={u.id}>
++                    <td className="dr-mono">{u.username}</td>
++                    <td>{u.display_name || '—'}</td>
++                    <td className="dr-muted">{u.email || '—'}</td>
++                    <td>
+                       <span className={`badge badge-${u.status === 'active' ? 'success' : 'danger'}`}>
+                         {u.status === 'active' ? 'Active' : u.status}
+                       </span>
+@@ -124,7 +110,7 @@ export const SCIMAdmin: React.FC = () => {
+             </table>
+           </div>
+         )}
+-      </div>
++      </section>
+     </div>
+   );
+ };
+diff --git a/web/src/pages/Settings.tsx b/web/src/pages/Settings.tsx
+index d105917..147392f 100644
+--- a/web/src/pages/Settings.tsx
++++ b/web/src/pages/Settings.tsx
+@@ -1,5 +1,5 @@
+ import React from 'react';
+-import { Settings as SettingsIcon, Database, Palette } from 'lucide-react';
++import { Database, Palette } from 'lucide-react';
+ import { ThemeSwitcher } from '../components/ThemeSwitcher';
+ import { BrandingPanel } from '../components/BrandingPanel';
+ import { SyncPanel } from '../components/SyncPanel';
+@@ -11,71 +11,51 @@ interface SettingsProps {
+   settings: SiteSettings | null;
+   /** Re-reads /api/settings so the shell shows a new name. */
+   onBrandingChanged: () => void;
++  /** Account security, shown after the instance settings. */
++  children?: React.ReactNode;
+ }
+ 
+-export const Settings: React.FC<SettingsProps> = ({ settings, onBrandingChanged }) => {
++export const Settings: React.FC<SettingsProps> = ({ settings, onBrandingChanged, children }) => {
+   const driver = settings?.db_driver;
+   return (
+-    <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '32px 20px' }}>
+-      <div style={{ marginBottom: '24px' }}>
+-        <h1 style={{ fontSize: '24px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '10px' }}>
+-          <SettingsIcon size={24} style={{ color: 'var(--accent)' }} />
+-          <span>System Settings & Architecture</span>
+-        </h1>
+-        <p style={{ color: 'var(--ink)', fontSize: '14px', marginTop: '4px' }}>
+-          Database, color theme defaults, and instance configuration.
+-        </p>
++    <div className="dr-page">
++      <div className="dr-header">
++        <h1>System Settings & Architecture</h1>
++        <p>Database, appearance and instance configuration.</p>
+       </div>
+ 
+-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: '20px' }}>
+-        {/* Pluggable Database Card */}
+-        <div className="panel">
+-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+-            <Database size={20} style={{ color: 'var(--accent)' }} />
+-            <h3 style={{ fontSize: '16px' }}>Database</h3>
+-          </div>
+-          <p style={{ color: 'var(--ink)', fontSize: '13px', marginBottom: '16px' }}>
+-            The supported deployment is SQLite on a single instance.
++      {/* One flat surface: each section is divided by a rule, never boxed inside another. */}
++      <div className="dr-settings">
++        <section className="panel dr-section" aria-labelledby="settings-database">
++          <h3 id="settings-database"><Database size={16} aria-hidden="true" /> Database</h3>
++          <p className="dr-hint">The supported deployment is SQLite on a single instance.</p>
++          <p className="dr-pair">
++            <span>Active storage driver</span>
++            <span className="badge badge-accent font-mono">{driver ?? 'unknown'}</span>
+           </p>
+-
+-          <div style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: '6px', padding: '16px' }}>
+-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+-              <span style={{ color: 'var(--ink)' }}>Active storage driver:</span>
+-              <span className="badge badge-accent font-mono">{driver ?? 'unknown'}</span>
+-            </div>
+-          </div>
+           {driver !== 'sqlite' && (
+-            <div className="dr-alert dr-alert-warn" role="alert" style={{ marginTop: '12px' }}>
++            <div className="dr-alert dr-alert-warn" role="alert">
+               <span>
+                 {driver ? `This server runs on ${driver}.` : 'The database driver is unknown.'} Only SQLite is supported, and
+                 backup capsules can snapshot only SQLite: no capsule carries this database.
+               </span>
+             </div>
+           )}
+-        </div>
++        </section>
+ 
+-        {/* Appearance */}
+-        <div className="panel">
+-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+-            <Palette size={20} style={{ color: 'var(--accent)' }} />
+-            <h3 style={{ fontSize: '16px' }}>Appearance</h3>
+-          </div>
+-          <p style={{ color: 'var(--ink)', fontSize: '13px', marginBottom: '16px' }}>
+-            Color tokens: Patina Ky (`#0d0f14`/`#4deeea`), Cyber, Nord, Paper, OLED with Space Grotesk and IBM Plex Mono fonts.
++        <section className="panel dr-section" aria-labelledby="settings-appearance">
++          <h3 id="settings-appearance"><Palette size={16} aria-hidden="true" /> Appearance</h3>
++          <p className="dr-hint">
++            Busnes Light and Busnes Dark follow this device&rsquo;s setting until you choose a theme. The choice is kept in this browser only.
+           </p>
++          <ThemeSwitcher />
++        </section>
+ 
+-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+-            <span style={{ fontSize: '13px', color: 'var(--ink)' }}>Active Color Palette:</span>
+-            <ThemeSwitcher />
+-          </div>
+-        </div>
+-      </div>
+-
+-      <div style={{ display: 'grid', gap: '20px', marginTop: '20px' }}>
+         <BrandingPanel onChanged={onBrandingChanged} />
+         <SyncPanel />
+         <FederationPanel />
+         <NotesPanel />
++        {children}
+       </div>
+     </div>
+   );
+diff --git a/web/src/pages/Users.tsx b/web/src/pages/Users.tsx
+index f21f781..9b4f081 100644
+--- a/web/src/pages/Users.tsx
++++ b/web/src/pages/Users.tsx
+@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
+ import { ExternalLink, Loader2, LogOut, Search, X } from 'lucide-react';
+ import { adminFetch, errorMessage, isMatrixDisabled } from '../api';
+ import { arr, count, iso, obj, oneOf, str } from '../dto';
++import { ChatNotSetUp } from '../components/ChatNotSetUp';
+ 
+ const STATUSES = ['active', 'locked', 'deactivated', 'not_linked'] as const;
+ const KINDS = ['oauth2', 'compat', 'browser'] as const;
+@@ -155,7 +156,7 @@ export const Users: React.FC = () => {
+     return (
+       <div className="dr-page">
+         <div className="dr-header"><h1>Users</h1></div>
+-        <p role="status">Chat (Matrix) is not set up on this server.</p>
++        <ChatNotSetUp />
+       </div>
+     );
+   }
+diff --git a/web/src/styles/theme.css b/web/src/styles/theme.css
+index ae24af4..c2c43a6 100644
+--- a/web/src/styles/theme.css
++++ b/web/src/styles/theme.css
+@@ -114,28 +114,48 @@ body {
+   background: var(--bg);
+   color: var(--ink-strong);
+   min-height: 100vh;
++  font-size: var(--ky-type-body);
++  line-height: 1.5;
+   transition: background 0.2s ease, color 0.2s ease;
+   -webkit-font-smoothing: antialiased;
+ }
+-.app-shell { min-height: 100vh; display: grid; grid-template-columns: 15.5rem minmax(0, 1fr); }
+-.app-header { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 0; height: 100vh; padding: 1.25rem 1rem; background: linear-gradient(180deg, var(--sidebar-start, var(--panel)), var(--sidebar-end, var(--panel))); border-right: 1px solid var(--line); z-index: 10; }
+-.app-brand { display: flex; align-items: center; gap: .7rem; padding: .25rem .5rem 1rem; color: var(--ink-strong); font-size: 1.15rem; font-weight: 700; }
+-.app-brand img { border-radius: .45rem; flex: none; }
++:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
++h1 { font-size: var(--ky-type-title); font-weight: 600; line-height: 1.25; letter-spacing: -.01em; color: var(--ink-strong); overflow-wrap: anywhere; }
++
++/* Shell geometry matches the other Ky products: 240px sidebar, 40px rows, account pinned below. */
++.app-shell { min-height: 100vh; display: grid; grid-template-columns: var(--ky-sidebar-size) minmax(0, 1fr); }
++.app-header { display: flex; flex-direction: column; gap: var(--ky-space-4); position: sticky; top: 0; height: 100vh; padding: var(--ky-space-4) var(--ky-space-3) var(--ky-space-3); background: linear-gradient(180deg, var(--sidebar-start, var(--panel)), var(--sidebar-end, var(--panel))); border-right: 1px solid var(--line); z-index: 10; }
+ /* Admin-chosen names run to 64 characters, possibly without spaces: wrap, never widen the shell. */
+-.app-brand { min-width: 0; }
++.app-brand { display: flex; align-items: center; gap: var(--ky-space-2); min-width: 0; min-height: var(--ky-control-size); padding-inline: var(--ky-space-2); color: var(--ink-strong); font-size: var(--ky-type-section); font-weight: 700; }
++/* A hairline keeps the dark stamp tile legible on charcoal. */
++.app-brand img, .auth-brand img { border-radius: var(--ky-control-radius); flex: none; box-shadow: 0 0 0 1px var(--line); }
+ .app-brand span { min-width: 0; overflow-wrap: anywhere; }
+-.app-nav { display: flex; flex-direction: column; gap: .2rem; }
+-.app-nav button { justify-content: flex-start; width: 100%; border: 0; border-left: 3px solid transparent; border-radius: .45rem; padding: .6rem .65rem; background: transparent; color: var(--ink); font-size: .86rem; text-align: left; }
++.app-nav { display: flex; flex-direction: column; gap: var(--ky-space-1); }
++.app-nav button { justify-content: flex-start; width: 100%; min-height: var(--ky-control-size); border: 0; border-radius: var(--ky-control-radius); padding: 0 var(--ky-space-2) 0 var(--ky-space-3); background: transparent; color: var(--ink); font-size: var(--ky-type-nav); font-weight: 500; text-align: left; }
+ .app-nav button:hover { background: var(--panel-hover); color: var(--ink-strong); }
+ /* Selected, hover and focus states are supplied by ky-ui/navigation.css. */
+-.app-header-actions { display: flex; flex-direction: column; gap: .65rem; margin-top: auto; }
+-.app-user { display: flex; align-items: center; gap: .55rem; border-top: 1px solid var(--line); padding-top: .8rem; }
+-.app-user-copy { min-width: 0; flex: 1; font-size: .8rem; }
+-.app-user-copy > div:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+-.app-user-copy > div:last-child { color: var(--ink); font-size: .7rem; }
+-.app-logout { padding: .45rem; color: var(--danger); }
++.app-header-actions { display: grid; gap: var(--ky-space-3); margin-top: auto; }
++.app-header-actions .theme-selector { width: 100%; }
++.app-user { display: grid; gap: var(--ky-space-2); border-top: 1px solid var(--line); padding-top: var(--ky-space-3); }
++.app-user-copy { min-width: 0; padding-inline: var(--ky-space-3) var(--ky-space-2); line-height: 1.4; }
++.app-user-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--ky-type-nav); font-weight: 600; color: var(--ink-strong); }
++.app-user-role { color: var(--ink); font-size: var(--ky-type-meta); }
++/* Sign out uses the navigation row's geometry so the sidebar reads as one list. */
++button.app-logout { justify-content: flex-start; padding: 0 var(--ky-space-2) 0 var(--ky-space-3); color: var(--ink); font-size: var(--ky-type-nav); font-weight: 500; }
++button.app-logout:hover:not(:disabled) { color: var(--ink-strong); }
+ .app-main { min-width: 0; }
+-@media (max-width: 720px) { .app-shell { display: block; } .app-header { position: sticky; height: auto; padding: .75rem 1rem; border-right: 0; border-bottom: 1px solid var(--line); } .app-brand { padding: 0; } .app-nav { flex-direction: row; overflow-x: auto; } .app-nav button { width: auto; flex: 0 0 auto; border-left: 0; border-bottom: 3px solid transparent; white-space: nowrap; } .app-nav button.active { border-bottom-color: var(--accent); } .app-header-actions { flex-direction: row; margin-top: 0; align-items: center; } .app-user { border-top: 0; border-left: 1px solid var(--line); padding: 0 0 0 .65rem; } .app-user-copy { display: none; } }
++/* Phones: brand and account share the top row; the navigation scrolls sideways beneath. */
++@media (max-width: 720px) {
++  .app-shell { display: block; }
++  .app-header { height: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--ky-space-2) var(--ky-space-3); padding: var(--ky-space-2) var(--ky-space-3) 0; border-right: 0; border-bottom: 1px solid var(--line); }
++  .app-brand { padding: 0; }
++  .app-nav { grid-column: 1 / -1; grid-row: 2; flex-direction: row; overflow-x: auto; }
++  .app-nav button { width: auto; flex: 0 0 auto; padding-inline: var(--ky-space-3); white-space: nowrap; }
++  .app-header-actions { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: var(--ky-space-2); margin-top: 0; }
++  .app-header-actions .theme-selector { width: 8.75rem; }
++  .app-user { border-top: 0; padding: 0; }
++  .app-user-copy, .app-logout-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
++}
+ 
+ code, pre, .font-mono {
+   font-family: var(--font-mono);
+@@ -146,108 +166,91 @@ code, pre, .font-mono {
+ .panel {
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 8px;
+-  padding: 20px;
++  border-radius: var(--ky-control-radius);
++  padding: var(--ky-space-4);
+ }
+ 
+ .panel-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+-  margin-bottom: 16px;
++  margin-bottom: var(--ky-space-3);
+ }
+ 
+ /* ---------- Buttons & Inputs ---------- */
++/* Hierarchy: a bare button is primary (one per view); .btn-secondary, .btn-ghost and .btn-danger step down. */
+ 
+ button, .btn {
+   font-family: var(--font-sans);
+   background: var(--accent);
+   color: var(--button-text, #0d0f14);
+-  border: none;
+-  border-radius: 6px;
+-  padding: 8px 16px;
+-  font-size: 14px;
++  border: 1px solid transparent;
++  border-radius: var(--ky-control-radius);
++  min-height: var(--ky-control-size);
++  padding: 0 var(--ky-space-3);
++  font-size: var(--ky-type-nav);
+   font-weight: 600;
++  line-height: 1.25;
+   cursor: pointer;
+   display: inline-flex;
+   align-items: center;
+-  gap: 8px;
+-  transition: opacity 0.15s ease, transform 0.1s ease;
+-}
+-
+-button:hover, .btn:hover {
+-  opacity: 0.9;
+-}
+-
+-button:active, .btn:active {
+-  transform: scale(0.98);
+-}
+-
+-button:disabled, .btn:disabled {
+-  opacity: 0.5;
+-  cursor: not-allowed;
+-}
+-
+-a.btn {
++  justify-content: center;
++  gap: var(--ky-space-2);
+   text-decoration: none;
++  transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .1s ease;
+ }
++button:hover:not(:disabled), .btn:hover { background: color-mix(in srgb, var(--accent) 86%, var(--ink-strong)); }
++button:active:not(:disabled), .btn:active { transform: translateY(1px); }
++button:disabled, .btn:disabled { background: var(--panel-hover); color: var(--ink); border-color: var(--line); cursor: not-allowed; }
+ 
+-.btn-secondary {
+-  background: var(--panel-hover);
+-  color: var(--ink-strong);
+-  border: 1px solid var(--line);
+-}
+-
+-.btn-danger {
+-  background: var(--danger);
+-  color: var(--button-text, #ffffff);
+-}
++.btn-secondary, button.btn-secondary { background: var(--panel); color: var(--ink-strong); border-color: var(--ky-field-border); }
++.btn-secondary:hover:not(:disabled), button.btn-secondary:hover:not(:disabled) { background: var(--panel-hover); border-color: var(--ink); }
++.btn-ghost, button.btn-ghost { background: transparent; color: var(--ink-strong); border-color: transparent; }
++.btn-ghost:hover:not(:disabled), button.btn-ghost:hover:not(:disabled) { background: var(--panel-hover); }
++.btn-danger, button.btn-danger { background: var(--panel); color: var(--danger); border-color: var(--danger); }
++.btn-danger:hover:not(:disabled), button.btn-danger:hover:not(:disabled) { background: color-mix(in srgb, var(--danger) 10%, var(--panel)); }
++button.btn-secondary:disabled, button.btn-ghost:disabled, button.btn-danger:disabled { background: transparent; color: var(--ink); border-color: var(--line); }
+ 
+ input, select, textarea {
+   font-family: var(--font-sans);
+-  background: var(--bg);
++  background: var(--panel);
+   color: var(--ink-strong);
+-  border: 1px solid var(--line);
+-  border-radius: 6px;
+-  padding: 8px 12px;
+-  font-size: 14px;
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++  min-height: var(--ky-control-size);
++  padding: var(--ky-space-2) .75rem;
++  font-size: var(--ky-type-body);
+   width: 100%;
+ }
+-
+-input:focus, select:focus, textarea:focus {
+-  outline: none;
+-  border-color: var(--accent);
+-}
++textarea { line-height: 1.5; }
++input::placeholder, textarea::placeholder { color: var(--ink); }
++input:hover:not(:disabled), select:hover:not(:disabled), textarea:hover:not(:disabled) { border-color: var(--ink); }
++input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--accent); outline-offset: 1px; }
++input:disabled, select:disabled, textarea:disabled { background: var(--panel-hover); color: var(--ink); cursor: not-allowed; }
++input:read-only:not([type='checkbox']):not([type='radio']):not([type='file']) { background: var(--panel-hover); }
++input[type='checkbox'], input[type='radio'] { width: 1rem; height: 1rem; min-height: 0; padding: 0; flex: none; accent-color: var(--accent); }
++input[type='file'] { padding-block: .3rem; color: var(--ink); }
++input[type='file']::file-selector-button { font: inherit; font-size: var(--ky-type-nav); font-weight: 600; margin-right: var(--ky-space-3); padding: .25rem .75rem; border: 1px solid var(--ky-field-border); border-radius: calc(var(--ky-control-radius) - 2px); background: var(--panel-hover); color: var(--ink-strong); cursor: pointer; }
+ 
+ /* ---------- Badges ---------- */
+ 
++/* Status always pairs a tone with its word; tints come from the theme's own status colors. */
+ .badge {
+   display: inline-flex;
+   align-items: center;
+-  gap: 4px;
+-  font-size: 12px;
++  gap: var(--ky-space-1);
++  font-size: var(--ky-type-meta);
+   font-weight: 600;
+-  padding: 2px 8px;
+-  border-radius: 4px;
+-}
+-
+-.badge-success {
+-  background: rgba(16, 185, 129, 0.15);
+-  color: var(--success);
+-  border: 1px solid rgba(16, 185, 129, 0.3);
+-}
+-
+-.badge-accent {
+-  background: var(--accent-soft);
+-  color: var(--accent);
+-  border: 1px solid var(--accent);
+-}
+-
+-.badge-danger {
+-  background: rgba(239, 68, 68, 0.15);
+-  color: var(--danger);
+-  border: 1px solid rgba(239, 68, 68, 0.3);
++  line-height: 1.4;
++  padding: 0 var(--ky-space-2);
++  border-radius: 999px;
++  border: 1px solid currentColor;
++  white-space: nowrap;
+ }
++.badge-success { color: var(--success); background: color-mix(in srgb, var(--success) 10%, var(--panel)); }
++.badge-danger { color: var(--danger); background: color-mix(in srgb, var(--danger) 10%, var(--panel)); }
++/* Neutral fact, such as the database driver: not a status and not the accent. */
++.badge-accent { color: var(--ink-strong); background: var(--panel-hover); border-color: var(--line-strong); }
+ 
+ /* ---------- Modal Backdrop ---------- */
+ 
+@@ -292,37 +295,58 @@ dialog.modal-window::backdrop {
+ }
+ .animate-spin { animation: dr-spin 1s linear infinite; }
+ 
+-.dr-page { max-width: 1080px; margin: 0 auto; padding: 32px 20px; }
+-.dr-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+-.dr-header h1 { font-size: 24px; font-weight: 700; }
++/* One page frame for every console view: 24px title left, its single action right. */
++.dr-page { max-width: 1080px; margin: 0 auto; padding: var(--ky-space-5); }
++.dr-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--ky-space-2) var(--ky-space-3); margin-bottom: var(--ky-space-4); }
++.dr-header > p { flex: 1 0 100%; color: var(--ink); }
+ 
+-.dr-section { margin-bottom: 20px; }
+-.dr-section > .panel-header { flex-wrap: wrap; gap: 12px; }
+-.dr-section h3 { flex-shrink: 0; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; }
++.dr-section { margin-bottom: var(--ky-space-4); }
++.dr-section > .panel-header { flex-wrap: wrap; gap: var(--ky-space-2) var(--ky-space-3); }
++.dr-section h3 { flex-shrink: 0; font-size: var(--ky-type-section); font-weight: 600; display: inline-flex; align-items: center; gap: var(--ky-space-2); margin-bottom: var(--ky-space-2); }
++.dr-section > .panel-header h3 { margin-bottom: 0; }
++.dr-section h3 svg { color: var(--ink); }
+ .dr-mono { font-family: var(--font-mono); }
+-.dr-hint { color: var(--ink); font-size: 13px; margin: 0 0 12px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
++/* Hints are sentences: inline code and icons stay in the text flow. */
++.dr-hint { color: var(--ink); font-size: var(--ky-type-meta); margin: 0 0 var(--ky-space-3); }
++.dr-hint svg { display: inline-block; vertical-align: -.125em; margin-right: var(--ky-space-1); }
++.dr-section > input { margin-bottom: var(--ky-space-3); }
++/* Settings sections sit flat on the page, divided by rules rather than boxed. */
++.dr-settings { border-bottom: 1px solid var(--line); }
++.dr-settings > .panel { background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: var(--ky-space-4) 0; margin: 0; }
++.dr-settings > .panel > .panel-header { margin-bottom: var(--ky-space-2); }
++.dr-pair { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ky-space-2) var(--ky-space-3); color: var(--ink); margin-bottom: var(--ky-space-3); }
++.dr-pair:last-child { margin-bottom: 0; }
++.dr-muted { color: var(--ink); }
++.dr-empty { padding-block: var(--ky-space-3); border-block: 1px solid var(--line); }
++.dr-empty > p:first-child { color: var(--ink-strong); margin-bottom: var(--ky-space-1); }
++.dr-empty > .dr-hint { margin: 0; }
++.dr-bullets { padding-left: var(--ky-space-4); display: grid; gap: var(--ky-space-1); margin-top: var(--ky-space-2); }
+ .dr-danger { color: var(--danger); }
+ .dr-ok { color: var(--success); }
+ .dr-warn { color: var(--warning); }
+ 
++/* Alerts: ink-strong text on a faint tint, the status color on the edge and icon only. */
+ .dr-alert {
+-  display: flex; align-items: flex-start; gap: 8px;
+-  font-size: 13px; padding: 10px 12px; border-radius: 6px; margin-bottom: 12px;
+-  border: 1px solid var(--line);
++  display: flex; align-items: flex-start; gap: var(--ky-space-2);
++  font-size: var(--ky-type-meta); padding: .625rem .75rem; border-radius: var(--ky-control-radius); margin-bottom: var(--ky-space-3);
++  border: 1px solid var(--line); border-left-width: 3px; color: var(--ink-strong);
+ }
+ .dr-alert svg { flex-shrink: 0; margin-top: 1px; }
+-.dr-alert-error { color: var(--danger); border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.08); }
+-.dr-alert-warn { color: var(--ink-strong); background: var(--accent-soft); border-color: var(--accent); }
++.dr-alert-error { color: var(--danger); border-color: var(--danger); background: color-mix(in srgb, var(--danger) 8%, var(--panel)); }
++.dr-alert-error svg { color: var(--danger); }
++.dr-alert-warn { border-color: var(--warning); background: color-mix(in srgb, var(--warning) 8%, var(--panel)); }
++.dr-alert-warn svg { color: var(--warning); }
+ /* Information, not a warning: neutral, since the Busnes accent is close to --danger. */
+-.dr-alert-info { color: var(--ink-strong); background: var(--panel-hover); border-color: var(--line-strong); }
+-.dr-alert-success { color: var(--success); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.08); }
+-.dr-badge-muted { background: var(--panel-hover); color: var(--ink); border: 1px solid var(--line); }
++.dr-alert-info { background: var(--panel-hover); border-color: var(--line-strong); }
++.dr-alert-success { color: var(--success); border-color: var(--success); background: color-mix(in srgb, var(--success) 8%, var(--panel)); }
++.dr-alert-success svg { color: var(--success); }
++.dr-badge-muted { background: var(--panel-hover); color: var(--ink); border-color: var(--line-strong); }
+ 
+-.dr-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 20px; }
+-.dr-fact { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; display: flex; flex-direction: column; gap: 6px; }
+-.dr-fact-label { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+-.dr-fact-value { font-size: 15px; color: var(--ink-strong); overflow-wrap: anywhere; }
+-.dr-fact-note { font-size: 12px; color: var(--ink); }
++.dr-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--ky-space-3); margin-bottom: var(--ky-space-4); }
++.dr-fact { background: var(--panel); border: 1px solid var(--line); border-radius: var(--ky-control-radius); padding: var(--ky-space-3); display: flex; flex-direction: column; gap: var(--ky-space-1); }
++.dr-fact-label { font-size: var(--ky-type-nav); font-weight: 600; color: var(--ink-strong); display: flex; align-items: center; justify-content: space-between; gap: var(--ky-space-2); }
++.dr-fact-value { color: var(--ink-strong); overflow-wrap: anywhere; }
++.dr-fact-note { font-size: var(--ky-type-meta); color: var(--ink); }
+ 
+ .dr-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+ .dr-members { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; padding: 0; list-style: none; }
+@@ -449,36 +473,45 @@ dialog.modal-window::backdrop {
+ }
+ }
+ 
+-.theme-selector {
+-  font: inherit; font-size: 0.875rem; width: auto; max-width: 100%; min-height: 36px;
+-  padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px;
+-  background: var(--panel); color: var(--ink-strong);
+-}
+-.theme-selector:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+-.auth-theme { padding: 12px; text-align: right; }
++.theme-selector { width: auto; max-width: 100%; font-size: var(--ky-type-nav); }
++
++/* ---------- Sign-in and forced password change ---------- */
++.auth-page { min-height: 100vh; display: grid; place-items: center; padding: var(--ky-space-5) var(--ky-space-3); }
++.auth-theme { position: absolute; top: var(--ky-space-3); right: var(--ky-space-3); }
++.auth-column { width: 100%; max-width: 26.25rem; }
++.auth-brand { display: grid; justify-items: center; gap: var(--ky-space-3); margin-bottom: var(--ky-space-4); text-align: center; }
++.auth-card h1 { margin-bottom: var(--ky-space-2); }
++.auth-card h2 { font-size: var(--ky-type-section); font-weight: 600; margin-bottom: var(--ky-space-1); }
++.auth-field { display: grid; gap: .375rem; margin-bottom: var(--ky-space-3); }
++.auth-field label { font-size: var(--ky-type-meta); color: var(--ink); }
++.auth-code { font-family: var(--font-mono); font-size: 1.125rem; letter-spacing: 2px; text-align: center; }
++.auth-check { display: grid; margin-block: var(--ky-space-3); font-size: var(--ky-type-meta); color: var(--ink); }
++.auth-check > div { display: flex; align-items: center; gap: var(--ky-space-2); }
++.auth-switch { text-align: center; margin-top: var(--ky-space-3); }
++.auth-sso { margin-top: var(--ky-space-4); padding-top: var(--ky-space-3); border-top: 1px solid var(--line); }
++.auth-sso p { font-size: var(--ky-type-meta); color: var(--ink); text-align: center; margin-bottom: var(--ky-space-3); }
++.btn-block { width: 100%; }
++@media (max-width: 600px) { .auth-page { place-items: start center; padding-top: 4.5rem; } }
+ 
+ /* ---------- Console tables (Users, Audit) ---------- */
+ .console-table-wrap { overflow-x: auto; margin-bottom: 12px; }
+-.console-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+-.console-table th { text-align: left; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); padding: 8px 12px; border-bottom: 1px solid var(--line); }
+-.console-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); color: var(--ink-strong); vertical-align: top; overflow-wrap: anywhere; }
++.console-table { width: 100%; border-collapse: collapse; font-size: var(--ky-type-nav); }
++.console-table th { text-align: left; font-size: var(--ky-type-meta); font-weight: 600; color: var(--ink); padding: var(--ky-space-2) .75rem; border-bottom: 1px solid var(--line-strong); white-space: nowrap; }
++/* Words wrap whole; only an unbroken token (a hash, a long name) may break. */
++.console-table td { padding: .625rem .75rem; border-bottom: 1px solid var(--line); color: var(--ink-strong); vertical-align: top; overflow-wrap: break-word; }
++.console-table td.dr-mono { font-size: var(--ky-type-meta); }
+ 
+ /* Operator evidence is a readable summary; everyday chat keeps its own entry. */
+-.operator-overview { max-width: 1200px; margin: 0 auto; padding: 36px 32px; }
+-.operator-heading { margin-bottom: 20px; }
+-.operator-heading h1 { font-size: 28px; line-height: 1.2; letter-spacing: -.025em; margin-bottom: 10px; }
+-.operator-heading p { color: var(--ink); font-size: 14px; overflow-wrap: anywhere; }
+-.operator-boundary { max-width: 70ch; font-size: 14px; line-height: 1.6; color: var(--ink); margin-bottom: 32px; }
++.operator-boundary { max-width: 70ch; color: var(--ink); margin-bottom: var(--ky-space-5); }
+ .operator-summary { border-block: 1px solid var(--line); }
+ .operator-row { display: grid; grid-template-columns: minmax(130px, .65fr) minmax(0, 1.4fr) auto; gap: 24px; padding: 26px 0; align-items: center; }
+ .operator-row + .operator-row { border-top: 1px solid var(--line); }
+ .operator-row h2 { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; margin: 0; }
+ .operator-row h2 svg { color: var(--ink); flex: none; }
+ .operator-row p { font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; margin: 0; }
+-.operator-row button { display: flex; gap: 12px; justify-content: space-between; min-height: 40px; font-size: 12px; }
+-.member-home { width: min(640px, calc(100% - 48px)); margin: 48px auto; padding: 32px; border: 1px solid var(--line); background: var(--panel); border-radius: 8px; }
+-.member-home h2 { font-size: 28px; letter-spacing: -.02em; }
+-.member-home p { line-height: 1.6; margin-block: 16px; }
++.operator-row button { justify-content: space-between; gap: var(--ky-space-3); }
++.member-home { width: min(640px, calc(100% - 48px)); margin: 48px auto; padding: var(--ky-space-5); border: 1px solid var(--line); background: var(--panel); border-radius: var(--ky-control-radius); }
++.member-home p { margin-block: var(--ky-space-3); }
+ .member-home-intro { color: var(--ink); max-width: 50ch; }
+ @media (max-width: 1000px) { .operator-row { grid-template-columns: minmax(0, 1fr) auto; gap: 12px 20px; } .operator-row p { grid-column: 1; } .operator-row button { grid-column: 2; grid-row: 1 / 3; } }
+-@media (max-width: 600px) { .operator-overview { padding: 24px 16px; } .operator-row { grid-template-columns: minmax(0, 1fr); padding-block: 22px; } .operator-row button { grid-column: 1; grid-row: auto; justify-self: start; } .member-home { width: calc(100% - 32px); margin-block: 24px; padding: 24px; } }
++@media (max-width: 600px) { .dr-page { padding: var(--ky-space-4) var(--ky-space-3); } .panel { padding: var(--ky-space-3); } .operator-row { grid-template-columns: minmax(0, 1fr); padding-block: 22px; } .operator-row button { grid-column: 1; grid-row: auto; justify-self: start; } .member-home { width: calc(100% - 32px); margin-block: 24px; padding: 24px; } }
+diff --git a/web/src/components/ChatNotSetUp.tsx b/web/src/components/ChatNotSetUp.tsx
+new file mode 100644
+index 0000000..ce8c967
+--- /dev/null
++++ b/web/src/components/ChatNotSetUp.tsx
+@@ -0,0 +1,9 @@
++// Users, Agents and Rooms with Matrix off: what is missing and where setup starts.
++export function ChatNotSetUp() {
++  return (
++    <div className="dr-empty">
++      <p role="status">Chat (Matrix) is not set up on this server.</p>
++      <p className="dr-hint">Set it up with <code>matrix-init</code> and the Matrix Compose overlay, as docs/CHAT-SETUP.md describes.</p>
++    </div>
++  );
++}

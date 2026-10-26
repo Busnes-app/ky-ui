@@ -1,0 +1,2656 @@
+{
+ "schema": "ky-ui-council-scores/2",
+ "round": "implemented-calendar-release (independent final review of KyCalendar stage 06, PR #79 head 95be60c)",
+ "reviewer": {
+  "model": "Claude Opus 5.5 (claude-opus-5-5)",
+  "role": "independent review sub-agent, Claude Code in T3 Code; did not implement, commit, push or open PRs",
+  "date": "2026-10-26",
+  "blind": {
+   "procedure": "Read the AGENTS chain, SKILL.md, rubric and design contract, then the stage-06 after manifest. Viewed all 30 unique representatives at full resolution, plus one KyPost (kypost-05-after-inbox-desktop-light) and two KyMessages captures (kymessages-06-after-users-desktop-light, -mobile-light) only to judge suite_cohesion. Scores frozen and hashed before reading implemented-calendar-final-*, kycalendar-implementation.md, kycalendar-06-gates.json, implemented-post-messages-scores.json or product source. Light and dark of each surface scored identically after viewing both.",
+   "frozen_scores_sha256": "a0cf24e95e90eeba4e66de0473c9ddb4d92870f71c668bc2d47480d900b69518",
+   "frozen_block_serialization": "hashlib.sha256(json.dumps(frozen_block, sort_keys=True).encode()); see frozen_block",
+   "frozen_block": {
+    "month-desktop": [
+     "calendar-grid",
+     "populated",
+     [
+      8,
+      8,
+      7,
+      8,
+      8,
+      8
+     ],
+     [
+      9,
+      8,
+      9,
+      8,
+      8
+     ]
+    ],
+    "month-mobile": [
+     "calendar-grid",
+     "populated",
+     [
+      7,
+      7,
+      7,
+      8,
+      6,
+      7
+     ],
+     [
+      9,
+      7,
+      7,
+      8,
+      8
+     ]
+    ],
+    "subscribe-desktop": [
+     "settings",
+     "sparse",
+     [
+      6,
+      7,
+      6,
+      7,
+      6,
+      7
+     ],
+     [
+      9,
+      7,
+      8,
+      7,
+      8
+     ]
+    ],
+    "subscribe-mobile": [
+     "settings",
+     "sparse",
+     [
+      8,
+      8,
+      8,
+      7,
+      8,
+      8
+     ],
+     [
+      9,
+      8,
+      7,
+      7,
+      8
+     ]
+    ],
+    "calendar-desktop": [
+     "calendar-grid",
+     "populated",
+     [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+     ],
+     [
+      9,
+      8,
+      9,
+      8,
+      8
+     ]
+    ],
+    "calendar-mobile": [
+     "calendar-list",
+     "populated",
+     [
+      7,
+      8,
+      8,
+      8,
+      7,
+      8
+     ],
+     [
+      9,
+      8,
+      7,
+      8,
+      8
+     ]
+    ],
+    "calendars-open-mobile": [
+     "calendar-list",
+     "populated",
+     [
+      7,
+      8,
+      7,
+      8,
+      8,
+      8
+     ],
+     [
+      9,
+      8,
+      7,
+      8,
+      8
+     ]
+    ],
+    "new-event-desktop": [
+     "event-editor",
+     "empty",
+     [
+      9,
+      8,
+      8,
+      9,
+      8,
+      8
+     ],
+     [
+      9,
+      9,
+      9,
+      9,
+      8
+     ]
+    ],
+    "new-event-mobile": [
+     "event-editor",
+     "empty",
+     [
+      9,
+      8,
+      8,
+      9,
+      8,
+      8
+     ],
+     [
+      9,
+      9,
+      7,
+      9,
+      8
+     ]
+    ],
+    "empty-desktop": [
+     "calendar-list",
+     "empty",
+     [
+      7,
+      8,
+      6,
+      8,
+      7,
+      8
+     ],
+     [
+      9,
+      8,
+      9,
+      8,
+      8
+     ]
+    ],
+    "empty-mobile": [
+     "calendar-list",
+     "empty",
+     [
+      7,
+      8,
+      6,
+      8,
+      7,
+      8
+     ],
+     [
+      9,
+      8,
+      7,
+      8,
+      8
+     ]
+    ],
+    "loading-desktop": [
+     "calendar-grid",
+     "loading",
+     [
+      7,
+      8,
+      7,
+      8,
+      6,
+      8
+     ],
+     [
+      9,
+      8,
+      9,
+      8,
+      8
+     ]
+    ],
+    "loading-mobile": [
+     "calendar-list",
+     "loading",
+     [
+      7,
+      7,
+      6,
+      8,
+      7,
+      7
+     ],
+     [
+      9,
+      8,
+      7,
+      8,
+      8
+     ]
+    ],
+    "error-desktop": [
+     "calendar-grid",
+     "error",
+     [
+      6,
+      8,
+      7,
+      7,
+      6,
+      7
+     ],
+     [
+      9,
+      8,
+      8,
+      8,
+      8
+     ]
+    ],
+    "error-mobile": [
+     "calendar-list",
+     "error",
+     [
+      7,
+      8,
+      7,
+      7,
+      6,
+      7
+     ],
+     [
+      9,
+      8,
+      7,
+      8,
+      8
+     ]
+    ]
+   },
+   "frozen_block_order": "[cohort, state, [H,T,D,C,A,Co], [P,G,S,Ac,Su]] per surface-viewport",
+   "post_blind_revisions": 0
+  }
+ },
+ "provenance": {
+  "product_worktree": "/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/ui-cohesion (clean)",
+  "head": "95be60ce23b81674098c70481d565f08a2680f95",
+  "base": "9a527d2be6613a5c072c7c4496fa35c67227176c",
+  "pull_request": "https://github.com/Busnes-app/KyCalendar/pull/79",
+  "source_identity": "git diff 9a527d2 95be60c -- web/src web/browser is cmp-identical to source-stages/kycalendar/stage-06-after.src.patch (sha256 2d1d4822e939883dd75279eb5e8fa5185da753ea41f5cd80d7f8a0515ee5e0d0); whole diff excluding web/dist hashes to stage-06-final.product.patch b0beb460f07f2f4c982b0505d5e457994a054a18210404de9dcc2524f499fc3b. Verified by this reviewer.",
+  "dist_and_server": "dist 84fe0ddf… and server 5eb784cf… are implementer-recorded; not re-hashed by this reviewer.",
+  "manifest_gap": "kycalendar-06-after-manifest.json records no source revision; the revision comes from kycalendar-implementation.md Stage 6.",
+  "inputs_read": {
+   "AGENTS.md (workspace root)": "895c52846ae5df4d34a752cce3a3addaa0bc2ef997baf3556000dbc0cf0a0f63",
+   "ky-ui AGENTS.md": "529793a3f6922dbe1b33cc87cc0f646d872e2ea38545460664b7fe002872c034",
+   "reviews/AGENTS.md": "a28d025bf14ffc0d027989527a4578578736b6b6b276f8e173546527bab1b01e",
+   "skills/AGENTS.md": "998ddfe532b6d4744323ff408cc3ae36e0b0c657efef1824eca8a9dc961e6e7e",
+   "skills/ky-suite-ui/SKILL.md": "6010ea39ac6e4e21926eb2a45d8a5a4894cd9e5e6eec07aca4cf60423233dcc2",
+   "rubric.md": "ad3516620420fbdc30f5273f82b7c72c76e1365d1b6296fcaa56be3cbebf2c41",
+   "design-contract.md": "392afb88c51fb3cfad6c94d6b841804b194d107a0431c31f35ff81d3a7a444d3",
+   "src/tokens.css (hash only)": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+   "screenshots/kycalendar-06-after-manifest.json": "88ab925dd44f4c541edde8cd5ac2dde476aa0a5391bbceb78e9591ac87326c01",
+   "screenshots/kycalendar-06-gates.json (post-blind)": "265d64c3be5d5a8479f762912ee0620dfa584c98741b18296f04372227715c42",
+   "kycalendar-implementation.md (post-blind)": "e0b6c1b105a0e1faa75c4b8a3368d88c055d6dafeb54d764180a27360b7d681b",
+   "implemented-calendar-final-review.md (post-blind)": "bf051d49b79146c323266c4f6e763ab10734da01ae3bdff6a2d5d3c5e6954fd6",
+   "implemented-calendar-final-scores.json (post-blind)": "1a459f5a06713e9b863b91c885ccc4b2a6af920c22a31c1048bbc54956ed8631",
+   "implemented-post-messages-scores.json (schema, post-blind)": "89c8d55b87401e2e101438d58d013344315c73bc6d57f65178482957b953a9b5"
+  },
+  "capture": {
+   "browser": "Playwright headless Chromium (manifest: \"chromium chromium\")",
+   "captured": "2026-10-26T06:18:17.554Z",
+   "clock": "2026-10-27T15:15:00Z (Tue 10:15 America/Chicago)",
+   "timezone": "America/Chicago",
+   "locale": "en-US",
+   "theme_source": "product \"Color theme\" select (localStorage) + matching colorScheme",
+   "viewports": "1280x900 and 390x844, viewport-only",
+   "fixture": "walter: default Calendar + Personal #3f7f6e, 13 events week of 2026-10-25; admin: nothing seeded",
+   "states": "empty = week before the seeded series; loading = 3s CDP network latency; error = browser context offline (no faked bodies, no auth bypass)"
+  }
+ },
+ "rubric": {
+  "version": "ky-suite-v2",
+  "weights": {
+   "hierarchy": 0.2,
+   "typography": 0.15,
+   "density_layout": 0.2,
+   "color": 0.15,
+   "visible_affordances": 0.15,
+   "coherence": 0.15
+  },
+  "ky_fit_weights": {
+   "palette_tokens": 0.2,
+   "type_geometry": 0.2,
+   "shell": 0.2,
+   "accent_discipline": 0.2,
+   "suite_cohesion": 0.2
+  },
+  "rounding": "per file: Decimal(str(x)).quantize(Decimal(\"0.1\"), ROUND_HALF_UP) of the exact Decimal weighted sum; ky_fit the same of the 5-dimension mean; means from unrounded weighted sums, reported half-up to 2dp",
+  "state_note": "loading and error are recorded as state values beyond the rubric list (empty/sparse/populated) because the brief scores them as surfaces"
+ },
+ "inventory": {
+  "pattern": "screenshots/kycalendar-06-after-*.png",
+  "files": 32,
+  "representatives_scored": 30,
+  "exact_duplicates": [
+   "kycalendar-06-after-calendars-open-desktop-light.png"
+  ],
+  "near_duplicates": [
+   {
+    "file": "kycalendar-06-after-calendars-open-desktop-dark.png",
+    "of": "kycalendar-06-after-calendar-desktop-dark.png",
+    "pixels_differ": 4,
+    "percent": 0.0003,
+    "max_channel_delta": 1
+   }
+  ],
+  "near_duplicate_rule": "same dims, <0.1% pixels differ, max channel delta <=8; all same-size pairs measured, next closest pair 1.26%",
+  "excluded_sets": {
+   "kycalendar-06-before-*.png (32)": "before batch; not part of the release score",
+   "kycalendar-06-confirm1-*.png (32)": "confirm capture superseded by the after recapture; supporting evidence only, not viewed for scores",
+   "draft-resize sequences and focus crops (earlier stages)": "evidence only per brief"
+  }
+ },
+ "files": [
+  {
+   "file": "kycalendar-06-after-calendar-desktop-dark.png",
+   "sha256": "294820583be40ef73d4b265490589bae29e77ca94fe1541b0ae606006f4f6d80",
+   "bytes": 80155,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "calendar",
+   "observed_surface_label": "Week view, Oct 25-31 2026 (landing view)",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title, single primary, centred date range; today column tinted with accent header and rail. Date range competes mildly with the h1. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Clear time axis and day headers; event meta (times) is small, about 11-12px inside blocks.",
+    "density_layout": "Even hour rhythm and well-sized blocks; the now-line crosses the \"10:00 - 11:30\" label of Design review.",
+    "color": "Teal user data on cream/charcoal, accent limited to primary, selection, today; dotted half-hour lines quiet.",
+    "visible_affordances": "Selected Week segment, today and now-line are unambiguous; grid continues below 5pm with a cut block as scroll cue.",
+    "coherence": "One grid, one sidebar, consistent outlined controls."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "40px controls, 8px radius; small event meta.",
+    "shell": "Full contract shell with Calendars group in the single left region.",
+    "accent_discipline": "Accent also marks today header; otherwise disciplined.",
+    "suite_cohesion": "Matches KyMessages console shell."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Drag, hover and keyboard on events not visible."
+  },
+  {
+   "file": "kycalendar-06-after-calendar-desktop-light.png",
+   "sha256": "54e71c972ee9cab9463099b1107829cbe70582e95cbf052fb511ae5d4dcab972",
+   "bytes": 79707,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "calendar",
+   "observed_surface_label": "Week view, Oct 25-31 2026 (landing view)",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title, single primary, centred date range; today column tinted with accent header and rail. Date range competes mildly with the h1.",
+    "typography": "Clear time axis and day headers; event meta (times) is small, about 11-12px inside blocks.",
+    "density_layout": "Even hour rhythm and well-sized blocks; the now-line crosses the \"10:00 - 11:30\" label of Design review.",
+    "color": "Teal user data on cream/charcoal, accent limited to primary, selection, today; dotted half-hour lines quiet.",
+    "visible_affordances": "Selected Week segment, today and now-line are unambiguous; grid continues below 5pm with a cut block as scroll cue.",
+    "coherence": "One grid, one sidebar, consistent outlined controls."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "40px controls, 8px radius; small event meta.",
+    "shell": "Full contract shell with Calendars group in the single left region.",
+    "accent_discipline": "Accent also marks today header; otherwise disciplined.",
+    "suite_cohesion": "Matches KyMessages console shell."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Drag, hover and keyboard on events not visible."
+  },
+  {
+   "file": "kycalendar-06-after-calendar-mobile-dark.png",
+   "sha256": "198ba987a347806c52e49a8b2725faf496d0f02cd32333edbe1ac25dd2d47cba",
+   "bytes": 63533,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "calendar",
+   "observed_surface_label": "List view at 390px (landing), week of Oct 25",
+   "cohort": "calendar-list",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Day groups and title clear; the header theme select again outweighs the brand area. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "13px time column, 15px titles, bold day headers; readable.",
+    "density_layout": "Full-bleed rows divided by lines; consistent row height; wide time column.",
+    "color": "Tinted day headers, teal dots, no misuse.",
+    "visible_affordances": "Today (Tuesday) is not distinguished in the list; nav label \"Phones &\" cut by fade.",
+    "coherence": "Uniform rows and headers."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "No signed-in name; scrolling nav strip.",
+    "accent_discipline": "Accent on primary and selected tab only.",
+    "suite_cohesion": "Matches KyMessages phone header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Scroll position below the fold not captured."
+  },
+  {
+   "file": "kycalendar-06-after-calendar-mobile-light.png",
+   "sha256": "48e201388514317c3295166a8e856eda6fab43afc10967169491b5e8717a5521",
+   "bytes": 63372,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "calendar",
+   "observed_surface_label": "List view at 390px (landing), week of Oct 25",
+   "cohort": "calendar-list",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Day groups and title clear; the header theme select again outweighs the brand area.",
+    "typography": "13px time column, 15px titles, bold day headers; readable.",
+    "density_layout": "Full-bleed rows divided by lines; consistent row height; wide time column.",
+    "color": "Tinted day headers, teal dots, no misuse.",
+    "visible_affordances": "Today (Tuesday) is not distinguished in the list; nav label \"Phones &\" cut by fade.",
+    "coherence": "Uniform rows and headers."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "No signed-in name; scrolling nav strip.",
+    "accent_discipline": "Accent on primary and selected tab only.",
+    "suite_cohesion": "Matches KyMessages phone header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Scroll position below the fold not captured."
+  },
+  {
+   "file": "kycalendar-06-after-calendars-open-desktop-dark.png",
+   "sha256": "6e35288ae780211bb35e173efaf616194e3bad5184eb0950206c5707cd6880d2",
+   "bytes": 80160,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": "kycalendar-06-after-calendar-desktop-dark.png",
+   "excluded_from_means": true,
+   "observed_product": "KyCalendar",
+   "observed_surface": "calendars-open",
+   "observed_surface_label": "Week view, Oct 25-31 2026 (landing view)",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title, single primary, centred date range; today column tinted with accent header and rail. Date range competes mildly with the h1. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Clear time axis and day headers; event meta (times) is small, about 11-12px inside blocks.",
+    "density_layout": "Even hour rhythm and well-sized blocks; the now-line crosses the \"10:00 - 11:30\" label of Design review.",
+    "color": "Teal user data on cream/charcoal, accent limited to primary, selection, today; dotted half-hour lines quiet.",
+    "visible_affordances": "Selected Week segment, today and now-line are unambiguous; grid continues below 5pm with a cut block as scroll cue.",
+    "coherence": "One grid, one sidebar, consistent outlined controls."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "40px controls, 8px radius; small event meta.",
+    "shell": "Full contract shell with Calendars group in the single left region.",
+    "accent_discipline": "Accent also marks today header; otherwise disciplined.",
+    "suite_cohesion": "Matches KyMessages console shell."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Drag, hover and keyboard on events not visible. Near duplicate of kycalendar-06-after-calendar-desktop-dark.png (4 px differ, max channel delta 1)."
+  },
+  {
+   "file": "kycalendar-06-after-calendars-open-desktop-light.png",
+   "sha256": "54e71c972ee9cab9463099b1107829cbe70582e95cbf052fb511ae5d4dcab972",
+   "bytes": 79707,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": "kycalendar-06-after-calendar-desktop-light.png",
+   "excluded_from_means": true,
+   "observed_product": "KyCalendar",
+   "observed_surface": "calendars-open",
+   "observed_surface_label": "Week view, Oct 25-31 2026 (landing view)",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title, single primary, centred date range; today column tinted with accent header and rail. Date range competes mildly with the h1.",
+    "typography": "Clear time axis and day headers; event meta (times) is small, about 11-12px inside blocks.",
+    "density_layout": "Even hour rhythm and well-sized blocks; the now-line crosses the \"10:00 - 11:30\" label of Design review.",
+    "color": "Teal user data on cream/charcoal, accent limited to primary, selection, today; dotted half-hour lines quiet.",
+    "visible_affordances": "Selected Week segment, today and now-line are unambiguous; grid continues below 5pm with a cut block as scroll cue.",
+    "coherence": "One grid, one sidebar, consistent outlined controls."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "40px controls, 8px radius; small event meta.",
+    "shell": "Full contract shell with Calendars group in the single left region.",
+    "accent_discipline": "Accent also marks today header; otherwise disciplined.",
+    "suite_cohesion": "Matches KyMessages console shell."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Drag, hover and keyboard on events not visible. Exact duplicate of kycalendar-06-after-calendar-desktop-light.png"
+  },
+  {
+   "file": "kycalendar-06-after-calendars-open-mobile-dark.png",
+   "sha256": "8d2f14fafc8ff49402ba4ca0a2fc93da8a4a32d515ffd390f7e222cd5cb58cbe",
+   "bytes": 59853,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "calendars-open",
+   "observed_surface_label": "Calendars disclosure open over List view at 390px",
+   "cohort": "calendar-list",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Panel has no heading and covers the page title and New event; acceptable for a menu. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Calendar names and button labels at contract sizes.",
+    "density_layout": "Two stacked, left-aligned buttons leave the right side empty; the \"Monday October 26\" header peeks under the panel shadow.",
+    "color": "Checkbox accent for selection; teal user colours.",
+    "visible_affordances": "Open trigger shows a ring and flipped chevron; checkboxes and buttons clear.",
+    "coherence": "Overlay with shadow; same outlined buttons as desktop."
+   },
+   "weighted_sum": 7.6,
+   "total": 7.6,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "40px buttons.",
+    "shell": "Calendars kept inside the header disclosure (one navigation region).",
+    "accent_discipline": "Accent on checkboxes and selected tab.",
+    "suite_cohesion": "Same disclosure grammar as suite header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Escape/focus return not visible."
+  },
+  {
+   "file": "kycalendar-06-after-calendars-open-mobile-light.png",
+   "sha256": "c055cf10d5a6b53b6f44652d3100a47c59e6763752682d983085fb6666f4c744",
+   "bytes": 60810,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "calendars-open",
+   "observed_surface_label": "Calendars disclosure open over List view at 390px",
+   "cohort": "calendar-list",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Panel has no heading and covers the page title and New event; acceptable for a menu.",
+    "typography": "Calendar names and button labels at contract sizes.",
+    "density_layout": "Two stacked, left-aligned buttons leave the right side empty; the \"Monday October 26\" header peeks under the panel shadow.",
+    "color": "Checkbox accent for selection; teal user colours.",
+    "visible_affordances": "Open trigger shows a ring and flipped chevron; checkboxes and buttons clear.",
+    "coherence": "Overlay with shadow; same outlined buttons as desktop."
+   },
+   "weighted_sum": 7.6,
+   "total": 7.6,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "40px buttons.",
+    "shell": "Calendars kept inside the header disclosure (one navigation region).",
+    "accent_discipline": "Accent on checkboxes and selected tab.",
+    "suite_cohesion": "Same disclosure grammar as suite header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Escape/focus return not visible."
+  },
+  {
+   "file": "kycalendar-06-after-empty-desktop-dark.png",
+   "sha256": "018cfd402ef1d2f3d9b78ca824d46cc9c9934cb62a994622e0f6b83b2f37b3be",
+   "bytes": 45394,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "empty",
+   "observed_surface_label": "List view, empty week Oct 18-24",
+   "cohort": "calendar-list",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "previous-week button hover/pressed tint"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Only \"No events to display\" centred in a bordered box; the header New event is the sole next action. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Muted 15px message, consistent type.",
+    "density_layout": "A 170px bordered box holds one sentence; the rest of the canvas is blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "No guidance or in-place action; previous-week button shows a pressed/hover tint from navigation.",
+    "coherence": "Consistent controls."
+   },
+   "weighted_sum": 7.25,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Full shell.",
+    "accent_discipline": "Accent on primary and selection only.",
+    "suite_cohesion": "Suite shell."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Empty state judged on guidance and next action (rubric State rule)."
+  },
+  {
+   "file": "kycalendar-06-after-empty-desktop-light.png",
+   "sha256": "6894c8c115e90ea17cdcd52964984bc1643cb75ae107ff39b33ac398dd330421",
+   "bytes": 45363,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "empty",
+   "observed_surface_label": "List view, empty week Oct 18-24",
+   "cohort": "calendar-list",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "previous-week button hover/pressed tint"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Only \"No events to display\" centred in a bordered box; the header New event is the sole next action.",
+    "typography": "Muted 15px message, consistent type.",
+    "density_layout": "A 170px bordered box holds one sentence; the rest of the canvas is blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "No guidance or in-place action; previous-week button shows a pressed/hover tint from navigation.",
+    "coherence": "Consistent controls."
+   },
+   "weighted_sum": 7.25,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Full shell.",
+    "accent_discipline": "Accent on primary and selection only.",
+    "suite_cohesion": "Suite shell."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Empty state judged on guidance and next action (rubric State rule)."
+  },
+  {
+   "file": "kycalendar-06-after-empty-mobile-dark.png",
+   "sha256": "b82127c5382a51aebac708158ff80f4f281354d245ae9c906ce7ef0e0c822972",
+   "bytes": 27558,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "empty",
+   "observed_surface_label": "List view, empty week at 390px",
+   "cohort": "calendar-list",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "previous-week button hover/pressed tint"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Same lone \"No events to display\" message; New event in header. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Consistent type.",
+    "density_layout": "Bordered box with one sentence; lower half blank.",
+    "color": "Neutral.",
+    "visible_affordances": "No guidance; previous-week button tinted from navigation.",
+    "coherence": "Consistent controls."
+   },
+   "weighted_sum": 7.25,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Phone header without name.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Empty state judged on guidance and next action."
+  },
+  {
+   "file": "kycalendar-06-after-empty-mobile-light.png",
+   "sha256": "2d8cf49e977f5036b6b3af50b86d22729cebab5fdf41e42a4a41c2b30d65050b",
+   "bytes": 27482,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "empty",
+   "observed_surface_label": "List view, empty week at 390px",
+   "cohort": "calendar-list",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "previous-week button hover/pressed tint"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Same lone \"No events to display\" message; New event in header.",
+    "typography": "Consistent type.",
+    "density_layout": "Bordered box with one sentence; lower half blank.",
+    "color": "Neutral.",
+    "visible_affordances": "No guidance; previous-week button tinted from navigation.",
+    "coherence": "Consistent controls."
+   },
+   "weighted_sum": 7.25,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Phone header without name.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Empty state judged on guidance and next action."
+  },
+  {
+   "file": "kycalendar-06-after-error-desktop-dark.png",
+   "sha256": "ea1afd89c1ee87d40ac4be8f296132e709cb9fde49f03641a8219f34429c611a",
+   "bytes": 56969,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "error",
+   "observed_surface_label": "Week view Nov 1-7 with browser offline",
+   "cohort": "calendar-grid",
+   "state": "error",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Danger banner \"The server could not be reached\" sits above the h1; no recovery action or next step. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Consistent type.",
+    "density_layout": "Banner pushes the page 61px down; grid otherwise intact.",
+    "color": "Danger tint with red text, no icon; text-only status pairing.",
+    "visible_affordances": "No Retry or guidance; the grid shows no in-place failure, so it reads as an empty week.",
+    "coherence": "Banner is a different component from any other surface notice and breaks the title-first header."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes danger token.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Banner placed above the page header.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite shell."
+   },
+   "ky_fit_weighted_sum": 8.2,
+   "ky_fit": 8.2,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Offline only; a server 500 was not produced. Announcement (role=alert, per source) not visible."
+  },
+  {
+   "file": "kycalendar-06-after-error-desktop-light.png",
+   "sha256": "b4e5487e0ad42afa678d5b6d0a655c4b049a1b45b304db75f501973c4ffe9062",
+   "bytes": 57271,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "error",
+   "observed_surface_label": "Week view Nov 1-7 with browser offline",
+   "cohort": "calendar-grid",
+   "state": "error",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Danger banner \"The server could not be reached\" sits above the h1; no recovery action or next step.",
+    "typography": "Consistent type.",
+    "density_layout": "Banner pushes the page 61px down; grid otherwise intact.",
+    "color": "Danger tint with red text, no icon; text-only status pairing.",
+    "visible_affordances": "No Retry or guidance; the grid shows no in-place failure, so it reads as an empty week.",
+    "coherence": "Banner is a different component from any other surface notice and breaks the title-first header."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes danger token.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Banner placed above the page header.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite shell."
+   },
+   "ky_fit_weighted_sum": 8.2,
+   "ky_fit": 8.2,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Offline only; a server 500 was not produced. Announcement (role=alert, per source) not visible."
+  },
+  {
+   "file": "kycalendar-06-after-error-mobile-dark.png",
+   "sha256": "653799020e2bd182bf8bdb533772fd071c8cab303585d43b4ca068a97e9ecf3b",
+   "bytes": 29503,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "error",
+   "observed_surface_label": "List view with browser offline at 390px",
+   "cohort": "calendar-list",
+   "state": "error",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Banner above title plus \"Events could not be loaded.\" in the list; no recovery action. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Consistent type.",
+    "density_layout": "Banner + bordered box stack evenly.",
+    "color": "Danger tint with red text, no icon.",
+    "visible_affordances": "No Retry or guidance anywhere on screen.",
+    "coherence": "Two messages for one failure in two different components."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes danger token.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Phone header without name; banner above page header.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Offline only; 500 not produced."
+  },
+  {
+   "file": "kycalendar-06-after-error-mobile-light.png",
+   "sha256": "047926b2d9ecd1b919fdff62aa0afdb894fa65677c8d2d3dba6db7652583aa6a",
+   "bytes": 29422,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "error",
+   "observed_surface_label": "List view with browser offline at 390px",
+   "cohort": "calendar-list",
+   "state": "error",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Banner above title plus \"Events could not be loaded.\" in the list; no recovery action.",
+    "typography": "Consistent type.",
+    "density_layout": "Banner + bordered box stack evenly.",
+    "color": "Danger tint with red text, no icon.",
+    "visible_affordances": "No Retry or guidance anywhere on screen.",
+    "coherence": "Two messages for one failure in two different components."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes danger token.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Phone header without name; banner above page header.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Offline only; 500 not produced."
+  },
+  {
+   "file": "kycalendar-06-after-loading-desktop-dark.png",
+   "sha256": "692c568d27e87137a38033308cf862eaf39730489d2512c3e757407fb29d93b6",
+   "bytes": 55563,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "loading",
+   "observed_surface_label": "Week view Nov 1-7 while events load (3s emulated latency)",
+   "cohort": "calendar-grid",
+   "state": "loading",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "next-week button hover tint"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title and primary intact; loading is only \" · Loading events…\" appended to the 13px zone line. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Consistent type.",
+    "density_layout": "Grid laid out evenly; no layout shift.",
+    "color": "Neutral.",
+    "visible_affordances": "No skeleton or in-grid indicator: the grid is indistinguishable from an empty week at a glance.",
+    "coherence": "Consistent."
+   },
+   "weighted_sum": 7.3,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Full shell.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite shell."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Transient state; spinner/aria-live behaviour not visible."
+  },
+  {
+   "file": "kycalendar-06-after-loading-desktop-light.png",
+   "sha256": "1e558ad2eecea1d1433755c4b57156ecd7d5c5e9118a1a0e049f3853b2d63e62",
+   "bytes": 55631,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "loading",
+   "observed_surface_label": "Week view Nov 1-7 while events load (3s emulated latency)",
+   "cohort": "calendar-grid",
+   "state": "loading",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "next-week button hover tint"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Title and primary intact; loading is only \" · Loading events…\" appended to the 13px zone line.",
+    "typography": "Consistent type.",
+    "density_layout": "Grid laid out evenly; no layout shift.",
+    "color": "Neutral.",
+    "visible_affordances": "No skeleton or in-grid indicator: the grid is indistinguishable from an empty week at a glance.",
+    "coherence": "Consistent."
+   },
+   "weighted_sum": 7.3,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Full shell.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite shell."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Transient state; spinner/aria-live behaviour not visible."
+  },
+  {
+   "file": "kycalendar-06-after-loading-mobile-dark.png",
+   "sha256": "f530dd1d6eea691daa050d2353ccb7d634eb0b9f10b9ecb3ec89511a6e368042",
+   "bytes": 27589,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "loading",
+   "observed_surface_label": "List view Nov 1-7 while loading at 390px",
+   "cohort": "calendar-list",
+   "state": "loading",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "next-week button hover tint"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Title and primary intact; loading stated twice (zone line and list box). Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Zone line wraps to \"…Chicago · / Loading events…\".",
+    "density_layout": "Wrap pushes the toolbar 20px lower than other states; duplicated message in a bordered box.",
+    "color": "Neutral.",
+    "visible_affordances": "Loading is legible in place; no skeleton.",
+    "coherence": "Duplicate status text."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Phone header without name.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Transient state."
+  },
+  {
+   "file": "kycalendar-06-after-loading-mobile-light.png",
+   "sha256": "e473461ca16a7e6a132c7b64f55617df92c4573a430065bdc45052875eb21f46",
+   "bytes": 27486,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "loading",
+   "observed_surface_label": "List view Nov 1-7 while loading at 390px",
+   "cohort": "calendar-list",
+   "state": "loading",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "next-week button hover tint"
+   ],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Title and primary intact; loading stated twice (zone line and list box).",
+    "typography": "Zone line wraps to \"…Chicago · / Loading events…\".",
+    "density_layout": "Wrap pushes the toolbar 20px lower than other states; duplicated message in a bordered box.",
+    "color": "Neutral.",
+    "visible_affordances": "Loading is legible in place; no skeleton.",
+    "coherence": "Duplicate status text."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Phone header without name.",
+    "accent_discipline": "Disciplined.",
+    "suite_cohesion": "Suite header."
+   },
+   "ky_fit_weighted_sum": 8.0,
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Transient state."
+  },
+  {
+   "file": "kycalendar-06-after-month-desktop-dark.png",
+   "sha256": "247badb3d4fe56a51992baf9ca7ec9eb99402588c05ff97b2d7956ed7ea4a01a",
+   "bytes": 83410,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "month",
+   "observed_surface_label": "Month view, October 2026, populated week of Oct 25",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 \"Calendar\" left, single filled-accent \"New event\" right, \"October 2026\" centred; today (27) tinted cell with accent numeral. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Weekday headers, right-aligned numerals, bold 13px titles; five labels end in ellipses (\"Design revie…\", \"Early flight …\", \"Lunch with P…\", \"Quarterly plan…\", \"Overnight de…\").",
+    "density_layout": "Six week rows end near y=702, leaving ~200px of empty canvas at 1280x900; event rows sit on an even rhythm inside cells.",
+    "color": "Cream/charcoal surfaces, teal user calendars; out-of-month numerals muted but legible; grid lines read slightly heavy against the canvas.",
+    "visible_affordances": "Selected Month segment (surface + rail), selected nav row and checked calendars read at a glance; Today reads disabled while today is visible.",
+    "coherence": "One sidebar, outlined secondary buttons, one segmented view switch; nothing nested."
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Surfaces and ink read as ky-ui Busnes tokens; only teal user data off-palette.",
+    "type_geometry": "40px controls, 8px radius; event labels 13px, truncated.",
+    "shell": "240px sidebar: stamp+wordmark, nav with rail, Calendars group, theme select, pinned account with name, role and Sign out.",
+    "accent_discipline": "Accent on primary, nav rail, Month rail, checkboxes (selection) and the today numeral (a non-selection use).",
+    "suite_cohesion": "Same shell grammar as the KyMessages console capture; selected-row tint differs slightly."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Static capture: event hover/click, keyboard and computed contrast not visible."
+  },
+  {
+   "file": "kycalendar-06-after-month-desktop-light.png",
+   "sha256": "219bc47de9f3fb3165e8861830448320d0957ba29d8b48c97fb2cbdd59591b6c",
+   "bytes": 83167,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "month",
+   "observed_surface_label": "Month view, October 2026, populated week of Oct 25",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 \"Calendar\" left, single filled-accent \"New event\" right, \"October 2026\" centred; today (27) tinted cell with accent numeral.",
+    "typography": "Weekday headers, right-aligned numerals, bold 13px titles; five labels end in ellipses (\"Design revie…\", \"Early flight …\", \"Lunch with P…\", \"Quarterly plan…\", \"Overnight de…\").",
+    "density_layout": "Six week rows end near y=702, leaving ~200px of empty canvas at 1280x900; event rows sit on an even rhythm inside cells.",
+    "color": "Cream/charcoal surfaces, teal user calendars; out-of-month numerals muted but legible; grid lines read slightly heavy against the canvas.",
+    "visible_affordances": "Selected Month segment (surface + rail), selected nav row and checked calendars read at a glance; Today reads disabled while today is visible.",
+    "coherence": "One sidebar, outlined secondary buttons, one segmented view switch; nothing nested."
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Surfaces and ink read as ky-ui Busnes tokens; only teal user data off-palette.",
+    "type_geometry": "40px controls, 8px radius; event labels 13px, truncated.",
+    "shell": "240px sidebar: stamp+wordmark, nav with rail, Calendars group, theme select, pinned account with name, role and Sign out.",
+    "accent_discipline": "Accent on primary, nav rail, Month rail, checkboxes (selection) and the today numeral (a non-selection use).",
+    "suite_cohesion": "Same shell grammar as the KyMessages console capture; selected-row tint differs slightly."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Static capture: event hover/click, keyboard and computed contrast not visible."
+  },
+  {
+   "file": "kycalendar-06-after-month-mobile-dark.png",
+   "sha256": "131c759f7c7d2435af0a7d3f75921065ec71bad3567630d1e7eef4a46d93aa46",
+   "bytes": 43038,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "month",
+   "observed_surface_label": "Month view at 390px, dots/bars with start times",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Title and New event clear, but the 160px theme select is the largest control in the top bar. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Times only (\"9a\", \"5:30a\", \"10p\") in 13px; no event titles visible in the grid.",
+    "density_layout": "Even 7-column grid; \"5:30a\" fills its 51px cell; last week row cut by the fold.",
+    "color": "Restrained: teal dots and bars, accent only on primary, nav rail and today numeral.",
+    "visible_affordances": "All-day/multi-day bars carry no visible label; \"Phones &\" fades out at the nav edge (cue present, label cut).",
+    "coherence": "Header mixes a full-size form select with tab-style navigation and an icon-only sign-out."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens throughout.",
+    "type_geometry": "Times at meta size; grid targets small (51px cells).",
+    "shell": "No signed-in name; theme select dominates the bar; nav as scrolling strip with fade.",
+    "accent_discipline": "Accent on primary, selected tab rail, today numeral.",
+    "suite_cohesion": "Same header pattern as KyMessages 390px capture."
+   },
+   "ky_fit_weighted_sum": 7.8,
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Title is visually hidden, not removed (per source); a screen-reader name cannot be seen in a screenshot."
+  },
+  {
+   "file": "kycalendar-06-after-month-mobile-light.png",
+   "sha256": "8daa68f5032f01f26acf6ce543fa7bfe3139b3341f88746a0023a9b0772831d4",
+   "bytes": 43016,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "month",
+   "observed_surface_label": "Month view at 390px, dots/bars with start times",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Title and New event clear, but the 160px theme select is the largest control in the top bar.",
+    "typography": "Times only (\"9a\", \"5:30a\", \"10p\") in 13px; no event titles visible in the grid.",
+    "density_layout": "Even 7-column grid; \"5:30a\" fills its 51px cell; last week row cut by the fold.",
+    "color": "Restrained: teal dots and bars, accent only on primary, nav rail and today numeral.",
+    "visible_affordances": "All-day/multi-day bars carry no visible label; \"Phones &\" fades out at the nav edge (cue present, label cut).",
+    "coherence": "Header mixes a full-size form select with tab-style navigation and an icon-only sign-out."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens throughout.",
+    "type_geometry": "Times at meta size; grid targets small (51px cells).",
+    "shell": "No signed-in name; theme select dominates the bar; nav as scrolling strip with fade.",
+    "accent_discipline": "Accent on primary, selected tab rail, today numeral.",
+    "suite_cohesion": "Same header pattern as KyMessages 390px capture."
+   },
+   "ky_fit_weighted_sum": 7.8,
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Title is visually hidden, not removed (per source); a screen-reader name cannot be seen in a screenshot."
+  },
+  {
+   "file": "kycalendar-06-after-new-event-desktop-dark.png",
+   "sha256": "1ffe2c6403327f1bfb5fce67cefab781629d91247a1fdfce3518358c29e77103",
+   "bytes": 84965,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "new-event",
+   "observed_surface_label": "New event dialog over Week view",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "modal scrim"
+   ],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "\"New event\" title, Save filled right with outlined Cancel beside, Title field focused. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Bold 13px labels, muted \"(optional)\" in text; 20px dialog title.",
+    "density_layout": "Start/End two-column grid aligned, even 8px rhythm, divider above footer.",
+    "color": "Only Save and the focus ring use the accent; scrim dims the page.",
+    "visible_affordances": "Native date-time inputs with picker icons; Title has no required marker (optional fields are marked).",
+    "coherence": "All fields 40px, 8px radius; native picker icon is the only foreign glyph."
+   },
+   "weighted_sum": 8.35,
+   "total": 8.4,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract type and control sizes.",
+    "shell": "Shell visible under scrim.",
+    "accent_discipline": "Accent only on Save and focus.",
+    "suite_cohesion": "Matches suite dialog/form grammar."
+   },
+   "ky_fit_weighted_sum": 8.8,
+   "ky_fit": 8.8,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Validation and server-error states not captured."
+  },
+  {
+   "file": "kycalendar-06-after-new-event-desktop-light.png",
+   "sha256": "85bc3fe675adf4c473441f40f2230ebd8dd8af5a00f09b1b0d6536374f8fa913",
+   "bytes": 87830,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "new-event",
+   "observed_surface_label": "New event dialog over Week view",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "modal scrim"
+   ],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "\"New event\" title, Save filled right with outlined Cancel beside, Title field focused.",
+    "typography": "Bold 13px labels, muted \"(optional)\" in text; 20px dialog title.",
+    "density_layout": "Start/End two-column grid aligned, even 8px rhythm, divider above footer.",
+    "color": "Only Save and the focus ring use the accent; scrim dims the page.",
+    "visible_affordances": "Native date-time inputs with picker icons; Title has no required marker (optional fields are marked).",
+    "coherence": "All fields 40px, 8px radius; native picker icon is the only foreign glyph."
+   },
+   "weighted_sum": 8.35,
+   "total": 8.4,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 9,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract type and control sizes.",
+    "shell": "Shell visible under scrim.",
+    "accent_discipline": "Accent only on Save and focus.",
+    "suite_cohesion": "Matches suite dialog/form grammar."
+   },
+   "ky_fit_weighted_sum": 8.8,
+   "ky_fit": 8.8,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Validation and server-error states not captured."
+  },
+  {
+   "file": "kycalendar-06-after-new-event-mobile-dark.png",
+   "sha256": "423119d940e5afb02d9f9da7741d0d65300edda50e1b0dcdc6ce1bbbafff5cf1",
+   "bytes": 35247,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "new-event",
+   "observed_surface_label": "New event dialog at 390px",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "modal scrim"
+   ],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Same clear title, primary Save right, Cancel beside; Title focused. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Same label and optional-marker treatment.",
+    "density_layout": "Whole form fits 390x844 with Save visible; dialog inset 16px.",
+    "color": "Accent only on Save and focus.",
+    "visible_affordances": "Native date-time inputs; Title unmarked as required.",
+    "coherence": "Consistent 40px controls."
+   },
+   "weighted_sum": 8.35,
+   "total": 8.4,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Header visible under scrim (no name).",
+    "accent_discipline": "Disciplined accent.",
+    "suite_cohesion": "Suite form grammar."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Validation and server-error states not captured."
+  },
+  {
+   "file": "kycalendar-06-after-new-event-mobile-light.png",
+   "sha256": "8008d17ff3f5f349a2dfbcf2d36875342739644897e9b62d1d892041ba22d80d",
+   "bytes": 36740,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "new-event",
+   "observed_surface_label": "New event dialog at 390px",
+   "cohort": "event-editor",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "modal scrim"
+   ],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Same clear title, primary Save right, Cancel beside; Title focused.",
+    "typography": "Same label and optional-marker treatment.",
+    "density_layout": "Whole form fits 390x844 with Save visible; dialog inset 16px.",
+    "color": "Accent only on Save and focus.",
+    "visible_affordances": "Native date-time inputs; Title unmarked as required.",
+    "coherence": "Consistent 40px controls."
+   },
+   "weighted_sum": 8.35,
+   "total": 8.4,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 9,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens.",
+    "type_geometry": "Contract sizes.",
+    "shell": "Header visible under scrim (no name).",
+    "accent_discipline": "Disciplined accent.",
+    "suite_cohesion": "Suite form grammar."
+   },
+   "ky_fit_weighted_sum": 8.4,
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Validation and server-error states not captured."
+  },
+  {
+   "file": "kycalendar-06-after-subscribe-desktop-dark.png",
+   "sha256": "1d32e3f748666a3ee205f36f3e12a8164bf294a2d40a69c68b2fa8dae008d6ae",
+   "bytes": 93297,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "subscribe",
+   "observed_surface_label": "Subscribe-to-a-calendar form open in the sidebar over Week view",
+   "cohort": "settings",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "intended focus ring on Link field"
+   ],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "The form task is secondary on screen: the week grid dominates and the form submit is not visible. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Six-line 13px Outlook help paragraph wraps in a ~190px column.",
+    "density_layout": "Sidebar slot scrolled: \"Personal\" row faded at top, form faded mid-sentence (\"Anyone with the link can read\") above the theme select.",
+    "color": "Default Colour swatch is orange-red, next to an accent focus ring: reads as a second accent use.",
+    "visible_affordances": "No visible Subscribe/Cancel; only the edge fade signals more content. Link field focus ring is clear.",
+    "coherence": "Fields are the shared 40px inputs, but a full form inside the navigation column mixes nav and form chrome."
+   },
+   "weighted_sum": 6.45,
+   "total": 6.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens; swatch default near the accent hue.",
+    "type_geometry": "Form squeezed into 192px; help text dense.",
+    "shell": "One left region kept (no second panel), but navigation shares space with the form.",
+    "accent_discipline": "Accent-like swatch competes with focus and primary.",
+    "suite_cohesion": "Shell matches suite; in-sidebar form is calendar-specific."
+   },
+   "ky_fit_weighted_sum": 7.8,
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Slot scrolling and the hidden actions cannot be exercised from a still."
+  },
+  {
+   "file": "kycalendar-06-after-subscribe-desktop-light.png",
+   "sha256": "f3d9c366abf3a8f1b278f2cabfb97bb015c5d948ec1a3afb7653f04afebbf680",
+   "bytes": 92951,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "subscribe",
+   "observed_surface_label": "Subscribe-to-a-calendar form open in the sidebar over Week view",
+   "cohort": "settings",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "intended focus ring on Link field"
+   ],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "The form task is secondary on screen: the week grid dominates and the form submit is not visible.",
+    "typography": "Six-line 13px Outlook help paragraph wraps in a ~190px column.",
+    "density_layout": "Sidebar slot scrolled: \"Personal\" row faded at top, form faded mid-sentence (\"Anyone with the link can read\") above the theme select.",
+    "color": "Default Colour swatch is orange-red, next to an accent focus ring: reads as a second accent use.",
+    "visible_affordances": "No visible Subscribe/Cancel; only the edge fade signals more content. Link field focus ring is clear.",
+    "coherence": "Fields are the shared 40px inputs, but a full form inside the navigation column mixes nav and form chrome."
+   },
+   "weighted_sum": 6.45,
+   "total": 6.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens; swatch default near the accent hue.",
+    "type_geometry": "Form squeezed into 192px; help text dense.",
+    "shell": "One left region kept (no second panel), but navigation shares space with the form.",
+    "accent_discipline": "Accent-like swatch competes with focus and primary.",
+    "suite_cohesion": "Shell matches suite; in-sidebar form is calendar-specific."
+   },
+   "ky_fit_weighted_sum": 7.8,
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Slot scrolling and the hidden actions cannot be exercised from a still."
+  },
+  {
+   "file": "kycalendar-06-after-subscribe-mobile-dark.png",
+   "sha256": "59ef59154915f777971526ecf7b788583f4e8596c90c26db230f64d92eb3e13f",
+   "bytes": 50580,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "subscribe",
+   "observed_surface_label": "Subscribe form inside the open Calendars disclosure at 390px",
+   "cohort": "settings",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "intended focus ring on Link field"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "\"Subscribe to a calendar\" heading, filled Subscribe with text Cancel beside it; complete form in view. Busnes Dark viewed separately; the same facts hold on charcoal.",
+    "typography": "Labels, help and privacy note legible at 13-15px with clear steps.",
+    "density_layout": "Fields on an 8px rhythm; disclosure panel ends cleanly above the list behind it.",
+    "color": "Three orange-reds in one panel: focus ring, default swatch, Subscribe button.",
+    "visible_affordances": "Inputs, focus and primary read clearly; Link and Name carry no required/optional marking.",
+    "coherence": "Overlay panel with shadow, tertiary Cancel, consistent controls."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens; swatch near accent.",
+    "type_geometry": "40px controls, 8px radius.",
+    "shell": "Header pattern without signed-in name.",
+    "accent_discipline": "Swatch default adds an accent-like hue beside the primary.",
+    "suite_cohesion": "Matches suite header and form controls."
+   },
+   "ky_fit_weighted_sum": 7.8,
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Disclosure focus handling and scroll not visible."
+  },
+  {
+   "file": "kycalendar-06-after-subscribe-mobile-light.png",
+   "sha256": "34662dbb15f54375f4bab96f7ba0551413064e00a63cbc95d01e5d19d1c62e15",
+   "bytes": 51445,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "excluded_from_means": false,
+   "observed_product": "KyCalendar",
+   "observed_surface": "subscribe",
+   "observed_surface_label": "Subscribe form inside the open Calendars disclosure at 390px",
+   "cohort": "settings",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "overflow_px": 0,
+   "artifacts": [
+    "intended focus ring on Link field"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "\"Subscribe to a calendar\" heading, filled Subscribe with text Cancel beside it; complete form in view.",
+    "typography": "Labels, help and privacy note legible at 13-15px with clear steps.",
+    "density_layout": "Fields on an 8px rhythm; disclosure panel ends cleanly above the list behind it.",
+    "color": "Three orange-reds in one panel: focus ring, default swatch, Subscribe button.",
+    "visible_affordances": "Inputs, focus and primary read clearly; Link and Name carry no required/optional marking.",
+    "coherence": "Overlay panel with shadow, tertiary Cancel, consistent controls."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Busnes tokens; swatch near accent.",
+    "type_geometry": "40px controls, 8px radius.",
+    "shell": "Header pattern without signed-in name.",
+    "accent_discipline": "Swatch default adds an accent-like hue beside the primary.",
+    "suite_cohesion": "Matches suite header and form controls."
+   },
+   "ky_fit_weighted_sum": 7.8,
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "KyCalendar 95be60c (9a527d2 + stage-06-after.src.patch 2d1d4822…e0d0, cmp-identical); dist 84fe0ddf… and server 5eb784cf… per implementer",
+   "caveat": "Disclosure focus handling and scroll not visible."
+  }
+ ],
+ "cohort_aggregates": {
+  "kycalendar": {
+   "calendar-grid": {
+    "n": 10,
+    "mean": 7.38,
+    "min": 6.8,
+    "max": 8.0,
+    "min_file": "kycalendar-06-after-error-desktop-dark.png",
+    "ky_fit_mean": 8.24,
+    "ky_fit_min": 7.8,
+    "surfaces": [
+     "calendar-desktop",
+     "error-desktop",
+     "loading-desktop",
+     "month-desktop",
+     "month-mobile"
+    ],
+    "by_viewport": {
+     "desktop": 7.48,
+     "mobile": 7.0
+    },
+    "matched": false,
+    "matched_note": "within-product only; no matched competitor after-capture exists, so no Ky gap, provider ranking or competitor win"
+   },
+   "calendar-list": {
+    "n": 12,
+    "mean": 7.28,
+    "min": 7.0,
+    "max": 7.7,
+    "min_file": "kycalendar-06-after-loading-mobile-dark.png",
+    "ky_fit_mean": 8.07,
+    "ky_fit_min": 8.0,
+    "surfaces": [
+     "calendar-mobile",
+     "calendars-open-mobile",
+     "empty-desktop",
+     "empty-mobile",
+     "error-mobile",
+     "loading-mobile"
+    ],
+    "by_viewport": {
+     "desktop": 7.25,
+     "mobile": 7.29
+    },
+    "matched": false,
+    "matched_note": "within-product only; no matched competitor after-capture exists, so no Ky gap, provider ranking or competitor win"
+   },
+   "event-editor": {
+    "n": 4,
+    "mean": 8.35,
+    "min": 8.4,
+    "max": 8.4,
+    "min_file": "kycalendar-06-after-new-event-desktop-dark.png",
+    "ky_fit_mean": 8.6,
+    "ky_fit_min": 8.4,
+    "surfaces": [
+     "new-event-desktop",
+     "new-event-mobile"
+    ],
+    "by_viewport": {
+     "desktop": 8.35,
+     "mobile": 8.35
+    },
+    "matched": false,
+    "matched_note": "within-product only; no matched competitor after-capture exists, so no Ky gap, provider ranking or competitor win"
+   },
+   "settings": {
+    "n": 4,
+    "mean": 7.15,
+    "min": 6.5,
+    "max": 7.9,
+    "min_file": "kycalendar-06-after-subscribe-desktop-dark.png",
+    "ky_fit_mean": 7.8,
+    "ky_fit_min": 7.8,
+    "surfaces": [
+     "subscribe-desktop",
+     "subscribe-mobile"
+    ],
+    "by_viewport": {
+     "desktop": 6.45,
+     "mobile": 7.85
+    },
+    "matched": false,
+    "matched_note": "within-product only; no matched competitor after-capture exists, so no Ky gap, provider ranking or competitor win"
+   }
+  }
+ },
+ "surface_aggregates": {
+  "kycalendar": {
+   "calendar-desktop": {
+    "n": 2,
+    "mean": 8.0,
+    "min": 8.0,
+    "ky_fit_mean": 8.4,
+    "cohort": "calendar-grid"
+   },
+   "calendar-mobile": {
+    "n": 2,
+    "mean": 7.65,
+    "min": 7.7,
+    "ky_fit_mean": 8.0,
+    "cohort": "calendar-list"
+   },
+   "calendars-open-mobile": {
+    "n": 2,
+    "mean": 7.6,
+    "min": 7.6,
+    "ky_fit_mean": 8.0,
+    "cohort": "calendar-list"
+   },
+   "empty-desktop": {
+    "n": 2,
+    "mean": 7.25,
+    "min": 7.3,
+    "ky_fit_mean": 8.4,
+    "cohort": "calendar-list"
+   },
+   "empty-mobile": {
+    "n": 2,
+    "mean": 7.25,
+    "min": 7.3,
+    "ky_fit_mean": 8.0,
+    "cohort": "calendar-list"
+   },
+   "error-desktop": {
+    "n": 2,
+    "mean": 6.8,
+    "min": 6.8,
+    "ky_fit_mean": 8.2,
+    "cohort": "calendar-grid"
+   },
+   "error-mobile": {
+    "n": 2,
+    "mean": 7.0,
+    "min": 7.0,
+    "ky_fit_mean": 8.0,
+    "cohort": "calendar-list"
+   },
+   "loading-desktop": {
+    "n": 2,
+    "mean": 7.3,
+    "min": 7.3,
+    "ky_fit_mean": 8.4,
+    "cohort": "calendar-grid"
+   },
+   "loading-mobile": {
+    "n": 2,
+    "mean": 6.95,
+    "min": 7.0,
+    "ky_fit_mean": 8.0,
+    "cohort": "calendar-list"
+   },
+   "month-desktop": {
+    "n": 2,
+    "mean": 7.8,
+    "min": 7.8,
+    "ky_fit_mean": 8.4,
+    "cohort": "calendar-grid"
+   },
+   "month-mobile": {
+    "n": 2,
+    "mean": 7.0,
+    "min": 7.0,
+    "ky_fit_mean": 7.8,
+    "cohort": "calendar-grid"
+   },
+   "new-event-desktop": {
+    "n": 2,
+    "mean": 8.35,
+    "min": 8.4,
+    "ky_fit_mean": 8.8,
+    "cohort": "event-editor"
+   },
+   "new-event-mobile": {
+    "n": 2,
+    "mean": 8.35,
+    "min": 8.4,
+    "ky_fit_mean": 8.4,
+    "cohort": "event-editor"
+   },
+   "subscribe-desktop": {
+    "n": 2,
+    "mean": 6.45,
+    "min": 6.5,
+    "ky_fit_mean": 7.8,
+    "cohort": "settings"
+   },
+   "subscribe-mobile": {
+    "n": 2,
+    "mean": 7.85,
+    "min": 7.9,
+    "ky_fit_mean": 7.8,
+    "cohort": "settings"
+   }
+  }
+ },
+ "product_visual_summary": {
+  "kycalendar": {
+   "label": "within-product visual summary, equal cohort weight; NOT a ranking and NOT a product certification",
+   "cohorts": 4,
+   "equal_cohort_weight_mean": 7.54,
+   "lowest_cohort_mean": 7.15,
+   "lowest_cohort": "settings",
+   "lowest_file_total": 6.5,
+   "highest_file_total": 8.4,
+   "files_at_or_above_9": 0,
+   "files": 30,
+   "ky_fit_mean": 8.16,
+   "ky_fit_min": 7.8,
+   "meets_9_quality_every_cohort": false,
+   "ky_fit_meets_9": false,
+   "gap_to_9": {
+    "equal_cohort_weight": 1.46,
+    "per_cohort": {
+     "calendar-grid": 1.62,
+     "calendar-list": 1.72,
+     "event-editor": 0.65,
+     "settings": 1.85
+    }
+   }
+  }
+ },
+ "cohort_rankings": "Not published: no matched competitor after-captures exist for this round; no provider ranking, Ky gap or competitor win is claimed.",
+ "drift": {
+  "note": "Stage-06 images are new captures of changed source, so deltas mix product change and reviewer spread; they are not rubric drift. Prior values from implemented-calendar-final-scores.json (stage 04), read after the freeze.",
+  "surfaces": [
+   {
+    "surface": "calendar-desktop",
+    "prior_total": 8.2,
+    "total": 8.0,
+    "delta": -0.2,
+    "cause": "reviewer spread: typography 9->8 (small event meta) on a visually unchanged week view; not a product regression"
+   },
+   {
+    "surface": "month-desktop",
+    "prior_total": 7.7,
+    "total": 7.8,
+    "delta": 0.1,
+    "cause": "product change: out-of-month numerals now legible (color 7->8)"
+   },
+   {
+    "surface": "month-mobile",
+    "prior_total": 6.3,
+    "total": 7.0,
+    "delta": 0.7,
+    "cause": "product change: clipped 1-4 character labels replaced by dots/bars with start times (typography 6->7, density 5->7)"
+   },
+   {
+    "surface": "calendar-mobile",
+    "prior_total": 7.7,
+    "total": 7.7,
+    "delta": 0.0,
+    "cause": "unchanged"
+   },
+   {
+    "surface": "calendars-open-mobile",
+    "prior_total": 7.5,
+    "total": 7.6,
+    "delta": 0.1,
+    "cause": "product change: open trigger ring, outlined aligned Subscribe button"
+   },
+   {
+    "surface": "subscribe-desktop",
+    "prior_total": 6.3,
+    "total": 6.5,
+    "delta": 0.2,
+    "cause": "product change: heading/Link scrolled into view with edge fade (density 5->6); actions still hidden"
+   },
+   {
+    "surface": "subscribe-mobile",
+    "prior_total": 7.9,
+    "total": 7.9,
+    "delta": 0.0,
+    "cause": "unchanged total; outlined Subscribe trigger"
+   }
+  ],
+  "not_comparable": "calendar-edit (stage 04 settings cohort) was not recaptured at stage 06; the settings cohort now holds Subscribe only, so its mean is not comparable with stage 04 (7.42)."
+ },
+ "comparison_with_prior_round": {
+  "prior": "implemented-calendar-final-scores.json",
+  "prior_coverage_mean": 7.47,
+  "prior_ky_fit_mean": 8.11,
+  "note": "Different cohort mix (adds event-editor and empty/loading/error states, drops calendar-edit); the coverage means are not a like-for-like improvement measure."
+ },
+ "coverage_not_applicable": {
+  "kycalendar": {
+   "named themes (Nord etc.)": "N/A: not recaptured; persistence only gated",
+   "day view": "N/A: not captured",
+   "desktop list populated / phone week": "N/A: not captured at stage 06",
+   "calendar edit, recurring-edit scope, settings, devices, 2FA, admin": "N/A: not in the stage-06 batch",
+   "event-editor validation / server error": "N/A: not captured",
+   "server 500": "N/A: not produced",
+   "Firefox, Safari, real phones": "N/A: not run"
+  }
+ },
+ "prior_findings_response": [
+  {
+   "finding": "1 out-of-month numerals ~1.35/1.57:1",
+   "status": "resolved",
+   "evidence": "Visible: muted but legible numerals. Reviewer pixel estimate from captures: 5.73:1 light, 8.26:1 dark (darkest glyph pixel vs cell background); recorded computed 5.73/8.26 (month.spec.mjs, not re-run). calendar.css:92-93."
+  },
+  {
+   "finding": "2 phone Month clipped labels",
+   "status": "resolved within the bounded fix",
+   "evidence": "Dots/bars with start times; no clipped text. Remaining: bars and dots carry no visible title (accessible name per source, not visible). month-mobile 6.3 -> 7.0."
+  },
+  {
+   "finding": "3 desktop Subscribe clipped, no cue",
+   "status": "partially resolved",
+   "evidence": "Heading and focused Link now in view with an edge fade; Subscribe/Cancel still below the slot fold. subscribe-desktop 6.3 -> 6.5, still the lowest file."
+  },
+  {
+   "finding": "4 phone nav clipped, no cue",
+   "status": "resolved (cue added)",
+   "evidence": "\"Phones &\" fades at the strip edge; label still cut, Two-step verification off-screen but cued."
+  },
+  {
+   "finding": "5 Subscribe button indented",
+   "status": "resolved",
+   "evidence": "Outlined \"Subscribe\" aligned with \"New calendar\" on desktop and in the phone disclosure."
+  },
+  {
+   "finding": "6 minor",
+   "status": "mixed",
+   "evidence": "Month ellipsis resolved; phone open-state ring visible in light; accent-like default swatch unchanged (visible on both subscribe surfaces); subscribe required/optional marks unchanged; two primaries in calendar edit not captured."
+  },
+  {
+   "finding": "not covered: event-editor, states",
+   "status": "now captured",
+   "evidence": "New event in all four combinations (8.4); empty/loading/offline captured and scored (6.8-7.3)."
+  }
+ ],
+ "remaining_issues": [
+  {
+   "rank": 1,
+   "severity": "P2",
+   "issue": "Error state has no recovery path and no in-place failure on Week",
+   "files": [
+    "error-desktop-*",
+    "error-mobile-*"
+   ],
+   "source": "CalendarPage.tsx:286 renders the alert above the h1; calendarApi.ts:51 message \"The server could not be reached\" has no next step; noEventsContent only reaches List view",
+   "contract": "design-contract Task views: Errors state what failed and how to recover"
+  },
+  {
+   "rank": 2,
+   "severity": "P2",
+   "issue": "Empty and loading states are bare text: \"No events to display\" with no guidance, loading only a status line, no skeleton",
+   "files": [
+    "empty-*",
+    "loading-*"
+   ],
+   "source": "CalendarPage.tsx:287,306",
+   "contract": "Empty states say what belongs here and offer the next action; Loading uses skeletons in place"
+  },
+  {
+   "rank": 3,
+   "severity": "P2",
+   "issue": "Desktop Subscribe actions hidden below the sidebar slot fold; default swatch near the accent",
+   "files": [
+    "subscribe-desktop-*"
+   ],
+   "source": "implementer-acknowledged; palette logic unchanged"
+  },
+  {
+   "rank": 4,
+   "severity": "P3",
+   "issue": "Phone header: theme select is the dominant control; no signed-in name (shared with KyMessages, a suite-shell decision)",
+   "files": [
+    "*-mobile-*"
+   ]
+  },
+  {
+   "rank": 5,
+   "severity": "P3",
+   "issue": "Phone List does not mark today; phone loading duplicates its message and shifts the toolbar 20px",
+   "files": [
+    "calendar-mobile-*",
+    "loading-mobile-*"
+   ]
+  },
+  {
+   "rank": 6,
+   "severity": "P3",
+   "issue": "Week now-line crosses an event time label; small event meta; Month leaves ~200px blank at 1280x900",
+   "files": [
+    "calendar-desktop-*",
+    "month-desktop-*"
+   ]
+  },
+  {
+   "rank": 7,
+   "severity": "P3",
+   "issue": "App.test.tsx lazy-chunk wait raised to 5s after 1/4 failures at load 31: masks rather than explains a flake; runtime unchanged",
+   "files": [],
+   "source": "kycalendar-implementation.md Stage 6"
+  }
+ ],
+ "gates": {
+  "kycalendar": {
+   "keyboard": {
+    "status": "untested",
+    "evidence": "Recorded, not re-executed: kycalendar-06-gates.json 4 runs (Busnes Light/Dark x 1280/390): 39 page stops, dialog initial focus kc-title, focus returns to New event, one browser-chrome wrap; resize.spec.mjs Escape on the phone disclosure; month.spec.mjs Enter/Space on a grid event. Not recorded: completing the Subscribe form at 1280x900 (actions need slot scroll), calendar edit/rename/delete, recurring-edit scope, Settings/devices/2FA. Drag-and-drop has no keyboard path (form covers the same edits). Chromium only."
+   },
+   "focus": {
+    "status": "untested",
+    "evidence": "Recorded: 0 of 39 page stops and 0 dialog stops without a ring in all four runs; date-field focus verified (date_focus_unverified empty); focus ring vs page 4.93:1. Visible in captures: accent ring on Subscribe Link and New event Title. Not recorded: month/list event buttons, Subscribe and calendar-edit form controls, named themes, non-Chromium."
+   },
+   "contrast": {
+    "status": "untested",
+    "evidence": "Busnes Light/Dark measured pairs all pass (19-28 per run; min 3.36:1 view-button border needs 3; field border 3.63/4.77; accent text 4.64+; out-of-month numerals 5.73/8.26 via month.spec.mjs). Not measured: named themes (rubric requires every shipped theme), the danger banner and loading/empty/error text, the default subscription swatch."
+   },
+   "states": {
+    "status": "fail",
+    "evidence": "Observed defect, not only coverage: error-desktop shows a banner with no recovery step and an empty-looking grid; error-mobile likewise offers no recovery (contract: say how to recover). Loading is a status line, not a skeleton. Coverage: loading/error captured for Week (desktop) and List (phone) only; Month/Day states, event-dialog field validation and server 500 not captured. Announcement: role=alert and role=status per source (CalendarPage.tsx:286-287), not recorded by test."
+   },
+   "responsive": {
+    "status": "pass",
+    "evidence": "0px horizontal overflow on all 32 after captures (manifest) and 4 gate runs; phone navigation scrolls with an edge cue and every item is reachable (recorded); targets >=40px except 16px checkboxes whose 40px labels are the target. Desktop Subscribe actions reachable by slot scroll. Chromium only; real phones untested."
+   }
+  }
+ },
+ "checks_recorded": {
+  "kycalendar": "Recorded by implementer (not executed by reviewer): make ci (155 frontend tests, Go race/vet/tidy, fork tests, smoke); unit suite 155/155 x3; npm run build + check-vendor; repeated build reproduces dist 84fe0ddf…; npm run test:browser 28 Chromium tests incl. month contrast and event accessible label; resize regression passes. Verified by reviewer: PR #79 head 95be60c, mergeable MERGEABLE, mergeStateStatus CLEAN at 2026-10-26T02:38:14-04:00 with all 12 CI checks SUCCESS (incl. Go tests (PostgreSQL), Docker image build & run, Browser regressions (production server), End-to-end smoke, Vulnerability scan, CodeQL) and publish/promote skipped; reviewDecision empty."
+ },
+ "unscored": [
+  {
+   "file": "kycalendar-06-after-calendars-open-desktop-dark.png",
+   "reason": "duplicate of kycalendar-06-after-calendar-desktop-dark.png; inherits its scores, excluded from counts and means"
+  },
+  {
+   "file": "kycalendar-06-after-calendars-open-desktop-light.png",
+   "reason": "duplicate of kycalendar-06-after-calendar-desktop-light.png; inherits its scores, excluded from counts and means"
+  }
+ ],
+ "checks": {
+  "inventory_matches_files": true,
+  "totals_recomputed": true,
+  "representatives": 30,
+  "every_dimension_observed": true,
+  "frozen_hash_reverified": true,
+  "manifest_hashes_match": true
+ },
+ "arithmetic_checks": {
+  "files_recomputed": 32,
+  "mismatches": 0,
+  "cohort_means_from_unrounded": true
+ }
+}

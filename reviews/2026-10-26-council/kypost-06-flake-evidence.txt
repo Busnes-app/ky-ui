@@ -1,0 +1,64 @@
+# Interleaved batch runs (src/App src/pages/ReadPage src/pages/Contacts src/components), current vs baseline
+kypost-05-baseline run1 7.07s       Tests  233 passed (233) 
+ui-cohesion run1 9.49s       Tests  1 failed | 236 passed (237)  FAIL  src/App.mailboxes.test.tsx :: is hidden with one mailbox and shows each mailbox by its primary address with two;
+kypost-05-baseline run2 7.18s       Tests  233 passed (233) 
+ui-cohesion run2 8.74s       Tests  237 passed (237) 
+kypost-05-baseline run3 6.35s       Tests  233 passed (233) 
+ui-cohesion run3 6.64s       Tests  237 passed (237) 
+kypost-05-baseline run4 6.59s       Tests  233 passed (233) 
+ui-cohesion run4 6.57s       Tests  237 passed (237) 
+kypost-05-baseline run5 6.69s       Tests  233 passed (233) 
+ui-cohesion run5 7.05s       Tests  237 passed (237) 
+current-without-new run1 7.66s       Tests  1 failed | 232 passed | 4 skipped (237)  FAIL  src/App.mobileSettings.test.tsx :: opens the settings links, scrolls them into view, and marks itself expanded;
+current-full run1 7.63s       Tests  1 failed | 236 passed (237)  FAIL  src/App.mailboxes.test.tsx :: is hidden with one mailbox and shows each mailbox by its primary address with two;
+current-without-new run2 7.41s       Tests  2 failed | 231 passed | 4 skipped (237)  FAIL  src/App.mailboxes.test.tsx :: is hidden with one mailbox and shows each mailbox by its primary address with two; FAIL  src/App.mobileSettings.test.tsx :: opens the settings links, scrolls them into view, and marks itself expanded;
+current-full run2 7.57s       Tests  237 passed (237) 
+current-without-new run3 7.56s       Tests  233 passed | 4 skipped (237) 
+current-full run3 7.24s       Tests  237 passed (237) 
+current-without-new run4 6.99s       Tests  233 passed | 4 skipped (237) 
+current-full run4 6.88s       Tests  237 passed (237) 
+current-without-new run5 6.43s       Tests  233 passed | 4 skipped (237) 
+current-full run5 6.95s       Tests  237 passed (237) 
+# In-batch first-test wait (App.mailboxes first test, renderApp -> "Primary inbox"), ms
+baseline wait=1040
+current wait=840
+baseline wait=935
+current wait=1159
+baseline wait=1444
+current wait=1283
+baseline wait=955
+current wait=937
+baseline wait=1167
+current wait=1035
+baseline wait=1002
+current wait=1205
+# Isolated and loaded probe (module load vs render), ms
+baseline alone PROBE app=70 readpage=34 render=268
+current alone PROBE app=54 readpage=26 render=230
+baseline alone PROBE app=40 readpage=22 render=176
+current alone PROBE app=60 readpage=28 render=229
+baseline alone PROBE app=72 readpage=39 render=218
+current alone PROBE app=47 readpage=24 render=180
+baseline alone PROBE app=64 readpage=22 render=201
+current alone PROBE app=43 readpage=21 render=168
+baseline alone PROBE app=50 readpage=22 render=163
+current alone PROBE app=47 readpage=22 render=191
+baseline alone PROBE app=53 readpage=24 render=186
+current alone PROBE app=54 readpage=25 render=214
+baseline loaded PROBE app=104 readpage=60 render=319
+current loaded PROBE app=71 readpage=27 render=224
+baseline loaded PROBE app=101 readpage=40 render=288
+current loaded PROBE app=99 readpage=43 render=285
+baseline loaded PROBE app=102 readpage=41 render=277
+current loaded PROBE app=55 readpage=25 render=208
+baseline loaded PROBE app=158 readpage=59 render=461
+current loaded PROBE app=108 readpage=45 render=347
+baseline loaded PROBE app=93 readpage=39 render=446
+current loaded PROBE app=88 readpage=40 render=229
+# Warm-up attempt (beforeAll import of ./pages/ReadPage in App.mailboxes and App.mobileSettings tests), parallel reproducer, stop at first failure
+warmup run1 8.06s       Tests  237 passed (237) 
+warmup run2 7.82s       Tests  237 passed (237) 
+warmup run3 7.41s       Tests  1 failed | 236 passed (237)  FAIL  src/App.mailboxes.test.tsx :: is hidden with one mailbox and shows each mailbox by its primary address with two;
+run3 failure: App.mailboxes.test.tsx:113 (the line 107 findByText, shifted 6 lines) Unable to find an element with the text: Primary inbox; file 5721ms
+# Scoped 5s wait on the two first App tests: parallel reproducer once, full suite once
+reproducer: Tests 237 passed (237); full: Tests 1189 passed (1189)

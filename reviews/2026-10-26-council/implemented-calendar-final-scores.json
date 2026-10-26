@@ -1,0 +1,1169 @@
+{
+ "schema": "ky-ui-council-scores/2",
+ "round": "implemented-calendar-final",
+ "reviewer": {
+  "model": "claude-opus-5-5 (Claude Opus 5.5)",
+  "role": "independent final visual reviewer (review sub-agent; no implementation)",
+  "date": "2026-10-26",
+  "blind": {
+   "procedure": "Viewed every final unique stage-04 capture at full resolution and froze per-file scores (generator /tmp/kycal-final-review/gen.py) before reading kycalendar-implementation.md, reranked-review.md or any implemented-post-messages score value. Only the key structure of implemented-post-messages-scores.json was read pre-freeze, for schema parity. Sibling captures kypost-05-after-inbox-desktop-light.png and kymessages-05-after-overview-desktop-light.png were viewed pre-freeze for suite_cohesion only.",
+   "frozen_scores_sha256": "6331f212e0fe59587a249dfecf92b7e378d64b1b6bb587bb9463fcbc6781a668",
+   "frozen_scores_hash_input": "sha256(json.dumps([[file, scores, ky_fit_scores] for each file], sort_keys=True))",
+   "post_blind_revisions": 0
+  },
+  "inputs_read": {
+   "AGENTS.md (busnes.app root, ky-ui worktree, reviews/, skills/)": "pre-freeze",
+   "skills/ky-suite-ui/SKILL.md, references/rubric.md, references/design-contract.md": "pre-freeze",
+   "screenshots/kycalendar-04-after-manifest.json": "pre-freeze",
+   "screenshots/kycalendar-gates.json": "pre-freeze (gate data only; carries no scores)",
+   "kycalendar-implementation.md": "post-blind",
+   "reranked-review.md": "post-blind (calendar rows and gate context)",
+   "source-stages/kycalendar/stage-04-after.src.patch": "post-blind (hash comparison)"
+  },
+  "ky_ui_worktree": "/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/ui-cohesion"
+ },
+ "rubric": {
+  "version": "ky-suite-v2",
+  "weights": {
+   "hierarchy": 0.2,
+   "typography": 0.15,
+   "density_layout": 0.2,
+   "color": 0.15,
+   "visible_affordances": 0.15,
+   "coherence": 0.15
+  },
+  "ky_fit_weights": {
+   "palette_tokens": 0.2,
+   "type_geometry": 0.2,
+   "shell": 0.2,
+   "accent_discipline": 0.2,
+   "suite_cohesion": 0.2
+  },
+  "rounding": "per-file total and ky_fit: Decimal half-up to 0.1; cohort, surface and product means: unrounded file totals averaged, reported to 2dp"
+ },
+ "captures": {
+  "kycalendar": {
+   "revision": "9a527d2be6613a5c072c7c4496fa35c67227176c + uncommitted (branch ui/council-cohesion)",
+   "source_patch_sha256": "62da0101e183ac9790d7193ac1d55dbaef12748b5e1b0f24bb5e6b5214e8b3b9",
+   "source_patch_verification": "reviewer ran `git diff 9a527d2 -- web/src web/browser` in KyCalendar/.claude/worktrees/ui-cohesion at 2026-10-26T05:51Z; output is byte-identical (cmp) to source-stages/kycalendar/stage-04-after.src.patch. Last source mtime 05:38:47Z precedes first capture 05:39:35Z.",
+   "dist_and_server": "dist tree 040f6752\u20263fb08, server e901d0bf\u20266d00 (recorded by implementer; not re-hashed by reviewer)",
+   "manifest": "screenshots/kycalendar-04-after-manifest.json (32 files) + kycalendar-04-after-focus-date-fields.png (from gate run)",
+   "captured": "2026-10-26T05:40:25Z",
+   "browser": "Playwright headless Chromium",
+   "clock": "fixed Tue 2026-10-27 10:15 America/Chicago",
+   "timezone": "America/Chicago",
+   "locale": "en-US",
+   "viewports": "1280x900 and 390x844 CSS px, viewport-only",
+   "fixture": "walter: default Calendar (no stored colour) + Personal #3f7f6e, 13 synthetic events in week of 2026-10-25",
+   "theme_source": "product 'Color theme' select (localStorage), context colorScheme matching; Busnes Light and Busnes Dark only"
+  }
+ },
+ "inventory": {
+  "files": 33,
+  "files_note": "33 PNGs matching kycalendar-04-after-*.png; the manifest JSON shares the prefix and is not an image",
+  "representatives_scored": 18,
+  "exact_or_near_duplicates": 2,
+  "evidence_only": 13,
+  "variants": 0,
+  "near_duplicate_rule": "rubric ky-suite-v2: same dimensions, <0.1% pixels differ, max channel delta <=8. Measured: calendar vs calendar-edit desktop dark 0.82% (distinct); draft 1-typed vs 3-back 0.002-0.005%, max delta 1-2 (near-identical round trip; evidence-only).",
+  "variant_rule": "full-page variants: none in this set (all viewport-only)",
+  "listed_complete": true
+ },
+ "files": [
+  {
+   "file": "kycalendar-04-after-calendar-desktop-dark.png",
+   "sha256": "d9bb7a5fb1e315f80de6bf6e2cae9a8fe4fd6a0944c374c5d4d71cd333e7b82a",
+   "bytes": 80217,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": false,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "week grid, Calendars section inside the single app sidebar",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 9,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "24px 'Calendar' title, one filled 'New event', toolbar then grid; today header, now line, checkboxes and tab underline also carry accent and dilute the primary",
+    "typography": "clean steps: 24px title, 18px range, 14px nav, 13px meta; event blocks pair regular time with bold title; nothing to remove",
+    "density_layout": "single 240px sidebar, aligned grid and even half-hour rhythm; grid scroll cuts the 5:30pm row and an event edge at the bottom; 'Subscribe to a calendar' text button sits 17px right of the column the 'New calendar' button and checkboxes share",
+    "color": "charcoal surfaces, tinted today column, teal user calendars; accent appears in six places at once",
+    "visible_affordances": "segmented view switch with clear selected state, outlined pager, checkboxes; greyed 'Today' reads as disabled without saying why",
+    "coherence": "one control vocabulary across sidebar and toolbar; text-only 'Subscribe to a calendar' beside outlined 'New calendar' is the one stray"
+   },
+   "weighted_sum": 8.15,
+   "total": 8.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 7,
+    "suite_cohesion": 9
+   },
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Interaction, keyboard and real computed contrast not visible. Grid is a scroll region; content beyond 5:30pm not shown."
+  },
+  {
+   "file": "kycalendar-04-after-calendar-desktop-light.png",
+   "sha256": "9fc2fb6120bd0ec79819d592b5c163f14aee514a928596a3cc70ffccc977b5dd",
+   "bytes": 79764,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": false,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "week grid, Calendars section inside the single app sidebar",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 9,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "24px title with one filled 'New event'; accent also on today header, now line, two checkboxes, nav rail and Week underline",
+    "typography": "same clean scale as dark; legible 11-13px event text with bold titles",
+    "density_layout": "one left navigation region; grid aligned; bottom row and an event edge clipped by the scroll region; 'Subscribe to a calendar' text button sits 17px right of the column the 'New calendar' button and checkboxes share",
+    "color": "cream surfaces and quiet lines; saturated red-orange checkboxes add accent weight beside the primary",
+    "visible_affordances": "selected Week tab, outlined pager and buttons read correctly; 'Today' greyed with no stated reason",
+    "coherence": "consistent controls; the text-only Subscribe button is the only off-pattern element"
+   },
+   "weighted_sum": 8.15,
+   "total": 8.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 7,
+    "suite_cohesion": 9
+   },
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Interaction, keyboard and computed contrast not visible. Same pixels as calendars-open-desktop-light (desktop has no disclosure)."
+  },
+  {
+   "file": "kycalendar-04-after-calendar-edit-desktop-dark.png",
+   "sha256": "c1b78d2cc198d3fdfcecb64be20469c464f6568bb7bf304a62ae618f47d979eb",
+   "bytes": 83879,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "week grid with inline calendar edit form (Name, Colour, Save/Cancel) in the sidebar",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "two filled accent buttons visible at once: page 'New event' and sidebar 'Save'",
+    "typography": "13px labels above 15px inputs; 'Colour' spelling in an en-US locale UI",
+    "density_layout": "form fits the 240px column with labels above fields; 40px gap above 'New calendar' is larger than the form rhythm",
+    "color": "accent on Save, New event, checkboxes, today and tab underline; swatch is user data",
+    "visible_affordances": "input and swatch borders read clearly; trash icon quiet but recognisable; Save/Cancel pairing clear",
+    "coherence": "form controls match the event dialog vocabulary; edit stays inside the one sidebar"
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 6,
+    "suite_cohesion": 9
+   },
+   "ky_fit": 8.2,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Keyboard order, validation and delete confirmation not visible."
+  },
+  {
+   "file": "kycalendar-04-after-calendar-edit-desktop-light.png",
+   "sha256": "6d66bfd85c65ee357beb09929ba73cac3e8fb87cc69c255805c4f74358d3ab13",
+   "bytes": 83453,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "week grid with inline calendar edit form in the sidebar",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "'Save' and 'New event' are both filled accent and compete",
+    "typography": "clear label/input scale; 'Colour' spelling",
+    "density_layout": "compact form in the sidebar column; uneven 40px gap before 'New calendar'",
+    "color": "Personal checkbox renders a darker red than Calendar's (hover/active residue) beside two filled primaries",
+    "visible_affordances": "fields, swatch, trash and Save/Cancel all legible",
+    "coherence": "same component set as the rest of the screen"
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 6,
+    "suite_cohesion": 9
+   },
+   "ky_fit": 8.2,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Darker Personal checkbox likely pointer state at capture; not verifiable from the image."
+  },
+  {
+   "file": "kycalendar-04-after-calendar-edit-mobile-dark.png",
+   "sha256": "c5105e782d9a891d7cdeef64871fa1972e819473755e10d4a76fab6fc234b2fb",
+   "bytes": 47114,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "Calendars disclosure open with inline edit form over the list view",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Save is the only visible filled button; form title implicit from the selected row",
+    "typography": "13px labels, 15px input, consistent with desktop",
+    "density_layout": "full-width input, but 40px gap above 'New calendar' and 'Subscribe to a calendar' text button sits 17px right of the column the 'New calendar' button and checkboxes share; phone nav row cuts 'Phones & a' mid-word and hides 'Two-step verification' with no scroll cue",
+    "color": "dark panel with accent limited to Save, checkboxes and nav underline",
+    "visible_affordances": "open 'Calendars' trigger shows a surface and flipped chevron; fields clear",
+    "coherence": "disclosure panel reuses sidebar components"
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.2,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Panel overlays the list; scrolling inside the panel not shown."
+  },
+  {
+   "file": "kycalendar-04-after-calendar-edit-mobile-light.png",
+   "sha256": "93b55776bd68893319d8eb50b7852d35ae911ca720157b9f0b628c7e00aedf75",
+   "bytes": 47871,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "Calendars disclosure open with inline edit form over the list view",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "single visible primary (Save) with Cancel beside it",
+    "typography": "same scale as dark",
+    "density_layout": "even field rhythm; uneven gap before 'New calendar'; Subscribe indent; phone nav row cuts 'Phones & a' mid-word and hides 'Two-step verification' with no scroll cue",
+    "color": "accent limited to Save, checkboxes and nav underline",
+    "visible_affordances": "open trigger shown only by the chevron in light (dark adds a surface); fields clear",
+    "coherence": "consistent with desktop sidebar components"
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.2,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Light open-trigger state weaker than dark."
+  },
+  {
+   "file": "kycalendar-04-after-calendar-mobile-dark.png",
+   "sha256": "9f69c3912963d7ca8528f75b77176fc9fa97caa936f2147f2de1ea6269c8eb4f",
+   "bytes": 63342,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": false,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "list view (Monday-Thursday agenda) with phone top bar",
+   "cohort": "calendar-list",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "title, zone line and 'New event' on one row; day headers group rows",
+    "typography": "13px times, 14px bold titles, day/date header row legible",
+    "density_layout": "agenda rows evenly divided; header crowded by a 160px theme select; phone nav row cuts 'Phones & a' mid-word and hides 'Two-step verification' with no scroll cue",
+    "color": "quiet dark rows; accent on primary, nav underline and List tab only",
+    "visible_affordances": "nav clipping gives no cue that two more items scroll; sign-out icon-only",
+    "coherence": "list rows, toolbar and segmented control share one vocabulary"
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.2,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Filename says 'calendar'; captured view is List. Horizontal nav scroll not exercised in the image."
+  },
+  {
+   "file": "kycalendar-04-after-calendar-mobile-light.png",
+   "sha256": "82ec6812b36c00f4463386eefb8cfd22082191a77a475d6c26025d0b62c5e55e",
+   "bytes": 63194,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": false,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "list view with phone top bar",
+   "cohort": "calendar-list",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "title + primary + agenda grouping read top to bottom",
+    "typography": "same clear scale as dark",
+    "density_layout": "even agenda rows inside a bordered table; theme select dominates the header; phone nav row cuts 'Phones & a' mid-word and hides 'Two-step verification' with no scroll cue",
+    "color": "cream/charcoal with teal user dots; restrained accent",
+    "visible_affordances": "no scroll cue on clipped nav; selected List tab clear",
+    "coherence": "consistent components"
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.2,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Filename says 'calendar'; captured view is List."
+  },
+  {
+   "file": "kycalendar-04-after-calendars-open-mobile-dark.png",
+   "sha256": "ddff280d36dc379e96a0e2a37301b93f1d83ce2465916842e53e026802667b12",
+   "bytes": 59706,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "Calendars disclosure panel open over list view",
+   "cohort": "calendar-list",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "disclosure clearly layered over the page with a shadowed panel",
+    "typography": "14px calendar names, 13px button labels",
+    "density_layout": "panel padding even; 'Subscribe to a calendar' text button sits 17px right of the column the 'New calendar' button and checkboxes share; phone nav row cuts 'Phones & a' mid-word and hides 'Two-step verification' with no scroll cue",
+    "color": "accent on checkboxes and nav underline; shadow only on the overlay",
+    "visible_affordances": "open trigger has surface and chevron; Subscribe reads as text not a button",
+    "coherence": "outlined 'New calendar' and text-only Subscribe sit as mismatched siblings"
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Overlay covers the title and primary by design."
+  },
+  {
+   "file": "kycalendar-04-after-calendars-open-mobile-light.png",
+   "sha256": "30a9162ac435c25602e0444560c32e6bac828916584465711744281dfd98cb4f",
+   "bytes": 60522,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "Calendars disclosure panel open over list view",
+   "cohort": "calendar-list",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "clear layered disclosure",
+    "typography": "same as dark",
+    "density_layout": "Subscribe indent; phone nav row cuts 'Phones & a' mid-word and hides 'Two-step verification' with no scroll cue",
+    "color": "two saturated checkboxes are the only accent in the panel",
+    "visible_affordances": "light open trigger shows only a flipped chevron, no surface; Subscribe reads as text",
+    "coherence": "mismatched sibling buttons"
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Light/dark open-trigger treatment differs."
+  },
+  {
+   "file": "kycalendar-04-after-month-desktop-dark.png",
+   "sha256": "b89ac6478260005aad4c329de457c52414e67b03050d977dedb26c5c6e4c0868",
+   "bytes": 83340,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "month grid, single sidebar",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "title, primary, month range and grid read in order",
+    "typography": "event titles hard-clipped without ellipsis ('Design review: c', 'Quarterly plannir', 'Overnight deplo')",
+    "density_layout": "uneven week-row heights; titles clipped; 200px empty below the grid",
+    "color": "out-of-month day numbers estimated ~1.6:1 against the cell (screenshot pixels)",
+    "visible_affordances": "selected Month tab, today number and event chips read clearly",
+    "coherence": "chips, bars and grid share one style"
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 7,
+    "suite_cohesion": 9
+   },
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Contrast estimate is from rendered pixels, not computed style."
+  },
+  {
+   "file": "kycalendar-04-after-month-desktop-light.png",
+   "sha256": "c69d7387d971fc2c0caa7b8b5ef0804ae4b3232c55c0cbdd9d5a7d01922bfb92",
+   "bytes": 83194,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "month grid, single sidebar",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "clear title/primary/grid order",
+    "typography": "hard-clipped event titles without ellipsis",
+    "density_layout": "uneven row heights, clipped titles, empty band below grid",
+    "color": "out-of-month day numbers estimated ~1.35:1 (screenshot pixels)",
+    "visible_affordances": "selection and today clear",
+    "coherence": "consistent grid components"
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 9,
+    "accent_discipline": 7,
+    "suite_cohesion": 9
+   },
+   "ky_fit": 8.4,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Contrast estimate is from rendered pixels, not computed style."
+  },
+  {
+   "file": "kycalendar-04-after-month-mobile-dark.png",
+   "sha256": "baf3e565f9e4dbfe28bf4e4ec87e0c5217fee09b41f96514ed6428cfbe13245e",
+   "bytes": 46590,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "month grid at phone width",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 6,
+    "density_layout": 5,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "title and primary clear; grid content unreadable so the week of interest has no usable focus",
+    "typography": "event labels truncated to 1-4 characters ('9a Te', '10a I', 'Sam's I')",
+    "density_layout": "seven 51px columns cannot hold time + title; chips clipped to illegibility; phone nav row cuts 'Phones & a' mid-word and hides 'Two-step verification' with no scroll cue",
+    "color": "faint out-of-month numerals; otherwise restrained",
+    "visible_affordances": "chips cannot be identified before tapping",
+    "coherence": "same chip style as desktop, which is the problem at this width"
+   },
+   "weighted_sum": 6.3,
+   "total": 6.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 9,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Tap behaviour on chips not visible."
+  },
+  {
+   "file": "kycalendar-04-after-month-mobile-light.png",
+   "sha256": "b841fa4dd33c9fbf132ca86d09595236597174d46bf71b5e89575f45b4615be3",
+   "bytes": 46680,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "month grid at phone width",
+   "cohort": "calendar-grid",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 6,
+    "density_layout": 5,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "title and primary clear; grid content unreadable",
+    "typography": "labels truncated to 1-4 characters",
+    "density_layout": "chips clipped to illegibility; phone nav row cuts 'Phones & a' mid-word and hides 'Two-step verification' with no scroll cue",
+    "color": "faint out-of-month numerals",
+    "visible_affordances": "chips not identifiable",
+    "coherence": "desktop chip style reused unchanged"
+   },
+   "weighted_sum": 6.3,
+   "total": 6.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 9,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Tap behaviour on chips not visible."
+  },
+  {
+   "file": "kycalendar-04-after-subscribe-desktop-dark.png",
+   "sha256": "c35f6515d67f4c79ceea3b20f0664516ada16e92e48e3158dc7936c808c8f1d1",
+   "bytes": 94113,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "week grid with Subscribe form replacing the calendar list in the sidebar",
+   "cohort": "settings",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 5,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "the form's Subscribe/Cancel actions are below the sidebar fold; the calendar list is gone while the form is open",
+    "typography": "five-line Outlook instruction at 13px in a 190px column",
+    "density_layout": "security note clipped mid-sentence ('and anything you') against the theme select with no fade or scroll cue",
+    "color": "default swatch is a red close to the accent, so user data imitates the primary colour",
+    "visible_affordances": "no visible submit; scroll affordance absent",
+    "coherence": "fields match the suite, but the 240px nav column is overloaded as a form panel"
+   },
+   "weighted_sum": 6.25,
+   "total": 6.3,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Sidebar scroll position fixed at top; actions presumably reachable by scrolling (not shown)."
+  },
+  {
+   "file": "kycalendar-04-after-subscribe-desktop-light.png",
+   "sha256": "15d38716a65d8051978128c2e60424aa413d5b28aa306a50e9590a651c7f196d",
+   "bytes": 93854,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "week grid with Subscribe form replacing the calendar list in the sidebar",
+   "cohort": "settings",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 5,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Subscribe/Cancel below the fold; calendar list hidden",
+    "typography": "long instruction wraps to five lines at 13px",
+    "density_layout": "note clipped mid-sentence by the theme select",
+    "color": "accent-like default swatch",
+    "visible_affordances": "no visible submit or scroll cue",
+    "coherence": "nav column overloaded as a form panel"
+   },
+   "weighted_sum": 6.25,
+   "total": 6.3,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 7,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "As dark."
+  },
+  {
+   "file": "kycalendar-04-after-subscribe-mobile-dark.png",
+   "sha256": "b2bd43d3839a6c78762dd45b7379ea34f723bd18ce09f8b8a6b2634a670b1e7b",
+   "bytes": 49668,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "Calendars disclosure with Subscribe form over list view",
+   "cohort": "settings",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "section title, three fields, one filled Subscribe with Cancel",
+    "typography": "17px section heading, 13px labels and helper text, readable line length",
+    "density_layout": "even 8px-based rhythm; full-width fields; whole form fits",
+    "color": "accent on Subscribe and checkboxes; dark-red default swatch",
+    "visible_affordances": "Link and Name carry no required/optional marking (contract asks for it)",
+    "coherence": "matches the edit form and event dialog vocabulary"
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Validation and server errors not shown."
+  },
+  {
+   "file": "kycalendar-04-after-subscribe-mobile-light.png",
+   "sha256": "0a4829013ae4fa99291cd4b42aea3e22dd1b7715caa5f5e6e518eb49ec2d3a80",
+   "bytes": 50285,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "kycalendar",
+   "observed_surface": "Calendars disclosure with Subscribe form over list view",
+   "cohort": "settings",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "one primary Subscribe with Cancel, clear title",
+    "typography": "readable helper and security note",
+    "density_layout": "even rhythm; form fits the viewport",
+    "color": "restrained; accent-like default swatch",
+    "visible_affordances": "no required/optional marking on Link and Name",
+    "coherence": "consistent with edit form"
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 8
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "kycalendar-04-after (screenshots/kycalendar-04-after-manifest.json), Chromium, 2026-10-26T05:40Z",
+   "caveat": "Validation states not shown."
+  }
+ ],
+ "cohort_aggregates": {
+  "kycalendar": {
+   "calendar-grid": {
+    "n": 6,
+    "mean": 7.4,
+    "min": 6.3,
+    "max": 8.2,
+    "min_file": "kycalendar-04-after-month-mobile-dark.png",
+    "ky_fit_mean": 8.27,
+    "ky_fit_min": 8.0,
+    "by_viewport": {
+     "desktop": 7.95,
+     "mobile": 6.3
+    },
+    "by_theme": {
+     "busnes-dark": 7.4,
+     "busnes-light": 7.4
+    },
+    "surfaces": [
+     "month grid at phone width",
+     "month grid, single sidebar",
+     "week grid, Calendars section inside the single app sidebar"
+    ],
+    "matched": false
+   },
+   "calendar-list": {
+    "n": 4,
+    "mean": 7.6,
+    "min": 7.5,
+    "max": 7.7,
+    "min_file": "kycalendar-04-after-calendars-open-mobile-dark.png",
+    "ky_fit_mean": 8.1,
+    "ky_fit_min": 8.0,
+    "by_viewport": {
+     "mobile": 7.6
+    },
+    "by_theme": {
+     "busnes-dark": 7.6,
+     "busnes-light": 7.6
+    },
+    "surfaces": [
+     "Calendars disclosure panel open over list view",
+     "list view (Monday-Thursday agenda) with phone top bar",
+     "list view with phone top bar"
+    ],
+    "matched": false
+   },
+   "settings": {
+    "n": 8,
+    "mean": 7.42,
+    "min": 6.3,
+    "max": 7.9,
+    "min_file": "kycalendar-04-after-subscribe-desktop-dark.png",
+    "ky_fit_mean": 8.0,
+    "ky_fit_min": 7.6,
+    "by_viewport": {
+     "desktop": 7.0,
+     "mobile": 7.85
+    },
+    "by_theme": {
+     "busnes-dark": 7.42,
+     "busnes-light": 7.42
+    },
+    "surfaces": [
+     "Calendars disclosure open with inline edit form over the list view",
+     "Calendars disclosure with Subscribe form over list view",
+     "week grid with Subscribe form replacing the calendar list in the sidebar",
+     "week grid with inline calendar edit form (Name, Colour, Save/Cancel) in the sidebar",
+     "week grid with inline calendar edit form in the sidebar"
+    ],
+    "matched": false
+   }
+  }
+ },
+ "surface_aggregates": {
+  "kycalendar": {
+   "calendar": {
+    "n": 4,
+    "mean": 7.95,
+    "min": 7.7,
+    "ky_fit_mean": 8.3,
+    "cohort": "calendar-grid"
+   },
+   "calendar-edit": {
+    "n": 4,
+    "mean": 7.75,
+    "min": 7.7,
+    "ky_fit_mean": 8.2,
+    "cohort": "settings"
+   },
+   "calendars-open": {
+    "n": 2,
+    "mean": 7.5,
+    "min": 7.5,
+    "ky_fit_mean": 8.0,
+    "cohort": "calendar-list"
+   },
+   "month": {
+    "n": 4,
+    "mean": 7.0,
+    "min": 6.3,
+    "ky_fit_mean": 8.2,
+    "cohort": "calendar-grid"
+   },
+   "subscribe": {
+    "n": 4,
+    "mean": 7.1,
+    "min": 6.3,
+    "ky_fit_mean": 7.8,
+    "cohort": "settings"
+   }
+  }
+ },
+ "product_visual_summary": {
+  "kycalendar": {
+   "label": "coverage summary of scored stage-04 KyCalendar captures; not a ranking",
+   "cohorts": [
+    "calendar-grid",
+    "calendar-list",
+    "settings"
+   ],
+   "equal_cohort_weight_mean": 7.47,
+   "lowest_cohort_mean": 7.4,
+   "lowest_file_total": 6.3,
+   "files_at_or_above_9": 0,
+   "files": 18,
+   "ky_fit_mean": 8.11,
+   "ky_fit_min": 7.6,
+   "meets_9_quality_every_cohort": false
+  }
+ },
+ "cohort_rankings": {
+  "note": "No matched competitor captures exist for these stage-04 implementation files. No provider rank, Ky gap or competitor-win claim is made. Earlier rounds scored different (empty-state, original) KyCalendar images; their numbers are not a baseline for improvement."
+ },
+ "drift": {
+  "note": "Not applicable: these are new implementation captures, not re-scores of earlier images. Earlier reranked grid 7.3 / editor 7.9 described different originals."
+ },
+ "coverage_not_applicable": {
+  "kycalendar": {
+   "event-editor": "N/A at final source. No stage-04 capture of the New event / edit dialog. Stage-03 new-event captures (04:57Z) predate later theme.css/calendar.css edits and still show the rejected two-panel shell behind the dialog; not scored. The dialog appears only as cropped date fields in the focus composite.",
+   "calendar-list desktop": "N/A in the scored set: desktop List appears only in draft-resize mobile-*-2-crossed frames (evidence-only).",
+   "week/day on phone": "N/A: phone landing view is List; phone week appears only behind the disclosure in draft-resize desktop-*-2-crossed frames (evidence-only).",
+   "named themes": "N/A: no stage-04 named-theme capture. Gate run records Nord select persisting under ky_theme; stage-02 Nord captures predate stage 04.",
+   "admin, settings page, devices, auth": "not in the stage-04 batch; not rescored here",
+   "empty/loading/error states": "not captured"
+  }
+ },
+ "gates": {
+  "kycalendar": {
+   "keyboard": {
+    "status": "pass",
+    "executed_by_reviewer": false,
+    "evidence": "Recorded by implementer (screenshots/kycalendar-gates.json, browser/resize.spec.mjs, 24 Chromium tests) on source 62da0101\u2026: Tab walk nav -> list/disclosure -> theme -> Sign out -> New event -> toolbar; dialog initial focus on Title; Escape closes and focus returns to New event; Escape closes the phone disclosure to its summary. Reviewer read the JSON: dialog_focus_left_dialog lists one stop whose text is the whole app ('KyCalendarCalendarPhones\u2026'), consistent with the Chromium browser-chrome wrap on <body>, after which focus re-enters at kc-title. Limits: drag-and-drop has no keyboard path (pre-existing); subscribe/rename form submission by keyboard not separately recorded."
+   },
+   "focus": {
+    "status": "pass",
+    "executed_by_reviewer": false,
+    "evidence": "Recorded: tab_stops_without_ring and dialog_stops_without_ring empty in all four runs; date_focus visible in all. Reviewer inspected kycalendar-04-after-focus-date-fields.png: 2px accent ring at offset on the field root in both themes; picker-icon focus shows Chromium's native black/white box, accepted per the design contract. Accent ring also visible on the focused subscription Name field in draft-resize frames."
+   },
+   "contrast": {
+    "status": "fail",
+    "executed_by_reviewer": true,
+    "evidence": "Recorded computed-style checks pass for 19-22 pairs per run (min 3.36:1 button border). Not covered: out-of-month day numbers in Month view. Reviewer screenshot-pixel estimate (darkest glyph pixel vs cell): ~1.35:1 Busnes Light, ~1.57:1 Busnes Dark (month-desktop crops at 380,192-404,210 and 390,632-404,650). Cause: FullCalendar's bundled `.fc-day-other .fc-daygrid-day-top{opacity:.3}` stacks with web/src/styles/calendar.css:90 `opacity:.7` (effective ~0.21). Pixel estimate is a proxy; confirm with computed style after the fix. Named palettes unmeasured."
+   },
+   "states": {
+    "status": "untested",
+    "executed_by_reviewer": false,
+    "evidence": "No empty, loading or error captures for calendar views, calendar edit or subscribe forms."
+   },
+   "responsive": {
+    "status": "pass",
+    "executed_by_reviewer": false,
+    "evidence": "Recorded overflow_px 0 for all 32 captures and 4 gate runs; mobile_nav scrolls (overflow-x auto) with all three items reachable; targets >=40px except 16px checkboxes with 40px labels. Reviewer note (quality, not gate): phone nav clips 'Phones & a' mid-word with no scroll cue, and phone Month labels are illegible."
+   }
+  }
+ },
+ "checks_recorded": {
+  "kycalendar": [
+   {
+    "check": "make ci (tidy, gofmt+vet, go test -race, vendored go-webdav, npm ci && npm test 22 files/155 tests, smoke)",
+    "result": "pass",
+    "executed_by_reviewer": false
+   },
+   {
+    "check": "npm run build (typecheck, vendor hash)",
+    "result": "pass",
+    "executed_by_reviewer": false
+   },
+   {
+    "check": "npm run test:browser (Chromium, light/dark x 390/1280)",
+    "result": "24 passed",
+    "executed_by_reviewer": false
+   },
+   {
+    "check": "make test-postgres",
+    "result": "not run (no PostgreSQL)",
+    "executed_by_reviewer": false
+   },
+   {
+    "check": "Docker image build",
+    "result": "not run locally",
+    "executed_by_reviewer": false
+   }
+  ]
+ },
+ "checks": {
+  "reviewer_executed": [
+   "sha256/dimensions of all 33 kycalendar-04-after-*.png files (match manifest)",
+   "pairwise pixel diff of same-size captures (PIL)",
+   "git diff 9a527d2 -- web/src web/browser == stage-04-after.src.patch (cmp)",
+   "screenshot-pixel contrast estimates for out-of-month numerals and Today button (5.73 light / 8.26 dark, matches recorded)",
+   "grep of built dist CSS for the stacked .fc-day-other opacity rules",
+   "Decimal recomputation of every total, ky_fit and mean (this file)"
+  ]
+ },
+ "unscored": [
+  {
+   "file": "kycalendar-04-after-calendars-open-desktop-dark.png",
+   "reason": "exact duplicate (same SHA-256); desktop renders the calendar list in the sidebar, so the disclosure has no open state",
+   "duplicate_of": "kycalendar-04-after-calendar-desktop-dark.png"
+  },
+  {
+   "file": "kycalendar-04-after-calendars-open-desktop-light.png",
+   "reason": "exact duplicate (same SHA-256); desktop renders the calendar list in the sidebar, so the disclosure has no open state",
+   "duplicate_of": "kycalendar-04-after-calendar-desktop-light.png"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-desktop-dark-1-typed.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-desktop-dark-2-crossed.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-desktop-dark-3-back.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-desktop-light-1-typed.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-desktop-light-2-crossed.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-desktop-light-3-back.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-mobile-dark-1-typed.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-mobile-dark-2-crossed.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-mobile-dark-3-back.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-mobile-light-1-typed.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-mobile-light-2-crossed.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-draft-resize-mobile-light-3-back.png",
+   "reason": "intermediate draft-retention sequence; inspected as behaviour evidence, excluded from cohort means"
+  },
+  {
+   "file": "kycalendar-04-after-focus-date-fields.png",
+   "reason": "1542x522 focus crop composite; inspected as focus evidence, excluded from cohort means"
+  }
+ ],
+ "arithmetic_validation": {
+  "method": "finalize.py re-hashes the frozen scores, recomputes total = half_up(sum(Decimal(weight)*score), 0.1) and ky_fit = half_up(mean of 5, 0.1) for every file and asserts equality; cohort and product means recomputed from unrounded file totals.",
+  "files_recomputed": 18,
+  "mismatches": 0,
+  "inventory_check": "33 PNGs = 18 scored + 2 exact duplicates + 12 draft-resize + 1 focus composite"
+ }
+}

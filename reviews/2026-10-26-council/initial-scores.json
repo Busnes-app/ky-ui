@@ -1,0 +1,1651 @@
+{
+  "schema": "ky-ui-council-scores/1",
+  "round": "initial comparative rating",
+  "reviewer": {
+    "model": "Claude Opus 5.5",
+    "model_id": "claude-opus-5-5",
+    "role": "design sub-agent"
+  },
+  "provenance": {
+    "date": "2026-10-26",
+    "requested_by": "user, via parent Codex orchestration task",
+    "prior_attempt": "An earlier Claude Opus 5.5 run over Codex transport inspected images but failed while writing; cancelled with no artifacts. Its observations were treated as hypotheses and re-checked against the originals.",
+    "method": "Every original PNG viewed at full resolution with an image reader; no contact sheets. Product and surface assigned from visible content. Duplicate check by pixel difference (PIL).",
+    "not_consulted": [
+      "source-evidence.md",
+      "detector findings"
+    ],
+    "source_dir": "/home/yoshi/Pictures/KyPost-UI-Councel/ (originals stay outside the repository; none uploaded)"
+  },
+  "rubric": {
+    "version": "initial-2026-10-26",
+    "scale": "integer 0-10 per dimension",
+    "weights": {
+      "hierarchy": 0.2,
+      "typography": 0.15,
+      "density_layout": 0.2,
+      "color": 0.15,
+      "visible_affordances": 0.15,
+      "coherence": 0.15
+    },
+    "total": "sum(weight*score), rounded half-up to one decimal",
+    "aggregation": "cohort and provider means use unique files only (duplicates excluded), rounded half-up",
+    "limits": "Visual judgement from static screenshots only. No functionality, interaction or accessibility claims. 9/10 is the user's target, not an expected score."
+  },
+  "inventory": {
+    "files": 40,
+    "scored": 40,
+    "unique_scored": 39,
+    "duplicates": [
+      {
+        "file": "KyPost-live-Contacts-01.png",
+        "duplicate_of": "KyPost-live-03.png",
+        "evidence": "different SHA-256; pixel diff 1 px by 1 level"
+      }
+    ]
+  },
+  "unscored": [
+    {
+      "product": "KyMessages",
+      "reason": "No screenshots supplied. Unscored, not zero."
+    }
+  ],
+  "files": [
+    {
+      "file": "Gmail-01.png",
+      "sha256": "f4e8e9fecdd53bb6889c6fa12c260283ff199fab70af5e61231b8f5d0e07b602",
+      "bytes": 1551945,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Google",
+      "observed_product": "Gmail",
+      "observed_surface": "inbox list",
+      "cohort": "mail",
+      "state": "sparse (2 rows)",
+      "theme": "light, user photo background",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 7,
+        "density_layout": 7,
+        "color": 4,
+        "visible_affordances": 7,
+        "coherence": 7
+      },
+      "total": 6.6,
+      "caveat": "User-chosen photo theme lowers sidebar label contrast; scored as captured."
+    },
+    {
+      "file": "Gmail-02.png",
+      "sha256": "97c01a15a882ef4dafd04803c38f85f6a123b47f5edcc35b9f85ceca17811642",
+      "bytes": 1343998,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Google",
+      "observed_product": "Gmail",
+      "observed_surface": "compose (docked)",
+      "cohort": "compose",
+      "state": "modal over sparse inbox",
+      "theme": "light, user photo background",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 8,
+        "typography": 7,
+        "density_layout": 8,
+        "color": 6,
+        "visible_affordances": 8,
+        "coherence": 7
+      },
+      "total": 7.4,
+      "caveat": "Same photo theme as Gmail-01."
+    },
+    {
+      "file": "Gmail-Calendar-01.png",
+      "sha256": "2f587bdba44f6942092ecb42a967b11943c3ed811f02c9fa528bdffcf4dfbe5a",
+      "bytes": 170042,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Google",
+      "observed_product": "Google Calendar",
+      "observed_surface": "month view",
+      "cohort": "calendar",
+      "state": "populated",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 8,
+        "typography": 7,
+        "density_layout": 8,
+        "color": 7,
+        "visible_affordances": 8,
+        "coherence": 8
+      },
+      "total": 7.7,
+      "caveat": "Only populated calendar besides Outlook-03; dark while Google Contacts capture is light."
+    },
+    {
+      "file": "Gmail-Calendar-02.png",
+      "sha256": "877817df5556989c874b7f9eb3794b631b599acb37bc52e02ed6cea4caed1c26",
+      "bytes": 198801,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Google",
+      "observed_product": "Google Calendar",
+      "observed_surface": "event quick-create popover",
+      "cohort": "calendar",
+      "state": "editor over populated month",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 8,
+        "typography": 7,
+        "density_layout": 8,
+        "color": 7,
+        "visible_affordances": 8,
+        "coherence": 8
+      },
+      "total": 7.7,
+      "caveat": "Quick-create popover, not the full event editor."
+    },
+    {
+      "file": "Gmail-Contacts-01.png",
+      "sha256": "fb90c18070a69c5bb19ab5df1b1ee4161368e95c6f1afaa43b8490ad28418b7a",
+      "bytes": 123809,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Google",
+      "observed_product": "Google Contacts",
+      "observed_surface": "contacts list",
+      "cohort": "contacts",
+      "state": "sparse (3 rows) + promo side panel",
+      "theme": "light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 7,
+        "density_layout": 6,
+        "color": 8,
+        "visible_affordances": 7,
+        "coherence": 7
+      },
+      "total": 7.0,
+      "caveat": "Light theme vs dark calendar capture: mixed capture conditions within provider."
+    },
+    {
+      "file": "KyPost-live-01.png",
+      "sha256": "3a927094f884b74733327001778635391e88c44aa12ac5a5cba226ff7779381d",
+      "bytes": 112517,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyPost",
+      "observed_surface": "inbox list",
+      "cohort": "mail",
+      "state": "sparse (2 rows)",
+      "theme": "Busnes Light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 5,
+        "color": 4,
+        "visible_affordances": 5,
+        "coherence": 5
+      },
+      "total": 5.2,
+      "caveat": "No selection, so six salmon toolbar buttons read as loud disabled controls; sparse inbox cannot show list density."
+    },
+    {
+      "file": "KyPost-live-02.png",
+      "sha256": "fb38260befcfbf79af884b834590ba7efaecc55adec1073b83dbb3bb2f653b3c",
+      "bytes": 102673,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyPost",
+      "observed_surface": "compose (modal)",
+      "cohort": "compose",
+      "state": "modal over sparse inbox",
+      "theme": "Busnes Light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 5,
+        "density_layout": 6,
+        "color": 6,
+        "visible_affordances": 5,
+        "coherence": 5
+      },
+      "total": 5.6,
+      "caveat": "Recipient inputs render with a nested double border."
+    },
+    {
+      "file": "KyPost-live-03.png",
+      "sha256": "91004af6915e2823954b5064ec82130a385a754f5dfed934c28bdc240e9ed86f",
+      "bytes": 215900,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyPost",
+      "observed_surface": "contacts list",
+      "cohort": "contacts",
+      "state": "populated (page 1 of 4)",
+      "theme": "Busnes Light",
+      "filename_matches_content": false,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 5,
+        "visible_affordances": 4,
+        "coherence": 4
+      },
+      "total": 5.3,
+      "caveat": "Filename suggests mail; content is Contacts. Pixel-identical (1 px, 1 level) to KyPost-live-Contacts-01."
+    },
+    {
+      "file": "KyPost-live-04.png",
+      "sha256": "fe3264232d35a6445b25d51dc72e7291499dff6daee3d702cadc1415e3e5d4ea",
+      "bytes": 112630,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyPost",
+      "observed_surface": "settings: appearance",
+      "cohort": "settings",
+      "state": "populated (theme grid)",
+      "theme": "Busnes Light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 6,
+        "density_layout": 7,
+        "color": 7,
+        "visible_affordances": 7,
+        "coherence": 6
+      },
+      "total": 6.7,
+      "caveat": ""
+    },
+    {
+      "file": "KyPost-live-05.png",
+      "sha256": "5b85a7c87eab077cecb00f0cbcf2ef86a6be3a70c6770a8a0c4a047f3c3cd8c0",
+      "bytes": 176795,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyPost",
+      "observed_surface": "settings: mail server",
+      "cohort": "settings",
+      "state": "populated form",
+      "theme": "Busnes Light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 5,
+        "typography": 6,
+        "density_layout": 5,
+        "color": 5,
+        "visible_affordances": 4,
+        "coherence": 5
+      },
+      "total": 5.0,
+      "caveat": "Password-manager overlay covers the header; destructive Delete styled like Save."
+    },
+    {
+      "file": "KyPost-live-06.png",
+      "sha256": "3521843022115e9598cc1f07c2fb46460444f61bc18171d4c3c21022fa067931",
+      "bytes": 157627,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyPost",
+      "observed_surface": "settings: security",
+      "cohort": "settings",
+      "state": "populated, scrolled",
+      "theme": "Busnes Light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 5,
+        "density_layout": 6,
+        "color": 5,
+        "visible_affordances": 6,
+        "coherence": 5
+      },
+      "total": 5.6,
+      "caveat": "Scrolled capture; page header and logo cut off."
+    },
+    {
+      "file": "KyPost-live-Calendar-01.png",
+      "sha256": "627266351f462b57476249b29a835adb911a5e3ddccf03be9d6396e2575969bc",
+      "bytes": 80419,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyCalendar",
+      "observed_surface": "week view",
+      "cohort": "calendar",
+      "state": "empty",
+      "theme": "Busnes Light",
+      "filename_matches_content": false,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 7,
+        "visible_affordances": 6,
+        "coherence": 5
+      },
+      "total": 6.0,
+      "caveat": "Separate KyCalendar app with its own shell and logo, not a KyPost view. Empty week; no event rendering evidence."
+    },
+    {
+      "file": "KyPost-live-Calendar-02.png",
+      "sha256": "dd4d516c42c5a929d0c2be8063a3bbd351a8cb40dbc11de3d81a8a4db97ae7cf",
+      "bytes": 95055,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyCalendar",
+      "observed_surface": "event editor (modal)",
+      "cohort": "calendar",
+      "state": "editor over empty week",
+      "theme": "Busnes Light",
+      "filename_matches_content": false,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 6,
+        "density_layout": 7,
+        "color": 7,
+        "visible_affordances": 7,
+        "coherence": 6
+      },
+      "total": 6.7,
+      "caveat": "Separate KyCalendar app. Default start shows 12:00 AM."
+    },
+    {
+      "file": "KyPost-live-Contacts-01.png",
+      "sha256": "4abbc11966f17e8f071f2b875ea199ea7d36302d697f2d355f5de8a7ecb2ae90",
+      "bytes": 215896,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyPost",
+      "observed_surface": "contacts list",
+      "cohort": "contacts",
+      "state": "populated (page 1 of 4)",
+      "theme": "Busnes Light",
+      "filename_matches_content": true,
+      "duplicate_of": "KyPost-live-03.png",
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 5,
+        "visible_affordances": 4,
+        "coherence": 4
+      },
+      "total": 5.3,
+      "caveat": "Duplicate of KyPost-live-03; counted once in aggregates."
+    },
+    {
+      "file": "KyPost-live-Contacts-02.png",
+      "sha256": "c6e15317a4084a7867ce87d89855537176dbf2fe82e32b83f1ae1055c6045ab8",
+      "bytes": 166012,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyPost",
+      "observed_surface": "contact editor (modal)",
+      "cohort": "contacts",
+      "state": "empty form",
+      "theme": "Busnes Light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 4,
+        "typography": 6,
+        "density_layout": 3,
+        "color": 6,
+        "visible_affordances": 5,
+        "coherence": 4
+      },
+      "total": 4.6,
+      "caveat": "Form cut off below Emails; one bordered card per field."
+    },
+    {
+      "file": "KyPost-live-Notes-01.png",
+      "sha256": "510b2fd72fe6039487e5e338bdd4ea75a070218b95eea057355c23c120517cc7",
+      "bytes": 74355,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyNotes",
+      "observed_surface": "notes workspace",
+      "cohort": "secondary",
+      "state": "empty (encryption key not set)",
+      "theme": "Busnes Light",
+      "filename_matches_content": false,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 5,
+        "color": 6,
+        "visible_affordances": 5,
+        "coherence": 5
+      },
+      "total": 5.5,
+      "caveat": "KyNotes, not KyPost; a third Ky shell variant (top bar)."
+    },
+    {
+      "file": "Outlook-01.png",
+      "sha256": "7c95a3777f1b4c0902b8785946a2bda86596865a7ea1c418d008fe135b25fbb3",
+      "bytes": 530944,
+      "width": 1543,
+      "height": 822,
+      "observed_provider": "Microsoft",
+      "observed_product": "Outlook 2013 desktop",
+      "observed_surface": "inbox + reading pane",
+      "cohort": "mail",
+      "state": "populated",
+      "theme": "Office 2013 default",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 7,
+        "color": 4,
+        "visible_affordances": 7,
+        "coherence": 6
+      },
+      "total": 6.1,
+      "caveat": "Third-party video still of a 2013 desktop client with activation-failure title bar and cursor; not Outlook on the web and not comparable to current web mail."
+    },
+    {
+      "file": "Outlook-02.png",
+      "sha256": "ff073ad56c0a6a5d81af2a538b190938ac26e892bec954a5472c79f17443c1a1",
+      "bytes": 295247,
+      "width": 1543,
+      "height": 822,
+      "observed_provider": "Microsoft",
+      "observed_product": "Outlook 2013 desktop",
+      "observed_surface": "compose window",
+      "cohort": "compose",
+      "state": "empty form over inbox",
+      "theme": "Office 2013 default",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 5,
+        "density_layout": 6,
+        "color": 5,
+        "visible_affordances": 7,
+        "coherence": 6
+      },
+      "total": 5.9,
+      "caveat": "Same 2013 vintage and third-party source as Outlook-01."
+    },
+    {
+      "file": "Outlook-03.png",
+      "sha256": "ffb69f8dd75c0e779893b2825a0a0d6eee6574c0e57bf2c89358fc2137fb36c4",
+      "bytes": 331249,
+      "width": 1090,
+      "height": 581,
+      "observed_provider": "Microsoft",
+      "observed_product": "Outlook (classic, Microsoft 365 desktop)",
+      "observed_surface": "week view",
+      "cohort": "calendar",
+      "state": "populated, partly redacted",
+      "theme": "light",
+      "filename_matches_content": false,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 5,
+        "density_layout": 6,
+        "color": 6,
+        "visible_affordances": 7,
+        "coherence": 6
+      },
+      "total": 6.0,
+      "caveat": "Different client generation from Outlook-01/02 (2025 calendar, lower resolution 1090x581, blurred items). Mixed-vintage evidence."
+    },
+    {
+      "file": "Proton-01.png",
+      "sha256": "950f9bcfafac4af76b471d8df5c5141b963688406012a02b4bedc729ec29d0fa",
+      "bytes": 127220,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Proton",
+      "observed_product": "Proton Mail",
+      "observed_surface": "inbox list",
+      "cohort": "mail",
+      "state": "sparse (4 rows) + upsell banner",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 8,
+        "density_layout": 8,
+        "color": 7,
+        "visible_affordances": 8,
+        "coherence": 8
+      },
+      "total": 7.7,
+      "caveat": "Upsell button is the most saturated element after New message."
+    },
+    {
+      "file": "Proton-02.png",
+      "sha256": "14cab75c61115a147e142e7a1006e1622f1172e487249f76860598e0b056e59d",
+      "bytes": 171885,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Proton",
+      "observed_product": "Proton Mail",
+      "observed_surface": "compose (docked)",
+      "cohort": "compose",
+      "state": "editor over sparse inbox",
+      "theme": "dark (white editor body)",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 7,
+        "density_layout": 7,
+        "color": 7,
+        "visible_affordances": 8,
+        "coherence": 7
+      },
+      "total": 7.2,
+      "caveat": "Onboarding tooltip covers part of the formatting bar."
+    },
+    {
+      "file": "Proton-Drive-01.png",
+      "sha256": "9de9c93f1473c7f4c48c155743ee774d770046422600350144313ec4a99e5da0",
+      "bytes": 102610,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Proton",
+      "observed_product": "Proton Drive",
+      "observed_surface": "file list",
+      "cohort": "secondary",
+      "state": "empty (onboarding promo)",
+      "theme": "light content, dark sidebar",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 7,
+        "density_layout": 6,
+        "color": 7,
+        "visible_affordances": 8,
+        "coherence": 7
+      },
+      "total": 7.0,
+      "caveat": "Empty state with promotional countdown; no file-list evidence."
+    },
+    {
+      "file": "Proton-calendar-01.png",
+      "sha256": "70f6ac9144c44443aabafe79ad6d3ec474306a5de9073a38b3a5121ae8bce4b6",
+      "bytes": 97555,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Proton",
+      "observed_product": "Proton Calendar",
+      "observed_surface": "week view",
+      "cohort": "calendar",
+      "state": "empty + permission banner",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 8,
+        "typography": 8,
+        "density_layout": 7,
+        "color": 7,
+        "visible_affordances": 8,
+        "coherence": 8
+      },
+      "total": 7.7,
+      "caveat": "Empty week; no event rendering evidence."
+    },
+    {
+      "file": "Proton-calendar-02.png",
+      "sha256": "f1f728989cbc569f88c34b7abe2f6f9bbb342d4a382114ba1afa7a899a7c6715",
+      "bytes": 148077,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Proton",
+      "observed_product": "Proton Calendar",
+      "observed_surface": "event editor (modal)",
+      "cohort": "calendar",
+      "state": "editor over empty week",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 7,
+        "density_layout": 8,
+        "color": 7,
+        "visible_affordances": 8,
+        "coherence": 8
+      },
+      "total": 7.5,
+      "caveat": "Password-manager overlay over the toolbar."
+    },
+    {
+      "file": "mailboxorg-01.png",
+      "sha256": "d61d58fd3039f1cdabc9708b0fdd52495148b5de659c2b3d982c06db1dfc284d",
+      "bytes": 1192305,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org Mail",
+      "observed_surface": "inbox list",
+      "cohort": "mail",
+      "state": "populated (40 messages)",
+      "theme": "light, user photo background",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 8,
+        "color": 5,
+        "visible_affordances": 6,
+        "coherence": 7
+      },
+      "total": 6.4,
+      "caveat": "Only populated web inbox; translucent panels over a photo background."
+    },
+    {
+      "file": "mailboxorg-02.png",
+      "sha256": "33248abbf455a3d07e1557e0cab709e1ae532747251ec61eb118b85d8dd45e4a",
+      "bytes": 925411,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org Mail",
+      "observed_surface": "compose (dialog)",
+      "cohort": "compose",
+      "state": "editor over populated inbox",
+      "theme": "light, user photo background",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 6,
+        "density_layout": 7,
+        "color": 6,
+        "visible_affordances": 7,
+        "coherence": 7
+      },
+      "total": 6.7,
+      "caveat": "Browser mailto prompt in corner is a capture artifact."
+    },
+    {
+      "file": "mailboxorg-03.png",
+      "sha256": "b7e91ac40318c864c1beeb30f528374da28cf03b8a07c92398b64d7b064dfb47",
+      "bytes": 528202,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org",
+      "observed_surface": "settings: general/theme",
+      "cohort": "settings",
+      "state": "populated",
+      "theme": "light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 6,
+        "density_layout": 7,
+        "color": 6,
+        "visible_affordances": 7,
+        "coherence": 7
+      },
+      "total": 6.7,
+      "caveat": ""
+    },
+    {
+      "file": "mailboxorg-04.png",
+      "sha256": "28670924932a46e2f3b03d3eb975c8d0e0958d28e30b20caf1c72b43a8870620",
+      "bytes": 442769,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org",
+      "observed_surface": "settings: mail",
+      "cohort": "settings",
+      "state": "populated",
+      "theme": "light",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 7,
+        "density_layout": 7,
+        "color": 7,
+        "visible_affordances": 8,
+        "coherence": 7
+      },
+      "total": 7.2,
+      "caveat": ""
+    },
+    {
+      "file": "mailboxorg-address_book-02.png",
+      "sha256": "4c9dc8f983a370880c0f1f3510a70ee70173e0067eb5d7ae88efe34864b949aa",
+      "bytes": 1072551,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org Address Book",
+      "observed_surface": "contacts list + detail",
+      "cohort": "contacts",
+      "state": "sparse (1 contact)",
+      "theme": "light, user photo background",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 7,
+        "density_layout": 5,
+        "color": 5,
+        "visible_affordances": 7,
+        "coherence": 7
+      },
+      "total": 6.3,
+      "caveat": "No -01 counterpart supplied; single-contact list."
+    },
+    {
+      "file": "mailboxorg-calendar-01.png",
+      "sha256": "a3ae9ec47a3fdb07d794a0e075fa3ef28e2e434cc5ebb78657bc351238a9d185",
+      "bytes": 939586,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org Calendar",
+      "observed_surface": "week view",
+      "cohort": "calendar",
+      "state": "appears empty (scrolled to afternoon)",
+      "theme": "light, user photo background",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 7,
+        "density_layout": 6,
+        "color": 5,
+        "visible_affordances": 7,
+        "coherence": 7
+      },
+      "total": 6.5,
+      "caveat": "Events visible behind the editor in calendar-02 are absent here: load timing or capture-state mismatch."
+    },
+    {
+      "file": "mailboxorg-calendar-02.png",
+      "sha256": "43e81c6c455996dee041ad668ce940c9c73695baf54ea2a0f189d8d36966dc44",
+      "bytes": 760302,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org Calendar",
+      "observed_surface": "event editor (dialog)",
+      "cohort": "calendar",
+      "state": "editor over populated week",
+      "theme": "light, user photo background",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 7,
+        "color": 6,
+        "visible_affordances": 7,
+        "coherence": 7
+      },
+      "total": 6.5,
+      "caveat": ""
+    },
+    {
+      "file": "mailboxorg-drive-01.png",
+      "sha256": "0702cf5306ae652c0eb69471e77205eca645d1bf47d07cb8734d0e1d7b5dc63a",
+      "bytes": 939593,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org Drive",
+      "observed_surface": "file list",
+      "cohort": "secondary",
+      "state": "sparse (4 folders)",
+      "theme": "light, user photo background",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 5,
+        "visible_affordances": 6,
+        "coherence": 7
+      },
+      "total": 6.0,
+      "caveat": ""
+    },
+    {
+      "file": "mailboxorg-notes-01.png",
+      "sha256": "068be784542b779dbdd4e5b4f3635384c93e49ff49ad9a81733414d620827235",
+      "bytes": 146309,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "mailbox.org",
+      "observed_product": "mailbox.org Notes",
+      "observed_surface": "notes start page",
+      "cohort": "secondary",
+      "state": "empty",
+      "theme": "unstyled legacy page",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 4,
+        "typography": 4,
+        "density_layout": 4,
+        "color": 3,
+        "visible_affordances": 4,
+        "coherence": 2
+      },
+      "total": 3.6,
+      "caveat": "Legacy page outside the suite shell."
+    },
+    {
+      "file": "mailboxorg-notes-02.png",
+      "sha256": "cfa6080cb366edf2a8e644bf728d8bffa562dd65f81e0f26797bc84ba72fe5ff",
+      "bytes": 149341,
+      "width": 1548,
+      "height": 1096,
+      "observed_provider": "Ky",
+      "observed_product": "KyNotes",
+      "observed_surface": "settings: preferences",
+      "cohort": "secondary",
+      "state": "populated",
+      "theme": "Busnes Light",
+      "filename_matches_content": false,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 7,
+        "visible_affordances": 6,
+        "coherence": 5
+      },
+      "total": 6.2,
+      "caveat": "Filename says mailbox.org; content is KyNotes settings. Explicit Apply theme differs from KyPost's instant apply."
+    },
+    {
+      "file": "tuta-01.png",
+      "sha256": "78e40b571b172acb53def49157150e2240b793ded1f5a66aebd65c36dbb84c7e",
+      "bytes": 64788,
+      "width": 1541,
+      "height": 1092,
+      "observed_provider": "Tuta",
+      "observed_product": "Tuta Mail",
+      "observed_surface": "inbox list",
+      "cohort": "mail",
+      "state": "sparse (2 rows)",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 6,
+        "visible_affordances": 6,
+        "coherence": 7
+      },
+      "total": 6.4,
+      "caveat": ""
+    },
+    {
+      "file": "tuta-02.png",
+      "sha256": "9bb695f3f191d3f742e8891e9f65581e4f476a016198519b0fd17d9ed1942a53",
+      "bytes": 67853,
+      "width": 1541,
+      "height": 1092,
+      "observed_provider": "Tuta",
+      "observed_product": "Tuta Mail",
+      "observed_surface": "compose (sheet)",
+      "cohort": "compose",
+      "state": "empty",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 6,
+        "visible_affordances": 5,
+        "coherence": 7
+      },
+      "total": 6.0,
+      "caveat": ""
+    },
+    {
+      "file": "tuta-03.png",
+      "sha256": "389e9e267d7a10e10ca33196998d08feb6a508e596294dfe6276b45796008af2",
+      "bytes": 53113,
+      "width": 1541,
+      "height": 1092,
+      "observed_provider": "Tuta",
+      "observed_product": "Tuta Contacts",
+      "observed_surface": "contacts list",
+      "cohort": "contacts",
+      "state": "sparse (2 rows)",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 6,
+        "visible_affordances": 6,
+        "coherence": 7
+      },
+      "total": 6.2,
+      "caveat": ""
+    },
+    {
+      "file": "tuta-04.png",
+      "sha256": "8f56c2ccf872649f9a9c4ebe4bbaff79a4ad4fc9fff1e41f9dd7c9c024f75ca4",
+      "bytes": 88353,
+      "width": 1541,
+      "height": 1092,
+      "observed_provider": "Tuta",
+      "observed_product": "Tuta Contacts",
+      "observed_surface": "contact editor (sheet)",
+      "cohort": "contacts",
+      "state": "empty form",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 6,
+        "typography": 5,
+        "density_layout": 7,
+        "color": 6,
+        "visible_affordances": 5,
+        "coherence": 7
+      },
+      "total": 6.1,
+      "caveat": "Password-manager autofill overlay on first field."
+    },
+    {
+      "file": "tuta-05.png",
+      "sha256": "ccd0bf66e68c181670a16e01f380c3ab65af0681b4efb92a9f7371d72e518345",
+      "bytes": 72918,
+      "width": 1541,
+      "height": 1092,
+      "observed_provider": "Tuta",
+      "observed_product": "Tuta Calendar",
+      "observed_surface": "month view",
+      "cohort": "calendar",
+      "state": "empty",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 6,
+        "density_layout": 6,
+        "color": 6,
+        "visible_affordances": 6,
+        "coherence": 7
+      },
+      "total": 6.4,
+      "caveat": "Empty month; no event rendering evidence."
+    },
+    {
+      "file": "tuta-06.png",
+      "sha256": "4c66cb66d806fa1d323be8bdf6e4ed1a24183f74bde0ec2ec57b3b30e63bbe2c",
+      "bytes": 93336,
+      "width": 1541,
+      "height": 1092,
+      "observed_provider": "Tuta",
+      "observed_product": "Tuta Calendar",
+      "observed_surface": "event editor (sheet)",
+      "cohort": "calendar",
+      "state": "editor over empty month",
+      "theme": "dark",
+      "filename_matches_content": true,
+      "duplicate_of": null,
+      "scores": {
+        "hierarchy": 7,
+        "typography": 6,
+        "density_layout": 7,
+        "color": 6,
+        "visible_affordances": 7,
+        "coherence": 7
+      },
+      "total": 6.7,
+      "caveat": ""
+    }
+  ],
+  "cohort_rankings": {
+    "mail": {
+      "by_product": [
+        {
+          "product": "Proton Mail",
+          "n": 1,
+          "mean_total": 7.7,
+          "files": [
+            "Proton-01.png"
+          ]
+        },
+        {
+          "product": "Gmail",
+          "n": 1,
+          "mean_total": 6.6,
+          "files": [
+            "Gmail-01.png"
+          ]
+        },
+        {
+          "product": "mailbox.org Mail",
+          "n": 1,
+          "mean_total": 6.4,
+          "files": [
+            "mailboxorg-01.png"
+          ]
+        },
+        {
+          "product": "Tuta Mail",
+          "n": 1,
+          "mean_total": 6.4,
+          "files": [
+            "tuta-01.png"
+          ]
+        },
+        {
+          "product": "Outlook 2013 desktop",
+          "n": 1,
+          "mean_total": 6.1,
+          "files": [
+            "Outlook-01.png"
+          ]
+        },
+        {
+          "product": "KyPost",
+          "n": 1,
+          "mean_total": 5.2,
+          "files": [
+            "KyPost-live-01.png"
+          ]
+        }
+      ],
+      "files_ranked": [
+        {
+          "file": "Proton-01.png",
+          "product": "Proton Mail",
+          "surface": "inbox list",
+          "total": 7.7
+        },
+        {
+          "file": "Gmail-01.png",
+          "product": "Gmail",
+          "surface": "inbox list",
+          "total": 6.6
+        },
+        {
+          "file": "mailboxorg-01.png",
+          "product": "mailbox.org Mail",
+          "surface": "inbox list",
+          "total": 6.4
+        },
+        {
+          "file": "tuta-01.png",
+          "product": "Tuta Mail",
+          "surface": "inbox list",
+          "total": 6.4
+        },
+        {
+          "file": "Outlook-01.png",
+          "product": "Outlook 2013 desktop",
+          "surface": "inbox + reading pane",
+          "total": 6.1
+        },
+        {
+          "file": "KyPost-live-01.png",
+          "product": "KyPost",
+          "surface": "inbox list",
+          "total": 5.2
+        }
+      ]
+    },
+    "compose": {
+      "by_product": [
+        {
+          "product": "Gmail",
+          "n": 1,
+          "mean_total": 7.4,
+          "files": [
+            "Gmail-02.png"
+          ]
+        },
+        {
+          "product": "Proton Mail",
+          "n": 1,
+          "mean_total": 7.2,
+          "files": [
+            "Proton-02.png"
+          ]
+        },
+        {
+          "product": "mailbox.org Mail",
+          "n": 1,
+          "mean_total": 6.7,
+          "files": [
+            "mailboxorg-02.png"
+          ]
+        },
+        {
+          "product": "Tuta Mail",
+          "n": 1,
+          "mean_total": 6.0,
+          "files": [
+            "tuta-02.png"
+          ]
+        },
+        {
+          "product": "Outlook 2013 desktop",
+          "n": 1,
+          "mean_total": 5.9,
+          "files": [
+            "Outlook-02.png"
+          ]
+        },
+        {
+          "product": "KyPost",
+          "n": 1,
+          "mean_total": 5.6,
+          "files": [
+            "KyPost-live-02.png"
+          ]
+        }
+      ],
+      "files_ranked": [
+        {
+          "file": "Gmail-02.png",
+          "product": "Gmail",
+          "surface": "compose (docked)",
+          "total": 7.4
+        },
+        {
+          "file": "Proton-02.png",
+          "product": "Proton Mail",
+          "surface": "compose (docked)",
+          "total": 7.2
+        },
+        {
+          "file": "mailboxorg-02.png",
+          "product": "mailbox.org Mail",
+          "surface": "compose (dialog)",
+          "total": 6.7
+        },
+        {
+          "file": "tuta-02.png",
+          "product": "Tuta Mail",
+          "surface": "compose (sheet)",
+          "total": 6.0
+        },
+        {
+          "file": "Outlook-02.png",
+          "product": "Outlook 2013 desktop",
+          "surface": "compose window",
+          "total": 5.9
+        },
+        {
+          "file": "KyPost-live-02.png",
+          "product": "KyPost",
+          "surface": "compose (modal)",
+          "total": 5.6
+        }
+      ]
+    },
+    "calendar": {
+      "by_product": [
+        {
+          "product": "Google Calendar",
+          "n": 2,
+          "mean_total": 7.7,
+          "files": [
+            "Gmail-Calendar-01.png",
+            "Gmail-Calendar-02.png"
+          ]
+        },
+        {
+          "product": "Proton Calendar",
+          "n": 2,
+          "mean_total": 7.6,
+          "files": [
+            "Proton-calendar-01.png",
+            "Proton-calendar-02.png"
+          ]
+        },
+        {
+          "product": "Tuta Calendar",
+          "n": 2,
+          "mean_total": 6.6,
+          "files": [
+            "tuta-05.png",
+            "tuta-06.png"
+          ]
+        },
+        {
+          "product": "mailbox.org Calendar",
+          "n": 2,
+          "mean_total": 6.5,
+          "files": [
+            "mailboxorg-calendar-01.png",
+            "mailboxorg-calendar-02.png"
+          ]
+        },
+        {
+          "product": "KyCalendar",
+          "n": 2,
+          "mean_total": 6.4,
+          "files": [
+            "KyPost-live-Calendar-01.png",
+            "KyPost-live-Calendar-02.png"
+          ]
+        },
+        {
+          "product": "Outlook (classic, Microsoft 365 desktop)",
+          "n": 1,
+          "mean_total": 6.0,
+          "files": [
+            "Outlook-03.png"
+          ]
+        }
+      ],
+      "files_ranked": [
+        {
+          "file": "Gmail-Calendar-01.png",
+          "product": "Google Calendar",
+          "surface": "month view",
+          "total": 7.7
+        },
+        {
+          "file": "Gmail-Calendar-02.png",
+          "product": "Google Calendar",
+          "surface": "event quick-create popover",
+          "total": 7.7
+        },
+        {
+          "file": "Proton-calendar-01.png",
+          "product": "Proton Calendar",
+          "surface": "week view",
+          "total": 7.7
+        },
+        {
+          "file": "Proton-calendar-02.png",
+          "product": "Proton Calendar",
+          "surface": "event editor (modal)",
+          "total": 7.5
+        },
+        {
+          "file": "KyPost-live-Calendar-02.png",
+          "product": "KyCalendar",
+          "surface": "event editor (modal)",
+          "total": 6.7
+        },
+        {
+          "file": "tuta-06.png",
+          "product": "Tuta Calendar",
+          "surface": "event editor (sheet)",
+          "total": 6.7
+        },
+        {
+          "file": "mailboxorg-calendar-01.png",
+          "product": "mailbox.org Calendar",
+          "surface": "week view",
+          "total": 6.5
+        },
+        {
+          "file": "mailboxorg-calendar-02.png",
+          "product": "mailbox.org Calendar",
+          "surface": "event editor (dialog)",
+          "total": 6.5
+        },
+        {
+          "file": "tuta-05.png",
+          "product": "Tuta Calendar",
+          "surface": "month view",
+          "total": 6.4
+        },
+        {
+          "file": "KyPost-live-Calendar-01.png",
+          "product": "KyCalendar",
+          "surface": "week view",
+          "total": 6.0
+        },
+        {
+          "file": "Outlook-03.png",
+          "product": "Outlook (classic, Microsoft 365 desktop)",
+          "surface": "week view",
+          "total": 6.0
+        }
+      ]
+    },
+    "contacts": {
+      "by_product": [
+        {
+          "product": "Google Contacts",
+          "n": 1,
+          "mean_total": 7.0,
+          "files": [
+            "Gmail-Contacts-01.png"
+          ]
+        },
+        {
+          "product": "mailbox.org Address Book",
+          "n": 1,
+          "mean_total": 6.3,
+          "files": [
+            "mailboxorg-address_book-02.png"
+          ]
+        },
+        {
+          "product": "Tuta Contacts",
+          "n": 2,
+          "mean_total": 6.2,
+          "files": [
+            "tuta-03.png",
+            "tuta-04.png"
+          ]
+        },
+        {
+          "product": "KyPost",
+          "n": 2,
+          "mean_total": 5.0,
+          "files": [
+            "KyPost-live-03.png",
+            "KyPost-live-Contacts-02.png"
+          ]
+        }
+      ],
+      "files_ranked": [
+        {
+          "file": "Gmail-Contacts-01.png",
+          "product": "Google Contacts",
+          "surface": "contacts list",
+          "total": 7.0
+        },
+        {
+          "file": "mailboxorg-address_book-02.png",
+          "product": "mailbox.org Address Book",
+          "surface": "contacts list + detail",
+          "total": 6.3
+        },
+        {
+          "file": "tuta-03.png",
+          "product": "Tuta Contacts",
+          "surface": "contacts list",
+          "total": 6.2
+        },
+        {
+          "file": "tuta-04.png",
+          "product": "Tuta Contacts",
+          "surface": "contact editor (sheet)",
+          "total": 6.1
+        },
+        {
+          "file": "KyPost-live-03.png",
+          "product": "KyPost",
+          "surface": "contacts list",
+          "total": 5.3
+        },
+        {
+          "file": "KyPost-live-Contacts-02.png",
+          "product": "KyPost",
+          "surface": "contact editor (modal)",
+          "total": 4.6
+        }
+      ]
+    },
+    "settings": {
+      "by_product": [
+        {
+          "product": "mailbox.org",
+          "n": 2,
+          "mean_total": 7.0,
+          "files": [
+            "mailboxorg-03.png",
+            "mailboxorg-04.png"
+          ]
+        },
+        {
+          "product": "KyPost",
+          "n": 3,
+          "mean_total": 5.8,
+          "files": [
+            "KyPost-live-04.png",
+            "KyPost-live-05.png",
+            "KyPost-live-06.png"
+          ]
+        }
+      ],
+      "files_ranked": [
+        {
+          "file": "mailboxorg-04.png",
+          "product": "mailbox.org",
+          "surface": "settings: mail",
+          "total": 7.2
+        },
+        {
+          "file": "KyPost-live-04.png",
+          "product": "KyPost",
+          "surface": "settings: appearance",
+          "total": 6.7
+        },
+        {
+          "file": "mailboxorg-03.png",
+          "product": "mailbox.org",
+          "surface": "settings: general/theme",
+          "total": 6.7
+        },
+        {
+          "file": "KyPost-live-06.png",
+          "product": "KyPost",
+          "surface": "settings: security",
+          "total": 5.6
+        },
+        {
+          "file": "KyPost-live-05.png",
+          "product": "KyPost",
+          "surface": "settings: mail server",
+          "total": 5.0
+        }
+      ]
+    },
+    "secondary": {
+      "by_product": [
+        {
+          "product": "Proton Drive",
+          "n": 1,
+          "mean_total": 7.0,
+          "files": [
+            "Proton-Drive-01.png"
+          ]
+        },
+        {
+          "product": "mailbox.org Drive",
+          "n": 1,
+          "mean_total": 6.0,
+          "files": [
+            "mailboxorg-drive-01.png"
+          ]
+        },
+        {
+          "product": "KyNotes",
+          "n": 2,
+          "mean_total": 5.9,
+          "files": [
+            "KyPost-live-Notes-01.png",
+            "mailboxorg-notes-02.png"
+          ]
+        },
+        {
+          "product": "mailbox.org Notes",
+          "n": 1,
+          "mean_total": 3.6,
+          "files": [
+            "mailboxorg-notes-01.png"
+          ]
+        }
+      ],
+      "files_ranked": [
+        {
+          "file": "Proton-Drive-01.png",
+          "product": "Proton Drive",
+          "surface": "file list",
+          "total": 7.0
+        },
+        {
+          "file": "mailboxorg-notes-02.png",
+          "product": "KyNotes",
+          "surface": "settings: preferences",
+          "total": 6.2
+        },
+        {
+          "file": "mailboxorg-drive-01.png",
+          "product": "mailbox.org Drive",
+          "surface": "file list",
+          "total": 6.0
+        },
+        {
+          "file": "KyPost-live-Notes-01.png",
+          "product": "KyNotes",
+          "surface": "notes workspace",
+          "total": 5.5
+        },
+        {
+          "file": "mailboxorg-notes-01.png",
+          "product": "mailbox.org Notes",
+          "surface": "notes start page",
+          "total": 3.6
+        }
+      ]
+    }
+  },
+  "aggregates": {
+    "evidence_limited": true,
+    "warning": "Providers cover different cohorts, states (empty vs populated), themes and client vintages. These means are not a product ranking.",
+    "by_provider": [
+      {
+        "provider": "Proton",
+        "n_unique_files": 5,
+        "cohorts_covered": [
+          "calendar",
+          "compose",
+          "mail",
+          "secondary"
+        ],
+        "mean_total": 7.4
+      },
+      {
+        "provider": "Google",
+        "n_unique_files": 5,
+        "cohorts_covered": [
+          "calendar",
+          "compose",
+          "contacts",
+          "mail"
+        ],
+        "mean_total": 7.3
+      },
+      {
+        "provider": "Tuta",
+        "n_unique_files": 6,
+        "cohorts_covered": [
+          "calendar",
+          "compose",
+          "contacts",
+          "mail"
+        ],
+        "mean_total": 6.3
+      },
+      {
+        "provider": "mailbox.org",
+        "n_unique_files": 9,
+        "cohorts_covered": [
+          "calendar",
+          "compose",
+          "contacts",
+          "mail",
+          "secondary",
+          "settings"
+        ],
+        "mean_total": 6.2
+      },
+      {
+        "provider": "Microsoft",
+        "n_unique_files": 3,
+        "cohorts_covered": [
+          "calendar",
+          "compose",
+          "mail"
+        ],
+        "mean_total": 6.0
+      },
+      {
+        "provider": "Ky",
+        "n_unique_files": 11,
+        "cohorts_covered": [
+          "calendar",
+          "compose",
+          "contacts",
+          "mail",
+          "secondary",
+          "settings"
+        ],
+        "mean_total": 5.7
+      }
+    ],
+    "ky_by_product": {
+      "KyPost": {
+        "n": 7,
+        "mean_total": 5.4
+      },
+      "KyCalendar": {
+        "n": 2,
+        "mean_total": 6.4
+      },
+      "KyNotes": {
+        "n": 2,
+        "mean_total": 5.9
+      }
+    }
+  }
+}

@@ -1,0 +1,2219 @@
+{
+ "schema": "ky-ui-council-scores/2",
+ "round": "implemented-post-release (independent final visual review of KyPost stage 05)",
+ "reviewer": {
+  "model": "Claude Opus 5.5 (claude-opus-5-5)",
+  "role": "review sub-agent, Claude Code in T3 Code; did not implement, commit, push or open PRs",
+  "date": "2026-10-26",
+  "blind": {
+   "procedure": "All 28 kypost-05-after images viewed at full resolution and per-dimension scores frozen before reading implemented-post-messages-review.md, implemented-post-messages-scores.json or kypost-implementation.md. One KyCalendar and one KyMessages 06 capture were viewed before the freeze, for suite_cohesion only.",
+   "frozen_scores_sha256": "639d006320cf58b2ad2799fc8ca7e1a4d277766e24f128de4057b7e1561bfeba",
+   "frozen_at": "2026-10-26T02:32:37-04:00",
+   "post_blind_revisions": 0
+  },
+  "inputs_read": {
+   "AGENTS.md": "529793a3f6922dbe1b33cc87cc0f646d872e2ea38545460664b7fe002872c034",
+   "reviews/AGENTS.md": "a28d025bf14ffc0d027989527a4578578736b6b6b276f8e173546527bab1b01e",
+   "skills/AGENTS.md": "998ddfe532b6d4744323ff408cc3ae36e0b0c657efef1824eca8a9dc961e6e7e",
+   "skills/ky-suite-ui/SKILL.md": "6010ea39ac6e4e21926eb2a45d8a5a4894cd9e5e6eec07aca4cf60423233dcc2",
+   "skills/ky-suite-ui/references/rubric.md": "ad3516620420fbdc30f5273f82b7c72c76e1365d1b6296fcaa56be3cbebf2c41",
+   "skills/ky-suite-ui/references/design-contract.md": "392afb88c51fb3cfad6c94d6b841804b194d107a0431c31f35ff81d3a7a444d3",
+   "src/tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+   "screenshots/kypost-05-after.json": "4edf88ecb762df301e3bbdb377a0f6d2274531a030d4407e5d992917c58876c1",
+   "screenshots/kycalendar-06-confirm1-month-desktop-light.png (cohesion reference)": "0596d097c9204aff36aff6c84c9747b41597d26b42370a8a1dc93bb46c079d35",
+   "screenshots/kymessages-06-after-users-desktop-light.png (cohesion reference)": "352a6b8aaa8f6f1ad5bcc66090e934bfe62c08f0cb6863061b50eb5772b8d679",
+   "implemented-post-messages-review.md (post-blind)": "46dd50136648802646b50b184a7c57c787cbd859286585937629ce845230ef35",
+   "implemented-post-messages-scores.json (post-blind)": "89c8d55b87401e2e101438d58d013344315c73bc6d57f65178482957b953a9b5",
+   "kypost-implementation.md (post-blind)": "efcacc0a61f9482bb626d805750d34c71218c892db872de0059e14cc7dc97765",
+   "kypost-05-after-checks.json (post-blind)": "2d4fb02c4929303b132762784d470e02487c4d799837db0fe957c14192fb7d34",
+   "kypost-06-followup-checks.json (post-blind)": "2d4fb02c4929303b132762784d470e02487c4d799837db0fe957c14192fb7d34",
+   "kypost-06-followup-hover.json (post-blind)": "602eaf97f52d2317e0813e33e95e00e830f31900831b3946da8611dff59ffebc",
+   "kypost-06-flake-evidence.txt (post-blind)": "05b2bcfcc276a76c6fb6331a06bb98a636c77f168bc795a0069e2d992eeabb90"
+  },
+  "product_rules_read": "kypost-server/.claude/worktrees/ui-cohesion AGENTS.md (root) and frontend/AGENTS.md chain"
+ },
+ "rubric": {
+  "version": "ky-suite-v2",
+  "weights": {
+   "hierarchy": 0.2,
+   "typography": 0.15,
+   "density_layout": 0.2,
+   "color": 0.15,
+   "visible_affordances": 0.15,
+   "coherence": 0.15
+  },
+  "ky_fit_weights": {
+   "palette_tokens": 0.2,
+   "type_geometry": 0.2,
+   "shell": 0.2,
+   "accent_discipline": 0.2,
+   "suite_cohesion": 0.2
+  },
+  "rounding": "Decimal(str(x)).quantize(Decimal(\"0.1\"), ROUND_HALF_UP) per image; means from unrounded weighted sums (and unrounded per-image ky_fit means), rounded half-up to 0.01; N/A ky_fit dimensions excluded from that image's mean"
+ },
+ "captures": {
+  "kypost": {
+   "revision": "3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch",
+   "source_patch_sha256": {
+    "source-05-after.patch (captured)": "149f0563974b7ba5820785af353fe48eaadd174633e7637c1f4343ed9ba6a0d0",
+    "source-05-final.patch (frontend/src byte-identical to 05-after; adds docs only)": "9420f2a6dc9f19f32ebf57ef2e7f593aae11fa5e978c4d0423a16992722fbfaf"
+   },
+   "manifest": "screenshots/kypost-05-after.json",
+   "captured": "2026-10-26 05:58-05:59 UTC (one bounded recapture)",
+   "browser": "Playwright 1.63.0 headless Chromium",
+   "timezone": "America/New_York",
+   "fixture": "kypost-demo-IMAP loopback fixture, 4 seeded messages (3 unread), 4 synthetic contacts, user alex; reader guarded to open the Alice Demo message",
+   "theme_source": "context colorScheme (no saved choice) -> Busnes Light / Busnes Dark",
+   "viewports": "1280x900 and 390x844, viewport-only"
+  }
+ },
+ "provenance": {
+  "pixels": "Every scored image is a stage-05 capture of source-05-after. None was captured after the 06 follow-up.",
+  "followup_06": {
+   "patch": "source-stages/kypost/source-06-followup.patch",
+   "sha256": "41732fea6924bc5399d27a23036fd7f0d148fe0356ac13c37b1edd91029ab717",
+   "differs_from_05_final_in": [
+    "frontend/src/ky-ui/navigation.css",
+    "frontend/src/ky-ui/VERSION"
+   ],
+   "verified_by": "per-file hunk comparison of the two patch files by this reviewer",
+   "visual_effect": "selected nav row keeps its surface under hover (:where() specificity); no static capture shows hover, so the 05 pixels remain current for every scored state",
+   "hover_evidence": "kypost-06-followup-hover.json: selectedKept true and idleHoverChanges true in light/dark at 1280x900 and 390x844 (recorded, not executed by this reviewer)",
+   "checks_file_note": "kypost-06-followup-checks.json is byte-identical (same SHA-256) to kypost-05-after-checks.json; the implementer records that the re-run gave the same results, and the identical bytes cannot distinguish a re-run from a copy"
+  },
+  "test_wait_07": {
+   "patch": "source-stages/kypost/source-07-test-wait.patch",
+   "sha256": "1456c207a6514803c538ea69a12beb1ab8255e84135323d5274c71fc317e5bc9",
+   "differs_from_06_followup_in": [
+    "frontend/src/App.mailboxes.test.tsx",
+    "frontend/src/App.mobileSettings.test.tsx"
+   ],
+   "runtime_change": "none in the patch diff; test-only findBy waits"
+  },
+  "source_stage_checksums": "source-stages/kypost/SHA256SUMS verified OK for every patch by this reviewer"
+ },
+ "inventory": {
+  "source_set": "screenshots/kypost-05-after-*.png",
+  "files": 28,
+  "representatives_scored": 28,
+  "exact_or_near_duplicates": 0,
+  "closest_pair": "kypost-05-after-contacts-desktop-light.png vs kypost-05-after-inbox-desktop-light.png: 6.752% of pixels differ, max channel delta 231 (far above the 0.1% / 8 near-duplicate rule)",
+  "near_duplicate_rule": "same dims, <0.1% pixels differ, max channel delta <=8",
+  "layout": "7 surfaces x 2 themes x 2 viewports"
+ },
+ "cohort_rankings": "Not published. No matched competitor after-captures exist in this source set, so there is no Ky gap, no provider-wide rank and no proven competitive win. The original 40-image competitor ratings (initial/reranked) scored different pictures and are not comparable to these.",
+ "drift": {
+  "status": "Not a re-score. implemented-post-messages scored kypost-03-after images, which are different pixels; this round scores kypost-05-after. Differences below are context for product change, not rubric drift, and were read only after the freeze.",
+  "prior_context_by_surface": {
+   "appearance": {
+    "prior_03_mean": 7.35
+   },
+   "compose": {
+    "prior_03_mean": 7.34
+   },
+   "contact-editor": {
+    "prior_03_mean": 6.18
+   },
+   "contacts": {
+    "prior_03_mean": 6.58
+   },
+   "inbox": {
+    "prior_03_mean": 7.15
+   },
+   "inbox-selection": {
+    "prior_03_mean": 7.15
+   },
+   "reader": {
+    "prior_03_mean": 5.85
+   }
+  },
+  "prior_context_by_cohort": {
+   "compose": {
+    "prior_03_mean": 7.34,
+    "prior_03_ky_fit_mean": 6.6
+   },
+   "contact-editor": {
+    "prior_03_mean": 6.18,
+    "prior_03_ky_fit_mean": 6.8
+   },
+   "contacts-list": {
+    "prior_03_mean": 6.58,
+    "prior_03_ky_fit_mean": 6.8
+   },
+   "mail-list": {
+    "prior_03_mean": 7.15,
+    "prior_03_ky_fit_mean": 6.8
+   },
+   "mail-read": {
+    "prior_03_mean": 5.85,
+    "prior_03_ky_fit_mean": 6.1
+   },
+   "settings": {
+    "prior_03_mean": 7.35,
+    "prior_03_ky_fit_mean": 7.2
+   }
+  },
+  "prior_product_summary": {
+   "equal_cohort_weight_mean": 6.74,
+   "ky_fit_mean": 6.73,
+   "lowest_cohort_mean": 5.85
+  },
+  "spread": "No second reviewer scored these 05 files; no per-file spread exists."
+ },
+ "coverage_not_applicable": {
+  "kypost": {
+   "admin-console": "N/A: Server, Users, Quarantine and Security admin surfaces not captured",
+   "settings (non-Appearance)": "N/A: only Appearance captured",
+   "loading / error states": "N/A: not captured for any task view",
+   "named themes": "N/A: only Busnes Light and Busnes Dark captured",
+   "hover state": "N/A: static captures; recorded separately in kypost-06-followup-hover.json",
+   "member-home, chat": "not applicable to KyPost"
+  }
+ },
+ "gates": {
+  "kypost": {
+   "keyboard": {
+    "status": "untested",
+    "evidence": "Recorded (kypost-05-after-checks.json, Busnes Light/Dark, source-05-after): phone Tab walk of 16 strip stops; reader opened with Enter, Tab reaches Reply first, Escape closes and returns focus to the row; contact editor first focus Close, Escape returns to New Contact; earlier stages recorded desktop nav order and compose Escape focus return. Not recorded: complete task paths (send, save contact, bulk actions, appearance choice) and phone order: the implementer records that Tab visits the strip before Logout, which sits above it, and that there is no skip link. Not executed by this reviewer."
+   },
+   "focus": {
+    "status": "untested",
+    "evidence": "Recorded solid 2px rings on all 16 phone strip stops and on the first reader action stops (both themes); earlier: desktop nav and toolbar. Not recorded for form fields, contacts row actions, appearance swatches, compose controls or any named theme."
+   },
+   "contrast": {
+    "status": "untested",
+    "evidence": "Recorded: Quill stroke/picker vs toolbar 16.06 (light) / 12.67 (dark), Quill border 3.63 / 4.77; earlier selected pairs (nav, labels, field border, danger) in Busnes plus 3 named presets. Not every element or every shipped named theme. Visual note, not a contrast failure: danger text (#b42318 light, #ff8176 dark) sits close in hue to the accent (#bf3f18 / #f5865f)."
+   },
+   "states": {
+    "status": "fail",
+    "evidence": "The gate requires captured empty, loading and error states per task view, with errors announced and tied to fields. None are captured in stage 05 (same as the prior round). This is a missing-evidence failure of the gate requirement, not a finding that the product lacks those states."
+   },
+   "responsive": {
+    "status": "untested",
+    "evidence": "Recorded overflowX 0 at 1280x900 and 390x844 on every capture (manifest), and on /read, /contacts and /settings/appearance at 1024x768, 768x1024 and 360x740; phone header 105px with a 1-row scrolling strip and the current item in view; contact-editor footer on screen. Not recorded: target size; the images show native ~13px row checkboxes on phones. Visible: compose Quill toolbar wraps one button to a second line at 390px."
+   },
+   "accepted": false,
+   "reason": "Quality below 9.0 in every cohort, ky_fit below 9.0, and no gate passes."
+  }
+ },
+ "checks_recorded": {
+  "kypost": "Recorded by the implementer, not executed by this reviewer: npm test 1189/1189 (full runs on source-05-final x2, source-06-followup, source-07-test-wait), typecheck clean, lint 0 errors / 0 warnings, build pass, ky-ui vendor check 0.3.0, npm audit 0 (runtime, dev, lint/), check-toolchains and check-env-example pass. App first-test flake under parallel host load: in-batch wait means 1076 ms current vs 1090 ms baseline, but batch failures 7/23 current vs 0/9 baseline; a beforeAll warm-up failed and was reverted; source-07 adds a scoped 5 s findBy wait in two tests (the parent owns test timing). Regression neither proven nor ruled out. NOT run: Go vet, golangci-lint, govulncheck, go test -race, container build, shellcheck, compose checks, worker typechecks (left to the real PR CI). Not covered: screen readers, named-theme captures, loading/error captures."
+ },
+ "recorded_evidence_notes": [
+  "kypost-05-after-checks.json reader-keyboard entries record \"heading\": null in both themes. The image shows the subject as the dialog title and the implementer cites a ReadPage unit test for the accessible name, but the browser check itself does not confirm it.",
+  "kypost-06-followup-checks.json is byte-identical to kypost-05-after-checks.json."
+ ],
+ "remaining_defects": [
+  {
+   "rank": 1,
+   "surfaces": "inbox-mobile, inbox-selection-mobile",
+   "defect": "~60px checkbox gutter on a 390px row; sender lines wrap mid-address; six unlabelled icon-only selection actions; native ~13px checkboxes"
+  },
+  {
+   "rank": 2,
+   "surfaces": "reader",
+   "defect": "plain-text body in monospace (stranded 'so the' line on phones); fixed tall bordered body box holding two lines; full-width Keywords input between facts and body (box-in-box); 13px labels beside ~16px values; icon-only phone tools"
+  },
+  {
+   "rank": 3,
+   "surfaces": "compose",
+   "defect": "TO:/CC:/BCC: capitals beside 'Subject:'; five stacked bands; Quill stepper picker; phone toolbar orphan (clear-format) and two-row actions"
+  },
+  {
+   "rank": 4,
+   "surfaces": "contacts",
+   "defect": "Actions heading misaligned with Edit/Delete; chevron floats mid-column; Delete without danger colour; oversized New Contact label; phone primary last after wrapped secondaries"
+  },
+  {
+   "rank": 5,
+   "surfaces": "contact-editor",
+   "defect": "native file control shown beside 'Save the contact first to add a photo'; no required/optional marking"
+  },
+  {
+   "rank": 6,
+   "surfaces": "appearance-desktop",
+   "defect": "expanded Settings pushes the account region to the viewport floor and the licence line below the fold"
+  },
+  {
+   "rank": 7,
+   "surfaces": "all",
+   "defect": "danger hue close to accent (#b42318 vs #bf3f18; #ff8176 vs #f5865f); dark dialogs separate from the backdrop mainly by the 1px border; envelope mark vs suite 'B' stamp, white content vs cream page, 'Logout' vs 'Sign out'"
+  }
+ ],
+ "gap_to_9": {
+  "quality": "every cohort below 9.0; needed +1.15 (contact-editor 7.85) to +1.75 (mail-read 7.25); 156 of 168 dimension scores are 7 or 8, none 9, twelve 6s (phone density, selection affordances, reader typography)",
+  "ky_fit": "8.08; needs ~+0.92; suite_cohesion 7 and type_geometry 7-8 hold it back",
+  "gates": "states fails on missing captures; keyboard, focus, contrast and responsive untested",
+  "assessment": "Clearing the listed defects plausibly lifts affected dimensions to 8; 9 ('nothing to remove') needs further refinement no current image shows. No outcome is predicted and no new polish round is started by this review."
+ },
+ "unscored": [],
+ "unscored_reasons": "None: all 28 inventory files are unique and scored. Other council images (kypost-05-before, earlier stages, other products) are outside this source set; two other-product captures were viewed for suite_cohesion only.",
+ "files": [
+  {
+   "file": "kypost-05-after-appearance-desktop-dark.png",
+   "sha256": "64c983f106bbe0b2ab5244e551ee5b3947c80a7cdab7bc89a2adea46399b696e",
+   "bytes": 62127,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "appearance",
+   "observed_content": "Settings > Appearance theme picker",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 with a one-line explanation; no primary is needed because the choice applies immediately; the selected swatch is ringed.",
+    "typography": "24px title, 15px muted lead, 14px swatch labels.",
+    "density_layout": "Even 6-column swatch grid, but the expanded Settings group pushes the account region to the viewport floor (Logout at y~887) and the licence line below the fold.",
+    "color": "Accent ring on Busnes Dark; other swatches are theme data.",
+    "visible_affordances": "Selected state is unambiguous; swatches read as clickable cards.",
+    "coherence": "Swatch cards share radius and border; sidebar sub-navigation uses the same rail treatment."
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "24px/600 title, 15px lead, 8px-rhythm grid.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on the selected swatch ring and the selected rail.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.2,
+   "ky_fit": 8.2,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Appearance"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-appearance-desktop-light.png",
+   "sha256": "ab1cb9e2c8180b622de4c8c05f4922e545dc7d8a6b4173d3521b717476f164b8",
+   "bytes": 61769,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "appearance",
+   "observed_content": "Settings > Appearance theme picker",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 with a one-line explanation; no primary is needed because the choice applies immediately; the selected swatch is ringed.",
+    "typography": "24px title, 15px muted lead, 14px swatch labels.",
+    "density_layout": "Even 6-column swatch grid, but the expanded Settings group pushes the account region to the viewport floor (Logout at y~887) and the licence line below the fold.",
+    "color": "Accent ring on Busnes Light; the other swatches show named themes as user-choice data, not chrome.",
+    "visible_affordances": "Selected state is unambiguous; swatches read as clickable cards.",
+    "coherence": "Swatch cards share radius and border; sidebar sub-navigation uses the same rail treatment."
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "24px/600 title, 15px lead, 8px-rhythm grid.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on the selected swatch ring and the selected rail.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.2,
+   "ky_fit": 8.2,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Appearance"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-appearance-mobile-dark.png",
+   "sha256": "014fe03c4a3b175f612497bddf0cc1486e5daa69256d067f4743f4fc2be7b6a3",
+   "bytes": 33304,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "appearance",
+   "observed_content": "Settings > Appearance theme picker",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 with a two-line lead; the selected swatch is ringed; no primary is needed.",
+    "typography": "24px title, 15px lead, 14px labels.",
+    "density_layout": "Two-column swatch grid with even gutters under a 105px header.",
+    "color": "Accent ring on Busnes Dark; other swatches are theme data.",
+    "visible_affordances": "The strip shows 'Settings v' and then its sub-pages inline (Appearance selected, 'M...' cut at the edge), with no visual nesting of children under their parent.",
+    "coherence": "Swatch and strip treatments match the desktop."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "24px/600 title, 15px lead, 8px-rhythm grid.",
+    "shell": "Contract-permitted phone pattern: one brand/account row plus one scrolling strip, with the same order and labels; envelope mark instead of the stamp.",
+    "accent_discipline": "Accent only on the selected swatch ring and the selected rail.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.2,
+   "ky_fit": 8.2,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Appearance"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-appearance-mobile-light.png",
+   "sha256": "f24515414d92d4d25e69ebdf61bf5c8f9c4ec41e9ae96eff046bc2c179f0177a",
+   "bytes": 32705,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "appearance",
+   "observed_content": "Settings > Appearance theme picker",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 with a two-line lead; the selected swatch is ringed; no primary is needed.",
+    "typography": "24px title, 15px lead, 14px labels.",
+    "density_layout": "Two-column swatch grid with even gutters under a 105px header.",
+    "color": "Accent ring on the selected Busnes swatch; other swatches are theme data.",
+    "visible_affordances": "The strip shows 'Settings v' and then its sub-pages inline (Appearance selected, 'M...' cut at the edge), with no visual nesting of children under their parent.",
+    "coherence": "Swatch and strip treatments match the desktop."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "24px/600 title, 15px lead, 8px-rhythm grid.",
+    "shell": "Contract-permitted phone pattern: one brand/account row plus one scrolling strip, with the same order and labels; envelope mark instead of the stamp.",
+    "accent_discipline": "Accent only on the selected swatch ring and the selected rail.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.2,
+   "ky_fit": 8.2,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Appearance"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-compose-desktop-dark.png",
+   "sha256": "509241a201c823d554e75dec353fe861d1a837d3d7881ebbbf199d8808e1a77b",
+   "bytes": 64113,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "compose",
+   "observed_content": "New message compose dialog, empty",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'New message' title; Send is the only filled button, then outlined Schedule/Save Draft and text Attach/Contacts, with Trash far right.",
+    "typography": "'TO:'/'CC:'/'BCC:' in capitals beside 'Subject:' in sentence case; 13px banner text.",
+    "density_layout": "Five stacked bands (banner, fields, editor, crypto row, actions) separated by dividers and cream fills make the dialog read as strips.",
+    "color": "Orange only on Send; Trash in salmon danger text; the Quill icons are light and legible on the dark toolbar.",
+    "visible_affordances": "Quill toolbar icons are legible; Encrypt/Sign checkboxes come with an 'Unsigned' status pill; inputs are 40px.",
+    "coherence": "Quill's 'Normal' picker with stepper arrows and the bordered cream editor differ from the product's own fields."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "Capitalised 'TO:/CC:/BCC:' labels inline rather than above; Quill picker off-scale.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on Send.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows. Dialog over a dimmed page; the background is not scored."
+  },
+  {
+   "file": "kypost-05-after-compose-desktop-light.png",
+   "sha256": "94a31a53bcad658b266fde4c644aadea84ca2139a2984a9dbb633499c0cfd12c",
+   "bytes": 65169,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "compose",
+   "observed_content": "New message compose dialog, empty",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'New message' title; Send is the only filled button, then outlined Schedule/Save Draft and text Attach/Contacts, with Trash far right.",
+    "typography": "'TO:'/'CC:'/'BCC:' in capitals beside 'Subject:' in sentence case; 13px banner text.",
+    "density_layout": "Five stacked bands (banner, fields, editor, crypto row, actions) separated by dividers and cream fills make the dialog read as strips.",
+    "color": "Orange only on Send; Trash in danger text; cream bands behind the banner and crypto row.",
+    "visible_affordances": "Quill toolbar icons are legible; Encrypt/Sign checkboxes come with an 'Unsigned' status pill; inputs are 40px.",
+    "coherence": "Quill's 'Normal' picker with stepper arrows and the bordered cream editor differ from the product's own fields."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "Capitalised 'TO:/CC:/BCC:' labels inline rather than above; Quill picker off-scale.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on Send.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows. Dialog over a dimmed page; the background is not scored."
+  },
+  {
+   "file": "kypost-05-after-compose-mobile-dark.png",
+   "sha256": "61b25d1063158b643663f9385aac62e4eb6964433bd470c21c3735a63e7175ee",
+   "bytes": 29576,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "compose",
+   "observed_content": "New message compose dialog, empty",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "full-screen dialog sheet; app shell hidden"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Send is filled and first; the secondary actions wrap to a second row.",
+    "typography": "'TO:'/'CC:'/'BCC:' in capitals beside 'Subject:'; the banner is 13px over two lines.",
+    "density_layout": "Quill's clear-format button wraps alone onto a second toolbar line, the action buttons wrap to two rows, and the crypto band cuts off the editor.",
+    "color": "Orange only on Send; Trash in salmon danger text; the Quill icons are light and legible on the dark toolbar.",
+    "visible_affordances": "Controls are legible; Attach, Contacts and Trash fall to a text-button second row.",
+    "coherence": "Quill's picker and the bordered cream editor differ from the product's fields."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": null,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "Capitalised 'TO:/CC:/BCC:' labels inline rather than above; Quill picker off-scale.",
+    "shell": "N/A: full-screen sheet covers the shell; nothing to judge.",
+    "accent_discipline": "Accent only on Send.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "shell N/A (sheet covers shell); mean of 4 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-compose-mobile-light.png",
+   "sha256": "ab23cb2383aa22eaacf53307fc1205ab76fbfd14ae41c2f5f7cf11110f81539f",
+   "bytes": 29071,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "compose",
+   "observed_content": "New message compose dialog, empty",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "full-screen dialog sheet; app shell hidden"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Send is filled and first; the secondary actions wrap to a second row.",
+    "typography": "'TO:'/'CC:'/'BCC:' in capitals beside 'Subject:'; the banner is 13px over two lines.",
+    "density_layout": "Quill's clear-format button wraps alone onto a second toolbar line, the action buttons wrap to two rows, and the crypto band cuts off the editor.",
+    "color": "Orange only on Send; Trash in danger text.",
+    "visible_affordances": "Controls are legible; Attach, Contacts and Trash fall to a text-button second row.",
+    "coherence": "Quill's picker and the bordered cream editor differ from the product's fields."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": null,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "Capitalised 'TO:/CC:/BCC:' labels inline rather than above; Quill picker off-scale.",
+    "shell": "N/A: full-screen sheet covers the shell; nothing to judge.",
+    "accent_discipline": "Accent only on Send.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "shell N/A (sheet covers shell); mean of 4 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-contact-editor-desktop-dark.png",
+   "sha256": "84551c8eb938e3cf8e17da6cadea6c9ac6afe594da961f3da2423e65988ef132",
+   "bytes": 65314,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "contact-editor",
+   "observed_content": "Add Contact dialog, empty",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Header with 'Add Contact' and a corner close; a sticky footer with Cancel and filled Add Contact on the right.",
+    "typography": "17px title, 13px bold labels above inputs, 15px controls, used consistently.",
+    "density_layout": "Two-column grid on an even rhythm; optional groups are collapsed behind chevron rows; the body scrolls between header and footer dividers.",
+    "color": "Orange only on Add Contact; field borders visible on #1f2b2e.",
+    "visible_affordances": "The native 'Choose File / No file chosen' control sits beside 'Save the contact first to add a photo', so it reads as usable when it is not; no required/optional marking is visible.",
+    "coherence": "The native file input is the one stock control; field and button vocabulary is otherwise uniform."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "Labels above 40px inputs, 8px radius, 17px dialog title.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on Add Contact.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.2,
+   "ky_fit": 8.2,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Contacts"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows. Dialog over a dimmed page; the background is not scored."
+  },
+  {
+   "file": "kypost-05-after-contact-editor-desktop-light.png",
+   "sha256": "46b8edd7e06a3d9bce92fa2dcea782f52691adeae823c98426600254d48912a0",
+   "bytes": 66596,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "contact-editor",
+   "observed_content": "Add Contact dialog, empty",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Header with 'Add Contact' and a corner close; a sticky footer with Cancel and filled Add Contact on the right.",
+    "typography": "17px title, 13px bold labels above inputs, 15px controls, used consistently.",
+    "density_layout": "Two-column grid on an even rhythm; optional groups are collapsed behind chevron rows; the body scrolls between header and footer dividers.",
+    "color": "Orange only on Add Contact; neutral fields with visible borders.",
+    "visible_affordances": "The native 'Choose File / No file chosen' control sits beside 'Save the contact first to add a photo', so it reads as usable when it is not; no required/optional marking is visible.",
+    "coherence": "The native file input is the one stock control; field and button vocabulary is otherwise uniform."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "Labels above 40px inputs, 8px radius, 17px dialog title.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on Add Contact.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.2,
+   "ky_fit": 8.2,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Contacts"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows. Dialog over a dimmed page; the background is not scored."
+  },
+  {
+   "file": "kypost-05-after-contact-editor-mobile-dark.png",
+   "sha256": "084f3b3ff5afcc52d4ba3cdd389a175cc1bb3907c7cf83a7157fc291b945f377",
+   "bytes": 26184,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "contact-editor",
+   "observed_content": "Add Contact dialog, empty",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "full-screen dialog sheet; app shell hidden"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Full-screen sheet with the title and close at the top, and equal-width Cancel / Add Contact pinned at the bottom.",
+    "typography": "17px title, 13px bold labels, 15px inputs, used consistently.",
+    "density_layout": "Single column with labels above and even rhythm; Phones scrolls under the pinned footer as expected.",
+    "color": "Orange only on Add Contact; field borders visible on #1f2b2e.",
+    "visible_affordances": "Same native file control beside 'Save the contact first to add a photo'; no required/optional marking visible.",
+    "coherence": "The native file input is the one stock control."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": null,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "Labels above 40px inputs, 8px radius, 17px dialog title.",
+    "shell": "N/A: full-screen sheet covers the shell; nothing to judge.",
+    "accent_discipline": "Accent only on Add Contact.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.25,
+   "ky_fit": 8.3,
+   "ky_fit_note": "shell N/A (sheet covers shell); mean of 4 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Contacts"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-contact-editor-mobile-light.png",
+   "sha256": "c86315220cdfd2a64e0dba681a431e9a44beef584fb1aed22c38f96b3979ef8c",
+   "bytes": 25394,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "contact-editor",
+   "observed_content": "Add Contact dialog, empty",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "full-screen dialog sheet; app shell hidden"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Full-screen sheet with the title and close at the top, and equal-width Cancel / Add Contact pinned at the bottom.",
+    "typography": "17px title, 13px bold labels, 15px inputs, used consistently.",
+    "density_layout": "Single column with labels above and even rhythm; Phones scrolls under the pinned footer as expected.",
+    "color": "Orange only on Add Contact.",
+    "visible_affordances": "Same native file control beside 'Save the contact first to add a photo'; no required/optional marking visible.",
+    "coherence": "The native file input is the one stock control."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": null,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "Labels above 40px inputs, 8px radius, 17px dialog title.",
+    "shell": "N/A: full-screen sheet covers the shell; nothing to judge.",
+    "accent_discipline": "Accent only on Add Contact.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.25,
+   "ky_fit": 8.3,
+   "ky_fit_note": "shell N/A (sheet covers shell); mean of 4 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Contacts"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-contacts-desktop-dark.png",
+   "sha256": "228e6a8af400f27ebd935194712bad0ef33d68076bdfdce904dc9095b9302a0b",
+   "bytes": 70689,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "contacts",
+   "observed_content": "Contacts list, 4 synthetic contacts",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "h1 Contacts with New Contact as the only filled button; a count and four outlined secondaries share the header row.",
+    "typography": "Name 15px semibold over 13px organisation; the 'New Contact' label renders larger and bolder than the other header buttons.",
+    "density_layout": "The 'Actions' heading starts at x~1012 while Edit/Delete sit at x~1123-1223; the row chevron floats at x~649, detached from the name.",
+    "color": "Orange (#f5865f) only on New Contact and the Contacts rail; dark grey avatars.",
+    "visible_affordances": "Edit and Delete are identical plain text, with no danger colour on Delete; the chevron's purpose is not legible.",
+    "coherence": "Text-only row actions next to outlined header buttons, plus the oversized primary label, break the button vocabulary."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "40px controls, but the primary label is larger than its sibling buttons.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on New Contact and the selected rail.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.2,
+   "ky_fit": 8.2,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Contacts"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-contacts-desktop-light.png",
+   "sha256": "cf44d96a71b47b8bb74da46b6f84c552b5823bf9831c95cadabccc57ec97735b",
+   "bytes": 69881,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "contacts",
+   "observed_content": "Contacts list, 4 synthetic contacts",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "h1 Contacts with New Contact as the only filled button; a count and four outlined secondaries share the header row.",
+    "typography": "Name 15px semibold over 13px organisation; the 'New Contact' label renders larger and bolder than the other header buttons.",
+    "density_layout": "The 'Actions' heading starts at x~1012 while Edit/Delete sit at x~1123-1223; the row chevron floats at x~649, detached from the name.",
+    "color": "New Email steps down to outline, so orange marks only New Contact and the Contacts rail; grey initial avatars.",
+    "visible_affordances": "Edit and Delete are identical plain text, with no danger colour on Delete; the chevron's purpose is not legible.",
+    "coherence": "Text-only row actions next to outlined header buttons, plus the oversized primary label, break the button vocabulary."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "40px controls, but the primary label is larger than its sibling buttons.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on New Contact and the selected rail.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.2,
+   "ky_fit": 8.2,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Contacts"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-contacts-mobile-dark.png",
+   "sha256": "8ba4214d5f9a6131a1d7a87824e7ab75f95401d1db4cf99fa1baefa3386fb274",
+   "bytes": 54031,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "contacts",
+   "observed_content": "Contacts list, 4 synthetic contacts",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Header actions wrap to two rows, and New Contact lands last on the second row after four outlined secondaries.",
+    "typography": "The New Contact label is larger than its neighbours; organisations wrap ('Sandbox / Operations'); the search placeholder truncates at 'organizat'.",
+    "density_layout": "Stacked rows (identity, Edit/Delete, email beneath) fit without clipping, but the header action block takes ~90px.",
+    "color": "Orange (#f5865f) only on New Contact and the Contacts rail; dark grey avatars.",
+    "visible_affordances": "Edit/Delete are plain text with no danger colour; the strip is scrolled to show Contacts, with partial items cut at both edges.",
+    "coherence": "Mixed button sizes in one header group."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "40px controls, but the primary label is larger than its sibling buttons.",
+    "shell": "Contract-permitted phone pattern: one brand/account row plus one scrolling strip, with the same order and labels; envelope mark instead of the stamp.",
+    "accent_discipline": "Accent only on New Contact and the selected rail.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Contacts"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-contacts-mobile-light.png",
+   "sha256": "b562a346192ff9963d68fbac8b9e1f69867a92aaa10dcf10870c1fdd1cfd81e6",
+   "bytes": 52309,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "contacts",
+   "observed_content": "Contacts list, 4 synthetic contacts",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Header actions wrap to two rows, and New Contact lands last on the second row after four outlined secondaries.",
+    "typography": "The New Contact label is larger than its neighbours; organisations wrap ('Sandbox / Operations'); the search placeholder truncates at 'organizat'.",
+    "density_layout": "Stacked rows (identity, Edit/Delete, email beneath) fit without clipping, but the header action block takes ~90px.",
+    "color": "Orange only on New Contact and the Contacts tab rail.",
+    "visible_affordances": "Edit/Delete are plain text with no danger colour; the strip is scrolled to show Contacts, with partial items cut at both edges.",
+    "coherence": "Mixed button sizes in one header group."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "40px controls, but the primary label is larger than its sibling buttons.",
+    "shell": "Contract-permitted phone pattern: one brand/account row plus one scrolling strip, with the same order and labels; envelope mark instead of the stamp.",
+    "accent_discipline": "Accent only on New Contact and the selected rail.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Contacts"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-inbox-desktop-dark.png",
+   "sha256": "1bb671b6c21304e3ca38de651293083ecd36e82349a7f0ded5b2ceb5e98f3bc4",
+   "bytes": 66194,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "inbox",
+   "observed_content": "Inbox list, 4 seeded messages, none selected",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 'Inbox' top-left; New Email is the only filled control; search row, category chip and table read in order.",
+    "typography": "Unread rows bold, the read digest regular and muted; 13px column heads; one face throughout.",
+    "density_layout": "Sparse 4-row list on even ~41px rows; a ~58px gap between checkbox and Subject and a Subject column narrower than Sender unbalance the columns slightly.",
+    "color": "Orange (#f5865f) limited to New Email and the Inbox rail; the chip uses the warm #2b2622 soft surface; sidebar and content share #1f2b2e, split only by a divider.",
+    "visible_affordances": "Search, select and Search button read as 40px controls and Time shows a sort arrow, but the native 13px checkboxes are small and unstyled.",
+    "coherence": "One field and button vocabulary; the native select arrow and checkboxes are the only stock-styled controls."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "40px search, select and button; 8px radius; 14px nav rows; native 13px checkboxes off-contract.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent on New Email, the selection rail and a soft chip; the chip's selected/filter meaning is not stated; danger red is near the accent hue.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-inbox-desktop-light.png",
+   "sha256": "69fbc387ed67d3b4b3fef054a375a0ad69c61c4c1fc89987a4a766eec8c2abab",
+   "bytes": 65203,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "inbox",
+   "observed_content": "Inbox list, 4 seeded messages, none selected",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 'Inbox' top-left; New Email is the only filled control; search row, category chip and table read in order.",
+    "typography": "Unread rows bold, the read digest regular and muted; 13px column heads; one face throughout.",
+    "density_layout": "Sparse 4-row list on even ~41px rows; a ~58px gap between checkbox and Subject and a Subject column narrower than Sender unbalance the columns slightly.",
+    "color": "Orange limited to New Email, the Inbox rail and the soft Uncategorized chip; cream sidebar against white content.",
+    "visible_affordances": "Search, select and Search button read as 40px controls and Time shows a sort arrow, but the native 13px checkboxes are small and unstyled.",
+    "coherence": "One field and button vocabulary; the native select arrow and checkboxes are the only stock-styled controls."
+   },
+   "weighted_sum": 7.85,
+   "total": 7.9,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "40px search, select and button; 8px radius; 14px nav rows; native 13px checkboxes off-contract.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent on New Email, the selection rail and a soft chip; the chip's selected/filter meaning is not stated; danger red is near the accent hue.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-inbox-mobile-dark.png",
+   "sha256": "15b0c04a94899c43737d4726b27e603e0af5279db3cb28852d61cf41969c2c08",
+   "bytes": 46921,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "inbox",
+   "observed_content": "Inbox list, 4 seeded messages, none selected",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Row one holds the KyPost mark, filled New Email, 'alex' and a Logout icon; the h1 sits below one tab strip.",
+    "typography": "13px sender lines wrap mid-address ('<silent@kypost-' / 'demo.local>').",
+    "density_layout": "About 60px of the 390px width is checkbox gutter before the subject, senders wrap to two lines, and the fifth strip tab is cut at the right edge.",
+    "color": "Orange (#f5865f) limited to New Email and the Inbox rail; the chip uses the warm #2b2622 soft surface; sidebar and content share #1f2b2e, split only by a divider.",
+    "visible_affordances": "Strip items read as tabs with a bottom accent rail, and the cut 'T...' tab is the only scroll cue; native checkboxes are small.",
+    "coherence": "One header plus one strip; the list keeps the desktop vocabulary."
+   },
+   "weighted_sum": 7.3,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "40px search, select and button; 8px radius; 14px nav rows; native 13px checkboxes off-contract.",
+    "shell": "Contract-permitted phone pattern: one brand/account row plus one scrolling strip, with the same order and labels; envelope mark instead of the stamp.",
+    "accent_discipline": "Accent on New Email, the selection rail and a soft chip; the chip's selected/filter meaning is not stated; danger red is near the accent hue.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-inbox-mobile-light.png",
+   "sha256": "3d9a2070364a5c4b39f587e493c75f4c3f534ef9a29ae3747340731c4596ae28",
+   "bytes": 46355,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "inbox",
+   "observed_content": "Inbox list, 4 seeded messages, none selected",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Row one holds the KyPost mark, filled New Email, 'alex' and a Logout icon; the h1 sits below one tab strip.",
+    "typography": "13px sender lines wrap mid-address ('<silent@kypost-' / 'demo.local>').",
+    "density_layout": "About 60px of the 390px width is checkbox gutter before the subject, senders wrap to two lines, and the fifth strip tab is cut at the right edge.",
+    "color": "Orange limited to New Email, the Inbox tab rail and the soft chip.",
+    "visible_affordances": "Strip items read as tabs with a bottom accent rail, and the cut 'T...' tab is the only scroll cue; native checkboxes are small.",
+    "coherence": "One header plus one strip; the list keeps the desktop vocabulary."
+   },
+   "weighted_sum": 7.3,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "40px search, select and button; 8px radius; 14px nav rows; native 13px checkboxes off-contract.",
+    "shell": "Contract-permitted phone pattern: one brand/account row plus one scrolling strip, with the same order and labels; envelope mark instead of the stamp.",
+    "accent_discipline": "Accent on New Email, the selection rail and a soft chip; the chip's selected/filter meaning is not stated; danger red is near the accent hue.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-inbox-selection-desktop-dark.png",
+   "sha256": "d6f18bd9354c63f7a101ab37f67bc892b539bc229d43a85c2f47f924c8b5a30f",
+   "bytes": 71652,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "inbox-selection",
+   "observed_content": "Inbox list with 2 rows selected and contextual actions",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Selection swaps a quiet contextual toolbar into the h1 row; New Email stays the only filled control.",
+    "typography": "Same type scale as the idle list: unread bold, read regular, 13px heads.",
+    "density_layout": "Toolbar shares the h1 row so the list does not shift; selected rows keep the ~41px rhythm.",
+    "color": "Selected rows take #2b2622 with orange checks; Delete is salmon #ff8176, close in hue to the #f5865f accent.",
+    "visible_affordances": "Six icon+label actions, Delete set apart by colour; checked rows are unambiguous.",
+    "coherence": "Toolbar uses the same quiet icon+label buttons as the reader's tool row."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "Same geometry; toolbar labels 14px.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent on selection and New Email; danger Delete close to the accent hue.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-inbox-selection-desktop-light.png",
+   "sha256": "ee980c838414ac1e636118a40e020b1def0e955eb73301c277edcd74ea3dc791",
+   "bytes": 70962,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "inbox-selection",
+   "observed_content": "Inbox list with 2 rows selected and contextual actions",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Selection swaps a quiet contextual toolbar into the h1 row; New Email stays the only filled control.",
+    "typography": "Same type scale as the idle list: unread bold, read regular, 13px heads.",
+    "density_layout": "Toolbar shares the h1 row so the list does not shift; selected rows keep the ~41px rhythm.",
+    "color": "Selected rows take accent-soft #fbf0ec with orange checks; Delete is danger text #b42318, close in hue to the #bf3f18 accent.",
+    "visible_affordances": "Six icon+label actions, Delete set apart by colour; checked rows are unambiguous.",
+    "coherence": "Toolbar uses the same quiet icon+label buttons as the reader's tool row."
+   },
+   "weighted_sum": 8.0,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "Same geometry; toolbar labels 14px.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent on selection and New Email; danger Delete close to the accent hue.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-inbox-selection-mobile-dark.png",
+   "sha256": "b90c85cc83613e96a7d2d4a05aa42fb2c5446f5894ba9d1460544220b6b741cc",
+   "bytes": 48987,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "inbox-selection",
+   "observed_content": "Inbox list with 2 rows selected and contextual actions",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Contextual actions shrink to six unlabelled icons beside the h1, so their meaning is not stated on screen.",
+    "typography": "Same wrapping 13px sender lines as the idle list.",
+    "density_layout": "Same checkbox gutter and two-line sender wrap; the selected rows keep the rhythm.",
+    "color": "Selected rows take #2b2622 with orange checks; Delete is salmon #ff8176, close in hue to the #f5865f accent.",
+    "visible_affordances": "Icon-only tools (trash, archive, warning, clock, check, printer) carry no visible labels.",
+    "coherence": "Same icon set and spacing as the reader's phone tool row."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "Same geometry; toolbar labels 14px.",
+    "shell": "Contract-permitted phone pattern: one brand/account row plus one scrolling strip, with the same order and labels; envelope mark instead of the stamp.",
+    "accent_discipline": "Accent on selection and New Email; danger Delete close to the accent hue.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-inbox-selection-mobile-light.png",
+   "sha256": "a0b9ed5e3f633e9508c509d8b8a9531cc3e74f3a2b2e8a034f57d3346a91afb0",
+   "bytes": 48526,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "inbox-selection",
+   "observed_content": "Inbox list with 2 rows selected and contextual actions",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Contextual actions shrink to six unlabelled icons beside the h1, so their meaning is not stated on screen.",
+    "typography": "Same wrapping 13px sender lines as the idle list.",
+    "density_layout": "Same checkbox gutter and two-line sender wrap; the selected rows keep the rhythm.",
+    "color": "Selected rows take the accent-soft fill with orange checks; the trash icon is danger red.",
+    "visible_affordances": "Icon-only tools (trash, archive, warning, clock, check, printer) carry no visible labels.",
+    "coherence": "Same icon set and spacing as the reader's phone tool row."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "Same geometry; toolbar labels 14px.",
+    "shell": "Contract-permitted phone pattern: one brand/account row plus one scrolling strip, with the same order and labels; envelope mark instead of the stamp.",
+    "accent_discipline": "Accent on selection and New Email; danger Delete close to the accent hue.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-reader-desktop-dark.png",
+   "sha256": "b788a7ae9631f63e4711abc327ac2b8d33b3c071372233df2105a969e67acbf9",
+   "bytes": 57245,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "reader",
+   "observed_content": "Reader dialog, 'Re: Sandbox rollout plan' from Alice Demo",
+   "cohort": "mail-read",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Subject is the dialog title; Reply is the only filled button, ahead of outlined Reply All/Forward and a quiet tool row.",
+    "typography": "Plain-text body is set in a monospace face; 13px bold labels sit beside ~16px values ('Sender:' vs the address), an uneven label/value scale.",
+    "density_layout": "A two-line message sits in a fixed ~470px body box that leaves most of the dialog empty; a full-width Keywords input divides facts from body.",
+    "color": "Orange only on Reply; the #1f2b2e dialog over a #121a1c backdrop is a small luminance step, carried by a lighter 1px border.",
+    "visible_affordances": "Primary, outline and quiet tool tiers are distinct; Close is a corner icon; 'View raw email' is an underlined ink link.",
+    "coherence": "The bordered reading surface and bordered Keywords field inside the dialog add a box-in-box layer."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "Plain-text body in monospace, where the contract reserves mono for code and keys; label/value size mismatch.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on Reply.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows. Dialog over a dimmed page; the background is not scored."
+  },
+  {
+   "file": "kypost-05-after-reader-desktop-light.png",
+   "sha256": "a3e3c078e555000fcbf088035fda403fbb4b4fe2560402a8e705db413ba83181",
+   "bytes": 58211,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "reader",
+   "observed_content": "Reader dialog, 'Re: Sandbox rollout plan' from Alice Demo",
+   "cohort": "mail-read",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Subject is the dialog title; Reply is the only filled button, ahead of outlined Reply All/Forward and a quiet tool row.",
+    "typography": "Plain-text body is set in a monospace face; 13px bold labels sit beside ~16px values ('Sender:' vs the address), an uneven label/value scale.",
+    "density_layout": "A two-line message sits in a fixed ~470px body box that leaves most of the dialog empty; a full-width Keywords input divides facts from body.",
+    "color": "Orange only on Reply; Delete in danger text; cream #f8f6f0 reading surface inside the white dialog.",
+    "visible_affordances": "Primary, outline and quiet tool tiers are distinct; Close is a corner icon; 'View raw email' is an underlined ink link.",
+    "coherence": "The bordered reading surface and bordered Keywords field inside the dialog add a box-in-box layer."
+   },
+   "weighted_sum": 7.5,
+   "total": 7.5,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "Plain-text body in monospace, where the contract reserves mono for code and keys; label/value size mismatch.",
+    "shell": "240px sidebar, wordmark with an envelope mark (not the Busnes stamp), icon nav rows with an accent rail, and the account pinned at the foot with name and Logout.",
+    "accent_discipline": "Accent only on Reply.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "mean of 5 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows. Dialog over a dimmed page; the background is not scored."
+  },
+  {
+   "file": "kypost-05-after-reader-mobile-dark.png",
+   "sha256": "e64243c7b948c9d9f850e49990d8f5e638d2639077a216f1accff2712d697c2c",
+   "bytes": 36112,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "reader",
+   "observed_content": "Reader dialog, 'Re: Sandbox rollout plan' from Alice Demo",
+   "cohort": "mail-read",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "full-screen dialog sheet; app shell hidden"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Subject title with a close icon; Reply filled first; an icon-only tool row under it.",
+    "typography": "The monospace body re-wraps the message's hard line breaks at 390px, leaving a stranded 'so the' line; addresses wrap mid-token.",
+    "density_layout": "A two-line message sits in an empty ~410px body box; the facts block wraps to six lines.",
+    "color": "Orange only on Reply; the #1f2b2e dialog over a #121a1c backdrop is a small luminance step, carried by a lighter 1px border.",
+    "visible_affordances": "Reply/Reply All/Forward are clear; the seven tool icons have no labels.",
+    "coherence": "Same box-in-box reading surface and full-width Keywords field as desktop."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": null,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Panel #1f2b2e, accent #f5865f, accent-soft #2b2622: ky-ui Busnes Dark values.",
+    "type_geometry": "Plain-text body in monospace, where the contract reserves mono for code and keys; label/value size mismatch.",
+    "shell": "N/A: full-screen sheet covers the shell; nothing to judge.",
+    "accent_discipline": "Accent only on Reply.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "shell N/A (sheet covers shell); mean of 4 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "dark"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  },
+  {
+   "file": "kypost-05-after-reader-mobile-light.png",
+   "sha256": "798eb69f1634b96e629ffe0dc3c1e9883799e81ee506d6c766af2c1b16169fd9",
+   "bytes": 35522,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost web (Busnes)",
+   "observed_surface": "reader",
+   "observed_content": "Reader dialog, 'Re: Sandbox rollout plan' from Alice Demo",
+   "cohort": "mail-read",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "full-screen dialog sheet; app shell hidden"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Subject title with a close icon; Reply filled first; an icon-only tool row under it.",
+    "typography": "The monospace body re-wraps the message's hard line breaks at 390px, leaving a stranded 'so the' line; addresses wrap mid-token.",
+    "density_layout": "A two-line message sits in an empty ~410px body box; the facts block wraps to six lines.",
+    "color": "Orange only on Reply; the trash icon is danger red.",
+    "visible_affordances": "Reply/Reply All/Forward are clear; the seven tool icons have no labels.",
+    "coherence": "Same box-in-box reading surface and full-width Keywords field as desktop."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 9,
+    "type_geometry": 7,
+    "shell": null,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit_observations": {
+    "palette_tokens": "Sidebar #f2efe7, content #ffffff, ink #182326, accent #bf3f18, accent-soft #fbf0ec: all ky-ui Busnes Light values.",
+    "type_geometry": "Plain-text body in monospace, where the contract reserves mono for code and keys; label/value size mismatch.",
+    "shell": "N/A: full-screen sheet covers the shell; nothing to judge.",
+    "accent_discipline": "Accent only on Reply.",
+    "suite_cohesion": "Compared against kycalendar-06-confirm1-month and kymessages-06-after-users (desktop light): KyPost uses an envelope mark where both use the 'B' stamp; KyPost content is white where theirs sits on the cream page; 'Logout' vs 'Sign out'; no account-type line under the name."
+   },
+   "ky_fit_unrounded": 8.0,
+   "ky_fit": 8.0,
+   "ky_fit_note": "shell N/A (sheet covers shell); mean of 4 dimensions",
+   "confidence": "high",
+   "capture": "kypost-server HEAD 3037caf8747b57c504cfee50c54446af8db97076 + source-stages/kypost/source-05-after.patch (149f0563...a6a0d0); recaptured 05:58-05:59 UTC 2026-10-26; Playwright 1.63.0 headless Chromium, America/New_York, kypost-demo-IMAP fixture, user alex, theme from context colorScheme (no saved choice)",
+   "manifest": {
+    "overflowX": 0,
+    "h1": [
+     "Inbox"
+    ],
+    "scheme": "light"
+   },
+   "caveat": "Static capture: interaction, hover, keyboard, screen-reader behaviour and computed contrast are not shown. Pixels are stage 05; the 06 follow-up changes only hover-state CSS that no static capture shows."
+  }
+ ],
+ "cohort_aggregates": {
+  "kypost": {
+   "compose": {
+    "n": 4,
+    "mean": 7.33,
+    "min": 7.2,
+    "max": 7.5,
+    "min_file": "kypost-05-after-compose-mobile-dark.png",
+    "ky_fit_mean": 8.0,
+    "ky_fit_min": 8.0,
+    "by_viewport": {
+     "desktop": 7.5,
+     "mobile": 7.15
+    },
+    "by_theme": {
+     "light": 7.33,
+     "dark": 7.33
+    },
+    "surfaces": [
+     "compose"
+    ],
+    "matched": "within-product only; no competitor after-capture exists, so no Ky gap"
+   },
+   "contact-editor": {
+    "n": 4,
+    "mean": 7.85,
+    "min": 7.9,
+    "max": 7.9,
+    "min_file": "kypost-05-after-contact-editor-desktop-dark.png",
+    "ky_fit_mean": 8.23,
+    "ky_fit_min": 8.2,
+    "by_viewport": {
+     "desktop": 7.85,
+     "mobile": 7.85
+    },
+    "by_theme": {
+     "light": 7.85,
+     "dark": 7.85
+    },
+    "surfaces": [
+     "contact-editor"
+    ],
+    "matched": "within-product only; no competitor after-capture exists, so no Ky gap"
+   },
+   "contacts-list": {
+    "n": 4,
+    "mean": 7.33,
+    "min": 7.2,
+    "max": 7.5,
+    "min_file": "kypost-05-after-contacts-mobile-dark.png",
+    "ky_fit_mean": 8.1,
+    "ky_fit_min": 8.0,
+    "by_viewport": {
+     "desktop": 7.5,
+     "mobile": 7.15
+    },
+    "by_theme": {
+     "light": 7.33,
+     "dark": 7.33
+    },
+    "surfaces": [
+     "contacts"
+    ],
+    "matched": "within-product only; no competitor after-capture exists, so no Ky gap"
+   },
+   "mail-list": {
+    "n": 8,
+    "mean": 7.53,
+    "min": 7.0,
+    "max": 8.0,
+    "min_file": "kypost-05-after-inbox-selection-mobile-dark.png",
+    "ky_fit_mean": 8.0,
+    "ky_fit_min": 8.0,
+    "by_viewport": {
+     "desktop": 7.93,
+     "mobile": 7.13
+    },
+    "by_theme": {
+     "light": 7.53,
+     "dark": 7.53
+    },
+    "surfaces": [
+     "inbox",
+     "inbox-selection"
+    ],
+    "matched": "within-product only; no competitor after-capture exists, so no Ky gap"
+   },
+   "mail-read": {
+    "n": 4,
+    "mean": 7.25,
+    "min": 7.0,
+    "max": 7.5,
+    "min_file": "kypost-05-after-reader-mobile-dark.png",
+    "ky_fit_mean": 8.0,
+    "ky_fit_min": 8.0,
+    "by_viewport": {
+     "desktop": 7.5,
+     "mobile": 7.0
+    },
+    "by_theme": {
+     "light": 7.25,
+     "dark": 7.25
+    },
+    "surfaces": [
+     "reader"
+    ],
+    "matched": "within-product only; no competitor after-capture exists, so no Ky gap"
+   },
+   "settings": {
+    "n": 4,
+    "mean": 7.83,
+    "min": 7.8,
+    "max": 7.9,
+    "min_file": "kypost-05-after-appearance-desktop-dark.png",
+    "ky_fit_mean": 8.2,
+    "ky_fit_min": 8.2,
+    "by_viewport": {
+     "desktop": 7.8,
+     "mobile": 7.85
+    },
+    "by_theme": {
+     "light": 7.83,
+     "dark": 7.83
+    },
+    "surfaces": [
+     "appearance"
+    ],
+    "matched": "within-product only; no competitor after-capture exists, so no Ky gap"
+   }
+  }
+ },
+ "surface_aggregates": {
+  "kypost": {
+   "appearance": {
+    "n": 4,
+    "mean": 7.83,
+    "min": 7.8,
+    "ky_fit_mean": 8.2,
+    "cohort": "settings"
+   },
+   "compose": {
+    "n": 4,
+    "mean": 7.33,
+    "min": 7.2,
+    "ky_fit_mean": 8.0,
+    "cohort": "compose"
+   },
+   "contact-editor": {
+    "n": 4,
+    "mean": 7.85,
+    "min": 7.9,
+    "ky_fit_mean": 8.23,
+    "cohort": "contact-editor"
+   },
+   "contacts": {
+    "n": 4,
+    "mean": 7.33,
+    "min": 7.2,
+    "ky_fit_mean": 8.1,
+    "cohort": "contacts-list"
+   },
+   "inbox": {
+    "n": 4,
+    "mean": 7.58,
+    "min": 7.3,
+    "ky_fit_mean": 8.0,
+    "cohort": "mail-list"
+   },
+   "inbox-selection": {
+    "n": 4,
+    "mean": 7.48,
+    "min": 7.0,
+    "ky_fit_mean": 8.0,
+    "cohort": "mail-list"
+   },
+   "reader": {
+    "n": 4,
+    "mean": 7.25,
+    "min": 7.0,
+    "ky_fit_mean": 8.0,
+    "cohort": "mail-read"
+   }
+  }
+ },
+ "product_visual_summary": {
+  "kypost": {
+   "label": "within-product visual summary, equal cohort weight; NOT a ranking and NOT a product certification",
+   "cohorts": 6,
+   "equal_cohort_weight_mean": 7.52,
+   "lowest_cohort_mean": 7.25,
+   "lowest_file_total": 7.0,
+   "highest_file_total": 8.0,
+   "files_at_or_above_9": 0,
+   "files": 28,
+   "ky_fit_mean": 8.08,
+   "ky_fit_min": 8.0,
+   "meets_9_quality_every_cohort": false,
+   "ky_fit_meets_9": false
+  }
+ },
+ "checks": {
+  "inventory_matches_files": true,
+  "representatives": 28,
+  "every_dimension_observed": true,
+  "totals_recomputed": "by build.py and independently by the recompute snippet in the review"
+ }
+}
