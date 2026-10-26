@@ -12,13 +12,17 @@
   },
   "scripts": {
     "test": "node --test test/*.test.js",
-    "check": "node --test test/*.test.js",
+    "lint": "eslint . --max-warnings 0",
+    "check": "npm run lint && npm test",
     "test:browser": "playwright test",
     "check:suite": "node scripts/check-suite.mjs",
     "sync:consumers": "node scripts/sync-consumers.mjs",
     "check:consumers": "node scripts/sync-consumers.mjs --check"
   },
   "devDependencies": {
-    "@playwright/test": "1.63.0"
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "eslint": "10.13.0",
+    "globals": "17.13.0"
   }
 }

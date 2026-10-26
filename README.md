@@ -54,8 +54,14 @@ The package is browser UI infrastructure. `ky-primitives` remains the home for G
 ## Verification
 
 ```sh
-npm test
+npm ci
+npm run check
 ```
+
+`check` runs ESLint's recommended JavaScript checks with zero warnings allowed,
+then the unit tests. `npm run lint` runs the linter alone. It checks shipped
+JavaScript, tooling and tests with the appropriate browser/Node globals; fix
+findings or explain a narrowly scoped false-positive suppression in the source.
 
 `npm ci && npx playwright install chromium && npm run test:browser` runs the shared
 browser contracts at 390px/1280px in light/dark Chromium. The fixture imports the
