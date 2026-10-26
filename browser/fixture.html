@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ky-ui contract fixture (not a product)</title>
-  <link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/navigation.css"><link rel="stylesheet" href="/fixture.css">
+  <link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/navigation.css"><link rel="stylesheet" href="/fixture.css"><link rel="stylesheet" href="/appearance.css"><link rel="stylesheet" href="/appearance-themes.css">
   <script type="module" src="/fixture.js"></script>
 </head>
 <body>
@@ -17,5 +17,10 @@
     <button id="open">Open dialog</button>
     <dialog aria-labelledby="dialog-title"><h2 id="dialog-title">Review record</h2><label>Name <input value="Example record"></label><form method="dialog"><button>Close</button></form></dialog>
   </main>
+  <h2>Appearance contract fixture</h2>
+  <fieldset class="ky-appearance">
+    <legend class="ky-appearance-legend">Theme</legend>
+    <div class="ky-appearance-grid"></div>
+  </fieldset>
 </body>
 </html>

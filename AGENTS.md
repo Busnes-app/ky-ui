@@ -6,17 +6,20 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 
 ## Ownership
 
-- `src/tokens.css` owns shared visual tokens.
+- `src/tokens.css` owns Busnes palettes and shared visual tokens.
+- `src/themes.js` owns the common 22-theme metadata and named palettes, legacy aliases and CSSOM application helper. `scripts/appearance-themes.mjs` generates `src/appearance-themes.css` previews from this catalog and Busnes tokens.
 - `src/navigation.css` owns reusable selected, hover, focus, and responsive navigation states.
+- `src/appearance.css` owns the shared responsive Appearance radio-card grid and preview styling; products retain persistence adapters, compatibility exports and page composition.
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
 - `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
 - `skills/` owns the reusable suite design skill; `reviews/` owns comparative screenshot evidence and staged acceptance records.
-- `scripts/check-suite.mjs` checks public consumer default branches read-only with credential helpers disabled; no consumer code runs. Private KyForge's workflow uses its own reviewed comparator and treats public upstream files strictly as data. Both workflows gate suite freshness; no cross-repository private token.
+- `scripts/check-suite.mjs` checks public consumer default branches read-only with credential helpers disabled; no consumer code runs. Archived products stay outside the active inventory; no cross-repository private token is used.
 
 ## Local Contracts
 
 - The default theme follows the operating system until a browser-local choice is saved.
+- Products expose Appearance through navigation, without a compact theme dropdown in that navigation/sidebar or its phone-header presentation. Appearance description, theme name and mode text wrap consistently through shared styles.
 - Explicit `busnes-light` and `busnes-dark` choices override the OS.
 - Shared selectors are prefixed with `ky-` or use explicit `data-ky-*`/ARIA state to avoid product CSS collisions.
 - Compatibility aliases map existing product variables to shared tokens. Product adapters retain saved theme keys and named palettes. Navigation primitives own state styling only; products own geometry.

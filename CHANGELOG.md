@@ -13,6 +13,15 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.4.0 — fleet Appearance (pending)
+
+Preview swatches have a hairline boundary so their sidebar remains visible when
+it matches the surrounding panel. Border-box sizing retains their 48px height.
+Shared description, name and mode styles wrap consistently. Products keep the
+Appearance navigation link and remove the navigation theme dropdown.
+
+Based on source `0962260`. Adds shared responsive Appearance theme-preview radio cards, with native keyboard selection, persistent selected indicators and product-owned theme catalogs/adapters. The consumer manifest now includes `appearance.css`; every consumer must refresh its complete source copy. Expands the active inventory to the existing Drive and Pulse interfaces. The common catalog retains all 22 named themes plus Match system; generated external CSS supplies previews without inline attributes. Existing named choices, keys and OS fallback remain product contracts. No known vulnerability IDs apply. Pending rollout and review evidence do not certify 9/10 or deployment.
+
 ### 0.3.0 — suite UI cohesion (pending)
 
 Based on source `41daa93`. Adds shared typography, spacing, control geometry,

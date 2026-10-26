@@ -7,6 +7,7 @@
   "KyCalendar": "web/src/ky-ui",
   "KyMessage-Server": "web/src/ky-ui",
   "KyYard-server": "web/src/ky-ui",
-  "KyForge-Server": "web/src/ky-ui",
-  "ky-server-base": "web/src/ky-ui"
+  "ky-server-base": "web/src/ky-ui",
+  "KyDrive-server": "web/src/ky-ui",
+  "KyPulse-server": "web/src/ky-ui"
 }
