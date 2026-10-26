@@ -1,0 +1,74 @@
+// DNS shared shell: every nav page at 1280/390 in Chromium and Firefox — one visible licence button
+// that opens #about, current nav item revealed without page scroll/focus change, no page overflow,
+// no CSP violations; dashboard chart axis size/viewBox.
+import { spawn } from 'node:child_process';
+import { mkdtempSync, writeFileSync, rmSync, readFileSync } from 'node:fs';
+import { connect } from 'node:net';
+import { join } from 'node:path';
+import { chromium, firefox } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+
+const BIN = '/tmp/claude-refine-review/bin/dns', OUT = '/tmp/claude-refine-review/evidence/dns';
+const PORT = '5391', DNSPORT = '5393', base = `http://127.0.0.1:${PORT}`, password = 'ReviewAdmin456!x';
+for (const p of [PORT, DNSPORT]) { const busy = await new Promise(r => { const s = connect(+p, '127.0.0.1', () => { s.destroy(); r(true); }); s.on('error', () => r(false)); }); if (busy) throw new Error(`${p} busy; refusing`); }
+const dir = mkdtempSync('/tmp/claude-refine-review/run-dns-');
+writeFileSync(join(dir, 'kydns.yaml'), `data_dir: ${join(dir, 'data')}\ndns:\n  listen: "127.0.0.1:${DNSPORT}"\n  private_domain: home.arpa\n  upstreams: ["tls://1.1.1.1:853"]\n  allow_query: [127.0.0.0/8]\nadmin:\n  listen: "127.0.0.1:${PORT}"\n`);
+const proc = spawn(BIN, ['serve', '--config', join(dir, 'kydns.yaml')], { cwd: dir, stdio: 'ignore', env: { PATH: process.env.PATH, HOME: dir } });
+const exited = new Promise(r => proc.once('exit', r));
+const res = { head: '595a123215fe1ffcbf0d0694d82f8340b1d01a18', browsers: {}, checks: [] };
+const check = (name, pass, detail) => { res.checks.push({ name, pass, detail }); if (!pass) console.log('FAIL', name, JSON.stringify(detail)); };
+const pages = ['/', '/services', '/records', '/discovered', '/blacklists', '/dhcp', '/settings', '/appearance'];
+try {
+  for (let i = 0; ; i++) { try { await fetch(base + '/setup'); break; } catch {} if (i > 100) throw new Error('not ready'); await new Promise(r => setTimeout(r, 100)); }
+  res.csp = (await fetch(base + '/setup')).headers.get('content-security-policy');
+  for (const [bname, type] of [['chromium', chromium], ['firefox', firefox]]) {
+    const browser = await type.launch(); res.browsers[bname] = browser.version();
+    const setup = await browser.newContext({ baseURL: base }); const p0 = await setup.newPage();
+    await p0.goto('/setup');
+    if (p0.url().includes('/setup')) {
+      await p0.fill('#token', readFileSync(join(dir, 'data', 'setup-token'), 'utf8').trim());
+      await p0.fill('#password', password); await p0.fill('#confirm', password);
+      await p0.locator('form button[type=submit]').click(); await p0.waitForURL(u => !u.pathname.startsWith('/setup'));
+    } else { await p0.goto('/login'); await p0.fill('#password', password); await p0.locator('form button[type=submit]').click(); await p0.waitForURL(u => !u.pathname.startsWith('/login')); }
+    const storage = await setup.storageState(); await setup.close();
+    for (const [device, viewport] of [['desktop', { width: 1280, height: 900 }], ['phone', { width: 390, height: 844 }]]) {
+      const ctx = await browser.newContext({ baseURL: base, viewport, storageState: storage, colorScheme: 'light' });
+      await ctx.addInitScript(() => { window.__csp = []; document.addEventListener('securitypolicyviolation', e => window.__csp.push(`${e.violatedDirective} ${e.blockedURI}`)); });
+      for (const path of pages) {
+        const page = await ctx.newPage(); const errs = []; page.on('pageerror', e => errs.push(String(e)));
+        await page.goto(path); await page.waitForLoadState('networkidle'); await page.evaluate(() => document.fonts.ready); await page.waitForTimeout(150);
+        const m = await page.evaluate(() => {
+          const vis = (el) => !!el && getComputedStyle(el).display !== 'none' && el.getClientRects().length > 0;
+          const lic = [...document.querySelectorAll('.license-link')].filter(vis);
+          const row = document.querySelector('.app-nav-links'), cur = row?.querySelector('[aria-current="page"]');
+          const rr = row?.getBoundingClientRect(), cr = cur?.getBoundingClientRect();
+          return { licVisible: lic.length, current: cur?.textContent, curInRow: !!cr && cr.left >= rr.left - 1 && cr.right <= rr.right + 1,
+            scrollY: window.scrollY, active: document.activeElement?.tagName, overflow: document.documentElement.scrollWidth - window.innerWidth,
+            navHeight: Math.round(document.querySelector('.app-nav').getBoundingClientRect().height), csp: window.__csp,
+            axis: [...document.querySelectorAll('.chart .axis')].slice(0, 1).map(t => getComputedStyle(t).fontSize),
+            viewBox: [...document.querySelectorAll('.chart svg')].map(s => `${s.getAttribute('viewBox')} @${Math.round(s.getBoundingClientRect().width)}x${Math.round(s.getBoundingClientRect().height)}`) };
+        });
+        const key = `${bname} ${device} ${path}`;
+        check(`${key}: one visible licence button`, m.licVisible === 1, m);
+        check(`${key}: current nav item in view, page not scrolled, focus unchanged`, m.curInRow && m.scrollY === 0 && m.active === 'BODY', m);
+        check(`${key}: no page overflow`, m.overflow <= 0, m);
+        check(`${key}: no CSP violations or page errors`, m.csp.length === 0 && errs.length === 0, { csp: m.csp, errs });
+        if (path === '/') res[`${key} charts`] = { axis: m.axis, viewBox: m.viewBox };
+        res[`${key} navHeight`] = m.navHeight;
+        if (path === '/dhcp' || path === '/appearance') {
+          await page.locator('.license-link').filter({ visible: true }).click();
+          const open = await page.evaluate(() => document.getElementById('about').matches(':popover-open'));
+          check(`${key}: visible licence button opens #about`, open, { open });
+          await page.keyboard.press('Escape');
+          await page.screenshot({ path: `${OUT}-${bname}-${device}-${path.replace(/\W/g, '') || 'dashboard'}.png` });
+        }
+        await page.close();
+      }
+      await ctx.close();
+    }
+    await browser.close();
+  }
+} finally {
+  proc.kill('SIGTERM'); await exited; rmSync(dir, { recursive: true, force: true });
+  writeFileSync(`${OUT}-results.json`, JSON.stringify(res, null, 1));
+  console.log('checks', res.checks.length, 'passed', res.checks.filter(c => c.pass).length);
+}

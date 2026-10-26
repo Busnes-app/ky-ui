@@ -1,0 +1,31 @@
+// Why is the phone nav 330px on /discovered? Compare base and head, Chromium only.
+import { spawn } from 'node:child_process';
+import { mkdtempSync, writeFileSync, rmSync, readFileSync } from 'node:fs';
+import { connect } from 'node:net';
+import { join } from 'node:path';
+import { chromium } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+const OUT = '/tmp/claude-refine-review/evidence/dns-discovered';
+const PORT = '5391', DNSPORT = '5393', base = `http://127.0.0.1:${PORT}`, password = 'ReviewAdmin456!x';
+const out = {};
+for (const [label, bin] of [['base', '/tmp/claude-refine-review/bin/dns-base'], ['head', '/tmp/claude-refine-review/bin/dns']]) {
+  for (const p of [PORT, DNSPORT]) { const busy = await new Promise(r => { const s = connect(+p, '127.0.0.1', () => { s.destroy(); r(true); }); s.on('error', () => r(false)); }); if (busy) throw new Error(`${p} busy`); }
+  const dir = mkdtempSync(`/tmp/claude-refine-review/run-dns-${label}-`);
+  writeFileSync(join(dir, 'kydns.yaml'), `data_dir: ${join(dir, 'data')}\ndns:\n  listen: "127.0.0.1:${DNSPORT}"\n  private_domain: home.arpa\n  upstreams: ["tls://1.1.1.1:853"]\n  allow_query: [127.0.0.0/8]\nadmin:\n  listen: "127.0.0.1:${PORT}"\n`);
+  const proc = spawn(bin, ['serve', '--config', join(dir, 'kydns.yaml')], { cwd: dir, stdio: 'ignore', env: { PATH: process.env.PATH, HOME: dir } });
+  const exited = new Promise(r => proc.once('exit', r));
+  const browser = await chromium.launch();
+  try {
+    for (let i = 0; ; i++) { try { await fetch(base + '/setup'); break; } catch {} if (i > 100) throw new Error('nr'); await new Promise(r => setTimeout(r, 100)); }
+    const ctx = await browser.newContext({ baseURL: base, viewport: { width: 390, height: 844 } }); const page = await ctx.newPage();
+    await page.goto('/setup'); await page.fill('#token', readFileSync(join(dir, 'data', 'setup-token'), 'utf8').trim());
+    await page.fill('#password', password); await page.fill('#confirm', password); await page.locator('form button[type=submit]').click(); await page.waitForURL(u => !u.pathname.startsWith('/setup'));
+    out[label] = {};
+    for (const path of ['/discovered', '/dhcp']) {
+      await page.goto(path); await page.waitForLoadState('networkidle'); await page.evaluate(() => document.fonts.ready);
+      out[label][path] = await page.evaluate(() => { const nav = document.querySelector('.app-nav');
+        return { navH: Math.round(nav.getBoundingClientRect().height), kids: [...nav.children].map(c => `${c.tagName}.${c.className}:${Math.round(c.getBoundingClientRect().height)}`), mainTop: Math.round(document.querySelector('main, .app-main')?.getBoundingClientRect().top ?? -1) }; });
+      await page.screenshot({ path: `${OUT}-${label}${path.replace('/', '-')}.png` });
+    }
+  } finally { await browser.close(); proc.kill('SIGTERM'); await exited; rmSync(dir, { recursive: true, force: true }); }
+}
+console.log(JSON.stringify(out, null, 1)); writeFileSync(`${OUT}-results.json`, JSON.stringify(out, null, 1));

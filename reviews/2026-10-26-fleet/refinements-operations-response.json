@@ -1,0 +1,275 @@
+{
+ "schema": "ky-fleet-implementer-response/1",
+ "batch": "visual-refinement",
+ "date": "2026-10-26",
+ "implementer": "Claude Opus 5.5 (claude-opus-5-5), implementation sub-agent; not a reviewer; no self-assigned score and no claim of a global 9",
+ "source_review": "ky-ui reviews/2026-10-26-fleet/release-review.md and release-scores.json (baseline PR Busnes-app/ky-ui#22, worktree fleet-baseline-evidence)",
+ "scope": "KyRecovery, KyDNS, KyPulse, KyDrive, ky-server-base only. No change to Post, Calendar, Messages, Yard, Notes, Identity or shared ky-ui. No backend, API, auth, crypto, storage-key, CSP or palette-value change.",
+ "capture_conditions": "Per touched surface: OS light and dark (prefers-color-scheme) x 1280x900 and 390x844 CSS px, device scale 1, full page, service workers blocked; synthetic disposable server built from the recorded commit on 127.0.0.1:5391 (DNS also 5393); Space Grotesk load state recorded per manifest (loaded in all); Playwright 1.63/Chromium 153 (Recovery, DNS, Pulse) or 1.64.1/Chromium 156 (Drive, Base). Every stage captured at a clean commit (uncommitted_source_sha256 null); every PNG has a SHA-256 in its manifest. Stage 00 is the fetched default branch with the same fixture as the after stages.",
+ "repositories": {
+  "KyRecovery-server": {
+   "gap": "1 + 8 (Replication phone clipping, no desktop h1, three-row phone header)",
+   "branch": "ui/fleet-visual-refinement",
+   "base": "origin/main cd058d4",
+   "head": "ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc",
+   "pushed": true,
+   "pr": "https://github.com/Busnes-app/KyRecovery-server/pull/73",
+   "worktree": "/home/yoshi/git/busnes.app/kyrecovery-server/.claude/worktrees/fleet-visual-refinement",
+   "evidence": "/home/yoshi/git/busnes.app/kyrecovery-server/.claude/worktrees/fleet-visual-refinement/docs/ui-visual-refinement-2026-10-26/",
+   "commits": [
+    {
+     "sha": "cf2e85724619cb8524b088a82d13c88177ce8208",
+     "subject": "compact the phone header and title the replication tab"
+    },
+    {
+     "sha": "36fa319daaba71d3780690402727a34d32a607fc",
+     "subject": "hide the phone Account button on wide screens"
+    },
+    {
+     "sha": "ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc",
+     "subject": "record visual refinement captures and checks"
+    }
+   ],
+   "capture_stages": {
+    "00-before": "cd058d4, 5/7 checks",
+    "01-after": "cf2e857, 7/7; desktop showed the phone-only Account button",
+    "02-after": "36fa319, 7/7 (single confirmation recapture)"
+   },
+   "changes": [
+    "Phone header 222px -> 131px: brand + Account (native popover with name, role, SSO pairing, Password, Sign Out) and the status pill; desktop inline as before",
+    "Offsite Replication h1",
+    "Phone empty tables hide headings so empty-state text fits (was clipped up to 271px)",
+    "Overview intro gap 8px"
+   ],
+   "checks": {
+    "pass": [
+     "gofmt",
+     "go vet",
+     "go test -race -count=1 -p 2 ./... ordinary and GODEBUG=fips140=on",
+     "check-vendor.mjs",
+     "check-contrast.mjs",
+     "test-overview.mjs",
+     "capture checks incl. F6 tab reveal (scrollY 851->851, focus not in nav)"
+    ],
+    "not_run": [
+     "CI fuzz targets, WASM rebuild, Docker/restic overlay (no backend/WASM/image change)"
+    ],
+    "ci_snapshot": "7 pass, 2 skipping on ea4b76e"
+   },
+   "remaining": [
+    "Backups, Capsules, Paired Products, Custodians and Audit Ledger tabs still lack an h1 (not captured)"
+   ]
+  },
+  "KyDNS-server": {
+   "gap": "5 (phone nav in three rows with version/licence in header, ~7px axis labels, misaligned stats)",
+   "branch": "ui/fleet-visual-refinement",
+   "base": "origin/main 5ac6796",
+   "head": "595a123 (owner merged main into the branch after my push of df2e1f4616b8ba74eb566ec08862336e768a85f8; local fast-forwarded)",
+   "pushed": true,
+   "pr": "https://github.com/Busnes-app/KyDNS-server/pull/86",
+   "worktree": "/home/yoshi/git/busnes.app/kydns-server/.claude/worktrees/fleet-visual-refinement",
+   "evidence": "/home/yoshi/git/busnes.app/kydns-server/.claude/worktrees/fleet-visual-refinement/docs/ui-visual-refinement-2026-10-26/",
+   "commits": [
+    {
+     "sha": "bd9efcec00a1d285d7816e6fabda90bcb13bc4f0",
+     "subject": "fit the phone dashboard: one nav row, legible charts, even stats"
+    },
+    {
+     "sha": "97dd59b28066b61d2833ae57aa4690d1c1cddca8",
+     "subject": "rename the nav wrapper away from the marketing .nav-links"
+    },
+    {
+     "sha": "df2e1f4616b8ba74eb566ec08862336e768a85f8",
+     "subject": "record visual refinement captures and checks"
+    }
+   ],
+   "capture_stages": {
+    "00-before": "5ac6796, 4/6 checks (axis labels 6px, stat edges 33/49/211)",
+    "01-after": "bd9efce, 5/6; DEFECTIVE: .nav-links collided with the marketing styles.css menu class (row pinned to viewport bottom, 406px overflow, extra desktop selected underline)",
+    "02-after": "97dd59b, 6/6 (single confirmation recapture)"
+   },
+   "changes": [
+    "Phone header 203px -> 113px: brand + Sign out row, one sideways-scrolling nav row; nav.js reveals the current row (again after font load), page and focus unchanged",
+    "Licence button below the page on phones (desktop sidebar unchanged)",
+    "Charts drawn in CSS pixels: 12px axis labels at all widths; desktop charts flatter (214->180, 150->130px)",
+    "Phone stat rows: two-column grid, edges 33/207px"
+   ],
+   "checks": {
+    "pass": [
+     "gofmt",
+     "go vet",
+     "check-vendor.mjs",
+     "go test -race -timeout 10m -p 2 ./... ordinary and GODEBUG=fips140=on (on df2e1f4)",
+     "capture checks"
+    ],
+    "not_run": [
+     "Docker/package jobs (no backend change)"
+    ],
+    "ci_snapshot": "14 pass, 1 skipping on 595a123"
+   },
+   "remaining": [
+    "Phone metric table labels still wrap in IBM Plex Mono",
+    "Records/DHCP/Blacklists pages share the shell but were not captured"
+   ]
+  },
+  "KyPulse-server": {
+   "gap": "4 (unstyled back link, uppercase boxed facts, dominant filled Delete with no primary)",
+   "branch": "ui/fleet-visual-refinement",
+   "base": "origin/master 8aefea2",
+   "head": "ee5228cdfe9e54bd3bc39d02ec4f5341ed43cca4",
+   "pushed": true,
+   "pr": "https://github.com/Busnes-app/KyPulse-server/pull/50",
+   "worktree": "/home/yoshi/git/busnes.app/kyPulse-server/.claude/worktrees/fleet-visual-refinement",
+   "evidence": "/home/yoshi/git/busnes.app/kyPulse-server/.claude/worktrees/fleet-visual-refinement/docs/ui-visual-refinement-2026-10-26/",
+   "commits": [
+    {
+     "sha": "535a91ad3bb44b574ca0f3d0ca17bfecff11cfdd",
+     "subject": "quiet the app detail page"
+    },
+    {
+     "sha": "ee5228cdfe9e54bd3bc39d02ec4f5341ed43cca4",
+     "subject": "record visual refinement captures and checks"
+    }
+   ],
+   "capture_stages": {
+    "00-before": "8aefea2, 2/6 checks",
+    "01-after": "535a91a, 6/6; no defect found, no recapture"
+   },
+   "changes": [
+    "Status back link in page ink",
+    "Settings facts as flat label/value rows, sentence-case 13px labels (shared .dr-facts, also KyYard facts/card)",
+    "Edit is the only header action; Delete moved to a closing 'Stop watching' section, still filled .btn-danger, same confirm, admin-only; no invented primary"
+   ],
+   "checks": {
+    "pass": [
+     "make ci (tidy, lint, race, 96 vitest, smoke)",
+     "race under GODEBUG=fips140=on",
+     "web/dist matches build",
+     "Playwright 18 passed / 4 skipped",
+     "F7 danger-button on the real Delete: min rest/focus 5.89, hover 5.03 across 15 suite palettes (unchanged); legacy --button-text assertions pass",
+     "nav.spec, ui.spec, monitor.spec"
+    ],
+    "flaky": "logs.spec failed once at 390px (both schemes) on its afterAll teardown timeout closing the fake KyYard server; test bodies passed; immediate rerun of both 390 projects at the same head: 2/2 pass",
+    "not_run": [
+     "PostgreSQL suite (no local instance; no Go change)"
+    ],
+    "ci_snapshot": "pending at report time"
+   },
+   "remaining": [
+    "Alert history .events th still uppercase/letter-spaced (shared with Alerts page, not captured)",
+    "Status/Settings intro gap still 12px"
+   ]
+  },
+  "KyDrive-server": {
+   "gap": "6 + 8 (duplicate Settings theme select; ~230px phone header)",
+   "branch": "ui/fleet-visual-refinement",
+   "base": "origin/master 657a485",
+   "head": "5d6bb8a0e181704b430495d1e8b92f45bf7ae0bc",
+   "pushed": true,
+   "pr": "https://github.com/Busnes-app/kydrive-server/pull/84",
+   "worktree": "/home/yoshi/git/busnes.app/KyDrive-server/.claude/worktrees/fleet-visual-refinement",
+   "evidence": "/home/yoshi/git/busnes.app/KyDrive-server/.claude/worktrees/fleet-visual-refinement/docs/ui-visual-refinement-2026-10-26/",
+   "commits": [
+    {
+     "sha": "84102c612446b0b258b1e521d51faf49f031ad28",
+     "subject": "point admin Settings to Appearance and compact the phone header"
+    },
+    {
+     "sha": "5d6bb8a0e181704b430495d1e8b92f45bf7ae0bc",
+     "subject": "record visual refinement captures and checks"
+    }
+   ],
+   "capture_stages": {
+    "00-before": "657a485, 3/6 checks; one failure is a driver locator ambiguity (two 'My files' buttons), not the product",
+    "01-after": "84102c6, 6/6; no defect found, no recapture"
+   },
+   "changes": [
+    "Settings System card: 'Open Appearance' button replaces the second theme select (login selector kept; no instance default theme exists)",
+    "Phone header 202px -> 141px: brand + sign-out row, both navigations in one scrolling row with current destination revealed, preference under it",
+    "Page intro gap 8px (was 3px)"
+   ],
+   "checks": {
+    "pass": [
+     "vendor check",
+     "100 vitest + build (known pre-existing chunk-size warning only)",
+     "go vet",
+     "gofmt",
+     "go test -race -count=1 -p 2 ./... (16 ok; restic not installed locally)",
+     "Playwright 50 passed / 2 skipped",
+     "F7 'Delete permanently': min rest/focus 5.83, hover 6.60 (unchanged)"
+    ],
+    "not_run": [
+     "Docker/repeatable-binary jobs"
+    ],
+    "ci_snapshot": "pending at report time"
+   },
+   "remaining": [
+    "System card sqlite mono badge and panel header icons unchanged",
+    "Long shared-workspace list in phone row not captured"
+   ]
+  },
+  "ky-server-base": {
+   "gap": "7 + intro-gap smaller issue",
+   "branch": "ui/fleet-visual-refinement",
+   "base": "origin/master 3bc0780",
+   "head": "55d70ae21b65505c298a929c04e621353f4a6806",
+   "pushed": true,
+   "pr": "https://github.com/Busnes-app/ky-server-base/pull/74",
+   "worktree": "/home/yoshi/git/busnes.app/ky_server_base/.claude/worktrees/fleet-visual-refinement",
+   "evidence": "/home/yoshi/git/busnes.app/ky_server_base/.claude/worktrees/fleet-visual-refinement/docs/ui-visual-refinement-2026-10-26/",
+   "commits": [
+    {
+     "sha": "b2c773345c875ca1d844b01114689a558f9824e8",
+     "subject": "flatten the Settings & DB card"
+    },
+    {
+     "sha": "662642b6a72a40ca744214bc3763bbcf3db8a40d",
+     "subject": "align the settings rows and quiet the overview driver chip"
+    },
+    {
+     "sha": "55d70ae21b65505c298a929c04e621353f4a6806",
+     "subject": "record visual refinement captures and checks (also CHANGELOG Current source + archive of shipped 3bc0780)"
+    }
+   ],
+   "capture_stages": {
+    "00-before": "3bc0780, 1/5 checks",
+    "01-after": "b2c7733, 5/5; broken hairlines, baseline mismatch, overview orange chip",
+    "02-after": "662642b, 5/5 (single confirmation recapture)"
+   },
+   "changes": [
+    "Settings & DB card: flat label/value rows, no nested tinted box, no accent icon or chip; copy and driver value unchanged",
+    "Overview database state uses the neutral badge",
+    "Page intro gap 8px (was 12px; also Directory & SCIM, not captured)",
+    "CHANGELOG: shipped 3bc0780 archived (publish succeeded), new Current source"
+   ],
+   "checks": {
+    "pass": [
+     "make ci end to end (notes-check, tidy, lint, race+coverage, 10 vitest + build, smoke)",
+     "check-release-notes.py --base origin/master",
+     "race under GODEBUG=fips140=on",
+     "web/dist matches build",
+     "Playwright 8 passed / 4 skipped incl. F6 nav.spec and F7 danger-button (min 5.83 / hover 4.97, unchanged)"
+    ],
+    "not_run": [
+     "PostgreSQL suite (no local instance)"
+    ],
+    "ci_snapshot": "pending at report time"
+   },
+   "remaining": [
+    "Sidebar Pair Device orange icon and overview icon tiles unchanged"
+   ]
+  }
+ },
+ "contrast_scope": "No palette or theme-catalog value changed. F3/G1/G2 untouched; no component-role correction proposed in this batch.",
+ "operations": [
+  "Removed the five old fleet-appearance worktrees after confirming each was clean, fully pushed and its PR merged (Recovery #71, DNS #84, Pulse #49, Drive #82, Base #73); branches and commits kept. Ignored contents were rebuildable build/test output only.",
+  "New worktrees <repo>/.claude/worktrees/fleet-visual-refinement on ui/fleet-visual-refinement from the fetched default branch.",
+  "Port 5391: the first stage-01 Recovery attempt found 5391 held by another process ('server', gone before it could be identified); my server failed to bind and the driver hung in cleanup. I stopped only my own process and removed only its scratch dir; nothing was written or captured. All five drivers now refuse to start on a busy port and clean up safely. No foreign process was killed.",
+  "Heavy checks ran serially, each in a 6G memory-capped scope, Go suites with -p 2, one browser harness at a time on 5391."
+ ],
+ "not_done": [
+  "No merge or deploy",
+  "No score or 9/10 claim",
+  "No change to ky-ui, baseline (B) files, or other workers' products (Notes, Identity)"
+ ]
+}

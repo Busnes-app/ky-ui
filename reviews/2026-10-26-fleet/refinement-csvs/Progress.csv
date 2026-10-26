@@ -1,0 +1,8 @@
+﻿product,views,quality_before,quality_after,ky_fit_before,ky_fit_after,improvement
+KyDNS,8,6.9,7.4,7.0,7.3,Shorter phone header; readable chart axes; aligned stats
+KyDrive,8,7.1,7.4,7.5,7.6,Duplicate theme picker removed; compact phone navigation
+KyIdentity,16,6.1,7.2,6.3,7.5,Readable phone users; labelled Manage actions
+KyNotes,16,5.8,6.7,5.6,7.1,Calmer workspace and secondary actions; editor still needs work
+KyPulse,12,5.6,6.9,6.2,7.0,Consistent link/facts styles; Delete separated from Edit
+KyRecovery,8,6.9,7.6,6.6,6.8,Phone header reduced; replication clipping fixed
+Ky server base,8,6.4,7.2,6.8,7.5,Flat settings rows; quieter badges and headings

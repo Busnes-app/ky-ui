@@ -1,0 +1,4 @@
+﻿repository,url,state,head,ci,review,observed_at
+KyIdentity-server,https://github.com/Busnes-app/KyIdentity-server/pull/171,OPEN,08f31472129bc86cc558860ff80547251e317673,running at last read,pending,2026-10-26T18:29:38.983818+00:00
+KyNotes-server,https://github.com/Busnes-app/KyNotes-server/pull/117,OPEN,2b6eb255972fda93c7356235f72e108c7b852d0d,running at last read,pending,2026-10-26T18:29:38.983837+00:00
+KyPulse-server,https://github.com/Busnes-app/KyPulse-server/pull/51,MERGED,1670187315c824a98099caf5b22107d368ed1903,all pass/skip,same-head cleared,2026-10-26T18:29:38.983840+00:00

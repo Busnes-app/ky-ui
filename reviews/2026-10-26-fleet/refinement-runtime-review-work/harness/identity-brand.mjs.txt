@@ -1,0 +1,73 @@
+// Identity Users "Manage" disclosure: real Tab/Enter reachability, Chromium AX tree (CDP) of the
+// phone table, handler wiring for Edit/Delete, and a helpdesk viewer (mocked /api/auth/me access).
+import { randomBytes } from 'node:crypto';
+import { spawn, spawnSync } from 'node:child_process';
+import { mkdtempSync, symlinkSync, writeFileSync, rmSync } from 'node:fs';
+import { connect } from 'node:net';
+import { join } from 'node:path';
+import { chromium } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+
+const SRC = '/tmp/claude-refine-review/src/identity-head', BIN = '/tmp/claude-refine-review/bin/identity';
+const OUT = '/tmp/claude-refine-review/evidence/identity-brand';
+const PORT = '5391', base = `http://127.0.0.1:${PORT}`;
+const busy = await new Promise(r => { const s = connect(+PORT, '127.0.0.1', () => { s.destroy(); r(true); }); s.on('error', () => r(false)); });
+if (busy) throw new Error('5391 busy; refusing');
+const dir = mkdtempSync('/tmp/claude-refine-review/run-identity-');
+for (const a of ['css', 'fonts']) symlinkSync(join(SRC, a), join(dir, a));
+const secret = () => `Rev-${randomBytes(18).toString('base64url')}9!`;
+let password = secret(); const replacement = secret();
+const env = { PATH: process.env.PATH, HOME: dir, KYIDENTITY_DATA_DIR: join(dir, 'data'), KYIDENTITY_LISTEN_HOST: '127.0.0.1', KYIDENTITY_PORT: PORT,
+  KYIDENTITY_ISSUER_URL: base, KYIDENTITY_SECRET_KEY: randomBytes(32).toString('hex'), KYIDENTITY_ENCRYPTION_KEY: randomBytes(32).toString('hex') };
+const boot = spawnSync(BIN, ['bootstrap-admin', '-username', 'admin'], { cwd: dir, env, input: `${password}\n`, stdio: ['pipe', 'ignore', 'inherit'] });
+if (boot.status !== 0) throw new Error('bootstrap failed');
+const proc = spawn(BIN, [], { cwd: dir, env, stdio: ['ignore', 'ignore', 'inherit'] });
+const exited = new Promise(r => proc.once('exit', r));
+const res = { head: '3f7f5c043146950b0084553f96f8b469417c16a4', checks: [] };
+const check = (name, pass, detail) => { res.checks.push({ name, pass, detail }); console.log(pass ? 'PASS' : 'FAIL', name, JSON.stringify(detail)); };
+try {
+  for (let i = 0; ; i++) { try { if ((await fetch(base + '/')).ok) break; } catch {} if (i > 100) throw new Error('not ready'); await new Promise(r => setTimeout(r, 100)); }
+  const browser = await chromium.launch();
+  res.browser = `chromium ${browser.version()}`;
+  // Sign in once, replacing the bootstrap password (step-up), then reuse the storage state.
+  const c0 = await browser.newContext({ baseURL: base }); const p0 = await c0.newPage();
+  await p0.goto('/'); await p0.getByLabel('Username', { exact: true }).fill('admin'); await p0.getByLabel('Password', { exact: true }).fill(password);
+  await p0.getByRole('button', { name: /sign in/i }).first().click();
+  const change = p0.getByRole('button', { name: 'Set new password' });
+  await Promise.race([p0.getByRole('navigation').first().waitFor(), change.waitFor()]);
+  if (await change.isVisible()) {
+    await p0.getByLabel('Current or temporary password').fill(password);
+    await p0.getByLabel('New password', { exact: true }).fill(replacement); await p0.getByLabel('Repeat new password').fill(replacement);
+    await change.click(); await p0.locator('#admin-stepup-password').fill(password); await p0.locator('#admin-stepup-password').press('Enter');
+    password = replacement; await change.waitFor({ state: 'detached' });
+    if (!(await p0.getByRole('navigation').first().isVisible())) {
+      await p0.getByLabel('Username', { exact: true }).fill('admin'); await p0.getByLabel('Password', { exact: true }).fill(password);
+      await p0.getByRole('button', { name: /sign in/i }).first().click();
+    }
+  }
+  await p0.getByRole('navigation').first().waitFor();
+  const storage = await c0.storageState(); await c0.close();
+
+  const lum = (c) => { const m = c.match(/[\d.]+/g).map(Number); const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(m[0]) + 0.7152 * f(m[1]) + 0.0722 * f(m[2]); };
+  const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return +((x + 0.05) / (y + 0.05)).toFixed(2); };
+  const rows = [];
+  for (const scheme of ['light', 'dark']) {
+    const ctx = await browser.newContext({ baseURL: base, viewport: { width: 1280, height: 900 }, storageState: storage, colorScheme: scheme });
+    const page = await ctx.newPage(); await page.goto('/'); await page.getByRole('button', { name: 'Appearance', exact: true }).click();
+    const values = await page.locator('input[type=radio]').evaluateAll(els => els.map(e => e.value));
+    for (const v of values) {
+      await page.locator(`input[type=radio][value="${v}"]`).check({ force: true }); await page.waitForTimeout(60);
+      const m = await page.evaluate(() => { const sm = document.querySelector('.brand small'); const probe = (varName) => { const d = document.createElement('div'); d.style.background = `var(${varName})`; document.body.appendChild(d); const c = getComputedStyle(d).backgroundColor; d.remove(); return c; };
+        return { text: sm.textContent, fg: getComputedStyle(sm).color, start: probe('--sidebar-start'), end: probe('--sidebar-end'), panel: probe('--panel'), sideBg: getComputedStyle(document.querySelector('.side')).backgroundImage.slice(0, 60) }; });
+      const bgs = [m.start, m.end].filter(c => !/rgba\(0, 0, 0, 0\)/.test(c)); const used = bgs.length ? bgs : [m.panel];
+      rows.push({ scheme, theme: v, fg: m.fg, min: Math.min(...used.map(b => ratio(m.fg, b))), bgs: used, sideBg: m.sideBg });
+    }
+    await ctx.close();
+  }
+  const low = rows.filter(r => r.min < 4.5);
+  check(`brand descriptor (--ink, ${rows.length / 2} choices x OS light/dark) >= 4.5:1 on sidebar gradient ends`, low.length === 0, { count: rows.length, min: Math.min(...rows.map(r => r.min)), low });
+  res.brandContrast = rows;
+  await browser.close();
+} finally {
+  proc.kill('SIGTERM'); await exited; rmSync(dir, { recursive: true, force: true });
+  writeFileSync(`${OUT}-results.json`, JSON.stringify(res, null, 1));
+}

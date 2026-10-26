@@ -1,0 +1,72 @@
+[
+  {
+    "repository": "KyRecovery-server",
+    "url": "https://github.com/Busnes-app/KyRecovery-server/pull/73",
+    "state": "MERGED",
+    "head": "ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc",
+    "ci": "all checks pass/skip",
+    "review": "cleared",
+    "review_caveat": "See reviewer coverage; separate council review pending",
+    "observed_at": "2026-10-26T17:52:08.215785+00:00"
+  },
+  {
+    "repository": "KyDNS-server",
+    "url": "https://github.com/Busnes-app/KyDNS-server/pull/86",
+    "state": "MERGED",
+    "head": "595a123215fe1ffcbf0d0694d82f8340b1d01a18",
+    "ci": "all checks pass/skip",
+    "review": "cleared",
+    "review_caveat": "See reviewer coverage; separate council review pending",
+    "observed_at": "2026-10-26T17:52:08.289597+00:00"
+  },
+  {
+    "repository": "KyPulse-server",
+    "url": "https://github.com/Busnes-app/KyPulse-server/pull/50",
+    "state": "MERGED",
+    "head": "ee5228cdfe9e54bd3bc39d02ec4f5341ed43cca4",
+    "ci": "all checks pass/skip",
+    "review": "cleared",
+    "review_caveat": "Input truncated; omitted changes not covered",
+    "observed_at": "2026-10-26T17:52:08.288361+00:00"
+  },
+  {
+    "repository": "KyDrive-server",
+    "url": "https://github.com/Busnes-app/kydrive-server/pull/84",
+    "state": "MERGED",
+    "head": "5d6bb8a0e181704b430495d1e8b92f45bf7ae0bc",
+    "ci": "all checks pass/skip",
+    "review": "cleared",
+    "review_caveat": "See reviewer coverage; separate council review pending",
+    "observed_at": "2026-10-26T17:52:08.808364+00:00"
+  },
+  {
+    "repository": "ky-server-base",
+    "url": "https://github.com/Busnes-app/ky-server-base/pull/74",
+    "state": "MERGED",
+    "head": "55d70ae21b65505c298a929c04e621353f4a6806",
+    "ci": "all checks pass/skip",
+    "review": "cleared",
+    "review_caveat": "Input truncated; omitted changes not covered",
+    "observed_at": "2026-10-26T17:52:08.943624+00:00"
+  },
+  {
+    "repository": "KyIdentity-server",
+    "url": "https://github.com/Busnes-app/KyIdentity-server/pull/169",
+    "state": "MERGED",
+    "head": "3f7f5c043146950b0084553f96f8b469417c16a4",
+    "ci": "all checks pass/skip",
+    "review": "cleared",
+    "review_caveat": "Input truncated; omitted changes not covered",
+    "observed_at": "2026-10-26T17:52:08.866749+00:00"
+  },
+  {
+    "repository": "KyNotes-server",
+    "url": "https://github.com/Busnes-app/KyNotes-server/pull/115",
+    "state": "MERGED",
+    "head": "902fda0cbe5bc9f3e8d247c88310379400ede2b4",
+    "ci": "all checks pass/skip",
+    "review": "cleared",
+    "review_caveat": "Input truncated; omitted changes not covered",
+    "observed_at": "2026-10-26T17:52:09.434282+00:00"
+  }
+]

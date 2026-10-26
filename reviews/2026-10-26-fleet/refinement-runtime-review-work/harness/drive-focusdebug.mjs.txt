@@ -1,0 +1,49 @@
+// Drive: Settings "Open Appearance" keeps the browser-local theme; the merged phone nav row with 15
+// extra shared workspaces (appended client-side to the real list) keeps every destination reachable
+// and reveals the current one without page scroll; admin and member (mocked role).
+import { randomBytes } from 'node:crypto';
+import { spawn } from 'node:child_process';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { connect } from 'node:net';
+import { join } from 'node:path';
+import { chromium } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+const BIN = '/tmp/claude-refine-review/bin/drive', OUT = '/tmp/claude-refine-review/evidence/drive';
+const PORT = '5391', base = `http://127.0.0.1:${PORT}`;
+const initial = `Init-${randomBytes(12).toString('base64url')}9!`, password = `Rev-${randomBytes(12).toString('base64url')}9!`;
+const busy = await new Promise(r => { const s = connect(+PORT, '127.0.0.1', () => { s.destroy(); r(true); }); s.on('error', () => r(false)); });
+if (busy) throw new Error('5391 busy; refusing');
+const dir = mkdtempSync('/tmp/claude-refine-review/run-drive-');
+const proc = spawn(BIN, [], { cwd: dir, stdio: ['ignore', 'ignore', 'inherit'], env: { PATH: process.env.PATH, HOME: dir, KY_APP_URL: base, KY_HOST: '127.0.0.1', KY_PORT: PORT,
+  KY_DB_DRIVER: 'sqlite', KY_DATA_DIR: join(dir, 'data'), KY_BACKUP_DIR: join(dir, 'backups'), KY_ADMIN_PASSWORD: initial, KY_CAPTCHA_PROVIDER: 'none' } });
+const exited = new Promise(r => proc.once('exit', r));
+const res = { head: '5d6bb8a0e181704b430495d1e8b92f45bf7ae0bc', checks: [] };
+const check = (name, pass, detail) => { res.checks.push({ name, pass, detail }); console.log(pass ? 'PASS' : 'FAIL', name, JSON.stringify(detail)); };
+try {
+  for (let i = 0; ; i++) { try { if ((await fetch(`${base}/healthz`)).status < 500) break; } catch {} if (i > 240) throw new Error('nr'); await new Promise(r => setTimeout(r, 250)); }
+  const login = await fetch(`${base}/api/auth/login`, { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: base }, body: JSON.stringify({ username: 'admin', password: initial }) });
+  const cookies = login.headers.getSetCookie().map(c => c.split(';')[0]); const csrf = cookies.find(c => c.startsWith('ky_csrf='))?.split('=')[1];
+  const changed = await fetch(`${base}/api/auth/change-password`, { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: base, Cookie: cookies.join('; '), 'X-CSRF-Token': csrf }, body: JSON.stringify({ current_password: initial, new_password: password }) });
+  if (!changed.ok) throw new Error(`change-password ${changed.status}`);
+  const { firefox } = await import('/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs');
+  for (const [bname, type] of [['chromium', chromium], ['firefox', firefox]]) {
+    const browser = await type.launch();
+    const ctx = await browser.newContext({ baseURL: base, viewport: { width: 390, height: 844 }, colorScheme: 'light', serviceWorkers: 'block' });
+    await ctx.route('**/api/drive/workspaces*', async (route) => {
+      if (!/\/api\/drive\/workspaces(\?|$)/.test(route.request().url()) || route.request().method() !== 'GET') return route.fallback();
+      const r = await route.fetch(); const j = await r.json(); const arr = Array.isArray(j) ? j : (j.workspaces ?? j.items);
+      const tpl = arr.find(w => w.kind === 'personal') ?? arr[0];
+      for (let i = 1; i <= 15; i++) arr.push({ ...tpl, id: `00000000-0000-4000-8000-${String(i).padStart(12, '0')}`, name: `Team space ${i} with a long name`, kind: 'shared', role: 'manager' });
+      await route.fulfill({ response: r, json: j });
+    });
+    const page = await ctx.newPage();
+    await page.goto('/'); await page.getByLabel('Username').fill('admin'); await page.getByLabel('Password').fill(password);
+    await page.locator('form button[type=submit]').first().click(); await page.getByRole('navigation', { name: 'Workspaces' }).waitFor(); await page.waitForTimeout(400);
+    await page.locator('.app-brand').click(); const log = [];
+    for (let i = 0; i < 26; i++) { await page.keyboard.press('Tab'); await page.waitForTimeout(250);
+      log.push(await page.evaluate(() => { const a = document.activeElement, row = document.querySelector('.app-navs'), nav = a.closest('nav');
+        const r = a.getBoundingClientRect(), rr = row.getBoundingClientRect();
+        return [a.textContent.trim().slice(0, 14), Math.round(r.left), Math.round(r.right), 'row', Math.round(rr.left), Math.round(rr.right), 'sl', Math.round(row.scrollLeft), 'navSL', nav ? Math.round(nav.scrollLeft) : null, 'navOv', nav ? getComputedStyle(nav).overflowX : null, 'docSL', Math.round(document.scrollingElement.scrollLeft)].join(' '); })); }
+    console.log(bname); for (const l of log) console.log('  ', l);
+    await browser.close();
+  }
+} finally { proc.kill('SIGTERM'); await exited; rmSync(dir, { recursive: true, force: true }); writeFileSync(`${OUT}-results.json`, JSON.stringify(res, null, 1)); }

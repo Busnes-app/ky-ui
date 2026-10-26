@@ -1,0 +1,104 @@
+{
+  "definition": "Matched-view averages for the latest seven-app refinement, not original project-start or whole-product scores. Current follow-up fixes verified without numerical re-scoring.",
+  "matched": [
+    {
+      "product": "KyDNS",
+      "repository": "KyDNS-server",
+      "views": 8,
+      "improvement": "Shorter phone header; readable chart axes; aligned stats",
+      "quality_before": 6.9,
+      "quality_after": 7.4,
+      "ky_fit_before": 7.0,
+      "ky_fit_after": 7.3
+    },
+    {
+      "product": "KyDrive",
+      "repository": "KyDrive-server",
+      "views": 8,
+      "improvement": "Duplicate theme picker removed; compact phone navigation",
+      "quality_before": 7.1,
+      "quality_after": 7.4,
+      "ky_fit_before": 7.5,
+      "ky_fit_after": 7.6
+    },
+    {
+      "product": "KyIdentity",
+      "repository": "KyIdentity-server",
+      "views": 16,
+      "improvement": "Readable phone users; labelled Manage actions",
+      "quality_before": 6.1,
+      "quality_after": 7.2,
+      "ky_fit_before": 6.3,
+      "ky_fit_after": 7.5
+    },
+    {
+      "product": "KyNotes",
+      "repository": "KyNotes-server",
+      "views": 16,
+      "improvement": "Calmer workspace and secondary actions; editor still needs work",
+      "quality_before": 5.8,
+      "quality_after": 6.7,
+      "ky_fit_before": 5.6,
+      "ky_fit_after": 7.1
+    },
+    {
+      "product": "KyPulse",
+      "repository": "KyPulse-server",
+      "views": 12,
+      "improvement": "Consistent link/facts styles; Delete separated from Edit",
+      "quality_before": 5.6,
+      "quality_after": 6.9,
+      "ky_fit_before": 6.2,
+      "ky_fit_after": 7.0
+    },
+    {
+      "product": "KyRecovery",
+      "repository": "KyRecovery-server",
+      "views": 8,
+      "improvement": "Phone header reduced; replication clipping fixed",
+      "quality_before": 6.9,
+      "quality_after": 7.6,
+      "ky_fit_before": 6.6,
+      "ky_fit_after": 6.8
+    },
+    {
+      "product": "Ky server base",
+      "repository": "ky-server-base",
+      "views": 8,
+      "improvement": "Flat settings rows; quieter badges and headings",
+      "quality_before": 6.4,
+      "quality_after": 7.2,
+      "ky_fit_before": 6.8,
+      "ky_fit_after": 7.5
+    }
+  ],
+  "historical_context": [
+    {
+      "product": "KyPost",
+      "historical_start_range": "5.3\u20137.4",
+      "latest_range": "7.2\u20137.7"
+    },
+    {
+      "product": "KyCalendar",
+      "historical_start_range": "7.3\u20137.9",
+      "latest_range": "6.9\u20138.0"
+    },
+    {
+      "product": "KyMessages",
+      "historical_start_range": null,
+      "latest_range": "6.8\u20137.9"
+    },
+    {
+      "product": "KyYard",
+      "historical_start_range": null,
+      "latest_range": "7.2\u20138.0"
+    }
+  ],
+  "historical_warning": "Starting and latest ranges use different coverage and capture conditions; they are historical context, not matched deltas. Missing starting evidence is N/A.",
+  "acceptance": "9/10 target not achieved",
+  "sources": {
+    "matched": "refinement-cohorts.json:matched_pairs",
+    "historical_initial": "../2026-10-26-council/reranked-scores.json",
+    "historical_latest": "release-scores.json"
+  }
+}

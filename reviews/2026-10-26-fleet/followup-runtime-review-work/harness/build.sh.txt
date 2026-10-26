@@ -1,0 +1,9 @@
+#!/bin/sh
+# Builds pinned exports with the persistent Go cache; one binary per export.
+set -e
+S=/tmp/claude-followup-review
+(cd $S/src/identity-head && go build -p 2 -o $S/bin/identity-head ./cmd/kyidentity)
+(cd $S/src/identity-base && go build -p 2 -o $S/bin/identity-base ./cmd/kyidentity)
+(cd $S/src/pulse-head && go build -p 2 -o $S/bin/pulse-head ./cmd/server)
+(cd $S/src/pulse-base && go build -p 2 -o $S/bin/pulse-base ./cmd/server)
+sha256sum $S/bin/*

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+S=/tmp/claude-refine-review/src; G=/home/yoshi/git/busnes.app
+while read -r name dir rev; do
+  rm -rf "$S/$name"; mkdir -p "$S/$name"
+  git -C "$G/$dir/.claude/worktrees/fleet-visual-refinement" archive "$rev" | tar -x -C "$S/$name"; echo "$name $rev" >> $S/EXPORTS
+done <<'L'
+identity-head2 KyIdentity-server 3f7f5c043146950b0084553f96f8b469417c16a4
+notes-head kynotes-server 902fda0cbe5bc9f3e8d247c88310379400ede2b4
+base-head ky_server_base 55d70ae21b65505c298a929c04e621353f4a6806
+L
+for p in identity-head2 notes-head pulse-head base-head; do echo "== $p"; grep -n "outDir\|emptyOutDir\|root:" $S/$p/web/vite.config.* 2>/dev/null | head -3; done

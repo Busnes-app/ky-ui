@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Export pinned commits into owned scratch trees (never touches agent checkouts).
+set -euo pipefail
+G=/home/yoshi/git/busnes.app; S=/tmp/claude-refine-review/src
+mkdir -p $S
+exp() { local name=$1 dir=$2 rev=$3; local out=$S/$name; rm -rf "$out"; mkdir -p "$out"; git -C $G/$dir/.claude/worktrees/fleet-visual-refinement archive "$rev" | tar -x -C "$out"; echo "$name $rev" >> $S/EXPORTS; }
+: > $S/EXPORTS
+exp identity-head KyIdentity-server 3f7f5c043146950b0084553f96f8b469417c16a4
+exp recovery-head kyrecovery-server ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc
+exp dns-head kydns-server 595a123215fe1ffcbf0d0694d82f8340b1d01a18
+exp pulse-head kyPulse-server ee5228cdfe9e54bd3bc39d02ec4f5341ed43cca4
+exp pulse-base kyPulse-server 8aefea2de1bfa274e4985147d6f9e452506d3b5d
+cat $S/EXPORTS

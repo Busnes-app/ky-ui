@@ -1,0 +1,34 @@
+{
+  "R1": {
+    "status": "fix in progress",
+    "response": "Hide empty disclosure for helpdesk viewers on admin rows; fresh follow-up PR from merged default; no handler/authorization change."
+  },
+  "R2": {
+    "status": "fix in progress",
+    "response": "Restore consistent Backup fact-label/badge layout after checking all .dr-facts consumers; fresh follow-up PR."
+  },
+  "R3": {
+    "status": "evidence follow-up in progress",
+    "response": "Keep intended neutral outline for all .secondary actions; document and capture broader pre-existing controls. Destructive neutral outline remains an explicit design residual; no new danger styling in this bounded follow-up."
+  },
+  "N1": {
+    "status": "evidence correction in progress",
+    "response": "Original DOM-role script is not an AX-tree check. Independent reviewer performed actual Chromium AX verification; Firefox/WebKit unknown."
+  },
+  "N2": {
+    "status": "recorded limit",
+    "response": "Native details stays open after Escape; Enter/Space closes it. No keyboard trap; no menu redesign in this scope."
+  },
+  "N3": {
+    "status": "recorded limit",
+    "response": "Generated phone labels can duplicate announced column labels. Not fixed in the empty-disclosure change."
+  },
+  "P1": {
+    "status": "pre-existing pattern; not fixed",
+    "response": "Drive partly visible focus targets may stay partly clipped. Original base not measured; no regression claim."
+  },
+  "P2": {
+    "status": "pre-existing; not fixed",
+    "response": "DNS short-page mobile shell stretches to330px vs402px at base; dense Dashboard113px result is surface-specific."
+  }
+}

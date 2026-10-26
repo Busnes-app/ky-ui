@@ -1,0 +1,582 @@
+{
+ "which": "head",
+ "results": [
+  {
+   "name": "desktop delegate: admin row has no Manage",
+   "pass": true,
+   "detail": {
+    "manage": 0,
+    "actions": []
+   }
+  },
+  {
+   "name": "desktop delegate: helpdesk/member rows 5 actions",
+   "pass": true,
+   "detail": {
+    "member": [
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status"
+    ],
+    "helpdesk": [
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status"
+    ]
+   }
+  },
+  {
+   "name": "phone delegate: admin row has no Manage",
+   "pass": true,
+   "detail": {
+    "manage": 0,
+    "actions": []
+   }
+  },
+  {
+   "name": "phone delegate: helpdesk/member rows 5 actions",
+   "pass": true,
+   "detail": {
+    "member": [
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status"
+    ],
+    "helpdesk": [
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status"
+    ]
+   }
+  },
+  {
+   "name": "desktop admin: every row 9 actions",
+   "pass": true,
+   "detail": {
+    "admin": [
+     "Groups",
+     "Edit user",
+     "Delegated administration",
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status",
+     "Delete user"
+    ],
+    "helpdesk": [
+     "Groups",
+     "Edit user",
+     "Delegated administration",
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status",
+     "Delete user"
+    ],
+    "member": [
+     "Groups",
+     "Edit user",
+     "Delegated administration",
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status",
+     "Delete user"
+    ]
+   }
+  },
+  {
+   "name": "phone admin: every row 9 actions",
+   "pass": true,
+   "detail": {
+    "admin": [
+     "Groups",
+     "Edit user",
+     "Delegated administration",
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status",
+     "Delete user"
+    ],
+    "helpdesk": [
+     "Groups",
+     "Edit user",
+     "Delegated administration",
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status",
+     "Delete user"
+    ],
+    "member": [
+     "Groups",
+     "Edit user",
+     "Delegated administration",
+     "Reset MFA",
+     "Sessions and apps",
+     "Revoke sessions",
+     "Password reset link",
+     "Offboarding status",
+     "Delete user"
+    ]
+   }
+  }
+ ],
+ "delegate-desktop": {
+  "facts": [
+   {
+    "account": "admin",
+    "manage": 0,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": [
+     "Actions"
+    ]
+   },
+   {
+    "account": "helpdesk",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   },
+   {
+    "account": "member",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   }
+  ],
+  "acts": {
+   "admin": [],
+   "helpdesk": [
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status"
+   ],
+   "member": [
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status"
+   ]
+  }
+ },
+ "delegate-phone": {
+  "facts": [
+   {
+    "account": "admin",
+    "manage": 0,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status"
+    ],
+    "emptyCells": [
+     "Actions"
+    ]
+   },
+   {
+    "account": "helpdesk",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   },
+   {
+    "account": "member",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   }
+  ],
+  "acts": {
+   "admin": [],
+   "helpdesk": [
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status"
+   ],
+   "member": [
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status"
+   ]
+  }
+ },
+ "delegate-phone-ax": {
+  "table": 1,
+  "LayoutTable": 0,
+  "row": 4,
+  "columnheader": 6,
+  "cell": 17,
+  "rowCells": [
+   [
+    "cell:Account admin",
+    "cell:Display Name Administrator",
+    "cell:Email admin@local.kysecurity",
+    "cell:Role Administrator",
+    "cell:Status Active"
+   ],
+   [
+    "cell:Account helpdesk",
+    "cell:Display Name helpdesk",
+    "cell:Email helpdesk@example.test",
+    "cell:Role User",
+    "cell:Status Active",
+    "cell:Actions Manage helpdesk Reset MFA Sessions "
+   ],
+   [
+    "cell:Account member",
+    "cell:Display Name member",
+    "cell:Email member@example.test",
+    "cell:Role User",
+    "cell:Status Active",
+    "cell:Actions Manage member Reset MFA Sessions an"
+   ],
+   [
+    "columnheader:Account",
+    "columnheader:Display Name",
+    "columnheader:Email",
+    "columnheader:Role",
+    "columnheader:Status",
+    "columnheader:Actions"
+   ]
+  ]
+ },
+ "admin-desktop": {
+  "facts": [
+   {
+    "account": "admin",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   },
+   {
+    "account": "helpdesk",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   },
+   {
+    "account": "member",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   }
+  ],
+  "acts": {
+   "admin": [
+    "Groups",
+    "Edit user",
+    "Delegated administration",
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status",
+    "Delete user"
+   ],
+   "helpdesk": [
+    "Groups",
+    "Edit user",
+    "Delegated administration",
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status",
+    "Delete user"
+   ],
+   "member": [
+    "Groups",
+    "Edit user",
+    "Delegated administration",
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status",
+    "Delete user"
+   ]
+  }
+ },
+ "admin-phone": {
+  "facts": [
+   {
+    "account": "admin",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   },
+   {
+    "account": "helpdesk",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   },
+   {
+    "account": "member",
+    "manage": 1,
+    "visibleCells": [
+     "Account",
+     "Display Name",
+     "Email",
+     "Role",
+     "Status",
+     "Actions"
+    ],
+    "emptyCells": []
+   }
+  ],
+  "acts": {
+   "admin": [
+    "Groups",
+    "Edit user",
+    "Delegated administration",
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status",
+    "Delete user"
+   ],
+   "helpdesk": [
+    "Groups",
+    "Edit user",
+    "Delegated administration",
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status",
+    "Delete user"
+   ],
+   "member": [
+    "Groups",
+    "Edit user",
+    "Delegated administration",
+    "Reset MFA",
+    "Sessions and apps",
+    "Revoke sessions",
+    "Password reset link",
+    "Offboarding status",
+    "Delete user"
+   ]
+  }
+ },
+ "admin-phone-ax": {
+  "table": 1,
+  "LayoutTable": 0,
+  "row": 4,
+  "columnheader": 6,
+  "cell": 18,
+  "rowCells": [
+   [
+    "cell:Account admin",
+    "cell:Display Name Administrator",
+    "cell:Email admin@local.kysecurity",
+    "cell:Role Administrator",
+    "cell:Status Active",
+    "cell:Actions Manage admin Manage groups for admi"
+   ],
+   [
+    "cell:Account helpdesk",
+    "cell:Display Name helpdesk",
+    "cell:Email helpdesk@example.test",
+    "cell:Role User",
+    "cell:Status Active",
+    "cell:Actions Manage helpdesk Manage groups for h"
+   ],
+   [
+    "cell:Account member",
+    "cell:Display Name member",
+    "cell:Email member@example.test",
+    "cell:Role User",
+    "cell:Status Active",
+    "cell:Actions Manage member Manage groups for mem"
+   ],
+   [
+    "columnheader:Account",
+    "columnheader:Display Name",
+    "columnheader:Email",
+    "columnheader:Role",
+    "columnheader:Status",
+    "columnheader:Actions"
+   ]
+  ]
+ },
+ "wiring": {
+  "Groups": {
+   "dialogs": [],
+   "requests": [
+    "GET /api/admin/groups"
+   ],
+   "h1": "Groups",
+   "openDialogs": []
+  },
+  "Edit user": {
+   "dialogs": [],
+   "requests": [],
+   "h1": "Users",
+   "openDialogs": [
+    "Edit User: member"
+   ]
+  },
+  "Delegated administration": {
+   "dialogs": [],
+   "requests": [
+    "GET /api/admin/users/:id/delegations",
+    "GET /api/admin/app-registry"
+   ],
+   "h1": "Users",
+   "openDialogs": [
+    "Delegation for member"
+   ]
+  },
+  "Reset MFA": {
+   "dialogs": [
+    "confirm:Are you sure you want to reset MFA for 'member'? This will revoke active sessions and require re-enrollment."
+   ],
+   "requests": [],
+   "h1": "Users",
+   "openDialogs": []
+  },
+  "Sessions and apps": {
+   "dialogs": [],
+   "requests": [
+    "GET /api/admin/users/:id/sessions"
+   ],
+   "h1": "Users",
+   "openDialogs": [
+    "Sessions for member"
+   ]
+  },
+  "Revoke sessions": {
+   "dialogs": [
+    "confirm:Revoke all active sessions for 'member'?"
+   ],
+   "requests": [],
+   "h1": "Users",
+   "openDialogs": []
+  },
+  "Password reset link": {
+   "dialogs": [],
+   "requests": [
+    "GET /api/auth/step-up/methods"
+   ],
+   "h1": "Users",
+   "openDialogs": [
+    "Confirm It's You"
+   ]
+  },
+  "Offboarding status": {
+   "dialogs": [],
+   "requests": [
+    "GET /api/admin/users/:id/offboarding"
+   ],
+   "h1": "Users",
+   "openDialogs": [
+    "Offboarding member"
+   ]
+  },
+  "Delete user": {
+   "dialogs": [
+    "confirm:Permanently delete account 'member'? This will also replicate deletion to paired products."
+   ],
+   "requests": [],
+   "h1": "Users",
+   "openDialogs": []
+  }
+ }
+}

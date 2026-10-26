@@ -1,0 +1,8 @@
+﻿repository,url,state,head,ci,review,review_caveat,observed_at
+KyRecovery-server,https://github.com/Busnes-app/KyRecovery-server/pull/73,MERGED,ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc,all checks pass/skip,cleared,See reviewer coverage; separate council review pending,2026-10-26T17:52:08.215785+00:00
+KyDNS-server,https://github.com/Busnes-app/KyDNS-server/pull/86,MERGED,595a123215fe1ffcbf0d0694d82f8340b1d01a18,all checks pass/skip,cleared,See reviewer coverage; separate council review pending,2026-10-26T17:52:08.289597+00:00
+KyPulse-server,https://github.com/Busnes-app/KyPulse-server/pull/50,MERGED,ee5228cdfe9e54bd3bc39d02ec4f5341ed43cca4,all checks pass/skip,cleared,Input truncated; omitted changes not covered,2026-10-26T17:52:08.288361+00:00
+KyDrive-server,https://github.com/Busnes-app/kydrive-server/pull/84,MERGED,5d6bb8a0e181704b430495d1e8b92f45bf7ae0bc,all checks pass/skip,cleared,See reviewer coverage; separate council review pending,2026-10-26T17:52:08.808364+00:00
+ky-server-base,https://github.com/Busnes-app/ky-server-base/pull/74,MERGED,55d70ae21b65505c298a929c04e621353f4a6806,all checks pass/skip,cleared,Input truncated; omitted changes not covered,2026-10-26T17:52:08.943624+00:00
+KyIdentity-server,https://github.com/Busnes-app/KyIdentity-server/pull/169,MERGED,3f7f5c043146950b0084553f96f8b469417c16a4,all checks pass/skip,cleared,Input truncated; omitted changes not covered,2026-10-26T17:52:08.866749+00:00
+KyNotes-server,https://github.com/Busnes-app/KyNotes-server/pull/115,MERGED,902fda0cbe5bc9f3e8d247c88310379400ede2b4,all checks pass/skip,cleared,Input truncated; omitted changes not covered,2026-10-26T17:52:09.434282+00:00

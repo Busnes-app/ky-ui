@@ -1,0 +1,82 @@
+// Recovery: Account popover on phone/desktop in Chromium, Firefox and WebKit; Escape/focus;
+// empty-table heading rule vs a non-empty table; replication h1; CSP header.
+import { randomBytes } from 'node:crypto';
+import { spawn } from 'node:child_process';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { connect } from 'node:net';
+import { join } from 'node:path';
+import { chromium, firefox, webkit } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+
+const BIN = '/tmp/claude-refine-review/bin/recovery', OUT = '/tmp/claude-refine-review/evidence/recovery';
+const PORT = '5391', base = `http://127.0.0.1:${PORT}`, password = randomBytes(18).toString('base64url');
+const busy = await new Promise(r => { const s = connect(+PORT, '127.0.0.1', () => { s.destroy(); r(true); }); s.on('error', () => r(false)); });
+if (busy) throw new Error('5391 busy; refusing');
+const dir = mkdtempSync('/tmp/claude-refine-review/run-recovery-');
+const proc = spawn(BIN, ['serve', '--port', PORT, '--data-dir', join(dir, 'data')], { cwd: dir, stdio: 'ignore',
+  env: { PATH: process.env.PATH, HOME: dir, KY_ADMIN_INITIAL_PASSWORD: password, KYRECOVERY_COOKIE_SECURE: 'false' } });
+const exited = new Promise(r => proc.once('exit', r));
+const res = { head: 'ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc', browsers: {}, checks: [] };
+const check = (name, pass, detail) => { res.checks.push({ name, pass, detail }); console.log(pass ? 'PASS' : 'FAIL', name, JSON.stringify(detail)); };
+try {
+  for (let i = 0; ; i++) { try { if ((await fetch(base + '/')).ok) break; } catch {} if (i > 100) throw new Error('not ready'); await new Promise(r => setTimeout(r, 100)); }
+  res.csp = (await fetch(base + '/')).headers.get('content-security-policy');
+  for (const [bname, type] of [['chromium', chromium], ['firefox', firefox], ['webkit', webkit]]) {
+    const browser = await type.launch(); res.browsers[bname] = browser.version();
+    const setup = await browser.newContext({ baseURL: base });
+    const login = await setup.request.post('/api/auth/login/local', { data: { username: 'admin', password } });
+    if (!login.ok()) throw new Error(`login ${login.status()}`);
+    const storage = await setup.storageState(); await setup.close();
+    for (const [device, viewport] of [['desktop', { width: 1280, height: 900 }], ['phone', { width: 390, height: 844 }]]) {
+      const ctx = await browser.newContext({ baseURL: base, viewport, storageState: storage, colorScheme: 'dark' });
+      const page = await ctx.newPage(); const errors = []; page.on('pageerror', e => errors.push(String(e)));
+      await page.goto('/'); await page.locator('#dashboard-view').waitFor(); await page.waitForLoadState('networkidle');
+      const state = () => page.evaluate(() => {
+        const vis = (el) => !!el && getComputedStyle(el).display !== 'none' && el.getClientRects().length > 0;
+        const area = document.getElementById('user-auth-area');
+        let open = null; try { open = area.matches(':popover-open'); } catch { open = 'unsupported'; }
+        return { toggle: vis(document.querySelector('.account-toggle')), area: vis(area), open,
+          name: vis(document.getElementById('user-display-name')) ? document.getElementById('user-display-name').textContent : null,
+          role: document.getElementById('user-role-badge')?.textContent,
+          buttons: [...area.querySelectorAll('button')].filter(vis).map(b => b.textContent.trim()), active: document.activeElement?.className || document.activeElement?.tagName };
+      });
+      const s0 = await state();
+      if (device === 'desktop') {
+        check(`${bname} desktop: account controls inline, no Account toggle`, !s0.toggle && s0.area && s0.buttons.includes('Sign Out'), s0);
+      } else {
+        check(`${bname} phone: closed popover hides controls; Account toggle shown`, s0.toggle && !s0.area, s0);
+        // Keyboard: focus toggle via Tab, open with Enter, Tab into popover, Escape closes and restores focus.
+        await page.locator('body').click({ position: { x: 1, y: 300 } }).catch(() => {});
+        await page.locator('.account-toggle').focus(); await page.keyboard.press('Enter');
+        const s1 = await state();
+        check(`${bname} phone: Enter opens popover with name, role, Password, Sign Out`, s1.open === true && s1.area && s1.name && s1.buttons.includes('Sign Out') && s1.buttons.includes('Password'), s1);
+        await page.keyboard.press('Tab'); const into = await page.evaluate(() => !!document.activeElement?.closest('#user-auth-area'));
+        await page.keyboard.press('Escape'); const s2 = await state();
+        check(`${bname} phone: Tab enters popover; Escape closes and returns focus to Account`, into && s2.open === false && /account-toggle/.test(s2.active), { into, ...s2 });
+        // Password from the popover: modal opens, popover closes.
+        await page.locator('.account-toggle').click(); await page.locator('#btn-change-pass-header').click();
+        const s3 = await state(); const modal = await page.evaluate(() => document.getElementById('change-password-modal')?.classList.contains('open'));
+        check(`${bname} phone: Password opens its modal and closes the popover`, modal && s3.open === false, { modal, ...s3 });
+        await page.evaluate(() => closeChangePasswordModal());
+        // Light dismiss by outside click.
+        await page.locator('.account-toggle').click(); await page.mouse.click(20, 600); const s4 = await state();
+        check(`${bname} phone: outside click light-dismisses`, s4.open === false, s4);
+        // Empty vs non-empty tables (non-empty synthesized by cloning a real data row shape).
+        const tables = await page.evaluate(() => [...document.querySelectorAll('table.data-table')].map(t => ({ id: t.id || t.closest('[id]')?.id, rows: t.tBodies[0]?.rows.length, theadShown: t.tHead ? getComputedStyle(t.tHead).display !== 'none' : null, emptyRow: !!t.querySelector(':scope > tbody > tr:only-child > td[colspan]') })));
+        const emptyOk = tables.filter(t => t.emptyRow).every(t => t.theadShown === false);
+        const synth = await page.evaluate(() => { const t = [...document.querySelectorAll('table.data-table')].find(t => t.querySelector(':scope > tbody > tr:only-child > td[colspan]')); const n = t.tHead.rows[0].cells.length; t.tBodies[0].innerHTML = '<tr>' + Array.from({ length: n }, (_, i) => `<td>cell ${i}</td>`).join('') + '</tr>'; return getComputedStyle(t.tHead).display; });
+        const synthDetail = await page.evaluate(() => { const t = [...document.querySelectorAll('table.data-table')].find(t => t.tHead); t.tBodies[0].innerHTML = '<tr><td>svc</td></tr><tr class="backups-detail"><td colspan="6">detail</td></tr>'; return getComputedStyle(t.tHead).display; });
+        check(`${bname} phone: empty tables hide headings; non-empty keep them`, emptyOk && synth !== 'none' && synthDetail !== 'none', { tables, synthNonEmpty: synth, synthRowPlusDetail: synthDetail });
+        await page.reload(); await page.locator('#dashboard-view').waitFor();
+      }
+      await page.getByRole('button', { name: 'View replication' }).click().catch(() => page.locator('nav.nav-tabs').getByRole('button', { name: 'Offsite Replication', exact: true }).click());
+      const h1 = await page.evaluate(() => [...document.querySelectorAll('#tab-replication h1')].map(h => h.textContent));
+      check(`${bname} ${device}: replication tab h1`, h1.length === 1, { h1, errors });
+      await page.screenshot({ path: `${OUT}-${bname}-${device}.png` });
+      await ctx.close();
+    }
+    await browser.close();
+  }
+} finally {
+  proc.kill('SIGTERM'); await exited; rmSync(dir, { recursive: true, force: true });
+  writeFileSync(`${OUT}-results.json`, JSON.stringify(res, null, 1));
+}

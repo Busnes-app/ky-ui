@@ -1,0 +1,120 @@
+// Identity Users "Manage" disclosure: real Tab/Enter reachability, Chromium AX tree (CDP) of the
+// phone table, handler wiring for Edit/Delete, and a helpdesk viewer (mocked /api/auth/me access).
+import { randomBytes } from 'node:crypto';
+import { spawn, spawnSync } from 'node:child_process';
+import { mkdtempSync, symlinkSync, writeFileSync, rmSync } from 'node:fs';
+import { connect } from 'node:net';
+import { join } from 'node:path';
+import { chromium } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+
+const SRC = '/tmp/claude-refine-review/src/identity-head', BIN = '/tmp/claude-refine-review/bin/identity';
+const OUT = '/tmp/claude-refine-review/evidence/identity';
+const PORT = '5391', base = `http://127.0.0.1:${PORT}`;
+const busy = await new Promise(r => { const s = connect(+PORT, '127.0.0.1', () => { s.destroy(); r(true); }); s.on('error', () => r(false)); });
+if (busy) throw new Error('5391 busy; refusing');
+const dir = mkdtempSync('/tmp/claude-refine-review/run-identity-');
+for (const a of ['css', 'fonts']) symlinkSync(join(SRC, a), join(dir, a));
+const secret = () => `Rev-${randomBytes(18).toString('base64url')}9!`;
+let password = secret(); const replacement = secret();
+const env = { PATH: process.env.PATH, HOME: dir, KYIDENTITY_DATA_DIR: join(dir, 'data'), KYIDENTITY_LISTEN_HOST: '127.0.0.1', KYIDENTITY_PORT: PORT,
+  KYIDENTITY_ISSUER_URL: base, KYIDENTITY_SECRET_KEY: randomBytes(32).toString('hex'), KYIDENTITY_ENCRYPTION_KEY: randomBytes(32).toString('hex') };
+const boot = spawnSync(BIN, ['bootstrap-admin', '-username', 'admin'], { cwd: dir, env, input: `${password}\n`, stdio: ['pipe', 'ignore', 'inherit'] });
+if (boot.status !== 0) throw new Error('bootstrap failed');
+const proc = spawn(BIN, [], { cwd: dir, env, stdio: ['ignore', 'ignore', 'inherit'] });
+const exited = new Promise(r => proc.once('exit', r));
+const res = { head: '3f7f5c043146950b0084553f96f8b469417c16a4', checks: [] };
+const check = (name, pass, detail) => { res.checks.push({ name, pass, detail }); console.log(pass ? 'PASS' : 'FAIL', name, JSON.stringify(detail)); };
+try {
+  for (let i = 0; ; i++) { try { if ((await fetch(base + '/')).ok) break; } catch {} if (i > 100) throw new Error('not ready'); await new Promise(r => setTimeout(r, 100)); }
+  const browser = await chromium.launch();
+  res.browser = `chromium ${browser.version()}`;
+  // Sign in once, replacing the bootstrap password (step-up), then reuse the storage state.
+  const c0 = await browser.newContext({ baseURL: base }); const p0 = await c0.newPage();
+  await p0.goto('/'); await p0.getByLabel('Username', { exact: true }).fill('admin'); await p0.getByLabel('Password', { exact: true }).fill(password);
+  await p0.getByRole('button', { name: /sign in/i }).first().click();
+  const change = p0.getByRole('button', { name: 'Set new password' });
+  await Promise.race([p0.getByRole('navigation').first().waitFor(), change.waitFor()]);
+  if (await change.isVisible()) {
+    await p0.getByLabel('Current or temporary password').fill(password);
+    await p0.getByLabel('New password', { exact: true }).fill(replacement); await p0.getByLabel('Repeat new password').fill(replacement);
+    await change.click(); await p0.locator('#admin-stepup-password').fill(password); await p0.locator('#admin-stepup-password').press('Enter');
+    password = replacement; await change.waitFor({ state: 'detached' });
+    if (!(await p0.getByRole('navigation').first().isVisible())) {
+      await p0.getByLabel('Username', { exact: true }).fill('admin'); await p0.getByLabel('Password', { exact: true }).fill(password);
+      await p0.getByRole('button', { name: /sign in/i }).first().click();
+    }
+  }
+  await p0.getByRole('navigation').first().waitFor();
+  const storage = await c0.storageState(); await c0.close();
+
+  const openUsers = async (page) => {
+    await page.goto('/'); await page.getByRole('button', { name: 'Users', exact: true }).click();
+    await page.locator('.users-table tbody tr').first().waitFor();
+  };
+  for (const [device, viewport] of [['desktop', { width: 1280, height: 900 }], ['phone', { width: 390, height: 844 }]]) {
+    const ctx = await browser.newContext({ baseURL: base, viewport, storageState: storage, colorScheme: 'light' });
+    const page = await ctx.newPage(); await openUsers(page);
+    // Real Tab from the page top until the Manage summary has focus.
+    await page.locator('body').click({ position: { x: 1, y: 1 } });
+    let tabs = 0; for (; tabs < 80; tabs++) { await page.keyboard.press('Tab'); if (await page.evaluate(() => document.activeElement?.tagName === 'SUMMARY')) break; }
+    const summaryName = await page.evaluate(() => document.activeElement?.textContent);
+    check(`${device}: Manage summary reachable by Tab`, tabs < 80, { tabs, summaryName });
+    await page.keyboard.press('Enter');
+    const open = await page.evaluate(() => document.querySelector('details.row-actions')?.open);
+    const names = [];
+    for (let i = 0; i < 12; i++) {
+      await page.keyboard.press('Tab');
+      const info = await page.evaluate(() => { const a = document.activeElement; return a?.closest('.row-actions-menu') ? { text: a.textContent.trim(), aria: a.getAttribute('aria-label'), disabled: a.disabled } : null; });
+      if (!info) break; names.push(info);
+    }
+    check(`${device}: Enter opens; every action Tab-reachable`, open && names.length === 9, { open, count: names.length, names });
+    await page.keyboard.press('Escape');
+    check(`${device}: Escape on native details (informational)`, true, { stillOpen: await page.evaluate(() => document.querySelector('details.row-actions')?.open) });
+    // Chromium's own accessibility tree (CDP), not Playwright's DOM role computation.
+    const cdp = await ctx.newCDPSession(page);
+    const { nodes } = await cdp.send('Accessibility.getFullAXTree');
+    const roles = {}; for (const n of nodes) { const r = n.role?.value; if (['table', 'row', 'cell', 'columnheader', 'gridcell', 'rowgroup', 'LayoutTable', 'LayoutTableRow', 'LayoutTableCell'].includes(r)) roles[r] = (roles[r] ?? 0) + 1; }
+    const cellNames = nodes.filter(n => n.role?.value === 'cell').slice(0, 6).map(n => n.name?.value);
+    check(`${device}: Chromium AX tree keeps table/row/columnheader/cell`, !!roles.table && !!roles.row && !!roles.columnheader && !!roles.cell && !roles.LayoutTable, { roles, cellNames });
+    await page.screenshot({ path: `${OUT}-manage-${device}.png`, fullPage: true });
+    await ctx.close();
+  }
+  // Handler wiring: Edit opens the edit form; Delete asks confirm and sends nothing when dismissed.
+  {
+    const ctx = await browser.newContext({ baseURL: base, viewport: { width: 1280, height: 900 }, storageState: storage });
+    const page = await ctx.newPage(); await openUsers(page);
+    const deletes = []; page.on('request', r => { if (r.method() === 'DELETE') deletes.push(r.url()); });
+    await page.locator('details.row-actions > summary').first().click();
+    await page.getByRole('button', { name: 'Edit user' }).click();
+    const editForm = await page.locator('form.modal-body').first().isVisible();
+    check('Edit user opens the edit form', editForm, {});
+    await page.keyboard.press('Escape'); await page.goto('/'); await openUsers(page);
+    let dialogText = null; page.once('dialog', d => { dialogText = d.message(); d.dismiss(); });
+    await page.locator('details.row-actions > summary').first().click();
+    await page.getByRole('button', { name: 'Delete user' }).click(); await page.waitForTimeout(300);
+    check('Delete user asks confirm; dismiss sends no DELETE', !!dialogText && deletes.length === 0, { dialogText, deletes });
+    await ctx.close();
+  }
+  // Helpdesk viewer: same session, /api/auth/me access rewritten client-side (server unchanged).
+  {
+    const ctx = await browser.newContext({ baseURL: base, viewport: { width: 1280, height: 900 }, storageState: storage });
+    await ctx.route('**/api/auth/me', async (route) => {
+      const r = await route.fetch(); const j = await r.json(); const u = j.user ?? j;
+      u.access = { admin: false, helpdesk: true, auditor: false, appOwner: [] };
+      await route.fulfill({ response: r, json: j });
+    });
+    const page = await ctx.newPage(); await openUsers(page);
+    const row = await page.evaluate(() => [...document.querySelectorAll('.users-table tbody tr')].map(tr => ({
+      account: tr.querySelector('td')?.textContent, role: tr.querySelector('td[data-label="Role"]')?.textContent,
+      summary: !!tr.querySelector('details.row-actions > summary'), actions: tr.querySelectorAll('.row-actions-menu button').length })));
+    await page.locator('details.row-actions > summary').first().click();
+    const menuBox = await page.locator('.row-actions-menu').first().boundingBox();
+    await page.screenshot({ path: `${OUT}-helpdesk-admin-row.png` });
+    check('helpdesk viewer on an Administrator row gets an empty Manage menu (expect FAIL = defect)', !(row[0]?.summary && row[0]?.actions === 0), { row, menuBox });
+    await ctx.close();
+  }
+  await browser.close();
+} finally {
+  proc.kill('SIGTERM'); await exited; rmSync(dir, { recursive: true, force: true });
+  writeFileSync(`${OUT}-results.json`, JSON.stringify(res, null, 1));
+}

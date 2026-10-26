@@ -1,0 +1,29 @@
+[
+  {
+    "repository": "KyIdentity-server",
+    "url": "https://github.com/Busnes-app/KyIdentity-server/pull/171",
+    "state": "OPEN",
+    "head": "08f31472129bc86cc558860ff80547251e317673",
+    "ci": "running at last read",
+    "review": "pending",
+    "observed_at": "2026-10-26T18:29:38.983818+00:00"
+  },
+  {
+    "repository": "KyNotes-server",
+    "url": "https://github.com/Busnes-app/KyNotes-server/pull/117",
+    "state": "OPEN",
+    "head": "2b6eb255972fda93c7356235f72e108c7b852d0d",
+    "ci": "running at last read",
+    "review": "pending",
+    "observed_at": "2026-10-26T18:29:38.983837+00:00"
+  },
+  {
+    "repository": "KyPulse-server",
+    "url": "https://github.com/Busnes-app/KyPulse-server/pull/51",
+    "state": "MERGED",
+    "head": "1670187315c824a98099caf5b22107d368ed1903",
+    "ci": "all pass/skip",
+    "review": "same-head cleared",
+    "observed_at": "2026-10-26T18:29:38.983840+00:00"
+  }
+]

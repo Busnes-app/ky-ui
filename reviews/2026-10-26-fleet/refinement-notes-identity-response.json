@@ -1,0 +1,437 @@
+{
+ "schema": "ky-fleet-implementer-response/1",
+ "phase": "visual-refinement batch (Notes + Identity)",
+ "date": "2026-10-26",
+ "implementer": "Claude Opus 5.5 (claude-opus-5-5), implementation sub-agent; not a reviewer; assigns no score and claims no 9/10",
+ "source_review": "ky-ui PR 22 (fleet-baseline-evidence) reviews/2026-10-26-fleet/release-review.md gaps 1-2 and release-scores.json Notes/Identity rows",
+ "repositories": {
+  "KyIdentity-server": {
+   "pr": "https://github.com/Busnes-app/KyIdentity-server/pull/169",
+   "branch": "ui/fleet-visual-refinement",
+   "worktree": "/home/yoshi/git/busnes.app/KyIdentity-server/.claude/worktrees/fleet-visual-refinement",
+   "base": "f36ea7d",
+   "head": "3f7f5c043146950b0084553f96f8b469417c16a4",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "f54448ca3408f9b5067017bcf6660264402b244c",
+     "subject": "calm the Users table and shell hierarchy"
+    },
+    {
+     "sha": "3f7f5c043146950b0084553f96f8b469417c16a4",
+     "subject": "record visual refinement captures with a corrected font fixture"
+    }
+   ],
+   "evidence_dir": "docs/ui-visual-refinement-2026-10-26",
+   "evidence_sha256sums_sha256": "83a829b3c6cc65c3ff5a5428c3494e99d3dc3fc433253abafecee6d50f737b68",
+   "readme_sha256": "6ebc5b5292e7937611d667ce14a1431279ae78998a12bc6947564d24314e6c64",
+   "captures": [
+    {
+     "prefix": "kyidentity-00-before",
+     "head": "f36ea7d50dbaa4ffab705d418c380327ea63f0cf",
+     "uncommitted_diff_sha256": null,
+     "embedded_index_sha256": "4d454972c16a7d32b0bd2dfe72afea763973d361ff6ba97be6114ed89d72fbe2",
+     "captured": "2026-10-26T16:12:33.787Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 12,
+     "surfaces": [
+      "appearance",
+      "applications",
+      "users"
+     ],
+     "loaded_fonts": [
+      [
+       "IBM Plex Mono",
+       "Space Grotesk"
+      ]
+     ],
+     "manifest_sha256": "a0b755db4af3eecf5c1a5b5bc6b4597481e1ce4daab9070f1c2b1dc578d14d26"
+    },
+    {
+     "prefix": "kyidentity-00b-before",
+     "head": "f36ea7d50dbaa4ffab705d418c380327ea63f0cf",
+     "uncommitted_diff_sha256": "87ef96edacfb5e282470fcada92c654d7e703f8afb0ae74961a2ddf96d7b3f8f",
+     "embedded_index_sha256": "4d454972c16a7d32b0bd2dfe72afea763973d361ff6ba97be6114ed89d72fbe2",
+     "captured": "2026-10-26T16:22:46.079Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 4,
+     "surfaces": [
+      "users-manage"
+     ],
+     "loaded_fonts": [
+      [
+       "IBM Plex Mono",
+       "Space Grotesk"
+      ]
+     ],
+     "manifest_sha256": "89d79d4e047dbc9a31237408eff456b6450e69d8dc513cef6c076551d975da11"
+    },
+    {
+     "prefix": "kyidentity-01-after",
+     "head": "f36ea7d50dbaa4ffab705d418c380327ea63f0cf",
+     "uncommitted_diff_sha256": "efbf5dd81a79148bbccbc3371f995ff082b1d08b18d539b75e154fa367754399",
+     "embedded_index_sha256": "bd527e773c2985a126f9be1d43dbee47ffc9a569a735d44e0b59dd58db632474",
+     "captured": "2026-10-26T16:20:00.238Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 12,
+     "surfaces": [
+      "appearance",
+      "applications",
+      "users"
+     ],
+     "loaded_fonts": [
+      [
+       "IBM Plex Mono",
+       "Space Grotesk"
+      ]
+     ],
+     "manifest_sha256": "85917724530d438ac4ca81aa0d9287f74c962126d5fea02c1b2a59f01d9c39f0"
+    },
+    {
+     "prefix": "kyidentity-01-confirm-manage",
+     "head": "f36ea7d50dbaa4ffab705d418c380327ea63f0cf",
+     "uncommitted_diff_sha256": "7880c556c5aebf47620e243edf7edf57dd7867782e226e16f7191d7f9ecee1b0",
+     "embedded_index_sha256": "22ea47e7846d8298816c57a62a198a74f113302fa3a41378b41b3efee478aa4c",
+     "captured": "2026-10-26T16:26:07.399Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 4,
+     "surfaces": [
+      "users-manage"
+     ],
+     "loaded_fonts": [
+      [
+       "IBM Plex Mono",
+       "Space Grotesk"
+      ]
+     ],
+     "manifest_sha256": "9b7ec9bd563d5b822e4c85a3feb3a2ed099af3162876ee44ca4fb30dfa3dd429"
+    },
+    {
+     "prefix": "kyidentity-01-confirm",
+     "head": "f36ea7d50dbaa4ffab705d418c380327ea63f0cf",
+     "uncommitted_diff_sha256": "7880c556c5aebf47620e243edf7edf57dd7867782e226e16f7191d7f9ecee1b0",
+     "embedded_index_sha256": "22ea47e7846d8298816c57a62a198a74f113302fa3a41378b41b3efee478aa4c",
+     "captured": "2026-10-26T16:23:45.042Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 16,
+     "surfaces": [
+      "appearance",
+      "applications",
+      "users",
+      "users-manage"
+     ],
+     "loaded_fonts": [
+      [
+       "IBM Plex Mono",
+       "Space Grotesk"
+      ]
+     ],
+     "manifest_sha256": "dfc14db99e72fb0efbad14da16b7774dc27be303d4a1834fbeccf9e7b6b5e27f"
+    }
+   ],
+   "verify": {
+    "kyidentity-00-before-verify.json": {
+     "passed": 23,
+     "total": 23,
+     "head": "f36ea7d50dbaa4ffab705d418c380327ea63f0cf"
+    },
+    "kyidentity-01-after-verify.json": {
+     "passed": 23,
+     "total": 23,
+     "head": "f36ea7d50dbaa4ffab705d418c380327ea63f0cf"
+    },
+    "kyidentity-01-confirm-verify.json": {
+     "passed": 23,
+     "total": 23,
+     "head": "f36ea7d50dbaa4ffab705d418c380327ea63f0cf"
+    }
+   }
+  },
+  "KyNotes-server": {
+   "pr": "https://github.com/Busnes-app/KyNotes-server/pull/115",
+   "branch": "ui/fleet-visual-refinement",
+   "worktree": "/home/yoshi/git/busnes.app/kynotes-server/.claude/worktrees/fleet-visual-refinement",
+   "base": "e1b726b",
+   "head": "902fda0cbe5bc9f3e8d247c88310379400ede2b4",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "c54198e4d483f478b366583d55597d443da4bebf",
+     "subject": "chore(deps): bump the npm-build group in /web with 3 updates"
+    },
+    {
+     "sha": "8cdbce04ac11d0d366932f48ee45e8d59111355e",
+     "subject": "build: refresh embedded assets after dependency updates"
+    },
+    {
+     "sha": "45de22866d518928f03c118fbb1befe38497d1c9",
+     "subject": "merge: refresh dependency bundle against current master"
+    },
+    {
+     "sha": "67c25eaca13d8d4d745d71078cf6dca36e8562df",
+     "subject": "Merge remote-tracking branch 'origin/master' into pr-106"
+    },
+    {
+     "sha": "a1c66514fe0dc068a4b01991d5e81e71f93edee8",
+     "subject": "Merge pull request #106 from Busnes-app/dependabot/npm_and_yarn/web/npm-build-4fd111050b"
+    },
+    {
+     "sha": "838106c9c3cfa50ecb4616f55d2d4094adb57a22",
+     "subject": "calm the workspace and Settings hierarchy"
+    },
+    {
+     "sha": "fe7cb82a6a2e711513a2ff0c5fe4fe5689fb1eec",
+     "subject": "record visual refinement captures"
+    },
+    {
+     "sha": "995cd68e32ba83edf2f3eea4294de9f4a72f5a67",
+     "subject": "merge master: rebuild the embedded bundle on its dependency update"
+    },
+    {
+     "sha": "8156280be276b18e1759e571473246e7727eb023",
+     "subject": "note the post-merge bundle and its checks"
+    },
+    {
+     "sha": "902fda0cbe5bc9f3e8d247c88310379400ede2b4",
+     "subject": "record the committed post-merge bundle as a provenance stage"
+    }
+   ],
+   "evidence_dir": "docs/ui-visual-refinement-2026-10-26",
+   "evidence_sha256sums_sha256": "559025ff5cf128e1df2752fd29b833074789240d983810267eee57d88b682fa4",
+   "readme_sha256": "40bf282f4ab26e8324c22d35e4e6fcb3425bd6f33e924dfa97e7434712cd553f",
+   "captures": [
+    {
+     "prefix": "kynotes-00-before",
+     "head": "e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993",
+     "uncommitted_diff_sha256": null,
+     "embedded_index_sha256": "ce3c13068f876c24a53c6d854de1021b97b3dbb2bd3716c82995fc87cc9529a9",
+     "captured": "2026-10-26T16:14:36.182Z",
+     "driver": "playwright chromium 156.0.8078.4 (headless)",
+     "images": 8,
+     "surfaces": [
+      "appearance",
+      "workspace"
+     ],
+     "loaded_fonts": [
+      [
+       "Mono",
+       "Space"
+      ],
+      [
+       "Space"
+      ]
+     ],
+     "manifest_sha256": "bdf4c79650b23c5e63f236e34fae8f1f0c7972b841d4a16fbaaebb1ee7d28fd2"
+    },
+    {
+     "prefix": "kynotes-00b-before",
+     "head": "e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993",
+     "uncommitted_diff_sha256": "8ba31f9335795b3ab404b859ce58fcc5ef5ee092b1a5c758ab9cea3fe54de556",
+     "embedded_index_sha256": "ce3c13068f876c24a53c6d854de1021b97b3dbb2bd3716c82995fc87cc9529a9",
+     "captured": "2026-10-26T16:23:14.759Z",
+     "driver": "playwright chromium 156.0.8078.4 (headless)",
+     "images": 8,
+     "surfaces": [
+      "note",
+      "note-committed"
+     ],
+     "loaded_fonts": [
+      [
+       "Mono",
+       "Space"
+      ],
+      [
+       "Space"
+      ]
+     ],
+     "manifest_sha256": "e8a1a2889700f8cfc65f630ec1a07ec2f55d5d9a4624f0a721684b27ed1f2b82"
+    },
+    {
+     "prefix": "kynotes-01-after",
+     "head": "e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993",
+     "uncommitted_diff_sha256": "a6ff44a77bdf57a4a21746afef8bf77ccae57337c1c774612074410ab05cdfc8",
+     "embedded_index_sha256": "d5b1edecca194c1eb8f471f284168c3923dbaa590fb3aa8bbca1720d27ed4508",
+     "captured": "2026-10-26T16:20:38.850Z",
+     "driver": "playwright chromium 156.0.8078.4 (headless)",
+     "images": 8,
+     "surfaces": [
+      "appearance",
+      "workspace"
+     ],
+     "loaded_fonts": [
+      [
+       "Mono",
+       "Space"
+      ],
+      [
+       "Space"
+      ]
+     ],
+     "manifest_sha256": "8b4be99405aba35868fa84359644f55f8eace78f3b9c337a5d392a33b8b86298"
+    },
+    {
+     "prefix": "kynotes-01-confirm",
+     "head": "e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993",
+     "uncommitted_diff_sha256": "47516361fa3d91fea9d21725edba6999257acabca576a0239682966d8437bfaa",
+     "embedded_index_sha256": "0a8f919a6c4fc88098f179896a984a6dc58a22731ee093bf203ff4338055e80d",
+     "captured": "2026-10-26T16:24:36.544Z",
+     "driver": "playwright chromium 156.0.8078.4 (headless)",
+     "images": 16,
+     "surfaces": [
+      "workspace",
+      "note",
+      "note-committed",
+      "appearance"
+     ],
+     "loaded_fonts": [
+      [
+       "Mono",
+       "Space"
+      ],
+      [
+       "Space"
+      ]
+     ],
+     "manifest_sha256": "0c7b6d35b2ee4a72508e9f28e3e5e8831c7572e531c7c7036a1144ccebbb4326"
+    },
+    {
+     "prefix": "kynotes-02-current-bundle",
+     "head": "8156280be276b18e1759e571473246e7727eb023",
+     "uncommitted_diff_sha256": null,
+     "embedded_index_sha256": "1a66f5d2069549bf6aa4b11d33c6b24ef4ed9ade6c47939cd28d1df971332b12",
+     "captured": "2026-10-26T17:00:05.531Z",
+     "driver": "playwright chromium 156.0.8078.4 (headless)",
+     "images": 16,
+     "surfaces": [
+      "workspace",
+      "note",
+      "note-committed",
+      "appearance"
+     ],
+     "loaded_fonts": [
+      [
+       "Mono",
+       "Space"
+      ],
+      [
+       "Space"
+      ]
+     ],
+     "manifest_sha256": "c02fc381229b410455ce01a7f52bf85c6653369c9a8c536932c6e5558b68cbc0"
+    }
+   ],
+   "verify": {
+    "kynotes-00-before-verify.json": {
+     "passed": 23,
+     "total": 23,
+     "head": "e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993"
+    },
+    "kynotes-01-after-verify.json": {
+     "passed": 23,
+     "total": 23,
+     "head": "e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993"
+    },
+    "kynotes-01-confirm-verify.json": {
+     "passed": 23,
+     "total": 23,
+     "head": "e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993"
+    },
+    "kynotes-02-current-bundle-verify.json": {
+     "passed": 23,
+     "total": 23,
+     "head": "8156280be276b18e1759e571473246e7727eb023"
+    }
+   },
+   "provenance_stage": {
+    "prefix": "kynotes-02-current-bundle",
+    "source": "clean committed 8156280 (post-merge, no uncommitted source)",
+    "embedded_index_sha256": "1a66f5d20695 (01-confirm 0a8f919a6c4f)",
+    "surfaces": "workspace, note, note-committed, appearance (same order as 01-confirm) x OS light/dark x 1280x900/390x844",
+    "verify": "23/23",
+    "comparison_with_01_confirm": "appearance x4, workspace mobile x2 and all verify views pixel-identical; differences only live data: note save timestamp (note, note-committed) and per-run avatar initials (workspace desktop); no build-induced visual difference",
+    "procedure_note": "a first uncommitted attempt passed surfaces in a different order (appearance before the note surfaces), so Appearance lacked the toast state; replaced before commit with the default order. Prior 68 evidence files verified unchanged against SHA256SUMS before regeneration (now 93 entries).",
+    "committed": "902fda0 record the committed post-merge bundle as a provenance stage"
+   }
+  }
+ },
+ "scope": {
+  "KyIdentity-server": [
+   "Users row actions: nine icon-only buttons -> one labelled native <details> Manage disclosure; all 9 handlers, 4 disabled={busy} guards and role conditions unchanged; delete set apart in danger colour; two aria-labels now contain their visible labels (WCAG 2.5.3)",
+   "Phones: users-table rows stack as labelled blocks (scoped class; admin-table shared by ~17 views untouched); Chromium keeps table/row/columnheader/cell roles (table-roles.mjs)",
+   "Shell: 'ID Authority' descriptor quiet secondary text (copy kept); wordmark uses display face (pre-bundle /css/styles.css .brand mono leaked in); nav uses only the shared ky-ui current rail (local 2px left border removed)"
+  ],
+  "KyNotes-server": [
+   "Accent fills selection and one primary per view ('Create a note'); new-page '+', header note Save and all banner actions outlined .secondary; commit toast neutral (was orange via global accent rule on <button>)",
+   "Decoration: sparkle removed; glyph icons ink; header sync status sans",
+   "Six section labels sentence case with even spacing; 40px notebook action rows",
+   "Key/recovery/team banners: one neutral panel with warning rule; text, roles and actions unchanged",
+   "Phone 'Notebooks and account' bar neutral 40px; name, aria-expanded and full sidebar unchanged",
+   "Merged master's npm build-dependency update; only generated assets conflicted; bundle rebuilt from merged lockfile"
+  ]
+ },
+ "identity_font_finding": {
+  "conclusion": "Round-3 Arial-like face was a capture-fixture artifact, not a product defect",
+  "cause": "Go serves ./css and ./fonts relative to the working directory (internal/api/server.go); the image WORKDIR / provides /css and /fonts (Dockerfile); the 2026-10-26 fleet capture driver ran the server in a bare scratch dir, so /css/styles.css and /fonts/* returned 404",
+  "fix": "archived driver docs/ui-visual-refinement-2026-10-26/capture.mjs symlinks repo css/ and fonts/ into the scratch dir; capture-core records loaded_fonts per capture",
+  "evidence": "every capture in this batch, BEFORE included, loaded Space Grotesk and IBM Plex Mono; the type change vs round-3 images is fixture drift and is not claimed as product improvement",
+  "product_defect_found": "with fonts loaded, the pre-bundle /css/styles.css .brand rule made the app wordmark mono; fixed in web/src/index.css"
+ },
+ "checks": {
+  "KyIdentity-server": {
+   "at": "f36ea7d + change (before commit)",
+   "vendor": "pass (0.4.1)",
+   "build": "pass; committed web/dist equals fresh build; embed index 22ea47e7846d = 01-confirm capture",
+   "vitest": "pass",
+   "npm_audit_omit_dev": "0 vulnerabilities",
+   "go": "build, vet, gofmt pass; go test -p 2 -race -count=1 ./... 18 packages ok",
+   "relay_workers": "untouched, not run (CI runs them)",
+   "verify": "23/23 at 00-before, 01-after, 01-confirm"
+  },
+  "KyNotes-server": {
+   "pre_merge": "vendor pass; vitest 599/599 (one wiring test source string updated for the added className, first run failed 1 until then); build + diff -qr web/dist internal/web/dist clean; embed index 0a8f919a6c4f = 01-confirm capture; go build/vet/gofmt; go test -p 2 -race ./... 20 packages ok; e2e 11/11",
+   "post_merge": "vitest 599/599; vendor; go build/vet; go test -p 2 -race ./internal/web/...; e2e 11/11",
+   "not_run": "govulncheck (dependencies equal master)",
+   "verify": "23/23 at 00-before, 01-after, 01-confirm, 02-current-bundle"
+  }
+ },
+ "capture_conditions": "OS light and dark x 1280x900 and 390x844, device scale 1, synthetic fixtures, disposable loopback servers (Identity 5871, Notes 18091); Identity Playwright 1.63/Chromium 153.0.8010.12 via KY_PLAYWRIGHT; Notes own Playwright 1.64.1/Chromium 156.0.8078.4; same driver and fixture BEFORE and AFTER; 00b-before captures used HEAD bundles restored temporarily",
+ "capture_notes": [
+  "Identity 01-confirm users-manage frames show the menu closed: the surface clicked before the user list loaded (driver wait bug); superseded by 01-confirm-manage after the driver waits for a table row",
+  "Notes and Identity each had one confirm recapture; no further polish loop",
+  "Notes 02-current-bundle (provenance) added from the committed post-merge build; no visual polish or recapture loop"
+ ],
+ "remaining_limits": {
+  "KyIdentity-server": [
+   "Open Manage on desktop grows the row; other cells stay vertically centred",
+   "Phones keep two scrolling nav rows",
+   "Faint dark idle radios and regular-weight card names come from the shared picker",
+   "Empty Applications page blank area",
+   "Other admin pages not captured or changed"
+  ],
+  "KyNotes-server": [
+   "Settings sub-nav has no current marker (in-page anchors; scroll-spy would be new behaviour)",
+   "No sign-out in the account region (Lock in header, unchanged)",
+   "Canvas text uses editor font",
+   "New notebook sits under Team notebooks label when no teams",
+   "Wide note-row indent",
+   "Faint dark idle radios (shared picker)"
+  ]
+ },
+ "worktrees": {
+  "removed": [
+   "kynotes-server/.claude/worktrees/fleet-appearance (ui/fleet-review-fixes, clean, nothing unpushed, merged)",
+   "KyIdentity-server/.claude/worktrees/fleet-appearance (ui/fleet-appearance, clean, nothing unpushed, merged)"
+  ],
+  "created": [
+   "kynotes-server/.claude/worktrees/fleet-visual-refinement",
+   "KyIdentity-server/.claude/worktrees/fleet-visual-refinement"
+  ],
+  "left": "other products fleet-appearance worktrees and ky-ui fleet-appearance (canonical shared dir) not touched"
+ },
+ "not_touched": [
+  "shared ky-ui source, catalog, colours, fonts",
+  "other products",
+  "baseline images, reports and score inputs",
+  "root records in the shared review dir"
+ ]
+}

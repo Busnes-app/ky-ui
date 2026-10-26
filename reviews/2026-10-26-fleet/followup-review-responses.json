@@ -1,0 +1,15 @@
+{
+  "E1": {
+    "disposition": "RESOLVED in followup-captures-v2.json",
+    "response": "Preserved v1 and all108 images. v2 explicitly records dirty checkout/diff hashes and actual bundle provenance for every Identity dirty capture, including intermediate a01 and final7ff builds. No screenshot or score changed.",
+    "verification": "108 file/hash pairs identical between v1/v2; every dirty Identity row has bundle hash and uncommitted-state caveat."
+  },
+  "E2": {
+    "disposition": "recorded optional nit",
+    "response": "td:empty could be scoped to Actions. Email is required and only Actions can currently be empty; no measured regression. No additional polish change."
+  },
+  "E3": {
+    "disposition": "recorded optional nit",
+    "response": "Product unit test does not assert busy guards; independent runtime comparison and mutation-tested scratch check confirmed all4 guards. No runtime defect found."
+  }
+}
