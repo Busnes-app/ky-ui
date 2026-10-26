@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ky-ui contract fixture (not a product)</title>
-  <link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/navigation.css"><link rel="stylesheet" href="/fixture.css">
+  <link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/navigation.css"><link rel="stylesheet" href="/fixture.css"><link rel="stylesheet" href="/appearance.css">
   <script type="module" src="/fixture.js"></script>
 </head>
 <body>
@@ -17,5 +17,13 @@
     <button id="open">Open dialog</button>
     <dialog aria-labelledby="dialog-title"><h2 id="dialog-title">Review record</h2><label>Name <input value="Example record"></label><form method="dialog"><button>Close</button></form></dialog>
   </main>
+  <h2>Appearance contract fixture</h2>
+  <fieldset class="ky-appearance">
+    <legend class="ky-appearance-legend">Theme</legend>
+    <div class="ky-appearance-grid">
+      <label class="ky-appearance-option"><input class="ky-appearance-radio" type="radio" name="appearance" value="busnes-light"><span class="ky-appearance-preview" aria-hidden="true" style="--ky-preview-bg:#f8f6f0;--ky-preview-sidebar:#f2efe7;--ky-preview-ink:#182326;--ky-preview-accent:#bf3f18"></span><span class="ky-appearance-name">Busnes Light</span><small class="ky-appearance-mode">Light</small></label>
+      <label class="ky-appearance-option"><input class="ky-appearance-radio" type="radio" name="appearance" value="busnes-dark"><span class="ky-appearance-preview" aria-hidden="true" style="--ky-preview-bg:#182326;--ky-preview-sidebar:#1f2b2e;--ky-preview-ink:#f2efe8;--ky-preview-accent:#f5865f"></span><span class="ky-appearance-name">Busnes Dark</span><small class="ky-appearance-mode">Dark</small></label>
+    </div>
+  </fieldset>
 </body>
 </html>

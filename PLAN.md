@@ -1,98 +1,70 @@
-# Shared UI rollout
+# Fleet UI rollout
 
 ## Required scope
 
-The active products **and ky-server-base** ship the same versioned browser foundation.
-`consumers.json` is the repository/asset-path inventory. Each repository gets its
-own worktree and PR. The base is required so new servers inherit the foundation.
+Apply the approved Busnes cream/charcoal/orange web identity to the ten active Ky
+web products and the server template. Every application exposes the same Appearance
+theme-preview card picker. Native clients follow in a separate pass.
 
-| Consumer | Product-owned surface to preserve |
+`consumers.json` owns the active repository/asset paths. Use one isolated worktree
+and reviewable PR per repository, preserving product workflows and authorization.
+
+| Consumer | Surfaces to preserve |
 | --- | --- |
+| KyIdentity | Applications, account security, directory and administration |
+| KyNotes | Notebooks, list/editor workspace and encrypted queue |
+| KyYard | Containers, endpoints, deployment controls and scoped administration |
+| KyDrive | Private/group workspaces, files and editor integration |
+| KyPulse | Monitoring, alerts and operational history |
 | KyDNS | Horizontal navigation, DNS tables and operational status |
-| KyRecovery | Capsules, ceremony, replication and warning/error states |
-| KyIdentity | Applications, security, directory and administration |
-| KyNotes | List/editor workspace and encrypted local queue |
-| KyPost | Mail folders, reader, compose and administration |
-| KyCalendar | Everyday calendars, event editing and separate administration |
-| KyMessages | Operator console and member entry; stock Element chat is separately themed |
-| KyYard | Containers/endpoints, deployment controls and scoped administration |
-| KyForge | ITSM work items, queues, approvals, directory and recovery |
-| ky-server-base | Scaffold shell and inherited future product defaults |
+| KyRecovery | Capsules, ceremony, replication and recovery status |
+| KyPost | Mail folders, reader, compose, contacts and administration |
+| KyCalendar | One left navigation region, calendar views and administration |
+| KyMessages | Console, authentication and MemberHome; stock Element stays configuration-only |
+| ky-server-base | Scaffold shell and defaults inherited by future products |
 
-## Implementation
+KyForge, KyMark and KyVault are archived and excluded from new UI work. Existing
+installations stay untouched. KyQuickStart and KyQuickStart-AI have command-line or
+terminal interfaces, not browser interfaces; marketing sites and native clients are
+outside this web pass. Record any additional discovered surface explicitly.
 
-### 0.3.0 council rollout — in progress
+## Shared contract
 
-- KyPost, KyCalendar and KyMessages adopt the shared type, spacing, control,
-  field-border and overlay tokens in product-owned layouts.
-- Use `--consumer` with an explicit worktree map to sync only these three during
-  iteration. Remaining inventory consumers must advance before suite freshness
-  can pass against 0.3.0; no fleet rollout is claimed by this focused pass.
-- `skills/ky-suite-ui/` owns the review/design contract. `reviews/2026-10-26-council/`
-  owns original-input rankings, rubric drift and screenshots for each design stage,
-  delivered in a separate evidence PR alongside the shared and product changes.
+- Version 0.4.0 adds `appearance.css` to the complete release copy. Products render
+  native grouped radios with the documented markup and actual palette previews;
+  the common catalog retains all 21 existing named themes plus Match system;
+  product adapters keep saved keys, legacy aliases, OS following, cross-tab updates
+  and restricted-storage behavior. The picker applies choices immediately and states
+  that they are stored in this browser.
+- Shared runtime colors, typography, control geometry and navigation states remain
+  in ky-ui. Page composition, routing, authorization and content stay product-owned.
+  Preserve existing accessible responsive navigation instead of imposing a sidebar
+  where the product uses horizontal navigation.
+- Use scoped consumer sync and an explicit worktree map. Preflight every selected
+  destination before writing and verify exact vendor bytes. Served bundles must be
+  rebuilt from the changed source.
 
-### Existing foundation
+## Evidence and acceptance
 
-1. **One palette source.** Version 0.2.0 owns Busnes CSS values. Consumer CSS maps
-   semantic variables to shared tokens; palette swatches and stylesheet-free
-   renderers use generated palette objects. Preserve named themes and saved keys.
-2. **Effective selected navigation.** Mark actual navigation elements, retain
-   current-page semantics, and share the quiet selected surface, accent rail,
-   hover and focus states. Products keep geometry. Selection must not resize items.
-3. **Safe release copies.** Preflight every checkout, support explicit worktree
-   mappings, reject symlink destinations, record version plus file hashes, and
-   verify consumer bytes in builds/CI. Local integrity does not establish latest
-   upstream version: the central `--check` does that against the selected release.
-4. **Repair earlier gaps.** Check KyRecovery's active light/dark aliases and
-   contrast, remove KyYard's unused shell, rebuild KyNotes' embedded output and
-   compare it with source in CI.
-5. **Theme adapters.** Share restricted-storage-safe read/write and event helpers;
-   preserve product choice validation and special semantic aliases. Test OS
-   following, explicit and legacy choices, cross-tab changes, unavailable storage,
-   first paint and named-to-Busnes switching.
-6. **Rendered evidence.** Each consumer PR includes screenshots and the exact
-   capture conditions. Exercise desktop/mobile, light/dark, selected/focus states
-   and representative operational or honest empty/loading/error surfaces. Verify
-   disabled states and stable mobile item dimensions. Do not describe
-   fixture-backed captures as live integration tests.
-7. **Release notes.** Record the source revision, major changes and upgrade impact
-   in `CHANGELOG.md` before distributing a copy; update the version when shipped
-   assets change. Archived KyMark and KyVault are outside the active inventory.
+- Claude Opus 5.5 reviews the contract and staged implementation screenshots using
+  `skills/ky-suite-ui`. A target score is not an achieved score.
+- Capture matched before/after task and Appearance views with synthetic data at
+  1280×900 and 390×844, Busnes Light/Dark, recording source revision or patch hash,
+  fixture, theme source, browser, date and image hashes. Retain honest missing states.
+- Export fleet inventory, ratings, capture pairs, checks, remaining gates and PR links
+  to a spreadsheet. Separate visual scores from behavior gates.
+- Check keyboard selection/focus, immediate theme application and saved reload,
+  cross-tab and OS changes, named-theme retention, restricted storage and overflow.
+  Screenshots or Chromium tests alone do not certify full accessibility.
+- Run affected checks during iteration and each repository's full required checks
+  before hand-back. Keep CI and autonomous review green at the current PR head;
+  source review must account for generated-bundle truncation.
+- Use T3's event-driven PR watchers while work remains and unwatch before hand-back.
+  Merging and deployment remain the owner's actions. Fleet default-branch freshness
+  stays incomplete until the consumer PRs merge; local vendor integrity is separate.
 
-## Merge gates
+## Rollout status
 
-- Shared tests, consumer tests/builds and vendor checks pass.
-- Served assets correspond to the changed sources; embedded bundles are rebuilt.
-- Screenshots are reviewed for navigation, readable status and reachable controls.
-- Existing theme choices are preserved. Name any broken theme or unrelated browser
-  issue explicitly in the evidence instead of silently counting it as verified.
-- Each PR passes CI and clears review at its current head. Merging is a human action.
-
-This implementation carries forward the merged planning PR #2, with ky-server-base
-required and KyForge scoped to its actual ITSM surfaces. PR creation is not
-proof that the visual, CI or review gates have passed; record evidence in each PR.
-
-## Post-rollout regression automation
-
-- Shared primitive browser tests run in ky-ui CI at 390px/1280px in light/dark Chromium: layout, navigation focus/selection/disabled states, dialogs, theme transitions, cross-tab updates and denied storage. This is a contract fixture, not coverage of every product layout.
-- ky-server-base and KyForge run real-server browser checks, including CSP-safe worker activation, mobile Settings, pairing keyboard behavior, authentication errors and populated UI. Each has its own worktree and PR; publishing depends on the browser job.
-- Suite freshness runs daily, on default-branch pushes and manually. The central job checks public consumers in `consumers.json` without Git credentials; private KyForge runs its own reviewed comparator against public upstream files as data, without executing upstream code. Both workflows must be green to cover the active inventory; existing vendor checks remain local-integrity gates. No upstream-selector merge dependency remains.
-- Other active products retain their current tests and rendered rollout evidence. Product-specific E2E flows and complete accessibility audits are not claimed by these checks.
-
-## Next product-browser passes — planned, not implemented
-
-Prioritize real application behavior by consequence of failure, not another visual redesign:
-
-1. **KyIdentity:** disposable identity-provider integration, real SSO redirect/return and sign-out, denied/expired authentication and populated administration views. Establish a development IdP and throwaway identities first; fixtures cannot certify SSO and authentication must not be bypassed.
-2. **KyRecovery + KyYard + KyDNS:** confirmation/cancellation, permission-denied/error states and long operational tables. Use scratch capsule/container/DNS data; exercise destructive actions only on owned disposable resources.
-3. **KyPost + KyNotes:** populated reading/editing/search flows, long content, empty/error states and saved-theme transitions. Mail stays in a test sink; no production recipients or personal data.
-
-Each application gets an isolated worktree and PR. First inspect its existing tests
-and reuse the product's harness. The minimum browser pass is desktop/mobile ×
-Busnes light/dark, named-to-Busnes switching, keyboard reachability/visible focus,
-dialog dismissal/focus return and contained overflow with populated data.
-Add explicit contrast checks for text, focus and warning/error states; retain a
-manual keyboard/screen-reader pass rather than equating screenshots or automated
-checks with a complete accessibility audit. Include Firefox/WebKit in a subsequent
-compatibility pass; current shared/base/Forge browser coverage is Chromium only.
+Implementation, council scoring and product checks are in progress. The earlier
+three-product pass is recorded in `reviews/2026-10-26-council`; its scores are not
+reused as evidence of this rollout or of competitor superiority.

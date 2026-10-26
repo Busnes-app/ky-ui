@@ -7,6 +7,7 @@ const files = {
   '/fixture.css': ['fixture.css', 'text/css'],
   '/tokens.css': ['../src/tokens.css', 'text/css'],
   '/navigation.css': ['../src/navigation.css', 'text/css'],
+  '/appearance.css': ['../src/appearance.css', 'text/css'],
   '/theme.js': ['../src/theme.js', 'text/javascript'],
 };
 createServer(async (req, res) => {

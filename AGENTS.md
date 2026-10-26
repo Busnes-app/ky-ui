@@ -8,11 +8,12 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 
 - `src/tokens.css` owns shared visual tokens.
 - `src/navigation.css` owns reusable selected, hover, focus, and responsive navigation states.
+- `src/appearance.css` owns the shared responsive Appearance radio-card grid and preview styling; products retain catalogs, persistence adapters and page composition.
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
 - `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
 - `skills/` owns the reusable suite design skill; `reviews/` owns comparative screenshot evidence and staged acceptance records.
-- `scripts/check-suite.mjs` checks public consumer default branches read-only with credential helpers disabled; no consumer code runs. Private KyForge's workflow uses its own reviewed comparator and treats public upstream files strictly as data. Both workflows gate suite freshness; no cross-repository private token.
+- `scripts/check-suite.mjs` checks public consumer default branches read-only with credential helpers disabled; no consumer code runs. Archived products stay outside the active inventory; no cross-repository private token is used.
 
 ## Local Contracts
 
