@@ -16,6 +16,7 @@ remain unchanged.
 - `refinement-runtime-review.md` / `.json`: independent source/runtime review.
 - `followup-runtime-review.md` / `.json`: fresh independent confirmation of R1–R3.
 - `followup-review-responses.json`: correction of E1 and disposition of optional nits.
+- `capture-source-security.json`: later Notes capture-tool audit correction, exact fixed revision, regression proof and replacement-driver hashes.
 
 The scored round covers Identity, Notes, Recovery, DNS, Pulse, Drive and the server
 template. Its 216 staged captures include 152 selected inputs (146 exact-unique
@@ -73,6 +74,16 @@ read-only verification when those worktrees are unavailable.
 
 Capture and runtime harnesses are archived text, not executable shared-package
 code. `refinement-harness-archives.json` records original names and SHA-256.
+For KyNotes historical recaptures, use the corrected driver identified in
+`capture-source-security.json` (product PR #117, `17ca804`). The original
+`followup-products/KyNotes-server/capture.mjs.txt` trusts a predictable temporary
+source path and is retained for historical inspection only; do not execute it.
+Restore `capture-secure.mjs.txt` as the product's `capture.mjs`, and
+`capture-security.test.mjs.txt` as `capture.test.mjs`, beside the matching core.
+The corrected driver uses fresh private extractions and has a regression test
+that rejects a planted old cache. Application bundles and screenshots did not
+change, and the original evidence remains intact.
+
 Restore original filenames and the recorded disposable product fixture before
 running them. Product READMEs are verbatim archives and describe that original
 environment. Scoring scripts remain Python and require no product server.

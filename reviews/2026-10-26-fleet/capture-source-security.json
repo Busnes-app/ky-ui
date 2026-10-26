@@ -1,0 +1,32 @@
+{
+  "finding": "Notes117 P2: historical captures trusted an existing predictable temporary source directory",
+  "product_pr": "https://github.com/Busnes-app/KyNotes-server/pull/117",
+  "fixed_head": "17ca8049ae82ddb9e247169f921231eed5635356",
+  "review_status": "re-review and current-head CI pending at publication",
+  "fix": "Fresh private mkdtemp extraction for each run; validated hex commit IDs; literal Git/tar arguments; cleanup after completion and extraction/startup failure. No application, bundle or screenshot changes.",
+  "verification": {
+    "before": "Actual adapter selects planted commit-named directory; regression fails",
+    "after": "3/3 Node tests pass: planted cache ignored/private owner0700/cleanup/fresh path; invalid revision rejected; current checkout retained",
+    "command": "node --test docs/ui-review-followups-2026-10-26/capture.test.mjs",
+    "fixture": "Disposable Git repository with a fake compiler and browser adapter; no app server or browser launched"
+  },
+  "retired_archive": {
+    "path": "followup-products/KyNotes-server/capture.mjs.txt",
+    "sha256": "59c0e1a57db445ade4a42e8975c987f3315076ef8206eef5d6b692f773344463",
+    "status": "historical bytes preserved; do not execute this version"
+  },
+  "corrected_archives": [
+    {
+      "restore_as": "docs/ui-review-followups-2026-10-26/capture.mjs",
+      "archive": "followup-products/KyNotes-server/capture-secure.mjs.txt",
+      "sha256": "613c29b368435d4baa38e4fa9184d56d1dade71597d7b768955a22410336f63b"
+    },
+    {
+      "restore_as": "docs/ui-review-followups-2026-10-26/capture.test.mjs",
+      "archive": "followup-products/KyNotes-server/capture-security.test.mjs.txt",
+      "sha256": "ce0a44ed7cc529aad6133ec927623d97e2f9eb8cc1bb22c58055434aa65b7f3f"
+    }
+  ],
+  "restore": "In the KyNotes checkout, restore capture-secure.mjs.txt as capture.mjs and capture-security.test.mjs.txt as capture.test.mjs beside the matching capture-core.mjs. Prefer the current files from the product PR.",
+  "assessment_effect": "Scores, screenshots and their original manifests remain unchanged; this corrects capture tooling and reproduction guidance."
+}
