@@ -1,0 +1,107 @@
+{
+  "surface": "Shared Appearance contract fixture; not product acceptance",
+  "source_revision": "4f83f3480fccde224f9b9240f99c0de908908965",
+  "before_source_revision": "f48e7a0dff72ec7b6b453d8cae055ca8487a1d30",
+  "fixture": "Same23radio catalog, synthetic/no API; only preview boundary and wrapping CSS changed",
+  "driver": "Playwright1.63 Chromium, Linux, scale1, Node26.12.1",
+  "capture_method": "Full fieldset screenshot, crop trims only empty right margin",
+  "source_assets": {
+    "src/check-vendor.mjs": "1fdca377e486e52d9e660893ebfc2f1a90ddb6578eca24d8f844bb5485f3e053",
+    "src/navigation.css": "cc6dbaa07a01f4ed088d38d41ff6cf95155a480bcb29327f413cbfa1ec11ac55",
+    "src/theme.d.ts": "f83e4fb841e98b7b443bc78aa699f9044d395ff622258cf8bee85b5e0608fd4a",
+    "src/theme.js": "9f0e57c86783924a19fa9923be42d7f14b24cec46c95383f251e18ab69b0176a",
+    "src/tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+    "src/appearance.css": "f689ae75f13319f1cf2ddf60903df07165fac2ceaf81db21d735bc0eb411ccba",
+    "src/themes.js": "e9f536ba2537e169aa670bc834490406d42592efb1272595cd4e21892aeedfcb",
+    "src/themes.d.ts": "14c1c32523772eb1e602f692287701e8912ff85a8013832f86d49f58e72e6eee",
+    "src/appearance-themes.css": "6897cfea5a6e3c72e358c00f2ecd6f46f308ee33dc3b6cada023df99eab899ca",
+    "browser/AGENTS.md": "0925ccf8ff6bb7cf920a99d2b037b9264efee0d9fc6389c38d44683355768f25",
+    "browser/fixture.css": "5a4c2bd54f244c9c7c42d030c8c336ba5672883a383176d6347ee7940e7190a7",
+    "browser/fixture.html": "23115ae5ddb08dc78226dac03871cb383d1607f925f85e5e1f010c38b04603f9",
+    "browser/fixture.js": "2d2469de6c17513882a4c6a7a7874ca5e6d4b91ca9e5bb9c8dcf5ecd2ac9683d",
+    "browser/readme.spec.js": "1b52357e10dc5baa6d7dfe85bada197bd11722296393bd94072cd4004782467b",
+    "browser/server.mjs": "60e7bb175010438546f19c937fd48a62f99bda11804d5a16c83c040834ee251b",
+    "browser/theme.spec.js": "de3a4aaeeaa8a6a73f72f013fa1e12a31a9e79ce41abb4ce7a296d64cccd011a",
+    "browser/appearance.spec.js": "a5ee51d7f03f099bfe6f7ad8cc63fc6ab0779f335b87891786f7b50f836f39be"
+  },
+  "checks": "14 unit,32 browser,zero-warninglint pass",
+  "limits": "Product nav dropdown removal, product description wrapping and computed contrast require their real-app checks. No whole-product score claimed.",
+  "captures": [
+    {
+      "file": "appearance-dark-1280.png",
+      "sha256": "0bcdadea3db70ed1925fc6d174e1c4af02772d8cbc3911ff541b89558491f644",
+      "before_file": "../shared-release/appearance-dark-1280.png",
+      "before_sha256": "53715b328f6617e850732d26f6d215a14ac29c8bc53743cf914c846c14baab76",
+      "source_capture_sha256": "c32df6f14e1c6546068abb6b2b224bb08b9ce8bc6422709dec02381915dc9265",
+      "crop_rect": [
+        0,
+        0,
+        1000,
+        681
+      ],
+      "image_width": 1000,
+      "image_height": 681,
+      "viewport_width": 1280,
+      "viewport_height": 900,
+      "theme_source": "OS dark, system card checked",
+      "captured_at_utc": "2026-10-26T11:31:45.211365+00:00"
+    },
+    {
+      "file": "appearance-dark-390.png",
+      "sha256": "67f4f10979364266ee029641c621e374a571a83ca2fcff5f68f28585dc8389b7",
+      "before_file": "../shared-release/appearance-dark-390.png",
+      "before_sha256": "b2068a6ee4eb8dc930ab8bf73e89695e3fe3af380a63875e1acef3a2eeebe170",
+      "source_capture_sha256": "3ae47c31cac0b67ba50aaff3ccd079784551d8490d54351ae916e5186e0d0f42",
+      "crop_rect": [
+        0,
+        0,
+        358,
+        1602
+      ],
+      "image_width": 358,
+      "image_height": 1602,
+      "viewport_width": 390,
+      "viewport_height": 900,
+      "theme_source": "OS dark, system card checked",
+      "captured_at_utc": "2026-10-26T11:31:44.569369+00:00"
+    },
+    {
+      "file": "appearance-light-1280.png",
+      "sha256": "ca4dd0948a0ed8599b19b72a870a2f5d8481b77fc13a7c2ec535a9eac529f9cc",
+      "before_file": "../shared-release/appearance-light-1280.png",
+      "before_sha256": "3b89078a2561ef5e5189eb170c4361fda55c35cf619f9870469e2fdd3b20cef2",
+      "source_capture_sha256": "88a4921fac0007a3a4b998955e0535190f6404781f772c51faf2e74a937b38be",
+      "crop_rect": [
+        0,
+        0,
+        1000,
+        681
+      ],
+      "image_width": 1000,
+      "image_height": 681,
+      "viewport_width": 1280,
+      "viewport_height": 900,
+      "theme_source": "OS light, system card checked",
+      "captured_at_utc": "2026-10-26T11:31:45.594362+00:00"
+    },
+    {
+      "file": "appearance-light-390.png",
+      "sha256": "00522ed5e5a7d0605ea40f5dd080a5a43f0f3fbbd8d2a06e677d88bea00cbb9f",
+      "before_file": "../shared-release/appearance-light-390.png",
+      "before_sha256": "6fb40a8d61d4a067e85775594638166b54ce02a7cf4380ae584fa15ddc729ce9",
+      "source_capture_sha256": "da1ef7f8dc3a6e61973e0cfca82f568350ffe6b875fdeea35769a9411467cfcf",
+      "crop_rect": [
+        0,
+        0,
+        358,
+        1602
+      ],
+      "image_width": 358,
+      "image_height": 1602,
+      "viewport_width": 390,
+      "viewport_height": 900,
+      "theme_source": "OS light, system card checked",
+      "captured_at_utc": "2026-10-26T11:31:46.237357+00:00"
+    }
+  ]
+}

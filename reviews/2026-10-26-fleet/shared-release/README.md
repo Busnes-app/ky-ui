@@ -20,3 +20,6 @@ runtime CSS precedence or computed contrast across product pages.
 Apps retain their storage keys, legacy adapters and first-paint behavior. Product
 integration, complete named-theme/accessibility coverage and 9/10 acceptance are
 separate gates. No merge or deployment is implied.
+
+The later preview-edge and wrapping correction is recorded in
+`../shared-preview-edge/`; use those images for the current shared CSS.
