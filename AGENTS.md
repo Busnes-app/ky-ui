@@ -9,9 +9,9 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/tokens.css` owns shared visual tokens.
 - `src/navigation.css` owns reusable selected, hover, focus, and responsive navigation states.
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
-- `consumers.json` lists nine product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
+- `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
-- `scripts/check-suite.mjs` checks nine public consumer default branches read-only with credential helpers disabled; no consumer code runs. Private KyForge's workflow uses its own reviewed comparator and treats public upstream files strictly as data. Both workflows gate suite freshness; no cross-repository private token.
+- `scripts/check-suite.mjs` checks public consumer default branches read-only with credential helpers disabled; no consumer code runs. Private KyForge's workflow uses its own reviewed comparator and treats public upstream files strictly as data. Both workflows gate suite freshness; no cross-repository private token.
 
 ## Local Contracts
 
@@ -29,6 +29,9 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - Add tokens and interaction primitives here; keep product composition and layout local to each product.
 - Run `npm run sync:consumers -- --root=<suite worktree root>` for a release copy, and `npm run check:consumers -- --root=<suite worktree root>` before merging consumer changes.
 - Update `PLAN.md` when a rollout step changes or a product migration is completed.
+- Before distributing a source copy, update `CHANGELOG.md` with major changes,
+  upgrade impact, source revision and known vulnerability IDs; bump the package
+  version when shipped assets change. Keep pending changes separate.
 
 ## Verification
 

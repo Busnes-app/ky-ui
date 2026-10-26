@@ -3,6 +3,8 @@
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15918/badge)](https://www.bestpractices.dev/projects/15918)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Busnes-app/ky-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/Busnes-app/ky-ui)
 
+[Release notes](CHANGELOG.md) describe source versions, upgrade impact and integration changes.
+
 `ky-ui` is the small shared browser foundation for the Ky* servers. It provides the Busnes Light/Dark design tokens, OS-aware theme selection, and the selected-navigation treatment used across the suite.
 
 It deliberately does not provide a framework, router, component runtime, or product page layouts. Each server keeps its own composition and imports the shared CSS/JS primitives.
@@ -64,7 +66,7 @@ CI retains screenshots and failure traces in `browser-results` for seven days.
 
 ## Suite freshness
 
-`npm run check:suite` shallow-clones the nine public consumer default branches into
+`npm run check:suite` shallow-clones the public consumer default branches from `consumers.json` into
 an owned temporary directory and invokes the existing exact-byte `--check`.
 It logs each checked commit, fails on fetch errors/missing/stale files, and cleans
 up on completion. Git credential helpers are disabled for these public fetches.
