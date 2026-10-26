@@ -1,0 +1,242 @@
+{
+ "schema": "ky-fleet-implementer-response/1",
+ "phase": "refinement review follow-up (R1 Identity, R3 Notes)",
+ "date": "2026-10-26",
+ "implementer": "Claude Opus 5.5 (claude-opus-5-5), implementation sub-agent; not a reviewer; no score claimed",
+ "source_review": "reviews/2026-10-26-fleet/refinement-runtime-review.md/.json (R1, R3, N1; N2/N3 retained as limits)",
+ "repositories": {
+  "KyIdentity-server": {
+   "finding": "R1 + N1 documentation",
+   "pr": "https://github.com/Busnes-app/KyIdentity-server/pull/171",
+   "branch": "ui/fleet-review-followups",
+   "worktree": "/home/yoshi/git/busnes.app/KyIdentity-server/.claude/worktrees/fleet-review-followups",
+   "base": "858eb70281a83df9664acbde92510f605a534217",
+   "head": "08f31472129bc86cc558860ff80547251e317673",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "470e64630640d4c190fd575150ad3e84546dfab1",
+     "subject": "show no Manage menu where a delegate can act on nothing"
+    },
+    {
+     "sha": "08f31472129bc86cc558860ff80547251e317673",
+     "subject": "record R1 captures with a real helpdesk delegate"
+    }
+   ],
+   "evidence_dir": "docs/ui-review-followups-2026-10-26",
+   "sha256sums_sha256": "7fccacff006471d136f3f36331da4f7e2320426a2aff0378ee1bd4eadba6832f",
+   "readme_sha256": "4988afcd7ebe18f8224c0ed13d67f6a4a0a51511aece32a610030a566d7933de",
+   "captures": [
+    {
+     "prefix": "kyidentity-00-before-admin",
+     "worktree_head": "858eb70281a83df9664acbde92510f605a534217",
+     "uncommitted_diff_sha256": "e769e7edd0586d5fe1be09e06af31a8f0bde0fde050cb24c71a5641698445d65",
+     "embedded_index_sha256": "22ea47e7846d8298816c57a62a198a74f113302fa3a41378b41b3efee478aa4c",
+     "server_source": {
+      "kind": "worktree"
+     },
+     "captured": "2026-10-26T18:04:46.339Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 12,
+     "surfaces": [
+      "manage-admin-row",
+      "manage-member-row",
+      "users"
+     ],
+     "manifest_sha256": "79fd5f47a79b1e4ee0b4cc11d9f958a96ecdde292e11870cd875393a7ffda98b"
+    },
+    {
+     "prefix": "kyidentity-00-before-delegate",
+     "worktree_head": "858eb70281a83df9664acbde92510f605a534217",
+     "uncommitted_diff_sha256": "e769e7edd0586d5fe1be09e06af31a8f0bde0fde050cb24c71a5641698445d65",
+     "embedded_index_sha256": "22ea47e7846d8298816c57a62a198a74f113302fa3a41378b41b3efee478aa4c",
+     "server_source": {
+      "kind": "worktree"
+     },
+     "captured": "2026-10-26T18:04:19.574Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 12,
+     "surfaces": [
+      "manage-admin-row",
+      "manage-member-row",
+      "users"
+     ],
+     "manifest_sha256": "a2f6cd526dec484b1ca0d955b10003aab0fdda18d9edf13d6588ca995cde0ebe"
+    },
+    {
+     "prefix": "kyidentity-01-after-admin",
+     "worktree_head": "858eb70281a83df9664acbde92510f605a534217",
+     "uncommitted_diff_sha256": "431e7e1e6d2a8b6f619a5739976e8199d4577ed3d8365c3641084cbe573b2058",
+     "embedded_index_sha256": "a01f5e4c24213c68ad55e0d6adf5c00fb4de011f3def90c969188b10d02a299c",
+     "server_source": {
+      "kind": "worktree"
+     },
+     "captured": "2026-10-26T18:06:09.572Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 12,
+     "surfaces": [
+      "manage-admin-row",
+      "manage-member-row",
+      "users"
+     ],
+     "manifest_sha256": "8255f0ca35ee3a2ff54838fda2de2649d6e6512768ff8fe130ac1fecde5d48c0"
+    },
+    {
+     "prefix": "kyidentity-01-after-delegate",
+     "worktree_head": "858eb70281a83df9664acbde92510f605a534217",
+     "uncommitted_diff_sha256": "431e7e1e6d2a8b6f619a5739976e8199d4577ed3d8365c3641084cbe573b2058",
+     "embedded_index_sha256": "a01f5e4c24213c68ad55e0d6adf5c00fb4de011f3def90c969188b10d02a299c",
+     "server_source": {
+      "kind": "worktree"
+     },
+     "captured": "2026-10-26T18:05:55.510Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 12,
+     "surfaces": [
+      "manage-admin-row",
+      "manage-member-row",
+      "users"
+     ],
+     "manifest_sha256": "276061413fd9fde99b4644506957d9d50ed346dc13e795703575010d995d02db"
+    },
+    {
+     "prefix": "kyidentity-01-confirm-delegate",
+     "worktree_head": "858eb70281a83df9664acbde92510f605a534217",
+     "uncommitted_diff_sha256": "f4e248b8f3ef3a961fe500d1034f221b38cc3618e6f97f11c8fb536087c31b5a",
+     "embedded_index_sha256": "7ff014818e3f43397d8efe876e6bcaa81f391f95bca5411801ee0e8c10e2a1bb",
+     "server_source": {
+      "kind": "worktree"
+     },
+     "captured": "2026-10-26T18:07:08.321Z",
+     "driver": "playwright chromium 153.0.8010.12 (headless)",
+     "images": 12,
+     "surfaces": [
+      "manage-admin-row",
+      "manage-member-row",
+      "users"
+     ],
+     "manifest_sha256": "93866baf160be5cc16777baf88c00680b1e9f7170f68e47ef5322d76bce2bcd6"
+    }
+   ],
+   "verify": {
+    "kyidentity-00-before-verify.json": "23/23",
+    "kyidentity-01-after-verify.json": "23/23",
+    "kyidentity-01-confirm-verify.json": "23/23"
+   }
+  },
+  "KyNotes-server": {
+   "finding": "R3 disclosure and evidence",
+   "pr": "https://github.com/Busnes-app/KyNotes-server/pull/117",
+   "branch": "ui/fleet-review-followups",
+   "worktree": "/home/yoshi/git/busnes.app/kynotes-server/.claude/worktrees/fleet-review-followups",
+   "base": "85dd3e3e073c4a274a29386cf826f2efe41d20a2",
+   "head": "2b6eb255972fda93c7356235f72e108c7b852d0d",
+   "pushed": true,
+   "commits": [
+    {
+     "sha": "2b6eb255972fda93c7356235f72e108c7b852d0d",
+     "subject": "disclose and capture the pre-existing secondary controls"
+    }
+   ],
+   "evidence_dir": "docs/ui-review-followups-2026-10-26",
+   "sha256sums_sha256": "acc314fa1cc823014a7f82f9b0a2e1c759f95f92a3dcf2e2d41ea72610a4dc6f",
+   "readme_sha256": "b80413bb22a115a19f5e7b948f2e25842ecc13f0206f33c577fb571f813d752c",
+   "captures": [
+    {
+     "prefix": "kynotes-00-before",
+     "worktree_head": "85dd3e3e073c4a274a29386cf826f2efe41d20a2",
+     "uncommitted_diff_sha256": null,
+     "embedded_index_sha256": "ce3c13068f876c24a53c6d854de1021b97b3dbb2bd3716c82995fc87cc9529a9",
+     "server_source": {
+      "kind": "git archive",
+      "commit": "e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993",
+      "tree": "/tmp/kynotes-src-e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993"
+     },
+     "captured": "2026-10-26T18:13:49.954Z",
+     "driver": "playwright chromium 156.0.8078.4 (headless)",
+     "images": 16,
+     "surfaces": [
+      "forget-device",
+      "link-request",
+      "locked-session",
+      "recovery-reset"
+     ],
+     "manifest_sha256": "ae86b6c38ea6850a5c6561376df528eebb6ded0ea9c439fb3280e0821001abe2"
+    },
+    {
+     "prefix": "kynotes-01-current",
+     "worktree_head": "85dd3e3e073c4a274a29386cf826f2efe41d20a2",
+     "uncommitted_diff_sha256": null,
+     "embedded_index_sha256": "1a66f5d2069549bf6aa4b11d33c6b24ef4ed9ade6c47939cd28d1df971332b12",
+     "server_source": {
+      "kind": "worktree"
+     },
+     "captured": "2026-10-26T18:14:19.478Z",
+     "driver": "playwright chromium 156.0.8078.4 (headless)",
+     "images": 16,
+     "surfaces": [
+      "forget-device",
+      "link-request",
+      "locked-session",
+      "recovery-reset"
+     ],
+     "manifest_sha256": "2aa7a8afbb4066991353594d428feb8a7f477288723d0dc2c93ac4780c1eca5e"
+    }
+   ],
+   "verify": {
+    "kynotes-01-current-verify.json": "23/23"
+   }
+  }
+ },
+ "R1": {
+  "fix": "row actions moved unchanged into UserRowActions (AdminUsers.tsx), which returns null when !full && u.role === admin; the nine handlers, disabled guards, labels, aria names and role conditions are the same functions passed through; redundant inner (full || role !== admin) wrapper removed (always true after the guard); phone .users-table td:empty hidden so no bare Actions label; no new copy",
+  "test": "web/src/components/AdminUsers.test.tsx (renderToStaticMarkup): full admin -> 9 actions, delete last; delegate on admin row -> empty markup; delegate on ordinary row -> 5 recovery actions; pending -> Activation link. Mutation (guard removed) fails the delegate/admin case.",
+  "real_delegate": "not simulated: the capture fixture admin creates helpdesk and member through the Create User form and grants helpdesk the Helpdesk delegation in the delegation editor (UI step-up); CAPTURE_AS=delegate signs in as helpdesk, so server-side delegated access applies. The reviewer harness rewrote /api/auth/me client-side; not used.",
+  "result": "before (embed 22ea47e7846d): delegate admin row Manage present, opens with 0 actions; after (a01f5e4c2421, confirm 7ff014818e3f committed): no Manage on admin row, ordinary rows 5, full admin 9 on every row; desktop/phone x light/dark; per-row facts in *-rows.jsonl",
+  "checks": "vendor; build (web/dist equals fresh build); vitest 198/198; npm audit --omit=dev 0; go build/vet/gofmt; go test -p 2 -race -count=1 ./... 18 packages ok; --verify 23/23 at 00-before, 01-after, 01-confirm",
+  "N1": "UI-VERIFICATION.md corrected: table-roles.mjs measured DOM roles via Playwright on synthetic HTML, not the AX tree; independent reviewer confirmed real Chromium AX (CDP getFullAXTree) at 390px; Firefox/WebKit unknown. Old evidence files untouched.",
+  "limits": [
+   "N2 Escape/outside click does not close the native details menu (unchanged)",
+   "N3 phone cell names repeat the generated label (unchanged)",
+   "phone delegate admin row exposes five cells, not six (empty Actions cell hidden)",
+   "Firefox/WebKit untested"
+  ]
+ },
+ "R3": {
+  "runtime_change": "none; neutral outline on all .secondary kept; no danger styling added",
+  "affected": [
+   "DeviceLink.tsx:122,132,137 (Link this browser)",
+   "DeviceLink.tsx:274,280,292 (Link another browser)",
+   "PinnedKeys.tsx:80 Trust new key",
+   "RecoveryCode.tsx:277,291,298 secondary danger (reset encryption key)",
+   "UnsentEdits.tsx:61 Discard unsent edits",
+   "main.tsx:569 locked-session Sign out",
+   "main.tsx:3500 Forget this device & sign out",
+   "main.tsx:3234 error toast"
+  ],
+  "captured": {
+   "RecoveryCode.tsx:291 Continue": "recovery-reset (form opened, nothing typed)",
+   "RecoveryCode.tsx:277": "partly visible at bottom of link-request frames",
+   "main.tsx:3500": "forget-device (not clicked)",
+   "main.tsx:569": "locked-session, MODELLED: CDP Storage.clearDataForOrigin indexeddb+local_storage, cookies kept, reload (loopback fixture keeps a trusted device key, so UI reload auto-unlocks and header Lock ends the session)",
+   "Link another browser card": "link-request (idle; real second-browser sign-in attempted)"
+  },
+  "not_applicable": {
+   "DeviceLink x6": "a password account unlocks its key in any browser, so a second browser is never offered Link this browser (secondBrowserOfferedLink false in every facts row); no request arrives",
+   "PinnedKeys:80": "needs a colleague whose pinned key changed (second account, shared team, key reset)",
+   "RecoveryCode:298": "needs a reset that failed after preparation",
+   "UnsentEdits:61": "needs edits this browser can never send (lost notebook or key-waiting edits across a reset); one-owner fixture has none",
+   "error toast": "needs a failing action; none triggered"
+  },
+  "provenance": "before: server built from git archive of pinned pre-refinement e1b726b (refinement-source-inputs.json review_base) into /tmp/kynotes-src-e1b726b..., embed ce3c13068f87 = e1b726b bundle; current: clean master 85dd3e3 worktree, embed 1a66f5d20695 = visual-refinement 02-current-bundle; same fixture, surfaces and order; Playwright 1.64.1 / Chromium 156.0.8078.4; no other worktree mutated",
+  "checks": "--verify 23/23 on current build; unchanged suites not re-run for this docs-only addition (last full run recorded in UI-VERIFICATION visual-refinement section; host CI covers head)",
+  "residual": "destructive secondary danger controls share the neutral outline with Cancel (no danger hue before either); recorded, not fixed; owner decision"
+ },
+ "both": {
+  "old_evidence": "docs/ui-visual-refinement-2026-10-26 and docs/ui-fleet-2026-10-26 unchanged (SHA256SUMS verified, git diff clean)",
+  "inspection": "one batch inspection each; Identity one confirm recapture (delegate, after hiding the empty phone cell); Notes none",
+  "ports": "5871 (Identity) and 18091 (Notes) only; free before use; no foreign listener touched",
+  "old_worktrees": "fleet-visual-refinement worktrees kept",
+  "board": "no MySlop/board post made or claimed"
+ }
+}

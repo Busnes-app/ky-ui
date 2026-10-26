@@ -1,0 +1,4 @@
+identity-head2 lock_matches_worktree=yes vite_rc=0 committed=web/dist -> IDENTICAL; vite vite/8.3.5 linux-x64 node-v24.22.0
+notes-head lock_matches_worktree=yes vite_rc=0 committed=internal/web/dist -> IDENTICAL; vite vite/8.3.5 linux-x64 node-v24.22.0
+pulse-head lock_matches_worktree=yes vite_rc=0 committed=web/dist -> IDENTICAL; vite vite/6.4.5 linux-x64 node-v24.22.0
+base-head lock_matches_worktree=yes vite_rc=0 committed=web/dist -> IDENTICAL; vite vite/8.3.4 linux-x64 node-v24.22.0

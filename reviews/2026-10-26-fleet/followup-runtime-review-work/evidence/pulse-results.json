@@ -1,0 +1,1873 @@
+{
+ "checks": [
+  {
+   "name": "base desktop: all 4 Backup badges on their label line",
+   "pass": false,
+   "detail": [
+    [
+     "Recovery key",
+     "None",
+     false
+    ],
+    [
+     "KyRecovery",
+     "Not paired",
+     false
+    ],
+    [
+     "Local copies",
+     "0 of 7",
+     false
+    ],
+    [
+     "Schedule",
+     "Daily",
+     true
+    ]
+   ]
+  },
+  {
+   "name": "base desktop appdetail: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      128
+     ]
+    ]
+   }
+  },
+  {
+   "name": "base desktop yardfacts-long: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      128
+     ],
+     [
+      "KyYard container",
+      128
+     ]
+    ]
+   }
+  },
+  {
+   "name": "base desktop yardfacts-sparse: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      128
+     ],
+     [
+      "KyYard container",
+      128
+     ]
+    ]
+   }
+  },
+  {
+   "name": "base desktop yardcard: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      128
+     ]
+    ]
+   }
+  },
+  {
+   "name": "base phone: all 4 Backup badges on their label line",
+   "pass": true,
+   "detail": [
+    [
+     "Recovery key",
+     "None",
+     true
+    ],
+    [
+     "KyRecovery",
+     "Not paired",
+     true
+    ],
+    [
+     "Local copies",
+     "0 of 7",
+     true
+    ],
+    [
+     "Schedule",
+     "Daily",
+     true
+    ]
+   ]
+  },
+  {
+   "name": "base phone appdetail: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      358
+     ]
+    ]
+   }
+  },
+  {
+   "name": "base phone yardfacts-long: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      358
+     ],
+     [
+      "KyYard container",
+      358
+     ]
+    ]
+   }
+  },
+  {
+   "name": "base phone yardfacts-sparse: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      358
+     ],
+     [
+      "KyYard container",
+      358
+     ]
+    ]
+   }
+  },
+  {
+   "name": "base phone yardcard: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      316
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head desktop: all 4 Backup badges on their label line",
+   "pass": true,
+   "detail": [
+    [
+     "Recovery key",
+     "None",
+     true
+    ],
+    [
+     "KyRecovery",
+     "Not paired",
+     true
+    ],
+    [
+     "Local copies",
+     "0 of 7",
+     true
+    ],
+    [
+     "Schedule",
+     "Daily",
+     true
+    ]
+   ]
+  },
+  {
+   "name": "head desktop appdetail: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      128
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head desktop yardfacts-long: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      128
+     ],
+     [
+      "KyYard container",
+      128
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head desktop yardfacts-sparse: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      128
+     ],
+     [
+      "KyYard container",
+      128
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head desktop yardcard: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      128
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head desktop: admin header has only Edit; Delete is the filled danger in Stop watching",
+   "pass": true,
+   "detail": {
+    "header": [
+     "Edit"
+    ],
+    "remove": [
+     {
+      "text": "Delete",
+      "cls": "btn-danger"
+     }
+    ]
+   }
+  },
+  {
+   "name": "head desktop: Delete confirms; dismiss sends no DELETE",
+   "pass": true,
+   "detail": {
+    "msg": "Stop watching Paused fixture app? Its alert history is deleted too.",
+    "deletes": []
+   }
+  },
+  {
+   "name": "head phone: all 4 Backup badges on their label line",
+   "pass": true,
+   "detail": [
+    [
+     "Recovery key",
+     "None",
+     true
+    ],
+    [
+     "KyRecovery",
+     "Not paired",
+     true
+    ],
+    [
+     "Local copies",
+     "0 of 7",
+     true
+    ],
+    [
+     "Schedule",
+     "Daily",
+     true
+    ]
+   ]
+  },
+  {
+   "name": "head phone appdetail: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      358
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head phone yardfacts-long: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      358
+     ],
+     [
+      "KyYard container",
+      358
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head phone yardfacts-sparse: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      null,
+      358
+     ],
+     [
+      "KyYard container",
+      358
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head phone yardcard: no page/fact overflow",
+   "pass": true,
+   "detail": {
+    "pageOverflow": 0,
+    "bad": [],
+    "labelW": [
+     [
+      316
+     ]
+    ]
+   }
+  },
+  {
+   "name": "head phone: admin header has only Edit; Delete is the filled danger in Stop watching",
+   "pass": true,
+   "detail": {
+    "header": [
+     "Edit"
+    ],
+    "remove": [
+     {
+      "text": "Delete",
+      "cls": "btn-danger"
+     }
+    ]
+   }
+  },
+  {
+   "name": "head phone: Delete confirms; dismiss sends no DELETE",
+   "pass": true,
+   "detail": {
+    "msg": "Stop watching Paused fixture app? Its alert history is deleted too.",
+    "deletes": []
+   }
+  }
+ ],
+ "runs": {
+  "base-desktop-backup": [
+   {
+    "label": "Recovery key",
+    "badge": "None",
+    "labelBox": [
+     128,
+     44
+    ],
+    "badgeSameLineAsLabel": false,
+    "badgeRightAligned": 81,
+    "valueLeftOfLabelRight": 16,
+    "valueBelowLabel": false
+   },
+   {
+    "label": "KyRecovery",
+    "badge": "Not paired",
+    "labelBox": [
+     128,
+     44
+    ],
+    "badgeSameLineAsLabel": false,
+    "badgeRightAligned": 49,
+    "valueLeftOfLabelRight": 16,
+    "valueBelowLabel": false
+   },
+   {
+    "label": "Local copies",
+    "badge": "0 of 7",
+    "labelBox": [
+     128,
+     44
+    ],
+    "badgeSameLineAsLabel": false,
+    "badgeRightAligned": 77,
+    "valueLeftOfLabelRight": 16,
+    "valueBelowLabel": false
+   },
+   {
+    "label": "Schedule",
+    "badge": "Daily",
+    "labelBox": [
+     128,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 23,
+    "valueLeftOfLabelRight": 16,
+    "valueBelowLabel": false
+   }
+  ],
+  "base-desktop-appdetail": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "base-desktop-yardfacts-long": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    },
+    {
+     "aria": "KyYard container",
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Container",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": 416,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Docker health",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Image",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Memory",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": 416,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Restarts",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": 416,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Observed",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "base-desktop-yardfacts-sparse": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    },
+    {
+     "aria": "KyYard container",
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Container",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": 416,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Docker health",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Image",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Resources",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Observed",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "base-desktop-yardcard": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 1227,
+     "facts": [
+      {
+       "label": "Organization",
+       "labelW": 128,
+       "valueL": 437,
+       "valueR": 1227,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "URL",
+       "labelW": 128,
+       "valueL": 437,
+       "valueR": 1227,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Last pull",
+       "labelW": 128,
+       "valueL": 437,
+       "valueR": 1227,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 128,
+       "valueL": 437,
+       "valueR": 1227,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "base-phone-backup": [
+   {
+    "label": "Recovery key",
+    "badge": "None",
+    "labelBox": [
+     358,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 225,
+    "valueLeftOfLabelRight": -358,
+    "valueBelowLabel": true
+   },
+   {
+    "label": "KyRecovery",
+    "badge": "Not paired",
+    "labelBox": [
+     358,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 203,
+    "valueLeftOfLabelRight": -358,
+    "valueBelowLabel": true
+   },
+   {
+    "label": "Local copies",
+    "badge": "0 of 7",
+    "labelBox": [
+     358,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 229,
+    "valueLeftOfLabelRight": -358,
+    "valueBelowLabel": true
+   },
+   {
+    "label": "Schedule",
+    "badge": "Daily",
+    "labelBox": [
+     358,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 253,
+    "valueLeftOfLabelRight": -358,
+    "valueBelowLabel": true
+   }
+  ],
+  "base-phone-appdetail": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 374,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "base-phone-yardfacts-long": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 374,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    },
+    {
+     "aria": "KyYard container",
+     "right": 374,
+     "facts": [
+      {
+       "label": "Container",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": 16,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Docker health",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Image",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Memory",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": 16,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Restarts",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": 16,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Observed",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "base-phone-yardfacts-sparse": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 374,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    },
+    {
+     "aria": "KyYard container",
+     "right": 374,
+     "facts": [
+      {
+       "label": "Container",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": 16,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Docker health",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Image",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Resources",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Observed",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "base-phone-yardcard": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 353,
+     "facts": [
+      {
+       "label": "Organization",
+       "labelW": 316,
+       "valueL": 37,
+       "valueR": 353,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "URL",
+       "labelW": 316,
+       "valueL": 37,
+       "valueR": 353,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Last pull",
+       "labelW": 316,
+       "valueL": 37,
+       "valueR": 353,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 316,
+       "valueL": 37,
+       "valueR": 353,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "head-desktop-backup": [
+   {
+    "label": "Recovery key",
+    "badge": "None",
+    "labelBox": [
+     163,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 22,
+    "valueLeftOfLabelRight": 16,
+    "valueBelowLabel": false
+   },
+   {
+    "label": "KyRecovery",
+    "badge": "Not paired",
+    "labelBox": [
+     163,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 0,
+    "valueLeftOfLabelRight": 16,
+    "valueBelowLabel": false
+   },
+   {
+    "label": "Local copies",
+    "badge": "0 of 7",
+    "labelBox": [
+     163,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 26,
+    "valueLeftOfLabelRight": 16,
+    "valueBelowLabel": false
+   },
+   {
+    "label": "Schedule",
+    "badge": "Daily",
+    "labelBox": [
+     163,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 50,
+    "valueLeftOfLabelRight": 16,
+    "valueBelowLabel": false
+   }
+  ],
+  "head-desktop-appdetail": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "head-desktop-yardfacts-long": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    },
+    {
+     "aria": "KyYard container",
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Container",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": 416,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Docker health",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Image",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Memory",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": 416,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Restarts",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": 416,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Observed",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "head-desktop-yardfacts-sparse": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 128,
+       "valueL": 914,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    },
+    {
+     "aria": "KyYard container",
+     "right": 1248,
+     "facts": [
+      {
+       "label": "Container",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": 416,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Docker health",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Image",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Resources",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Observed",
+       "labelW": 128,
+       "valueL": 416,
+       "valueR": 1248,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "head-desktop-yardcard": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 1227,
+     "facts": [
+      {
+       "label": "Organization",
+       "labelW": 128,
+       "valueL": 437,
+       "valueR": 1227,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "URL",
+       "labelW": 128,
+       "valueL": 437,
+       "valueR": 1227,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Last pull",
+       "labelW": 128,
+       "valueL": 437,
+       "valueR": 1227,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 128,
+       "valueL": 437,
+       "valueR": 1227,
+       "valueBelowLabel": false,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "head-phone-backup": [
+   {
+    "label": "Recovery key",
+    "badge": "None",
+    "labelBox": [
+     358,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 217,
+    "valueLeftOfLabelRight": -358,
+    "valueBelowLabel": true
+   },
+   {
+    "label": "KyRecovery",
+    "badge": "Not paired",
+    "labelBox": [
+     358,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 195,
+    "valueLeftOfLabelRight": -358,
+    "valueBelowLabel": true
+   },
+   {
+    "label": "Local copies",
+    "badge": "0 of 7",
+    "labelBox": [
+     358,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 221,
+    "valueLeftOfLabelRight": -358,
+    "valueBelowLabel": true
+   },
+   {
+    "label": "Schedule",
+    "badge": "Daily",
+    "labelBox": [
+     358,
+     24
+    ],
+    "badgeSameLineAsLabel": true,
+    "badgeRightAligned": 245,
+    "valueLeftOfLabelRight": -358,
+    "valueBelowLabel": true
+   }
+  ],
+  "head-phone-appdetail": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 374,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "head-phone-yardfacts-long": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 374,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    },
+    {
+     "aria": "KyYard container",
+     "right": 374,
+     "facts": [
+      {
+       "label": "Container",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": 16,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Docker health",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Image",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Memory",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": 16,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Restarts",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": 16,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Observed",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "head-phone-yardfacts-sparse": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 374,
+     "facts": [
+      {
+       "label": "Health URL",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Interval",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Polling",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    },
+    {
+     "aria": "KyYard container",
+     "right": 374,
+     "facts": [
+      {
+       "label": "Container",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": 16,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Docker health",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Image",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Resources",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Observed",
+       "labelW": 358,
+       "valueL": 16,
+       "valueR": 374,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  },
+  "head-phone-yardcard": {
+   "pageOverflow": 0,
+   "blocks": [
+    {
+     "aria": null,
+     "right": 353,
+     "facts": [
+      {
+       "label": "Organization",
+       "labelW": 316,
+       "valueL": 37,
+       "valueR": 353,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "URL",
+       "labelW": 316,
+       "valueL": 37,
+       "valueR": 353,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "Last pull",
+       "labelW": 316,
+       "valueL": 37,
+       "valueR": 353,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      },
+      {
+       "label": "State",
+       "labelW": 316,
+       "valueL": 37,
+       "valueR": 353,
+       "valueBelowLabel": true,
+       "noteL": null,
+       "overflowX": 0,
+       "valueOverflow": 0
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "browser": "chromium 153.0.8010.12"
+}

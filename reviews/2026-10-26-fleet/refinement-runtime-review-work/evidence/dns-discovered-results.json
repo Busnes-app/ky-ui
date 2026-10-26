@@ -1,0 +1,56 @@
+{
+ "base": {
+  "/discovered": {
+   "navH": 402,
+   "kids": [
+    "DIV.brand:29",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "FOOTER.app-footer:48"
+   ],
+   "mainTop": 402
+  },
+  "/dhcp": {
+   "navH": 203,
+   "kids": [
+    "DIV.brand:29",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "A.ky-nav-item:40",
+    "FOOTER.app-footer:48"
+   ],
+   "mainTop": 203
+  }
+ },
+ "head": {
+  "/discovered": {
+   "navH": 330,
+   "kids": [
+    "DIV.brand:29",
+    "DIV.app-nav-links:52",
+    "FOOTER.app-footer:40"
+   ],
+   "mainTop": 330
+  },
+  "/dhcp": {
+   "navH": 113,
+   "kids": [
+    "DIV.brand:29",
+    "DIV.app-nav-links:52",
+    "FOOTER.app-footer:40"
+   ],
+   "mainTop": 113
+  }
+ }
+}

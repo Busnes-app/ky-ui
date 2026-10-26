@@ -1,0 +1,29 @@
+﻿product,check,result,detail
+KyRecovery-server,pass,implementer record; see detail,"[""gofmt"", ""go vet"", ""go test -race -count=1 -p 2 ./... ordinary and GODEBUG=fips140=on"", ""check-vendor.mjs"", ""check-contrast.mjs"", ""test-overview.mjs"", ""capture checks incl. F6 tab reveal (scrollY 851->851, focus not in nav)""]"
+KyRecovery-server,not_run,implementer record; see detail,"[""CI fuzz targets, WASM rebuild, Docker/restic overlay (no backend/WASM/image change)""]"
+KyRecovery-server,ci_snapshot,implementer record; see detail,"7 pass, 2 skipping on ea4b76e"
+KyDNS-server,pass,implementer record; see detail,"[""gofmt"", ""go vet"", ""check-vendor.mjs"", ""go test -race -timeout 10m -p 2 ./... ordinary and GODEBUG=fips140=on (on df2e1f4)"", ""capture checks""]"
+KyDNS-server,not_run,implementer record; see detail,"[""Docker/package jobs (no backend change)""]"
+KyDNS-server,ci_snapshot,implementer record; see detail,"14 pass, 1 skipping on 595a123"
+KyPulse-server,pass,implementer record; see detail,"[""make ci (tidy, lint, race, 96 vitest, smoke)"", ""race under GODEBUG=fips140=on"", ""web/dist matches build"", ""Playwright 18 passed / 4 skipped"", ""F7 danger-button on the real Delete: min rest/focus 5.89, hover 5.03 across 15 suite palettes (unchanged); legacy --button-text assertions pass"", ""nav.spec, ui.spec, monitor.spec""]"
+KyPulse-server,flaky,implementer record; see detail,logs.spec failed once at 390px (both schemes) on its afterAll teardown timeout closing the fake KyYard server; test bodies passed; immediate rerun of both 390 projects at the same head: 2/2 pass
+KyPulse-server,not_run,implementer record; see detail,"[""PostgreSQL suite (no local instance; no Go change)""]"
+KyPulse-server,ci_snapshot,implementer record; see detail,pending at report time
+KyDrive-server,pass,implementer record; see detail,"[""vendor check"", ""100 vitest + build (known pre-existing chunk-size warning only)"", ""go vet"", ""gofmt"", ""go test -race -count=1 -p 2 ./... (16 ok; restic not installed locally)"", ""Playwright 50 passed / 2 skipped"", ""F7 'Delete permanently': min rest/focus 5.83, hover 6.60 (unchanged)""]"
+KyDrive-server,not_run,implementer record; see detail,"[""Docker/repeatable-binary jobs""]"
+KyDrive-server,ci_snapshot,implementer record; see detail,pending at report time
+ky-server-base,pass,implementer record; see detail,"[""make ci end to end (notes-check, tidy, lint, race+coverage, 10 vitest + build, smoke)"", ""check-release-notes.py --base origin/master"", ""race under GODEBUG=fips140=on"", ""web/dist matches build"", ""Playwright 8 passed / 4 skipped incl. F6 nav.spec and F7 danger-button (min 5.83 / hover 4.97, unchanged)""]"
+ky-server-base,not_run,implementer record; see detail,"[""PostgreSQL suite (no local instance)""]"
+ky-server-base,ci_snapshot,implementer record; see detail,pending at report time
+KyIdentity-server,at,implementer record; see detail,f36ea7d + change (before commit)
+KyIdentity-server,vendor,implementer record; see detail,pass (0.4.1)
+KyIdentity-server,build,implementer record; see detail,pass; committed web/dist equals fresh build; embed index 22ea47e7846d = 01-confirm capture
+KyIdentity-server,vitest,implementer record; see detail,pass
+KyIdentity-server,npm_audit_omit_dev,implementer record; see detail,0 vulnerabilities
+KyIdentity-server,go,implementer record; see detail,"build, vet, gofmt pass; go test -p 2 -race -count=1 ./... 18 packages ok"
+KyIdentity-server,relay_workers,implementer record; see detail,"untouched, not run (CI runs them)"
+KyIdentity-server,verify,implementer record; see detail,"23/23 at 00-before, 01-after, 01-confirm"
+KyNotes-server,pre_merge,implementer record; see detail,"vendor pass; vitest 599/599 (one wiring test source string updated for the added className, first run failed 1 until then); build + diff -qr web/dist internal/web/dist clean; embed index 0a8f919a6c4f = 01-confirm capture; go build/vet/gofmt; go test -p 2 -race ./... 20 packages ok; e2e 11/11"
+KyNotes-server,post_merge,implementer record; see detail,vitest 599/599; vendor; go build/vet; go test -p 2 -race ./internal/web/...; e2e 11/11
+KyNotes-server,not_run,implementer record; see detail,govulncheck (dependencies equal master)
+KyNotes-server,verify,implementer record; see detail,"23/23 at 00-before, 01-after, 01-confirm, 02-current-bundle"

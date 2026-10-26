@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# For each product: vendored ky-ui dir unchanged base..head, and per-file sha256 vs canonical ky-ui.
+set -u
+G=/home/yoshi/git/busnes.app
+KYUI=$G/ky-ui/.claude/worktrees/fleet-appearance
+echo "ky-ui fleet-appearance HEAD $(git -C $KYUI rev-parse HEAD)"
+echo "ky-ui src/tokens.css $(git -C $KYUI show HEAD:src/tokens.css | sha256sum | cut -c1-16)"
+while read -r name dir base head; do
+  wt=$G/$dir/.claude/worktrees/fleet-visual-refinement
+  vend=$(git -C $wt ls-tree -r --name-only $head | grep -E '(^|/)ky-ui/tokens\.css$' | head -1 | xargs dirname)
+  changed=$(git -C $wt diff --name-only $base $head -- "$vend" | wc -l)
+  echo "== $name vendored=$vend changed_base_to_head=$changed"
+  for f in tokens.css navigation.css appearance.css appearance-themes.css themes.js themes-browser.js theme.js VERSION; do
+    p="$vend/$f"; h=$(git -C $wt show "$head:$p" 2>/dev/null | sha256sum | cut -c1-16)
+    c=$(git -C $KYUI show "HEAD:src/$f" 2>/dev/null | sha256sum | cut -c1-16)
+    [ "$f" = VERSION ] && c=$(git -C $KYUI show HEAD:package.json | python3 -c 'import json,sys;print(json.load(sys.stdin)["version"])'); [ "$f" = VERSION ] && h=$(git -C $wt show "$head:$p" 2>/dev/null)
+    git -C $wt cat-file -e "$head:$p" 2>/dev/null || { echo "   $f absent"; continue; }
+    echo "   $f head=$h canonical=$c $([ "$h" = "$c" ] && echo MATCH || echo DIFF)"
+  done
+done <<'L'
+KyRecovery kyrecovery-server cd058d425a13a2dd988421fbdc2483b8079029d9 ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc
+KyDNS kydns-server 5ac679621b26836b30caef9736d35b77b99231a2 595a123215fe1ffcbf0d0694d82f8340b1d01a18
+KyPulse kyPulse-server 8aefea2de1bfa274e4985147d6f9e452506d3b5d ee5228cdfe9e54bd3bc39d02ec4f5341ed43cca4
+KyDrive KyDrive-server 657a485f8fbf6ad7dac1dc51c585a565b357c2ee 5d6bb8a0e181704b430495d1e8b92f45bf7ae0bc
+Base ky_server_base 3bc078096723820e139bb1978d261e2e99415da1 55d70ae21b65505c298a929c04e621353f4a6806
+KyIdentity KyIdentity-server f36ea7d50dbaa4ffab705d418c380327ea63f0cf 3f7f5c043146950b0084553f96f8b469417c16a4
+KyNotes kynotes-server e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993 902fda0cbe5bc9f3e8d247c88310379400ede2b4
+L

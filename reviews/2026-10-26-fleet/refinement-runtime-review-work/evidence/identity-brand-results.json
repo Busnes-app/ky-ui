@@ -1,0 +1,523 @@
+{
+ "head": "3f7f5c043146950b0084553f96f8b469417c16a4",
+ "checks": [
+  {
+   "name": "brand descriptor (--ink, 23 choices x OS light/dark) >= 4.5:1 on sidebar gradient ends",
+   "pass": true,
+   "detail": {
+    "count": 46,
+    "min": 4.76,
+    "low": []
+   }
+  }
+ ],
+ "browser": "chromium 153.0.8010.12",
+ "brandContrast": [
+  {
+   "scheme": "light",
+   "theme": "system",
+   "fg": "rgb(86, 100, 97)",
+   "min": 5.39,
+   "bgs": [
+    "rgb(242, 239, 231)",
+    "rgb(242, 239, 231)"
+   ],
+   "sideBg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))"
+  },
+  {
+   "scheme": "light",
+   "theme": "busnes-light",
+   "fg": "rgb(86, 100, 97)",
+   "min": 5.39,
+   "bgs": [
+    "rgb(242, 239, 231)",
+    "rgb(242, 239, 231)"
+   ],
+   "sideBg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))"
+  },
+  {
+   "scheme": "light",
+   "theme": "busnes-dark",
+   "fg": "rgb(179, 188, 184)",
+   "min": 7.48,
+   "bgs": [
+    "rgb(31, 43, 46)",
+    "rgb(31, 43, 46)"
+   ],
+   "sideBg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))"
+  },
+  {
+   "scheme": "light",
+   "theme": "dark-matter",
+   "fg": "rgb(212, 197, 226)",
+   "min": 9.17,
+   "bgs": [
+    "rgb(31, 31, 36)",
+    "rgb(42, 37, 48)"
+   ],
+   "sideBg": "linear-gradient(rgb(31, 31, 36), rgb(42, 37, 48))"
+  },
+  {
+   "scheme": "light",
+   "theme": "light-matter",
+   "fg": "rgb(76, 61, 50)",
+   "min": 7.28,
+   "bgs": [
+    "rgb(237, 226, 210)",
+    "rgb(228, 214, 195)"
+   ],
+   "sideBg": "linear-gradient(rgb(237, 226, 210), rgb(228, 214, 195))"
+  },
+  {
+   "scheme": "light",
+   "theme": "tropics",
+   "fg": "rgb(67, 54, 45)",
+   "min": 8.4,
+   "bgs": [
+    "rgb(236, 229, 216)",
+    "rgb(227, 218, 203)"
+   ],
+   "sideBg": "linear-gradient(rgb(236, 229, 216), rgb(227, 218, 203))"
+  },
+  {
+   "scheme": "light",
+   "theme": "tropic-night",
+   "fg": "rgb(205, 189, 224)",
+   "min": 8.72,
+   "bgs": [
+    "rgb(29, 26, 36)",
+    "rgb(41, 34, 51)"
+   ],
+   "sideBg": "linear-gradient(rgb(29, 26, 36), rgb(41, 34, 51))"
+  },
+  {
+   "scheme": "light",
+   "theme": "ocean",
+   "fg": "rgb(184, 216, 232)",
+   "min": 8.83,
+   "bgs": [
+    "rgb(17, 36, 48)",
+    "rgb(23, 51, 66)"
+   ],
+   "sideBg": "linear-gradient(rgb(17, 36, 48), rgb(23, 51, 66))"
+  },
+  {
+   "scheme": "light",
+   "theme": "coffee",
+   "fg": "rgb(214, 192, 179)",
+   "min": 8.49,
+   "bgs": [
+    "rgb(35, 26, 22)",
+    "rgb(50, 37, 31)"
+   ],
+   "sideBg": "linear-gradient(rgb(35, 26, 22), rgb(50, 37, 31))"
+  },
+  {
+   "scheme": "light",
+   "theme": "white-cliffs",
+   "fg": "rgb(46, 76, 99)",
+   "min": 7.99,
+   "bgs": [
+    "rgb(241, 248, 253)",
+    "rgb(231, 243, 251)"
+   ],
+   "sideBg": "linear-gradient(rgb(241, 248, 253), rgb(231, 243, 251))"
+  },
+  {
+   "scheme": "light",
+   "theme": "cyber-punk",
+   "fg": "rgb(245, 208, 255)",
+   "min": 12.48,
+   "bgs": [
+    "rgb(27, 13, 36)",
+    "rgb(40, 18, 54)"
+   ],
+   "sideBg": "linear-gradient(rgb(27, 13, 36), rgb(40, 18, 54))"
+  },
+  {
+   "scheme": "light",
+   "theme": "neon-purple",
+   "fg": "rgb(228, 204, 255)",
+   "min": 11.1,
+   "bgs": [
+    "rgb(27, 16, 41)",
+    "rgb(42, 23, 64)"
+   ],
+   "sideBg": "linear-gradient(rgb(27, 16, 41), rgb(42, 23, 64))"
+  },
+  {
+   "scheme": "light",
+   "theme": "space",
+   "fg": "rgb(200, 213, 240)",
+   "min": 10.62,
+   "bgs": [
+    "rgb(15, 22, 37)",
+    "rgb(24, 35, 58)"
+   ],
+   "sideBg": "linear-gradient(rgb(15, 22, 37), rgb(24, 35, 58))"
+  },
+  {
+   "scheme": "light",
+   "theme": "sky",
+   "fg": "rgb(47, 79, 100)",
+   "min": 6.39,
+   "bgs": [
+    "rgb(211, 236, 250)",
+    "rgb(194, 226, 244)"
+   ],
+   "sideBg": "linear-gradient(rgb(211, 236, 250), rgb(194, 226, 244))"
+  },
+  {
+   "scheme": "light",
+   "theme": "forest",
+   "fg": "rgb(199, 219, 199)",
+   "min": 8.84,
+   "bgs": [
+    "rgb(24, 38, 28)",
+    "rgb(34, 54, 41)"
+   ],
+   "sideBg": "linear-gradient(rgb(24, 38, 28), rgb(34, 54, 41))"
+  },
+  {
+   "scheme": "light",
+   "theme": "sun",
+   "fg": "rgb(90, 64, 36)",
+   "min": 7.04,
+   "bgs": [
+    "rgb(248, 231, 197)",
+    "rgb(242, 218, 177)"
+   ],
+   "sideBg": "linear-gradient(rgb(248, 231, 197), rgb(242, 218, 177))"
+  },
+  {
+   "scheme": "light",
+   "theme": "patina-ky",
+   "fg": "rgb(148, 163, 184)",
+   "min": 6.3,
+   "bgs": [
+    "rgb(13, 15, 20)",
+    "rgb(27, 33, 44)"
+   ],
+   "sideBg": "linear-gradient(rgb(13, 15, 20), rgb(27, 33, 44))"
+  },
+  {
+   "scheme": "light",
+   "theme": "polished-ky",
+   "fg": "rgb(71, 85, 105)",
+   "min": 6.15,
+   "bgs": [
+    "rgb(241, 245, 249)",
+    "rgb(226, 232, 240)"
+   ],
+   "sideBg": "linear-gradient(rgb(241, 245, 249), rgb(226, 232, 240))"
+  },
+  {
+   "scheme": "light",
+   "theme": "patina",
+   "fg": "rgb(148, 163, 184)",
+   "min": 6.8,
+   "bgs": [
+    "rgb(22, 26, 34)",
+    "rgb(22, 26, 34)"
+   ],
+   "sideBg": "linear-gradient(rgb(22, 26, 34), rgb(22, 26, 34))"
+  },
+  {
+   "scheme": "light",
+   "theme": "cyber",
+   "fg": "rgb(170, 183, 200)",
+   "min": 9.2,
+   "bgs": [
+    "rgb(13, 18, 29)",
+    "rgb(13, 18, 29)"
+   ],
+   "sideBg": "linear-gradient(rgb(13, 18, 29), rgb(13, 18, 29))"
+  },
+  {
+   "scheme": "light",
+   "theme": "nord",
+   "fg": "rgb(216, 222, 233)",
+   "min": 7.45,
+   "bgs": [
+    "rgb(59, 66, 82)",
+    "rgb(59, 66, 82)"
+   ],
+   "sideBg": "linear-gradient(rgb(59, 66, 82), rgb(59, 66, 82))"
+  },
+  {
+   "scheme": "light",
+   "theme": "paper",
+   "fg": "rgb(100, 116, 139)",
+   "min": 4.76,
+   "bgs": [
+    "rgb(255, 255, 255)",
+    "rgb(255, 255, 255)"
+   ],
+   "sideBg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))"
+  },
+  {
+   "scheme": "light",
+   "theme": "oled",
+   "fg": "rgb(161, 161, 170)",
+   "min": 7.37,
+   "bgs": [
+    "rgb(17, 17, 17)",
+    "rgb(17, 17, 17)"
+   ],
+   "sideBg": "linear-gradient(rgb(17, 17, 17), rgb(17, 17, 17))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "system",
+   "fg": "rgb(179, 188, 184)",
+   "min": 7.48,
+   "bgs": [
+    "rgb(31, 43, 46)",
+    "rgb(31, 43, 46)"
+   ],
+   "sideBg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "busnes-light",
+   "fg": "rgb(86, 100, 97)",
+   "min": 5.39,
+   "bgs": [
+    "rgb(242, 239, 231)",
+    "rgb(242, 239, 231)"
+   ],
+   "sideBg": "linear-gradient(rgb(242, 239, 231), rgb(242, 239, 231))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "busnes-dark",
+   "fg": "rgb(179, 188, 184)",
+   "min": 7.48,
+   "bgs": [
+    "rgb(31, 43, 46)",
+    "rgb(31, 43, 46)"
+   ],
+   "sideBg": "linear-gradient(rgb(31, 43, 46), rgb(31, 43, 46))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "dark-matter",
+   "fg": "rgb(212, 197, 226)",
+   "min": 9.17,
+   "bgs": [
+    "rgb(31, 31, 36)",
+    "rgb(42, 37, 48)"
+   ],
+   "sideBg": "linear-gradient(rgb(31, 31, 36), rgb(42, 37, 48))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "light-matter",
+   "fg": "rgb(76, 61, 50)",
+   "min": 7.28,
+   "bgs": [
+    "rgb(237, 226, 210)",
+    "rgb(228, 214, 195)"
+   ],
+   "sideBg": "linear-gradient(rgb(237, 226, 210), rgb(228, 214, 195))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "tropics",
+   "fg": "rgb(67, 54, 45)",
+   "min": 8.4,
+   "bgs": [
+    "rgb(236, 229, 216)",
+    "rgb(227, 218, 203)"
+   ],
+   "sideBg": "linear-gradient(rgb(236, 229, 216), rgb(227, 218, 203))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "tropic-night",
+   "fg": "rgb(205, 189, 224)",
+   "min": 8.72,
+   "bgs": [
+    "rgb(29, 26, 36)",
+    "rgb(41, 34, 51)"
+   ],
+   "sideBg": "linear-gradient(rgb(29, 26, 36), rgb(41, 34, 51))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "ocean",
+   "fg": "rgb(184, 216, 232)",
+   "min": 8.83,
+   "bgs": [
+    "rgb(17, 36, 48)",
+    "rgb(23, 51, 66)"
+   ],
+   "sideBg": "linear-gradient(rgb(17, 36, 48), rgb(23, 51, 66))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "coffee",
+   "fg": "rgb(214, 192, 179)",
+   "min": 8.49,
+   "bgs": [
+    "rgb(35, 26, 22)",
+    "rgb(50, 37, 31)"
+   ],
+   "sideBg": "linear-gradient(rgb(35, 26, 22), rgb(50, 37, 31))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "white-cliffs",
+   "fg": "rgb(46, 76, 99)",
+   "min": 7.99,
+   "bgs": [
+    "rgb(241, 248, 253)",
+    "rgb(231, 243, 251)"
+   ],
+   "sideBg": "linear-gradient(rgb(241, 248, 253), rgb(231, 243, 251))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "cyber-punk",
+   "fg": "rgb(245, 208, 255)",
+   "min": 12.48,
+   "bgs": [
+    "rgb(27, 13, 36)",
+    "rgb(40, 18, 54)"
+   ],
+   "sideBg": "linear-gradient(rgb(27, 13, 36), rgb(40, 18, 54))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "neon-purple",
+   "fg": "rgb(228, 204, 255)",
+   "min": 11.1,
+   "bgs": [
+    "rgb(27, 16, 41)",
+    "rgb(42, 23, 64)"
+   ],
+   "sideBg": "linear-gradient(rgb(27, 16, 41), rgb(42, 23, 64))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "space",
+   "fg": "rgb(200, 213, 240)",
+   "min": 10.62,
+   "bgs": [
+    "rgb(15, 22, 37)",
+    "rgb(24, 35, 58)"
+   ],
+   "sideBg": "linear-gradient(rgb(15, 22, 37), rgb(24, 35, 58))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "sky",
+   "fg": "rgb(47, 79, 100)",
+   "min": 6.39,
+   "bgs": [
+    "rgb(211, 236, 250)",
+    "rgb(194, 226, 244)"
+   ],
+   "sideBg": "linear-gradient(rgb(211, 236, 250), rgb(194, 226, 244))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "forest",
+   "fg": "rgb(199, 219, 199)",
+   "min": 8.84,
+   "bgs": [
+    "rgb(24, 38, 28)",
+    "rgb(34, 54, 41)"
+   ],
+   "sideBg": "linear-gradient(rgb(24, 38, 28), rgb(34, 54, 41))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "sun",
+   "fg": "rgb(90, 64, 36)",
+   "min": 7.04,
+   "bgs": [
+    "rgb(248, 231, 197)",
+    "rgb(242, 218, 177)"
+   ],
+   "sideBg": "linear-gradient(rgb(248, 231, 197), rgb(242, 218, 177))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "patina-ky",
+   "fg": "rgb(148, 163, 184)",
+   "min": 6.3,
+   "bgs": [
+    "rgb(13, 15, 20)",
+    "rgb(27, 33, 44)"
+   ],
+   "sideBg": "linear-gradient(rgb(13, 15, 20), rgb(27, 33, 44))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "polished-ky",
+   "fg": "rgb(71, 85, 105)",
+   "min": 6.15,
+   "bgs": [
+    "rgb(241, 245, 249)",
+    "rgb(226, 232, 240)"
+   ],
+   "sideBg": "linear-gradient(rgb(241, 245, 249), rgb(226, 232, 240))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "patina",
+   "fg": "rgb(148, 163, 184)",
+   "min": 6.8,
+   "bgs": [
+    "rgb(22, 26, 34)",
+    "rgb(22, 26, 34)"
+   ],
+   "sideBg": "linear-gradient(rgb(22, 26, 34), rgb(22, 26, 34))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "cyber",
+   "fg": "rgb(170, 183, 200)",
+   "min": 9.2,
+   "bgs": [
+    "rgb(13, 18, 29)",
+    "rgb(13, 18, 29)"
+   ],
+   "sideBg": "linear-gradient(rgb(13, 18, 29), rgb(13, 18, 29))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "nord",
+   "fg": "rgb(216, 222, 233)",
+   "min": 7.45,
+   "bgs": [
+    "rgb(59, 66, 82)",
+    "rgb(59, 66, 82)"
+   ],
+   "sideBg": "linear-gradient(rgb(59, 66, 82), rgb(59, 66, 82))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "paper",
+   "fg": "rgb(100, 116, 139)",
+   "min": 4.76,
+   "bgs": [
+    "rgb(255, 255, 255)",
+    "rgb(255, 255, 255)"
+   ],
+   "sideBg": "linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))"
+  },
+  {
+   "scheme": "dark",
+   "theme": "oled",
+   "fg": "rgb(161, 161, 170)",
+   "min": 7.37,
+   "bgs": [
+    "rgb(17, 17, 17)",
+    "rgb(17, 17, 17)"
+   ],
+   "sideBg": "linear-gradient(rgb(17, 17, 17), rgb(17, 17, 17))"
+  }
+ ]
+}

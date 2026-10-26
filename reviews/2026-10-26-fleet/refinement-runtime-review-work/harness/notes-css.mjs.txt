@@ -1,0 +1,39 @@
+// Notes: computed button styles from the shipped base and head CSS bundles on markup copied from
+// main.tsx/components (no app server). Busnes light and dark via prefers-color-scheme.
+import { execFileSync } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
+import { chromium } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+const wt = '/home/yoshi/git/busnes.app/kynotes-server/.claude/worktrees/fleet-visual-refinement';
+const git = (...a) => execFileSync('git', ['-C', wt, ...a], { maxBuffer: 64 << 20 }).toString();
+const cssAt = (rev) => { const f = git('ls-tree', '--name-only', rev, 'internal/web/dist/assets/').split('\n').filter(n => /index-.*\.css$/.test(n)); return { file: f.join(','), css: f.map(n => git('show', `${rev}:${n}`)).join('\n') }; };
+const html = `<main><div class="workspace"><aside class="sidebar"><button class="ky-nav-item nav-item">Work queue</button><button class="new-workspace">+ New notebook</button></aside>
+<section class="editor"><span class="sync-dot">Saved</span><button class="save-button secondary" id="save">Save</button><button class="save-button" id="save-base">Save (base markup)</button>
+<div class="list-actions"><input class="note-search"><button class="icon-button secondary" id="newpage">+</button><button class="icon-button" id="icon-other">⋯</button></div>
+<div class="conflict-banner" role="status">Recovery missing <button class="secondary" id="banner">Create recovery code</button></div>
+<div class="conflict-banner" role="status">Invited <button class="secondary" id="join">Join team</button> <button class="quiet" id="notnow">Not now</button></div>
+<div class="empty-editor"><button id="create">Create a note</button></div>
+<button class="secondary danger" id="reset">Reset encryption key…</button><button type="button" class="secondary danger" id="forget">Forget this device &amp; sign out</button>
+<button class="secondary" id="devcancel">Cancel</button><button type="button" class="secondary small" id="lockout">Sign out</button></section></div>
+<button class="notebook-navigation-toggle" id="toggle" aria-expanded="false">Notebooks and account</button>
+<button class="toast commit-toast" id="toast">Committed ×</button><button class="toast error" id="err">Failed ×</button></main>`;
+const ids = ['save', 'newpage', 'icon-other', 'banner', 'join', 'notnow', 'create', 'reset', 'forget', 'devcancel', 'lockout', 'toggle', 'toast', 'err'];
+const lum = (c) => { const m = c.match(/[\d.]+/g).map(Number); const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(m[0]) + 0.7152 * f(m[1]) + 0.0722 * f(m[2]); };
+const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return +((x + 0.05) / (y + 0.05)).toFixed(2); };
+const browser = await chromium.launch(); const out = { browser: browser.version(), runs: {} };
+for (const [label, rev] of [['base', 'e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993'], ['head', '902fda0cbe5bc9f3e8d247c88310379400ede2b4']]) {
+  const { file, css } = cssAt(rev); out.runs[label] = { file };
+  for (const scheme of ['light', 'dark']) for (const width of [1280, 390]) {
+    const page = await browser.newPage({ viewport: { width, height: 900 }, colorScheme: scheme });
+    await page.setContent(`<!doctype html><html><head><style>${css}</style></head><body>${html}</body></html>`);
+    const r = await page.evaluate((ids) => Object.fromEntries(ids.map(id => { const e = document.getElementById(id), s = getComputedStyle(e);
+      return [id, { bg: s.backgroundColor, fg: s.color, border: `${s.borderTopWidth} ${s.borderTopStyle} ${s.borderTopColor}`, display: s.display }]; })), ids);
+    for (const v of Object.values(r)) if (!/rgba\(0, 0, 0, 0\)/.test(v.bg)) v.contrast = undefined;
+    for (const [id, v] of Object.entries(r)) { const bg = /rgba\(0, 0, 0, 0\)/.test(v.bg) ? await page.evaluate(() => getComputedStyle(document.body).backgroundColor) : v.bg; v.contrast = ratio(v.fg, bg); }
+    out.runs[label][`${scheme}-${width}`] = r; await page.close();
+  }
+}
+await browser.close();
+writeFileSync('/tmp/claude-refine-review/evidence/notes-css-results.json', JSON.stringify(out, null, 1));
+const acc = (v) => v.bg.replace(/\s/g, '');
+for (const id of ids) { const b = out.runs.base['light-1280'][id], h = out.runs.head['light-1280'][id], hd = out.runs.head['dark-1280'][id], hp = out.runs.head['light-390'][id];
+  console.log(id.padEnd(10), 'base', acc(b), b.contrast, '| head', acc(h), h.contrast, h.border, '| head-dark', acc(hd), hd.contrast, '| head-390', acc(hp), hp.display); }

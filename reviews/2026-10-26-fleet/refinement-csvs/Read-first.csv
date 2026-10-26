@@ -1,0 +1,11 @@
+﻿topic,detail
+Result,9/10 target NOT achieved. Final image quality 6.1–8.0; Ky fit 6.8–8.0. Cohorts and products are not globally ranked.
+Evidence,"7 products, 216 staged design captures, 152 score rows / 146 exact-unique images, 76 matched pairs. 64 intermediate captures are not rated."
+Follow-up evidence,108 additional staged captures are separate from the scored round. Their numerical ratings are N/A. R1/R2 fixes and R3 disclosure require independent confirmation; see Follow-up review.
+Method,"Claude Opus 5.5, ky-suite-v2. Weighted quality .20/.15/.20/.15/.15/.15; five-dimension Ky fit mean; Decimal ROUND_HALF_UP one decimal. Exact duplicates inherit scores."
+Source/runtime review,See separate Source review sheet. Report available; read coverage and unresolved findings before acceptance.
+Matched-state limitation,Notes Appearance AFTER contains leftover Save/toast from capture order absent BEFORE; its negative delta is confounded and not a proven product regression.
+Font fixture,Identity before and after both use corrected fonts. Earlier font 404 baseline artifact is not a product improvement.
+Capture modes,"Within-product matched fixtures. Chromium153/156,viewport versus full-page and tasks vary between products; compare within matched cohorts."
+Scope and gaps,This is a seven-product refinement round. Post/Calendar/Messages/Yard retain prior evidence. Drive Appearance and unlisted task surfaces were not newly captured.
+Baseline,Published baseline workbook and ratings remain unchanged. New scores must not silently replace that round.

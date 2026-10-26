@@ -1,0 +1,12 @@
+== KyRecovery adapters/F6/F7-spec files changed: none
+   F2 <head> of internal/server/static/index.html base=c35bee76f540 head=c35bee76f540 SAME
+== KyDNS adapters/F6/F7-spec files changed: none
+   F2 <head> of internal/web/templates/base.html base=8fff1a35e125 head=8fff1a35e125 SAME
+== KyPulse adapters/F6/F7-spec files changed: none
+   F1/F7 rule lines base=551323534c6a head=551323534c6a SAME
+== KyDrive adapters/F6/F7-spec files changed: web/src/components/AppHeader.tsx 
+   F1/F7 rule lines base=73078b9e75be head=73078b9e75be SAME
+== Base adapters/F6/F7-spec files changed: none
+   F1/F7 rule lines base=551323534c6a head=551323534c6a SAME
+== KyIdentity adapters/F6/F7-spec files changed: none
+== KyNotes adapters/F6/F7-spec files changed: none

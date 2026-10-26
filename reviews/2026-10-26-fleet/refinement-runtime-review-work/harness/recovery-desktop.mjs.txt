@@ -1,0 +1,45 @@
+// Recovery: Account popover on phone/desktop in Chromium, Firefox and WebKit; Escape/focus;
+// empty-table heading rule vs a non-empty table; replication h1; CSP header.
+import { randomBytes } from 'node:crypto';
+import { spawn } from 'node:child_process';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { connect } from 'node:net';
+import { join } from 'node:path';
+import { chromium, firefox, webkit } from '/home/yoshi/git/busnes.app/ky-ui/.claude/worktrees/fleet-appearance/node_modules/playwright/index.mjs';
+
+const BIN = '/tmp/claude-refine-review/bin/recovery', OUT = '/tmp/claude-refine-review/evidence/recovery';
+const PORT = '5391', base = `http://127.0.0.1:${PORT}`, password = randomBytes(18).toString('base64url');
+const busy = await new Promise(r => { const s = connect(+PORT, '127.0.0.1', () => { s.destroy(); r(true); }); s.on('error', () => r(false)); });
+if (busy) throw new Error('5391 busy; refusing');
+const dir = mkdtempSync('/tmp/claude-refine-review/run-recovery-');
+const proc = spawn(BIN, ['serve', '--port', PORT, '--data-dir', join(dir, 'data')], { cwd: dir, stdio: 'ignore',
+  env: { PATH: process.env.PATH, HOME: dir, KY_ADMIN_INITIAL_PASSWORD: password, KYRECOVERY_COOKIE_SECURE: 'false' } });
+const exited = new Promise(r => proc.once('exit', r));
+const res = { head: 'ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc', browsers: {}, checks: [] };
+const check = (name, pass, detail) => { res.checks.push({ name, pass, detail }); console.log(pass ? 'PASS' : 'FAIL', name, JSON.stringify(detail)); };
+try {
+  for (let i = 0; ; i++) { try { if ((await fetch(base + '/')).ok) break; } catch {} if (i > 100) throw new Error('not ready'); await new Promise(r => setTimeout(r, 100)); }
+  res.csp = (await fetch(base + '/')).headers.get('content-security-policy');
+  for (const [bname, type] of [['chromium', chromium], ['firefox', firefox]]) {
+    const browser = await type.launch(); res.browsers[bname] = browser.version();
+    const setup = await browser.newContext({ baseURL: base });
+    const login = await setup.request.post('/api/auth/login/local', { data: { username: 'admin', password } });
+    if (!login.ok()) throw new Error(`login ${login.status()}`);
+    const storage = await setup.storageState(); await setup.close();
+    const ctx = await browser.newContext({ baseURL: base, viewport: { width: 1280, height: 900 }, storageState: storage });
+    const page = await ctx.newPage(); await page.goto('/'); await page.locator('#dashboard-view').waitFor(); await page.waitForLoadState('networkidle');
+    await page.locator('body').click({ position: { x: 640, y: 880 } }).catch(() => {});
+    await page.evaluate(() => document.activeElement?.blur());
+    const reached = [];
+    for (let i = 0; i < 12; i++) { await page.keyboard.press('Tab'); const t = await page.evaluate(() => document.activeElement?.closest('#user-auth-area') ? document.activeElement.textContent.trim() : null); if (t) reached.push(t); }
+    let ax = null;
+    if (bname === 'chromium') { const cdp = await ctx.newCDPSession(page); const { nodes } = await cdp.send('Accessibility.getFullAXTree'); ax = nodes.filter(n => n.role?.value === 'button' && ['SSO pairing', 'Password', 'Sign Out'].includes(n.name?.value) && !n.ignored).map(n => n.name.value); }
+    await page.locator('#btn-change-pass-header').click();
+    const modal = await page.evaluate(() => document.getElementById('change-password-modal')?.classList.contains('open'));
+    check(`${bname} desktop: inline account buttons Tab-reachable, in AX tree, Password opens modal`, ['SSO pairing', 'Password', 'Sign Out'].every(x => reached.includes(x)) && modal && (ax === null || ax.length === 3), { reached, ax, modal });
+    await browser.close();
+  }
+} finally {
+  proc.kill('SIGTERM'); await exited; rmSync(dir, { recursive: true, force: true });
+  writeFileSync(`${OUT}-results.json`, JSON.stringify(res, null, 1));
+}

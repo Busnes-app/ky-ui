@@ -1,0 +1,150 @@
+// Follow-up review R1: real Helpdesk delegate (created + delegated through the UI with step-up),
+// base 858eb70 vs head 08f3147 binaries built from git archive. Port 6011 only.
+// Usage: node identity.mjs <base|head>
+import { randomBytes } from 'node:crypto';
+import { spawn, spawnSync } from 'node:child_process';
+import { mkdtempSync, symlinkSync, writeFileSync, rmSync } from 'node:fs';
+import { connect } from 'node:net';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+const { chromium } = await import('/home/yoshi/git/busnes.app/ky-ui/node_modules/@playwright/test/index.mjs');
+
+const which = process.argv[2];
+const S = '/tmp/claude-followup-review';
+const src = join(S, 'src', `identity-${which}`), bin = join(S, 'bin', `identity-${which}`);
+const PORT = '6011', baseURL = `http://127.0.0.1:${PORT}`;
+const busy = await new Promise((r) => { const s = connect(+PORT, '127.0.0.1', () => { s.destroy(); r(true); }); s.on('error', () => r(false)); });
+if (busy) throw new Error(`${PORT} busy; refusing`);
+
+const secret = () => `Rev-${randomBytes(18).toString('base64url')}9!`;
+const account = (username) => ({ username, password: secret(), replacement: secret() });
+const admin = account('admin'), helpdesk = account('helpdesk'), member = account('member');
+
+const dir = mkdtempSync(join(tmpdir(), 'idrev-'));
+const env = { PATH: process.env.PATH, HOME: dir, KYIDENTITY_DATA_DIR: join(dir, 'data'), KYIDENTITY_LISTEN_HOST: '127.0.0.1', KYIDENTITY_PORT: PORT,
+  KYIDENTITY_ISSUER_URL: baseURL, KYIDENTITY_SECRET_KEY: randomBytes(32).toString('hex'), KYIDENTITY_ENCRYPTION_KEY: randomBytes(32).toString('hex') };
+for (const a of ['css', 'fonts']) symlinkSync(join(src, a), join(dir, a));
+const boot = spawnSync(bin, ['bootstrap-admin', '-username', 'admin'], { cwd: dir, env, input: `${admin.password}\n`, stdio: ['pipe', 'ignore', 'inherit'] });
+if (boot.status !== 0) throw new Error('bootstrap failed');
+const proc = spawn(bin, [], { cwd: dir, env, stdio: ['ignore', 'ignore', 'inherit'] });
+for (let i = 0; i < 120; i++) { try { if ((await fetch(baseURL + '/')).ok) break; } catch {} await new Promise((r) => setTimeout(r, 250)); }
+
+const out = { which, results: [] };
+const check = (name, pass, detail) => { out.results.push({ name, pass, detail }); console.log(pass ? 'PASS' : 'FAIL', name, JSON.stringify(detail)); };
+const nav = async (page, name) => { await page.getByRole('button', { name, exact: true }).click(); await page.getByRole('heading', { level: 1 }).first().waitFor(); };
+async function stepUp(page, acct) {
+  const f = page.locator('#admin-stepup-password'); await f.waitFor(); await f.fill(acct.password);
+  await page.getByRole('dialog', { name: /Confirm/ }).getByRole('button', { name: 'Continue' }).click();
+  await f.waitFor({ state: 'detached', timeout: 60000 });
+}
+async function signInAs(page, acct) {
+  const login = async () => { await page.goto('/'); await page.getByLabel('Username', { exact: true }).fill(acct.username); await page.getByLabel('Password', { exact: true }).fill(acct.password); await page.getByRole('button', { name: /sign in/i }).first().click(); };
+  await login();
+  const change = page.getByRole('button', { name: 'Set new password' });
+  await Promise.race([page.getByRole('navigation').first().waitFor(), change.waitFor()]);
+  if (acct.replacement && await change.isVisible()) {
+    await page.getByLabel('Current or temporary password').fill(acct.password);
+    await page.getByLabel('New password', { exact: true }).fill(acct.replacement);
+    await page.getByLabel('Repeat new password').fill(acct.replacement);
+    await change.click(); await stepUp(page, acct);
+    acct.password = acct.replacement; acct.replacement = null;
+    await change.waitFor({ state: 'detached' });
+    if (!(await page.getByRole('navigation').first().isVisible())) await login();
+  }
+  await page.getByRole('navigation').first().waitFor();
+}
+async function seed(page) {
+  await nav(page, 'Users');
+  for (const acct of [helpdesk, member]) {
+    await page.getByRole('button', { name: 'Create User' }).click();
+    const form = page.getByRole('dialog', { name: 'Create User Account' });
+    await form.getByPlaceholder('e.g. bob', { exact: true }).fill(acct.username);
+    await form.getByPlaceholder('e.g. Bob Builder').fill(acct.username);
+    // The Create form requires an email (with it blank, the first run never reached step-up); the bootstrap admin has none.
+    await form.getByPlaceholder('bob@example.com').fill(`${acct.username}@example.test`);
+    await form.getByPlaceholder('Blank: the user chooses one through a link').fill(acct.password);
+    await form.locator('button[type=submit]').click(); await stepUp(page, admin);
+    await form.waitFor({ state: 'detached' });
+    await page.locator('.users-table tbody tr', { hasText: acct.username }).first().waitFor();
+  }
+  await page.locator('.users-table tbody tr', { hasText: 'helpdesk' }).locator('details.row-actions > summary').click();
+  await page.getByRole('button', { name: 'Delegated administration for helpdesk' }).click();
+  const editor = page.getByRole('dialog', { name: 'Delegation for helpdesk' });
+  await editor.getByText(/No app connections yet|App owner/).last().waitFor(); await page.waitForTimeout(500);
+  await editor.getByRole('checkbox', { name: /Helpdesk:/ }).check();
+  await editor.getByRole('button', { name: 'Save', exact: true }).click(); await stepUp(page, admin);
+  await editor.waitFor({ state: 'detached' });
+}
+const rowFacts = (page) => page.locator('.users-table tbody tr').evaluateAll((trs) => trs.map((tr) => ({
+  account: tr.querySelector('td[data-label="Account"]')?.textContent.trim(),
+  manage: tr.querySelectorAll('details.row-actions > summary').length,
+  visibleCells: [...tr.querySelectorAll('td')].filter((td) => getComputedStyle(td).display !== 'none').map((td) => td.dataset.label),
+  emptyCells: [...tr.querySelectorAll('td')].filter((td) => td.matches(':empty')).map((td) => td.dataset.label),
+})));
+const openAll = async (page) => { for (const s of await page.locator('details.row-actions > summary').all()) await s.click(); };
+const actionsBy = (page) => page.locator('.users-table tbody tr').evaluateAll((trs) => Object.fromEntries(trs.map((tr) => [
+  tr.querySelector('td[data-label="Account"]')?.textContent.trim(), [...tr.querySelectorAll('.row-actions-menu .row-action')].map((b) => b.textContent.trim())])));
+
+const browser = await chromium.launch();
+try {
+  const ctx0 = await browser.newContext({ baseURL, viewport: { width: 1280, height: 900 } });
+  const p0 = await ctx0.newPage(); await signInAs(p0, admin); await seed(p0); await ctx0.close();
+
+  for (const [viewer, label] of [[helpdesk, 'delegate'], [admin, 'admin']]) {
+    for (const [device, viewport] of [['desktop', { width: 1280, height: 900 }], ['phone', { width: 390, height: 844 }]]) {
+      const ctx = await browser.newContext({ baseURL, viewport, colorScheme: 'light' });
+      const page = await ctx.newPage(); await signInAs(page, viewer);
+      await nav(page, 'Users'); await page.locator('.users-table tbody tr').nth(2).waitFor();
+      const facts = await rowFacts(page);
+      await openAll(page);
+      const acts = await actionsBy(page);
+      out[`${label}-${device}`] = { facts, acts };
+      if (label === 'delegate') {
+        const a = facts.find((f) => f.account === 'admin');
+        check(`${device} delegate: admin row has no Manage`, a.manage === 0, { manage: a.manage, actions: acts.admin });
+        check(`${device} delegate: helpdesk/member rows 5 actions`, acts.member.length === 5 && acts.helpdesk.length === 5, { member: acts.member, helpdesk: acts.helpdesk });
+      } else {
+        check(`${device} admin: every row 9 actions`, Object.values(acts).every((x) => x.length === 9), acts);
+      }
+      if (device === 'phone') {
+        const cdp = await ctx.newCDPSession(page);
+        const { nodes } = await cdp.send('Accessibility.getFullAXTree');
+        const count = (r) => nodes.filter((n) => !n.ignored && n.role?.value === r).length;
+        const rows = nodes.filter((n) => !n.ignored && n.role?.value === 'row');
+        const byId = new Map(nodes.map((n) => [n.nodeId, n]));
+        const rowCells = rows.map((r) => (r.childIds || []).map((id) => byId.get(id)).filter((n) => n && !n.ignored).map((n) => `${n.role?.value}:${n.name?.value ?? ''}`.slice(0, 48)));
+        out[`${label}-phone-ax`] = { table: count('table'), LayoutTable: count('LayoutTable'), row: count('row'), columnheader: count('columnheader'), cell: count('cell'), rowCells };
+      }
+      await ctx.close();
+    }
+  }
+
+  // Every handler, through the UI, as the full admin on the member row: what each does.
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 900 } });
+  const page = await ctx.newPage(); await signInAs(page, admin);
+  const wiring = {};
+  for (const name of ['Groups', 'Edit user', 'Delegated administration', 'Reset MFA', 'Sessions and apps', 'Revoke sessions', 'Password reset link', 'Offboarding status', 'Delete user']) {
+    await page.goto('/'); await page.getByRole('navigation').first().waitFor();
+    await nav(page, 'Users'); await page.locator('.users-table tbody tr').nth(2).waitFor();
+    const row = page.locator('.users-table tbody tr', { has: page.locator('td[data-label="Account"]', { hasText: /^member/ }) });
+    await row.locator('details.row-actions > summary').click();
+    const seen = { dialogs: [], requests: [] };
+    const onDialog = (d) => { seen.dialogs.push(`${d.type()}:${d.message()}`); d.dismiss(); };
+    const onReq = (r) => { if (r.url().includes('/api/') && !(r.method() === 'GET' && /\/api\/(admin\/users|auth\/me)$/.test(new URL(r.url()).pathname))) seen.requests.push(`${r.method()} ${new URL(r.url()).pathname.replace(/[0-9a-f-]{16,}/g, ':id')}`); };
+    page.on('dialog', onDialog); page.on('request', onReq);
+    await row.locator('.row-actions-menu .row-action', { hasText: name }).click();
+    await page.waitForTimeout(900);
+    page.off('dialog', onDialog); page.off('request', onReq);
+    seen.h1 = await page.getByRole('heading', { level: 1 }).first().textContent();
+    seen.openDialogs = await page.locator('dialog[open], [role=dialog]').evaluateAll((ds) => ds.filter((d) => d.offsetParent !== null || d.open).map((d) => d.getAttribute('aria-label') || d.querySelector('h2,h3')?.textContent?.trim() || '?'));
+    // Password reset link may legitimately POST; step-up dialog would show in openDialogs.
+    wiring[name] = seen;
+  }
+  out.wiring = wiring;
+  await ctx.close();
+} finally {
+  await browser.close();
+  proc.kill('SIGTERM'); await new Promise((r) => proc.once('exit', r));
+  rmSync(dir, { recursive: true, force: true });
+}
+writeFileSync(join(S, 'evidence', `identity-${which}.json`), JSON.stringify(out, null, 1) + '\n');

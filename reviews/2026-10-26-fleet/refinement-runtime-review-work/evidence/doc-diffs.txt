@@ -1,0 +1,117 @@
+######## KyRecovery
++
++## Fleet visual refinement (2026-10-26)
++
++Phone header and Replication: on phones the brand, an Account button (a native popover holding the account controls) and the vault status replace the three-row header (222px → 131px to the bottom of the tab row); Offsite Replication has a page `h1`; empty tables hide their headings on phones so the empty-state sentence fits its card. The F6 tab-row check still passes (page and focus unchanged). B
+######## KyDNS
++- Below 860px the brand and Sign out share the top row and the links (`.app-nav-links`; the marketing `styles.css` owns `.nav-links`) are one sideways-scrolling row; `static/nav.js` scrolls only that row to keep the current page in view, also after the web font loads. The licence button moves below the page (`.page-legal`). Dashboard charts draw in CSS pixels: `charts.js` sets the viewBox width t
++## Backup verification
++
++- CI's `test` job and the tag-release job run `scripts/restore-drill.sh` and `scripts/backup-live-proof.sh` before publishing. They require Go, curl and sqlite3, use disposable data and recovery keys, and do not contact KyRecovery.
++- The live proof defaults to loopback DNS port 15353/admin port 18053; use `KYDNS_LIVE_DNS` and `KYDNS_LIVE_ADMIN` for unused ports on shared machines. Never point `KYDNS_LIVE_DIR` at existing data: the script deletes its owned fixture.
++
+-Backup changes additionally run `go test -race ./internal/backup ./internal/store`,
+-`scripts/restore-drill.sh` (proves the restore runbook's Step 1 and its refusals against a
+-throwaway 2-of-3 key) and `scripts/backup-live-proof.sh` (starts a real server on a
+-throwaway data dir and proves pin, run and schedule over the API). They must preserve
++CI's `test` job and tag releases additionally run `scripts/restore-drill.sh`
++(proves the restore runbook's Step 1 and its refusals against a throwaway 2-of-3 key)
++and `scripts/backup-live-proof.sh` (starts a real server on a throwaway data dir and
++proves pin, run, audit records and schedule over the API). Run both locally for backup
++changes, together with `go test -race ./internal/backup ./internal/store`. The scripts
++need Go, curl and sqlite3; neither contacts KyRecovery. The live proof defaults to
++loopback DNS port 15353/admin port 18053; on shared machines select unused ports with
++`KYDNS_LIVE_DNS` and `KYDNS_LIVE_ADMIN`. Leave `KYDNS_LIVE_DIR` unset for a fresh,
++automatically removed directory. These checks must preserve
++
++## Fleet visual refinement (2026-10-26)
++
++Phone dashboard: brand and Sign out on one row with a single sideways-scrolling navigation row that keeps the current page in view (203px → 113px); the licence button moves below the page on phones; charts draw in CSS pixels, so axis labels are 12px at every width; phone stats use two shared column edges. Stage 01 shows a class collision with the marketing `.nav-links`, fixed in stage 02. Before/
++- **Backup and restore:** CI's `test` job and tag releases run `scripts/restore-drill.sh`
++  and `scripts/backup-live-proof.sh`. The disposable fixtures prove stdin-only 2-of-3
++  restoration and its refusal paths, write-once key pinning, a local capsule with mode `0600`,
++  audit records, and schedule changes through the real server. They do not test live
++  KyRecovery pairing/deposits or establish most-branches/input/functionality coverage.
+######## KyPulse
++
++## Fleet visual refinement (2026-10-26)
++
++App detail: the Status back link uses page ink, settings facts are flat label/value rows, and Delete moves from the page header to a closing Stop watching section, still the filled `.btn-danger` measured by `browser/danger-button.spec.mjs`. Before/after captures (light/dark × 1280×900/390×844, synthetic fixture, clean commits), manifests with hashes, behaviour checks and CSVs are in [docs/ui-visu
+######## KyDrive
++
++## Fleet visual refinement (2026-10-26)
++
++Admin Settings opens Appearance instead of showing a second theme select; on phones both navigations scroll as one row under the brand and sign-out, with the new-tab preference below (202px → 141px). Before/after captures (light/dark × 1280×900/390×844, synthetic fixture, clean commits), manifests with hashes, behaviour checks and CSVs are in [docs/ui-visual-refinement-2026-10-26](docs/ui-visual-
+######## Base
+-- Keep error and success text readable on the six newly available light themes;
+-  preserve the five original base theme palettes.
+-- Keep the filled danger button label readable on the 15 suite themes (it takes the
+-  page colour); Busnes and the five base themes are unchanged. Base renders no danger
+-  button, so this protects products built from it.
+-- On phones, bring the current page into view when an Overview action changes page,
+-  without moving focus or scrolling the page.
+-- Sync the ky-ui 0.4.1 catalog and generated classic-script export. Existing browser
+-  storage IDs and named palette values stay unchanged.
+-- Pin the merged shared-library TOTP repair: authentication refuses secrets
+-  shorter than 16 decoded bytes while retaining strong RFC 6238 codes. This
+-  source also includes the library's capsule size-budget, Shamir sampling and
+-  setup-refusal repairs; key/share/container formats remain unchanged.
+-- Update the shared library's required x/crypto, x/sync and x/text dependencies.
++- Show Settings & DB facts as plain label and value rows on the card: no tinted
++  inner box, accent icon or accent driver chip. The overview's database state uses
++  the neutral badge. Page introductions sit 8px under their title.
+-- A stored short TOTP secret can no longer authenticate. Keep its sealed record
+-  and the database; use an enrolled recovery method or an authorized administrator
+-  reset and then re-enroll with the issuer. Do not pad the secret or regenerate
+-  encryption/recovery keys. Existing generated 20-byte TOTP secrets remain usable.
+-- Keep historical capsules and their original custodian shares. Verify a known
+-  restore with the updated shared library before deploying the upgrade.
+-- Rebuild or replace the image and restart the server to load the updated library
+-  and embedded web assets. Saved browser theme choices (`ky_theme`) keep their
+-  values, including base `patina`, which stays distinct from the suite Patina Ky.
+-- No schema migration or new configuration is required. Preserve the database,
+-  session secret, encryption key, recovery pin/capsules and Compose overlay chain.
++- Rebuild or replace the image and restart to load the embedded web assets. No
++  schema, configuration or stored-format migration; saved `ky_theme` choices and
++  all database, session, encryption and recovery material stay as they are.
++### 2026-10-26 — 3bc0780
++
++Source: [3bc078096723820e139bb1978d261e2e99415da1](https://github.com/Busnes-app/ky-server-base/commit/3bc078096723820e139bb1978d261e2e99415da1) · [Published image CI](https://github.com/Busnes-app/ky-server-base/actions/runs/40347422306)
++
++- **Changes:** Keep error/success text readable on the six new light themes and the filled danger label readable on the 15 suite themes (Busnes and the five base palettes unchanged); bring the current page into view on phones after an Overview action; sync ky-ui 0.4.1. Pin the shared-library TOTP repair (secrets under 16 decoded bytes refused) with its capsule size-budget, Shamir sampling and set
++- **Upgrade impact:** A stored short TOTP secret can no longer authenticate: keep its sealed record and the database, use a recovery method or an authorized reset, then re-enroll; do not pad secrets or regenerate keys. Keep historical capsules and shares and verify a known restore first. Rebuild/replace the image and restart. No schema migration or new configuration.
++
++
++## Fleet visual refinement (2026-10-26)
++
++Settings & DB: the database card is flat label/value rows with no inner tinted box or accent icon/chip; the overview driver state is a neutral badge; page introductions sit 8px under the title. Before/after captures (light/dark × 1280×900/390×844, synthetic fixture, clean commits), manifests with hashes, behaviour checks and CSVs are in [docs/ui-visual-refinement-2026-10-26](docs/ui-visual-refine
+######## KyIdentity
++
++## Visual refinement — 2026-10-26
++
++Round-3 release review, gap 2: shell and Users hierarchy, with no route, role, copy or Go change. Evidence, stages, fixture and limits are in [docs/ui-visual-refinement-2026-10-26](docs/ui-visual-refinement-2026-10-26/README.md).
++
++- **Font:** round 3's Arial-like face was a capture-fixture artifact. The server serves `./css` and `./fonts` from its working directory, and the old driver ran from a bare scratch directory, so both returned 404. With the corrected fixture, every capture (BEFORE included) loads Space Grotesk and IBM Plex Mono. The real defect it uncovered, a mono wordmark leaking in from `/css/styles.css`, is fi
++- **Users:** the nine icon actions are one labelled "Manage" disclosure, with delete set apart; on phones rows stack as labelled blocks. Chromium keeps the table roles (`table-roles.mjs`). In-app `--verify`: 23/23 before, after and at the confirm recapture.
++- **Checks** at `f36ea7d` plus this change:
++  - `node web/src/ky-ui/check-vendor.mjs` and `npm run build` pass; the committed `web/dist` equals a fresh build.
++  - `npm test` (vitest) and `npm audit --omit=dev` pass (0 vulnerabilities).
++  - `go build ./...`, `go vet ./...`, gofmt, and `go test -p 2 -race -count=1 ./...` (18 packages) pass.
++  - Push relay workers are untouched and were not run; CI runs them.
++- Ratings belong to the independent reviewer; no 9/10 is claimed.
+######## KyNotes
++
++## Visual refinement — 2026-10-26
++
++Round-3 release review, gap 1: workspace shell, task view and Settings hierarchy, with no route, encryption, key-warning, Settings-save or Go change. Evidence, stages, fixture and limits are in [docs/ui-visual-refinement-2026-10-26](docs/ui-visual-refinement-2026-10-26/README.md).
++
++- **Accent:** it fills the selection and one primary per view ("Create a note"). The new-page "+", the header note Save and banner actions are outlined `.secondary`. The commit toast, the phone "Notebooks and account" bar, glyphs and the sync status are neutral, and the sparkle is removed.
++- **Labels and callouts:** six section labels are sentence case, and the key, recovery and team banners share a neutral panel with a warning rule, keeping their text, roles and actions.
++- **Verification:** in-app `--verify` passes 23/23 at before, after, the confirm recapture and the current committed bundle. The added `note` and `note-committed` surfaces show the header Save and commit toast before and after.
++- **Checks** at `e1b726b` plus this change:
++  - `node web/src/ky-ui/check-vendor.mjs` passes, and `npm test --prefix web` passes 599/599. `workspaceWiring.test.ts`'s source string for the reset banner was updated for the added `className`.
++  - `npm run build --prefix web` passes, and `diff -qr web/dist internal/web/dist` is clean.
++  - `go build ./...`, `go vet ./...`, gofmt, and `go test -p 2 -race ./...` (20 packages) pass.
++  - `npm run e2e --prefix web` passes 11/11, including `mobile-navigation` and `appearance-cross-tab`. govulncheck was not run, because dependencies are unchanged.
++- **After merging `master`:** master's npm build-dependency update (5 commits; web dependencies and the embedded bundle only) was merged after the captures. The bundle was rebuilt from the merged source and lockfile. Post-merge checks pass: vitest 599/599, the vendor check, go build/vet, `go test -p 2 -race ./internal/web/...` and e2e 11/11. The committed post-merge build (embed index `1a66f5d206
++- Ratings belong to the independent reviewer; no 9/10 is claimed.

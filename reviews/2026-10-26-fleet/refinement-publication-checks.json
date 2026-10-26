@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-10-26T18:51:37.381933+00:00",
+  "scope": "evidence publication only; runtime, dependencies and library test fixtures unchanged",
+  "checks": {
+    "npm ci": "fresh; 0 vulnerabilities",
+    "npm run check": "fresh; ESLint zero warnings,14/14 unit tests",
+    "npm run test:browser": "fresh;32/32 pass,light/dark390/1280",
+    "reviewer input hashes": "33/33 match",
+    "archived harness hashes": "46/46 match",
+    "capture hashes": "216 refinement +108 supplemental match; E1 v1/v2 images unchanged",
+    "score verifier": "152 rows,146 exact unique,6 followers; Decimal arithmetic/inventory verified",
+    "workbook": "152 ratings,216 main captures,108 supplemental records,76 matched pairs,152 embedded images; reopened and no formulas",
+    "gallery": "self-contained; foreground/background pairs pass4.5:1; no third-party library"
+  },
+  "acceptance": "NOT9/10; measured quality6.1\u20138.0 and brand6.8\u20138.0; missing and untested states explicit",
+  "review_dispositions": "R1,R2 runtime-resolved; R3 disclosure-resolved; N1 corrected; E1 provenance corrected in v2; other nits/pre-existing gaps recorded",
+  "DOX": "Updated reviews/AGENTS.md for versioned provenance and archive/export workflow. Root/PLAN/CHANGELOG unchanged: no shared-runtime or migration/release change."
+}

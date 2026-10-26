@@ -1,0 +1,221 @@
+{
+ "head": "3f7f5c043146950b0084553f96f8b469417c16a4",
+ "checks": [
+  {
+   "name": "desktop: Manage summary reachable by Tab",
+   "pass": true,
+   "detail": {
+    "tabs": 17,
+    "summaryName": "Manage admin"
+   }
+  },
+  {
+   "name": "desktop: Enter opens; every action Tab-reachable",
+   "pass": true,
+   "detail": {
+    "open": true,
+    "count": 9,
+    "names": [
+     {
+      "text": "Groups",
+      "aria": "Manage groups for admin",
+      "disabled": false
+     },
+     {
+      "text": "Edit user",
+      "aria": null,
+      "disabled": false
+     },
+     {
+      "text": "Delegated administration",
+      "aria": "Delegated administration for admin",
+      "disabled": false
+     },
+     {
+      "text": "Reset MFA",
+      "aria": null,
+      "disabled": false
+     },
+     {
+      "text": "Sessions and apps",
+      "aria": "Sessions and apps for admin",
+      "disabled": false
+     },
+     {
+      "text": "Revoke sessions",
+      "aria": null,
+      "disabled": false
+     },
+     {
+      "text": "Password reset link",
+      "aria": "Password reset link for admin",
+      "disabled": false
+     },
+     {
+      "text": "Offboarding status",
+      "aria": "Offboarding status for admin",
+      "disabled": false
+     },
+     {
+      "text": "Delete user",
+      "aria": null,
+      "disabled": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "desktop: Escape on native details (informational)",
+   "pass": true,
+   "detail": {
+    "stillOpen": true
+   }
+  },
+  {
+   "name": "desktop: Chromium AX tree keeps table/row/columnheader/cell",
+   "pass": true,
+   "detail": {
+    "roles": {
+     "table": 1,
+     "rowgroup": 1,
+     "row": 2,
+     "cell": 6,
+     "columnheader": 6
+    },
+    "cellNames": [
+     "admin",
+     "Administrator",
+     "admin@local.kysecurity",
+     "Administrator",
+     "Active",
+     "Manage admin Manage groups for admin Edit user Delegated administration for admin Reset MFA Sessions and apps for admin Revoke sessions Password reset link for admin Offboarding status for admin Delete user"
+    ]
+   }
+  },
+  {
+   "name": "phone: Manage summary reachable by Tab",
+   "pass": true,
+   "detail": {
+    "tabs": 17,
+    "summaryName": "Manage admin"
+   }
+  },
+  {
+   "name": "phone: Enter opens; every action Tab-reachable",
+   "pass": true,
+   "detail": {
+    "open": true,
+    "count": 9,
+    "names": [
+     {
+      "text": "Groups",
+      "aria": "Manage groups for admin",
+      "disabled": false
+     },
+     {
+      "text": "Edit user",
+      "aria": null,
+      "disabled": false
+     },
+     {
+      "text": "Delegated administration",
+      "aria": "Delegated administration for admin",
+      "disabled": false
+     },
+     {
+      "text": "Reset MFA",
+      "aria": null,
+      "disabled": false
+     },
+     {
+      "text": "Sessions and apps",
+      "aria": "Sessions and apps for admin",
+      "disabled": false
+     },
+     {
+      "text": "Revoke sessions",
+      "aria": null,
+      "disabled": false
+     },
+     {
+      "text": "Password reset link",
+      "aria": "Password reset link for admin",
+      "disabled": false
+     },
+     {
+      "text": "Offboarding status",
+      "aria": "Offboarding status for admin",
+      "disabled": false
+     },
+     {
+      "text": "Delete user",
+      "aria": null,
+      "disabled": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "phone: Escape on native details (informational)",
+   "pass": true,
+   "detail": {
+    "stillOpen": true
+   }
+  },
+  {
+   "name": "phone: Chromium AX tree keeps table/row/columnheader/cell",
+   "pass": true,
+   "detail": {
+    "roles": {
+     "table": 1,
+     "rowgroup": 1,
+     "row": 2,
+     "cell": 6,
+     "columnheader": 6
+    },
+    "cellNames": [
+     "Account admin",
+     "Display Name Administrator",
+     "Email admin@local.kysecurity",
+     "Role Administrator",
+     "Status Active",
+     "Actions Manage admin Manage groups for admin Edit user Delegated administration for admin Reset MFA Sessions and apps for admin Revoke sessions Password reset link for admin Offboarding status for admin Delete user"
+    ]
+   }
+  },
+  {
+   "name": "Edit user opens the edit form",
+   "pass": true,
+   "detail": {}
+  },
+  {
+   "name": "Delete user asks confirm; dismiss sends no DELETE",
+   "pass": true,
+   "detail": {
+    "dialogText": "Permanently delete account 'admin'? This will also replicate deletion to paired products.",
+    "deletes": []
+   }
+  },
+  {
+   "name": "helpdesk viewer on an Administrator row gets an empty Manage menu (expect FAIL = defect)",
+   "pass": false,
+   "detail": {
+    "row": [
+     {
+      "account": "admin",
+      "role": "Administrator",
+      "summary": true,
+      "actions": 0
+     }
+    ],
+    "menuBox": {
+     "x": 999,
+     "y": 188.421875,
+     "width": 224,
+     "height": 10
+    }
+   }
+  }
+ ],
+ "browser": "chromium 153.0.8010.12"
+}

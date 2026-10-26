@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Rebuild committed web bundles from pinned exports; compare with committed dist byte for byte.
+set -uo pipefail
+S=/tmp/claude-refine-review/src; G=/home/yoshi/git/busnes.app; E=/tmp/claude-refine-review/evidence
+while read -r name repo dist; do
+  wt=$G/$repo/.claude/worktrees/fleet-visual-refinement
+  cd "$S/$name/web" || continue
+  ln -sfn "$wt/web/node_modules" node_modules
+  lock_same=$(cmp -s package-lock.json "$wt/web/package-lock.json" && echo yes || echo no)
+  out=/tmp/claude-refine-review/build-$name; rm -rf "$out"
+  ./node_modules/.bin/vite build --configLoader runner --outDir "$out" --emptyOutDir > "$E/parity-$name.log" 2>&1; rc=$?
+  d=$(diff -r "$out" "$S/$name/$dist" > "$E/parity-$name.diff" 2>&1 && echo IDENTICAL || echo "DIFFERS ($(wc -l < $E/parity-$name.diff) lines)")
+  echo "$name lock_matches_worktree=$lock_same vite_rc=$rc committed=$dist -> $d; vite $(./node_modules/.bin/vite --version)"
+done <<'L'
+identity-head2 KyIdentity-server web/dist
+notes-head kynotes-server internal/web/dist
+pulse-head kyPulse-server web/dist
+base-head ky_server_base web/dist
+L

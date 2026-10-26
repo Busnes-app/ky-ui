@@ -1,0 +1,40 @@
+{
+ "head": "ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc",
+ "browsers": {
+  "chromium": "153.0.8010.12",
+  "firefox": "155.0"
+ },
+ "checks": [
+  {
+   "name": "chromium desktop: inline account buttons Tab-reachable, in AX tree, Password opens modal",
+   "pass": true,
+   "detail": {
+    "reached": [
+     "SSO pairing",
+     "Password",
+     "Sign Out"
+    ],
+    "ax": [
+     "SSO pairing",
+     "Password",
+     "Sign Out"
+    ],
+    "modal": true
+   }
+  },
+  {
+   "name": "firefox desktop: inline account buttons Tab-reachable, in AX tree, Password opens modal",
+   "pass": true,
+   "detail": {
+    "reached": [
+     "SSO pairing",
+     "Password",
+     "Sign Out"
+    ],
+    "ax": null,
+    "modal": true
+   }
+  }
+ ],
+ "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
+}

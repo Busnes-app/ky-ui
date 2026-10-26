@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# F1-F7 invariants: adapter/theme files untouched base..head; F7/F1 rule lines identical; F2 head scripts unchanged.
+set -u
+G=/home/yoshi/git/busnes.app
+while read -r name dir base head; do
+  wt=$G/$dir/.claude/worktrees/fleet-visual-refinement
+  changed=$(git -C $wt diff --name-only $base $head | grep -Ev '^docs/ui-visual-refinement-2026-10-26/|\.png$')
+  adapters=$(echo "$changed" | grep -E '(theme\.(ts|js)$|Appearance\.tsx$|AppHeader\.tsx$|static/js/app\.js$|themes-browser|/ky-ui/|nav\.spec|danger-button)' | tr '\n' ' ')
+  echo "== $name adapters/F6/F7-spec files changed: ${adapters:-none}"
+  for f in web/src/styles/theme.css; do
+    git -C $wt cat-file -e $head:$f 2>/dev/null || continue
+    b=$(git -C $wt show $base:$f | grep -E 'btn-danger|:root\[data-theme\]:not' | sha256sum | cut -c1-12)
+    h=$(git -C $wt show $head:$f | grep -E 'btn-danger|:root\[data-theme\]:not' | sha256sum | cut -c1-12)
+    echo "   F1/F7 rule lines base=$b head=$h $([ $b = $h ] && echo SAME || echo CHANGED)"
+  done
+  for f in internal/server/static/index.html internal/web/templates/head.html internal/web/templates/base.html; do
+    git -C $wt cat-file -e $head:$f 2>/dev/null || continue
+    b=$(git -C $wt show $base:$f | sed -n '/<head>/,/<\/head>/p' | sha256sum | cut -c1-12); h=$(git -C $wt show $head:$f | sed -n '/<head>/,/<\/head>/p' | sha256sum | cut -c1-12)
+    echo "   F2 <head> of $f base=$b head=$h $([ $b = $h ] && echo SAME || echo CHANGED)"
+  done
+done <<'L'
+KyRecovery kyrecovery-server cd058d425a13a2dd988421fbdc2483b8079029d9 ea4b76e2bfeac5fef59c4223ab7e66a6a78d79cc
+KyDNS kydns-server 5ac679621b26836b30caef9736d35b77b99231a2 595a123215fe1ffcbf0d0694d82f8340b1d01a18
+KyPulse kyPulse-server 8aefea2de1bfa274e4985147d6f9e452506d3b5d ee5228cdfe9e54bd3bc39d02ec4f5341ed43cca4
+KyDrive KyDrive-server 657a485f8fbf6ad7dac1dc51c585a565b357c2ee 5d6bb8a0e181704b430495d1e8b92f45bf7ae0bc
+Base ky_server_base 3bc078096723820e139bb1978d261e2e99415da1 55d70ae21b65505c298a929c04e621353f4a6806
+KyIdentity KyIdentity-server f36ea7d50dbaa4ffab705d418c380327ea63f0cf 3f7f5c043146950b0084553f96f8b469417c16a4
+KyNotes kynotes-server e1b726b9cd164fc24af6eadc1b7fb7a1cfc22993 902fda0cbe5bc9f3e8d247c88310379400ede2b4
+L

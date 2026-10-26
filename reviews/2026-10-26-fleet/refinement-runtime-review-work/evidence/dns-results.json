@@ -1,0 +1,2002 @@
+{
+ "head": "595a123215fe1ffcbf0d0694d82f8340b1d01a18",
+ "browsers": {
+  "chromium": "153.0.8010.12",
+  "firefox": "155.0"
+ },
+ "checks": [
+  {
+   "name": "chromium desktop /: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 913 180 @913x180",
+     "0 0 445 130 @445x130",
+     "0 0 445 130 @445x130"
+    ]
+   }
+  },
+  {
+   "name": "chromium desktop /: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 913 180 @913x180",
+     "0 0 445 130 @445x130",
+     "0 0 445 130 @445x130"
+    ]
+   }
+  },
+  {
+   "name": "chromium desktop /: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 913 180 @913x180",
+     "0 0 445 130 @445x130",
+     "0 0 445 130 @445x130"
+    ]
+   }
+  },
+  {
+   "name": "chromium desktop /: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium desktop /services: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /services: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /services: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /services: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium desktop /records: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /records: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /records: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /records: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium desktop /discovered: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /discovered: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /discovered: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /discovered: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium desktop /blacklists: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /blacklists: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /blacklists: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /blacklists: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium desktop /dhcp: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /dhcp: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /dhcp: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /dhcp: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium desktop /dhcp: visible licence button opens #about",
+   "pass": true,
+   "detail": {
+    "open": true
+   }
+  },
+  {
+   "name": "chromium desktop /settings: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /settings: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /settings: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /settings: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium desktop /appearance: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /appearance: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /appearance: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium desktop /appearance: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium desktop /appearance: visible licence button opens #about",
+   "pass": true,
+   "detail": {
+    "open": true
+   }
+  },
+  {
+   "name": "chromium phone /: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 324 180 @324x180",
+     "0 0 324 130 @324x130",
+     "0 0 324 130 @324x130"
+    ]
+   }
+  },
+  {
+   "name": "chromium phone /: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 324 180 @324x180",
+     "0 0 324 130 @324x130",
+     "0 0 324 130 @324x130"
+    ]
+   }
+  },
+  {
+   "name": "chromium phone /: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 324 180 @324x180",
+     "0 0 324 130 @324x130",
+     "0 0 324 130 @324x130"
+    ]
+   }
+  },
+  {
+   "name": "chromium phone /: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium phone /services: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /services: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /services: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /services: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium phone /records: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /records: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /records: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /records: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium phone /discovered: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 330,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /discovered: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 330,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /discovered: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 330,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /discovered: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium phone /blacklists: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /blacklists: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /blacklists: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /blacklists: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium phone /dhcp: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /dhcp: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /dhcp: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /dhcp: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium phone /dhcp: visible licence button opens #about",
+   "pass": true,
+   "detail": {
+    "open": true
+   }
+  },
+  {
+   "name": "chromium phone /settings: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /settings: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /settings: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /settings: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium phone /appearance: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /appearance: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /appearance: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "chromium phone /appearance: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "chromium phone /appearance: visible licence button opens #about",
+   "pass": true,
+   "detail": {
+    "open": true
+   }
+  },
+  {
+   "name": "firefox desktop /: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 913 180 @913x180",
+     "0 0 445 130 @445x130",
+     "0 0 445 130 @445x130"
+    ]
+   }
+  },
+  {
+   "name": "firefox desktop /: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 913 180 @913x180",
+     "0 0 445 130 @445x130",
+     "0 0 445 130 @445x130"
+    ]
+   }
+  },
+  {
+   "name": "firefox desktop /: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 913 180 @913x180",
+     "0 0 445 130 @445x130",
+     "0 0 445 130 @445x130"
+    ]
+   }
+  },
+  {
+   "name": "firefox desktop /: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox desktop /services: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /services: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /services: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /services: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox desktop /records: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /records: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /records: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /records: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox desktop /discovered: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /discovered: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /discovered: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /discovered: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox desktop /blacklists: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /blacklists: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /blacklists: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /blacklists: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox desktop /dhcp: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /dhcp: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /dhcp: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /dhcp: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox desktop /dhcp: visible licence button opens #about",
+   "pass": true,
+   "detail": {
+    "open": true
+   }
+  },
+  {
+   "name": "firefox desktop /settings: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /settings: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /settings: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /settings: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox desktop /appearance: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /appearance: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /appearance: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 900,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox desktop /appearance: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox desktop /appearance: visible licence button opens #about",
+   "pass": true,
+   "detail": {
+    "open": true
+   }
+  },
+  {
+   "name": "firefox phone /: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 324 180 @324x180",
+     "0 0 324 130 @324x130",
+     "0 0 324 130 @324x130"
+    ]
+   }
+  },
+  {
+   "name": "firefox phone /: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 324 180 @324x180",
+     "0 0 324 130 @324x130",
+     "0 0 324 130 @324x130"
+    ]
+   }
+  },
+  {
+   "name": "firefox phone /: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Dashboard",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [
+     "12px"
+    ],
+    "viewBox": [
+     "0 0 324 180 @324x180",
+     "0 0 324 130 @324x130",
+     "0 0 324 130 @324x130"
+    ]
+   }
+  },
+  {
+   "name": "firefox phone /: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox phone /services: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /services: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /services: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Services",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /services: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox phone /records: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /records: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /records: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Records",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /records: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox phone /discovered: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 330,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /discovered: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 330,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /discovered: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Discovered",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 330,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /discovered: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox phone /blacklists: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /blacklists: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /blacklists: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Blacklists",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /blacklists: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox phone /dhcp: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /dhcp: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /dhcp: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "DHCP",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /dhcp: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox phone /dhcp: visible licence button opens #about",
+   "pass": true,
+   "detail": {
+    "open": true
+   }
+  },
+  {
+   "name": "firefox phone /settings: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /settings: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /settings: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Settings",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /settings: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox phone /appearance: one visible licence button",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /appearance: current nav item in view, page not scrolled, focus unchanged",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /appearance: no page overflow",
+   "pass": true,
+   "detail": {
+    "licVisible": 1,
+    "current": "Appearance",
+    "curInRow": true,
+    "scrollY": 0,
+    "active": "BODY",
+    "overflow": 0,
+    "navHeight": 113,
+    "csp": [],
+    "axis": [],
+    "viewBox": []
+   }
+  },
+  {
+   "name": "firefox phone /appearance: no CSP violations or page errors",
+   "pass": true,
+   "detail": {
+    "csp": [],
+    "errs": []
+   }
+  },
+  {
+   "name": "firefox phone /appearance: visible licence button opens #about",
+   "pass": true,
+   "detail": {
+    "open": true
+   }
+  }
+ ],
+ "csp": "frame-ancestors 'self'",
+ "chromium desktop / charts": {
+  "axis": [
+   "12px"
+  ],
+  "viewBox": [
+   "0 0 913 180 @913x180",
+   "0 0 445 130 @445x130",
+   "0 0 445 130 @445x130"
+  ]
+ },
+ "chromium desktop / navHeight": 900,
+ "chromium desktop /services navHeight": 900,
+ "chromium desktop /records navHeight": 900,
+ "chromium desktop /discovered navHeight": 900,
+ "chromium desktop /blacklists navHeight": 900,
+ "chromium desktop /dhcp navHeight": 900,
+ "chromium desktop /settings navHeight": 900,
+ "chromium desktop /appearance navHeight": 900,
+ "chromium phone / charts": {
+  "axis": [
+   "12px"
+  ],
+  "viewBox": [
+   "0 0 324 180 @324x180",
+   "0 0 324 130 @324x130",
+   "0 0 324 130 @324x130"
+  ]
+ },
+ "chromium phone / navHeight": 113,
+ "chromium phone /services navHeight": 113,
+ "chromium phone /records navHeight": 113,
+ "chromium phone /discovered navHeight": 330,
+ "chromium phone /blacklists navHeight": 113,
+ "chromium phone /dhcp navHeight": 113,
+ "chromium phone /settings navHeight": 113,
+ "chromium phone /appearance navHeight": 113,
+ "firefox desktop / charts": {
+  "axis": [
+   "12px"
+  ],
+  "viewBox": [
+   "0 0 913 180 @913x180",
+   "0 0 445 130 @445x130",
+   "0 0 445 130 @445x130"
+  ]
+ },
+ "firefox desktop / navHeight": 900,
+ "firefox desktop /services navHeight": 900,
+ "firefox desktop /records navHeight": 900,
+ "firefox desktop /discovered navHeight": 900,
+ "firefox desktop /blacklists navHeight": 900,
+ "firefox desktop /dhcp navHeight": 900,
+ "firefox desktop /settings navHeight": 900,
+ "firefox desktop /appearance navHeight": 900,
+ "firefox phone / charts": {
+  "axis": [
+   "12px"
+  ],
+  "viewBox": [
+   "0 0 324 180 @324x180",
+   "0 0 324 130 @324x130",
+   "0 0 324 130 @324x130"
+  ]
+ },
+ "firefox phone / navHeight": 113,
+ "firefox phone /services navHeight": 113,
+ "firefox phone /records navHeight": 113,
+ "firefox phone /discovered navHeight": 330,
+ "firefox phone /blacklists navHeight": 113,
+ "firefox phone /dhcp navHeight": 113,
+ "firefox phone /settings navHeight": 113,
+ "firefox phone /appearance navHeight": 113
+}
