@@ -13,7 +13,7 @@ surfaces, with orange used sparingly.
 - **Geometry and composition stay in each product.** That includes page layout, sidebar
   structure, routes and components. Products consume tokens through their compatibility aliases.
 - **The palette is not copied.** Read it from `tokens.css`. Generated copies (`palettes.ts`,
-  `palettes-browser.js`, KyMessages' `element.json.tmpl`) must be regenerated or rechecked when
+  `palettes-browser.js`, `themes-browser.js`, KyMessages' `element.json.tmpl`) must be regenerated or rechecked when
   tokens change. They are never hand-tuned.
 
 ## Foundations

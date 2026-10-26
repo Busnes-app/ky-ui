@@ -4,6 +4,8 @@ import { mkdtemp, mkdir, writeFile, readFile, rm, symlink } from 'node:fs/promis
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { runInNewContext } from 'node:vm';
+import * as themes from '../src/themes.js';
 
 test('sync preflights all worktrees, rejects symlinks and detects drift', async t => {
   const root = await mkdtemp(join(tmpdir(), 'ky-ui-sync-test-'));
@@ -29,6 +31,18 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   await rm(join(first, 'tokens.css'));
   run();
   run('--check');
+  // The classic copy exposes the module's exports, unchanged, for synchronous head scripts.
+  const window = {};
+  runInNewContext(await readFile(join(first, 'themes-browser.js'), 'utf8'), { window });
+  assert.deepEqual(Object.keys(window.kyThemes).sort(), Object.keys(themes).sort());
+  for (const name of ['SYSTEM_THEME', 'THEME_CATALOG', 'THEME_PALETTES', 'THEME_VARIABLES']) {
+    assert.equal(JSON.stringify(window.kyThemes[name]), JSON.stringify(themes[name]), name);
+  }
+  assert.equal(window.kyThemes.findTheme('Cliffs').id, 'white-cliffs');
+  const props = new Map();
+  const html = { style: { setProperty: (k, v) => props.set(k, v), removeProperty: k => props.delete(k), colorScheme: '' } };
+  assert.equal(window.kyThemes.applyThemeVariables('Ocean', html), 'dark');
+  assert.equal(props.get('--bg'), '#0f1b24');
   assert.throws(() => run('--check', '--consumer=unknown'), /Unknown consumer/);
   const checker = join(first, 'check-vendor.mjs');
   execFileSync(process.execPath, [checker]);

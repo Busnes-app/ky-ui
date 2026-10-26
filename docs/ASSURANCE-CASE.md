@@ -78,8 +78,9 @@ Out of scope: a compromised ky-ui `main` branch (the ruleset requires a pull req
   files it describes, so whoever edits both passes the check. The daily `check-suite.mjs`
   comparison against ky-ui `main` is what catches a deliberate change, and only for the public
   consumers; KyForge-Server is private and runs its own comparator.
-- **Saved-choice first paint is not guaranteed.** Modules are deferred, so a saved theme can apply
-  after the first frame (README "Use"). This is cosmetic, not a security issue.
+- **Saved-choice first paint is not guaranteed for module adapters.** Modules are deferred, so a saved
+  theme can apply after the first frame (README "Use"). Products using the synchronous classic
+  `themes-browser.js` bootstrap apply it before paint. This is cosmetic, not a security issue.
 - **No linter or formatter runs in CI**, and `src/theme.d.ts` is kept in step with
   `src/theme.js` by review only.
 - **Releases are not tagged or signed.** A release is a `package.json` version; consumers get it
