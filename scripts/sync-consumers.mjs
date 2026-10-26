@@ -20,7 +20,6 @@ for (const arg of process.argv.slice(2)) {
 for (const repo of selected) {
   if (!Object.hasOwn(consumers, repo)) throw new Error(`Unknown consumer: ${repo}`);
 }
-if (selected.size && !check) throw new Error('--consumer is only supported with --check');
 if (!overrides || Array.isArray(overrides) || typeof overrides !== 'object') throw new Error('Paths must be an object');
 for (const [key, path] of Object.entries(overrides)) {
   if (!(key in consumers)) throw new Error(`Unknown consumer: ${key}`);

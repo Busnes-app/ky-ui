@@ -13,11 +13,25 @@ own worktree and PR. The base is required so new servers inherit the foundation.
 | KyIdentity | Applications, security, directory and administration |
 | KyNotes | List/editor workspace and encrypted local queue |
 | KyPost | Mail folders, reader, compose and administration |
+| KyCalendar | Everyday calendars, event editing and separate administration |
+| KyMessages | Operator console and member entry; stock Element chat is separately themed |
 | KyYard | Containers/endpoints, deployment controls and scoped administration |
 | KyForge | ITSM work items, queues, approvals, directory and recovery |
 | ky-server-base | Scaffold shell and inherited future product defaults |
 
 ## Implementation
+
+### 0.3.0 council rollout — in progress
+
+- KyPost, KyCalendar and KyMessages adopt the shared type, spacing, control,
+  field-border and overlay tokens in product-owned layouts.
+- Use `--consumer` with an explicit worktree map to sync only these three during
+  iteration. Remaining inventory consumers must advance before suite freshness
+  can pass against 0.3.0; no fleet rollout is claimed by this focused pass.
+- `skills/ky-suite-ui/` owns the review/design contract. `reviews/2026-10-26-council/`
+  owns original-input rankings, rubric drift and screenshots for each design stage.
+
+### Existing foundation
 
 1. **One palette source.** Version 0.2.0 owns Busnes CSS values. Consumer CSS maps
    semantic variables to shared tokens; palette swatches and stylesheet-free

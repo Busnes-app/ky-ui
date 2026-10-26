@@ -30,7 +30,6 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   run();
   run('--check');
   assert.throws(() => run('--check', '--consumer=unknown'), /Unknown consumer/);
-  assert.throws(() => run('--consumer=KyForge-Server'), /only supported with --check/);
   const checker = join(first, 'check-vendor.mjs');
   execFileSync(process.execPath, [checker]);
   await writeFile(join(first, 'tokens.css'), 'stale');
@@ -39,4 +38,12 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   assert.throws(() => run('--check', `--consumer=${entries[0][0]}`), /Stale consumer file/);
   assert.throws(() => run('--check'), /Stale consumer file/);
   assert.throws(() => execFileSync(process.execPath, [checker], { stdio: 'pipe' }));
+  // A scoped release must repair only the named consumer, leaving every other file alone.
+  const second = join(root, entries[1][0], entries[1][1]);
+  await writeFile(join(second, 'tokens.css'), 'other work in progress');
+  await rm(lastGit);
+  run(`--consumer=${entries[0][0]}`);
+  run('--check', `--consumer=${entries[0][0]}`);
+  assert.equal(await readFile(join(second, 'tokens.css'), 'utf8'), 'other work in progress');
+  assert.throws(() => run('--consumer=unknown'), /Unknown consumer/);
 });

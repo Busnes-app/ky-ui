@@ -9,6 +9,17 @@
 
 It deliberately does not provide a framework, router, component runtime, or product page layouts. Each server keeps its own composition and imports the shared CSS/JS primitives.
 
+Version 0.3.0 also supplies type, space, control, field-border and overlay tokens.
+Products self-host Space Grotesk and own layout and components. The reusable
+[Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
+evidence-based 9/10 acceptance target; [the council](reviews/2026-10-26-council/initial-review.md)
+records the initial comparative screenshots and staged implementation evidence.
+
+For a focused release copy, pass `--consumer=<inventory name>` once per selected
+product to either sync or check, with `--paths` mapping those products to their
+worktrees. Every selected destination is validated before any write; unselected
+checkouts are untouched. Fleet freshness remains a separate whole-inventory gate.
+
 - [Contributing](CONTRIBUTING.md) — how changes land, the test policy and the coding standard.
 - [Assurance case](docs/ASSURANCE-CASE.md) — threat model, trust boundaries, and why the shipped files and tooling are safe to adopt.
 

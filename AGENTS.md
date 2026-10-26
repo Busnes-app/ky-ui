@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Provide the shared browser design language for Ky* web products: Busnes Light/Dark tokens, theme selection, and accessible navigation state styles.
+Provide the shared browser design language for Ky* web products: Busnes Light/Dark and control tokens, theme selection, accessible navigation states, and reusable design/review guidance.
 
 ## Ownership
 
@@ -11,6 +11,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
 - `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
+- `skills/` owns the reusable suite design skill; `reviews/` owns comparative screenshot evidence and staged acceptance records.
 - `scripts/check-suite.mjs` checks public consumer default branches read-only with credential helpers disabled; no consumer code runs. Private KyForge's workflow uses its own reviewed comparator and treats public upstream files strictly as data. Both workflows gate suite freshness; no cross-repository private token.
 
 ## Local Contracts
@@ -27,6 +28,8 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 
 - Keep the shipped primitives dependency-free. Playwright is a development-only dependency for browser verification.
 - Add tokens and interaction primitives here; keep product composition and layout local to each product.
+- Type, spacing, control, field-border and overlay tokens are shared alongside the palette. Self-host Space Grotesk in consumers; the font stack does not fetch a font.
+- `--consumer=<inventory name>` scopes both sync and check to the named consumers. Preflight every selected destination before any write; use an explicit worktree map for a partial rollout.
 - Run `npm run sync:consumers -- --root=<suite worktree root>` for a release copy, and `npm run check:consumers -- --root=<suite worktree root>` before merging consumer changes.
 - Update `PLAN.md` when a rollout step changes or a product migration is completed.
 - Before distributing a source copy, update `CHANGELOG.md` with major changes,
@@ -40,3 +43,5 @@ Run `npm run check` (ESLint recommended checks with zero warnings, then unit tes
 ## Child DOX Index
 
 - `browser/AGENTS.md` owns the shared primitive browser fixture and regression checks (not product integration coverage).
+- `skills/AGENTS.md` owns the suite design skill and its references.
+- `reviews/AGENTS.md` owns comparative scores, provenance and staged visual evidence.

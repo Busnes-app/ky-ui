@@ -4,6 +4,8 @@
   "KyIdentity-server": "web/src/ky-ui",
   "KyNotes-server": "web/src/ky-ui",
   "KyPost-Server": "frontend/src/ky-ui",
+  "KyCalendar": "web/src/ky-ui",
+  "KyMessage-Server": "web/src/ky-ui",
   "KyYard-server": "web/src/ky-ui",
   "KyForge-Server": "web/src/ky-ui",
   "ky-server-base": "web/src/ky-ui"

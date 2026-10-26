@@ -13,8 +13,22 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
-Adds this release history and links it from the README. No browser assets or
-consumer copies change; no package version is published by this documentation PR.
+### 0.3.0 — suite UI cohesion (pending)
+
+Based on source `41daa93`. Adds shared typography, spacing, control geometry,
+field-border and overlay tokens; aligns the font stack with the existing
+self-hosted Space Grotesk. Existing palettes, theme keys and navigation remain.
+Named palettes without a local hover token derive their navigation hover from
+their own surface and ink, preserving readable hover when the OS theme differs.
+KyCalendar and KyMessages join the active consumer inventory. Sync can target
+selected consumers, preflighting all selected destinations before writing.
+
+Upgrade impact: sync version 0.3.0 and adopt the new tokens in product-owned
+layouts. The initial rollout targets KyPost, KyCalendar and KyMessages in isolated
+worktrees; other consumers remain pending and suite freshness will fail until
+their copies advance. The reusable `skills/ky-suite-ui` skill and dated council
+evidence describe the design and its verification. No known vulnerability IDs
+apply to these UI changes. This is unreleased work, with no deployment implied.
 
 ## 0.2.0 source updates
 
