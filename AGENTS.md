@@ -32,7 +32,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 
 ## Verification
 
-Run `npm test` and `npm run test:browser` from this directory (install Chromium first, as described in README). For a rollout, also run `npm run check:consumers -- --root=<suite worktree root>` after syncing the consumer copies; `npm run check:suite` checks public default branches.
+Run `npm run check` (ESLint recommended checks with zero warnings, then unit tests) and `npm run test:browser` from this directory (install Chromium first, as described in README). Fix lint findings or document a narrowly scoped false positive beside its suppression. For a rollout, also run `npm run check:consumers -- --root=<suite worktree root>` after syncing the consumer copies; `npm run check:suite` checks public default branches.
 
 ## Child DOX Index
 
