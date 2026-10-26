@@ -1,4 +1,4 @@
-/* Native radio cards: products retain their theme catalogs, keys and adapters. */
+/* Native radio cards: products retain their saved keys and adapters. */
 .ky-appearance {
   min-inline-size: 0;
   margin: 0;
@@ -66,8 +66,10 @@
 .ky-appearance .ky-appearance-preview {
   position: relative;
   display: block;
+  box-sizing: border-box;
   block-size: 48px;
   overflow: hidden;
+  border: 1px solid var(--line-strong, var(--ky-line-strong));
   border-radius: 4px;
   background: linear-gradient(90deg, var(--ky-preview-sidebar) 30%, var(--ky-preview-bg) 30%);
 }
