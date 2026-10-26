@@ -1,4 +1,46 @@
 import { test, expect } from '@playwright/test';
+import { writeFile } from 'node:fs/promises';
+
+test('every catalog palette keeps status text and field borders readable', async ({ page }, testInfo) => {
+  await page.goto('/');
+  const results = [];
+  for (const id of await page.locator('.ky-appearance-radio').evaluateAll(els => els.map(el => el.value).filter(id => id !== 'system'))) {
+    await page.getByLabel('Theme').selectOption(id);
+    const rows = await page.evaluate(() => {
+      const root = getComputedStyle(document.documentElement);
+      const probe = document.body.appendChild(document.createElement('span'));
+      const context = document.createElement('canvas').getContext('2d');
+      const luminance = color => {
+        context.fillStyle = color;
+        context.fillRect(0, 0, 1, 1);
+        const rgb = [...context.getImageData(0, 0, 1, 1).data].slice(0, 3).map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4);
+        return rgb.reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
+      };
+      const rows = [];
+      for (const status of ['danger', 'success']) {
+        probe.style.color = `var(--${status})`;
+        const color = getComputedStyle(probe).color;
+        for (const token of ['--panel', '--panel-hover']) {
+          const ink = luminance(color), surface = luminance(root.getPropertyValue(token));
+          rows.push({ status, token, color, minimum: 4.5, ratio: (Math.max(ink, surface) + .05) / (Math.min(ink, surface) + .05) });
+        }
+      }
+      probe.style.border = '1px solid var(--ky-field-border)';
+      const color = getComputedStyle(probe).borderTopColor;
+      for (const token of ['--bg', '--panel']) {
+        const ink = luminance(color), surface = luminance(root.getPropertyValue(token));
+        rows.push({ status: 'field border', token, color, minimum: 3, ratio: (Math.max(ink, surface) + .05) / (Math.min(ink, surface) + .05) });
+      }
+      probe.remove();
+      return rows;
+    });
+    results.push({ id, rows });
+    for (const row of rows) expect(row.ratio, `${id} ${row.status} on ${row.token}`).toBeGreaterThanOrEqual(row.minimum);
+  }
+  const path = testInfo.outputPath('status-contrast.json');
+  await writeFile(path, JSON.stringify(results, null, 2) + '\n');
+  await testInfo.attach('status-contrast.json', { path, contentType: 'application/json' });
+});
 
 test('layout, selected/disabled states, keyboard focus and dialog', async ({ page }, testInfo) => {
   await page.goto('/');

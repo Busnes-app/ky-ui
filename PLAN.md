@@ -41,6 +41,9 @@ outside this web pass. Record any additional discovered surface explicitly.
 - Version 0.4.1 adds the generated classic catalog `themes-browser.js`. KyDNS and
   KyRecovery apply saved choices from synchronous head scripts again, restoring their
   first-paint guarantee; other products keep their module or bundle adapters.
+- Version 0.4.2 fixes named-theme status contrast independently of the OS scheme.
+  KyNotes is the initial scoped consumer; distribute to other products during
+  their sequential UI passes, with their own rebuilds and checks.
 - Shared runtime colors, typography, control geometry and navigation states remain
   in ky-ui. Page composition, routing, authorization and content stay product-owned.
   Preserve existing accessible responsive navigation instead of imposing a sidebar
