@@ -1,0 +1,141 @@
+{
+  "prefix": "kycalendar-03-after",
+  "worktree": "/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/ui-cohesion",
+  "captured": "2026-10-26T04:57:38.945Z",
+  "browser": "chromium chromium",
+  "clock": "2026-10-27T15:15:00.000Z",
+  "timezone": "America/Chicago",
+  "locale": "en-US",
+  "theme_source": "product \"Color theme\" select (browser localStorage), context colorScheme matching",
+  "fixture": "walter: default Calendar (no stored colour) + Personal #3f7f6e, 13 events in the week of 2026-10-25; admin: nothing seeded",
+  "files": [
+    {
+      "file": "kycalendar-03-after-new-event-desktop-light.png",
+      "sha256": "05f66cf3ba8c531ce481d255302a317f458cb9202618f48bc1db1c7a2c643756",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "new-event"
+    },
+    {
+      "file": "kycalendar-03-after-edit-recurring-desktop-light.png",
+      "sha256": "79693baaa7565d63255e6b2ecdf0335fe88d48b6648483a5228f9c1d33a8028b",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "edit-recurring"
+    },
+    {
+      "file": "kycalendar-03-after-settings-desktop-light.png",
+      "sha256": "5a20ee06761a5769f83c09cc5f7739d20724c2c2ebab4558131eb993ceba918a",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "settings"
+    },
+    {
+      "file": "kycalendar-03-after-devices-desktop-light.png",
+      "sha256": "3d14e8b3401ab2e3f48abd44da4c42e3b50263fd2b8980f52f5f5c0ec97bec7a",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "devices"
+    },
+    {
+      "file": "kycalendar-03-after-new-event-mobile-light.png",
+      "sha256": "c525e0f059a3e1169f84a215c6032c610ea36edfffb9378c9da2a4b7a1a60de6",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "new-event"
+    },
+    {
+      "file": "kycalendar-03-after-edit-recurring-mobile-light.png",
+      "sha256": "4d0f9d9e69539f3af2262323c46e3bad01ced36ee9524024b3a162b31c5eb76b",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "edit-recurring"
+    },
+    {
+      "file": "kycalendar-03-after-settings-mobile-light.png",
+      "sha256": "77e42c7fc0c568085214790e23640c8ba35553a5349062e468100d5afd045d90",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "settings"
+    },
+    {
+      "file": "kycalendar-03-after-devices-mobile-light.png",
+      "sha256": "740a1e99a079afd20c792ea956802929b92d9c4dda93fe30ec1c5e4a2bfe660f",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "devices"
+    },
+    {
+      "file": "kycalendar-03-after-new-event-desktop-dark.png",
+      "sha256": "b7a79d57db77deab4b556b1f75aa83e55fcc8b79025eaab28f578707fee0f036",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "new-event"
+    },
+    {
+      "file": "kycalendar-03-after-edit-recurring-desktop-dark.png",
+      "sha256": "e386bc34daef46caa8970cca1a9aae0830c30da5c4afb2319fd3335311141ce6",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "edit-recurring"
+    },
+    {
+      "file": "kycalendar-03-after-settings-desktop-dark.png",
+      "sha256": "809dce883d40c5fdeed87adcd6c716b4ededb3cf72de453e8ac0a1359b429a83",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "settings"
+    },
+    {
+      "file": "kycalendar-03-after-devices-desktop-dark.png",
+      "sha256": "b8377e2a02ffbc8642456e1b2381d15a7b0ffa878cf9d7b9edc72d93c2458867",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "devices"
+    },
+    {
+      "file": "kycalendar-03-after-new-event-mobile-dark.png",
+      "sha256": "a17d889796cf0f80a3954e232b21388abc433c834ee23dc0d890d33fbb8a3b64",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "new-event"
+    },
+    {
+      "file": "kycalendar-03-after-edit-recurring-mobile-dark.png",
+      "sha256": "a92677a60c2f195af3732776b708780e83de1df204e276642443e2d55c99fbfb",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "edit-recurring"
+    },
+    {
+      "file": "kycalendar-03-after-settings-mobile-dark.png",
+      "sha256": "1e71a3dddf2888ada2eaa1dc829eab3e23570cc08e65bea4d62f4c21649d213a",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "settings"
+    },
+    {
+      "file": "kycalendar-03-after-devices-mobile-dark.png",
+      "sha256": "cc0d04fb5016752cff69654a4ff282ad172032f2b75f30a71c773dd1ff2d8736",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "devices"
+    }
+  ]
+}

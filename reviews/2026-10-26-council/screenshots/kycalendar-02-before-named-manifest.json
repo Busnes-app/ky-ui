@@ -1,0 +1,29 @@
+{
+  "prefix": "kycalendar-02-before-named",
+  "worktree": "/home/yoshi/git/busnes.app/KyCalendar/.claude/worktrees/ui-cohesion",
+  "captured": "2026-10-26T04:48:51.178Z",
+  "browser": "chromium chromium",
+  "clock": "2026-10-27T15:15:00.000Z",
+  "timezone": "America/Chicago",
+  "locale": "en-US",
+  "theme_source": "product \"Color theme\" select (browser localStorage), context colorScheme matching",
+  "fixture": "walter: default Calendar (no stored colour) + Personal #3f7f6e, 13 events in the week of 2026-10-25; admin: nothing seeded",
+  "files": [
+    {
+      "file": "kycalendar-02-before-named-week-desktop-nord.png",
+      "sha256": "fffce96d5125284b5bcdfcd9a302e387581ac73805f5da4056d4c4de9b5f7ed3",
+      "overflow_px": 0,
+      "theme": "nord",
+      "viewport": "1280x900",
+      "surface": "week"
+    },
+    {
+      "file": "kycalendar-02-before-named-week-mobile-nord.png",
+      "sha256": "9d11c4e84c4811f54809f2251f3dba5c2923b9b0f68d7c567f367069cb80e92b",
+      "overflow_px": 0,
+      "theme": "nord",
+      "viewport": "390x844",
+      "surface": "week"
+    }
+  ]
+}

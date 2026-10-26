@@ -1,0 +1,65 @@
+﻿Round,Cohort,Rank,Captured product,Unique images,Quality / 10,Matched state/theme/viewport,Ky gap to best competitor,Source filenames
+Initial,mail,1,Proton Mail,1,7.7,Uncontrolled originals,,Proton-01.png
+Initial,mail,2,Gmail,1,6.6,Uncontrolled originals,,Gmail-01.png
+Initial,mail,3,mailbox.org Mail,1,6.4,Uncontrolled originals,,mailboxorg-01.png
+Initial,mail,4,Tuta Mail,1,6.4,Uncontrolled originals,,tuta-01.png
+Initial,mail,5,Outlook 2013 desktop,1,6.1,Uncontrolled originals,,Outlook-01.png
+Initial,mail,6,KyPost,1,5.2,Uncontrolled originals,,KyPost-live-01.png
+Initial,compose,1,Gmail,1,7.4,Uncontrolled originals,,Gmail-02.png
+Initial,compose,2,Proton Mail,1,7.2,Uncontrolled originals,,Proton-02.png
+Initial,compose,3,mailbox.org Mail,1,6.7,Uncontrolled originals,,mailboxorg-02.png
+Initial,compose,4,Tuta Mail,1,6.0,Uncontrolled originals,,tuta-02.png
+Initial,compose,5,Outlook 2013 desktop,1,5.9,Uncontrolled originals,,Outlook-02.png
+Initial,compose,6,KyPost,1,5.6,Uncontrolled originals,,KyPost-live-02.png
+Initial,calendar,1,Google Calendar,2,7.7,Uncontrolled originals,,"Gmail-Calendar-01.png, Gmail-Calendar-02.png"
+Initial,calendar,2,Proton Calendar,2,7.6,Uncontrolled originals,,"Proton-calendar-01.png, Proton-calendar-02.png"
+Initial,calendar,3,Tuta Calendar,2,6.6,Uncontrolled originals,,"tuta-05.png, tuta-06.png"
+Initial,calendar,4,mailbox.org Calendar,2,6.5,Uncontrolled originals,,"mailboxorg-calendar-01.png, mailboxorg-calendar-02.png"
+Initial,calendar,5,KyCalendar,2,6.4,Uncontrolled originals,,"KyPost-live-Calendar-01.png, KyPost-live-Calendar-02.png"
+Initial,calendar,6,"Outlook (classic, Microsoft 365 desktop)",1,6.0,Uncontrolled originals,,Outlook-03.png
+Initial,contacts,1,Google Contacts,1,7.0,Uncontrolled originals,,Gmail-Contacts-01.png
+Initial,contacts,2,mailbox.org Address Book,1,6.3,Uncontrolled originals,,mailboxorg-address_book-02.png
+Initial,contacts,3,Tuta Contacts,2,6.2,Uncontrolled originals,,"tuta-03.png, tuta-04.png"
+Initial,contacts,4,KyPost,2,5.0,Uncontrolled originals,,"KyPost-live-03.png, KyPost-live-Contacts-02.png"
+Initial,settings,1,mailbox.org,2,7.0,Uncontrolled originals,,"mailboxorg-03.png, mailboxorg-04.png"
+Initial,settings,2,KyPost,3,5.8,Uncontrolled originals,,"KyPost-live-04.png, KyPost-live-05.png, KyPost-live-06.png"
+Initial,secondary,1,Proton Drive,1,7.0,Uncontrolled originals,,Proton-Drive-01.png
+Initial,secondary,2,mailbox.org Drive,1,6.0,Uncontrolled originals,,mailboxorg-drive-01.png
+Initial,secondary,3,KyNotes,2,5.9,Uncontrolled originals,,"KyPost-live-Notes-01.png, mailboxorg-notes-02.png"
+Initial,secondary,4,mailbox.org Notes,1,3.6,Uncontrolled originals,,mailboxorg-notes-01.png
+Improved rubric,calendar-grid,1,"Google Calendar (web, 2026)",1,7.7,"No: files differ in state, theme",,Gmail-Calendar-01.png
+Improved rubric,calendar-grid,2,"Proton Calendar (web, 2026)",1,7.5,"No: files differ in state, theme",,Proton-calendar-01.png
+Improved rubric,calendar-grid,3,KyCalendar,1,7.3,"No: files differ in state, theme",-0.4,KyPost-live-Calendar-01.png
+Improved rubric,calendar-grid,4,"Tuta (web, 2026)",1,6.85,"No: files differ in state, theme",,tuta-05.png
+Improved rubric,calendar-grid,5,"mailbox.org (web, 2026)",1,6.65,"No: files differ in state, theme",,mailboxorg-calendar-01.png
+Improved rubric,calendar-grid,6,"Outlook classic desktop (Microsoft 365, 2025)",1,5.45,"No: files differ in state, theme",,Outlook-03.png
+Improved rubric,compose,1,"Gmail (web, 2026)",1,7.85,No: files differ in theme,,Gmail-02.png
+Improved rubric,compose,2,"Proton Mail (web, 2026)",1,7.05,No: files differ in theme,,Proton-02.png
+Improved rubric,compose,3,"mailbox.org (web, 2026)",1,7.0,No: files differ in theme,,mailboxorg-02.png
+Improved rubric,compose,4,KyPost,1,6.2,No: files differ in theme,-1.65,KyPost-live-02.png
+Improved rubric,compose,5,"Tuta (web, 2026)",1,6.0,No: files differ in theme,,tuta-02.png
+Improved rubric,compose,6,Outlook 2013 desktop (video still),1,5.85,No: files differ in theme,,Outlook-02.png
+Improved rubric,contact-editor,1,"Tuta (web, 2026)",1,5.85,No: files differ in theme,,tuta-04.png
+Improved rubric,contact-editor,2,KyPost,1,5.55,No: files differ in theme,-0.3,KyPost-live-Contacts-02.png
+Improved rubric,contacts-list,1,"Google Contacts (web, 2026)",1,7.65,"No: files differ in state, theme",,Gmail-Contacts-01.png
+Improved rubric,contacts-list,2,"mailbox.org (web, 2026)",1,6.65,"No: files differ in state, theme",,mailboxorg-address_book-02.png
+Improved rubric,contacts-list,3,"Tuta (web, 2026)",1,6.5,"No: files differ in state, theme",,tuta-03.png
+Improved rubric,contacts-list,4,KyPost,1,5.55,"No: files differ in state, theme",-2.1,KyPost-live-03.png
+Improved rubric,drive,1,"Proton Drive (web, 2026)",1,7.35,"No: files differ in state, theme",N/A: no Ky file,Proton-Drive-01.png
+Improved rubric,drive,2,"mailbox.org (web, 2026)",1,6.5,"No: files differ in state, theme",N/A: no Ky file,mailboxorg-drive-01.png
+Improved rubric,event-editor,1,"Google Calendar (web, 2026)",1,8.0,No: files differ in theme,,Gmail-Calendar-02.png
+Improved rubric,event-editor,2,KyCalendar,1,7.85,No: files differ in theme,-0.15,KyPost-live-Calendar-02.png
+Improved rubric,event-editor,3,"Proton Calendar (web, 2026)",1,7.15,No: files differ in theme,,Proton-calendar-02.png
+Improved rubric,event-editor,4,"mailbox.org (web, 2026)",1,6.85,No: files differ in theme,,mailboxorg-calendar-02.png
+Improved rubric,event-editor,4,"Tuta (web, 2026)",1,6.85,No: files differ in theme,,tuta-06.png
+Improved rubric,mail-list,1,"Proton Mail (web, 2026)",1,7.45,"No: files differ in state, theme",,Proton-01.png
+Improved rubric,mail-list,2,"Gmail (web, 2026)",1,7.0,"No: files differ in state, theme",,Gmail-01.png
+Improved rubric,mail-list,3,"mailbox.org (web, 2026)",1,6.7,"No: files differ in state, theme",,mailboxorg-01.png
+Improved rubric,mail-list,4,"Tuta (web, 2026)",1,6.5,"No: files differ in state, theme",,tuta-01.png
+Improved rubric,mail-list,5,KyPost,1,5.65,"No: files differ in state, theme",-1.8,KyPost-live-01.png
+Improved rubric,mail-list,6,Outlook 2013 desktop (video still),1,5.35,"No: files differ in state, theme",,Outlook-01.png
+Improved rubric,notes,1,KyNotes,1,5.7,Yes,1.35,KyPost-live-Notes-01.png
+Improved rubric,notes,2,"mailbox.org Notes (web, 2026)",1,4.35,Yes,,mailboxorg-notes-01.png
+Improved rubric,settings,1,"mailbox.org (web, 2026)",2,6.68,No: files differ in theme,,"mailboxorg-03.png, mailboxorg-04.png"
+Improved rubric,settings,2,KyNotes,1,6.3,No: files differ in theme,-0.38,mailboxorg-notes-02.png
+Improved rubric,settings,3,KyPost,3,6.12,No: files differ in theme,-0.56,"KyPost-live-04.png, KyPost-live-05.png, KyPost-live-06.png"

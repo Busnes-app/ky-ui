@@ -1,0 +1,4345 @@
+{
+ "schema": "ky-ui-council-scores/2",
+ "round": "implemented-post-messages (fresh visual acceptance of completed KyPost stage 03 + KyMessages final)",
+ "reviewer": {
+  "model": "Claude Opus 5.5 (claude-opus-5-5)",
+  "role": "design sub-agent, Claude Code in T3 Code",
+  "date": "2026-10-26",
+  "blind": {
+   "procedure": "All 72 representatives scored and frozen before reading kypost-implementation.md, kymessages-implementation.md or reranked-review.md; no prior implementation scores exist.",
+   "frozen_scores_sha256": "30167135e4cc22e0f9161e5838a53a7d2aa37c376ea99b70a1ba8bab0dacb9e6",
+   "post_blind_revisions": 0
+  },
+  "inputs_read": {
+   "skills/ky-suite-ui/SKILL.md": "6010ea39ac6e4e21926eb2a45d8a5a4894cd9e5e6eec07aca4cf60423233dcc2",
+   "skills/ky-suite-ui/references/rubric.md": "ad3516620420fbdc30f5273f82b7c72c76e1365d1b6296fcaa56be3cbebf2c41",
+   "skills/ky-suite-ui/references/design-contract.md": "0d74fbaa48ec2aa972dd4d6162cd4a449e509f9842f5ba27cdc18b8a3e56a1fe",
+   "src/tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+   "AGENTS.md": "529793a3f6922dbe1b33cc87cc0f646d872e2ea38545460664b7fe002872c034",
+   "reviews/AGENTS.md": "92911d25f8de3e2ead0336686f47920ff8bb95f77943cf0e494ae4a53ddf5dc7",
+   "screenshots/kypost-03-after.json": "690eb2d0a748f440486878af1bdcf2852e6af07ad0ad6c99d35097c2d475b9ae",
+   "screenshots/kymessages-00-after-manifest.json": "5aa596da7e3c59ddf5f013d339b3530d7375c723329e9e71d064157b2bb2816f",
+   "screenshots/kymessages-03-after-manifest.json": "6e93d19cbd7937fb9cf5be55e5742fb3f758370d3b4f391d59139f9c1ee0756c",
+   "kymessages-00-after-checks.json (post-blind)": "e829fddab7b29975145d3400fd8f1b111bd0da8c70ddc128712cc501126f3063",
+   "kypost-implementation.md (post-blind)": "ecc0f5be007f17fac1a37d41be1ba86d2cb5184ff2b73792e6aa769a4d4feb64",
+   "kymessages-implementation.md (post-blind)": "3ad478cfe98e8e25291ac2948806563f60995ad95ce40664f1ecd83ad04b4740",
+   "reranked-review.md (post-blind)": "680fe2a6ba1386f1115bedbd6909779ff7538ef747b0853355a03a569048673a"
+  },
+  "ky_ui_worktree_head": "41daa936e220489e10d4df1724a173da583dbdba (skills/, reviews/, src/ uncommitted)"
+ },
+ "rubric": {
+  "version": "ky-suite-v2",
+  "weights": {
+   "hierarchy": 0.2,
+   "typography": 0.15,
+   "density_layout": 0.2,
+   "color": 0.15,
+   "visible_affordances": 0.15,
+   "coherence": 0.15
+  },
+  "ky_fit_weights": {
+   "palette_tokens": 0.2,
+   "type_geometry": 0.2,
+   "shell": 0.2,
+   "accent_discipline": 0.2,
+   "suite_cohesion": 0.2
+  },
+  "rounding": "Decimal(str(x)).quantize(Decimal(\"0.1\"), ROUND_HALF_UP); means from unrounded weighted sums, rounded to 0.01"
+ },
+ "captures": {
+  "kypost": {
+   "revision": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "source_patch_sha256": "39b9eadf130c7d5b68d64717f13abba139a36206a65f0f077327d951fd847df2 (source-stages/kypost/source-03-after.patch)",
+   "manifest": "screenshots/kypost-03-after.json",
+   "browser": "Playwright 1.63.0 headless Chromium",
+   "timezone": "America/New_York",
+   "fixture": "kypost-demo-IMAP loopback fixture, 4 seeded messages, 4 synthetic contacts, user alex",
+   "theme_source": "context colorScheme (no saved choice)"
+  },
+  "kymessages": {
+   "revision": "0514749319 + uncommitted web/src patch",
+   "source_patch_sha256": "51231a71e616f383e3af75648e551a1f3455d4ba33a2edb3ea007cc2b1b692ea",
+   "server_binary_sha256": "7c02dd8a832b053364c9307485f2559c5d65367c39a07b9860cb1c4b0bde5e35",
+   "manifest": "screenshots/kymessages-00-after-manifest.json",
+   "browser": "chromium 153.0.8010.12",
+   "timezone": "America/Chicago",
+   "fixture": "fresh SQLite, init-admin, Matrix not configured, captcha none",
+   "theme_source": "product Color theme select + matching colorScheme"
+  }
+ },
+ "inventory": {
+  "files": 106,
+  "representatives_scored": 72,
+  "exact_or_near_duplicates": 14,
+  "variants": 20,
+  "near_duplicate_rule": "same dims, <0.1% pixels differ, max channel delta <=8",
+  "variant_rule": "Owner instruction: dedup viewport/full-page and same-build recapture variants per product/surface/theme/viewport; representative = viewport capture of the final stage (kypost-03-after, kymessages-00-after)."
+ },
+ "files": [
+  {
+   "file": "kymessages-00-after-agents-desktop-dark.png",
+   "sha256": "54e15ac2db7acae232828cce19c0069f05a4af2c67cd762bdecb3c8d72c87fe6",
+   "bytes": 39611,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "agents",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-agents-desktop-light.png",
+   "sha256": "edf5f9eba2dfac9cb0a2acc5dc9f7241f23927b084b3c203330bf14cd77e5f8b",
+   "bytes": 39470,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "agents",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 5,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control. Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 6,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-agents-mobile-dark.png",
+   "sha256": "186d307434c13ebae094bd96f39ef0bf7fa5b001f8b27b6a34cd364064ebf245",
+   "bytes": 22715,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "agents",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-agents-mobile-light.png",
+   "sha256": "b5cc771df4015ef1173f24f6eedba088de29353c49f190986bde08ea77f54345",
+   "bytes": 22461,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "agents",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-audit-desktop-dark.png",
+   "sha256": "af843d67587b5377bff9a1603e8025db17475b7c0a69a6cd0e078240b76314eb",
+   "bytes": 84305,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "audit",
+   "cohort": "admin-console",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Audit log h1, Kind filter, table.",
+    "typography": "Mono for event/target/details (fixed-width data).",
+    "density_layout": "When column wraps date/time to 2 lines while Details has room; table nested in a card.",
+    "color": "Neutral.",
+    "visible_affordances": "Newer/Older both look enabled at '1\u20137 of 7'; disabled state ambiguous.",
+    "coherence": "Card-wrapped table differs from flat lists elsewhere."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Row count differs between themes (capture order adds login events)."
+  },
+  {
+   "file": "kymessages-00-after-audit-desktop-light.png",
+   "sha256": "09c0b61afcd1abc16db40cb7db18bf5b7cc7b3ddbed15d828652f649e015a1ac",
+   "bytes": 74339,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "audit",
+   "cohort": "admin-console",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 5,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Audit log h1, Kind filter, table.",
+    "typography": "Mono for event/target/details (fixed-width data).",
+    "density_layout": "When column wraps date/time to 2 lines while Details has room; table nested in a card.",
+    "color": "Neutral.",
+    "visible_affordances": "Newer/Older both look enabled at '1\u20137 of 7'; disabled state ambiguous. Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Card-wrapped table differs from flat lists elsewhere."
+   },
+   "weighted_sum": 6.65,
+   "total": 6.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 6,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Row count differs between themes (capture order adds login events)."
+  },
+  {
+   "file": "kymessages-00-after-audit-mobile-dark.png",
+   "sha256": "1faf3382b46d16530c77c8e58a381da4f1cf61957a99e8ed597cea78cdd16243",
+   "bytes": 41526,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "audit",
+   "cohort": "admin-console",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 4,
+    "color": 8,
+    "visible_affordances": 4,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "h1 and filter clear; data unreadable past 3 columns.",
+    "typography": "3-line timestamps.",
+    "density_layout": "Table clipped: 'auth.password_chan\u2026' cut, Target/Outcome/Details/IP off-screen; timestamps wrap to 3 lines.",
+    "color": "Neutral.",
+    "visible_affordances": "Hidden columns with no scroll cue.",
+    "coherence": "Card-wrapped table differs from flat lists elsewhere."
+   },
+   "weighted_sum": 5.6,
+   "total": 5.6,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Row count differs between themes (capture order adds login events)."
+  },
+  {
+   "file": "kymessages-00-after-audit-mobile-light.png",
+   "sha256": "53639e8c81f2296da6eaf41422307b1337de06a9d6498cf780b4f762b3af632d",
+   "bytes": 41733,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "audit",
+   "cohort": "admin-console",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 4,
+    "color": 8,
+    "visible_affordances": 4,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "h1 and filter clear; data unreadable past 3 columns.",
+    "typography": "3-line timestamps.",
+    "density_layout": "Table clipped: 'auth.password_chan\u2026' cut, Target/Outcome/Details/IP off-screen; timestamps wrap to 3 lines.",
+    "color": "Neutral.",
+    "visible_affordances": "Hidden columns with no scroll cue.",
+    "coherence": "Card-wrapped table differs from flat lists elsewhere."
+   },
+   "weighted_sum": 5.6,
+   "total": 5.6,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Row count differs between themes (capture order adds login events)."
+  },
+  {
+   "file": "kymessages-00-after-backup-desktop-dark-full.png",
+   "sha256": "326de362e6c79d06c8fcac4cb3b6eb4d8b1272204fe5f299472d74c309615063",
+   "bytes": 149354,
+   "width": 1280,
+   "height": 1345,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-backup-desktop-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-backup-desktop-dark.png",
+   "sha256": "17ec87a233ef6bb397f66ab02ca1d679c7297465d824f57c31046631b1430a10",
+   "bytes": 105886,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "No primary: Back up now disabled, Refresh/Pair/Pin key all secondary; next step only implied by banner.",
+    "typography": "Many 13px helper paragraphs; mono paths.",
+    "density_layout": "4 status cards + 3 section cards; bottom KyRecovery card leaves ~150px empty.",
+    "color": "'0 of 7' local copies in success green.",
+    "visible_affordances": "Disabled Back up now / Download capsule are distinct from enabled outline buttons.",
+    "coherence": "Card around every section (nested boxes) vs flat contract."
+   },
+   "weighted_sum": 6.15,
+   "total": 6.2,
+   "ky_fit_scores": {
+    "palette_tokens": 7,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-backup-desktop-light-full.png",
+   "sha256": "c66705bdaa7c0fad2e0ab3b6296797a0703ccca3569acdd2fbd4efe79e095aba",
+   "bytes": 148170,
+   "width": 1280,
+   "height": 1345,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-backup-desktop-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-backup-desktop-light.png",
+   "sha256": "1d63c4dcaefc69de19f9bb2b78a35d22348627487fe807f233d4b7cdc0bf7d9e",
+   "bytes": 105245,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "No primary: Back up now disabled, Refresh/Pair/Pin key all secondary; next step only implied by banner.",
+    "typography": "Many 13px helper paragraphs; mono paths.",
+    "density_layout": "4 status cards + 3 section cards; bottom KyRecovery card leaves ~150px empty.",
+    "color": "'0 of 7' local copies in success green.",
+    "visible_affordances": "Disabled Back up now / Download capsule are distinct from enabled outline buttons. Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Card around every section (nested boxes) vs flat contract."
+   },
+   "weighted_sum": 6.0,
+   "total": 6.0,
+   "ky_fit_scores": {
+    "palette_tokens": 7,
+    "type_geometry": 7,
+    "shell": 6,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 6.8,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-backup-mobile-dark-full.png",
+   "sha256": "685039d44d308314cc1cd3afb2f43a40bdd737d4f14a17047576d00d76a77616",
+   "bytes": 130725,
+   "width": 390,
+   "height": 2384,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-backup-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-backup-mobile-dark.png",
+   "sha256": "cb7767afd90a51c49b9a5103042c6da20233d263c9ca7a57040e0ae90f65ac1d",
+   "bytes": 54932,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "No primary: Back up now disabled, Refresh/Pair/Pin key all secondary; next step only implied by banner.",
+    "typography": "Many 13px helper paragraphs; mono paths.",
+    "density_layout": "4 status cards + 3 section cards; bottom KyRecovery card leaves ~150px empty.",
+    "color": "'0 of 7' local copies in success green.",
+    "visible_affordances": "Disabled Back up now / Download capsule are distinct from enabled outline buttons.",
+    "coherence": "Card around every section (nested boxes) vs flat contract."
+   },
+   "weighted_sum": 6.15,
+   "total": 6.2,
+   "ky_fit_scores": {
+    "palette_tokens": 7,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-backup-mobile-light-full.png",
+   "sha256": "b5bff98d7d671270364f7c9c1280fd1b4118012f61b65e5f4941568e9bc77170",
+   "bytes": 127466,
+   "width": 390,
+   "height": 2384,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-backup-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-backup-mobile-light.png",
+   "sha256": "908642b106a90979cc7c3e363c46f72d93904e167e35a8342e6d294f09c249f8",
+   "bytes": 53882,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "backup",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "No primary: Back up now disabled, Refresh/Pair/Pin key all secondary; next step only implied by banner.",
+    "typography": "Many 13px helper paragraphs; mono paths.",
+    "density_layout": "4 status cards + 3 section cards; bottom KyRecovery card leaves ~150px empty.",
+    "color": "'0 of 7' local copies in success green.",
+    "visible_affordances": "Disabled Back up now / Download capsule are distinct from enabled outline buttons.",
+    "coherence": "Card around every section (nested boxes) vs flat contract."
+   },
+   "weighted_sum": 6.15,
+   "total": 6.2,
+   "ky_fit_scores": {
+    "palette_tokens": 7,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-change-password-desktop-dark.png",
+   "sha256": "33018e680dd0e7256efc25d18c5e9fbe306cae4e94d89e12ac19a509e9061b42",
+   "bytes": 28379,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "change-password",
+   "cohort": "auth",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Clear title and single Change password primary with Sign out beside it.",
+    "typography": "Title 24px, helper 13px.",
+    "density_layout": "Card floats mid-page with no brand above.",
+    "color": "Accent only on primary.",
+    "visible_affordances": "Labels above 40px inputs; no visible requirement indicator beyond helper.",
+    "coherence": "No stamp/wordmark or theme select, unlike the sign-in page it follows."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 5,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-change-password-desktop-light.png",
+   "sha256": "aafa2ab58cacb8e8b12704c4f7e7e173f9c7ab53aa1c0998247fac205665394a",
+   "bytes": 28020,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "change-password",
+   "cohort": "auth",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Clear title and single Change password primary with Sign out beside it.",
+    "typography": "Title 24px, helper 13px.",
+    "density_layout": "Card floats mid-page with no brand above.",
+    "color": "Accent only on primary.",
+    "visible_affordances": "Labels above 40px inputs; no visible requirement indicator beyond helper.",
+    "coherence": "No stamp/wordmark or theme select, unlike the sign-in page it follows."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 5,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-change-password-mobile-dark.png",
+   "sha256": "4d2c51e91ea7f02907f02e18bc9c188304a5ee7c1605a866c2406e56369c9ab0",
+   "bytes": 23428,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "change-password",
+   "cohort": "auth",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Clear title and single Change password primary with Sign out beside it.",
+    "typography": "Title 24px, helper 13px.",
+    "density_layout": "Card floats mid-page with no brand above.",
+    "color": "Accent only on primary.",
+    "visible_affordances": "Labels above 40px inputs; no visible requirement indicator beyond helper.",
+    "coherence": "No stamp/wordmark or theme select, unlike the sign-in page it follows."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 5,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-change-password-mobile-light.png",
+   "sha256": "20df4e438a349a8fa8b41840d0897b9c8f628a71b7d71a136ac11dc92b35577f",
+   "bytes": 23073,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "change-password",
+   "cohort": "auth",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Clear title and single Change password primary with Sign out beside it.",
+    "typography": "Title 24px, helper 13px.",
+    "density_layout": "Card floats mid-page with no brand above.",
+    "color": "Accent only on primary.",
+    "visible_affordances": "Labels above 40px inputs; no visible requirement indicator beyond helper.",
+    "coherence": "No stamp/wordmark or theme select, unlike the sign-in page it follows."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 5,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-health-desktop-dark.png",
+   "sha256": "5fa0fa9acbe158170ebc5bcbc4f6339af462edc2ab02df85e1b9d99e557c55de",
+   "bytes": 69462,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health",
+   "cohort": "admin-console",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Health h1 with Check again secondary at right.",
+    "typography": "13px intro line; mono version string.",
+    "density_layout": "Two status cards + one network card; content boxed unlike flat Overview.",
+    "color": "'Warn:' and 'Pass:' items share identical ink \u2014 no status color or icon for four warnings.",
+    "visible_affordances": "Up pills readable; Check again clearly a button.",
+    "coherence": "Bordered cards here vs flat divided rows on Overview/Settings."
+   },
+   "weighted_sum": 6.7,
+   "total": 6.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-health-desktop-light.png",
+   "sha256": "0b30d6ef538d213f4294b93e8c704dd537bae59303f3ce9a9e5ce735a46be850",
+   "bytes": 68845,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health",
+   "cohort": "admin-console",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Health h1 with Check again secondary at right.",
+    "typography": "13px intro line; mono version string.",
+    "density_layout": "Two status cards + one network card; content boxed unlike flat Overview.",
+    "color": "'Warn:' and 'Pass:' items share identical ink \u2014 no status color or icon for four warnings.",
+    "visible_affordances": "Up pills readable; Check again clearly a button. Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Bordered cards here vs flat divided rows on Overview/Settings."
+   },
+   "weighted_sum": 6.55,
+   "total": 6.6,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 6,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-health-mobile-dark-full.png",
+   "sha256": "23ce25ea1a29af40a548a1b94aba555c675e0dd6f77220edcc9c450043d0b39c",
+   "bytes": 54152,
+   "width": 390,
+   "height": 853,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-health-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-health-mobile-dark.png",
+   "sha256": "9598bf7215ecea08646c925387227be5e093fc486aed287de7c3613db2a11a03",
+   "bytes": 53376,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health",
+   "cohort": "admin-console",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Health h1 with Check again secondary at right.",
+    "typography": "13px intro line; mono version string.",
+    "density_layout": "Two status cards + one network card; content boxed unlike flat Overview.",
+    "color": "'Warn:' and 'Pass:' items share identical ink \u2014 no status color or icon for four warnings.",
+    "visible_affordances": "Up pills readable; Check again clearly a button.",
+    "coherence": "Bordered cards here vs flat divided rows on Overview/Settings."
+   },
+   "weighted_sum": 6.7,
+   "total": 6.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-health-mobile-light-full.png",
+   "sha256": "752c46d2cd112f4b5ea1d63afebe6a2d10d2254f753db9211b548e8233c54de5",
+   "bytes": 53996,
+   "width": 390,
+   "height": 853,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-health-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-health-mobile-light.png",
+   "sha256": "b4c70d1c66acab53c9c73d1548aef2d40054d00da97cfbedb10c86f8f713ecad",
+   "bytes": 52991,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "health",
+   "cohort": "admin-console",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 6,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Health h1 with Check again secondary at right.",
+    "typography": "13px intro line; mono version string.",
+    "density_layout": "Two status cards + one network card; content boxed unlike flat Overview.",
+    "color": "'Warn:' and 'Pass:' items share identical ink \u2014 no status color or icon for four warnings.",
+    "visible_affordances": "Up pills readable; Check again clearly a button.",
+    "coherence": "Bordered cards here vs flat divided rows on Overview/Settings."
+   },
+   "weighted_sum": 6.7,
+   "total": 6.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-login-desktop-dark.png",
+   "sha256": "55d50b39102dfefa472c76bedae378727987fdecdc14999f71e203becd062151",
+   "bytes": 27192,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "login",
+   "cohort": "auth",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Stamp + wordmark, one full-width Sign In primary, SSO secondary below divider.",
+    "typography": "Clear label/input/button steps.",
+    "density_layout": "Centered card with even 24px insets.",
+    "color": "Accent on primary and focused field (captured focus ring).",
+    "visible_affordances": "Focus ring visible on Username; SSO outline secondary.",
+    "coherence": "Theme select floats top-right detached from the card."
+   },
+   "weighted_sum": 8.2,
+   "total": 8.2,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-login-desktop-light.png",
+   "sha256": "5b7399c75a9b51cf84b185b5e17c443ee8d6bd18ce63f7ed5789e986902fedaf",
+   "bytes": 26943,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "login",
+   "cohort": "auth",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Stamp + wordmark, one full-width Sign In primary, SSO secondary below divider.",
+    "typography": "Clear label/input/button steps.",
+    "density_layout": "Centered card with even 24px insets.",
+    "color": "Accent on primary and focused field (captured focus ring).",
+    "visible_affordances": "Focus ring visible on Username; SSO outline secondary.",
+    "coherence": "Theme select floats top-right detached from the card."
+   },
+   "weighted_sum": 8.2,
+   "total": 8.2,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-login-mobile-dark.png",
+   "sha256": "c33bfc159bcb31801680806174b856396ec90afa11387d911d479b885bb10449",
+   "bytes": 23468,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "login",
+   "cohort": "auth",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Stamp + wordmark, one full-width Sign In primary, SSO secondary below divider.",
+    "typography": "Clear label/input/button steps.",
+    "density_layout": "Centered card with even 24px insets.",
+    "color": "Accent on primary and focused field (captured focus ring).",
+    "visible_affordances": "Focus ring visible on Username; SSO outline secondary.",
+    "coherence": "Theme select floats top-right detached from the card."
+   },
+   "weighted_sum": 8.2,
+   "total": 8.2,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-login-mobile-light.png",
+   "sha256": "dd4becc3f34c5bab97355384ad92cf2e45d221fe13c51fac8d732084b27b43d3",
+   "bytes": 23163,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "login",
+   "cohort": "auth",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 9,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Stamp + wordmark, one full-width Sign In primary, SSO secondary below divider.",
+    "typography": "Clear label/input/button steps.",
+    "density_layout": "Centered card with even 24px insets.",
+    "color": "Accent on primary and focused field (captured focus ring).",
+    "visible_affordances": "Focus ring visible on Username; SSO outline secondary.",
+    "coherence": "Theme select floats top-right detached from the card."
+   },
+   "weighted_sum": 8.2,
+   "total": 8.2,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-overview-desktop-dark.png",
+   "sha256": "58a989c4f1a441245cb00c27960eb97d2feb3bb65c75ebb2ff271abd66dddd47",
+   "bytes": 57903,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview",
+   "cohort": "admin-console",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Overview h1 + role subtitle; three equal-weight 'Open \u2026' rows, no primary needed on an index.",
+    "typography": "Clean steps; subtitle + paragraph slightly wordy.",
+    "density_layout": "Middle status column starts at x=544/546/517 \u2014 misaligned across rows; ragged button widths.",
+    "color": "Green status for '2 of 2 components up (chat not set up)' mixes success with a not-set-up message.",
+    "visible_affordances": "Outline buttons with arrows read as navigation.",
+    "coherence": "Flat rows on cream page, sidebar with icons, theme select and account at bottom."
+   },
+   "weighted_sum": 7.4,
+   "total": 7.4,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-overview-desktop-light.png",
+   "sha256": "63b279227c15fb0292ac9061310b281da75a46d736882d60a0b7d9f6935e28d3",
+   "bytes": 57761,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview",
+   "cohort": "admin-console",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Overview h1 + role subtitle; three equal-weight 'Open \u2026' rows, no primary needed on an index.",
+    "typography": "Clean steps; subtitle + paragraph slightly wordy.",
+    "density_layout": "Middle status column starts at x=544/546/517 \u2014 misaligned across rows; ragged button widths.",
+    "color": "Green status for '2 of 2 components up (chat not set up)' mixes success with a not-set-up message.",
+    "visible_affordances": "Outline buttons with arrows read as navigation. Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Flat rows on cream page, sidebar with icons, theme select and account at bottom."
+   },
+   "weighted_sum": 7.25,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 6,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-overview-mobile-dark.png",
+   "sha256": "8400466885abd3fcc2aa105c99dbdf03d41349547eb9b6e8d5e7cf4c9cc8c0c8",
+   "bytes": 39920,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview",
+   "cohort": "admin-console",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Overview h1 + role subtitle; three equal-weight 'Open \u2026' rows, no primary needed on an index.",
+    "typography": "Clean steps; subtitle + paragraph slightly wordy.",
+    "density_layout": "Stacked rows with full-width rhythm; tab strip scrolls with Rooms clipped at right.",
+    "color": "Green status for '2 of 2 components up (chat not set up)' mixes success with a not-set-up message.",
+    "visible_affordances": "Header brand, theme select and icon-only sign-out; tabs reachable by scroll.",
+    "coherence": "Flat rows on cream page, sidebar with icons, theme select and account at bottom."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-overview-mobile-light.png",
+   "sha256": "a84398c25615f8921419ceed2d0b415b0d5b2133ba402300cab1321c4508c660",
+   "bytes": 39536,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "overview",
+   "cohort": "admin-console",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Overview h1 + role subtitle; three equal-weight 'Open \u2026' rows, no primary needed on an index.",
+    "typography": "Clean steps; subtitle + paragraph slightly wordy.",
+    "density_layout": "Stacked rows with full-width rhythm; tab strip scrolls with Rooms clipped at right.",
+    "color": "Green status for '2 of 2 components up (chat not set up)' mixes success with a not-set-up message.",
+    "visible_affordances": "Header brand, theme select and icon-only sign-out; tabs reachable by scroll.",
+    "coherence": "Flat rows on cream page, sidebar with icons, theme select and account at bottom."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-rooms-desktop-dark.png",
+   "sha256": "1f456559b94e4c770e7b08368941bb1db04da614c69993ba9e0cd2735266046f",
+   "bytes": 38996,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "rooms",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-rooms-desktop-light.png",
+   "sha256": "84634afde924710b7c2f7dcdd5d8cd39a9eda8d3c6ad918d1f854904a48ec4a8",
+   "bytes": 38826,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "rooms",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 5,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control. Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 6,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-rooms-mobile-dark.png",
+   "sha256": "1c285c26a277aa51c25a2a63970cbc9496d48da6fc4d5d19d84c4c2cff8d8d89",
+   "bytes": 22108,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "rooms",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-rooms-mobile-light.png",
+   "sha256": "ea32b2aa80e0df8241ee406fe3bc22f1cb18ff41e70db9cc4a0fe734d2c37ae0",
+   "bytes": 21906,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "rooms",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-scim-desktop-dark.png",
+   "sha256": "3618b6605ba80e4fdd81119c62264d927937def1abb7ef8d18e6e1b5b265b8b2",
+   "bytes": 66200,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "scim",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Long h1 'SCIM 2.0 Directory & Inbound Provisioning' differs from nav 'Directory & SCIM'.",
+    "typography": "Helper copy 13px; Title Case 'Provisioned Accounts (0)' vs sentence case elsewhere.",
+    "density_layout": "Two cards, readable spacing.",
+    "color": "Warning callout in warning hue with text.",
+    "visible_affordances": "Read-only base URL styled as a filled input with no copy control.",
+    "coherence": "Cards consistent with Health/Backup, not with Overview/Settings."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-scim-desktop-light.png",
+   "sha256": "886caf10d2a606fc288e6893239933bebf0730c09b8bcdaeaf0700fd0d728ef2",
+   "bytes": 65776,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "scim",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Long h1 'SCIM 2.0 Directory & Inbound Provisioning' differs from nav 'Directory & SCIM'.",
+    "typography": "Helper copy 13px; Title Case 'Provisioned Accounts (0)' vs sentence case elsewhere.",
+    "density_layout": "Two cards, readable spacing.",
+    "color": "Warning callout in warning hue with text.",
+    "visible_affordances": "Read-only base URL styled as a filled input with no copy control. Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Cards consistent with Health/Backup, not with Overview/Settings."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 6,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-scim-mobile-dark.png",
+   "sha256": "f94d14df3eff2dd80c6ae00ed884ba310463ea072490d94fc5ba8fa4ef6c3ab5",
+   "bytes": 51410,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "scim",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Long h1 'SCIM 2.0 Directory & Inbound Provisioning' differs from nav 'Directory & SCIM'.",
+    "typography": "Helper copy 13px; Title Case 'Provisioned Accounts (0)' vs sentence case elsewhere.",
+    "density_layout": "Two cards, readable spacing.",
+    "color": "Warning callout in warning hue with text.",
+    "visible_affordances": "Read-only base URL styled as a filled input with no copy control.",
+    "coherence": "Cards consistent with Health/Backup, not with Overview/Settings."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-scim-mobile-light.png",
+   "sha256": "5411dae9d3695a627e40d4ceb02d291f4c084dfdf812db56f0a063f61d33d81b",
+   "bytes": 50612,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "scim",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Long h1 'SCIM 2.0 Directory & Inbound Provisioning' differs from nav 'Directory & SCIM'.",
+    "typography": "Helper copy 13px; Title Case 'Provisioned Accounts (0)' vs sentence case elsewhere.",
+    "density_layout": "Two cards, readable spacing.",
+    "color": "Warning callout in warning hue with text.",
+    "visible_affordances": "Read-only base URL styled as a filled input with no copy control.",
+    "coherence": "Cards consistent with Health/Backup, not with Overview/Settings."
+   },
+   "weighted_sum": 7.15,
+   "total": 7.2,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-settings-desktop-dark-full.png",
+   "sha256": "3a53b54a3b47c7baa787faa0271ded5ec14feba175b7023305b76f9ace896a5a",
+   "bytes": 93986,
+   "width": 1280,
+   "height": 926,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-settings-desktop-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-settings-desktop-dark.png",
+   "sha256": "bc33486832482822a1a132e8f03d9609091b28b3cbdf7603e5a56ee0b4b80bd4",
+   "bytes": 93766,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "settings",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "h1 'System Settings & Architecture' (nav says 'Settings & DB'); Save name is the one accent button.",
+    "typography": "Section headings with icons, 13px helpers.",
+    "density_layout": "Flat sections divided by lines; even rhythm.",
+    "color": "Accent only on Save name.",
+    "visible_affordances": "Theme select duplicated (sidebar + Appearance section).",
+    "coherence": "Upload logo/Reset logo grey-filled while Use default is outlined \u2014 two secondary styles side by side."
+   },
+   "weighted_sum": 7.0,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-settings-desktop-light-full.png",
+   "sha256": "92af5e965c5313a845cf34b0ca59f7684fd274352e812e68857a076e989865c9",
+   "bytes": 93914,
+   "width": 1280,
+   "height": 926,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-settings-desktop-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-settings-desktop-light.png",
+   "sha256": "9b3cc92599c67ce79f24b9e963065ecf80e4655fc6b6118d1a71c6e74754bd1f",
+   "bytes": 93695,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "settings",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "h1 'System Settings & Architecture' (nav says 'Settings & DB'); Save name is the one accent button.",
+    "typography": "Section headings with icons, 13px helpers.",
+    "density_layout": "Flat sections divided by lines; even rhythm.",
+    "color": "Accent only on Save name.",
+    "visible_affordances": "Theme select duplicated (sidebar + Appearance section). Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Upload logo/Reset logo grey-filled while Use default is outlined \u2014 two secondary styles side by side."
+   },
+   "weighted_sum": 6.85,
+   "total": 6.9,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 6,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-settings-mobile-dark-full.png",
+   "sha256": "f8bdf4bb24c1d7a467bb4cdfb6531409b00d0514d48f13ce8438537f8cb49155",
+   "bytes": 74064,
+   "width": 390,
+   "height": 1318,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-settings-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-settings-mobile-dark.png",
+   "sha256": "dd0800d3a1e4adf388cd6f02cc0be2a19c4be9832784a1cffc29e7ac591c2d28",
+   "bytes": 52067,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "settings",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "h1 'System Settings & Architecture' (nav says 'Settings & DB'); Save name is the one accent button.",
+    "typography": "Section headings with icons, 13px helpers.",
+    "density_layout": "Logo row cramps: file name truncated 'N\u2026', Upload/Reset wrap irregularly; Use default alone on a row.",
+    "color": "Accent only on Save name.",
+    "visible_affordances": "Theme select duplicated in header and Appearance; truncated file input.",
+    "coherence": "Upload logo/Reset logo grey-filled while Use default is outlined \u2014 two secondary styles side by side."
+   },
+   "weighted_sum": 6.65,
+   "total": 6.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-settings-mobile-light-full.png",
+   "sha256": "3a20ca15f657327eec36fd9fc866d098103cc2af1501a5e3659d36f840dc096f",
+   "bytes": 73906,
+   "width": 390,
+   "height": 1318,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "variant_of": "kymessages-00-after-settings-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-settings-mobile-light.png",
+   "sha256": "1614f2adbd4c847c2f463bbdd5f5f814cc5463d6ad6f0eebf3cc8f3e05ce7ba0",
+   "bytes": 51635,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "settings",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "h1 'System Settings & Architecture' (nav says 'Settings & DB'); Save name is the one accent button.",
+    "typography": "Section headings with icons, 13px helpers.",
+    "density_layout": "Logo row cramps: file name truncated 'N\u2026', Upload/Reset wrap irregularly; Use default alone on a row.",
+    "color": "Accent only on Save name.",
+    "visible_affordances": "Theme select duplicated in header and Appearance; truncated file input.",
+    "coherence": "Upload logo/Reset logo grey-filled while Use default is outlined \u2014 two secondary styles side by side."
+   },
+   "weighted_sum": 6.65,
+   "total": 6.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Full-page variant also inspected for below-fold content."
+  },
+  {
+   "file": "kymessages-00-after-users-desktop-dark.png",
+   "sha256": "242ce586ec9493e90de81c889ac9ab3a6a9f198c36b1109abf8d4e61560554a0",
+   "bytes": 38880,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "users",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 7,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-users-desktop-light.png",
+   "sha256": "8f7db496795fb6b9c4f69b0e2e90be323ebd115f95b6cfe3958e1ee66aa6b950",
+   "bytes": 38691,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "users",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 5,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control. Light theme: selected nav row has no surface change (sampled #f2efe7 = idle), only the rail.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.8,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 6,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 7.6,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-users-mobile-dark.png",
+   "sha256": "b4a6d61c093d9a1d2c1446d302073718197bc400383c79f22a0dcffe423d14f2",
+   "bytes": 22295,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "users",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-00-after-users-mobile-light.png",
+   "sha256": "288b07a168c8cdbd78320284ec0cdf047abbcb308e5ba7168b4fcc43cc314624",
+   "bytes": 22092,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyMessages operator console",
+   "observed_surface": "users",
+   "cohort": "admin-console",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "h1 then 'Chat (Matrix) is not set up' \u2014 states the problem but offers no action.",
+    "typography": "Explanation in 13px meta with inline mono command.",
+    "density_layout": "Empty state judged on guidance: one bordered strip, rest blank.",
+    "color": "Neutral, no misuse.",
+    "visible_affordances": "docs/CHAT-SETUP.md is plain text, not a link; no next-action control.",
+    "coherence": "Same template on Users, Agents and Rooms."
+   },
+   "weighted_sum": 6.95,
+   "total": 7.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 7
+   },
+   "ky_fit": 8.0,
+   "confidence": "high",
+   "capture": "0514749319 + uncommitted web/src patch",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kymessages-03-after-backup-desktop-dark-full.png",
+   "sha256": "7ebe54e14eae04e89fe9ed098770588aae5dffe7422ef6b72fb9ae2ad002bf8d",
+   "bytes": 149332,
+   "width": 1280,
+   "height": 1345,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-backup-desktop-dark-full.png",
+    "diff_pixel_fraction": 0.000935,
+    "max_channel_delta": 211
+   },
+   "variant_of": "kymessages-00-after-backup-desktop-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-desktop-dark.png",
+   "sha256": "4168d832a1e1d004c9aba96ebb4167288e036a9ecf8efaad4a7ff8dad29c1093",
+   "bytes": 105844,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-backup-desktop-dark.png",
+    "diff_pixel_fraction": 0.000549,
+    "max_channel_delta": 211
+   },
+   "variant_of": "kymessages-00-after-backup-desktop-dark.png",
+   "unscored_reason": "same-build recapture (identical patch and binary) of the same surface/theme/viewport; differs only in the measured region; scored once with its representative"
+  },
+  {
+   "file": "kymessages-03-after-backup-desktop-light-full.png",
+   "sha256": "1dd6f1a9d7622afa070dd07ab3fb86ca56605e4d2b80fc0308d837548e371219",
+   "bytes": 148095,
+   "width": 1280,
+   "height": 1345,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-backup-desktop-light-full.png",
+    "diff_pixel_fraction": 0.000853,
+    "max_channel_delta": 231
+   },
+   "variant_of": "kymessages-00-after-backup-desktop-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-desktop-light.png",
+   "sha256": "7a3cbad27de400534bdd7acbaa2e9ddb0b0bfd3d9bc533711ef173e85e2539ba",
+   "bytes": 105101,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-backup-desktop-light.png",
+    "diff_pixel_fraction": 0.000429,
+    "max_channel_delta": 231
+   },
+   "variant_of": "kymessages-00-after-backup-desktop-light.png",
+   "unscored_reason": "same-build recapture (identical patch and binary) of the same surface/theme/viewport; differs only in the measured region; scored once with its representative"
+  },
+  {
+   "file": "kymessages-03-after-backup-mobile-dark-full.png",
+   "sha256": "8df80da24bb05633e98c2969a6e05b88cb92ba7d235d10d675141323788ec3a0",
+   "bytes": 130834,
+   "width": 390,
+   "height": 2384,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-backup-mobile-dark-full.png",
+    "diff_pixel_fraction": 0.00274,
+    "max_channel_delta": 211
+   },
+   "variant_of": "kymessages-00-after-backup-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-mobile-dark.png",
+   "sha256": "bc335740dcb31bbf468d962723601f09e59ea46b1c9dd2c9ac37f7b63d3e07bb",
+   "bytes": 54991,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-backup-mobile-dark.png",
+    "diff_pixel_fraction": 0.002491,
+    "max_channel_delta": 211
+   },
+   "variant_of": "kymessages-00-after-backup-mobile-dark.png",
+   "unscored_reason": "same-build recapture (identical patch and binary) of the same surface/theme/viewport; differs only in the measured region; scored once with its representative"
+  },
+  {
+   "file": "kymessages-03-after-backup-mobile-light-full.png",
+   "sha256": "efb6bb37efea8c84ec8980e6f396eaac846ed9b5b2fc64a7c8a988c8ea83cdd7",
+   "bytes": 127629,
+   "width": 390,
+   "height": 2384,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-backup-mobile-light-full.png",
+    "diff_pixel_fraction": 0.002811,
+    "max_channel_delta": 231
+   },
+   "variant_of": "kymessages-00-after-backup-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-mobile-light.png",
+   "sha256": "a82c75e8287fc853f48446a4d78b474c2ce763ac06287999b7a3ead9133e8633",
+   "bytes": 53981,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-backup-mobile-light.png",
+    "diff_pixel_fraction": 0.002558,
+    "max_channel_delta": 231
+   },
+   "variant_of": "kymessages-00-after-backup-mobile-light.png",
+   "unscored_reason": "same-build recapture (identical patch and binary) of the same surface/theme/viewport; differs only in the measured region; scored once with its representative"
+  },
+  {
+   "file": "kymessages-03-after-change-password-desktop-dark.png",
+   "sha256": "33018e680dd0e7256efc25d18c5e9fbe306cae4e94d89e12ac19a509e9061b42",
+   "bytes": 28379,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-change-password-desktop-dark.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-change-password-desktop-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-change-password-desktop-light.png",
+   "sha256": "aafa2ab58cacb8e8b12704c4f7e7e173f9c7ab53aa1c0998247fac205665394a",
+   "bytes": 28020,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-change-password-desktop-light.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-change-password-desktop-light.png"
+  },
+  {
+   "file": "kymessages-03-after-change-password-mobile-dark.png",
+   "sha256": "4d2c51e91ea7f02907f02e18bc9c188304a5ee7c1605a866c2406e56369c9ab0",
+   "bytes": 23428,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-change-password-mobile-dark.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-change-password-mobile-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-change-password-mobile-light.png",
+   "sha256": "20df4e438a349a8fa8b41840d0897b9c8f628a71b7d71a136ac11dc92b35577f",
+   "bytes": 23073,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-change-password-mobile-light.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-change-password-mobile-light.png"
+  },
+  {
+   "file": "kymessages-03-after-login-desktop-dark.png",
+   "sha256": "55d50b39102dfefa472c76bedae378727987fdecdc14999f71e203becd062151",
+   "bytes": 27192,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-login-desktop-dark.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-login-desktop-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-login-desktop-light.png",
+   "sha256": "5b7399c75a9b51cf84b185b5e17c443ee8d6bd18ce63f7ed5789e986902fedaf",
+   "bytes": 26943,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-login-desktop-light.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-login-desktop-light.png"
+  },
+  {
+   "file": "kymessages-03-after-login-mobile-dark.png",
+   "sha256": "c33bfc159bcb31801680806174b856396ec90afa11387d911d479b885bb10449",
+   "bytes": 23468,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-login-mobile-dark.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-login-mobile-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-login-mobile-light.png",
+   "sha256": "32a8c573d610efc201a83ea3fe7dc8cd183baf4cae5ed75ecd7a3de17831cf35",
+   "bytes": 23161,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-login-mobile-light.png",
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-login-mobile-light.png",
+    "diff_pixel_fraction": 1.8e-05,
+    "max_channel_delta": 1
+   },
+   "dup_kind": "near",
+   "unscored_reason": "near duplicate; inherits scores of kymessages-00-after-login-mobile-light.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-desktop-dark-full.png",
+   "sha256": "3a53b54a3b47c7baa787faa0271ded5ec14feba175b7023305b76f9ace896a5a",
+   "bytes": 93986,
+   "width": 1280,
+   "height": 926,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-settings-desktop-dark-full.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-settings-desktop-dark-full.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-desktop-dark.png",
+   "sha256": "bc33486832482822a1a132e8f03d9609091b28b3cbdf7603e5a56ee0b4b80bd4",
+   "bytes": 93766,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-settings-desktop-dark.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-settings-desktop-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-desktop-light-full.png",
+   "sha256": "92af5e965c5313a845cf34b0ca59f7684fd274352e812e68857a076e989865c9",
+   "bytes": 93914,
+   "width": 1280,
+   "height": 926,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-settings-desktop-light-full.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-settings-desktop-light-full.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-desktop-light.png",
+   "sha256": "9b3cc92599c67ce79f24b9e963065ecf80e4655fc6b6118d1a71c6e74754bd1f",
+   "bytes": 93695,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-settings-desktop-light.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-settings-desktop-light.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-mobile-dark-full.png",
+   "sha256": "3a11a431e150f0adf24197fe5abe391f76047d2f16859eb3b108fb08e0ca3ebb",
+   "bytes": 74052,
+   "width": 390,
+   "height": 1318,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-settings-mobile-dark-full.png",
+    "diff_pixel_fraction": 6.4e-05,
+    "max_channel_delta": 25
+   },
+   "variant_of": "kymessages-00-after-settings-mobile-dark.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-settings-mobile-dark.png",
+   "sha256": "dd0800d3a1e4adf388cd6f02cc0be2a19c4be9832784a1cffc29e7ac591c2d28",
+   "bytes": 52067,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-settings-mobile-dark.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-settings-mobile-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-mobile-light-full.png",
+   "sha256": "e9c34a20cd4a7d6acb7f7d5758e93b845b2efa5c4486083d858e8d6eb7697080",
+   "bytes": 73901,
+   "width": 390,
+   "height": 1318,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "near_duplicate_measurement": {
+    "against": "kymessages-00-after-settings-mobile-light-full.png",
+    "diff_pixel_fraction": 7.2e-05,
+    "max_channel_delta": 23
+   },
+   "variant_of": "kymessages-00-after-settings-mobile-light.png",
+   "unscored_reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-settings-mobile-light.png",
+   "sha256": "1614f2adbd4c847c2f463bbdd5f5f814cc5463d6ad6f0eebf3cc8f3e05ce7ba0",
+   "bytes": 51635,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": "kymessages-00-after-settings-mobile-light.png",
+   "dup_kind": "exact",
+   "unscored_reason": "exact duplicate; inherits scores of kymessages-00-after-settings-mobile-light.png"
+  },
+  {
+   "file": "kypost-03-after-appearance-desktop-dark.png",
+   "sha256": "22ebad389c7920c2db2277785f3642e012f7c563422647f36c1c315d8ad07deb",
+   "bytes": 62028,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "appearance",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Appearance h1 + one-line explanation; current theme outlined in accent.",
+    "typography": "Title, helper and tile labels on contract steps.",
+    "density_layout": "Even 6-column swatch grid; expanded Settings subnav pushes Logout to the bottom edge (y=887) and the licence line off-screen.",
+    "color": "Swatch hues are user-data previews; chrome stays neutral.",
+    "visible_affordances": "Selected tile is unambiguous; tiles look clickable.",
+    "coherence": "Same sidebar vocabulary; subnav uses the same selected treatment."
+   },
+   "weighted_sum": 7.95,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-appearance-desktop-light.png",
+   "sha256": "63909c8704ef9fe90e49b6c982a430a5843b40837c165ade0c51d3cb09009e6b",
+   "bytes": 61646,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "appearance",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 9,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Appearance h1 + one-line explanation; current theme outlined in accent.",
+    "typography": "Title, helper and tile labels on contract steps.",
+    "density_layout": "Even 6-column swatch grid; expanded Settings subnav pushes Logout to the bottom edge (y=887) and the licence line off-screen.",
+    "color": "Swatch hues are user-data previews; chrome stays neutral.",
+    "visible_affordances": "Selected tile is unambiguous; tiles look clickable.",
+    "coherence": "Same sidebar vocabulary; subnav uses the same selected treatment."
+   },
+   "weighted_sum": 7.95,
+   "total": 8.0,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 8,
+    "shell": 8,
+    "accent_discipline": 9,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.8,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-appearance-mobile-dark.png",
+   "sha256": "92eb95e06398080549d33afe1e537e80cafe329f4166db0b8ef6b394d06a63a9",
+   "bytes": 33284,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "appearance",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 5,
+    "color": 9,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Appearance h1 + one-line explanation; current theme outlined in accent.",
+    "typography": "Title, helper and tile labels on contract steps.",
+    "density_layout": "Nav header breaks: Appearance/Mail chips stack while 'Get the apps' floats right behind a stray divider; 'Mail' chip clipped by header bottom.",
+    "color": "Swatch hues are user-data previews; chrome stays neutral.",
+    "visible_affordances": "Clipped Mail and Scheduled chips.",
+    "coherence": "No wordmark; nav header layout differs from other mobile pages."
+   },
+   "weighted_sum": 6.75,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 4,
+    "accent_discipline": 9,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.6,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-appearance-mobile-light.png",
+   "sha256": "c12d6f9e05bd9bec8ebf330b5572df8fd4fc3e9e823cf465ae6462683fd8a8b6",
+   "bytes": 32390,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "appearance",
+   "cohort": "settings",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 8,
+    "density_layout": 5,
+    "color": 9,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Appearance h1 + one-line explanation; current theme outlined in accent.",
+    "typography": "Title, helper and tile labels on contract steps.",
+    "density_layout": "Nav header breaks: Appearance/Mail chips stack while 'Get the apps' floats right behind a stray divider; 'Mail' chip clipped by header bottom.",
+    "color": "Swatch hues are user-data previews; chrome stays neutral.",
+    "visible_affordances": "Clipped Mail and Scheduled chips.",
+    "coherence": "No wordmark; nav header layout differs from other mobile pages."
+   },
+   "weighted_sum": 6.75,
+   "total": 6.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 4,
+    "accent_discipline": 9,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.6,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-compose-desktop-dark.png",
+   "sha256": "a0b40e2f7af72f06655c874d2c1bd1d4fc62fe4e74e29ddcb8a23d2ab9eea88a",
+   "bytes": 64377,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "compose",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 8,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Send is the single filled primary at bottom-left; Close top-right.",
+    "typography": "TO:/CC:/BCC: are small uppercase mono labels while 'Subject:' is sentence case.",
+    "density_layout": "Header, recipients, editor, security and action bands align on one 24px inset.",
+    "color": "Editor toolbar icons are near-invisible on the dark editor surface.",
+    "visible_affordances": "Toolbar formatting icons barely distinguishable in dark.",
+    "coherence": "Rich-text toolbar is third-party (Quill-style 'Normal' select) styling."
+   },
+   "weighted_sum": 7.25,
+   "total": 7.3,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.0,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-compose-desktop-light.png",
+   "sha256": "e2c04fc2dae44f48d45f09a7db0872d65fa174b78d1594f1490e9e676e302f5d",
+   "bytes": 65685,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "compose",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 8,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Send is the single filled primary at bottom-left; Close top-right.",
+    "typography": "TO:/CC:/BCC: are small uppercase mono labels while 'Subject:' is sentence case.",
+    "density_layout": "Header, recipients, editor, security and action bands align on one 24px inset.",
+    "color": "Accent only on Send; Trash in danger text.",
+    "visible_affordances": "Secondary outline vs tertiary text actions read correctly; destructive Trash set apart at far right.",
+    "coherence": "Rich-text toolbar is third-party (Quill-style 'Normal' select) styling."
+   },
+   "weighted_sum": 7.7,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.0,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-compose-mobile-dark.png",
+   "sha256": "a8d0f266ae17475c5eafec6928758ff1bfc2e5352fa271f36418943f745f14a3",
+   "bytes": 30052,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "compose",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Send is the single filled primary at bottom-left; Close top-right.",
+    "typography": "TO:/CC:/BCC: are small uppercase mono labels while 'Subject:' is sentence case.",
+    "density_layout": "Clear-format icon wraps alone to a second toolbar row; actions wrap to 2 rows.",
+    "color": "Toolbar icons near-invisible on dark.",
+    "visible_affordances": "Dark toolbar icons barely visible; Trash next to Contacts.",
+    "coherence": "Rich-text toolbar is third-party (Quill-style 'Normal' select) styling."
+   },
+   "weighted_sum": 7.05,
+   "total": 7.1,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-compose-mobile-light.png",
+   "sha256": "2513ab4658e38aed629fb000f9fa4ee6fd0a5871499d6b4b2e9a7ac01e367e6a",
+   "bytes": 29506,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "compose",
+   "cohort": "compose",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Send is the single filled primary at bottom-left; Close top-right.",
+    "typography": "TO:/CC:/BCC: are small uppercase mono labels while 'Subject:' is sentence case.",
+    "density_layout": "Clear-format icon wraps alone to a second toolbar row; actions wrap to 2 rows.",
+    "color": "Accent only on Send; Trash in danger text.",
+    "visible_affordances": "All actions visible; Trash sits beside Contacts rather than set apart.",
+    "coherence": "Rich-text toolbar is third-party (Quill-style 'Normal' select) styling."
+   },
+   "weighted_sum": 7.35,
+   "total": 7.4,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-contact-editor-desktop-dark.png",
+   "sha256": "21ffb7a46794e2da73f473decaa84f060d0b793284347de8a9a710a1948c8593",
+   "bytes": 69741,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "contact-editor",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 5,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Add Contact' dialog shows no Save/Cancel or close control within the 900px viewport.",
+    "typography": "Labels above inputs, 13px/600; readable.",
+    "density_layout": "Two-column field grid is even, but one long untitled group; '+ Add email' clipped at dialog bottom.",
+    "color": "Neutral; no accent visible in the dialog.",
+    "visible_affordances": "No visible primary or dismiss; native 'Choose File' shown although helper says save first.",
+    "coherence": "Inputs and pronoun chips match product controls."
+   },
+   "weighted_sum": 6.25,
+   "total": 6.3,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-contact-editor-desktop-light.png",
+   "sha256": "ee7564f813e16ff2442c8fe0fbbba8103b5e17fc92c23b94e77128c41a85563a",
+   "bytes": 70687,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "contact-editor",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 5,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "'Add Contact' dialog shows no Save/Cancel or close control within the 900px viewport.",
+    "typography": "Labels above inputs, 13px/600; readable.",
+    "density_layout": "Two-column field grid is even, but one long untitled group; '+ Add email' clipped at dialog bottom.",
+    "color": "Neutral; no accent visible in the dialog.",
+    "visible_affordances": "No visible primary or dismiss; native 'Choose File' shown although helper says save first.",
+    "coherence": "Inputs and pronoun chips match product controls."
+   },
+   "weighted_sum": 6.25,
+   "total": 6.3,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 7,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-contact-editor-mobile-dark.png",
+   "sha256": "79c38e763e07306295416bba9e38dc84d44f950b8bcabe806f1bdf423b42e77d",
+   "bytes": 25597,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "contact-editor",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 4,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Full-screen sheet; no Save, Cancel, back or close visible in the first 844px.",
+    "typography": "Labels above inputs, 13px/600; readable.",
+    "density_layout": "Single column of 9 fields before the fold, no grouping.",
+    "color": "Neutral; no accent visible in the dialog.",
+    "visible_affordances": "Only exit is off-screen; native file input contradicts helper text.",
+    "coherence": "Inputs and pronoun chips match product controls."
+   },
+   "weighted_sum": 6.1,
+   "total": 6.1,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.4,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-contact-editor-mobile-light.png",
+   "sha256": "e0951fe340ec4eacdf6f608e9943d980d922277303d40707c483b0567f1b22d7",
+   "bytes": 24762,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "contact-editor",
+   "cohort": "contact-editor",
+   "state": "empty",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 4,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Full-screen sheet; no Save, Cancel, back or close visible in the first 844px.",
+    "typography": "Labels above inputs, 13px/600; readable.",
+    "density_layout": "Single column of 9 fields before the fold, no grouping.",
+    "color": "Neutral; no accent visible in the dialog.",
+    "visible_affordances": "Only exit is off-screen; native file input contradicts helper text.",
+    "coherence": "Inputs and pronoun chips match product controls."
+   },
+   "weighted_sum": 6.1,
+   "total": 6.1,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.4,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-contacts-desktop-dark.png",
+   "sha256": "0dc3c71983780aeb37a5098e47817289ecde384b444581d7aba3b0e92aa74252",
+   "bytes": 70644,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "contacts",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Contacts h1 with New Contact as the one filled primary at right.",
+    "typography": "Count repeated: '4 contacts' and 'Address Book 4'.",
+    "density_layout": "'Actions' header at x=1010 does not align with Edit/Delete at x=1123+; typed '>' glyph floats after names.",
+    "color": "Neutral grey initials avatars; accent only on primary and selected nav.",
+    "visible_affordances": "Header outline buttons ~36px vs 40px primary; row Delete not set apart as destructive.",
+    "coherence": "Consistent table/outline-button vocabulary with KyPost inbox."
+   },
+   "weighted_sum": 7.35,
+   "total": 7.4,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-contacts-desktop-light.png",
+   "sha256": "8a4317ccdcf8e4279a00bb51a2584510fc7348a135bc494d35b392f5bd8972fb",
+   "bytes": 69784,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "contacts",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 7,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 7
+   },
+   "observations": {
+    "hierarchy": "Contacts h1 with New Contact as the one filled primary at right.",
+    "typography": "Count repeated: '4 contacts' and 'Address Book 4'.",
+    "density_layout": "'Actions' header at x=1010 does not align with Edit/Delete at x=1123+; typed '>' glyph floats after names.",
+    "color": "Neutral grey initials avatars; accent only on primary and selected nav.",
+    "visible_affordances": "Header outline buttons ~36px vs 40px primary; row Delete not set apart as destructive.",
+    "coherence": "Consistent table/outline-button vocabulary with KyPost inbox."
+   },
+   "weighted_sum": 7.35,
+   "total": 7.4,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-contacts-mobile-dark.png",
+   "sha256": "a530b2e00bce162ddb3efdd895a3419df95a2ff75715bd9f824db46b7a83cd3d",
+   "bytes": 51159,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "contacts",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 5,
+    "color": 8,
+    "visible_affordances": 4,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "New Contact primary wraps to second row of header actions.",
+    "typography": "Names and orgs wrap to 2-3 lines in a narrow column.",
+    "density_layout": "Table clipped at right: email values cut ('priya@example.tes'), search placeholder cut.",
+    "color": "Same restrained palette.",
+    "visible_affordances": "Edit/Delete column is off-screen with no visible scroll cue.",
+    "coherence": "No KyPost wordmark; nav chip header as inbox."
+   },
+   "weighted_sum": 5.8,
+   "total": 5.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-contacts-mobile-light.png",
+   "sha256": "fbaeba621dbeef58733774e85be3e4ce1e5bd158823e7e2ed1b29d4c5ff538e4",
+   "bytes": 49400,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "contacts",
+   "cohort": "contacts-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 6,
+    "typography": 6,
+    "density_layout": 5,
+    "color": 8,
+    "visible_affordances": 4,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "New Contact primary wraps to second row of header actions.",
+    "typography": "Names and orgs wrap to 2-3 lines in a narrow column.",
+    "density_layout": "Table clipped at right: email values cut ('priya@example.tes'), search placeholder cut.",
+    "color": "Same restrained palette.",
+    "visible_affordances": "Edit/Delete column is off-screen with no visible scroll cue.",
+    "coherence": "No KyPost wordmark; nav chip header as inbox."
+   },
+   "weighted_sum": 5.8,
+   "total": 5.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-inbox-desktop-dark.png",
+   "sha256": "63d6724eee74e1f297015703cb8c04254d047639fe6c414add31dc4ae01d754f",
+   "bytes": 66202,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "inbox",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Inbox h1 left, single filled-accent New Email in sidebar; search row reads as secondary.",
+    "typography": "One sans family, unread rows bold vs read regular; column headers 13px muted.",
+    "density_layout": "4-row sparse list scales cleanly, but 'Updated Just Now' floats centered at viewport bottom and the selected Inbox highlight stops at x=175 to make room for '+'.",
+    "color": "Accent limited to New Email, selected rail and Uncategorized chip tint.",
+    "visible_affordances": "Native 13px checkboxes are small targets; selected-row highlight truncated by add-folder '+'.",
+    "coherence": "Sidebar, rows and outline buttons share one vocabulary."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-inbox-desktop-light.png",
+   "sha256": "fc5306ae3256121b65996e6a14d16bf30c03872218c569ae63e97cee6606a15a",
+   "bytes": 65201,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "inbox",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 7,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Inbox h1 left, single filled-accent New Email in sidebar; search row reads as secondary.",
+    "typography": "One sans family, unread rows bold vs read regular; column headers 13px muted.",
+    "density_layout": "4-row sparse list scales cleanly, but 'Updated Just Now' floats centered at viewport bottom and the selected Inbox highlight stops at x=175 to make room for '+'.",
+    "color": "Accent limited to New Email, selected rail and Uncategorized chip tint.",
+    "visible_affordances": "Native 13px checkboxes are small targets; selected-row highlight truncated by add-folder '+'.",
+    "coherence": "Sidebar, rows and outline buttons share one vocabulary."
+   },
+   "weighted_sum": 7.65,
+   "total": 7.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-inbox-mobile-dark.png",
+   "sha256": "558d641386835627ddccaab1f64c2522a7f8546bb0a37e525a7aa4d7825f9888",
+   "bytes": 45778,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "inbox",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Inbox h1 and New Email clear, but 183px nav header pushes content down.",
+    "typography": "Sender+address wraps over 2 lines in 13px meta.",
+    "density_layout": "Nav chips wrap into 3 rows (folder strip, Contacts, Logout each alone); 'Scheduled' chip clipped at right edge.",
+    "color": "Accent only on New Email and selected chip underline.",
+    "visible_affordances": "Clipped Scheduled chip, Logout rendered as a nav chip, small native checkboxes.",
+    "coherence": "No KyPost wordmark on mobile; labels differ from desktop (Sent vs Sent Items, Junk appears)."
+   },
+   "weighted_sum": 6.65,
+   "total": 6.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-inbox-mobile-light.png",
+   "sha256": "a3e18edd13a0f099215e0546f7c1167063476a1ade94eff25c3bc27aad6c6dcb",
+   "bytes": 44896,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "inbox",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Inbox h1 and New Email clear, but 183px nav header pushes content down.",
+    "typography": "Sender+address wraps over 2 lines in 13px meta.",
+    "density_layout": "Nav chips wrap into 3 rows (folder strip, Contacts, Logout each alone); 'Scheduled' chip clipped at right edge.",
+    "color": "Accent only on New Email and selected chip underline.",
+    "visible_affordances": "Clipped Scheduled chip, Logout rendered as a nav chip, small native checkboxes.",
+    "coherence": "No KyPost wordmark on mobile; labels differ from desktop (Sent vs Sent Items, Junk appears)."
+   },
+   "weighted_sum": 6.65,
+   "total": 6.7,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-inbox-selection-desktop-dark.png",
+   "sha256": "880a6b30356ee94c31d689bd1fe760bb7c6d272ad18f3ccdeb1034e4b9d00b8e",
+   "bytes": 71649,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "inbox-selection",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Contextual toolbar (Delete/Archive/Spam/Snooze/Read/Print) appears beside the h1 only with a selection.",
+    "typography": "One sans family, unread rows bold vs read regular; column headers 13px muted.",
+    "density_layout": "4-row sparse list scales cleanly, but 'Updated Just Now' floats centered at viewport bottom and the selected Inbox highlight stops at x=175 to make room for '+'.",
+    "color": "Accent limited to New Email, selected rail and Uncategorized chip tint.",
+    "visible_affordances": "Checked rows get accent-soft fill plus accent checkbox; Delete in danger text, others quiet icon+label.",
+    "coherence": "Sidebar, rows and outline buttons share one vocabulary."
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-inbox-selection-desktop-light.png",
+   "sha256": "6000566389c10ac0527a4598aec2a90307ac67ced2eea20a93b0e43fb4d3c478",
+   "bytes": 70982,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "inbox-selection",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 8,
+    "typography": 8,
+    "density_layout": 7,
+    "color": 8,
+    "visible_affordances": 8,
+    "coherence": 8
+   },
+   "observations": {
+    "hierarchy": "Contextual toolbar (Delete/Archive/Spam/Snooze/Read/Print) appears beside the h1 only with a selection.",
+    "typography": "One sans family, unread rows bold vs read regular; column headers 13px muted.",
+    "density_layout": "4-row sparse list scales cleanly, but 'Updated Just Now' floats centered at viewport bottom and the selected Inbox highlight stops at x=175 to make room for '+'.",
+    "color": "Accent limited to New Email, selected rail and Uncategorized chip tint.",
+    "visible_affordances": "Checked rows get accent-soft fill plus accent checkbox; Delete in danger text, others quiet icon+label.",
+    "coherence": "Sidebar, rows and outline buttons share one vocabulary."
+   },
+   "weighted_sum": 7.8,
+   "total": 7.8,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 7,
+    "shell": 8,
+    "accent_discipline": 8,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 7.4,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-inbox-selection-mobile-dark.png",
+   "sha256": "827b74d471a79da8251ec367972907ed40be6ac5056f98ecd41751a32dd3ee6d",
+   "bytes": 47886,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "inbox-selection",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 5,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Inbox h1 and New Email clear, but 183px nav header pushes content down.",
+    "typography": "Sender+address wraps over 2 lines in 13px meta.",
+    "density_layout": "Nav chips wrap into 3 rows (folder strip, Contacts, Logout each alone); 'Scheduled' chip clipped at right edge.",
+    "color": "Accent only on New Email and selected chip underline.",
+    "visible_affordances": "Mobile selection toolbar is six unlabeled icons (meaning hidden), plus clipped Scheduled chip and small checkboxes.",
+    "coherence": "No KyPost wordmark on mobile; labels differ from desktop (Sent vs Sent Items, Junk appears)."
+   },
+   "weighted_sum": 6.5,
+   "total": 6.5,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-inbox-selection-mobile-light.png",
+   "sha256": "8d1848dfc0d69f34a0ca0f2ec44fb3760b1b25ee7f75a67552d85fa58e21bce8",
+   "bytes": 47146,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "inbox-selection",
+   "cohort": "mail-list",
+   "state": "sparse",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [],
+   "scores": {
+    "hierarchy": 7,
+    "typography": 7,
+    "density_layout": 6,
+    "color": 8,
+    "visible_affordances": 5,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Inbox h1 and New Email clear, but 183px nav header pushes content down.",
+    "typography": "Sender+address wraps over 2 lines in 13px meta.",
+    "density_layout": "Nav chips wrap into 3 rows (folder strip, Contacts, Logout each alone); 'Scheduled' chip clipped at right edge.",
+    "color": "Accent only on New Email and selected chip underline.",
+    "visible_affordances": "Mobile selection toolbar is six unlabeled icons (meaning hidden), plus clipped Scheduled chip and small checkboxes.",
+    "coherence": "No KyPost wordmark on mobile; labels differ from desktop (Sent vs Sent Items, Junk appears)."
+   },
+   "weighted_sum": 6.5,
+   "total": 6.5,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 4,
+    "accent_discipline": 8,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 6.2,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-reader-desktop-dark.png",
+   "sha256": "0d8be2e52cabe3bbf12da6ecab1559fb9f73e73512ee3736dd29106df5c85720",
+   "bytes": 60779,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "reader",
+   "cohort": "mail-read",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Generic 'Email Details' title instead of the subject; Reply primary sits on the second row after 6 secondary buttons.",
+    "typography": "'Subject:'/'Sender:' bold-colon label pairs; plain-text body in monospace.",
+    "density_layout": "11 actions wrap to two rows; body box fills ~450px mostly empty.",
+    "color": "Accent on Reply plus decorative accent 'View raw email' link.",
+    "visible_affordances": "Buttons read as buttons; danger Delete outlined red.",
+    "coherence": "Mixed outline buttons with text-only 'Show Remote Content'/'Close' in the same row; 'Status: read' debug-style line."
+   },
+   "weighted_sum": 6.1,
+   "total": 6.1,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 7,
+    "accent_discipline": 6,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 6.6,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-reader-desktop-light.png",
+   "sha256": "3fbf3b330623a705b9c6cf519d1d35a87799c6b910da04403bf3c54c45b747b3",
+   "bytes": 61762,
+   "width": 1280,
+   "height": 900,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "reader",
+   "cohort": "mail-read",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "desktop 1280x900 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 6,
+    "density_layout": 6,
+    "color": 7,
+    "visible_affordances": 7,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Generic 'Email Details' title instead of the subject; Reply primary sits on the second row after 6 secondary buttons.",
+    "typography": "'Subject:'/'Sender:' bold-colon label pairs; plain-text body in monospace.",
+    "density_layout": "11 actions wrap to two rows; body box fills ~450px mostly empty.",
+    "color": "Accent on Reply plus decorative accent 'View raw email' link.",
+    "visible_affordances": "Buttons read as buttons; danger Delete outlined red.",
+    "coherence": "Mixed outline buttons with text-only 'Show Remote Content'/'Close' in the same row; 'Status: read' debug-style line."
+   },
+   "weighted_sum": 6.1,
+   "total": 6.1,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 6,
+    "shell": 7,
+    "accent_discipline": 6,
+    "suite_cohesion": 6
+   },
+   "ky_fit": 6.6,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-reader-mobile-dark.png",
+   "sha256": "06d196add160aa4c5deec0fcf37e93e6b0e86c32de194cf64866b476f6e94c97",
+   "bytes": 45323,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "reader",
+   "cohort": "mail-read",
+   "state": "populated",
+   "theme": "busnes-dark",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 5,
+    "density_layout": 5,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Reply is in the third of four button rows; Close alone on its own line.",
+    "typography": "Monospace body preserves hard wraps, producing ragged 'so the' line on 390px.",
+    "density_layout": "Four rows of actions take the first 200px; no brand or back affordance.",
+    "color": "Accent on Reply plus decorative accent 'View raw email' link.",
+    "visible_affordances": "Buttons read as buttons; danger Delete outlined red.",
+    "coherence": "Same mixed button vocabulary; mobile light opened a different message (Charlie Demo, 10/26/2026) than the other three captures."
+   },
+   "weighted_sum": 5.6,
+   "total": 5.6,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 5,
+    "shell": 4,
+    "accent_discipline": 6,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 5.6,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown."
+  },
+  {
+   "file": "kypost-03-after-reader-mobile-light.png",
+   "sha256": "143f7bb17272723fce3e918822c6b2c229a18d9853b7d9ee179018f699905a27",
+   "bytes": 41636,
+   "width": 390,
+   "height": 844,
+   "filename_matches_content": true,
+   "duplicate_of": null,
+   "observed_product": "KyPost",
+   "observed_surface": "reader",
+   "cohort": "mail-read",
+   "state": "populated",
+   "theme": "busnes-light",
+   "viewport": "mobile 390x844 @1x",
+   "artifacts": [
+    "modal dialog over dimmed page"
+   ],
+   "scores": {
+    "hierarchy": 5,
+    "typography": 5,
+    "density_layout": 5,
+    "color": 7,
+    "visible_affordances": 6,
+    "coherence": 6
+   },
+   "observations": {
+    "hierarchy": "Reply is in the third of four button rows; Close alone on its own line.",
+    "typography": "Monospace body preserves hard wraps, producing ragged 'so the' line on 390px.",
+    "density_layout": "Four rows of actions take the first 200px; no brand or back affordance.",
+    "color": "Accent on Reply plus decorative accent 'View raw email' link.",
+    "visible_affordances": "Buttons read as buttons; danger Delete outlined red.",
+    "coherence": "Same mixed button vocabulary; mobile light opened a different message (Charlie Demo, 10/26/2026) than the other three captures."
+   },
+   "weighted_sum": 5.6,
+   "total": 5.6,
+   "ky_fit_scores": {
+    "palette_tokens": 8,
+    "type_geometry": 5,
+    "shell": 4,
+    "accent_discipline": 6,
+    "suite_cohesion": 5
+   },
+   "ky_fit": 5.6,
+   "confidence": "high",
+   "capture": "3037caf8747b57c504cfee50c54446af8db97076 + uncommitted stage-03 source",
+   "caveat": "Static capture: interaction, keyboard, screen-reader behaviour and computed contrast are not shown. Shows a different message (Charlie Demo, 10/26/2026) than the other reader captures; fixture drift."
+  }
+ ],
+ "cohort_aggregates": {
+  "kymessages": {
+   "admin-console": {
+    "n": 32,
+    "mean": 6.78,
+    "min": 5.6,
+    "max": 7.7,
+    "min_file": "kymessages-00-after-audit-mobile-dark.png",
+    "ky_fit_mean": 7.59,
+    "ky_fit_min": 6.8,
+    "by_viewport": {
+     "desktop": 6.81,
+     "mobile": 6.76
+    },
+    "by_theme": {
+     "light": 6.75,
+     "dark": 6.82
+    },
+    "surfaces": [
+     "agents",
+     "audit",
+     "backup",
+     "health",
+     "overview",
+     "rooms",
+     "scim",
+     "users"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   },
+   "auth": {
+    "n": 8,
+    "mean": 7.93,
+    "min": 7.7,
+    "max": 8.2,
+    "min_file": "kymessages-00-after-change-password-desktop-dark.png",
+    "ky_fit_mean": 7.6,
+    "ky_fit_min": 7.2,
+    "by_viewport": {
+     "desktop": 7.93,
+     "mobile": 7.93
+    },
+    "by_theme": {
+     "light": 7.93,
+     "dark": 7.93
+    },
+    "surfaces": [
+     "change-password",
+     "login"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   },
+   "settings": {
+    "n": 4,
+    "mean": 6.79,
+    "min": 6.7,
+    "max": 7.0,
+    "min_file": "kymessages-00-after-settings-mobile-dark.png",
+    "ky_fit_mean": 7.25,
+    "ky_fit_min": 7.0,
+    "by_viewport": {
+     "desktop": 6.93,
+     "mobile": 6.65
+    },
+    "by_theme": {
+     "light": 6.75,
+     "dark": 6.83
+    },
+    "surfaces": [
+     "settings"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   }
+  },
+  "kypost": {
+   "compose": {
+    "n": 4,
+    "mean": 7.34,
+    "min": 7.1,
+    "max": 7.7,
+    "min_file": "kypost-03-after-compose-mobile-dark.png",
+    "ky_fit_mean": 6.6,
+    "ky_fit_min": 6.2,
+    "by_viewport": {
+     "desktop": 7.48,
+     "mobile": 7.2
+    },
+    "by_theme": {
+     "light": 7.53,
+     "dark": 7.15
+    },
+    "surfaces": [
+     "compose"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   },
+   "contact-editor": {
+    "n": 4,
+    "mean": 6.18,
+    "min": 6.1,
+    "max": 6.3,
+    "min_file": "kypost-03-after-contact-editor-mobile-dark.png",
+    "ky_fit_mean": 6.8,
+    "ky_fit_min": 6.4,
+    "by_viewport": {
+     "desktop": 6.25,
+     "mobile": 6.1
+    },
+    "by_theme": {
+     "light": 6.18,
+     "dark": 6.18
+    },
+    "surfaces": [
+     "contact-editor"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   },
+   "contacts-list": {
+    "n": 4,
+    "mean": 6.58,
+    "min": 5.8,
+    "max": 7.4,
+    "min_file": "kypost-03-after-contacts-mobile-dark.png",
+    "ky_fit_mean": 6.8,
+    "ky_fit_min": 6.2,
+    "by_viewport": {
+     "desktop": 7.35,
+     "mobile": 5.8
+    },
+    "by_theme": {
+     "light": 6.58,
+     "dark": 6.58
+    },
+    "surfaces": [
+     "contacts"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   },
+   "mail-list": {
+    "n": 8,
+    "mean": 7.15,
+    "min": 6.5,
+    "max": 7.8,
+    "min_file": "kypost-03-after-inbox-selection-mobile-dark.png",
+    "ky_fit_mean": 6.8,
+    "ky_fit_min": 6.2,
+    "by_viewport": {
+     "desktop": 7.73,
+     "mobile": 6.58
+    },
+    "by_theme": {
+     "light": 7.15,
+     "dark": 7.15
+    },
+    "surfaces": [
+     "inbox",
+     "inbox-selection"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   },
+   "mail-read": {
+    "n": 4,
+    "mean": 5.85,
+    "min": 5.6,
+    "max": 6.1,
+    "min_file": "kypost-03-after-reader-mobile-dark.png",
+    "ky_fit_mean": 6.1,
+    "ky_fit_min": 5.6,
+    "by_viewport": {
+     "desktop": 6.1,
+     "mobile": 5.6
+    },
+    "by_theme": {
+     "light": 5.85,
+     "dark": 5.85
+    },
+    "surfaces": [
+     "reader"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   },
+   "settings": {
+    "n": 4,
+    "mean": 7.35,
+    "min": 6.8,
+    "max": 8.0,
+    "min_file": "kypost-03-after-appearance-mobile-dark.png",
+    "ky_fit_mean": 7.2,
+    "ky_fit_min": 6.6,
+    "by_viewport": {
+     "desktop": 7.95,
+     "mobile": 6.75
+    },
+    "by_theme": {
+     "light": 7.35,
+     "dark": 7.35
+    },
+    "surfaces": [
+     "appearance"
+    ],
+    "matched": "within-product only; no competitor in this source set"
+   }
+  }
+ },
+ "surface_aggregates": {
+  "kymessages": {
+   "agents": {
+    "n": 4,
+    "mean": 6.91,
+    "min": 6.8,
+    "ky_fit_mean": 7.85,
+    "cohort": "admin-console"
+   },
+   "audit": {
+    "n": 4,
+    "mean": 6.16,
+    "min": 5.6,
+    "ky_fit_mean": 7.35,
+    "cohort": "admin-console"
+   },
+   "backup": {
+    "n": 4,
+    "mean": 6.11,
+    "min": 6.0,
+    "ky_fit_mean": 7.05,
+    "cohort": "admin-console"
+   },
+   "change-password": {
+    "n": 4,
+    "mean": 7.65,
+    "min": 7.7,
+    "ky_fit_mean": 7.2,
+    "cohort": "auth"
+   },
+   "health": {
+    "n": 4,
+    "mean": 6.66,
+    "min": 6.6,
+    "ky_fit_mean": 7.45,
+    "cohort": "admin-console"
+   },
+   "login": {
+    "n": 4,
+    "mean": 8.2,
+    "min": 8.2,
+    "ky_fit_mean": 8.0,
+    "cohort": "auth"
+   },
+   "overview": {
+    "n": 4,
+    "mean": 7.49,
+    "min": 7.3,
+    "ky_fit_mean": 7.85,
+    "cohort": "admin-console"
+   },
+   "rooms": {
+    "n": 4,
+    "mean": 6.91,
+    "min": 6.8,
+    "ky_fit_mean": 7.85,
+    "cohort": "admin-console"
+   },
+   "scim": {
+    "n": 4,
+    "mean": 7.11,
+    "min": 7.0,
+    "ky_fit_mean": 7.45,
+    "cohort": "admin-console"
+   },
+   "settings": {
+    "n": 4,
+    "mean": 6.79,
+    "min": 6.7,
+    "ky_fit_mean": 7.25,
+    "cohort": "settings"
+   },
+   "users": {
+    "n": 4,
+    "mean": 6.91,
+    "min": 6.8,
+    "ky_fit_mean": 7.85,
+    "cohort": "admin-console"
+   }
+  },
+  "kypost": {
+   "appearance": {
+    "n": 4,
+    "mean": 7.35,
+    "min": 6.8,
+    "ky_fit_mean": 7.2,
+    "cohort": "settings"
+   },
+   "compose": {
+    "n": 4,
+    "mean": 7.34,
+    "min": 7.1,
+    "ky_fit_mean": 6.6,
+    "cohort": "compose"
+   },
+   "contact-editor": {
+    "n": 4,
+    "mean": 6.18,
+    "min": 6.1,
+    "ky_fit_mean": 6.8,
+    "cohort": "contact-editor"
+   },
+   "contacts": {
+    "n": 4,
+    "mean": 6.58,
+    "min": 5.8,
+    "ky_fit_mean": 6.8,
+    "cohort": "contacts-list"
+   },
+   "inbox": {
+    "n": 4,
+    "mean": 7.15,
+    "min": 6.7,
+    "ky_fit_mean": 6.8,
+    "cohort": "mail-list"
+   },
+   "inbox-selection": {
+    "n": 4,
+    "mean": 7.15,
+    "min": 6.5,
+    "ky_fit_mean": 6.8,
+    "cohort": "mail-list"
+   },
+   "reader": {
+    "n": 4,
+    "mean": 5.85,
+    "min": 5.6,
+    "ky_fit_mean": 6.1,
+    "cohort": "mail-read"
+   }
+  }
+ },
+ "product_visual_summary": {
+  "kymessages": {
+   "label": "within-product visual summary, equal cohort weight; NOT a ranking and NOT a product certification",
+   "cohorts": 3,
+   "equal_cohort_weight_mean": 7.17,
+   "lowest_cohort_mean": 6.78,
+   "lowest_file_total": 5.6,
+   "files_at_or_above_9": 0,
+   "files": 44,
+   "ky_fit_mean": 7.56,
+   "ky_fit_min": 6.8,
+   "meets_9_quality_every_cohort": false
+  },
+  "kypost": {
+   "label": "within-product visual summary, equal cohort weight; NOT a ranking and NOT a product certification",
+   "cohorts": 6,
+   "equal_cohort_weight_mean": 6.74,
+   "lowest_cohort_mean": 5.85,
+   "lowest_file_total": 5.6,
+   "files_at_or_above_9": 0,
+   "files": 28,
+   "ky_fit_mean": 6.73,
+   "ky_fit_min": 5.6,
+   "meets_9_quality_every_cohort": false
+  }
+ },
+ "cohort_rankings": "Not published: this source set holds only KyPost and KyMessages captures; no matched competitor files, so no cross-product or cross-provider ranking.",
+ "drift": "Not applicable: no earlier scores exist for these implementation images. reranked-review.md scored different (user-supplied, pre-redesign) images; comparison is context only.",
+ "coverage_not_applicable": {
+  "kypost": {
+   "mail-read": "scored",
+   "member-home": "not applicable",
+   "chat": "not applicable",
+   "admin-console": "N/A: admin surfaces (Server, Users, Quarantine, Security) not captured",
+   "settings (non-Appearance)": "N/A: only Appearance captured"
+  },
+  "kymessages": {
+   "member-home": "N/A: not captured (needs KyIdentity SSO member sign-in; harness has no console SSO client)",
+   "chat": "N/A: stock Element not captured",
+   "admin-console Matrix-on tables/dialogs": "N/A: Matrix not configured in fixture"
+  }
+ },
+ "gates": {
+  "kypost": {
+   "keyboard": {
+    "status": "untested",
+    "evidence": "kypost-implementation.md: desktop nav tab order and compose Enter/Escape focus return recorded at 1280x900 Busnes Light/Dark (checks.mjs). Not every task path (reader, contact editor, mobile) recorded. Not executed by this reviewer."
+   },
+   "focus": {
+    "status": "untested",
+    "evidence": "Recorded >=2px outline on desktop nav stops and toolbar buttons only; dialogs and mobile not recorded."
+   },
+   "contrast": {
+    "status": "untested",
+    "evidence": "Recorded selected pairs (nav, labels, field border 3.63/4.77, danger) in Busnes Light/Dark + 3 named presets; not every element or every shipped named theme. Dark Quill toolbar icons look near-invisible in kypost-03-after-compose-*-dark.png (visual concern, unmeasured)."
+   },
+   "states": {
+    "status": "fail",
+    "evidence": "No loading or error state captured for any task view; validation errors not captured."
+   },
+   "responsive": {
+    "status": "untested",
+    "evidence": "overflowX 0 recorded at 390 and 1280 (kypost-03-after.json), but kypost-03-after-contacts-mobile-*.png show Edit/Delete column and emails clipped with no visible scroll cue, and nav chips clipped (Scheduled, Mail). Reachability unproven."
+   }
+  },
+  "kymessages": {
+   "keyboard": {
+    "status": "untested",
+    "evidence": "kymessages-00-after-checks.json records a Tab focus walk (<=80 stops) per state; it proves indicators, not task completion, order or dialog focus return. Matrix-on dialogs not captured."
+   },
+   "focus": {
+    "status": "untested",
+    "evidence": "Recorded: no focus stop without an indicator across 44 measured Busnes states; named themes and Matrix-on/2FA/MemberHome states not measured."
+   },
+   "contrast": {
+    "status": "untested",
+    "evidence": "Recorded text min 4.99 light / 5.11 dark, control borders >=3.38 / 4.78, Busnes only; named themes not measured."
+   },
+   "states": {
+    "status": "fail",
+    "evidence": "Empty states captured (Matrix off); loading and error states not captured for any task view."
+   },
+   "responsive": {
+    "status": "untested",
+    "evidence": "overflow 0 recorded; kymessages-00-after-audit-mobile-*.png hide Target/Outcome/Details/IP columns with no scroll cue. Reachability unproven."
+   }
+  }
+ },
+ "checks_recorded": {
+  "kypost": "Recorded (not executed by reviewer): npm test 1185/1185 (one earlier flaky App.mailboxes run), typecheck clean, lint 0 errors/18 warnings (= HEAD), build pass, ky-ui vendor check pass, npm audit 0. NOT run: Go vet/golangci-lint/govulncheck/go test -race, container build, shellcheck, compose checks, worker typechecks.",
+  "kymessages": "Recorded (not executed by reviewer): vendor check pass, npm test 153/153, tsc -b + build pass, npm audit 0, make ci pass (smoke rerun on port 18097 after port clash, 85 checks), test:browser 7/7. NOT run: make matrix-acceptance, make test-postgres."
+ },
+ "unscored": [
+  {
+   "file": "kymessages-00-after-backup-desktop-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-backup-desktop-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-backup-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-backup-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-health-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-health-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-settings-desktop-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-settings-desktop-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-settings-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-00-after-settings-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-desktop-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-desktop-dark.png",
+   "reason": "same-build recapture (identical patch and binary) of the same surface/theme/viewport; differs only in the measured region; scored once with its representative"
+  },
+  {
+   "file": "kymessages-03-after-backup-desktop-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-desktop-light.png",
+   "reason": "same-build recapture (identical patch and binary) of the same surface/theme/viewport; differs only in the measured region; scored once with its representative"
+  },
+  {
+   "file": "kymessages-03-after-backup-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-mobile-dark.png",
+   "reason": "same-build recapture (identical patch and binary) of the same surface/theme/viewport; differs only in the measured region; scored once with its representative"
+  },
+  {
+   "file": "kymessages-03-after-backup-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-backup-mobile-light.png",
+   "reason": "same-build recapture (identical patch and binary) of the same surface/theme/viewport; differs only in the measured region; scored once with its representative"
+  },
+  {
+   "file": "kymessages-03-after-change-password-desktop-dark.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-change-password-desktop-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-change-password-desktop-light.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-change-password-desktop-light.png"
+  },
+  {
+   "file": "kymessages-03-after-change-password-mobile-dark.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-change-password-mobile-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-change-password-mobile-light.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-change-password-mobile-light.png"
+  },
+  {
+   "file": "kymessages-03-after-login-desktop-dark.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-login-desktop-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-login-desktop-light.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-login-desktop-light.png"
+  },
+  {
+   "file": "kymessages-03-after-login-mobile-dark.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-login-mobile-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-login-mobile-light.png",
+   "reason": "near duplicate; inherits scores of kymessages-00-after-login-mobile-light.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-desktop-dark-full.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-settings-desktop-dark-full.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-desktop-dark.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-settings-desktop-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-desktop-light-full.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-settings-desktop-light-full.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-desktop-light.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-settings-desktop-light.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-mobile-dark-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-settings-mobile-dark.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-settings-mobile-dark.png"
+  },
+  {
+   "file": "kymessages-03-after-settings-mobile-light-full.png",
+   "reason": "full-page variant of the same surface/theme/viewport; consulted for below-fold content and scored once with its viewport representative. Sticky sidebar/header renders mid-page (full-page screenshot artifact)."
+  },
+  {
+   "file": "kymessages-03-after-settings-mobile-light.png",
+   "reason": "exact duplicate; inherits scores of kymessages-00-after-settings-mobile-light.png"
+  }
+ ],
+ "checks": {
+  "inventory_matches_files": true,
+  "totals_recomputed": true,
+  "representatives": 72,
+  "every_dimension_observed": true
+ }
+}

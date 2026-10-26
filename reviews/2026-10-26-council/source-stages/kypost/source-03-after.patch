@@ -1,0 +1,2200 @@
+diff --git a/frontend/src/App.lazy.test.tsx b/frontend/src/App.lazy.test.tsx
+index 1b417164..187a62a3 100644
+--- a/frontend/src/App.lazy.test.tsx
++++ b/frontend/src/App.lazy.test.tsx
+@@ -63,7 +63,7 @@ describe("lazy loading", () => {
+     renderAt("/settings/appearance");
+     // The route chunk loads under whatever load the rest of the suite puts on
+     // the worker; the default 1 s wait was flaky there.
+-    expect(await screen.findByRole("heading", { level: 2, name: "Appearance" }, { timeout: 5000 })).toBeTruthy();
++    expect(await screen.findByRole("heading", { level: 1, name: "Appearance" }, { timeout: 5000 })).toBeTruthy();
+   });
+ 
+   it("builds the compose editor once the Quill chunk arrives", async () => {
+diff --git a/frontend/src/App.tsx b/frontend/src/App.tsx
+index 6be49291..5d5af51d 100644
+--- a/frontend/src/App.tsx
++++ b/frontend/src/App.tsx
+@@ -25,7 +25,14 @@ import type {
+   DragMessagePayload
+ } from "./app/types";
+ import { clearDraftSnapshot } from "./app/draftAutosave";
+-import { mailboxLabel, standardMailboxKind, standardMailboxPath } from "./app/mailboxKind";
++import { mailboxLabel, standardMailboxKind, standardMailboxPath, type StandardMailboxKind } from "./app/mailboxKind";
++import {
++  ArchiveIcon, ChevronIcon, ClockIcon, ContactsIcon, DraftIcon, FolderIcon, InboxIcon, LogoutIcon, PlusIcon, SendIcon, SettingsIcon, TrashIcon, WarningIcon
++} from "./pages/read/icons";
++
++const FOLDER_ICONS: Record<StandardMailboxKind | "custom", () => ReactElement> = {
++  inbox: InboxIcon, drafts: DraftIcon, junk: WarningIcon, sent: SendIcon, trash: TrashIcon, custom: FolderIcon
++};
+ 
+ // Every page below is a separate chunk. Only LoginPage is eager: it is what an
+ // unauthenticated visitor lands on, so putting it behind a second round trip
+@@ -518,7 +525,7 @@ export function App() {
+     <div className="shell">
+       <aside className="sidebar">
+         <div className="sidebar-logo">
+-          <img className="sidebar-app-logo" src="/apple-touch-icon.png" alt="" width="48" height="48" />
++          <img className="sidebar-app-logo" src="/apple-touch-icon.png" alt="" width="28" height="28" />
+           <span className="sidebar-wordmark">KyPost</span>
+         </div>
+         <button type="button" className="new-email-button" onClick={compose.openComposeWindow}>
+@@ -598,18 +605,21 @@ export function App() {
+                 void moveDraggedMessages("INBOX", event);
+               }}
+             >
++              <InboxIcon />
+               Inbox
+             </Link>
+             <button
+               type="button"
+               className="inbox-expand-button"
+               aria-expanded={inboxCreateOpen}
++              aria-label="New folder under Inbox"
++              title="New folder under Inbox"
+               onClick={() => {
+                 setInboxCreateOpen((open) => !open);
+                 setCreateFolderError("");
+               }}
+             >
+-              +
++              <PlusIcon />
+             </button>
+           </div>
+           <div className="nav-group">
+@@ -637,8 +647,11 @@ export function App() {
+             {deleteFolderError ? <span className="sidebar-folder-error">{deleteFolderError}</span> : null}
+             {mailboxFoldersLoading ? <span>Loading folders...</span> : null}
+             {!mailboxFoldersLoading
+-              ? mailboxFolders.map((folder) => (
+-                  <div key={folder.path} className="sidebar-folder-row" data-folder-kind={standardMailboxKind(folder)}>
++              ? mailboxFolders.map((folder) => {
++                  const kind = standardMailboxKind(folder);
++                  const KindIcon = FOLDER_ICONS[kind];
++                  return (
++                  <div key={folder.path} className="sidebar-folder-row" data-folder-kind={kind}>
+                     <Link
+                       to={`/read?mailbox=${encodeURIComponent(folder.path)}${boxQuery}`}
+                       className={[
+@@ -654,6 +667,7 @@ export function App() {
+                         void moveDraggedMessages(folder.path, event);
+                       }}
+                     >
++                      <KindIcon />
+                       {mailboxLabel(folder.path)}
+                     </Link>
+                     {folder.deletable ? (
+@@ -688,7 +702,8 @@ export function App() {
+                       </div>
+                     ) : null}
+                   </div>
+-                ))
++                  );
++                })
+               : null}
+           </div>
+ 
+@@ -698,7 +713,9 @@ export function App() {
+             aria-expanded={archiveOpen}
+             onClick={() => setArchiveOpen((open) => !open)}
+           >
+-            Archive {archiveOpen ? "-" : "+"}
++            <ArchiveIcon />
++            Archive
++            <ChevronIcon />
+           </button>
+ 
+           {archiveOpen ? (
+@@ -723,6 +740,7 @@ export function App() {
+                         void moveDraggedMessages(folder.path, event);
+                       }}
+                     >
++                      <FolderIcon />
+                       {mailboxLabel(folder.path)}
+                     </Link>
+                   ))
+@@ -734,12 +752,14 @@ export function App() {
+             to="/scheduled"
+             className={["nav-heading scheduled-heading", location.pathname === "/scheduled" ? "ky-nav-item sidebar-link-active" : "ky-nav-item"].join(" ")}
+           >
++            <ClockIcon />
+             Scheduled
+           </Link>
+           <Link
+             to="/contacts"
+             className={["nav-heading", location.pathname === "/contacts" ? "ky-nav-item sidebar-link-active" : "ky-nav-item"].filter(Boolean).join(" ")}
+           >
++            <ContactsIcon />
+             Contacts
+           </Link>
+ 
+@@ -750,7 +770,9 @@ export function App() {
+             aria-controls="settings-nav-group"
+             onClick={() => setSettingsOpen((open) => !open)}
+           >
+-            Settings {settingsOpen ? "-" : "+"}
++            <SettingsIcon />
++            Settings
++            <ChevronIcon />
+           </button>
+ 
+           {settingsOpen ? (
+@@ -774,12 +796,19 @@ export function App() {
+               </div>
+             </div>
+           ) : null}
+-          {auth.authenticated ? (
+-            <button type="button" className="nav-link-button nav-heading" onClick={logout}>
++        </nav>
++        {auth.authenticated ? (
++          <div className="sidebar-account">
++            <div className="sidebar-account-copy">
++              <span className="sidebar-account-name">{auth.username}</span>
++              {isAdmin ? <span className="sidebar-account-role">Admin</span> : null}
++            </div>
++            <button type="button" className="nav-link-button" onClick={logout}>
++              <LogoutIcon />
+               Logout
+             </button>
+-          ) : null}
+-        </nav>
++          </div>
++        ) : null}
+         <div className="sidebar-footer">
+           <p>
+             <button type="button" className="license-link" onClick={() => setLicenseOpen(true)}>
+diff --git a/frontend/src/admin/sections/ApplicationRuntime.tsx b/frontend/src/admin/sections/ApplicationRuntime.tsx
+index 66a591a4..2288d2cc 100644
+--- a/frontend/src/admin/sections/ApplicationRuntime.tsx
++++ b/frontend/src/admin/sections/ApplicationRuntime.tsx
+@@ -195,7 +195,7 @@ export function ApplicationRuntime() {
+       </div>
+       <div className="config-actions">
+         <button type="button" onClick={saveTheme}>Apply Theme</button>
+-        <button type="button" onClick={saveConfig}>Save Configuration</button>
++        <button type="button" className="btn-primary" onClick={saveConfig}>Save Configuration</button>
+       </div>
+       <div className="config-card" style={{ marginTop: 16 }}>
+         <h3>KyPost Updates</h3>
+diff --git a/frontend/src/admin/sections/AssignMailbox.tsx b/frontend/src/admin/sections/AssignMailbox.tsx
+index 145cf862..7d3fc849 100644
+--- a/frontend/src/admin/sections/AssignMailbox.tsx
++++ b/frontend/src/admin/sections/AssignMailbox.tsx
+@@ -104,7 +104,7 @@ export function AssignMailbox({ user, unlocked, takeConfirm, onClose }: {
+         </label>
+       </div>
+       <div className="config-actions">
+-        <button type="button" disabled={busy || !unlocked} onClick={() => void run("Mailbox saved.", (c) => putUserIMAPConfig(c, user.id, imap), refreshImap)}>Save Mailbox</button>
++        <button type="button" className="btn-primary" disabled={busy || !unlocked} onClick={() => void run("Mailbox saved.", (c) => putUserIMAPConfig(c, user.id, imap), refreshImap)}>Save Mailbox</button>
+         {imapConfigured ? (
+           <button type="button" disabled={busy || !unlocked} onClick={() => {
+             if (window.confirm(`Remove ${user.username}'s stored mailbox credentials?`)) {
+@@ -126,7 +126,7 @@ export function AssignMailbox({ user, unlocked, takeConfirm, onClose }: {
+         </label>
+       </div>
+       <div className="config-actions">
+-        <button type="button" disabled={busy || !unlocked} onClick={() => void run("Contacts sync saved.", (c) => putUserCardDAVClient(c, user.id, dav), refreshDav)}>Save Contacts Sync</button>
++        <button type="button" className="btn-primary" disabled={busy || !unlocked} onClick={() => void run("Contacts sync saved.", (c) => putUserCardDAVClient(c, user.id, dav), refreshDav)}>Save Contacts Sync</button>
+         {davConfigured ? (
+           <button type="button" disabled={busy || !unlocked} onClick={() => {
+             if (window.confirm(`Remove ${user.username}'s stored CardDAV client credentials?`)) {
+diff --git a/frontend/src/admin/sections/LabelRules.tsx b/frontend/src/admin/sections/LabelRules.tsx
+index c3959c37..724ee827 100644
+--- a/frontend/src/admin/sections/LabelRules.tsx
++++ b/frontend/src/admin/sections/LabelRules.tsx
+@@ -112,7 +112,7 @@ export function LabelRules() {
+       </div>
+       <div className="config-actions">
+         <button type="button" onClick={applyImapLabelsToAllowlist}>Merge IMAP Labels</button>
+-        <button type="button" onClick={saveConfig} disabled={!loaded}>Save Defaults</button>
++        <button type="button" className="btn-primary" onClick={saveConfig} disabled={!loaded}>Save Defaults</button>
+       </div>
+       <p className="config-muted">{labelsFromImap.length > 0 ? `Discovered IMAP labels: ${labelsFromImap.join(", ")}` : "No IMAP labels discovered yet."}</p>
+       {configStatus ? <p className={configStatusTone}>{configStatus}</p> : null}
+diff --git a/frontend/src/admin/sections/MailDefaults.tsx b/frontend/src/admin/sections/MailDefaults.tsx
+index 27e680e5..52899351 100644
+--- a/frontend/src/admin/sections/MailDefaults.tsx
++++ b/frontend/src/admin/sections/MailDefaults.tsx
+@@ -58,7 +58,7 @@ export function MailDefaults() {
+         </label>
+       </div>
+       <div className="config-actions">
+-        <button type="button" onClick={() => void save()} disabled={busy}>
++        <button type="button" className="btn-primary" onClick={() => void save()} disabled={busy}>
+           {busy ? "Saving..." : "Save Defaults"}
+         </button>
+       </div>
+diff --git a/frontend/src/components/ComposeWindow.tsx b/frontend/src/components/ComposeWindow.tsx
+index de05a95f..0d8e6916 100644
+--- a/frontend/src/components/ComposeWindow.tsx
++++ b/frontend/src/components/ComposeWindow.tsx
+@@ -53,7 +53,7 @@ export function ComposeWindow({ compose, mailboxes }: { compose: Compose; mailbo
+           >
+             <div className="compose-topbar">
+               <h2 id="compose-window-title">New message</h2>
+-              <button type="button" className="compose-close" onClick={closeComposeWindow} disabled={composeSending || composeSavingDraft}>Close</button>
++              <button type="button" className="compose-close btn-ghost" onClick={closeComposeWindow} disabled={composeSending || composeSavingDraft}>Close</button>
+             </div>
+             <p className="compose-connection-hint">Send and Save Draft use this mailbox's mail connection. Check your mail account settings if the connection is unavailable.</p>
+             {composeRecipientKeyWarning ? (
+@@ -236,12 +236,12 @@ export function ComposeWindow({ compose, mailboxes }: { compose: Compose; mailbo
+                 />
+             </div>
+             <div className="compose-actionbar" role="group" aria-label="Message actions">
+-                <button type="button" className="compose-send" onClick={() => void sendComposeEmail()} disabled={composeSending || composeSavingDraft}>{composeSending ? "Sending..." : "Send"}</button>
++                <button type="button" className="compose-send btn-primary" onClick={() => void sendComposeEmail()} disabled={composeSending || composeSavingDraft}>{composeSending ? "Sending..." : "Send"}</button>
+                 <button type="button" className="compose-save-draft" onClick={() => setScheduleOpen(true)} disabled={composeSending || composeSavingDraft}>Schedule…</button>
+                 <button type="button" className="compose-save-draft" onClick={() => void saveComposeDraft()} disabled={composeSending || composeSavingDraft}>Save Draft</button>
+                 <button type="button" className="compose-attach" onClick={() => attachmentInputRef.current?.click()} disabled={composeSending || composeSavingDraft}>Attach</button>
+                 <button type="button" className="compose-attach" onClick={() => setContactPickerOpen(true)} disabled={composeSending || composeSavingDraft}>Contacts</button>
+-                <button type="button" className="compose-trash" onClick={trashComposeDraft} disabled={composeSending || composeSavingDraft}>Trash</button>
++                <button type="button" className="compose-trash btn-ghost btn-danger" onClick={trashComposeDraft} disabled={composeSending || composeSavingDraft}>Trash</button>
+             </div>
+             </footer>
+           </section>
+diff --git a/frontend/src/components/ReauthGate.tsx b/frontend/src/components/ReauthGate.tsx
+index 3b5f5080..414b4658 100644
+--- a/frontend/src/components/ReauthGate.tsx
++++ b/frontend/src/components/ReauthGate.tsx
+@@ -130,7 +130,7 @@ export function ReauthGate({ what, children }: Props) {
+     return (
+       <section className="panel sec-page">
+         <header className="sec-header">
+-          <h2>Confirm it is you</h2>
++          <h1>Confirm it is you</h1>
+           <p>Unlock {what}.</p>
+         </header>
+         <div className="sec-card">
+@@ -144,7 +144,7 @@ export function ReauthGate({ what, children }: Props) {
+             </p>
+           ) : null}
+           <div className="sec-actions">
+-            <button type="button" disabled={busy} onClick={() => void confirmWithSSO()}>
++            <button type="button" className="btn-primary" disabled={busy} onClick={() => void confirmWithSSO()}>
+               {busy ? "Confirming…" : "Confirm with KySignOn"}
+             </button>
+           </div>
+@@ -158,7 +158,7 @@ export function ReauthGate({ what, children }: Props) {
+     // rather than as a stray form the app dropped the user on.
+     <section className="panel sec-page">
+       <header className="sec-header">
+-        <h2>Confirm it is you</h2>
++        <h1>Confirm it is you</h1>
+         <p>Unlock {what}.</p>
+       </header>
+       <div className="sec-card">
+diff --git a/frontend/src/ky-ui/VERSION b/frontend/src/ky-ui/VERSION
+index fa27aaed..d4cfb2a2 100644
+--- a/frontend/src/ky-ui/VERSION
++++ b/frontend/src/ky-ui/VERSION
+@@ -1,8 +1,8 @@
+ {
+-  "version": "0.2.0",
++  "version": "0.3.0",
+   "source": "https://github.com/Busnes-app/ky-ui",
+   "files": {
+-    "tokens.css": "61ce6af854fc85c87af35eef46f362a2bfca1da114b61dcec6704237b6b4d533",
++    "tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+     "navigation.css": "1a552f03f0497cd0edc31dfdcaa76dd9a287a5f0d30073f6074c14e93ef6db91",
+     "theme.js": "9f0e57c86783924a19fa9923be42d7f14b24cec46c95383f251e18ab69b0176a",
+     "theme.d.ts": "f83e4fb841e98b7b443bc78aa699f9044d395ff622258cf8bee85b5e0608fd4a",
+diff --git a/frontend/src/ky-ui/tokens.css b/frontend/src/ky-ui/tokens.css
+index e5b3798d..6b6dace6 100644
+--- a/frontend/src/ky-ui/tokens.css
++++ b/frontend/src/ky-ui/tokens.css
+@@ -1,3 +1,23 @@
++/* Product geometry stays local; these values give each composition the same rhythm. */
++:root {
++  --ky-type-title: 1.5rem;
++  --ky-type-section: 1.0625rem;
++  --ky-type-body: 0.9375rem;
++  --ky-type-nav: 0.875rem;
++  --ky-type-meta: 0.8125rem;
++  --ky-space-1: 0.25rem;
++  --ky-space-2: 0.5rem;
++  --ky-space-3: 1rem;
++  --ky-space-4: 1.5rem;
++  --ky-space-5: 2rem;
++  --ky-control-size: 2.5rem;
++  --ky-control-radius: 0.5rem;
++  --ky-sidebar-size: 15rem;
++  /* Product ink/bg aliases preserve existing named palettes as well as Busnes. */
++  --ky-field-border: color-mix(in srgb, var(--ink) 75%, var(--bg));
++  --ky-shadow-overlay: 0 18px 48px rgb(0 0 0 / 0.26), 0 2px 8px rgb(0 0 0 / 0.12);
++}
++
+ /* Busnes Light/Dark tokens. Product layouts should consume these, not redefine them. */
+ :root,
+ :root:not([data-theme]):not([data-ky-theme]),
+@@ -21,7 +41,7 @@
+   --ky-sidebar-end: #f2efe7;
+   --ky-button-text: #ffffff;
+   --ky-radius: 10px;
+-  --ky-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
++  --ky-font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+   --ky-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+ }
+ 
+diff --git a/frontend/src/pages/AppsPage.tsx b/frontend/src/pages/AppsPage.tsx
+index 67720c3e..c452d238 100644
+--- a/frontend/src/pages/AppsPage.tsx
++++ b/frontend/src/pages/AppsPage.tsx
+@@ -16,7 +16,7 @@ export function AppsPage({ pwa, platforms = CLIENT_PLATFORMS }: { pwa: PwaState;
+   return (
+     <section className="panel config-page">
+       <div className="config-header">
+-        <h2>Get KyPost</h2>
++        <h1>Get KyPost</h1>
+         <p>Use it here in the browser, or install a client on each of your devices.</p>
+       </div>
+       <div className="apps-grid">
+diff --git a/frontend/src/pages/ContactsPage.tsx b/frontend/src/pages/ContactsPage.tsx
+index 330890fb..b3c130cb 100644
+--- a/frontend/src/pages/ContactsPage.tsx
++++ b/frontend/src/pages/ContactsPage.tsx
+@@ -489,7 +489,7 @@ export function ContactsPage() {
+     <section className="panel contacts-page">
+       <header className="contacts-header">
+         <div>
+-          <h2>Contacts</h2>
++          <h1>Contacts</h1>
+         </div>
+         <div className="contacts-header-actions">
+           {!loading && contacts.length > 0 ? (
+@@ -544,7 +544,7 @@ export function ContactsPage() {
+               />
+             </>
+           ) : null}
+-          <button type="button" onClick={openCreateForm}>
++          <button type="button" className="btn-primary" onClick={openCreateForm}>
+             New Contact
+           </button>
+         </div>
+@@ -552,7 +552,7 @@ export function ContactsPage() {
+ 
+       <div className="contacts-card contacts-list-card">
+         <div className="contacts-list-head">
+-          <h3>Address Book</h3>
++          <h2>Address Book</h2>
+           {!loading && contacts.length > 0 ? (
+             <span className="contacts-count">
+               {filteredContacts.length}
+@@ -562,21 +562,14 @@ export function ContactsPage() {
+         </div>
+ 
+         {!loading && contacts.length > 0 ? (
+-          <div style={{ marginBottom: "12px" }}>
+-            <input
+-              type="text"
+-              placeholder="Search by name, email, phone, or organization..."
+-              value={search}
+-              onChange={(e) => setSearch(e.target.value)}
+-              style={{
+-                width: "100%",
+-                padding: "8px",
+-                borderRadius: "4px",
+-                border: "1px solid var(--border-color)",
+-                backgroundColor: "var(--bg-color)"
+-              }}
+-            />
+-          </div>
++          <input
++            type="text"
++            className="contacts-search"
++            aria-label="Search contacts"
++            placeholder="Search by name, email, phone, or organization..."
++            value={search}
++            onChange={(e) => setSearch(e.target.value)}
++          />
+         ) : null}
+ 
+         {loading ? <p className="contacts-muted">Loading contacts...</p> : null}
+@@ -662,7 +655,7 @@ export function ContactsPage() {
+                             <div className="contacts-actions" onClick={(e) => e.stopPropagation()}>
+                               <button
+                                 type="button"
+-                                className="contacts-action"
++                                className="contacts-action btn-ghost"
+                                 onClick={() => openEditForm(contact)}
+                                 disabled={busy}
+                               >
+@@ -670,7 +663,7 @@ export function ContactsPage() {
+                               </button>
+                               <button
+                                 type="button"
+-                                className="contacts-action contacts-action-danger"
++                                className="contacts-action btn-ghost btn-danger"
+                                 onClick={() => void removeContact(contact)}
+                                 disabled={busy}
+                               >
+diff --git a/frontend/src/pages/ReadPage.tsx b/frontend/src/pages/ReadPage.tsx
+index 163bc267..f14f4adc 100644
+--- a/frontend/src/pages/ReadPage.tsx
++++ b/frontend/src/pages/ReadPage.tsx
+@@ -1390,9 +1390,9 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+ 
+   return (
+     <section className="panel read-page-panel">
+-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
++      <div className="inbox-header">
+         <div>
+-          <h2 style={{ marginTop: 0, marginBottom: 6 }}>{mailbox ? mailbox : "Inbox"}</h2>
++          <h1>{mailbox ? mailbox : "Inbox"}</h1>
+           {boxName ? <p className="read-mailbox-name">{mailboxName(boxName)}</p> : null}
+         </div>
+         <div className="inbox-action-bar">
+@@ -1407,28 +1407,28 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+               <span>Haptics</span>
+             </label>
+           ) : null}
+-          {batchActions.map((action) => (
++          {/* Contextual: every action needs a selection, so the bar shows only with one. */}
++          {selectedMessageIds.length > 0 ? batchActions.map((action) => (
+             <button
+               key={action.key}
+               type="button"
+               onClick={action.onClick}
+               disabled={action.disabled}
+-              className="inbox-action-button"
++              className={action.key === "delete" ? "inbox-action-button btn-ghost btn-danger" : "inbox-action-button btn-ghost"}
+               aria-label={action.label}
+               title={action.label}
+             >
+               <span className="inbox-action-icon" aria-hidden="true">{action.icon}</span>
+               <span className="inbox-action-text">{action.label}</span>
+             </button>
+-          ))}
++          )) : null}
+         </div>
+       </div>
+ 
+       {error ? <p className="notice notice-error">Failed to load inbox: {error}</p> : null}
+       {actionError ? <p className="notice notice-error">Inbox action failed: {actionError}</p> : null}
+ 
+-      <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginTop: 14, marginBottom: 14 }}>
+-        <div style={{ flex: 1, minWidth: 200, display: "flex", gap: 4, alignItems: "center" }}>
++      <div className="inbox-search">
+           <input
+             type="text"
+             placeholder="Search..."
+@@ -1440,28 +1440,11 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+                 void performSearch();
+               }
+             }}
+-            style={{
+-              flex: 1,
+-              minWidth: 0,
+-              padding: "6px 8px",
+-              borderRadius: "4px",
+-              border: "1px solid var(--line)",
+-              backgroundColor: "var(--panel)",
+-              color: "var(--ink-strong)",
+-              fontSize: "0.9rem"
+-            }}
+           />
+           <select
+             value={searchField}
++            aria-label="Search in"
+             onChange={(e) => setSearchField(e.target.value as any)}
+-            style={{
+-              padding: "6px 8px",
+-              borderRadius: "4px",
+-              border: "1px solid var(--line)",
+-              backgroundColor: "var(--panel)",
+-              color: "var(--ink-strong)",
+-              fontSize: "0.9rem"
+-            }}
+           >
+             <option value="all">All</option>
+             <option value="sender">Sender</option>
+@@ -1472,16 +1455,14 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+             type="button"
+             onClick={() => void performSearch()}
+             disabled={searching}
+-            style={{ padding: "6px 12px" }}
+           >
+             {searching ? "Searching..." : "Search"}
+           </button>
+           {searchMode ? (
+-            <button type="button" onClick={clearSearch} style={{ padding: "6px 12px" }}>
++            <button type="button" className="btn-ghost" onClick={clearSearch}>
+               Clear
+             </button>
+           ) : null}
+-        </div>
+       </div>
+ 
+       {searchMode ? (
+@@ -1560,7 +1541,7 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+           )}
+         </div>
+       ) : isInboxMailbox ? (
+-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 14, marginBottom: 14 }}>
++        <div className="inbox-tabs">
+           {tabs.map((tab) => {
+             const unreadCount = (byTab[tab] ?? []).filter((item) => item.status !== "read").length;
+             const isActive = activeTab === tab;
+@@ -1568,39 +1549,12 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+               <button
+                 key={tab}
+                 type="button"
++                className="inbox-tab"
++                aria-pressed={isActive}
+                 onClick={() => setActiveTab(tab)}
+-                style={{
+-                  background: isActive ? "var(--accent)" : "transparent",
+-                  color: isActive ? "var(--accent-contrast)" : "var(--ink-strong)",
+-                  border: "1px solid var(--line)",
+-                  borderRadius: 999,
+-                  padding: "0.38rem 0.78rem",
+-                  fontSize: "0.82rem",
+-                  display: "inline-flex",
+-                  alignItems: "center",
+-                  gap: 8
+-                }}
+               >
+                 <span>{tab}</span>
+-                <span
+-                  style={{
+-                    minWidth: 18,
+-                    height: 18,
+-                    borderRadius: 999,
+-                    border: "1px solid var(--line)",
+-                    background: isActive ? "var(--chip-active-bg)" : "var(--accent-soft)",
+-                    color: isActive ? "var(--accent-contrast)" : "var(--ink-strong)",
+-                    display: "inline-flex",
+-                    alignItems: "center",
+-                    justifyContent: "center",
+-                    padding: "0 6px",
+-                    fontSize: "0.72rem",
+-                    fontWeight: 700,
+-                    lineHeight: 1
+-                  }}
+-                >
+-                  {unreadCount}
+-                </span>
++                <span className="inbox-tab-count">{unreadCount}</span>
+               </button>
+             );
+           })}
+@@ -1832,6 +1786,7 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+                   </button>
+                   <button
+                     type="button"
++                    className="btn-danger"
+                     onClick={() => applyInboxAction("delete", [selected.messageId], { closeModal: true })}
+                     disabled={actionLoading}
+                   >
+@@ -1840,16 +1795,17 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+                   <button type="button" onClick={() => printEmails([selected])} disabled={actionLoading}>Print</button>
+                 </div>
+                 <div className="email-reader-actions-row">
+-                  <button type="button" onClick={replyToSelectedEmail} disabled={actionLoading}>Reply</button>
++                  <button type="button" className="btn-primary" onClick={replyToSelectedEmail} disabled={actionLoading}>Reply</button>
+                   <button type="button" onClick={replyAllToSelectedEmail} disabled={actionLoading}>Reply All</button>
+                   <button type="button" onClick={forwardSelectedEmail} disabled={actionLoading}>Forward</button>
+                       <button
+                         type="button"
++                        className="btn-ghost"
+                         onClick={() => setShowImagesFor((current) => (current === selected.messageId ? null : selected.messageId))}
+                       >
+                         {showImages ? "Hide Remote Content" : "Show Remote Content"}
+                       </button>
+-                  <button type="button" onClick={() => setSelected(null)}>Close</button>
++                  <button type="button" className="btn-ghost" onClick={() => setSelected(null)}>Close</button>
+                 </div>
+               </div>
+             </div>
+diff --git a/frontend/src/pages/ScheduledPage.tsx b/frontend/src/pages/ScheduledPage.tsx
+index 096e5396..5ee32995 100644
+--- a/frontend/src/pages/ScheduledPage.tsx
++++ b/frontend/src/pages/ScheduledPage.tsx
+@@ -44,7 +44,7 @@ export function ScheduledPage() {
+   return (
+     <section className="panel config-page">
+       <div className="config-header">
+-        <h2>Scheduled</h2>
++        <h1>Scheduled</h1>
+         <p>Mail waiting to send. Canceled or unsendable mail returns to Drafts.</p>
+       </div>
+       {error ? <p className="notice notice-error">{error}</p> : null}
+diff --git a/frontend/src/pages/SecurityPage.tsx b/frontend/src/pages/SecurityPage.tsx
+index aa014cd0..c544b194 100644
+--- a/frontend/src/pages/SecurityPage.tsx
++++ b/frontend/src/pages/SecurityPage.tsx
+@@ -200,7 +200,7 @@ export function SecurityPage() {
+   return (
+     <section className="panel sec-page">
+       <header className="sec-header">
+-        <h2>Security</h2>
++        <h1>Security</h1>
+         <p>Who can sign in as you, which devices you trust, and who can read your mail.</p>
+       </header>
+ 
+diff --git a/frontend/src/pages/admin/ServerPanel.tsx b/frontend/src/pages/admin/ServerPanel.tsx
+index 47e627d2..0e9d5956 100644
+--- a/frontend/src/pages/admin/ServerPanel.tsx
++++ b/frontend/src/pages/admin/ServerPanel.tsx
+@@ -28,7 +28,7 @@ export function ServerPanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Server</h2>
++        <h1>Server</h1>
+         <p>Runtime behaviour, updates, verified mail domains, and user accounts.</p>
+       </div>
+       <PanelTabs
+diff --git a/frontend/src/pages/read/icons.tsx b/frontend/src/pages/read/icons.tsx
+index 7647fcab..3d4ac03d 100644
+--- a/frontend/src/pages/read/icons.tsx
++++ b/frontend/src/pages/read/icons.tsx
+@@ -1,8 +1,8 @@
+-// Toolbar glyphs. Inline SVG so they render the same on every OS; emoji did
++// Toolbar and navigation glyphs. Inline SVG so they render the same on every OS; emoji did
+ // not, and clashed with the typeface. All 16px, stroke follows text colour.
+ 
+ const icon = (d: string) => () => (
+-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
++  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+     <path d={d} />
+   </svg>
+ );
+@@ -13,3 +13,16 @@ export const WarningIcon = icon("M12 3 2 21h20L12 3zM12 10v5M12 18h.01");
+ export const CheckIcon = icon("M4 12l5 5L20 6");
+ export const PrintIcon = icon("M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z");
+ export const ClockIcon = icon("M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18zM12 7v5l3 3");
++export const InboxIcon = icon("M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z");
++export const FolderIcon = icon("M3 6h6l2 2h10v11H3z");
++export const DraftIcon = icon("M4 20h4L19 9l-4-4L4 16zM14 6l4 4");
++export const SendIcon = icon("M21 3 10 14M21 3l-7 18-4-7-7-4z");
++export const ContactsIcon = icon("M16 20v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1M9 11a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM22 20v-1a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8");
++export const SettingsIcon = icon("M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1M15 4v4M9 10v4M17 16v4");
++export const LogoutIcon = icon("M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9");
++export const PlusIcon = icon("M12 5v14M5 12h14");
++export const ChevronIcon = () => (
++  <svg className="nav-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
++    <path d="M9 6l6 6-6 6" />
++  </svg>
++);
+diff --git a/frontend/src/pages/settings/AppearancePanel.tsx b/frontend/src/pages/settings/AppearancePanel.tsx
+index 3efdb15d..7c1494d5 100644
+--- a/frontend/src/pages/settings/AppearancePanel.tsx
++++ b/frontend/src/pages/settings/AppearancePanel.tsx
+@@ -4,7 +4,7 @@ export function AppearancePanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Appearance</h2>
++        <h1>Appearance</h1>
+         <p>Pick a theme. It applies straight away and is remembered by this browser only.</p>
+       </div>
+       <div id="theme"><Appearance /></div>
+diff --git a/frontend/src/pages/settings/AutomationPanel.tsx b/frontend/src/pages/settings/AutomationPanel.tsx
+index 84f6ad27..2a3a9e89 100644
+--- a/frontend/src/pages/settings/AutomationPanel.tsx
++++ b/frontend/src/pages/settings/AutomationPanel.tsx
+@@ -17,7 +17,7 @@ export function AutomationPanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Email Labels</h2>
++        <h1>Email Labels</h1>
+         <p>How your mail is classified and labelled.</p>
+       </div>
+       <PanelTabs
+diff --git a/frontend/src/pages/settings/MailPanel.tsx b/frontend/src/pages/settings/MailPanel.tsx
+index 718b3299..30922a9e 100644
+--- a/frontend/src/pages/settings/MailPanel.tsx
++++ b/frontend/src/pages/settings/MailPanel.tsx
+@@ -20,7 +20,7 @@ export function MailPanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Mail</h2>
++        <h1>Mail</h1>
+         <p>Your mail server, mailbox storage, the addresses you send as, KyCalendar, contact sync and mailbox rules.</p>
+       </div>
+       <PanelTabs
+diff --git a/frontend/src/pages/settings/NotificationsPanel.tsx b/frontend/src/pages/settings/NotificationsPanel.tsx
+index 1346d47d..0cf7cd29 100644
+--- a/frontend/src/pages/settings/NotificationsPanel.tsx
++++ b/frontend/src/pages/settings/NotificationsPanel.tsx
+@@ -4,7 +4,7 @@ export function NotificationsPanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Notifications</h2>
++        <h1>Notifications</h1>
+         <p>How and when this device tells you about new mail.</p>
+       </div>
+       <div id="notification-prefs"><NotificationPrefs /></div>
+diff --git a/frontend/src/settings/sections/CardDavClient.tsx b/frontend/src/settings/sections/CardDavClient.tsx
+index 20a03b39..cd5c623a 100644
+--- a/frontend/src/settings/sections/CardDavClient.tsx
++++ b/frontend/src/settings/sections/CardDavClient.tsx
+@@ -153,7 +153,7 @@ export function CardDavClient() {
+       </p>
+       <div className="config-actions">
+         {managed ? null : (
+-          <button type="button" onClick={() => void saveCardDAVClient()} disabled={clientBusy}>
++          <button type="button" className="btn-primary" onClick={() => void saveCardDAVClient()} disabled={clientBusy}>
+             {clientBusy ? "Saving..." : "Save CardDAV Client"}
+           </button>
+         )}
+diff --git a/frontend/src/settings/sections/EmailServer.tsx b/frontend/src/settings/sections/EmailServer.tsx
+index ffd258bb..679935ee 100644
+--- a/frontend/src/settings/sections/EmailServer.tsx
++++ b/frontend/src/settings/sections/EmailServer.tsx
+@@ -183,7 +183,7 @@ export function EmailServer() {
+       </div>
+       <div className="config-actions">
+         {managed ? null : (
+-          <button type="button" onClick={saveIMAPConfig} disabled={imapBusy}>
++          <button type="button" className="btn-primary" onClick={saveIMAPConfig} disabled={imapBusy}>
+             {imapBusy ? "Saving..." : "Save Email Settings"}
+           </button>
+         )}
+diff --git a/frontend/src/settings/sections/Filters.tsx b/frontend/src/settings/sections/Filters.tsx
+index e57c6f80..fb067baa 100644
+--- a/frontend/src/settings/sections/Filters.tsx
++++ b/frontend/src/settings/sections/Filters.tsx
+@@ -504,6 +504,7 @@ export function Filters() {
+                   <div className="security-actions">
+                     <button
+                       type="button"
++                      className="btn-primary"
+                       onClick={saveDraft}
+                       disabled={!draft.guiEditable || draftActionsError !== ""}
+                     >
+diff --git a/frontend/src/settings/sections/MyLabels.tsx b/frontend/src/settings/sections/MyLabels.tsx
+index ad6e376f..4a4e53c9 100644
+--- a/frontend/src/settings/sections/MyLabels.tsx
++++ b/frontend/src/settings/sections/MyLabels.tsx
+@@ -125,7 +125,7 @@ export function MyLabels() {
+       </p>
+       <div className="config-actions">
+         <button type="button" onClick={applyImapLabelsToAllowlist}>Merge IMAP Labels</button>
+-        <button type="button" onClick={() => void save()} disabled={!loaded}>Save Labels</button>
++        <button type="button" className="btn-primary" onClick={() => void save()} disabled={!loaded}>Save Labels</button>
+       </div>
+       <p className="config-muted">{labelsFromImap.length > 0 ? `Discovered IMAP labels: ${labelsFromImap.join(", ")}` : "No IMAP labels discovered yet."}</p>
+       {status ? <p className={statusTone}>{status}</p> : null}
+diff --git a/frontend/src/settings/sections/NotificationPrefs.tsx b/frontend/src/settings/sections/NotificationPrefs.tsx
+index 45254e86..ef5828c0 100644
+--- a/frontend/src/settings/sections/NotificationPrefs.tsx
++++ b/frontend/src/settings/sections/NotificationPrefs.tsx
+@@ -304,7 +304,7 @@ export function NotificationPrefs() {
+           ) : null}
+ 
+           <div className="config-actions">
+-            <button type="button" onClick={() => void saveNotificationPrefs()}>Save Notifications</button>
++            <button type="button" className="btn-primary" onClick={() => void saveNotificationPrefs()}>Save Notifications</button>
+             <button type="button" onClick={() => void sendTestNotification()} disabled={notifyTestBusy}>
+               {notifyTestBusy ? "Sending Test..." : "Send Test Notification"}
+             </button>
+diff --git a/frontend/src/settings/sections/PromptTuning.tsx b/frontend/src/settings/sections/PromptTuning.tsx
+index 1f9d74ce..2bc3daa5 100644
+--- a/frontend/src/settings/sections/PromptTuning.tsx
++++ b/frontend/src/settings/sections/PromptTuning.tsx
+@@ -153,7 +153,7 @@ export function PromptTuning() {
+           <textarea rows={18} value={tuningText} onChange={(e) => setTuningText(e.target.value)} style={{ width: "100%" }} />
+         </label>
+ 
+-        <button type="button" onClick={saveTuning}>Save TUNING.md</button>
++        <button type="button" className="btn-primary" onClick={saveTuning}>Save TUNING.md</button>
+         {tuningStatus ? <p>{tuningStatus}</p> : null}
+       </div>
+     </>
+diff --git a/frontend/src/settings/sections/SystemHealth.tsx b/frontend/src/settings/sections/SystemHealth.tsx
+index b969ba96..d74491e3 100644
+--- a/frontend/src/settings/sections/SystemHealth.tsx
++++ b/frontend/src/settings/sections/SystemHealth.tsx
+@@ -270,7 +270,7 @@ export function SystemHealth({ full = false, heading = "Health Dashboard" }: Sys
+   return (
+     <>
+       <div className="health-head">
+-        <h2>{heading}</h2>
++        <h1>{heading}</h1>
+         <div className="health-controls">
+           <label>
+             <span>Auto-refresh</span>
+diff --git a/frontend/src/styles.css b/frontend/src/styles.css
+index ad3205bf..c8e1e28c 100644
+--- a/frontend/src/styles.css
++++ b/frontend/src/styles.css
+@@ -56,7 +56,7 @@
+   --link-border: #d8dde6;
+   --accent-contrast: #24170f;
+   --chip-active-bg: rgba(255, 255, 255, 0.38);
+-  --modal-overlay: rgba(124, 103, 127, 0.35);
++  --modal-overlay: rgb(12 16 18 / 0.45);
+   --modal-shadow: rgba(128, 118, 163, 0.28);
+   --error-soft: rgba(249, 197, 189, 0.35);
+   --mono: "IBM Plex Mono", monospace;
+@@ -77,41 +77,47 @@ body {
+ .shell {
+   min-height: 100vh;
+   display: grid;
+-  grid-template-columns: 240px minmax(0, 1fr);
++  grid-template-columns: var(--ky-sidebar-size) minmax(0, 1fr);
+ }
+ 
++/* The sidebar stays in view so the account region is always at its foot. */
+ .sidebar {
++  position: sticky;
++  top: 0;
++  height: 100vh;
++  overflow-y: auto;
+   border-right: 1px solid var(--line);
+-  padding: 20px;
++  padding: var(--ky-space-3);
+   background: linear-gradient(180deg, var(--sidebar-start), var(--sidebar-end));
+   display: flex;
+   flex-direction: column;
++  gap: var(--ky-space-3);
++  font-size: var(--ky-type-nav);
+ }
+ 
+ .new-email-button {
+   width: 100%;
++  min-height: var(--ky-control-size);
+   border: 1px solid var(--new-email-border);
+   background: linear-gradient(180deg, var(--new-email-start), var(--new-email-end));
+   color: var(--new-email-text);
+-  border-radius: 10px;
+-  padding: 10px;
+-  font-weight: 700;
+-  margin-bottom: 14px;
++  font-weight: 600;
+ }
+ 
+ .sidebar-logo {
+   display: flex;
+   align-items: center;
+-  gap: 10px;
+-  margin-bottom: 16px;
++  gap: var(--ky-space-2);
++  padding: var(--ky-space-1) var(--ky-space-2) 0;
+ }
+ 
+ .sidebar-app-logo {
+-  border-radius: 12px;
++  border-radius: 7px;
++  flex: none;
+ }
+ 
+ .sidebar-wordmark {
+-  font-size: 1.35rem;
++  font-size: 1.15rem;
+   font-weight: 700;
+   letter-spacing: -0.01em;
+   color: var(--ink-strong);
+@@ -121,13 +127,39 @@ body {
+   flex: 1;
+ }
+ 
+-.sidebar-footer {
++.sidebar-account {
+   margin-top: auto;
+-  padding-top: 16px;
++  padding-top: var(--ky-space-3);
+   border-top: 1px solid var(--line);
++  display: grid;
++  gap: var(--ky-space-2);
++}
++
++.sidebar-account-copy {
++  min-width: 0;
++  padding: 0 var(--ky-space-2);
++  line-height: 1.35;
++}
++
++.sidebar-account-name {
++  display: block;
++  overflow: hidden;
++  text-overflow: ellipsis;
++  white-space: nowrap;
++  font-weight: 600;
++  color: var(--ink-strong);
++}
++
++.sidebar-account-role {
++  display: block;
++  font-size: var(--ky-type-meta);
++  color: var(--ink);
++}
++
++.sidebar-footer {
+   font-size: 0.75rem;
+   color: var(--ink);
+-  text-align: center;
++  padding-left: var(--ky-space-2);
+   white-space: nowrap;
+ }
+ 
+@@ -154,35 +186,60 @@ body {
+ .sidebar nav {
+   display: flex;
+   flex-direction: column;
+-  gap: 4px;
++  gap: 2px;
+ }
+ 
+-.sidebar a {
+-  text-decoration: none;
++/* One row geometry for links, disclosure buttons and Logout: 40px, 8px radius,
++   icon then label. Selected, hover and focus states come from ky-ui/navigation.css. */
++.sidebar a,
++.sidebar .nav-heading,
++.sidebar .nav-link-button {
++  display: flex;
++  align-items: center;
++  gap: var(--ky-space-2);
++  min-height: var(--ky-control-size);
++  width: 100%;
++  padding: 0 var(--ky-space-2);
++  border: 0;
++  border-radius: var(--ky-control-radius);
++  background: transparent;
+   color: var(--ink-strong);
+-  border: 1px solid transparent;
+-  border-radius: 10px;
+-  padding: 9px 10px;
+-  transition: all 180ms ease;
++  font: inherit;
++  font-weight: 500;
++  text-align: left;
++  text-decoration: none;
++  transition: background-color 150ms ease, color 150ms ease;
+ }
+ 
+-.sidebar a:hover {
+-  border-color: var(--accent);
+-  background: var(--accent-soft);
++.sidebar a:hover,
++.sidebar .nav-heading:hover,
++.sidebar .nav-link-button:hover {
++  background: color-mix(in srgb, var(--ink-strong) 6%, transparent);
++  filter: none;
+ }
+ 
+-.sidebar-section-label {
+-  margin: 0 0 6px;
+-  font-size: 0.74rem;
+-  letter-spacing: 0.08em;
+-  text-transform: uppercase;
+-  opacity: 0.72;
+-  color: var(--ink-strong);
++.sidebar a svg,
++.sidebar .nav-heading svg,
++.sidebar .nav-link-button svg {
++  flex: none;
++  color: var(--ink);
++}
++
++.nav-chevron {
++  margin-left: auto;
++  transition: transform 150ms ease;
+ }
+ 
+-.sidebar-link-active {
+-  border-color: transparent !important;
+-  background: var(--accent-soft) !important;
++[aria-expanded="true"] > .nav-chevron {
++  transform: rotate(90deg);
++}
++
++.sidebar-section-label {
++  margin: var(--ky-space-2) 0 var(--ky-space-1);
++  padding: 0 var(--ky-space-2);
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++  color: var(--ink);
+ }
+ 
+ .mailbox-switcher {
+@@ -206,32 +263,16 @@ body {
+ }
+ 
+ .inbox-expand-button {
+-  width: auto;
+-  min-width: 42px;
++  width: var(--ky-control-size);
+   padding: 0;
+-  font-size: 1.1rem;
+-  line-height: 1;
+-}
+-
+-.sidebar .nav-heading {
+-  width: 100%;
+-  text-align: left;
+-  border: 1px solid transparent;
+-  background: transparent;
+-  color: var(--ink-strong);
+-  border-radius: 10px;
+-  padding: 10px;
+-}
+-
+-.sidebar .nav-heading:hover {
+-  border-color: var(--accent);
+-  background: var(--accent-soft);
++  display: inline-grid;
++  place-items: center;
+ }
+ 
+ .sidebar .nav-group {
+   display: grid;
+-  gap: 4px;
+-  padding-left: 10px;
++  gap: 2px;
++  padding-left: var(--ky-space-3);
+ }
+ 
+ /* One group per audience. A non-admin sees a single unheaded group, so the
+@@ -251,11 +292,11 @@ body {
+ }
+ 
+ .sidebar .nav-subheading {
+-  margin: 0.75rem 0 0.25rem;
+-  font-size: 0.75rem;
+-  text-transform: uppercase;
+-  letter-spacing: 0.06em;
+-  opacity: 0.6;
++  margin: var(--ky-space-2) 0 var(--ky-space-1);
++  padding: 0 var(--ky-space-2);
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++  color: var(--ink);
+ }
+ 
+ .sidebar-folder-form {
+@@ -289,29 +330,24 @@ body {
+ }
+ 
+ .sidebar-folder-menu-button {
+-  width: auto;
+-  min-width: 40px;
+-  padding: 10px 8px;
++  width: var(--ky-control-size);
++  padding: 0;
+ }
+ 
+ /* Quiet by default: these sit beside every folder row, so a filled accent
+    button on each one outshouted the folders themselves. */
+ .sidebar .inbox-expand-button,
+ .sidebar .sidebar-folder-menu-button {
++  min-height: var(--ky-control-size);
+   background: transparent;
+   border-color: transparent;
+   color: var(--ink);
+-  opacity: 0.7;
+ }
+ 
+ .sidebar .inbox-expand-button:hover,
+-.sidebar .sidebar-folder-menu-button:hover,
+-.sidebar .inbox-expand-button:focus-visible,
+-.sidebar .sidebar-folder-menu-button:focus-visible {
+-  opacity: 1;
++.sidebar .sidebar-folder-menu-button:hover {
+   color: var(--ink-strong);
+-  border-color: var(--accent);
+-  background: var(--accent-soft);
++  background: color-mix(in srgb, var(--ink-strong) 6%, transparent);
+ }
+ 
+ .sidebar-folder-menu {
+@@ -333,45 +369,13 @@ body {
+   width: 100%;
+ }
+ 
+-.sidebar-folder-delete {
+-  width: auto;
+-  padding: 10px 12px;
+-  border-color: rgba(255, 180, 171, 0.45);
+-  background: rgba(255, 180, 171, 0.14);
+-  color: #ffd8d3;
+-}
+-
+-.sidebar-folder-delete:hover {
+-  background: rgba(255, 180, 171, 0.22);
+-}
+-
+ .sidebar-folder-error {
+-  color: #ffb4ab;
+-  border-color: rgba(255, 180, 171, 0.35);
+-}
+-
+-.sidebar .nav-group span {
+-  border: 1px solid transparent;
+-  border-radius: 10px;
+-  padding: 10px;
+-  font-size: 0.9rem;
+-  opacity: 0.75;
+-}
+-
+-.sidebar .nav-link-button {
+-  width: 100%;
+-  text-align: left;
+-  border: 1px solid transparent;
+-  background: transparent;
+-  color: var(--ink-strong);
+-  border-radius: 10px;
+-  padding: 10px;
+-  font: inherit;
++  color: var(--danger);
+ }
+ 
+-.sidebar .nav-link-button:hover {
+-  border-color: var(--accent);
+-  background: var(--accent-soft);
++.sidebar .nav-group > span {
++  padding: var(--ky-space-2);
++  color: var(--ink);
+ }
+ 
+ .mobile-quick-nav {
+@@ -383,25 +387,84 @@ body {
+ }
+ 
+ .content {
+-  padding: 28px;
++  min-width: 0;
++  background: var(--panel);
+ }
+ 
++/* Pages sit flat on one content surface; only overlays carry a shadow. */
+ .panel {
+-  background: var(--panel);
+-  border: 1px solid var(--line);
+-  border-radius: 14px;
+-  padding: 18px;
+-  margin-bottom: 18px;
+-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
++  padding: var(--ky-space-4) var(--ky-space-5);
++}
++
++.panel h1 {
++  margin: 0;
++  font-size: var(--ky-type-title);
++  font-weight: 600;
++  line-height: 1.25;
++  letter-spacing: -0.01em;
+ }
+ 
+ .read-page-panel {
+-  height: calc(100vh - 74px);
++  height: 100vh;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+ }
+ 
++.inbox-header {
++  display: flex;
++  justify-content: space-between;
++  align-items: center;
++  gap: var(--ky-space-3);
++  flex-wrap: wrap;
++  min-height: var(--ky-control-size);
++}
++
++.inbox-search {
++  display: flex;
++  gap: var(--ky-space-2);
++  align-items: center;
++  margin-top: var(--ky-space-3);
++}
++
++.inbox-search input {
++  flex: 1;
++  min-width: 0;
++}
++
++.inbox-tabs {
++  display: flex;
++  gap: var(--ky-space-2);
++  flex-wrap: wrap;
++  margin-top: var(--ky-space-3);
++}
++
++.inbox-tab {
++  display: inline-flex;
++  align-items: center;
++  gap: var(--ky-space-2);
++  min-height: 32px;
++  padding: 0 12px;
++  border: 1px solid var(--line);
++  border-radius: 999px;
++  background: transparent;
++  color: var(--ink);
++  font-size: var(--ky-type-meta);
++  font-weight: 500;
++}
++
++.inbox-tab[aria-pressed="true"] {
++  border-color: transparent;
++  background: var(--accent-soft);
++  color: var(--ink-strong);
++  font-weight: 600;
++}
++
++.inbox-tab-count {
++  font-variant-numeric: tabular-nums;
++  color: var(--ink);
++}
++
+ .inbox-list-region {
+   margin-top: 10px;
+   min-height: 0;
+@@ -414,9 +477,7 @@ body {
+ .inbox-empty-state {
+   flex: 1;
+   min-height: 0;
+-  border: 1px solid var(--line);
+-  border-radius: 12px;
+-  background: color-mix(in srgb, var(--panel) 88%, var(--bg));
++  border-top: 1px solid var(--line);
+   display: grid;
+   place-items: center;
+   align-content: center;
+@@ -450,16 +511,18 @@ body {
+   font-size: 0.78rem;
+ }
+ 
+-.inbox-page-tab.active {
+-  background: var(--accent);
+-  border-color: var(--accent);
+-  color: var(--accent-contrast);
++.inbox-page-tab.active,
++.contacts-page-tab.active {
++  background: var(--accent-soft);
++  border-color: transparent;
++  color: var(--ink-strong);
++  font-weight: 600;
+ }
+ 
+ .inbox-action-bar {
+   display: flex;
+   flex-wrap: wrap;
+-  gap: 8px;
++  gap: var(--ky-space-1);
+ }
+ 
+ .inbox-haptics-toggle {
+@@ -486,6 +549,9 @@ body {
+   display: inline-flex;
+   align-items: center;
+   gap: 6px;
++  min-height: var(--ky-control-size);
++  padding: 0 10px;
++  font-size: var(--ky-type-nav);
+ }
+ 
+ .inbox-action-icon {
+@@ -500,9 +566,6 @@ body {
+ 
+ .inbox-table-wrap {
+   overflow: hidden;
+-  border: 1px solid var(--line);
+-  border-radius: 12px;
+-  background: color-mix(in srgb, var(--panel) 88%, var(--bg));
+   min-height: 0;
+   flex: 1;
+ }
+@@ -519,6 +582,7 @@ body {
+      sized from it too, and the narrow-viewport override below changes it — so a
+      literal in either place silently desyncs the two at that breakpoint. */
+   --inbox-cell-pad: 10px;
++  font-size: var(--ky-type-body);
+ }
+ 
+ .inbox-col-select {
+@@ -551,7 +615,10 @@ body {
+   border-bottom: 1px solid var(--line);
+   padding: 9px 10px;
+   white-space: nowrap;
+-  background: color-mix(in srgb, var(--panel) 96%, var(--bg));
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++  color: var(--ink);
++  background: var(--panel);
+   position: sticky;
+   top: 0;
+   z-index: 2;
+@@ -588,7 +655,12 @@ body {
+ }
+ 
+ .inbox-row:hover {
+-  background: color-mix(in srgb, var(--accent-soft) 42%, transparent);
++  background: color-mix(in srgb, var(--ink-strong) 4%, transparent);
++}
++
++/* Selected rows use the shared selection surface; unread rows differ by weight only. */
++.inbox-row:has(.inbox-checkbox:checked) {
++  background: var(--accent-soft);
+ }
+ 
+ .inbox-row-swipe-dragging {
+@@ -665,9 +737,6 @@ body {
+   }
+ }
+ 
+-.inbox-row-unread {
+-  background: color-mix(in srgb, var(--accent-soft) 16%, transparent);
+-}
+ 
+ .inbox-cell {
+   border-bottom: 1px solid var(--line);
+@@ -723,8 +792,8 @@ body {
+   text-align: left;
+   cursor: pointer;
+   text-decoration: none;
+-  font-weight: 450;
+-  line-height: 1.3;
++  font-weight: 400;
++  line-height: 1.35;
+ }
+ 
+ .inbox-subject-button:hover {
+@@ -735,12 +804,20 @@ body {
+ 
+ .inbox-subject-unread {
+   color: var(--ink-strong);
+-  font-weight: 500;
++  font-weight: 650;
+ }
+ 
+ .inbox-sender-cell,
+ .inbox-time-cell {
+-  color: color-mix(in srgb, var(--ink) 85%, var(--ink-strong));
++  color: var(--ink);
++  font-size: var(--ky-type-nav);
++  font-variant-numeric: tabular-nums;
++}
++
++.inbox-row-unread .inbox-sender-cell,
++.inbox-row-unread .inbox-time-cell {
++  color: var(--ink-strong);
++  font-weight: 600;
+ }
+ 
+ .inbox-time-cell {
+@@ -778,9 +855,9 @@ body {
+   max-height: 96vh;
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 14px;
+-  padding: 16px;
+-  box-shadow: 0 14px 40px var(--modal-shadow);
++  border-radius: 12px;
++  padding: var(--ky-space-4);
++  box-shadow: var(--ky-shadow-overlay);
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+@@ -802,11 +879,17 @@ body {
+ 
+ .email-reader-actions-row {
+   display: flex;
+-  gap: 8px;
++  gap: var(--ky-space-2);
+   justify-content: flex-end;
+   flex-wrap: nowrap;
+ }
+ 
++.email-reader-actions-row button {
++  min-height: 36px;
++  padding: 0 12px;
++  font-size: var(--ky-type-nav);
++}
++
+ .email-reader-content {
+   margin-top: 2px;
+   display: flex;
+@@ -887,14 +970,37 @@ label {
+ input,
+ textarea,
+ select {
+-  border: 1px solid var(--line);
+-  border-radius: 8px;
+-  padding: 10px;
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++  padding: 8px 12px;
+   background: var(--panel);
+   color: var(--ink-strong);
+   font: inherit;
+ }
+ 
++input:where(:not([type="checkbox"], [type="radio"], [type="file"], [type="range"], [type="color"])),
++select {
++  min-height: var(--ky-control-size);
++}
++
++input[type="file"] {
++  border: 0;
++  padding: 0;
++  background: none;
++}
++
++input[type="file"]::file-selector-button {
++  margin-right: var(--ky-space-2);
++  min-height: 36px;
++  padding: 0 12px;
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++  background: transparent;
++  color: var(--ink-strong);
++  font: inherit;
++  cursor: pointer;
++}
++
+ textarea {
+   resize: vertical;
+ }
+@@ -904,29 +1010,73 @@ input[type="radio"] {
+   accent-color: var(--accent);
+ }
+ 
++/* One button system, shared with KyCalendar's names. A plain button is the
++   secondary outline; a form's submit and .btn-primary carry the view's one
++   accent fill; .btn-ghost drops the outline; .btn-danger recolours either. */
+ button {
+   width: fit-content;
+-  border: 1px solid var(--accent);
+-  background: var(--accent);
+-  color: var(--button-text);
+-  border-radius: 8px;
++  border: 1px solid var(--ky-field-border);
++  background: transparent;
++  color: var(--ink-strong);
++  border-radius: var(--ky-control-radius);
+   padding: 9px 14px;
+   font: inherit;
+   cursor: pointer;
+-  transition: filter 120ms ease, transform 120ms ease;
++  transition: background-color 120ms ease, filter 120ms ease, transform 120ms ease;
+ }
+ 
+-button:hover:not(:disabled) {
+-  filter: brightness(1.06);
++:where(button):hover:not(:disabled) {
++  background-color: color-mix(in srgb, var(--ink-strong) 7%, transparent);
+ }
+ 
+ button:active:not(:disabled) {
+   transform: translateY(1px);
+ }
+ 
++button[type="submit"],
++.btn-primary {
++  border-color: var(--accent);
++  background: var(--accent);
++  color: var(--button-text);
++  font-weight: 600;
++}
++
++button[type="submit"]:hover:not(:disabled),
++.btn-primary:hover:not(:disabled) {
++  background: var(--accent);
++  filter: brightness(1.08);
++}
++
++.btn-danger {
++  color: var(--danger);
++  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
++}
++
++.btn-danger:hover:not(:disabled) {
++  background: color-mix(in srgb, var(--danger) 10%, transparent);
++}
++
++.btn-ghost {
++  border-color: transparent;
++}
++
++/* Disabled reads as unavailable, not as a faded primary: muted ink, dashed
++   edge, and no accent fill. */
+ button:disabled {
+-  opacity: 0.6;
+-  cursor: default;
++  color: color-mix(in srgb, var(--ink) 65%, transparent);
++  border-style: dashed;
++  cursor: not-allowed;
++}
++
++button[type="submit"]:disabled,
++.btn-primary:disabled {
++  border-color: transparent;
++  background: color-mix(in srgb, var(--ink-strong) 10%, transparent);
++  color: color-mix(in srgb, var(--ink) 75%, transparent);
++}
++
++.btn-ghost:disabled {
++  border-color: transparent;
+ }
+ 
+ button:focus-visible,
+@@ -978,10 +1128,6 @@ pre {
+   margin-bottom: 12px;
+ }
+ 
+-.health-head h2 {
+-  margin: 0;
+-}
+-
+ .health-controls {
+   display: flex;
+   align-items: center;
+@@ -1069,14 +1215,6 @@ pre {
+ 
+ .config-page {
+   position: relative;
+-  overflow: hidden;
+-  background:
+-    radial-gradient(circle at 6% 8%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 36%),
+-    linear-gradient(160deg, color-mix(in srgb, var(--panel) 85%, var(--bg)), color-mix(in srgb, var(--panel) 95%, var(--bg)) 46%);
+-}
+-
+-.config-header h2 {
+-  margin: 0;
+ }
+ 
+ .config-header p {
+@@ -1251,16 +1389,9 @@ pre {
+ }
+ 
+ .config-card {
+-  margin-top: 14px;
+-  border: 1px solid color-mix(in srgb, var(--line) 86%, var(--accent));
+-  border-radius: 12px;
+-  padding: 14px;
+-  background: linear-gradient(
+-    180deg,
+-    color-mix(in srgb, var(--panel) 88%, var(--bg)),
+-    color-mix(in srgb, var(--panel) 80%, var(--bg))
+-  );
+-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink-strong) 8%, transparent);
++  margin-top: var(--ky-space-4);
++  padding-top: var(--ky-space-4);
++  border-top: 1px solid var(--line);
+ }
+ 
+ .config-card h3 {
+@@ -1295,17 +1426,10 @@ pre {
+   margin-top: 0;
+ }
+ 
+-.config-card label {
+-  border: 1px solid var(--line);
+-  border-radius: 10px;
+-  padding: 10px;
+-  background: color-mix(in srgb, var(--panel) 92%, var(--bg));
+-}
+-
+ .config-card label > div {
+   color: var(--ink-strong);
+-  font-size: 0.84rem;
+-  letter-spacing: 0.01em;
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
+ }
+ 
+ .config-card select,
+@@ -1501,9 +1625,6 @@ pre {
+ .users-page {
+   position: relative;
+   overflow: hidden;
+-  background:
+-    radial-gradient(circle at 94% 6%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 40%),
+-    linear-gradient(160deg, color-mix(in srgb, var(--panel) 85%, var(--bg)), color-mix(in srgb, var(--panel) 95%, var(--bg)) 46%);
+ }
+ 
+ .users-header {
+@@ -1844,11 +1965,10 @@ pre {
+   border-radius: 50%;
+   display: grid;
+   place-items: center;
+-  font-weight: 700;
++  font-weight: 600;
+   font-size: 0.92rem;
+-  color: var(--accent-contrast);
+-  background: linear-gradient(180deg, var(--new-email-start), var(--new-email-end));
+-  border: 1px solid var(--new-email-border);
++  color: var(--ink-strong);
++  background: color-mix(in srgb, var(--ink-strong) 9%, var(--panel));
+ }
+ 
+ .users-identity-text {
+@@ -1965,14 +2085,12 @@ pre {
+ }
+ 
+ .users-action-danger {
+-  border-color: rgba(255, 180, 171, 0.4);
+-  background: rgba(255, 180, 171, 0.12);
+-  color: #ffd8d3;
++  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
++  color: var(--danger);
+ }
+ 
+ .users-action-danger:hover:not(:disabled) {
+-  border-color: rgba(255, 180, 171, 0.6);
+-  background: rgba(255, 180, 171, 0.2);
++  background: color-mix(in srgb, var(--danger) 10%, transparent);
+ }
+ 
+ @media (max-width: 900px) {
+@@ -2048,14 +2166,12 @@ pre {
+ }
+ 
+ .security-action-danger {
+-  border-color: rgba(255, 180, 171, 0.4);
+-  background: rgba(255, 180, 171, 0.12);
+-  color: #ffd8d3;
++  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
++  color: var(--danger);
+ }
+ 
+ .security-action-danger:hover:not(:disabled) {
+-  border-color: rgba(255, 180, 171, 0.6);
+-  background: rgba(255, 180, 171, 0.2);
++  background: color-mix(in srgb, var(--danger) 10%, transparent);
+ }
+ 
+ .security-check {
+@@ -2187,10 +2303,6 @@ pre {
+   --sec-measure: 720px;
+ }
+ 
+-.sec-header h2 {
+-  margin: 0;
+-}
+-
+ /* Content links elsewhere in the app sit inside styled containers; here they
+    land in running prose, where the browser default renders near-invisible on
+    the dark themes. */
+@@ -2899,13 +3011,10 @@ pre {
+ 
+ .contacts-page {
+   position: relative;
+-  height: calc(100vh - 74px);
++  height: 100vh;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+-  background:
+-    radial-gradient(circle at 94% 6%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 40%),
+-    linear-gradient(160deg, color-mix(in srgb, var(--panel) 85%, var(--bg)), color-mix(in srgb, var(--panel) 95%, var(--bg)) 46%);
+ }
+ 
+ .contacts-header {
+@@ -2916,10 +3025,6 @@ pre {
+   flex-wrap: wrap;
+ }
+ 
+-.contacts-header h2 {
+-  margin: 0;
+-}
+-
+ .contacts-header-actions {
+   display: flex;
+   align-items: center;
+@@ -2934,13 +3039,9 @@ pre {
+ }
+ 
+ .contacts-stat {
+-  border: 1px solid color-mix(in srgb, var(--line) 86%, var(--accent));
+-  border-radius: 999px;
+-  padding: 5px 11px;
+-  font-size: 0.8rem;
++  font-size: var(--ky-type-meta);
+   white-space: nowrap;
+-  color: color-mix(in srgb, var(--ink) 80%, var(--ink-strong));
+-  background: color-mix(in srgb, var(--panel) 88%, var(--bg));
++  color: var(--ink);
+ }
+ 
+ .contacts-stat strong {
+@@ -2986,18 +3087,27 @@ pre {
+   grid-column: 1 / -1;
+ }
+ 
++.contacts-form-card {
++  gap: var(--ky-space-3);
++}
++
++.contacts-form-card > h3 {
++  margin: 0;
++  font-size: var(--ky-type-section);
++  font-weight: 600;
++}
++
+ .contacts-form-card label {
+   display: grid;
+-  gap: 6px;
+-  border: 1px solid var(--line);
+-  border-radius: 10px;
+-  padding: 10px;
+-  background: color-mix(in srgb, var(--panel) 92%, var(--bg));
++  align-content: start;
++  gap: var(--ky-space-1);
+ }
+ 
+-.contacts-form-card label > div {
++.contacts-form-card label > div,
++.contacts-multivalue-label {
+   color: var(--ink-strong);
+-  font-size: 0.84rem;
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
+ }
+ 
+ .contacts-form-card input,
+@@ -3038,7 +3148,13 @@ pre {
+ }
+ 
+ .contacts-list-card {
+-  margin-top: 16px;
++  margin-top: var(--ky-space-4);
++  padding: 0;
++  border: 0;
++  border-radius: 0;
++  background: none;
++  box-shadow: none;
++  animation: none;
+   display: flex;
+   flex-direction: column;
+   min-height: 0;
+@@ -3052,12 +3168,20 @@ pre {
+ }
+ 
+ .contacts-count {
+-  border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--line));
+-  border-radius: 999px;
+-  padding: 2px 9px;
+-  font-size: 0.78rem;
+-  color: var(--ink-strong);
+-  background: color-mix(in srgb, var(--accent-soft) 32%, transparent);
++  font-size: var(--ky-type-meta);
++  color: var(--ink);
++  font-variant-numeric: tabular-nums;
++}
++
++.contacts-list-head h2 {
++  margin: 0;
++  font-size: var(--ky-type-section);
++  font-weight: 600;
++}
++
++.contacts-search {
++  width: 100%;
++  margin-top: var(--ky-space-3);
+ }
+ 
+ .contacts-empty {
+@@ -3107,17 +3231,8 @@ pre {
+   color: var(--accent-contrast);
+ }
+ 
+-.contacts-page-tab.active {
+-  background: var(--accent);
+-  border-color: var(--accent);
+-  color: var(--accent-contrast);
+-}
+-
+ .contacts-table-wrap {
+-  margin-top: 12px;
+-  border: 1px solid var(--line);
+-  border-radius: 10px;
+-  background: color-mix(in srgb, var(--panel) 90%, var(--bg));
++  margin-top: var(--ky-space-3);
+   min-height: 0;
+   flex: 1;
+   overflow: hidden;
+@@ -3136,10 +3251,9 @@ pre {
+ 
+ .contacts-table th {
+   text-align: left;
+-  font-size: 0.72rem;
+-  letter-spacing: 0.06em;
+-  text-transform: uppercase;
+-  color: color-mix(in srgb, var(--ink) 72%, var(--ink-strong));
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++  color: var(--ink);
+   padding: 10px 12px;
+   border-bottom: 1px solid var(--line);
+   white-space: nowrap;
+@@ -3147,12 +3261,9 @@ pre {
+ 
+ .contacts-table td {
+   padding: 10px 12px;
+-  border-bottom: 1px solid color-mix(in srgb, var(--line) 62%, transparent);
++  border-bottom: 1px solid var(--line);
+   vertical-align: middle;
+-}
+-
+-.contacts-table tbody tr:last-child td {
+-  border-bottom: 0;
++  font-size: var(--ky-type-nav);
+ }
+ 
+ /* Same story as the inbox's select column (see .inbox-select-hit): a bare 13px
+@@ -3187,7 +3298,11 @@ pre {
+ }
+ 
+ .contacts-row:hover {
+-  background: color-mix(in srgb, var(--accent-soft) 30%, transparent);
++  background: color-mix(in srgb, var(--ink-strong) 4%, transparent);
++}
++
++.contacts-row:has(input:checked) {
++  background: var(--accent-soft);
+ }
+ 
+ .contacts-row-busy {
+@@ -3219,8 +3334,8 @@ pre {
+ 
+ .contacts-row-chevron {
+   margin-left: 6px;
+-  opacity: 0.35;
+-  color: var(--accent);
++  opacity: 0.5;
++  color: var(--ink);
+   font-size: 0.9rem;
+   transition: opacity 140ms ease, transform 140ms ease;
+ }
+@@ -3237,11 +3352,10 @@ pre {
+   border-radius: 50%;
+   display: grid;
+   place-items: center;
+-  font-weight: 700;
++  font-weight: 600;
+   font-size: 0.92rem;
+-  color: var(--accent-contrast);
+-  background: linear-gradient(180deg, var(--new-email-start), var(--new-email-end));
+-  border: 1px solid var(--new-email-border);
++  color: var(--ink-strong);
++  background: color-mix(in srgb, var(--ink-strong) 9%, var(--panel));
+   object-fit: cover;
+ }
+ 
+@@ -3322,30 +3436,39 @@ pre {
+   justify-content: flex-end;
+ }
+ 
++/* Links and buttons share one secondary shape. */
+ .contacts-action {
++  display: inline-flex;
++  align-items: center;
+   width: auto;
+-  padding: 6px 10px;
+-  font-size: 0.78rem;
+-  border-color: var(--line);
+-  background: color-mix(in srgb, var(--panel) 82%, var(--bg));
++  min-height: 36px;
++  padding: 0 12px;
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++  font-size: var(--ky-type-nav);
++  line-height: 1.2;
++  text-decoration: none;
++  background: transparent;
+   color: var(--ink-strong);
+ }
+ 
+ .contacts-action:hover:not(:disabled) {
+-  border-color: var(--accent);
+-  background: color-mix(in srgb, var(--accent-soft) 40%, var(--panel));
++  background: color-mix(in srgb, var(--ink-strong) 7%, transparent);
+   filter: none;
+ }
+ 
++.contacts-actions .contacts-action {
++  min-height: 32px;
++  border-color: transparent;
++}
++
+ .contacts-action-danger {
+-  border-color: rgba(255, 180, 171, 0.4);
+-  background: rgba(255, 180, 171, 0.12);
+-  color: #ffd8d3;
++  color: var(--danger);
++  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
+ }
+ 
+ .contacts-action-danger:hover:not(:disabled) {
+-  border-color: rgba(255, 180, 171, 0.6);
+-  background: rgba(255, 180, 171, 0.2);
++  background: color-mix(in srgb, var(--danger) 10%, transparent);
+ }
+ 
+ .contacts-dav-url {
+@@ -3392,16 +3515,7 @@ pre {
+ 
+ .contacts-multivalue {
+   display: grid;
+-  gap: 6px;
+-  border: 1px solid var(--line);
+-  border-radius: 10px;
+-  padding: 10px;
+-  background: color-mix(in srgb, var(--panel) 92%, var(--bg));
+-}
+-
+-.contacts-multivalue-label {
+-  color: var(--ink-strong);
+-  font-size: 0.84rem;
++  gap: var(--ky-space-2);
+ }
+ 
+ .contacts-multivalue-row {
+@@ -3505,9 +3619,9 @@ pre {
+   max-height: 92vh;
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 14px;
++  border-radius: 12px;
+   padding: 16px;
+-  box-shadow: 0 14px 40px var(--modal-shadow);
++  box-shadow: var(--ky-shadow-overlay);
+   display: flex;
+   flex-direction: column;
+   gap: 14px;
+@@ -3519,9 +3633,9 @@ pre {
+   max-height: 92vh;
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 14px;
+-  padding: 18px;
+-  box-shadow: 0 14px 40px var(--modal-shadow);
++  border-radius: 12px;
++  padding: var(--ky-space-4);
++  box-shadow: var(--ky-shadow-overlay);
+   overflow: auto;
+ }
+ 
+@@ -3729,7 +3843,8 @@ pre {
+   max-height: 90vh;
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 14px;
++  border-radius: 12px;
++  box-shadow: var(--ky-shadow-overlay);
+   color: var(--ink-strong);
+   padding: 16px;
+   display: flex;
+@@ -3751,26 +3866,6 @@ pre {
+   padding-bottom: 10px;
+ }
+ 
+-.compose-send {
+-  background: var(--accent);
+-  border-color: var(--accent);
+-  color: #24170f;
+-  font-weight: 700;
+-}
+-
+-.compose-save-draft {
+-  background: color-mix(in srgb, var(--accent) 24%, transparent);
+-  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+-  color: var(--ink-strong);
+-}
+-
+-.compose-trash,
+-.compose-close,
+-.compose-attach {
+-  background: transparent;
+-  border-color: var(--line);
+-  color: var(--ink-strong);
+-}
+ 
+ .compose-attachments {
+   display: flex;
+@@ -3879,11 +3974,17 @@ pre {
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 6px;
+-  min-height: 34px;
+-  padding: 4px 6px;
+-  background: var(--bg);
+-  border: 1px solid var(--line);
+-  border-radius: 8px;
++  min-height: var(--ky-control-size);
++  padding: 3px 8px;
++  background: var(--panel);
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++}
++
++/* The token input has no edge of its own, so the field shows its focus. */
++.compose-token-field:focus-within {
++  outline: 2px solid var(--accent);
++  outline-offset: 2px;
+ }
+ 
+ .compose-token-pill {
+@@ -4003,9 +4104,11 @@ pre {
+   flex-wrap: wrap;
+ }
+ 
+-.compose-token-input {
++.compose-token-input,
++.compose-field-row .compose-token-input {
+   flex: 1 1 120px;
+   min-width: 120px;
++  min-height: 0;
+   border: none;
+   background: transparent;
+   color: var(--ink-strong);
+@@ -4094,15 +4197,8 @@ pre {
+ }
+ 
+ .compose-field-row span {
+-  font-weight: 700;
+-  color: var(--ink-strong);
+-}
+-
+-.compose-field-row input,
+-.compose-field-row select {
+-  background: var(--bg);
++  font-weight: 600;
+   color: var(--ink-strong);
+-  border: 1px solid var(--line);
+ }
+ 
+ .compose-mode-bar {
+@@ -4435,10 +4531,16 @@ pre {
+   }
+ 
+   .sidebar {
++    position: static;
++    height: auto;
+     border-right: 0;
+     border-bottom: 1px solid var(--line);
+   }
+ 
++  .panel {
++    padding: var(--ky-space-3);
++  }
++
+   .health-grid {
+     grid-template-columns: 1fr;
+   }
+@@ -4491,25 +4593,33 @@ pre {
+ 
+   .panel {
+     padding: 10px;
+-    margin-bottom: 10px;
+   }
+ 
+   .sidebar {
+     padding: 8px 10px;
+     max-height: 24vh;
+     overflow: auto;
++    gap: 6px;
+   }
+ 
+   .sidebar-logo,
+   .sidebar-app-logo,
+-  .sidebar-footer {
++  .sidebar-footer,
++  .sidebar-account-copy,
++  .sidebar svg {
+     display: none;
+   }
+ 
++  .sidebar-account {
++    margin-top: 0;
++    padding-top: 0;
++    border-top: 0;
++    justify-items: start;
++  }
++
+   .new-email-button {
+-    margin-bottom: 8px;
++    min-height: 36px;
+     padding: 8px;
+-    font-size: 0.82rem;
+   }
+ 
+   .mobile-quick-nav {
+@@ -4525,13 +4635,16 @@ pre {
+   .mobile-quick-nav a,
+   .mobile-settings-toggle {
+     flex: 0 0 auto;
+-    padding: 6px 8px;
++    display: inline-flex;
++    align-items: center;
++    min-height: 32px;
++    padding: 0 10px;
+     border: 1px solid var(--line);
+     border-radius: 8px;
+-    font-size: 0.75rem;
++    font-size: 0.8rem;
+     text-decoration: none;
+     color: var(--ink-strong);
+-    background: color-mix(in srgb, var(--panel) 70%, transparent);
++    background: transparent;
+   }
+ 
+   .mobile-settings-toggle {
+@@ -4549,8 +4662,8 @@ pre {
+   }
+ 
+   /* The quick nav stands in for these (and for the Scheduled heading). */
+-  .inbox-nav-row,
+-  .scheduled-heading,
++  .sidebar .inbox-nav-row,
++  .sidebar .scheduled-heading,
+   .sidebar-folder-row[data-folder-kind="inbox"],
+   .sidebar-folder-row[data-folder-kind="drafts"],
+   .sidebar-folder-row[data-folder-kind="junk"],
+@@ -4559,10 +4672,10 @@ pre {
+     display: none;
+   }
+ 
+-  .inbox-expand-button,
+-  .archive-toggle,
+-  .archive-group,
+-  .settings-heading {
++  .sidebar .inbox-expand-button,
++  .sidebar .archive-toggle,
++  .sidebar .archive-group,
++  .sidebar .settings-heading {
+     display: none;
+   }
+ 
+@@ -4597,11 +4710,13 @@ pre {
+   .sidebar a,
+   .sidebar .nav-heading,
+   .sidebar .nav-link-button {
+-    padding: 7px 8px;
+-    font-size: 0.78rem;
++    width: auto;
++    min-height: 32px;
++    padding: 0 10px;
++    font-size: 0.8rem;
+     border-radius: 8px;
+     /* Wrapped chips need an edge; the desktop base rule has none. */
+-    border-color: var(--line);
++    border: 1px solid var(--line);
+   }
+ 
+   .inbox-expand-button,
+@@ -4647,11 +4762,11 @@ pre {
+   }
+ 
+   .inbox-action-button {
+-    width: 34px;
+-    height: 34px;
+-    min-width: 34px;
++    width: 36px;
++    min-height: 36px;
++    min-width: 36px;
+     padding: 0;
+-    border-radius: 9px;
++    border-radius: var(--ky-control-radius);
+     display: inline-flex;
+     justify-content: center;
+     align-items: center;

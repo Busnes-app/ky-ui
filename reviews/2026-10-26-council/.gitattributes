@@ -1,0 +1,7 @@
+# Immutable patches contain intentional diff-context whitespace; preserve their exact bytes.
+*.patch -diff -text
+# Raw console evidence keeps the terminal's whitespace.
+kypost-06-flake-evidence.txt -diff -text
+# Generated exports are reviewed through their readable generators and source JSON.
+council.html -diff
+*.csv -diff

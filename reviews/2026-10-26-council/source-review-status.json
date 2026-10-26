@@ -1,0 +1,25 @@
+{
+  "review": "runtime-source-review-followup.md",
+  "reviewer": "Claude Opus5.5",
+  "findings": {
+    "F1": {
+      "status": "RESOLVED",
+      "products": {
+        "KyCalendar": "5b9ae3f",
+        "KyMessages": "2f6d6d0"
+      },
+      "proof": "Real-app hover regressions pass final code and fail old selector; captured neutral hover contrast >=10.57:1"
+    },
+    "F2": {
+      "status": "RESOLVED",
+      "product": "KyPost",
+      "head": "bfbe8439",
+      "proof": "Reader focus regression passes stable IDs and fails restored label-derived key"
+    }
+  },
+  "new_actionable_findings": 0,
+  "limits": [
+    "No WebKit or screen-reader certification",
+    "KyPost performance parity remains unproven; scoped test wait documented"
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "prefix": "kymessages-01-after",
+  "worktree": "/home/yoshi/git/busnes.app/KyMessage-Server/.claude/worktrees/ui-cohesion",
+  "branch": "ui/council-cohesion",
+  "head": "051474931960d629c8e8d659ab9d8d0bfb073ca8",
+  "web_src_patch_sha256": "2c4fb04ade1fb420f21d60897c3a4717bd550e66f3c9200f30dd24c37c72fa79",
+  "web_src_patch_bytes": 30713,
+  "changed_files": [
+    "web/dist/assets/index-DOSd2noB.css",
+    "web/dist/assets/index-DQrtpeBi.js",
+    "web/dist/index.html",
+    "web/src/App.tsx",
+    "web/src/components/AppHeader.test.tsx",
+    "web/src/components/AppHeader.tsx",
+    "web/src/components/TwoFactorSetup.tsx",
+    "web/src/ky-ui/VERSION",
+    "web/src/ky-ui/tokens.css",
+    "web/src/pages/Dashboard.tsx",
+    "web/src/pages/MemberHome.tsx",
+    "web/src/pages/SCIMAdmin.tsx",
+    "web/src/pages/Settings.tsx",
+    "web/src/styles/theme.css"
+  ],
+  "server_binary_sha256": "f2b3783225e007c8d19e15b04778ff998c33489c8d166f547dabf7eb8328e86f",
+  "dist_index_sha256": "d4591a60b82a7720a1dd61873f84d15de3ea58ba1d244a0599ea457691e050c9",
+  "captured": "2026-10-26T04:57:59.205Z",
+  "browser": "chromium 153.0.8010.12",
+  "timezone": "America/Chicago",
+  "locale": "en-US",
+  "theme_source": "product \"Color theme\" select (browser localStorage) after real sign-in; context colorScheme matching",
+  "fixture": "fresh SQLite, init-admin admin (password replaced through /api/auth/change-password), Matrix not configured, captcha none, nothing else seeded",
+  "files": [
+    {
+      "file": "kymessages-01-after-login-desktop-light.png",
+      "sha256": "9b5bf56f36589caa3260a099d00ab572a185587751c95c96498c96e48642c45a",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "login",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-login-mobile-light.png",
+      "sha256": "0db1b618ab76a3aae9c162c7d4b28238128baaad425e80daba6fc1c357961cf2",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "login",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-login-desktop-dark.png",
+      "sha256": "b899dfedf7e630116010d2f80f5f5780955c03a70651a0e245d072650eb28c72",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "login",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-login-mobile-dark.png",
+      "sha256": "9ee680fd8a67d44f659632e2c1ffbf99f7274a1d133136c9f485bd1122b059db",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "login",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-overview-desktop-light.png",
+      "sha256": "007a9f23736d85e44b68cfa72e9414473e2afe790cd14d8377b93fd221b42861",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "overview",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-users-desktop-light.png",
+      "sha256": "36a17695c437da84ac4b9d5a16da2d162fe71c2407ea59bbaaf7a7bd1cc86a5b",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "users",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-backup-desktop-light.png",
+      "sha256": "3cfa0fe9983f3b90ae7efdba41ad9b3c9270d1b21173c9b9efb30f14a30635fb",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "backup",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-backup-desktop-light-full.png",
+      "sha256": "5d2515fa7bdd9c26caab6410ba232fb006d0b713400716a44560413af9a9d755",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "backup",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-01-after-settings-desktop-light.png",
+      "sha256": "19b26d8ee60c0c01f9b81e181611a6222e1ad26a99d67bd6dbb518d634d15382",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "settings",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-settings-desktop-light-full.png",
+      "sha256": "9cbe5b7a25c5ba6baca9cc1d93f0f44788509a4e4af4a3a6066960f01b93ae5b",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "1280x900",
+      "surface": "settings",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-01-after-overview-mobile-light.png",
+      "sha256": "e7c89e71ab3a4b1811441a4f0b81c2780a5820ec94e3b9b19b94c7333611c8ad",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "overview",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-users-mobile-light.png",
+      "sha256": "17f83b011518f3518bf68462f886723612cc4b35086cced7b01ecd4add1adda9",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "users",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-backup-mobile-light.png",
+      "sha256": "f15ade600da857f61144db1e87afaa118cbdb41e6275a7121e688f65f9915f25",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "backup",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-backup-mobile-light-full.png",
+      "sha256": "303cffdb8f17763c4b9bff01d836e883a238adb5b67bfc03484ba79b0b3e49ec",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "backup",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-01-after-settings-mobile-light.png",
+      "sha256": "37b15037a89cdb9de2e5e32c7594017a68549d16db2c2fbfab473341324c8e00",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "settings",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-settings-mobile-light-full.png",
+      "sha256": "7de9077c9be347607a116d12eb3d2ce31493ab21ffe4a590c2b906e8ac001ed9",
+      "overflow_px": 0,
+      "theme": "busnes-light",
+      "viewport": "390x844",
+      "surface": "settings",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-01-after-overview-desktop-dark.png",
+      "sha256": "6d84443a116cf2a3e0a6cb3ef531ec0949d3871f01c79634b326314158255390",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "overview",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-users-desktop-dark.png",
+      "sha256": "48b111845da3608e83cba0376f65790b1a70241d4a53b9312df6b33eda1959d5",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "users",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-backup-desktop-dark.png",
+      "sha256": "e424f02f58cc82486702006bd90a6123ff974cd466c2b8f7c11002fbf5e113cf",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "backup",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-backup-desktop-dark-full.png",
+      "sha256": "c847f3c7c9d4af531569216db3ced014e237f8a0057f7a96e3609d4ec09de084",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "backup",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-01-after-settings-desktop-dark.png",
+      "sha256": "e98a116f9548930a9ca29bb1bd5be07fb2e4670c3b5a82ac77d7bc6b9b829433",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "settings",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-settings-desktop-dark-full.png",
+      "sha256": "019878c5de91d0eaba19548f13ef6ba3987470c13232d2772892739d26af2f4a",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "1280x900",
+      "surface": "settings",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-01-after-overview-mobile-dark.png",
+      "sha256": "8110825706664ded08ba79203c393c4b9184a50be55fc5d863702cbc405e88f5",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "overview",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-users-mobile-dark.png",
+      "sha256": "284ea9dc6d811796eb3c6425d96abd15b85b2f7e193d4aacc5569fdef52fcb4c",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "users",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-backup-mobile-dark.png",
+      "sha256": "eca96dce497d9bbf7611478a1593ae1f32ad754f85cb41b531eb6d6332819473",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "backup",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-backup-mobile-dark-full.png",
+      "sha256": "c85dc2a84da6bbe43c4a13c950389ce97e01f3a56c2e4d5801c5335a0c958daf",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "backup",
+      "full_page": true
+    },
+    {
+      "file": "kymessages-01-after-settings-mobile-dark.png",
+      "sha256": "28519fb627a39c2135a6811ae1346d9581b9bcb3182a88b78a1ccfe5c199aa5f",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "settings",
+      "full_page": false
+    },
+    {
+      "file": "kymessages-01-after-settings-mobile-dark-full.png",
+      "sha256": "a28ae37b0b9bc782bb13f9253441156110d24c20315524fa751a27586a44694c",
+      "overflow_px": 0,
+      "theme": "busnes-dark",
+      "viewport": "390x844",
+      "surface": "settings",
+      "full_page": true
+    }
+  ]
+}

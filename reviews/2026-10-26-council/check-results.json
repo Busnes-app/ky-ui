@@ -1,0 +1,156 @@
+[
+  [
+    "ky-ui",
+    "ESLint + unit",
+    "Pass",
+    "8 unit tests; lint zero warnings",
+    "verification.md"
+  ],
+  [
+    "ky-ui",
+    "Chromium contracts",
+    "Pass",
+    "20 browser checks; geometry, border contrast and legacy hover",
+    "verification.md"
+  ],
+  [
+    "ky-ui",
+    "Selected consumer bytes",
+    "Pass",
+    "KyPost, KyCalendar, KyMessages match 0.3.0",
+    "verification.md"
+  ],
+  [
+    "Fleet",
+    "Public freshness",
+    "Fail: rollout incomplete",
+    "Public defaults still carry 0.2.0; seven other consumers outside focused implementation",
+    "verification.md"
+  ],
+  [
+    "KyCalendar",
+    "Full local CI",
+    "Pass",
+    "make ci: 155 frontend tests, Go race/vet/tidy, fork tests, smoke",
+    "kycalendar-implementation.md"
+  ],
+  [
+    "KyCalendar",
+    "Chromium real-server browser",
+    "Pass",
+    "32 browser checks passed; final navigation hover regression fails old selector and passesfixed in4projects",
+    "kycalendar-implementation.md"
+  ],
+  [
+    "KyCalendar",
+    "Rebuilt embedded output",
+    "Pass",
+    "Repeated production build byte-identical; vendor hashes pass",
+    "kycalendar-implementation.md"
+  ],
+  [
+    "KyMessages",
+    "MemberHome / Element / Matrix-on",
+    "Untested",
+    "No real IdP/chat integration capture; these are not console evidence",
+    "kymessages-implementation.md"
+  ],
+  [
+    "All",
+    "9/10 acceptance",
+    "Not achieved",
+    "Fresh final visual reviews pending; incomplete behavior coverage prevents certification",
+    "verification.md"
+  ],
+  [
+    "KyMessages",
+    "Final stage06 local CI",
+    "Pass",
+    "make ci:157 frontend tests, race/vet/tidy/Compose, smoke85 on18097",
+    "kymessages-implementation.md"
+  ],
+  [
+    "KyMessages",
+    "Final real-server browser",
+    "Pass",
+    "7 Chromium/Firefox browser checks;48 online states measured,60 viewport captures",
+    "kymessages-implementation.md"
+  ],
+  [
+    "KyMessages",
+    "Health status regressions",
+    "Pass",
+    "Successful load then failed recheck hides staleUp/Pass; offline Overview adds no invented sync row; both fail onoldlogic",
+    "kymessages-implementation.md"
+  ],
+  [
+    "KyPost",
+    "Final frontend stage05/06 checks",
+    "Pass",
+    "1,190 frontend tests after focus fix;366 affected tests;zero-warning lint, typecheck, build, vendor check and audit (0 findings) pass",
+    "kypost-implementation.md"
+  ],
+  [
+    "KyPost",
+    "Parallel first-render test",
+    "Scoped wait passed; causation unresolved",
+    "Only2 initialqueries allow5s after12 timingcomparisons;237affectedtests and1189fulltests pass;failedwarmupreverted",
+    "kypost-06-flake-evidence.txt"
+  ],
+  [
+    "KyMessages",
+    "Final visual rating",
+    "Below9 target",
+    "Claude Opus5.5:quality7.72,brandfit8.51;60 viewport images, nofullproduct gate certification",
+    "implemented-messages-release-review.md"
+  ],
+  [
+    "KyPost",
+    "Final visual rating",
+    "Below9 target",
+    "Claude Opus5.5:quality7.52,brandfit8.08;28 scoredviewportimages;statesfail,othergatesuntested",
+    "implemented-post-release-review.md"
+  ],
+  [
+    "KyCalendar",
+    "Final visual rating",
+    "Below9 target",
+    "Claude Opus5.5:quality7.54,brandfit8.16;30uniqueimages;responsivepass,statesfail,othergatesuntested",
+    "implemented-calendar-release-review.md"
+  ],
+  [
+    "All runtime",
+    "Complete source review",
+    "Pass after corrections",
+    "F1/F2 independently verified old-fail/new-pass; all changedruntime source covered by two rounds; bundles rebuilt exact",
+    "runtime-source-review-followup.md"
+  ],
+  [
+    "Busnes-app/ky-ui",
+    "Current-head CI and reviewer",
+    "Pass at snapshot",
+    "2026-10-26T07:37:09.661301+00:00; head 4c9746017fdc02487f0e62cec17a12be8c74c246; all CI passes and reviewer cleared same head",
+    "https://github.com/Busnes-app/ky-ui/pull/18"
+  ],
+  [
+    "Busnes-app/KyCalendar",
+    "Current-head CI and reviewer",
+    "Pass at snapshot",
+    "2026-10-26T07:37:09.661301+00:00; head 5b9ae3f0bb65aa426a9444a1cd1999cafcac9fab; all CI passes and reviewer cleared same head",
+    "https://github.com/Busnes-app/KyCalendar/pull/79"
+  ],
+  [
+    "Busnes-app/KyMessage-Server",
+    "Current-head CI and reviewer",
+    "Pass at snapshot",
+    "2026-10-26T07:37:09.661301+00:00; head 2f6d6d0a9a91b2125bd55d99d5f0a7594275e48c; all CI passes and reviewer cleared same head",
+    "https://github.com/Busnes-app/KyMessage-Server/pull/93"
+  ],
+  [
+    "Busnes-app/KyPost-Server",
+    "Current-head CI and reviewer",
+    "Pass at snapshot",
+    "2026-10-26T07:37:09.661301+00:00; head bfbe8439c8680155d78adb1defb996336d7a6e28; all CI passes and reviewer cleared same head",
+    "https://github.com/Busnes-app/KyPost-Server/pull/480"
+  ]
+]

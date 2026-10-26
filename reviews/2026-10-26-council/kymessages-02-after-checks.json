@@ -1,0 +1,738 @@
+[
+  {
+    "surface": "overview",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.31,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "users",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 9,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Users",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "agents",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 8,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Agents",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "rooms",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Rooms",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "health",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 4.99,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "audit",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 6,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Audit log",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "scim",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 5,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "SCIM 2.0 Directory & Inbound Provisionin",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "backup",
+    "viewport": "desktop",
+    "theme": "light",
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Backup & recovery",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 4.99,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "overview",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.31,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "users",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 9,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Users",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "agents",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 8,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Agents",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "rooms",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Rooms",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "health",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 4.99,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "audit",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Audit log",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "scim",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 5,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "SCIM 2.0 Directory & Inbound Provisionin",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 5.73,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "backup",
+    "viewport": "mobile",
+    "theme": "light",
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Backup & recovery",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(24, 35, 38)"
+      }
+    ],
+    "min_text_ratio": 4.99,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 3.38,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 4.93,
+    "short_controls": []
+  },
+  {
+    "surface": "overview",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "users",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 9,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Users",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "agents",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 8,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Agents",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "rooms",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Rooms",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "health",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "audit",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 6,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Audit log",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.48,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "scim",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 5,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "SCIM 2.0 Directory & Inbound Provisionin",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.48,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 4.78,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "backup",
+    "viewport": "desktop",
+    "theme": "dark",
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Backup & recovery",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.11,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 4.78,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "overview",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Overview",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "users",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 9,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Users",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "agents",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 8,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Agents",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "rooms",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Rooms",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 8.26,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "health",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Health",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.82,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "audit",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 7,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Audit log",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.48,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 5.28,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "scim",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 5,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "SCIM 2.0 Directory & Inbound Provisionin",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 7.48,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 4.78,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  },
+  {
+    "surface": "backup",
+    "viewport": "mobile",
+    "theme": "dark",
+    "focus_stops": 13,
+    "focus_without_indicator": [],
+    "overflow_px": 0,
+    "h1": [
+      {
+        "text": "Backup & recovery",
+        "size": "24px",
+        "weight": "600",
+        "color": "rgb(242, 239, 232)"
+      }
+    ],
+    "min_text_ratio": 5.11,
+    "text_failures": [],
+    "text_failure_count": 0,
+    "min_control_border_ratio": 4.78,
+    "border_failures": [],
+    "min_focus_ratio_on_page_bg": 6.47,
+    "short_controls": []
+  }
+]

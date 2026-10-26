@@ -1,0 +1,4611 @@
+diff --git a/UI-VERIFICATION.md b/UI-VERIFICATION.md
+index 6ecff842..ec429773 100644
+--- a/UI-VERIFICATION.md
++++ b/UI-VERIFICATION.md
+@@ -70,3 +70,15 @@ Screenshots remain local artifacts:
+ ## Approved interface polish — 2026-10-19
+ 
+ See [UI-POLISH.md](UI-POLISH.md) for the implemented changes, preservation scope, checks, actual before/after screenshots and disposable capture conditions. Earlier captures above remain historical evidence.
++
++## Suite cohesion pass — 2026-10-26
++
++Shell, task views, and forms and dialogs were refined toward the ky-ui 0.3.0 tokens in three staged batches. For each stage, before and after captures were taken from a real scratch server. The fixture was a loopback IMAP mail account with synthetic messages, plus synthetic contacts added through the normal form. Each stage covered Busnes Light/Dark at 1280×900 and 390×844, and every capture had 0 horizontal overflow. Stage notes, source patch hashes and screenshots are kept with the suite council evidence in ky-ui `reviews/2026-10-26-council/kypost-implementation.md`, not in this repository.
++
++Browser checks on the final build:
++- Keyboard order and 2px focus rings: sidebar, contextual bulk toolbar and Logout.
++- Compose opens with focus inside the dialog, and Escape returns focus to New Email.
++- Measured contrast: field and secondary borders ≥3.6:1, and danger text ≥5:1 on Busnes and on the Dark Matter, Cyber Punk and Polished Ky presets.
++- No overflow at 1024, 1440 and 768 px.
++
++Frontend checks passed: 1185 tests, typecheck, lint (0 errors, the same 18 warnings as HEAD), production build and npm audit. This is not a full accessibility audit, and not every named palette and page combination was captured.
+diff --git a/frontend/AGENTS.md b/frontend/AGENTS.md
+index 1c16582f..42ea46ef 100644
+--- a/frontend/AGENTS.md
++++ b/frontend/AGENTS.md
+@@ -22,7 +22,9 @@ All code under `frontend/`. Produces a static bundle under `frontend/dist/` cons
+ 
+ - Web themes default to the Busnes.app cream/light and charcoal/dark palettes with orange accents, following the OS until a browser-local choice is saved. Preserve existing named themes and saved choices.
+ - Mailbox switcher: `App.tsx` reads `GET /api/mailboxes` after sign-in, validated by `app/mailboxes.ts` `readMailboxes` (primary first with the user's ID, extras `mbx-<uuid>`, lowercase dot-atom addresses unique across mailboxes, at most one `primary` address, sorted first; anything else hides the switcher). With more than one mailbox the sidebar offers them in a "Your mailboxes" `<select>` named by primary address, the current one selected; choosing one opens its Inbox; a non-native account's empty list shows nothing and sends no header. The selection lives in `api/client.ts` (`selectMailbox`) and per user in `sessionStorage` (`kypost-mailbox:<userId>`), restored before the first mail render. `requestResponse` adds `X-KyPost-Mailbox` only for an extra mailbox and only on the withMailbox webmail routes (`/api/inbox`, `/api/inbox/folders|actions`, `/api/mail/search|draft|send|send-pgp|body|pgp-payload|attachments|attachment|outbox/{id}`, `/api/rules/run`); `/api/decisions` and `/api/export/folders` are left to their Settings screens, and an explicit header (`mailboxHeaders`) overrides the selection, empty meaning the primary. A switch clears folder lists (late folder answers for another mailbox, success or failure, are dropped) and remounts `ReadPage` (`key`), which fixes its mailbox at mount, names it above the list and drops every list, body and decrypted cache. Folder URLs carry `box=<id>` for an extra mailbox; a folder URL whose `box` differs from the selection (Back after a switch) shows that mailbox's Inbox. A 404 `mailbox not found` resets to the primary and re-reads the list; a list that fails or no longer holds the selection resets too. The resulting warning is dismissible and shown on `/read` only. Compose pins the mailbox it opened in (every send and draft carries its header; a draft or reply opened from `ReadPage` carries the page's mailbox in `DraftComposePayload.mailbox`, not the selection after an await) and offers that mailbox's addresses as From, primary first, filled in when the list arrives after compose opened; a browser-encrypted send never falls back to the account address for an extra mailbox. With one mailbox and one address the send-as select is shown as before. The compose autosave (`app/draftAutosave.ts`) records the mailbox and From: restoring re-pins compose to that mailbox when it is listed; otherwise the draft is not restored, the notice names its From, and autosave is off for that compose window so the snapshot survives. Attachments of an extra mailbox render as buttons that download through `downloadFile` as `application/octet-stream`, never as links (a link cannot carry the header, so opening or saving it would fetch the primary's file). Settings → Filters names the open mailbox that Run rules now targets.
+-- The primary sidebar uses a quiet selected surface with a slim accent rail; the layout remains a workspace on desktop and scrollable navigation on small screens.
++- The primary sidebar uses a quiet selected surface with a slim accent rail; the layout remains a workspace on desktop and scrollable navigation on small screens. Sidebar rows share one ky-ui token geometry (40px, icon then label); Archive and Settings disclose with a chevron. The account region (username, `Admin` for administrators, Logout) is pinned to the sidebar foot; phones keep the chip quick nav, with Logout as a chip.
++- One button system, named as in KyCalendar: a plain `<button>` is the secondary outline; a form's `type="submit"` and `.btn-primary` carry the accent fill, one per view; `.btn-ghost` drops the outline; `.btn-danger` recolours a destructive action with `--danger`, which `styles.css` ties to each named palette's ink. Each page has one `h1` title; dialogs keep `h2`/`h3`. Pages sit flat on the content surface; only overlays take `--ky-shadow-overlay`.
++- The inbox bulk toolbar renders only while a message is selected; every action in it needs a selection.
+ 
+ - Backup stays compact: keep credentials and routine capsule actions visible; collapse scheduling, recovery setup, manual key entry and history. Open initial pairing setup only when no key is pinned. Preserve per-action credential checks. Render stored audit failure reasons as text in history.
+ 
+@@ -103,7 +105,7 @@ admin grant; the issuer hint states that changing the issuer revokes links.
+ 
+ - Client theme selection is local-only and persisted in browser storage (`localStorage` key `kypost-theme`)
+ - Theme presets are owned by `src/theme.ts`
+-- Preset names: Dark Matter, Light Matter, Tropics, Tropic Night, Ocean, Coffee, White Cliffs, Cyber Punk, Neon Purple, Space, Sky, Forest, Sun, Patina Ky, Polished Ky. **Patina Ky is the default** (`getStoredTheme`)
++- Preset names: Busnes Light, Busnes Dark, Dark Matter, Light Matter, Tropics, Tropic Night, Ocean, Coffee, White Cliffs, Cyber Punk, Neon Purple, Space, Sky, Forest, Sun, Patina Ky, Polished Ky. With no saved choice, Busnes Light or Dark follows the OS (`getStoredTheme`)
+ - **Every preset's `ink` AND `inkStrong` must clear 4.5:1 (WCAG AA body text) against BOTH `bg` and `panel`.** A mail client's text is the product, and a message the reader cannot see is indistinguishable from a message the client lost. `ink` is the one that slips: it is the secondary colour, so it is easy to treat as decoration, but it is also the smallest text in the reading pane (0.75rem at 0.7 opacity for the remote-images note) and therefore needs more contrast than `inkStrong`, not less. The default theme shipped `ink` at 4.03:1 on `bg` and 3.66:1 on `panel` while its `inkStrong` scored 15.55:1 — the only preset of the fifteen below the floor. A new or edited preset is checked by `pages/read/readability.test.tsx`, which drives every entry in `THEME_OPTIONS` through `applyTheme` and reads the custom properties back, so adding a preset needs no test change
+ - Theme initialization runs in `main.tsx` before rendering via `applyStoredTheme()`
+ - Config page includes a Theme selector and Apply Theme button in Application settings
+@@ -170,12 +172,11 @@ admin grant; the issuer hint states that changing the issuer revokes links.
+ 
+ - Compose keeps its labeled heading, recipients and editor above the security group and sticky send-action footer. Preserve every security choice, attachment/contact action, draft/send/schedule handler and close/trash behavior when refining this layout.
+ 
+-- `npm run build` must succeed with zero TypeScript errors; `npm run typecheck` runs `tsc --noEmit` alone
+-- `npm run lint` (after `npm ci --prefix lint`) must report 0 errors. `lint/` is its own package and lockfile because typescript-eslint needs the TypeScript 6 compiler API and the app builds with TypeScript 7; config is `lint/eslint.config.js` (rules-of-hooks error, exhaustive-deps warn). Do not move these deps into the app's `package.json`
++- `npm run build` must succeed with zero TypeScript errors; `npm run typecheck` runs `tsc --noEmit` alone. Its `Module "crypto" has been externalized` warning from `@hpke/common` is a documented false positive (`vite.config.ts`); do not filter it
++- `npm run lint` (after `npm ci --prefix lint`) must report 0 errors and 0 warnings. An effect that reads a value it must not re-run on uses `useEffectEvent`; a proven false positive gets a reason comment above a next-line disable, never a file or rule disable. `lint/` is its own package and lockfile because typescript-eslint needs the TypeScript 6 compiler API and the app builds with TypeScript 7; config is `lint/eslint.config.js` (rules-of-hooks error, exhaustive-deps warn). Do not move these deps into the app's `package.json`
+ - Time-sensitive test fixtures use relative expiries or a controlled clock, so real calendar dates cannot silently change their intended state.
+ - Every account-credential request goes through `credentialFields`/`deriveCredential` (`api/auth.ts`) and sends only `authSecret` (or `<prefix>AuthSecret`). `api/credential-transmission.test.ts` (source scan, with an allowlist of files that send non-account passwords) and `api/password-wire.test.ts` enforce it.
+ - `npm test` (vitest) must pass. `pages/read/readability.test.tsx` covers the reading surface across every theme × both body modes and is the check a new theme preset or a sanitizer allowlist change has to clear
+-- Playwright E2E tests live in `scripts/tests/`; run via `scripts/`
+ 
+ ## Shared browser UI
+ 
+diff --git a/frontend/src/App.lazy.test.tsx b/frontend/src/App.lazy.test.tsx
+index 1b417164..187a62a3 100644
+--- a/frontend/src/App.lazy.test.tsx
++++ b/frontend/src/App.lazy.test.tsx
+@@ -63,7 +63,7 @@ describe("lazy loading", () => {
+     renderAt("/settings/appearance");
+     // The route chunk loads under whatever load the rest of the suite puts on
+     // the worker; the default 1 s wait was flaky there.
+-    expect(await screen.findByRole("heading", { level: 2, name: "Appearance" }, { timeout: 5000 })).toBeTruthy();
++    expect(await screen.findByRole("heading", { level: 1, name: "Appearance" }, { timeout: 5000 })).toBeTruthy();
+   });
+ 
+   it("builds the compose editor once the Quill chunk arrives", async () => {
+diff --git a/frontend/src/App.mobileSettings.test.tsx b/frontend/src/App.mobileSettings.test.tsx
+index f1a60327..7e014cf0 100644
+--- a/frontend/src/App.mobileSettings.test.tsx
++++ b/frontend/src/App.mobileSettings.test.tsx
+@@ -65,6 +65,11 @@ describe("mobile Settings button", () => {
+     await screen.findByText("Primary inbox");
+ 
+     const toggle = screen.getByRole("button", { name: "Toggle settings" });
++    // The current-page link is scrolled into view on load; only the toggle's scroll counts here.
++    scrollIntoView.mockClear();
++    // The phone strip follows sidebar order: the toggle comes after Contacts.
++    const contacts = screen.getByRole("link", { name: "Contacts" });
++    expect(contacts.compareDocumentPosition(toggle) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+     // Closed to start: no settings link, and the control says so.
+     expect(toggle.getAttribute("aria-expanded")).toBe("false");
+     expect(screen.queryByRole("link", { name: "Appearance" })).toBeNull();
+@@ -75,6 +80,6 @@ describe("mobile Settings button", () => {
+     // scrolled into view (the fix for the hidden 24vh strip).
+     expect(await screen.findByRole("link", { name: "Appearance" })).toBeTruthy();
+     expect(toggle.getAttribute("aria-expanded")).toBe("true");
+-    expect(scrollIntoView).toHaveBeenCalled();
++    expect(scrollIntoView.mock.contexts).toContain(document.getElementById("settings-nav-group"));
+   });
+ });
+diff --git a/frontend/src/App.tsx b/frontend/src/App.tsx
+index 6be49291..1a6a43f6 100644
+--- a/frontend/src/App.tsx
++++ b/frontend/src/App.tsx
+@@ -1,4 +1,4 @@
+-import { type DragEvent, type MouseEvent as ReactMouseEvent, type ReactElement, lazy, Suspense, useEffect, useRef, useState } from "react";
++import { type DragEvent, type MouseEvent as ReactMouseEvent, type ReactElement, lazy, Suspense, useEffect, useEffectEvent, useRef, useState } from "react";
+ import { Link, Navigate, Route, Routes, useLocation, useNavigate } from "react-router";
+ import { deleteJSON, getJSON, onMailboxGone, postJSON, putJSON, selectedMailboxId, selectMailbox, toErrorMessage } from "./api/client";
+ import { AuthContext, type AuthState } from "./auth";
+@@ -25,7 +25,14 @@ import type {
+   DragMessagePayload
+ } from "./app/types";
+ import { clearDraftSnapshot } from "./app/draftAutosave";
+-import { mailboxLabel, standardMailboxKind, standardMailboxPath } from "./app/mailboxKind";
++import { mailboxLabel, standardMailboxKind, standardMailboxPath, type StandardMailboxKind } from "./app/mailboxKind";
++import {
++  ArchiveIcon, ChevronIcon, ClockIcon, ContactsIcon, DraftIcon, FolderIcon, InboxIcon, LogoutIcon, PlusIcon, SendIcon, SettingsIcon, TrashIcon, WarningIcon
++} from "./pages/read/icons";
++
++const FOLDER_ICONS: Record<StandardMailboxKind | "custom", () => ReactElement> = {
++  inbox: InboxIcon, drafts: DraftIcon, junk: WarningIcon, sent: SendIcon, trash: TrashIcon, custom: FolderIcon
++};
+ 
+ // Every page below is a separate chunk. Only LoginPage is eager: it is what an
+ // unauthenticated visitor lands on, so putting it behind a second round trip
+@@ -80,6 +87,13 @@ export function App() {
+   // Scroll the group into view whenever it opens; block "nearest" is a no-op on
+   // desktop, where it is already in view.
+   const settingsNavRef = useRef<HTMLDivElement | null>(null);
++  // On a phone the nav is one sideways-scrolling strip; keep the current page's link in view.
++  const navRef = useRef<HTMLElement | null>(null);
++  useEffect(() => {
++    navRef.current
++      ?.querySelectorAll(".sidebar-link-active")
++      .forEach((link) => link.scrollIntoView({ block: "nearest", inline: "nearest" }));
++  }, [location.pathname, location.search, auth?.authenticated, mailboxFolders]);
+   useEffect(() => {
+     if (settingsOpen) {
+       settingsNavRef.current?.scrollIntoView({ block: "nearest" });
+@@ -92,6 +106,7 @@ export function App() {
+   const [appVersion, setAppVersion] = useState("");
+   const currentMailbox = new URLSearchParams(location.search).get("mailbox")?.trim() ?? "";
+   const onReadPage = location.pathname === "/read";
++  const onMailView = onReadPage || location.pathname === "/scheduled";
+ 
+   // Navigation hold. A section showing a value the server issues once and
+   // cannot reissue (a generated CardDAV app password) registers a hold; any
+@@ -148,6 +163,12 @@ export function App() {
+     archiveFolderList.reset();
+   }
+ 
++  // Called from async answers, so it must see the current sign-in and folder lists.
++  const fallBackToPrimary = useEffectEvent((notice: string) => {
++    chooseMailbox("");
++    setMailboxNotice(notice);
++  });
++
+   // A non-native account gets an empty list, and no header is ever sent for it.
+   useEffect(() => {
+     const userId = auth?.authenticated ? auth.userId : undefined;
+@@ -163,16 +184,14 @@ export function App() {
+           if (!live) return;
+           setMailboxes(list);
+           if (selectedMailboxId() && !list.some((m) => m.id === selectedMailboxId())) {
+-            chooseMailbox("");
+-            setMailboxNotice("This mailbox is no longer available. Showing your primary mailbox.");
++            fallBackToPrimary("This mailbox is no longer available. Showing your primary mailbox.");
+           }
+         },
+         () => {
+           if (!live) return;
+           setMailboxes([]);
+           if (selectedMailboxId()) {
+-            chooseMailbox("");
+-            setMailboxNotice("Your mailboxes could not be loaded. Showing your primary mailbox.");
++            fallBackToPrimary("Your mailboxes could not be loaded. Showing your primary mailbox.");
+           }
+         }
+       );
+@@ -185,8 +204,7 @@ export function App() {
+   useEffect(() => {
+     onMailboxGone((id) => {
+       if (id !== selectedMailboxId()) return;
+-      chooseMailbox("");
+-      setMailboxNotice("This mailbox is no longer available. Showing your primary mailbox.");
++      fallBackToPrimary("This mailbox is no longer available. Showing your primary mailbox.");
+       setMailboxesVersion((v) => v + 1);
+     });
+   }, [auth?.userId]);
+@@ -446,7 +464,8 @@ export function App() {
+     }
+   }
+ 
+-  useEffect(() => {
++  // Re-read on sign-in and on every mailbox switch; signing out clears the sidebar.
++  const syncMailboxFolders = useEffectEvent(() => {
+     if (!auth?.authenticated) {
+       mailboxFolderList.reset();
+       setInboxCreateOpen(false);
+@@ -458,11 +477,15 @@ export function App() {
+       return;
+     }
+     void loadMailboxFolders();
++  });
++  useEffect(() => {
++    syncMailboxFolders();
+   }, [auth?.authenticated, selectedMailbox]);
+ 
++  const reloadArchiveFolders = useEffectEvent(loadArchiveFolders);
+   useEffect(() => {
+     if (!archiveOpen) return;
+-    void loadArchiveFolders();
++    void reloadArchiveFolders();
+   }, [archiveOpen, auth?.authenticated, selectedMailbox]);
+ 
+ 
+@@ -518,72 +541,79 @@ export function App() {
+     <div className="shell">
+       <aside className="sidebar">
+         <div className="sidebar-logo">
+-          <img className="sidebar-app-logo" src="/apple-touch-icon.png" alt="" width="48" height="48" />
++          <img className="sidebar-app-logo" src="/apple-touch-icon.png" alt="" width="28" height="28" />
+           <span className="sidebar-wordmark">KyPost</span>
+         </div>
+-        <button type="button" className="new-email-button" onClick={compose.openComposeWindow}>
++        {/* Outside mail views the page's own primary leads, so this steps down to secondary. */}
++        <button
++          type="button"
++          className={onMailView ? "new-email-button" : "new-email-button new-email-button-quiet"}
++          onClick={compose.openComposeWindow}
++        >
+           New Email
+         </button>
+-        <nav onClickCapture={guardNavigation}>
+-          {navBlockedNotice ? (
+-            <p className="notice notice-error" role="alert">
+-              {navBlockedNotice}
+-            </p>
+-          ) : null}
+-          {mailboxes.length > 1 ? (
+-            <label className="mailbox-switcher">
+-              <span className="sidebar-section-label mailbox-switcher-label">Your mailboxes</span>
+-              <select
+-                value={selectedMailbox}
+-                onChange={(event) => {
+-                  // Same hold as the links: switching opens /read and would
+-                  // unmount a once-only secret.
+-                  if (secretHold) {
+-                    setNavBlockedNotice(secretHold);
+-                    return;
+-                  }
+-                  chooseMailbox(event.target.value);
+-                  setMailboxNotice("");
+-                  navigate("/read");
+-                }}
+-              >
+-                {mailboxes.map((m) => (
+-                  <option key={m.id} value={m.kind === "primary" ? "" : m.id}>
+-                    {mailboxName(m)}
+-                  </option>
+-                ))}
+-              </select>
+-            </label>
+-          ) : null}
++        {navBlockedNotice ? (
++          <p className="notice notice-error" role="alert">
++            {navBlockedNotice}
++          </p>
++        ) : null}
++        {mailboxes.length > 1 ? (
++          <label className="mailbox-switcher">
++            <span className="sidebar-section-label mailbox-switcher-label">Your mailboxes</span>
++            <select
++              value={selectedMailbox}
++              onChange={(event) => {
++                // Same hold as the links: switching opens /read and would
++                // unmount a once-only secret.
++                if (secretHold) {
++                  setNavBlockedNotice(secretHold);
++                  return;
++                }
++                chooseMailbox(event.target.value);
++                setMailboxNotice("");
++                navigate("/read");
++              }}
++            >
++              {mailboxes.map((m) => (
++                <option key={m.id} value={m.kind === "primary" ? "" : m.id}>
++                  {mailboxName(m)}
++                </option>
++              ))}
++            </select>
++          </label>
++        ) : null}
++        {/* Browsers leave a partly visible item clipped when it takes focus, which the phone strip makes common. */}
++        <nav
++          ref={navRef}
++          onClickCapture={guardNavigation}
++          onFocus={(event) => event.target.scrollIntoView({ block: "nearest", inline: "nearest" })}
++        >
+           <p className="sidebar-section-label">Mailboxes</p>
+           <div className="mobile-quick-nav" aria-label="Mobile mailboxes">
+-            <Link className={onReadPage && currentMailbox === "" ? "ky-nav-item sidebar-link-active" : "ky-nav-item"} to="/read">Inbox</Link>
++            <Link className={onReadPage && currentMailbox === "" ? "ky-nav-item sidebar-link-active" : "ky-nav-item"} to="/read">
++              <InboxIcon />
++              Inbox
++            </Link>
+             {/* Stand-ins for the folder rows the phone CSS hides by data-folder-kind,
+                 so each points at the account's real folder ("Sent Items" too). */}
+             {([["drafts", "Drafts"], ["junk", "Junk"], ["sent", "Sent"], ["trash", "Trash"]] as const).map(([kind, label]) => {
+               const path = standardMailboxPath(mailboxFolders, kind, label);
++              const KindIcon = FOLDER_ICONS[kind];
+               return (
+                 <Link
+                   key={kind}
+                   className={onReadPage && currentMailbox.toLowerCase() === path.toLowerCase() ? "ky-nav-item sidebar-link-active" : "ky-nav-item"}
+                   to={`/read?mailbox=${encodeURIComponent(path)}${boxQuery}`}
+                 >
++                  <KindIcon />
+                   {label}
+                 </Link>
+               );
+             })}
+-            <Link className={location.pathname === "/scheduled" ? "ky-nav-item sidebar-link-active" : "ky-nav-item"} to="/scheduled">Scheduled</Link>
+-            <button
+-              type="button"
+-              className="mobile-settings-toggle"
+-              aria-label="Toggle settings"
+-              aria-expanded={settingsOpen}
+-              aria-controls="settings-nav-group"
+-              title="Settings"
+-              onClick={() => setSettingsOpen((open) => !open)}
+-            >
+-              Settings
+-            </button>
++            <Link className={location.pathname === "/scheduled" ? "ky-nav-item sidebar-link-active" : "ky-nav-item"} to="/scheduled">
++              <ClockIcon />
++              Scheduled
++            </Link>
+           </div>
+           <div className="inbox-nav-row">
+             <Link
+@@ -598,18 +628,21 @@ export function App() {
+                 void moveDraggedMessages("INBOX", event);
+               }}
+             >
++              <InboxIcon />
+               Inbox
+             </Link>
+             <button
+               type="button"
+               className="inbox-expand-button"
+               aria-expanded={inboxCreateOpen}
++              aria-label="New folder under Inbox"
++              title="New folder under Inbox"
+               onClick={() => {
+                 setInboxCreateOpen((open) => !open);
+                 setCreateFolderError("");
+               }}
+             >
+-              +
++              <PlusIcon />
+             </button>
+           </div>
+           <div className="nav-group">
+@@ -637,8 +670,11 @@ export function App() {
+             {deleteFolderError ? <span className="sidebar-folder-error">{deleteFolderError}</span> : null}
+             {mailboxFoldersLoading ? <span>Loading folders...</span> : null}
+             {!mailboxFoldersLoading
+-              ? mailboxFolders.map((folder) => (
+-                  <div key={folder.path} className="sidebar-folder-row" data-folder-kind={standardMailboxKind(folder)}>
++              ? mailboxFolders.map((folder) => {
++                  const kind = standardMailboxKind(folder);
++                  const KindIcon = FOLDER_ICONS[kind];
++                  return (
++                  <div key={folder.path} className="sidebar-folder-row" data-folder-kind={kind}>
+                     <Link
+                       to={`/read?mailbox=${encodeURIComponent(folder.path)}${boxQuery}`}
+                       className={[
+@@ -654,6 +690,7 @@ export function App() {
+                         void moveDraggedMessages(folder.path, event);
+                       }}
+                     >
++                      <KindIcon />
+                       {mailboxLabel(folder.path)}
+                     </Link>
+                     {folder.deletable ? (
+@@ -688,7 +725,8 @@ export function App() {
+                       </div>
+                     ) : null}
+                   </div>
+-                ))
++                  );
++                })
+               : null}
+           </div>
+ 
+@@ -698,7 +736,9 @@ export function App() {
+             aria-expanded={archiveOpen}
+             onClick={() => setArchiveOpen((open) => !open)}
+           >
+-            Archive {archiveOpen ? "-" : "+"}
++            <ArchiveIcon />
++            Archive
++            <ChevronIcon />
+           </button>
+ 
+           {archiveOpen ? (
+@@ -723,6 +763,7 @@ export function App() {
+                         void moveDraggedMessages(folder.path, event);
+                       }}
+                     >
++                      <FolderIcon />
+                       {mailboxLabel(folder.path)}
+                     </Link>
+                   ))
+@@ -734,15 +775,30 @@ export function App() {
+             to="/scheduled"
+             className={["nav-heading scheduled-heading", location.pathname === "/scheduled" ? "ky-nav-item sidebar-link-active" : "ky-nav-item"].join(" ")}
+           >
++            <ClockIcon />
+             Scheduled
+           </Link>
+           <Link
+             to="/contacts"
+             className={["nav-heading", location.pathname === "/contacts" ? "ky-nav-item sidebar-link-active" : "ky-nav-item"].filter(Boolean).join(" ")}
+           >
++            <ContactsIcon />
+             Contacts
+           </Link>
+ 
++          <button
++            type="button"
++            className="nav-heading mobile-settings-toggle"
++            aria-label="Toggle settings"
++            aria-expanded={settingsOpen}
++            aria-controls="settings-nav-group"
++            title="Settings"
++            onClick={() => setSettingsOpen((open) => !open)}
++          >
++            <SettingsIcon />
++            Settings
++            <ChevronIcon />
++          </button>
+           <button
+             type="button"
+             className="nav-heading settings-heading"
+@@ -750,7 +806,9 @@ export function App() {
+             aria-controls="settings-nav-group"
+             onClick={() => setSettingsOpen((open) => !open)}
+           >
+-            Settings {settingsOpen ? "-" : "+"}
++            <SettingsIcon />
++            Settings
++            <ChevronIcon />
+           </button>
+ 
+           {settingsOpen ? (
+@@ -774,12 +832,19 @@ export function App() {
+               </div>
+             </div>
+           ) : null}
+-          {auth.authenticated ? (
+-            <button type="button" className="nav-link-button nav-heading" onClick={logout}>
+-              Logout
+-            </button>
+-          ) : null}
+         </nav>
++        {auth.authenticated ? (
++          <div className="sidebar-account">
++            <div className="sidebar-account-copy">
++              <span className="sidebar-account-name">{auth.username}</span>
++              {isAdmin ? <span className="sidebar-account-role">Admin</span> : null}
++            </div>
++            <button type="button" className="nav-link-button" onClick={logout}>
++              <LogoutIcon />
++              <span className="sidebar-logout-label">Logout</span>
++            </button>
++          </div>
++        ) : null}
+         <div className="sidebar-footer">
+           <p>
+             <button type="button" className="license-link" onClick={() => setLicenseOpen(true)}>
+diff --git a/frontend/src/admin/sections/ApplicationRuntime.tsx b/frontend/src/admin/sections/ApplicationRuntime.tsx
+index 66a591a4..2288d2cc 100644
+--- a/frontend/src/admin/sections/ApplicationRuntime.tsx
++++ b/frontend/src/admin/sections/ApplicationRuntime.tsx
+@@ -195,7 +195,7 @@ export function ApplicationRuntime() {
+       </div>
+       <div className="config-actions">
+         <button type="button" onClick={saveTheme}>Apply Theme</button>
+-        <button type="button" onClick={saveConfig}>Save Configuration</button>
++        <button type="button" className="btn-primary" onClick={saveConfig}>Save Configuration</button>
+       </div>
+       <div className="config-card" style={{ marginTop: 16 }}>
+         <h3>KyPost Updates</h3>
+diff --git a/frontend/src/admin/sections/AssignMailbox.tsx b/frontend/src/admin/sections/AssignMailbox.tsx
+index 145cf862..7d3fc849 100644
+--- a/frontend/src/admin/sections/AssignMailbox.tsx
++++ b/frontend/src/admin/sections/AssignMailbox.tsx
+@@ -104,7 +104,7 @@ export function AssignMailbox({ user, unlocked, takeConfirm, onClose }: {
+         </label>
+       </div>
+       <div className="config-actions">
+-        <button type="button" disabled={busy || !unlocked} onClick={() => void run("Mailbox saved.", (c) => putUserIMAPConfig(c, user.id, imap), refreshImap)}>Save Mailbox</button>
++        <button type="button" className="btn-primary" disabled={busy || !unlocked} onClick={() => void run("Mailbox saved.", (c) => putUserIMAPConfig(c, user.id, imap), refreshImap)}>Save Mailbox</button>
+         {imapConfigured ? (
+           <button type="button" disabled={busy || !unlocked} onClick={() => {
+             if (window.confirm(`Remove ${user.username}'s stored mailbox credentials?`)) {
+@@ -126,7 +126,7 @@ export function AssignMailbox({ user, unlocked, takeConfirm, onClose }: {
+         </label>
+       </div>
+       <div className="config-actions">
+-        <button type="button" disabled={busy || !unlocked} onClick={() => void run("Contacts sync saved.", (c) => putUserCardDAVClient(c, user.id, dav), refreshDav)}>Save Contacts Sync</button>
++        <button type="button" className="btn-primary" disabled={busy || !unlocked} onClick={() => void run("Contacts sync saved.", (c) => putUserCardDAVClient(c, user.id, dav), refreshDav)}>Save Contacts Sync</button>
+         {davConfigured ? (
+           <button type="button" disabled={busy || !unlocked} onClick={() => {
+             if (window.confirm(`Remove ${user.username}'s stored CardDAV client credentials?`)) {
+diff --git a/frontend/src/admin/sections/LabelRules.tsx b/frontend/src/admin/sections/LabelRules.tsx
+index c3959c37..724ee827 100644
+--- a/frontend/src/admin/sections/LabelRules.tsx
++++ b/frontend/src/admin/sections/LabelRules.tsx
+@@ -112,7 +112,7 @@ export function LabelRules() {
+       </div>
+       <div className="config-actions">
+         <button type="button" onClick={applyImapLabelsToAllowlist}>Merge IMAP Labels</button>
+-        <button type="button" onClick={saveConfig} disabled={!loaded}>Save Defaults</button>
++        <button type="button" className="btn-primary" onClick={saveConfig} disabled={!loaded}>Save Defaults</button>
+       </div>
+       <p className="config-muted">{labelsFromImap.length > 0 ? `Discovered IMAP labels: ${labelsFromImap.join(", ")}` : "No IMAP labels discovered yet."}</p>
+       {configStatus ? <p className={configStatusTone}>{configStatus}</p> : null}
+diff --git a/frontend/src/admin/sections/Logs.tsx b/frontend/src/admin/sections/Logs.tsx
+index cd492784..b2e4d4fa 100644
+--- a/frontend/src/admin/sections/Logs.tsx
++++ b/frontend/src/admin/sections/Logs.tsx
+@@ -136,7 +136,7 @@ export function Logs() {
+         );
+         setFiles(list);
+         setListError("");
+-        if (list.length > 0 && !list.includes(active)) setActive(list[0]);
++        if (list.length > 0) setActive((current) => list.includes(current) ? current : list[0]);
+       })
+       .catch((error: unknown) => setListError(toErrorMessage(error, "unknown error")));
+   }, []);
+diff --git a/frontend/src/admin/sections/MailAddresses.tsx b/frontend/src/admin/sections/MailAddresses.tsx
+index 639a816a..8d942d10 100644
+--- a/frontend/src/admin/sections/MailAddresses.tsx
++++ b/frontend/src/admin/sections/MailAddresses.tsx
+@@ -62,6 +62,8 @@ function MailAddressesForm() {
+     void refresh().catch((e: unknown) => {
+       if (live.current && generation === refreshGeneration.current) setError(toErrorMessage(e, "Unable to load mail addresses. Reload before changing them."));
+     });
++    // A generation counter, not a DOM node: cleanup bumps the live value so reads still in flight are dropped.
++    // eslint-disable-next-line react-hooks/exhaustive-deps
+     return () => { live.current = false; refreshGeneration.current++; };
+   }, []);
+   function label(id: string) {
+diff --git a/frontend/src/admin/sections/MailDefaults.tsx b/frontend/src/admin/sections/MailDefaults.tsx
+index 27e680e5..52899351 100644
+--- a/frontend/src/admin/sections/MailDefaults.tsx
++++ b/frontend/src/admin/sections/MailDefaults.tsx
+@@ -58,7 +58,7 @@ export function MailDefaults() {
+         </label>
+       </div>
+       <div className="config-actions">
+-        <button type="button" onClick={() => void save()} disabled={busy}>
++        <button type="button" className="btn-primary" onClick={() => void save()} disabled={busy}>
+           {busy ? "Saving..." : "Save Defaults"}
+         </button>
+       </div>
+diff --git a/frontend/src/admin/sections/MailDomain.tsx b/frontend/src/admin/sections/MailDomain.tsx
+index 57483047..fef67151 100644
+--- a/frontend/src/admin/sections/MailDomain.tsx
++++ b/frontend/src/admin/sections/MailDomain.tsx
+@@ -82,6 +82,8 @@ function MailDomainForm() {
+     void refresh().catch((e: unknown) => {
+       if (live.current && generation === refreshGeneration.current) setError(toErrorMessage(e, "Unable to load mail setup. Reload before changing configuration."));
+     });
++    // A generation counter, not a DOM node: cleanup bumps the live value so reads still in flight are dropped.
++    // eslint-disable-next-line react-hooks/exhaustive-deps
+     return () => { live.current = false; refreshGeneration.current++; };
+   }, []);
+   // target names the domain for domain-set actions; the single-domain view leaves it empty.
+diff --git a/frontend/src/admin/sections/Quarantine.tsx b/frontend/src/admin/sections/Quarantine.tsx
+index 04f03523..917408c9 100644
+--- a/frontend/src/admin/sections/Quarantine.tsx
++++ b/frontend/src/admin/sections/Quarantine.tsx
+@@ -67,6 +67,8 @@ function QuarantineForm() {
+     void read().catch((e: unknown) => {
+       if (live.current && generation === readGeneration.current) setError(toErrorMessage(e, "Unable to load quarantine. Reload before changing it."));
+     });
++    // A generation counter, not a DOM node: cleanup bumps the live value so reads still in flight are dropped.
++    // eslint-disable-next-line react-hooks/exhaustive-deps
+     return () => { live.current = false; readGeneration.current++; };
+   }, []);
+   async function loadMore() {
+diff --git a/frontend/src/admin/sections/SenderBlocks.tsx b/frontend/src/admin/sections/SenderBlocks.tsx
+index a38e281e..f6e4ff98 100644
+--- a/frontend/src/admin/sections/SenderBlocks.tsx
++++ b/frontend/src/admin/sections/SenderBlocks.tsx
+@@ -87,6 +87,8 @@ function SenderBlocksForm() {
+     void read().catch((e: unknown) => {
+       if (live.current && generation === readGeneration.current) setError(toErrorMessage(e, "Unable to load sender blocks. Reload before changing them."));
+     });
++    // A generation counter, not a DOM node: cleanup bumps the live value so reads still in flight are dropped.
++    // eslint-disable-next-line react-hooks/exhaustive-deps
+     return () => { live.current = false; readGeneration.current++; };
+   }, []);
+   // Same answered/unanswered rule as Quarantine: only an answered refusal returns the controls.
+diff --git a/frontend/src/components/CaptchaWidget.tsx b/frontend/src/components/CaptchaWidget.tsx
+index 0a034484..ed5cfa78 100644
+--- a/frontend/src/components/CaptchaWidget.tsx
++++ b/frontend/src/components/CaptchaWidget.tsx
+@@ -95,7 +95,6 @@ export function CaptchaWidget({ provider, siteKey, onToken }: CaptchaWidgetProps
+     return () => {
+       delete window[callbackName];
+     };
+-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [provider, callbackName]);
+ 
+   if (provider === "pow") {
+diff --git a/frontend/src/components/ComposeWindow.tsx b/frontend/src/components/ComposeWindow.tsx
+index de05a95f..0b19bbb4 100644
+--- a/frontend/src/components/ComposeWindow.tsx
++++ b/frontend/src/components/ComposeWindow.tsx
+@@ -8,6 +8,7 @@ import type { Compose } from "../hooks/useCompose";
+ import { contactToToken } from "../lib/recipients";
+ import { isClientProtected } from "../lib/pgpSession";
+ import { formatBytes } from "../app/compose";
++import { CloseIcon } from "../pages/read/icons";
+ import type { UserMailbox } from "../app/mailboxes";
+ 
+ /** The compose dialog. All state lives in useCompose, which App owns so pages can open it. */
+@@ -53,7 +54,16 @@ export function ComposeWindow({ compose, mailboxes }: { compose: Compose; mailbo
+           >
+             <div className="compose-topbar">
+               <h2 id="compose-window-title">New message</h2>
+-              <button type="button" className="compose-close" onClick={closeComposeWindow} disabled={composeSending || composeSavingDraft}>Close</button>
++              <button
++                type="button"
++                className="compose-close btn-ghost icon-button"
++                aria-label="Close"
++                title="Close"
++                onClick={closeComposeWindow}
++                disabled={composeSending || composeSavingDraft}
++              >
++                <CloseIcon />
++              </button>
+             </div>
+             <p className="compose-connection-hint">Send and Save Draft use this mailbox's mail connection. Check your mail account settings if the connection is unavailable.</p>
+             {composeRecipientKeyWarning ? (
+@@ -236,12 +246,12 @@ export function ComposeWindow({ compose, mailboxes }: { compose: Compose; mailbo
+                 />
+             </div>
+             <div className="compose-actionbar" role="group" aria-label="Message actions">
+-                <button type="button" className="compose-send" onClick={() => void sendComposeEmail()} disabled={composeSending || composeSavingDraft}>{composeSending ? "Sending..." : "Send"}</button>
++                <button type="button" className="compose-send btn-primary" onClick={() => void sendComposeEmail()} disabled={composeSending || composeSavingDraft}>{composeSending ? "Sending..." : "Send"}</button>
+                 <button type="button" className="compose-save-draft" onClick={() => setScheduleOpen(true)} disabled={composeSending || composeSavingDraft}>Schedule…</button>
+                 <button type="button" className="compose-save-draft" onClick={() => void saveComposeDraft()} disabled={composeSending || composeSavingDraft}>Save Draft</button>
+                 <button type="button" className="compose-attach" onClick={() => attachmentInputRef.current?.click()} disabled={composeSending || composeSavingDraft}>Attach</button>
+                 <button type="button" className="compose-attach" onClick={() => setContactPickerOpen(true)} disabled={composeSending || composeSavingDraft}>Contacts</button>
+-                <button type="button" className="compose-trash" onClick={trashComposeDraft} disabled={composeSending || composeSavingDraft}>Trash</button>
++                <button type="button" className="compose-trash btn-ghost btn-danger" onClick={trashComposeDraft} disabled={composeSending || composeSavingDraft}>Trash</button>
+             </div>
+             </footer>
+           </section>
+diff --git a/frontend/src/components/ReauthGate.tsx b/frontend/src/components/ReauthGate.tsx
+index 3b5f5080..414b4658 100644
+--- a/frontend/src/components/ReauthGate.tsx
++++ b/frontend/src/components/ReauthGate.tsx
+@@ -130,7 +130,7 @@ export function ReauthGate({ what, children }: Props) {
+     return (
+       <section className="panel sec-page">
+         <header className="sec-header">
+-          <h2>Confirm it is you</h2>
++          <h1>Confirm it is you</h1>
+           <p>Unlock {what}.</p>
+         </header>
+         <div className="sec-card">
+@@ -144,7 +144,7 @@ export function ReauthGate({ what, children }: Props) {
+             </p>
+           ) : null}
+           <div className="sec-actions">
+-            <button type="button" disabled={busy} onClick={() => void confirmWithSSO()}>
++            <button type="button" className="btn-primary" disabled={busy} onClick={() => void confirmWithSSO()}>
+               {busy ? "Confirming…" : "Confirm with KySignOn"}
+             </button>
+           </div>
+@@ -158,7 +158,7 @@ export function ReauthGate({ what, children }: Props) {
+     // rather than as a stray form the app dropped the user on.
+     <section className="panel sec-page">
+       <header className="sec-header">
+-        <h2>Confirm it is you</h2>
++        <h1>Confirm it is you</h1>
+         <p>Unlock {what}.</p>
+       </header>
+       <div className="sec-card">
+diff --git a/frontend/src/hooks/useCompose.ts b/frontend/src/hooks/useCompose.ts
+index b625bfa7..fdf5abc3 100644
+--- a/frontend/src/hooks/useCompose.ts
++++ b/frontend/src/hooks/useCompose.ts
+@@ -1,4 +1,4 @@
+-import { useEffect, useRef, useState, type ChangeEvent } from "react";
++import { useEffect, useEffectEvent, useRef, useState, type ChangeEvent } from "react";
+ // Quill (and its theme CSS) is the editor for one dialog, but a static import
+ // puts it in the entry chunk, so the login page pays for it too. loadQuill
+ // below fetches it when compose first opens.
+@@ -263,9 +263,12 @@ export function useCompose({ userId, mailboxes }: { userId?: string; mailboxes:
+     setComposeFrom(mailboxOf(id)?.addresses[0] ?? "");
+   }
+ 
+-  // Compose opened before the list arrived has no From yet.
+-  useEffect(() => {
++  // Compose opened before the list arrived has no From yet. Only the list's arrival fills it.
++  const fillMissingFrom = useEffectEvent(() => {
+     if (composeOpen && !composeFrom) setComposeFrom(mailboxOf(composeMailbox)?.addresses[0] ?? "");
++  });
++  useEffect(() => {
++    fillMissingFrom();
+   }, [mailboxes]);
+ 
+   function openComposeWindow() {
+diff --git a/frontend/src/ky-ui/VERSION b/frontend/src/ky-ui/VERSION
+index fa27aaed..746748c6 100644
+--- a/frontend/src/ky-ui/VERSION
++++ b/frontend/src/ky-ui/VERSION
+@@ -1,9 +1,9 @@
+ {
+-  "version": "0.2.0",
++  "version": "0.3.0",
+   "source": "https://github.com/Busnes-app/ky-ui",
+   "files": {
+-    "tokens.css": "61ce6af854fc85c87af35eef46f362a2bfca1da114b61dcec6704237b6b4d533",
+-    "navigation.css": "1a552f03f0497cd0edc31dfdcaa76dd9a287a5f0d30073f6074c14e93ef6db91",
++    "tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
++    "navigation.css": "fbd0aea3e45fa818f916ad1bc35832f6ac26e37124208ffde029b809048b4380",
+     "theme.js": "9f0e57c86783924a19fa9923be42d7f14b24cec46c95383f251e18ab69b0176a",
+     "theme.d.ts": "f83e4fb841e98b7b443bc78aa699f9044d395ff622258cf8bee85b5e0608fd4a",
+     "check-vendor.mjs": "1fdca377e486e52d9e660893ebfc2f1a90ddb6578eca24d8f844bb5485f3e053",
+diff --git a/frontend/src/ky-ui/navigation.css b/frontend/src/ky-ui/navigation.css
+index 8376ae00..30fd3190 100644
+--- a/frontend/src/ky-ui/navigation.css
++++ b/frontend/src/ky-ui/navigation.css
+@@ -1,7 +1,7 @@
+ /* State only: products own spacing, orientation and typography. Local aliases
+    keep named product palettes usable as well as Busnes Light/Dark. */
+ .ky-nav-item:not(:disabled):not([aria-disabled="true"]):hover {
+-  background: var(--panel-hover, var(--ky-panel-hover));
++  background: var(--panel-hover, color-mix(in srgb, var(--ink-strong, var(--ky-ink-strong)) 8%, var(--panel, var(--ky-panel))));
+   color: var(--ink-strong, var(--ky-ink-strong));
+ }
+ .ky-nav-item:focus-visible {
+diff --git a/frontend/src/ky-ui/tokens.css b/frontend/src/ky-ui/tokens.css
+index e5b3798d..6b6dace6 100644
+--- a/frontend/src/ky-ui/tokens.css
++++ b/frontend/src/ky-ui/tokens.css
+@@ -1,3 +1,23 @@
++/* Product geometry stays local; these values give each composition the same rhythm. */
++:root {
++  --ky-type-title: 1.5rem;
++  --ky-type-section: 1.0625rem;
++  --ky-type-body: 0.9375rem;
++  --ky-type-nav: 0.875rem;
++  --ky-type-meta: 0.8125rem;
++  --ky-space-1: 0.25rem;
++  --ky-space-2: 0.5rem;
++  --ky-space-3: 1rem;
++  --ky-space-4: 1.5rem;
++  --ky-space-5: 2rem;
++  --ky-control-size: 2.5rem;
++  --ky-control-radius: 0.5rem;
++  --ky-sidebar-size: 15rem;
++  /* Product ink/bg aliases preserve existing named palettes as well as Busnes. */
++  --ky-field-border: color-mix(in srgb, var(--ink) 75%, var(--bg));
++  --ky-shadow-overlay: 0 18px 48px rgb(0 0 0 / 0.26), 0 2px 8px rgb(0 0 0 / 0.12);
++}
++
+ /* Busnes Light/Dark tokens. Product layouts should consume these, not redefine them. */
+ :root,
+ :root:not([data-theme]):not([data-ky-theme]),
+@@ -21,7 +41,7 @@
+   --ky-sidebar-end: #f2efe7;
+   --ky-button-text: #ffffff;
+   --ky-radius: 10px;
+-  --ky-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
++  --ky-font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+   --ky-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+ }
+ 
+diff --git a/frontend/src/pages/AppsPage.tsx b/frontend/src/pages/AppsPage.tsx
+index 67720c3e..c452d238 100644
+--- a/frontend/src/pages/AppsPage.tsx
++++ b/frontend/src/pages/AppsPage.tsx
+@@ -16,7 +16,7 @@ export function AppsPage({ pwa, platforms = CLIENT_PLATFORMS }: { pwa: PwaState;
+   return (
+     <section className="panel config-page">
+       <div className="config-header">
+-        <h2>Get KyPost</h2>
++        <h1>Get KyPost</h1>
+         <p>Use it here in the browser, or install a client on each of your devices.</p>
+       </div>
+       <div className="apps-grid">
+diff --git a/frontend/src/pages/ContactsPage.test.tsx b/frontend/src/pages/ContactsPage.test.tsx
+index 7698104e..d97648af 100644
+--- a/frontend/src/pages/ContactsPage.test.tsx
++++ b/frontend/src/pages/ContactsPage.test.tsx
+@@ -31,4 +31,45 @@ describe("ContactsPage", () => {
+     await userEvent.click(within(form).getByRole("button", { name: "Add Contact" }));
+     expect((await within(form).findByRole("alert")).textContent).toContain("private key");
+   });
++
++  it("keeps Close in the header and Cancel beside the primary in the footer", async () => {
++    render(<ContactsPage />);
++    await userEvent.click(await screen.findByRole("button", { name: "New Contact" }));
++    const form = screen.getByRole("form", { name: "Add Contact" });
++    const dialog = form.closest("dialog")!;
++    const footerButtons = within(form.querySelector("footer")!).getAllByRole("button").map((b) => b.textContent);
++    expect(footerButtons).toEqual(["Cancel", "Add Contact"]);
++    await userEvent.click(within(form.querySelector("header")!).getByRole("button", { name: "Close" }));
++    expect(dialog.open).toBe(false);
++  });
++
++  it("opens an optional group when the saved contact has data in it", async () => {
++    fetchMock.mockImplementation(async (url) => {
++      if (String(url).startsWith("/api/contacts")) {
++        return json({ contacts: [{ uid: "c1", rev: 1, createdAt: "", updatedAt: "", fn: "Dana Ops", nickname: "Dee" }] });
++      }
++      if (String(url).startsWith("/api/groups")) return json({ groups: [] });
++      return json({});
++    });
++    render(<ContactsPage />);
++    await userEvent.click(await screen.findByRole("button", { name: "Edit" }));
++    const form = screen.getByRole("form", { name: "Edit Contact" });
++    const group = (summary: string) => within(form).getByText(summary).closest("details")!;
++    expect(group("More name fields").open).toBe(true);
++    expect(group("Addresses and links").open).toBe(false);
++    // Every field stays in the form, open or not.
++    expect((within(form).getByLabelText("Nickname") as HTMLInputElement).value).toBe("Dee");
++  });
++
++  it("opens a collapsed group whose field blocks submit", async () => {
++    render(<ContactsPage />);
++    await userEvent.click(await screen.findByRole("button", { name: "New Contact" }));
++    const form = screen.getByRole("form", { name: "Add Contact" });
++    const links = within(form).getByText("Addresses and links").closest("details")!;
++    await userEvent.click(within(links).getByRole("button", { name: "+ Add website" }));
++    await userEvent.type(within(links).getByPlaceholderText("https://..."), "not a url");
++    expect(links.open).toBe(false);
++    await userEvent.click(within(form).getByRole("button", { name: "Add Contact" }));
++    expect(links.open).toBe(true);
++  });
+ });
+diff --git a/frontend/src/pages/ContactsPage.tsx b/frontend/src/pages/ContactsPage.tsx
+index 330890fb..71641960 100644
+--- a/frontend/src/pages/ContactsPage.tsx
++++ b/frontend/src/pages/ContactsPage.tsx
+@@ -1,4 +1,4 @@
+-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
++import { FormEvent, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
+ import { toErrorMessage } from "../api/client";
+ import {
+   bulkDeleteContacts,
+@@ -45,6 +45,7 @@ import {
+ import { PGPKeyInfo } from "./contacts/PGPKeyInfo";
+ import { ContactAvatar } from "./contacts/ContactAvatar";
+ import { ContactDetailsDialog } from "./contacts/ContactDetailsDialog";
++import { ChevronIcon, CloseIcon } from "./read/icons";
+ 
+ export function ContactsPage() {
+   const [contacts, setContacts] = useState<Contact[]>([]);
+@@ -140,8 +141,9 @@ export function ContactsPage() {
+     }
+   }
+ 
++  const refreshOnMount = useEffectEvent(refresh);
+   useEffect(() => {
+-    void refresh();
++    void refreshOnMount();
+     void listGroups()
+       .then(setGroups)
+       // An empty group list and a group list that failed to load look
+@@ -485,11 +487,16 @@ export function ContactsPage() {
+   // than this contact's own (unsynced) pgpKey field.
+   const selectedContactPgpKey = selectedContact?.isSelf ? myPgpKey : selectedContact?.pgpKey ?? "";
+ 
++  // The stored contact, not the live form, so a group does not close while it is being cleared.
++  const editingContact = editingUid ? contacts.find((c) => c.uid === editingUid) : undefined;
++  const saved = editingContact ? contactToFormState(editingContact) : emptyFormState;
++  const has = (...values: Array<string | readonly unknown[]>) => values.some((value) => value.length > 0);
++
+   return (
+     <section className="panel contacts-page">
+       <header className="contacts-header">
+         <div>
+-          <h2>Contacts</h2>
++          <h1>Contacts</h1>
+         </div>
+         <div className="contacts-header-actions">
+           {!loading && contacts.length > 0 ? (
+@@ -544,7 +551,7 @@ export function ContactsPage() {
+               />
+             </>
+           ) : null}
+-          <button type="button" onClick={openCreateForm}>
++          <button type="button" className="btn-primary" onClick={openCreateForm}>
+             New Contact
+           </button>
+         </div>
+@@ -552,7 +559,7 @@ export function ContactsPage() {
+ 
+       <div className="contacts-card contacts-list-card">
+         <div className="contacts-list-head">
+-          <h3>Address Book</h3>
++          <h2>Address Book</h2>
+           {!loading && contacts.length > 0 ? (
+             <span className="contacts-count">
+               {filteredContacts.length}
+@@ -562,21 +569,14 @@ export function ContactsPage() {
+         </div>
+ 
+         {!loading && contacts.length > 0 ? (
+-          <div style={{ marginBottom: "12px" }}>
+-            <input
+-              type="text"
+-              placeholder="Search by name, email, phone, or organization..."
+-              value={search}
+-              onChange={(e) => setSearch(e.target.value)}
+-              style={{
+-                width: "100%",
+-                padding: "8px",
+-                borderRadius: "4px",
+-                border: "1px solid var(--border-color)",
+-                backgroundColor: "var(--bg-color)"
+-              }}
+-            />
+-          </div>
++          <input
++            type="text"
++            className="contacts-search"
++            aria-label="Search contacts"
++            placeholder="Search by name, email, phone, or organization..."
++            value={search}
++            onChange={(e) => setSearch(e.target.value)}
++          />
+         ) : null}
+ 
+         {loading ? <p className="contacts-muted">Loading contacts...</p> : null}
+@@ -652,8 +652,8 @@ export function ContactsPage() {
+                                 {contact.isSelf ? <span className="contacts-sub">Your contact card</span> : null}
+                                 {contact.org ? <span className="contacts-sub">{contact.org}</span> : null}
+                               </div>
+-                              <span className="contacts-row-chevron" aria-hidden="true">
+-                                &rsaquo;
++                              <span className="contacts-row-chevron">
++                                <ChevronIcon />
+                               </span>
+                             </button>
+                           </td>
+@@ -662,7 +662,7 @@ export function ContactsPage() {
+                             <div className="contacts-actions" onClick={(e) => e.stopPropagation()}>
+                               <button
+                                 type="button"
+-                                className="contacts-action"
++                                className="contacts-action btn-ghost"
+                                 onClick={() => openEditForm(contact)}
+                                 disabled={busy}
+                               >
+@@ -670,7 +670,7 @@ export function ContactsPage() {
+                               </button>
+                               <button
+                                 type="button"
+-                                className="contacts-action contacts-action-danger"
++                                className="contacts-action btn-ghost btn-danger"
+                                 onClick={() => void removeContact(contact)}
+                                 disabled={busy}
+                               >
+@@ -705,481 +705,522 @@ export function ContactsPage() {
+         }}
+       >
+         <div className="contact-form-window" onClick={(e) => e.stopPropagation()}>
+-          <form onSubmit={submitForm} className="contacts-form-card">
+-            <h3>{editingUid ? "Edit Contact" : "Add Contact"}</h3>
+-
+-            <div className="contacts-multivalue">
+-              <div className="contacts-multivalue-label">Photo</div>
+-              <div className="contacts-photo-row">
+-                {editingUid && form.photoRef ? (
+-                  <img src={contactPhotoUrl(editingUid)} alt="" className="contacts-avatar contacts-photo-preview" />
+-                ) : (
+-                  <span className="contacts-avatar contacts-photo-preview" aria-hidden="true">
+-                    {form.fn.slice(0, 1).toUpperCase() || "?"}
+-                  </span>
+-                )}
+-                <input
+-                  type="file"
+-                  accept="image/*"
+-                  disabled={!editingUid || photoUploading}
+-                  onChange={(e) => void handlePhotoUpload(e.target.files?.[0])}
+-                />
+-                {form.photoRef ? (
+-                  <button
+-                    type="button"
+-                    className="contacts-action"
+-                    onClick={() => void handlePhotoDelete()}
+-                    disabled={photoUploading}
+-                  >
+-                    Remove
+-                  </button>
+-                ) : null}
+-              </div>
+-              {!editingUid ? <p className="contacts-muted">Save the contact first to add a photo.</p> : null}
+-            </div>
+-
+-            <label>
+-              <div>Full Name</div>
+-              <input value={form.fn} onChange={(e) => setForm({ ...form, fn: e.target.value })} autoComplete="off" />
+-            </label>
+-            <label>
+-              <div>Prefix</div>
+-              <input value={form.prefix} onChange={(e) => setForm({ ...form, prefix: e.target.value })} autoComplete="off" />
+-            </label>
+-            <label>
+-              <div>Given Name</div>
+-              <input
+-                value={form.givenName}
+-                onChange={(e) => setForm({ ...form, givenName: e.target.value })}
+-                autoComplete="off"
+-              />
+-            </label>
+-            <label>
+-              <div>Middle Name</div>
+-              <input
+-                value={form.middleName}
+-                onChange={(e) => setForm({ ...form, middleName: e.target.value })}
+-                autoComplete="off"
+-              />
+-            </label>
+-            <label>
+-              <div>Family Name</div>
+-              <input
+-                value={form.familyName}
+-                onChange={(e) => setForm({ ...form, familyName: e.target.value })}
+-                autoComplete="off"
+-              />
+-            </label>
+-            <label>
+-              <div>Suffix</div>
+-              <input value={form.suffix} onChange={(e) => setForm({ ...form, suffix: e.target.value })} autoComplete="off" />
+-            </label>
+-            <label>
+-              <div>Nickname</div>
+-              <input value={form.nickname} onChange={(e) => setForm({ ...form, nickname: e.target.value })} autoComplete="off" />
+-            </label>
+-            <label>
+-              <div>Phonetic Given Name</div>
+-              <input
+-                value={form.phoneticGivenName}
+-                onChange={(e) => setForm({ ...form, phoneticGivenName: e.target.value })}
+-                autoComplete="off"
+-              />
+-            </label>
+-            <label>
+-              <div>Phonetic Family Name</div>
+-              <input
+-                value={form.phoneticFamilyName}
+-                onChange={(e) => setForm({ ...form, phoneticFamilyName: e.target.value })}
+-                autoComplete="off"
+-              />
+-            </label>
+-            <label>
+-              <div>Pronouns</div>
+-              <div className="contacts-pronoun-chips">
+-                {["He/Him", "She/Her", "They/Them"].map((p) => (
+-                  <button
+-                    key={p}
+-                    type="button"
+-                    className={`contacts-action contacts-pronoun-chip ${form.pronouns === p ? "active" : ""}`}
+-                    onClick={() => setForm({ ...form, pronouns: form.pronouns === p ? "" : p })}
+-                  >
+-                    {p}
+-                  </button>
+-                ))}
+-              </div>
+-              <input
+-                type="text"
+-                placeholder="Custom pronouns"
+-                value={form.pronouns}
+-                onChange={(e) => setForm({ ...form, pronouns: e.target.value })}
+-                autoComplete="off"
+-              />
+-            </label>
+-            <label>
+-              <div>Organization</div>
+-              <input value={form.org} onChange={(e) => setForm({ ...form, org: e.target.value })} autoComplete="off" />
+-            </label>
+-            <label>
+-              <div>Title</div>
+-              <input value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} autoComplete="off" />
+-            </label>
+-            <label>
+-              <div>Department</div>
+-              <input value={form.department} onChange={(e) => setForm({ ...form, department: e.target.value })} autoComplete="off" />
+-            </label>
+-            <label>
+-              <div>Birthday</div>
+-              <input type="date" value={form.birthday} onChange={(e) => setForm({ ...form, birthday: e.target.value })} />
+-            </label>
+-
+-            <MultiValueField
+-              label="Emails"
+-              rows={form.emails}
+-              onChange={(emails) => setForm({ ...form, emails })}
+-              emptyRow={{ label: "", value: "" }}
+-              addLabel="+ Add email"
+-              renderRow={(row, update) => (
+-                <>
+-                  <select value={row.label ?? ""} onChange={(e) => update({ label: e.target.value })}>
+-                    <option value="">Other</option>
+-                    <option value="home">Home</option>
+-                    <option value="work">Work</option>
+-                  </select>
+-                  <input
+-                    type="email"
+-                    placeholder="email@example.com"
+-                    value={row.value}
+-                    onChange={(e) => update({ value: e.target.value })}
+-                    autoComplete="off"
+-                  />
+-                </>
+-              )}
+-            />
+-
+-            <MultiValueField
+-              label="Phones"
+-              rows={form.phones}
+-              onChange={(phones) => setForm({ ...form, phones })}
+-              emptyRow={{ label: "", value: "" }}
+-              addLabel="+ Add phone"
+-              renderRow={(row, update) => (
+-                <>
+-                  <select value={row.label ?? ""} onChange={(e) => update({ label: e.target.value })}>
+-                    <option value="">Other</option>
+-                    <option value="home">Home</option>
+-                    <option value="work">Work</option>
+-                    <option value="mobile">Mobile</option>
+-                    <option value="fax">Fax</option>
+-                  </select>
++          {/* Optional groups start open when the saved contact already has data in
++              them. A hidden invalid field would block submit silently, so the
++              browser's invalid event opens its group first. */}
++          <form
++            onSubmit={submitForm}
++            onInvalidCapture={(event) => {
++              const group = (event.target as HTMLElement).closest("details");
++              if (group) group.open = true;
++            }}
++            className="contacts-form-card"
++            aria-labelledby="contact-form-title"
++          >
++            <header className="contacts-form-head">
++              <h2 id="contact-form-title">{editingUid ? "Edit Contact" : "Add Contact"}</h2>
++              <button type="button" className="btn-ghost icon-button" aria-label="Close" title="Close" onClick={closeForm} disabled={saving}>
++                <CloseIcon />
++              </button>
++            </header>
++
++            <div className="contacts-form-fields">
++              <div className="contacts-multivalue">
++                <div className="contacts-multivalue-label">Photo</div>
++                <div className="contacts-photo-row">
++                  {editingUid && form.photoRef ? (
++                    <img src={contactPhotoUrl(editingUid)} alt="" className="contacts-avatar contacts-photo-preview" />
++                  ) : (
++                    <span className="contacts-avatar contacts-photo-preview" aria-hidden="true">
++                      {form.fn.slice(0, 1).toUpperCase() || "?"}
++                    </span>
++                  )}
+                   <input
+-                    type="text"
+-                    placeholder="Phone number"
+-                    value={row.value}
+-                    onChange={(e) => update({ value: e.target.value })}
+-                    autoComplete="off"
++                    type="file"
++                    accept="image/*"
++                    disabled={!editingUid || photoUploading}
++                    onChange={(e) => void handlePhotoUpload(e.target.files?.[0])}
+                   />
+-                </>
+-              )}
+-            />
+-
+-            <div className="contacts-multivalue">
+-              <div className="contacts-multivalue-label">Addresses</div>
+-              {form.addresses.map((addr, i) => (
+-                <div className="contacts-multivalue-row" key={i}>
+-                  <div className="contacts-address-row">
++                  {form.photoRef ? (
++                    <button
++                      type="button"
++                      className="contacts-action"
++                      onClick={() => void handlePhotoDelete()}
++                      disabled={photoUploading}
++                    >
++                      Remove
++                    </button>
++                  ) : null}
++                </div>
++                {!editingUid ? <p className="contacts-muted">Save the contact first to add a photo.</p> : null}
++              </div>
++              <label>
++                <div>Full Name</div>
++                <input value={form.fn} onChange={(e) => setForm({ ...form, fn: e.target.value })} autoComplete="off" />
++              </label>
++              <label>
++                <div>Organization</div>
++                <input value={form.org} onChange={(e) => setForm({ ...form, org: e.target.value })} autoComplete="off" />
++              </label>
++              <label>
++                <div>Given Name</div>
++                <input
++                  value={form.givenName}
++                  onChange={(e) => setForm({ ...form, givenName: e.target.value })}
++                  autoComplete="off"
++                />
++              </label>
++              <label>
++                <div>Family Name</div>
++                <input
++                  value={form.familyName}
++                  onChange={(e) => setForm({ ...form, familyName: e.target.value })}
++                  autoComplete="off"
++                />
++              </label>
++              <label>
++                <div>Title</div>
++                <input value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} autoComplete="off" />
++              </label>
++              <label>
++                <div>Department</div>
++                <input value={form.department} onChange={(e) => setForm({ ...form, department: e.target.value })} autoComplete="off" />
++              </label>
++
++              <MultiValueField
++                label="Emails"
++                rows={form.emails}
++                onChange={(emails) => setForm({ ...form, emails })}
++                emptyRow={{ label: "", value: "" }}
++                addLabel="+ Add email"
++                renderRow={(row, update) => (
++                  <>
++                    <select value={row.label ?? ""} onChange={(e) => update({ label: e.target.value })}>
++                      <option value="">Other</option>
++                      <option value="home">Home</option>
++                      <option value="work">Work</option>
++                    </select>
+                     <input
+-                      type="text"
+-                      placeholder="Street"
+-                      value={addr.street ?? ""}
+-                      onChange={(e) => updateAddress(i, { street: e.target.value })}
++                      type="email"
++                      placeholder="email@example.com"
++                      value={row.value}
++                      onChange={(e) => update({ value: e.target.value })}
++                      autoComplete="off"
+                     />
+-                    <select value={addr.label ?? ""} onChange={(e) => updateAddress(i, { label: e.target.value })}>
++                  </>
++                )}
++              />
++
++              <MultiValueField
++                label="Phones"
++                rows={form.phones}
++                onChange={(phones) => setForm({ ...form, phones })}
++                emptyRow={{ label: "", value: "" }}
++                addLabel="+ Add phone"
++                renderRow={(row, update) => (
++                  <>
++                    <select value={row.label ?? ""} onChange={(e) => update({ label: e.target.value })}>
+                       <option value="">Other</option>
+                       <option value="home">Home</option>
+                       <option value="work">Work</option>
++                      <option value="mobile">Mobile</option>
++                      <option value="fax">Fax</option>
+                     </select>
+                     <input
+                       type="text"
+-                      placeholder="City"
+-                      value={addr.city ?? ""}
+-                      onChange={(e) => updateAddress(i, { city: e.target.value })}
++                      placeholder="Phone number"
++                      value={row.value}
++                      onChange={(e) => update({ value: e.target.value })}
++                      autoComplete="off"
+                     />
++                  </>
++                )}
++              />
++
++              <details className="contacts-form-group" open={has(saved.prefix, saved.middleName, saved.suffix, saved.nickname, saved.phoneticGivenName, saved.phoneticFamilyName, saved.pronouns)}>
++                <summary>More name fields<ChevronIcon /></summary>
++                <div className="contacts-form-group-fields">
++                  <label>
++                    <div>Prefix</div>
++                    <input value={form.prefix} onChange={(e) => setForm({ ...form, prefix: e.target.value })} autoComplete="off" />
++                  </label>
++                  <label>
++                    <div>Middle Name</div>
+                     <input
+-                      type="text"
+-                      placeholder="Region/State"
+-                      value={addr.region ?? ""}
+-                      onChange={(e) => updateAddress(i, { region: e.target.value })}
++                      value={form.middleName}
++                      onChange={(e) => setForm({ ...form, middleName: e.target.value })}
++                      autoComplete="off"
+                     />
++                  </label>
++                  <label>
++                    <div>Suffix</div>
++                    <input value={form.suffix} onChange={(e) => setForm({ ...form, suffix: e.target.value })} autoComplete="off" />
++                  </label>
++                  <label>
++                    <div>Nickname</div>
++                    <input value={form.nickname} onChange={(e) => setForm({ ...form, nickname: e.target.value })} autoComplete="off" />
++                  </label>
++                  <label>
++                    <div>Phonetic Given Name</div>
+                     <input
+-                      type="text"
+-                      placeholder="Postal code"
+-                      value={addr.postalCode ?? ""}
+-                      onChange={(e) => updateAddress(i, { postalCode: e.target.value })}
++                      value={form.phoneticGivenName}
++                      onChange={(e) => setForm({ ...form, phoneticGivenName: e.target.value })}
++                      autoComplete="off"
+                     />
++                  </label>
++                  <label>
++                    <div>Phonetic Family Name</div>
+                     <input
+-                      type="text"
+-                      placeholder="Country"
+-                      value={addr.country ?? ""}
+-                      onChange={(e) => updateAddress(i, { country: e.target.value })}
++                      value={form.phoneticFamilyName}
++                      onChange={(e) => setForm({ ...form, phoneticFamilyName: e.target.value })}
++                      autoComplete="off"
+                     />
+-                  </div>
+-                  <button
+-                    type="button"
+-                    className="contacts-multivalue-remove"
+-                    onClick={() => removeAddress(i)}
+-                    aria-label="Remove address"
+-                  >
+-                    &times;
+-                  </button>
+-                </div>
+-              ))}
+-              <button type="button" className="contacts-multivalue-add" onClick={addAddress}>
+-                + Add address
+-              </button>
+-            </div>
+-
+-            <MultiValueField
+-              label="IM / Social"
+-              rows={form.ims}
+-              onChange={(ims) => setForm({ ...form, ims })}
+-              emptyRow={{ service: "whatsapp", label: "", value: "" }}
+-              addLabel="+ Add IM / social link"
+-              renderRow={(row, update) => (
+-                <>
+-                  <select value={row.service ?? ""} onChange={(e) => update({ service: e.target.value as IMService })}>
+-                    {IM_SERVICES.map((s) => (
+-                      <option key={s.value} value={s.value}>
+-                        {s.label}
+-                      </option>
+-                    ))}
+-                  </select>
+-                  {row.service === "" ? (
++                  </label>
++                  <label>
++                    <div>Pronouns</div>
++                    <div className="contacts-pronoun-chips">
++                      {["He/Him", "She/Her", "They/Them"].map((p) => (
++                        <button
++                          key={p}
++                          type="button"
++                          className={`contacts-action contacts-pronoun-chip ${form.pronouns === p ? "active" : ""}`}
++                          onClick={() => setForm({ ...form, pronouns: form.pronouns === p ? "" : p })}
++                        >
++                          {p}
++                        </button>
++                      ))}
++                    </div>
+                     <input
+                       type="text"
+-                      placeholder="Service name"
+-                      value={row.label ?? ""}
+-                      onChange={(e) => update({ label: e.target.value })}
++                      placeholder="Custom pronouns"
++                      value={form.pronouns}
++                      onChange={(e) => setForm({ ...form, pronouns: e.target.value })}
++                      autoComplete="off"
+                     />
+-                  ) : null}
+-                  <input
+-                    type="text"
+-                    placeholder="Handle / number / URL"
+-                    value={row.value}
+-                    onChange={(e) => update({ value: e.target.value })}
+-                    autoComplete="off"
+-                  />
+-                </>
+-              )}
+-            />
+-
+-            <MultiValueField
+-              label="Websites"
+-              rows={form.websites}
+-              onChange={(websites) => setForm({ ...form, websites })}
+-              emptyRow={{ label: "", value: "" }}
+-              addLabel="+ Add website"
+-              renderRow={(row, update) => (
+-                <>
+-                  <input
+-                    type="text"
+-                    placeholder="Label (e.g. homepage)"
+-                    value={row.label ?? ""}
+-                    onChange={(e) => update({ label: e.target.value })}
+-                  />
+-                  <input
+-                    type="url"
+-                    placeholder="https://..."
+-                    value={row.value}
+-                    onChange={(e) => update({ value: e.target.value })}
+-                    autoComplete="off"
++                  </label>
++                </div>
++              </details>
++              <details className="contacts-form-group" open={has(saved.birthday, saved.events)}>
++                <summary>Birthday and dates<ChevronIcon /></summary>
++                <div className="contacts-form-group-fields">
++                  <label>
++                    <div>Birthday</div>
++                    <input type="date" value={form.birthday} onChange={(e) => setForm({ ...form, birthday: e.target.value })} />
++                  </label>
++                  <MultiValueField
++                    label="Other dates"
++                    rows={form.events}
++                    onChange={(events) => setForm({ ...form, events })}
++                    emptyRow={{ label: "anniversary", date: "" }}
++                    addLabel="+ Add date"
++                    renderRow={(row, update) => (
++                      <>
++                        <select value={row.label ?? ""} onChange={(e) => update({ label: e.target.value })}>
++                          <option value="anniversary">Anniversary</option>
++                          <option value="other">Other</option>
++                        </select>
++                        <input type="date" value={row.date} onChange={(e) => update({ date: e.target.value })} />
++                      </>
++                    )}
+                   />
+-                </>
+-              )}
+-            />
+-
+-            <MultiValueField
+-              label="Relations"
+-              rows={form.relations}
+-              onChange={(relations) => setForm({ ...form, relations })}
+-              emptyRow={{ label: "spouse", name: "" }}
+-              addLabel="+ Add relation"
+-              renderRow={(row, update) => (
+-                <>
+-                  <select value={row.label ?? ""} onChange={(e) => update({ label: e.target.value })}>
+-                    {RELATION_LABELS.map((l) => (
+-                      <option key={l} value={l}>
+-                        {l}
+-                      </option>
++                </div>
++              </details>
++              <details className="contacts-form-group" open={has(saved.addresses, saved.ims, saved.websites, saved.relations)}>
++                <summary>Addresses and links<ChevronIcon /></summary>
++                <div className="contacts-form-group-fields">
++                  <div className="contacts-multivalue">
++                    <div className="contacts-multivalue-label">Addresses</div>
++                    {form.addresses.map((addr, i) => (
++                      <div className="contacts-multivalue-row" key={i}>
++                        <div className="contacts-address-row">
++                          <input
++                            type="text"
++                            placeholder="Street"
++                            value={addr.street ?? ""}
++                            onChange={(e) => updateAddress(i, { street: e.target.value })}
++                          />
++                          <select value={addr.label ?? ""} onChange={(e) => updateAddress(i, { label: e.target.value })}>
++                            <option value="">Other</option>
++                            <option value="home">Home</option>
++                            <option value="work">Work</option>
++                          </select>
++                          <input
++                            type="text"
++                            placeholder="City"
++                            value={addr.city ?? ""}
++                            onChange={(e) => updateAddress(i, { city: e.target.value })}
++                          />
++                          <input
++                            type="text"
++                            placeholder="Region/State"
++                            value={addr.region ?? ""}
++                            onChange={(e) => updateAddress(i, { region: e.target.value })}
++                          />
++                          <input
++                            type="text"
++                            placeholder="Postal code"
++                            value={addr.postalCode ?? ""}
++                            onChange={(e) => updateAddress(i, { postalCode: e.target.value })}
++                          />
++                          <input
++                            type="text"
++                            placeholder="Country"
++                            value={addr.country ?? ""}
++                            onChange={(e) => updateAddress(i, { country: e.target.value })}
++                          />
++                        </div>
++                        <button
++                          type="button"
++                          className="contacts-multivalue-remove"
++                          onClick={() => removeAddress(i)}
++                          aria-label="Remove address"
++                        >
++                          &times;
++                        </button>
++                      </div>
+                     ))}
+-                  </select>
+-                  <input
+-                    type="text"
+-                    placeholder="Name"
+-                    value={row.name}
+-                    onChange={(e) => update({ name: e.target.value })}
+-                    autoComplete="off"
++                    <button type="button" className="contacts-multivalue-add" onClick={addAddress}>
++                      + Add address
++                    </button>
++                  </div>
++                  <MultiValueField
++                    label="IM / Social"
++                    rows={form.ims}
++                    onChange={(ims) => setForm({ ...form, ims })}
++                    emptyRow={{ service: "whatsapp", label: "", value: "" }}
++                    addLabel="+ Add IM / social link"
++                    renderRow={(row, update) => (
++                      <>
++                        <select value={row.service ?? ""} onChange={(e) => update({ service: e.target.value as IMService })}>
++                          {IM_SERVICES.map((s) => (
++                            <option key={s.value} value={s.value}>
++                              {s.label}
++                            </option>
++                          ))}
++                        </select>
++                        {row.service === "" ? (
++                          <input
++                            type="text"
++                            placeholder="Service name"
++                            value={row.label ?? ""}
++                            onChange={(e) => update({ label: e.target.value })}
++                          />
++                        ) : null}
++                        <input
++                          type="text"
++                          placeholder="Handle / number / URL"
++                          value={row.value}
++                          onChange={(e) => update({ value: e.target.value })}
++                          autoComplete="off"
++                        />
++                      </>
++                    )}
+                   />
+-                </>
+-              )}
+-            />
+-
+-            <MultiValueField
+-              label="Other dates"
+-              rows={form.events}
+-              onChange={(events) => setForm({ ...form, events })}
+-              emptyRow={{ label: "anniversary", date: "" }}
+-              addLabel="+ Add date"
+-              renderRow={(row, update) => (
+-                <>
+-                  <select value={row.label ?? ""} onChange={(e) => update({ label: e.target.value })}>
+-                    <option value="anniversary">Anniversary</option>
+-                    <option value="other">Other</option>
+-                  </select>
+-                  <input type="date" value={row.date} onChange={(e) => update({ date: e.target.value })} />
+-                </>
+-              )}
+-            />
+-
+-            <MultiValueField
+-              label="Custom fields"
+-              rows={form.customFields}
+-              onChange={(customFields) => setForm({ ...form, customFields })}
+-              emptyRow={{ label: "", value: "" }}
+-              addLabel="+ Add custom field"
+-              renderRow={(row, update) => (
+-                <>
+-                  <input
+-                    type="text"
+-                    placeholder="Label"
+-                    value={row.label}
+-                    onChange={(e) => update({ label: e.target.value })}
++                  <MultiValueField
++                    label="Websites"
++                    rows={form.websites}
++                    onChange={(websites) => setForm({ ...form, websites })}
++                    emptyRow={{ label: "", value: "" }}
++                    addLabel="+ Add website"
++                    renderRow={(row, update) => (
++                      <>
++                        <input
++                          type="text"
++                          placeholder="Label (e.g. homepage)"
++                          value={row.label ?? ""}
++                          onChange={(e) => update({ label: e.target.value })}
++                        />
++                        <input
++                          type="url"
++                          placeholder="https://..."
++                          value={row.value}
++                          onChange={(e) => update({ value: e.target.value })}
++                          autoComplete="off"
++                        />
++                      </>
++                    )}
+                   />
+-                  <input
+-                    type="text"
+-                    placeholder="Value"
+-                    value={row.value}
+-                    onChange={(e) => update({ value: e.target.value })}
++                  <MultiValueField
++                    label="Relations"
++                    rows={form.relations}
++                    onChange={(relations) => setForm({ ...form, relations })}
++                    emptyRow={{ label: "spouse", name: "" }}
++                    addLabel="+ Add relation"
++                    renderRow={(row, update) => (
++                      <>
++                        <select value={row.label ?? ""} onChange={(e) => update({ label: e.target.value })}>
++                          {RELATION_LABELS.map((l) => (
++                            <option key={l} value={l}>
++                              {l}
++                            </option>
++                          ))}
++                        </select>
++                        <input
++                          type="text"
++                          placeholder="Name"
++                          value={row.name}
++                          onChange={(e) => update({ name: e.target.value })}
++                          autoComplete="off"
++                        />
++                      </>
++                    )}
+                   />
+-                </>
+-              )}
+-            />
+-
+-            <div className="contacts-multivalue">
+-              <div className="contacts-multivalue-label">Groups</div>
+-              {groups.map((g) =>
+-                renamingGroupId === g.id ? (
+-                  <div key={g.id} className="contacts-group-row">
+-                    <input
+-                      type="text"
+-                      value={renameGroupName}
+-                      onChange={(e) => setRenameGroupName(e.target.value)}
+-                      autoComplete="off"
+-                    />
+-                    <button
+-                      type="button"
+-                      className="contacts-action"
+-                      onClick={() => void handleRenameGroup(g.id)}
+-                      disabled={groupBusyId === g.id || !renameGroupName.trim()}
+-                    >
+-                      Save
+-                    </button>
+-                    <button type="button" className="contacts-action" onClick={cancelRenameGroup} disabled={groupBusyId === g.id}>
+-                      Cancel
+-                    </button>
+-                  </div>
+-                ) : (
+-                  <div key={g.id} className="contacts-group-row">
+-                    <label className="contacts-group-checkbox">
++                </div>
++              </details>
++              <details className="contacts-form-group" open={has(saved.customFields)}>
++                <summary>Custom fields<ChevronIcon /></summary>
++                <div className="contacts-form-group-fields">
++                  <MultiValueField
++                    label="Custom fields"
++                    rows={form.customFields}
++                    onChange={(customFields) => setForm({ ...form, customFields })}
++                    emptyRow={{ label: "", value: "" }}
++                    addLabel="+ Add custom field"
++                    renderRow={(row, update) => (
++                      <>
++                        <input
++                          type="text"
++                          placeholder="Label"
++                          value={row.label}
++                          onChange={(e) => update({ label: e.target.value })}
++                        />
++                        <input
++                          type="text"
++                          placeholder="Value"
++                          value={row.value}
++                          onChange={(e) => update({ value: e.target.value })}
++                        />
++                      </>
++                    )}
++                  />
++                </div>
++              </details>
++              <details className="contacts-form-group" open={has(saved.groupIDs)}>
++                <summary>Groups<ChevronIcon /></summary>
++                <div className="contacts-form-group-fields">
++                  <div className="contacts-multivalue">
++                    <div className="contacts-multivalue-label">Groups</div>
++                    {groups.map((g) =>
++                      renamingGroupId === g.id ? (
++                        <div key={g.id} className="contacts-group-row">
++                          <input
++                            type="text"
++                            value={renameGroupName}
++                            onChange={(e) => setRenameGroupName(e.target.value)}
++                            autoComplete="off"
++                          />
++                          <button
++                            type="button"
++                            className="contacts-action"
++                            onClick={() => void handleRenameGroup(g.id)}
++                            disabled={groupBusyId === g.id || !renameGroupName.trim()}
++                          >
++                            Save
++                          </button>
++                          <button type="button" className="contacts-action" onClick={cancelRenameGroup} disabled={groupBusyId === g.id}>
++                            Cancel
++                          </button>
++                        </div>
++                      ) : (
++                        <div key={g.id} className="contacts-group-row">
++                          <label className="contacts-group-checkbox">
++                            <input
++                              type="checkbox"
++                              checked={form.groupIDs.includes(g.id)}
++                              onChange={() =>
++                                setForm({
++                                  ...form,
++                                  groupIDs: form.groupIDs.includes(g.id)
++                                    ? form.groupIDs.filter((id) => id !== g.id)
++                                    : [...form.groupIDs, g.id]
++                                })
++                              }
++                            />
++                            {g.name}
++                          </label>
++                          <button
++                            type="button"
++                            className="contacts-action"
++                            onClick={() => beginRenameGroup(g)}
++                            disabled={groupBusyId === g.id}
++                          >
++                            Rename
++                          </button>
++                          <button
++                            type="button"
++                            className="contacts-action-danger"
++                            onClick={() => void handleDeleteGroup(g)}
++                            disabled={groupBusyId === g.id}
++                          >
++                            Delete
++                          </button>
++                        </div>
++                      )
++                    )}
++                    <div className="contacts-multivalue-row">
+                       <input
+-                        type="checkbox"
+-                        checked={form.groupIDs.includes(g.id)}
+-                        onChange={() =>
+-                          setForm({
+-                            ...form,
+-                            groupIDs: form.groupIDs.includes(g.id)
+-                              ? form.groupIDs.filter((id) => id !== g.id)
+-                              : [...form.groupIDs, g.id]
+-                          })
+-                        }
++                        type="text"
++                        placeholder="New group name"
++                        value={newGroupName}
++                        onChange={(e) => setNewGroupName(e.target.value)}
++                        autoComplete="off"
+                       />
+-                      {g.name}
+-                    </label>
+-                    <button
+-                      type="button"
+-                      className="contacts-action"
+-                      onClick={() => beginRenameGroup(g)}
+-                      disabled={groupBusyId === g.id}
+-                    >
+-                      Rename
+-                    </button>
+-                    <button
+-                      type="button"
+-                      className="contacts-action-danger"
+-                      onClick={() => void handleDeleteGroup(g)}
+-                      disabled={groupBusyId === g.id}
+-                    >
+-                      Delete
+-                    </button>
++                      <button
++                        type="button"
++                        className="contacts-action"
++                        onClick={() => void handleCreateGroup()}
++                        disabled={creatingGroup || !newGroupName.trim()}
++                      >
++                        + New group
++                      </button>
++                    </div>
+                   </div>
+-                )
+-              )}
+-              <div className="contacts-multivalue-row">
+-                <input
+-                  type="text"
+-                  placeholder="New group name"
+-                  value={newGroupName}
+-                  onChange={(e) => setNewGroupName(e.target.value)}
+-                  autoComplete="off"
+-                />
+-                <button
+-                  type="button"
+-                  className="contacts-action"
+-                  onClick={() => void handleCreateGroup()}
+-                  disabled={creatingGroup || !newGroupName.trim()}
+-                >
+-                  + New group
+-                </button>
+-              </div>
++                </div>
++              </details>
++              <details className="contacts-form-group" open={has(saved.pgpKey)}>
++                <summary>PGP public key<ChevronIcon /></summary>
++                <div className="contacts-form-group-fields">
++                  <label>
++                    <div>PGP Public Key</div>
++                    <textarea
++                      value={form.pgpKey}
++                      onChange={(e) => setForm({ ...form, pgpKey: e.target.value })}
++                      rows={4}
++                      placeholder="-----BEGIN PGP PUBLIC KEY BLOCK-----"
++                    />
++                  </label>
++                  <button
++                    type="button"
++                    className="contacts-action"
++                    onClick={() => void handleLookupPGPKeyserver()}
++                    disabled={pgpLookupBusy}
++                  >
++                    {pgpLookupBusy ? "Looking up…" : "Look up on keyserver"}
++                  </button>
++                  <PGPKeyInfo armoredKey={form.pgpKey} />
++                </div>
++              </details>
++
++              <label>
++                <div>Notes</div>
++                <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} rows={3} />
++              </label>
++
++              {formError ? (
++                <p className="notice notice-error" role="alert">
++                  {formError}
++                </p>
++              ) : null}
+             </div>
+ 
+-            <label>
+-              <div>PGP Public Key</div>
+-              <textarea
+-                value={form.pgpKey}
+-                onChange={(e) => setForm({ ...form, pgpKey: e.target.value })}
+-                rows={4}
+-                placeholder="-----BEGIN PGP PUBLIC KEY BLOCK-----"
+-              />
+-            </label>
+-            <button
+-              type="button"
+-              className="contacts-action"
+-              onClick={() => void handleLookupPGPKeyserver()}
+-              disabled={pgpLookupBusy}
+-            >
+-              {pgpLookupBusy ? "Looking up…" : "Look up on keyserver"}
+-            </button>
+-            <PGPKeyInfo armoredKey={form.pgpKey} />
+-
+-            <label>
+-              <div>Notes</div>
+-              <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} rows={3} />
+-            </label>
+-
+-            {formError ? (
+-              <p className="notice notice-error" role="alert">
+-                {formError}
+-              </p>
+-            ) : null}
+-            <div className="contacts-form-actions">
+-              <button type="submit" className="contacts-create-submit" disabled={saving}>
+-                {saving ? "Saving..." : editingUid ? "Save Changes" : "Add Contact"}
+-              </button>
++            <footer className="contacts-form-actions">
+               <button type="button" className="contacts-action" onClick={closeForm} disabled={saving}>
+                 Cancel
+               </button>
+-            </div>
++              <button type="submit" className="contacts-create-submit" disabled={saving}>
++                {saving ? "Saving..." : editingUid ? "Save Changes" : "Add Contact"}
++              </button>
++            </footer>
+           </form>
+         </div>
+       </dialog>
+diff --git a/frontend/src/pages/ReadPage.test.tsx b/frontend/src/pages/ReadPage.test.tsx
+index 21c4cf79..5687ec2c 100644
+--- a/frontend/src/pages/ReadPage.test.tsx
++++ b/frontend/src/pages/ReadPage.test.tsx
+@@ -1,5 +1,5 @@
+ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+-import { cleanup, render, screen, waitFor } from "@testing-library/react";
++import { cleanup, render, screen, waitFor, within } from "@testing-library/react";
+ import userEvent from "@testing-library/user-event";
+ import { MemoryRouter } from "react-router";
+ 
+@@ -420,3 +420,25 @@ describe("signature status on unencrypted signed mail", () => {
+     ).toBeDefined();
+   });
+ });
++
++describe("reader layout", () => {
++  beforeEach(() => {
++    vi.clearAllMocks();
++    mockEndpoints();
++  });
++
++  it("titles the reader with the subject and leads with Reply", async () => {
++    const user = userEvent.setup();
++    renderReadPage();
++    await user.click(await screen.findByText("Weekly Digest"));
++
++    const dialog = await screen.findByRole("dialog", { name: "Weekly Digest" });
++    expect(within(dialog).getByRole("heading", { level: 2, name: "Weekly Digest" })).toBeDefined();
++    const names = within(dialog).getAllByRole("button").map((b) => b.getAttribute("aria-label") ?? b.textContent);
++    expect(names.slice(0, 4)).toEqual(["Close", "Reply", "Reply All", "Forward"]);
++    expect(names).toEqual(
++      expect.arrayContaining(["Archive", "Snooze", "Mark as Read", "Mark as Spam", "Print", "Show Remote Content", "Delete"])
++    );
++  });
++});
++
+diff --git a/frontend/src/pages/ReadPage.tsx b/frontend/src/pages/ReadPage.tsx
+index 163bc267..57cc6a66 100644
+--- a/frontend/src/pages/ReadPage.tsx
++++ b/frontend/src/pages/ReadPage.tsx
+@@ -1,4 +1,4 @@
+-import { useEffect, useMemo, useRef, useState, type TouchEvent } from "react";
++import { useEffect, useEffectEvent, useMemo, useRef, useState, type TouchEvent } from "react";
+ import { Link, useSearchParams } from "react-router";
+ import { escapeHtmlText, processEmailHtml, resolveBodyMode } from "../lib/emailHtml";
+ import { EmailBodyFrame, FRAME_SANDBOX } from "./read/EmailBodyFrame";
+@@ -19,7 +19,7 @@ import { mailboxName, useMailboxes } from "../app/mailboxes";
+ import type { DraftComposePayload } from "../app/types";
+ import { useDialogOpen } from "../hooks/useDialogOpen";
+ import { PageTabs } from "../components/PageTabs";
+-import { ArchiveIcon, CheckIcon, ClockIcon, PrintIcon, TrashIcon, WarningIcon } from "./read/icons";
++import { ArchiveIcon, CheckIcon, ClockIcon, CloseIcon, ImageIcon, PrintIcon, TrashIcon, WarningIcon } from "./read/icons";
+ import { SnoozeDialog } from "./read/SnoozeDialog";
+ import { sortTime } from "../lib/snooze";
+ 
+@@ -148,7 +148,8 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+   const [sortKey, setSortKey] = useState<SortKey>("time");
+   const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
+   const [lastLoadedAt, setLastLoadedAt] = useState<Date | null>(null);
+-  const [clockTick, setClockTick] = useState(0);
++  // Re-renders every 30s so relative times such as "Updated Just Now" stay current.
++  const [, setClockTick] = useState(0);
+   const [swipeRows, setSwipeRows] = useState<Record<string, SwipeRowState>>({});
+   const [searchMode, setSearchMode] = useState(false);
+   const [searchQuery, setSearchQuery] = useState("");
+@@ -504,6 +505,8 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+       if (loadId === loadIdRef.current) setLoading(false);
+     }
+   }
++  // Timers and listeners load with the current render's state, not the one they were set up in.
++  const reloadInbox = useEffectEvent(loadInbox);
+ 
+   useEffect(() => {
+     // ponytail: clear stale mailbox data synchronously so switching between
+@@ -533,13 +536,15 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+     // we are leaving can describe a message in the one we are entering.
+     setDecrypted({});
+     bodyCacheRef.current.clear();
+-    void loadInbox();
+-    const timer = setInterval(() => void loadInbox(), 15_000);
++    void reloadInbox();
++    const timer = setInterval(() => void reloadInbox(), 15_000);
+     return () => clearInterval(timer);
+   }, [mailbox]);
+ 
+   useDialogOpen(emailReaderDialogRef, selected);
+ 
++  const openLinkedEmail = useEffectEvent(openEmailDetails);
++
+   // Deep-link support: a push notification click lands here with
+   // ?message=<id>&tab=<label> (see maybeSendPushNotification on the
+   // backend). Find that email once its tab has loaded and open it, instead
+@@ -564,7 +569,7 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+       if (isInboxMailbox && matchTab) {
+         setActiveTab(matchTab);
+       }
+-      void openEmailDetails(match);
++      void openLinkedEmail(match);
+     }
+ 
+     setSearchParams(
+@@ -587,7 +592,7 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+ 
+   useEffect(() => {
+     const handleMailboxMove = () => {
+-      void loadInbox();
++      void reloadInbox();
+     };
+     window.addEventListener("mailbox-move-complete", handleMailboxMove as EventListener);
+     return () => {
+@@ -595,8 +600,9 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+     };
+   }, [mailbox]);
+ 
++  // Re-read per opened message, not on every update to its record.
+   useEffect(() => {
+-    if (!selected) return;
++    if (selected?.messageId === undefined) return;
+     let cancelled = false;
+     getJSON<{ configured: string[]; imap: string[] }>("/api/labels")
+       .then((data) => {
+@@ -664,10 +670,7 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+   );
+ 
+   const allRowsSelected = pageRows.length > 0 && pageRows.every((row) => selectedMessageIds.includes(row.messageId));
+-  const updatedLabel = useMemo(
+-    () => formatUpdatedLabel(lastLoadedAt, Date.now()),
+-    [clockTick, lastLoadedAt]
+-  );
++  const updatedLabel = formatUpdatedLabel(lastLoadedAt, Date.now());
+ 
+   const batchActions = [
+     {
+@@ -716,7 +719,7 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+ 
+   useEffect(() => {
+     setCurrentPage(1);
+-  }, [mailbox, activeTab, sortKey, sortDirection]);
++  }, [mailbox, activeTab, sortKey, sortDirection, setCurrentPage]);
+ 
+   // Woken mail is marked; the Snoozed folder shows when each row wakes.
+   function snoozeBadge(item: InboxEmail) {
+@@ -1390,9 +1393,9 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+ 
+   return (
+     <section className="panel read-page-panel">
+-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
++      <div className="inbox-header">
+         <div>
+-          <h2 style={{ marginTop: 0, marginBottom: 6 }}>{mailbox ? mailbox : "Inbox"}</h2>
++          <h1>{mailbox ? mailbox : "Inbox"}</h1>
+           {boxName ? <p className="read-mailbox-name">{mailboxName(boxName)}</p> : null}
+         </div>
+         <div className="inbox-action-bar">
+@@ -1407,28 +1410,28 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+               <span>Haptics</span>
+             </label>
+           ) : null}
+-          {batchActions.map((action) => (
++          {/* Contextual: every action needs a selection, so the bar shows only with one. */}
++          {selectedMessageIds.length > 0 ? batchActions.map((action) => (
+             <button
+               key={action.key}
+               type="button"
+               onClick={action.onClick}
+               disabled={action.disabled}
+-              className="inbox-action-button"
++              className={action.key === "delete" ? "inbox-action-button btn-ghost btn-danger" : "inbox-action-button btn-ghost"}
+               aria-label={action.label}
+               title={action.label}
+             >
+               <span className="inbox-action-icon" aria-hidden="true">{action.icon}</span>
+               <span className="inbox-action-text">{action.label}</span>
+             </button>
+-          ))}
++          )) : null}
+         </div>
+       </div>
+ 
+       {error ? <p className="notice notice-error">Failed to load inbox: {error}</p> : null}
+       {actionError ? <p className="notice notice-error">Inbox action failed: {actionError}</p> : null}
+ 
+-      <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginTop: 14, marginBottom: 14 }}>
+-        <div style={{ flex: 1, minWidth: 200, display: "flex", gap: 4, alignItems: "center" }}>
++      <div className="inbox-search">
+           <input
+             type="text"
+             placeholder="Search..."
+@@ -1440,28 +1443,11 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+                 void performSearch();
+               }
+             }}
+-            style={{
+-              flex: 1,
+-              minWidth: 0,
+-              padding: "6px 8px",
+-              borderRadius: "4px",
+-              border: "1px solid var(--line)",
+-              backgroundColor: "var(--panel)",
+-              color: "var(--ink-strong)",
+-              fontSize: "0.9rem"
+-            }}
+           />
+           <select
+             value={searchField}
++            aria-label="Search in"
+             onChange={(e) => setSearchField(e.target.value as any)}
+-            style={{
+-              padding: "6px 8px",
+-              borderRadius: "4px",
+-              border: "1px solid var(--line)",
+-              backgroundColor: "var(--panel)",
+-              color: "var(--ink-strong)",
+-              fontSize: "0.9rem"
+-            }}
+           >
+             <option value="all">All</option>
+             <option value="sender">Sender</option>
+@@ -1472,16 +1458,14 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+             type="button"
+             onClick={() => void performSearch()}
+             disabled={searching}
+-            style={{ padding: "6px 12px" }}
+           >
+             {searching ? "Searching..." : "Search"}
+           </button>
+           {searchMode ? (
+-            <button type="button" onClick={clearSearch} style={{ padding: "6px 12px" }}>
++            <button type="button" className="btn-ghost" onClick={clearSearch}>
+               Clear
+             </button>
+           ) : null}
+-        </div>
+       </div>
+ 
+       {searchMode ? (
+@@ -1560,7 +1544,7 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+           )}
+         </div>
+       ) : isInboxMailbox ? (
+-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 14, marginBottom: 14 }}>
++        <div className="inbox-tabs">
+           {tabs.map((tab) => {
+             const unreadCount = (byTab[tab] ?? []).filter((item) => item.status !== "read").length;
+             const isActive = activeTab === tab;
+@@ -1568,39 +1552,12 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+               <button
+                 key={tab}
+                 type="button"
++                className="inbox-tab"
++                aria-pressed={isActive}
+                 onClick={() => setActiveTab(tab)}
+-                style={{
+-                  background: isActive ? "var(--accent)" : "transparent",
+-                  color: isActive ? "var(--accent-contrast)" : "var(--ink-strong)",
+-                  border: "1px solid var(--line)",
+-                  borderRadius: 999,
+-                  padding: "0.38rem 0.78rem",
+-                  fontSize: "0.82rem",
+-                  display: "inline-flex",
+-                  alignItems: "center",
+-                  gap: 8
+-                }}
+               >
+                 <span>{tab}</span>
+-                <span
+-                  style={{
+-                    minWidth: 18,
+-                    height: 18,
+-                    borderRadius: 999,
+-                    border: "1px solid var(--line)",
+-                    background: isActive ? "var(--chip-active-bg)" : "var(--accent-soft)",
+-                    color: isActive ? "var(--accent-contrast)" : "var(--ink-strong)",
+-                    display: "inline-flex",
+-                    alignItems: "center",
+-                    justifyContent: "center",
+-                    padding: "0 6px",
+-                    fontSize: "0.72rem",
+-                    fontWeight: 700,
+-                    lineHeight: 1
+-                  }}
+-                >
+-                  {unreadCount}
+-                </span>
++                <span className="inbox-tab-count">{unreadCount}</span>
+               </button>
+             );
+           })}
+@@ -1783,6 +1740,7 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+       <dialog
+         ref={emailReaderDialogRef}
+         className="email-reader-backdrop"
++        aria-labelledby="email-reader-title"
+         onCancel={(event) => {
+           event.preventDefault();
+           setSelected(null);
+@@ -1799,58 +1757,47 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+             onClick={(e) => e.stopPropagation()}
+           >
+             <div className="email-reader-head">
+-              <h3 style={{ margin: 0 }}>Email Details</h3>
+-              <div className="email-reader-actions">
+-                <div className="email-reader-actions-row">
+-                  <button
+-                    type="button"
+-                    onClick={() => applyInboxAction("archive", [selected.messageId], { closeModal: true })}
+-                    disabled={actionLoading}
+-                  >
+-                    Archive
+-                  </button>
+-                  <button
+-                    type="button"
+-                    onClick={() => setSnoozeTarget({ ids: [selected.messageId], fromReader: true })}
+-                    disabled={actionLoading}
+-                  >
+-                    Snooze
+-                  </button>
+-                  <button
+-                    type="button"
+-                    onClick={() => applyInboxAction("read", [selected.messageId])}
+-                    disabled={actionLoading}
+-                  >
+-                    Mark as Read
+-                  </button>
+-                  <button
+-                    type="button"
+-                    onClick={() => applyInboxAction("spam", [selected.messageId], { closeModal: true })}
+-                    disabled={actionLoading}
+-                  >
+-                    Mark as Spam
+-                  </button>
++              <h2 id="email-reader-title" className="email-reader-title">
++                {decrypted[decryptedKey(selected.messageId)]?.subject ?? selected.subject ?? "(no subject)"}
++              </h2>
++              <button type="button" className="btn-ghost icon-button" aria-label="Close" title="Close" onClick={() => setSelected(null)}>
++                <CloseIcon />
++              </button>
++            </div>
++            <div className="email-reader-actions">
++              <div className="email-reader-reply">
++                <button type="button" className="btn-primary" onClick={replyToSelectedEmail} disabled={actionLoading}>Reply</button>
++                <button type="button" onClick={replyAllToSelectedEmail} disabled={actionLoading}>Reply All</button>
++                <button type="button" onClick={forwardSelectedEmail} disabled={actionLoading}>Forward</button>
++              </div>
++              <div className="email-reader-tools">
++                {[
++                  { label: "Archive", icon: <ArchiveIcon />, onClick: () => applyInboxAction("archive", [selected.messageId], { closeModal: true }) },
++                  { label: "Snooze", icon: <ClockIcon />, onClick: () => setSnoozeTarget({ ids: [selected.messageId], fromReader: true }) },
++                  { label: "Mark as Read", icon: <CheckIcon />, onClick: () => applyInboxAction("read", [selected.messageId]) },
++                  { label: "Mark as Spam", icon: <WarningIcon />, onClick: () => applyInboxAction("spam", [selected.messageId], { closeModal: true }) },
++                  { label: "Print", icon: <PrintIcon />, onClick: () => printEmails([selected]) },
++                  {
++                    label: showImages ? "Hide Remote Content" : "Show Remote Content",
++                    icon: <ImageIcon />,
++                    onClick: () => setShowImagesFor((current) => (current === selected.messageId ? null : selected.messageId)),
++                    always: true
++                  },
++                  { label: "Delete", icon: <TrashIcon />, onClick: () => applyInboxAction("delete", [selected.messageId], { closeModal: true }), danger: true }
++                ].map(({ label, icon, onClick, always, danger }) => (
+                   <button
++                    key={label}
+                     type="button"
+-                    onClick={() => applyInboxAction("delete", [selected.messageId], { closeModal: true })}
+-                    disabled={actionLoading}
++                    className={danger ? "inbox-action-button btn-ghost btn-danger" : "inbox-action-button btn-ghost"}
++                    aria-label={label}
++                    title={label}
++                    onClick={onClick}
++                    disabled={!always && actionLoading}
+                   >
+-                    Delete
++                    <span className="inbox-action-icon" aria-hidden="true">{icon}</span>
++                    <span className="inbox-action-text">{label}</span>
+                   </button>
+-                  <button type="button" onClick={() => printEmails([selected])} disabled={actionLoading}>Print</button>
+-                </div>
+-                <div className="email-reader-actions-row">
+-                  <button type="button" onClick={replyToSelectedEmail} disabled={actionLoading}>Reply</button>
+-                  <button type="button" onClick={replyAllToSelectedEmail} disabled={actionLoading}>Reply All</button>
+-                  <button type="button" onClick={forwardSelectedEmail} disabled={actionLoading}>Forward</button>
+-                      <button
+-                        type="button"
+-                        onClick={() => setShowImagesFor((current) => (current === selected.messageId ? null : selected.messageId))}
+-                      >
+-                        {showImages ? "Hide Remote Content" : "Show Remote Content"}
+-                      </button>
+-                  <button type="button" onClick={() => setSelected(null)}>Close</button>
+-                </div>
++                ))}
+               </div>
+             </div>
+ 
+@@ -1954,9 +1901,13 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+                   </p>
+                 );
+               })()}
+-              <p style={{ margin: 0 }}><strong>Subject:</strong> {decrypted[decryptedKey(selected.messageId)]?.subject ?? selected.subject ?? "(no subject)"}</p>
+-              <p style={{ margin: 0 }}><strong>Sender:</strong> {selected.sender || "-"}</p>
+-              <p style={{ margin: 0 }}><strong>Sent To:</strong> {selected.sentTo || "-"}</p>
++              <div className="email-reader-facts">
++                <p><strong>Sender:</strong> {selected.sender || "-"}</p>
++                <p><strong>Sent To:</strong> {selected.sentTo || "-"}</p>
++                <p><strong>Time:</strong> {formatTimestamp(selected.atUtc)}</p>
++                <p><strong>Status:</strong> {selected.status || "-"}</p>
++                {selected.detail ? <p><strong>Detail:</strong> {selected.detail}</p> : null}
++              </div>
+               <div className="email-keyword-editor">
+                 <strong>Keywords:</strong>
+                 <div className="compose-token-field-wrap">
+@@ -1999,9 +1950,6 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+                   ))}
+                 </datalist>
+               </div>
+-              <p style={{ margin: 0 }}><strong>Status:</strong> {selected.status || "-"}</p>
+-              <p style={{ margin: 0 }}><strong>Time:</strong> {formatTimestamp(selected.atUtc)}</p>
+-              {selected.detail ? <p style={{ margin: 0 }}><strong>Detail:</strong> {selected.detail}</p> : null}
+               {(() => {
+                 // Once a verified view exists, its attachment list replaces
+                 // the server's: it covers only the parts inside the signature
+@@ -2104,23 +2052,11 @@ export function ReadPage({ onOpenDraft, onCompose }: ReadPageProps) {
+                     );
+                   }
+                 })() : null}
+-                <div style={{ marginTop: 8, display: "flex", gap: 12, fontSize: "0.75rem", opacity: 0.7 }}>
++                <div className="email-reader-foot">
+                   {!showRawEmail && (
+-                    <p style={{ margin: 0 }}>Remote images are not loaded by default.</p>
++                    <p>Remote images are not loaded by default.</p>
+                   )}
+-                  <button
+-                    type="button"
+-                    onClick={() => setShowRawEmail(!showRawEmail)}
+-                    style={{
+-                      padding: 0,
+-                      border: 0,
+-                      background: "transparent",
+-                      color: "var(--accent)",
+-                      cursor: "pointer",
+-                      textDecoration: "underline",
+-                      font: "inherit"
+-                    }}
+-                  >
++                  <button type="button" className="link-button" onClick={() => setShowRawEmail(!showRawEmail)}>
+                     {showRawEmail ? "Hide raw email" : "View raw email"}
+                   </button>
+                 </div>
+diff --git a/frontend/src/pages/ScheduledPage.tsx b/frontend/src/pages/ScheduledPage.tsx
+index 096e5396..5ee32995 100644
+--- a/frontend/src/pages/ScheduledPage.tsx
++++ b/frontend/src/pages/ScheduledPage.tsx
+@@ -44,7 +44,7 @@ export function ScheduledPage() {
+   return (
+     <section className="panel config-page">
+       <div className="config-header">
+-        <h2>Scheduled</h2>
++        <h1>Scheduled</h1>
+         <p>Mail waiting to send. Canceled or unsendable mail returns to Drafts.</p>
+       </div>
+       {error ? <p className="notice notice-error">{error}</p> : null}
+diff --git a/frontend/src/pages/SecurityPage.tsx b/frontend/src/pages/SecurityPage.tsx
+index aa014cd0..c544b194 100644
+--- a/frontend/src/pages/SecurityPage.tsx
++++ b/frontend/src/pages/SecurityPage.tsx
+@@ -200,7 +200,7 @@ export function SecurityPage() {
+   return (
+     <section className="panel sec-page">
+       <header className="sec-header">
+-        <h2>Security</h2>
++        <h1>Security</h1>
+         <p>Who can sign in as you, which devices you trust, and who can read your mail.</p>
+       </header>
+ 
+diff --git a/frontend/src/pages/admin/ServerPanel.tsx b/frontend/src/pages/admin/ServerPanel.tsx
+index 47e627d2..0e9d5956 100644
+--- a/frontend/src/pages/admin/ServerPanel.tsx
++++ b/frontend/src/pages/admin/ServerPanel.tsx
+@@ -28,7 +28,7 @@ export function ServerPanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Server</h2>
++        <h1>Server</h1>
+         <p>Runtime behaviour, updates, verified mail domains, and user accounts.</p>
+       </div>
+       <PanelTabs
+diff --git a/frontend/src/pages/read/icons.tsx b/frontend/src/pages/read/icons.tsx
+index 7647fcab..0d6f000c 100644
+--- a/frontend/src/pages/read/icons.tsx
++++ b/frontend/src/pages/read/icons.tsx
+@@ -1,8 +1,8 @@
+-// Toolbar glyphs. Inline SVG so they render the same on every OS; emoji did
++// Toolbar and navigation glyphs. Inline SVG so they render the same on every OS; emoji did
+ // not, and clashed with the typeface. All 16px, stroke follows text colour.
+ 
+ const icon = (d: string) => () => (
+-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
++  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+     <path d={d} />
+   </svg>
+ );
+@@ -13,3 +13,18 @@ export const WarningIcon = icon("M12 3 2 21h20L12 3zM12 10v5M12 18h.01");
+ export const CheckIcon = icon("M4 12l5 5L20 6");
+ export const PrintIcon = icon("M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z");
+ export const ClockIcon = icon("M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18zM12 7v5l3 3");
++export const InboxIcon = icon("M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z");
++export const FolderIcon = icon("M3 6h6l2 2h10v11H3z");
++export const DraftIcon = icon("M4 20h4L19 9l-4-4L4 16zM14 6l4 4");
++export const SendIcon = icon("M21 3 10 14M21 3l-7 18-4-7-7-4z");
++export const ContactsIcon = icon("M16 20v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1M9 11a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM22 20v-1a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8");
++export const SettingsIcon = icon("M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1M15 4v4M9 10v4M17 16v4");
++export const LogoutIcon = icon("M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9");
++export const PlusIcon = icon("M12 5v14M5 12h14");
++export const CloseIcon = icon("M6 6l12 12M18 6 6 18");
++export const ImageIcon = icon("M3 5h18v14H3zM3 16l5-5 4 4 3-3 6 6M15.5 9.5h.01");
++export const ChevronIcon = () => (
++  <svg className="nav-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
++    <path d="M9 6l6 6-6 6" />
++  </svg>
++);
+diff --git a/frontend/src/pages/settings/AppearancePanel.tsx b/frontend/src/pages/settings/AppearancePanel.tsx
+index 3efdb15d..7c1494d5 100644
+--- a/frontend/src/pages/settings/AppearancePanel.tsx
++++ b/frontend/src/pages/settings/AppearancePanel.tsx
+@@ -4,7 +4,7 @@ export function AppearancePanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Appearance</h2>
++        <h1>Appearance</h1>
+         <p>Pick a theme. It applies straight away and is remembered by this browser only.</p>
+       </div>
+       <div id="theme"><Appearance /></div>
+diff --git a/frontend/src/pages/settings/AutomationPanel.tsx b/frontend/src/pages/settings/AutomationPanel.tsx
+index 84f6ad27..2a3a9e89 100644
+--- a/frontend/src/pages/settings/AutomationPanel.tsx
++++ b/frontend/src/pages/settings/AutomationPanel.tsx
+@@ -17,7 +17,7 @@ export function AutomationPanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Email Labels</h2>
++        <h1>Email Labels</h1>
+         <p>How your mail is classified and labelled.</p>
+       </div>
+       <PanelTabs
+diff --git a/frontend/src/pages/settings/MailPanel.tsx b/frontend/src/pages/settings/MailPanel.tsx
+index 718b3299..30922a9e 100644
+--- a/frontend/src/pages/settings/MailPanel.tsx
++++ b/frontend/src/pages/settings/MailPanel.tsx
+@@ -20,7 +20,7 @@ export function MailPanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Mail</h2>
++        <h1>Mail</h1>
+         <p>Your mail server, mailbox storage, the addresses you send as, KyCalendar, contact sync and mailbox rules.</p>
+       </div>
+       <PanelTabs
+diff --git a/frontend/src/pages/settings/NotificationsPanel.tsx b/frontend/src/pages/settings/NotificationsPanel.tsx
+index 1346d47d..0cf7cd29 100644
+--- a/frontend/src/pages/settings/NotificationsPanel.tsx
++++ b/frontend/src/pages/settings/NotificationsPanel.tsx
+@@ -4,7 +4,7 @@ export function NotificationsPanel() {
+   return (
+     <section className="panel">
+       <div className="config-header">
+-        <h2>Notifications</h2>
++        <h1>Notifications</h1>
+         <p>How and when this device tells you about new mail.</p>
+       </div>
+       <div id="notification-prefs"><NotificationPrefs /></div>
+diff --git a/frontend/src/settings/sections/CardDavClient.tsx b/frontend/src/settings/sections/CardDavClient.tsx
+index 20a03b39..cd5c623a 100644
+--- a/frontend/src/settings/sections/CardDavClient.tsx
++++ b/frontend/src/settings/sections/CardDavClient.tsx
+@@ -153,7 +153,7 @@ export function CardDavClient() {
+       </p>
+       <div className="config-actions">
+         {managed ? null : (
+-          <button type="button" onClick={() => void saveCardDAVClient()} disabled={clientBusy}>
++          <button type="button" className="btn-primary" onClick={() => void saveCardDAVClient()} disabled={clientBusy}>
+             {clientBusy ? "Saving..." : "Save CardDAV Client"}
+           </button>
+         )}
+diff --git a/frontend/src/settings/sections/EmailServer.tsx b/frontend/src/settings/sections/EmailServer.tsx
+index ffd258bb..679935ee 100644
+--- a/frontend/src/settings/sections/EmailServer.tsx
++++ b/frontend/src/settings/sections/EmailServer.tsx
+@@ -183,7 +183,7 @@ export function EmailServer() {
+       </div>
+       <div className="config-actions">
+         {managed ? null : (
+-          <button type="button" onClick={saveIMAPConfig} disabled={imapBusy}>
++          <button type="button" className="btn-primary" onClick={saveIMAPConfig} disabled={imapBusy}>
+             {imapBusy ? "Saving..." : "Save Email Settings"}
+           </button>
+         )}
+diff --git a/frontend/src/settings/sections/Filters.tsx b/frontend/src/settings/sections/Filters.tsx
+index e57c6f80..fb067baa 100644
+--- a/frontend/src/settings/sections/Filters.tsx
++++ b/frontend/src/settings/sections/Filters.tsx
+@@ -504,6 +504,7 @@ export function Filters() {
+                   <div className="security-actions">
+                     <button
+                       type="button"
++                      className="btn-primary"
+                       onClick={saveDraft}
+                       disabled={!draft.guiEditable || draftActionsError !== ""}
+                     >
+diff --git a/frontend/src/settings/sections/MyLabels.tsx b/frontend/src/settings/sections/MyLabels.tsx
+index ad6e376f..4a4e53c9 100644
+--- a/frontend/src/settings/sections/MyLabels.tsx
++++ b/frontend/src/settings/sections/MyLabels.tsx
+@@ -125,7 +125,7 @@ export function MyLabels() {
+       </p>
+       <div className="config-actions">
+         <button type="button" onClick={applyImapLabelsToAllowlist}>Merge IMAP Labels</button>
+-        <button type="button" onClick={() => void save()} disabled={!loaded}>Save Labels</button>
++        <button type="button" className="btn-primary" onClick={() => void save()} disabled={!loaded}>Save Labels</button>
+       </div>
+       <p className="config-muted">{labelsFromImap.length > 0 ? `Discovered IMAP labels: ${labelsFromImap.join(", ")}` : "No IMAP labels discovered yet."}</p>
+       {status ? <p className={statusTone}>{status}</p> : null}
+diff --git a/frontend/src/settings/sections/NotificationPrefs.tsx b/frontend/src/settings/sections/NotificationPrefs.tsx
+index 45254e86..ef5828c0 100644
+--- a/frontend/src/settings/sections/NotificationPrefs.tsx
++++ b/frontend/src/settings/sections/NotificationPrefs.tsx
+@@ -304,7 +304,7 @@ export function NotificationPrefs() {
+           ) : null}
+ 
+           <div className="config-actions">
+-            <button type="button" onClick={() => void saveNotificationPrefs()}>Save Notifications</button>
++            <button type="button" className="btn-primary" onClick={() => void saveNotificationPrefs()}>Save Notifications</button>
+             <button type="button" onClick={() => void sendTestNotification()} disabled={notifyTestBusy}>
+               {notifyTestBusy ? "Sending Test..." : "Send Test Notification"}
+             </button>
+diff --git a/frontend/src/settings/sections/PromptTuning.tsx b/frontend/src/settings/sections/PromptTuning.tsx
+index 1f9d74ce..2bc3daa5 100644
+--- a/frontend/src/settings/sections/PromptTuning.tsx
++++ b/frontend/src/settings/sections/PromptTuning.tsx
+@@ -153,7 +153,7 @@ export function PromptTuning() {
+           <textarea rows={18} value={tuningText} onChange={(e) => setTuningText(e.target.value)} style={{ width: "100%" }} />
+         </label>
+ 
+-        <button type="button" onClick={saveTuning}>Save TUNING.md</button>
++        <button type="button" className="btn-primary" onClick={saveTuning}>Save TUNING.md</button>
+         {tuningStatus ? <p>{tuningStatus}</p> : null}
+       </div>
+     </>
+diff --git a/frontend/src/settings/sections/SystemHealth.test.tsx b/frontend/src/settings/sections/SystemHealth.test.tsx
+index babda853..a609989a 100644
+--- a/frontend/src/settings/sections/SystemHealth.test.tsx
++++ b/frontend/src/settings/sections/SystemHealth.test.tsx
+@@ -452,6 +452,6 @@ describe("SystemHealth admin controls", () => {
+     render(<SystemHealth full={false} heading="Status" />);
+ 
+     const heading = await screen.findByRole("heading", { name: "Status" });
+-    expect(heading.tagName).toBe("H2");
++    expect(heading.tagName).toBe("H1");
+   });
+ });
+diff --git a/frontend/src/settings/sections/SystemHealth.tsx b/frontend/src/settings/sections/SystemHealth.tsx
+index b969ba96..d74491e3 100644
+--- a/frontend/src/settings/sections/SystemHealth.tsx
++++ b/frontend/src/settings/sections/SystemHealth.tsx
+@@ -270,7 +270,7 @@ export function SystemHealth({ full = false, heading = "Health Dashboard" }: Sys
+   return (
+     <>
+       <div className="health-head">
+-        <h2>{heading}</h2>
++        <h1>{heading}</h1>
+         <div className="health-controls">
+           <label>
+             <span>Auto-refresh</span>
+diff --git a/frontend/src/styles.css b/frontend/src/styles.css
+index ad3205bf..e7a2ecf7 100644
+--- a/frontend/src/styles.css
++++ b/frontend/src/styles.css
+@@ -56,7 +56,7 @@
+   --link-border: #d8dde6;
+   --accent-contrast: #24170f;
+   --chip-active-bg: rgba(255, 255, 255, 0.38);
+-  --modal-overlay: rgba(124, 103, 127, 0.35);
++  --modal-overlay: rgb(12 16 18 / 0.45);
+   --modal-shadow: rgba(128, 118, 163, 0.28);
+   --error-soft: rgba(249, 197, 189, 0.35);
+   --mono: "IBM Plex Mono", monospace;
+@@ -77,41 +77,87 @@ body {
+ .shell {
+   min-height: 100vh;
+   display: grid;
+-  grid-template-columns: 240px minmax(0, 1fr);
++  grid-template-columns: var(--ky-sidebar-size) minmax(0, 1fr);
+ }
+ 
++/* The sidebar stays in view so the account region is always at its foot. */
+ .sidebar {
++  position: sticky;
++  top: 0;
++  height: 100vh;
++  overflow-y: auto;
+   border-right: 1px solid var(--line);
+-  padding: 20px;
++  padding: var(--ky-space-3);
+   background: linear-gradient(180deg, var(--sidebar-start), var(--sidebar-end));
+   display: flex;
+   flex-direction: column;
++  gap: var(--ky-space-3);
++  font-size: var(--ky-type-nav);
+ }
+ 
+ .new-email-button {
+   width: 100%;
++  min-height: var(--ky-control-size);
+   border: 1px solid var(--new-email-border);
+   background: linear-gradient(180deg, var(--new-email-start), var(--new-email-end));
+   color: var(--new-email-text);
+-  border-radius: 10px;
+-  padding: 10px;
+-  font-weight: 700;
+-  margin-bottom: 14px;
++  font-weight: 600;
++}
++
++.new-email-button.new-email-button-quiet {
++  border-color: var(--ky-field-border);
++  background: transparent;
++  color: var(--ink-strong);
++}
++
++.new-email-button.new-email-button-quiet:hover {
++  background: color-mix(in srgb, var(--ink-strong) 7%, transparent);
++}
++
++/* A square control holding one icon; its name comes from aria-label. */
++.icon-button {
++  flex: none;
++  display: inline-grid;
++  place-items: center;
++  width: var(--ky-control-size);
++  min-height: var(--ky-control-size);
++  padding: 0;
++  color: var(--ink);
++}
++
++.icon-button:hover:not(:disabled) {
++  color: var(--ink-strong);
++}
++
++.link-button {
++  padding: 0;
++  border: 0;
++  background: transparent;
++  color: var(--ink-strong);
++  font: inherit;
++  text-decoration: underline;
++  text-underline-offset: 2px;
++}
++
++.link-button:hover:not(:disabled) {
++  background: transparent;
++  text-decoration-thickness: 2px;
+ }
+ 
+ .sidebar-logo {
+   display: flex;
+   align-items: center;
+-  gap: 10px;
+-  margin-bottom: 16px;
++  gap: var(--ky-space-2);
++  padding: var(--ky-space-1) var(--ky-space-2) 0;
+ }
+ 
+ .sidebar-app-logo {
+-  border-radius: 12px;
++  border-radius: 7px;
++  flex: none;
+ }
+ 
+ .sidebar-wordmark {
+-  font-size: 1.35rem;
++  font-size: 1.15rem;
+   font-weight: 700;
+   letter-spacing: -0.01em;
+   color: var(--ink-strong);
+@@ -121,13 +167,39 @@ body {
+   flex: 1;
+ }
+ 
+-.sidebar-footer {
++.sidebar-account {
+   margin-top: auto;
+-  padding-top: 16px;
++  padding-top: var(--ky-space-3);
+   border-top: 1px solid var(--line);
++  display: grid;
++  gap: var(--ky-space-2);
++}
++
++.sidebar-account-copy {
++  min-width: 0;
++  padding: 0 var(--ky-space-2);
++  line-height: 1.35;
++}
++
++.sidebar-account-name {
++  display: block;
++  overflow: hidden;
++  text-overflow: ellipsis;
++  white-space: nowrap;
++  font-weight: 600;
++  color: var(--ink-strong);
++}
++
++.sidebar-account-role {
++  display: block;
++  font-size: var(--ky-type-meta);
++  color: var(--ink);
++}
++
++.sidebar-footer {
+   font-size: 0.75rem;
+   color: var(--ink);
+-  text-align: center;
++  padding-left: var(--ky-space-2);
+   white-space: nowrap;
+ }
+ 
+@@ -154,41 +226,63 @@ body {
+ .sidebar nav {
+   display: flex;
+   flex-direction: column;
+-  gap: 4px;
++  gap: 2px;
+ }
+ 
+-.sidebar a {
+-  text-decoration: none;
++/* One row geometry for links, disclosure buttons and Logout: 40px, 8px radius,
++   icon then label. Selected, hover and focus states come from ky-ui/navigation.css. */
++.sidebar a,
++.sidebar .nav-heading,
++.sidebar .nav-link-button {
++  display: flex;
++  align-items: center;
++  gap: var(--ky-space-2);
++  min-height: var(--ky-control-size);
++  width: 100%;
++  padding: 0 var(--ky-space-2);
++  border: 0;
++  border-radius: var(--ky-control-radius);
++  background: transparent;
+   color: var(--ink-strong);
+-  border: 1px solid transparent;
+-  border-radius: 10px;
+-  padding: 9px 10px;
+-  transition: all 180ms ease;
++  font: inherit;
++  font-weight: 500;
++  text-align: left;
++  text-decoration: none;
++  transition: background-color 150ms ease, color 150ms ease;
+ }
+ 
+-.sidebar a:hover {
+-  border-color: var(--accent);
+-  background: var(--accent-soft);
++.sidebar a:hover,
++.sidebar .nav-heading:hover,
++.sidebar .nav-link-button:hover {
++  background: color-mix(in srgb, var(--ink-strong) 6%, transparent);
++  filter: none;
+ }
+ 
+-.sidebar-section-label {
+-  margin: 0 0 6px;
+-  font-size: 0.74rem;
+-  letter-spacing: 0.08em;
+-  text-transform: uppercase;
+-  opacity: 0.72;
+-  color: var(--ink-strong);
++.sidebar a svg,
++.sidebar .nav-heading svg,
++.sidebar .nav-link-button svg {
++  flex: none;
++  color: var(--ink);
+ }
+ 
+-.sidebar-link-active {
+-  border-color: transparent !important;
+-  background: var(--accent-soft) !important;
++.nav-chevron {
++  margin-left: auto;
++  transition: transform 150ms ease;
+ }
+ 
+-.mailbox-switcher {
+-  margin-bottom: 14px;
++[aria-expanded="true"] > .nav-chevron {
++  transform: rotate(90deg);
++}
++
++.sidebar-section-label {
++  margin: var(--ky-space-2) 0 var(--ky-space-1);
++  padding: 0 var(--ky-space-2);
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++  color: var(--ink);
+ }
+ 
++
+ .mailbox-switcher .sidebar-section-label {
+   margin: 0;
+ }
+@@ -206,32 +300,16 @@ body {
+ }
+ 
+ .inbox-expand-button {
+-  width: auto;
+-  min-width: 42px;
++  width: var(--ky-control-size);
+   padding: 0;
+-  font-size: 1.1rem;
+-  line-height: 1;
+-}
+-
+-.sidebar .nav-heading {
+-  width: 100%;
+-  text-align: left;
+-  border: 1px solid transparent;
+-  background: transparent;
+-  color: var(--ink-strong);
+-  border-radius: 10px;
+-  padding: 10px;
+-}
+-
+-.sidebar .nav-heading:hover {
+-  border-color: var(--accent);
+-  background: var(--accent-soft);
++  display: inline-grid;
++  place-items: center;
+ }
+ 
+ .sidebar .nav-group {
+   display: grid;
+-  gap: 4px;
+-  padding-left: 10px;
++  gap: 2px;
++  padding-left: var(--ky-space-3);
+ }
+ 
+ /* One group per audience. A non-admin sees a single unheaded group, so the
+@@ -251,11 +329,11 @@ body {
+ }
+ 
+ .sidebar .nav-subheading {
+-  margin: 0.75rem 0 0.25rem;
+-  font-size: 0.75rem;
+-  text-transform: uppercase;
+-  letter-spacing: 0.06em;
+-  opacity: 0.6;
++  margin: var(--ky-space-2) 0 var(--ky-space-1);
++  padding: 0 var(--ky-space-2);
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++  color: var(--ink);
+ }
+ 
+ .sidebar-folder-form {
+@@ -289,29 +367,24 @@ body {
+ }
+ 
+ .sidebar-folder-menu-button {
+-  width: auto;
+-  min-width: 40px;
+-  padding: 10px 8px;
++  width: var(--ky-control-size);
++  padding: 0;
+ }
+ 
+ /* Quiet by default: these sit beside every folder row, so a filled accent
+    button on each one outshouted the folders themselves. */
+ .sidebar .inbox-expand-button,
+ .sidebar .sidebar-folder-menu-button {
++  min-height: var(--ky-control-size);
+   background: transparent;
+   border-color: transparent;
+   color: var(--ink);
+-  opacity: 0.7;
+ }
+ 
+ .sidebar .inbox-expand-button:hover,
+-.sidebar .sidebar-folder-menu-button:hover,
+-.sidebar .inbox-expand-button:focus-visible,
+-.sidebar .sidebar-folder-menu-button:focus-visible {
+-  opacity: 1;
++.sidebar .sidebar-folder-menu-button:hover {
+   color: var(--ink-strong);
+-  border-color: var(--accent);
+-  background: var(--accent-soft);
++  background: color-mix(in srgb, var(--ink-strong) 6%, transparent);
+ }
+ 
+ .sidebar-folder-menu {
+@@ -323,85 +396,112 @@ body {
+   gap: 6px;
+   min-width: 110px;
+   border: 1px solid var(--line);
+-  border-radius: 10px;
++  border-radius: var(--ky-control-radius);
+   padding: 8px;
+-  background: #1e1c23;
+-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
++  background: var(--panel);
++  box-shadow: var(--ky-shadow-overlay);
+ }
+ 
+ .sidebar-folder-menu button {
+   width: 100%;
+ }
+ 
+-.sidebar-folder-delete {
+-  width: auto;
+-  padding: 10px 12px;
+-  border-color: rgba(255, 180, 171, 0.45);
+-  background: rgba(255, 180, 171, 0.14);
+-  color: #ffd8d3;
+-}
+-
+-.sidebar-folder-delete:hover {
+-  background: rgba(255, 180, 171, 0.22);
+-}
+-
+ .sidebar-folder-error {
+-  color: #ffb4ab;
+-  border-color: rgba(255, 180, 171, 0.35);
+-}
+-
+-.sidebar .nav-group span {
+-  border: 1px solid transparent;
+-  border-radius: 10px;
+-  padding: 10px;
+-  font-size: 0.9rem;
+-  opacity: 0.75;
++  color: var(--danger);
+ }
+ 
+-.sidebar .nav-link-button {
+-  width: 100%;
+-  text-align: left;
+-  border: 1px solid transparent;
+-  background: transparent;
+-  color: var(--ink-strong);
+-  border-radius: 10px;
+-  padding: 10px;
+-  font: inherit;
+-}
+-
+-.sidebar .nav-link-button:hover {
+-  border-color: var(--accent);
+-  background: var(--accent-soft);
++.sidebar .nav-group > span {
++  padding: var(--ky-space-2);
++  color: var(--ink);
+ }
+ 
+ .mobile-quick-nav {
+   display: none;
+ }
+ 
+-.mobile-settings-toggle {
+-  width: auto;
++.sidebar .mobile-settings-toggle {
++  display: none;
+ }
+ 
+ .content {
+-  padding: 28px;
++  min-width: 0;
++  background: var(--panel);
+ }
+ 
++/* Pages sit flat on one content surface; only overlays carry a shadow. */
+ .panel {
+-  background: var(--panel);
+-  border: 1px solid var(--line);
+-  border-radius: 14px;
+-  padding: 18px;
+-  margin-bottom: 18px;
+-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
++  padding: var(--ky-space-4) var(--ky-space-5);
++}
++
++.panel h1 {
++  margin: 0;
++  font-size: var(--ky-type-title);
++  font-weight: 600;
++  line-height: 1.25;
++  letter-spacing: -0.01em;
+ }
+ 
+ .read-page-panel {
+-  height: calc(100vh - 74px);
++  height: 100vh;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+ }
+ 
++.inbox-header {
++  display: flex;
++  justify-content: space-between;
++  align-items: center;
++  gap: var(--ky-space-3);
++  flex-wrap: wrap;
++  min-height: var(--ky-control-size);
++}
++
++.inbox-search {
++  display: flex;
++  gap: var(--ky-space-2);
++  align-items: center;
++  margin-top: var(--ky-space-3);
++}
++
++.inbox-search input {
++  flex: 1;
++  min-width: 0;
++}
++
++.inbox-tabs {
++  display: flex;
++  gap: var(--ky-space-2);
++  flex-wrap: wrap;
++  margin-top: var(--ky-space-3);
++}
++
++.inbox-tab {
++  display: inline-flex;
++  align-items: center;
++  gap: var(--ky-space-2);
++  min-height: 32px;
++  padding: 0 12px;
++  border: 1px solid var(--line);
++  border-radius: 999px;
++  background: transparent;
++  color: var(--ink);
++  font-size: var(--ky-type-meta);
++  font-weight: 500;
++}
++
++.inbox-tab[aria-pressed="true"] {
++  border-color: transparent;
++  background: var(--accent-soft);
++  color: var(--ink-strong);
++  font-weight: 600;
++}
++
++.inbox-tab-count {
++  font-variant-numeric: tabular-nums;
++  color: var(--ink);
++}
++
+ .inbox-list-region {
+   margin-top: 10px;
+   min-height: 0;
+@@ -414,9 +514,7 @@ body {
+ .inbox-empty-state {
+   flex: 1;
+   min-height: 0;
+-  border: 1px solid var(--line);
+-  border-radius: 12px;
+-  background: color-mix(in srgb, var(--panel) 88%, var(--bg));
++  border-top: 1px solid var(--line);
+   display: grid;
+   place-items: center;
+   align-content: center;
+@@ -450,16 +548,18 @@ body {
+   font-size: 0.78rem;
+ }
+ 
+-.inbox-page-tab.active {
+-  background: var(--accent);
+-  border-color: var(--accent);
+-  color: var(--accent-contrast);
++.inbox-page-tab.active,
++.contacts-page-tab.active {
++  background: var(--accent-soft);
++  border-color: transparent;
++  color: var(--ink-strong);
++  font-weight: 600;
+ }
+ 
+ .inbox-action-bar {
+   display: flex;
+   flex-wrap: wrap;
+-  gap: 8px;
++  gap: var(--ky-space-1);
+ }
+ 
+ .inbox-haptics-toggle {
+@@ -486,6 +586,9 @@ body {
+   display: inline-flex;
+   align-items: center;
+   gap: 6px;
++  min-height: var(--ky-control-size);
++  padding: 0 10px;
++  font-size: var(--ky-type-nav);
+ }
+ 
+ .inbox-action-icon {
+@@ -500,9 +603,6 @@ body {
+ 
+ .inbox-table-wrap {
+   overflow: hidden;
+-  border: 1px solid var(--line);
+-  border-radius: 12px;
+-  background: color-mix(in srgb, var(--panel) 88%, var(--bg));
+   min-height: 0;
+   flex: 1;
+ }
+@@ -519,6 +619,7 @@ body {
+      sized from it too, and the narrow-viewport override below changes it — so a
+      literal in either place silently desyncs the two at that breakpoint. */
+   --inbox-cell-pad: 10px;
++  font-size: var(--ky-type-body);
+ }
+ 
+ .inbox-col-select {
+@@ -551,7 +652,10 @@ body {
+   border-bottom: 1px solid var(--line);
+   padding: 9px 10px;
+   white-space: nowrap;
+-  background: color-mix(in srgb, var(--panel) 96%, var(--bg));
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++  color: var(--ink);
++  background: var(--panel);
+   position: sticky;
+   top: 0;
+   z-index: 2;
+@@ -588,7 +692,12 @@ body {
+ }
+ 
+ .inbox-row:hover {
+-  background: color-mix(in srgb, var(--accent-soft) 42%, transparent);
++  background: color-mix(in srgb, var(--ink-strong) 4%, transparent);
++}
++
++/* Selected rows use the shared selection surface; unread rows differ by weight only. */
++.inbox-row:has(.inbox-checkbox:checked) {
++  background: var(--accent-soft);
+ }
+ 
+ .inbox-row-swipe-dragging {
+@@ -665,9 +774,6 @@ body {
+   }
+ }
+ 
+-.inbox-row-unread {
+-  background: color-mix(in srgb, var(--accent-soft) 16%, transparent);
+-}
+ 
+ .inbox-cell {
+   border-bottom: 1px solid var(--line);
+@@ -723,8 +829,8 @@ body {
+   text-align: left;
+   cursor: pointer;
+   text-decoration: none;
+-  font-weight: 450;
+-  line-height: 1.3;
++  font-weight: 400;
++  line-height: 1.35;
+ }
+ 
+ .inbox-subject-button:hover {
+@@ -735,12 +841,20 @@ body {
+ 
+ .inbox-subject-unread {
+   color: var(--ink-strong);
+-  font-weight: 500;
++  font-weight: 650;
+ }
+ 
+ .inbox-sender-cell,
+ .inbox-time-cell {
+-  color: color-mix(in srgb, var(--ink) 85%, var(--ink-strong));
++  color: var(--ink);
++  font-size: var(--ky-type-nav);
++  font-variant-numeric: tabular-nums;
++}
++
++.inbox-row-unread .inbox-sender-cell,
++.inbox-row-unread .inbox-time-cell {
++  color: var(--ink-strong);
++  font-weight: 600;
+ }
+ 
+ .inbox-time-cell {
+@@ -778,9 +892,9 @@ body {
+   max-height: 96vh;
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 14px;
+-  padding: 16px;
+-  box-shadow: 0 14px 40px var(--modal-shadow);
++  border-radius: 12px;
++  padding: var(--ky-space-4);
++  box-shadow: var(--ky-shadow-overlay);
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+@@ -789,22 +903,80 @@ body {
+ .email-reader-head {
+   display: flex;
+   justify-content: space-between;
+-  align-items: center;
+-  gap: 10px;
++  align-items: flex-start;
++  gap: var(--ky-space-3);
+   flex-shrink: 0;
+ }
+ 
++.email-reader-title {
++  margin: 0;
++  min-width: 0;
++  font-size: var(--ky-type-title);
++  font-weight: 600;
++  line-height: 1.25;
++  letter-spacing: -0.01em;
++  overflow-wrap: anywhere;
++}
++
++/* Reply first and primary; everything else is a quiet icon-and-label tool. */
+ .email-reader-actions {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: var(--ky-space-2) var(--ky-space-3);
++  flex-wrap: wrap;
++  flex-shrink: 0;
++  padding-bottom: var(--ky-space-3);
++  border-bottom: 1px solid var(--line);
++}
++
++.email-reader-reply,
++.email-reader-tools {
++  display: flex;
++  align-items: center;
++  gap: var(--ky-space-2);
++}
++
++.email-reader-tools {
++  gap: 2px;
++  flex-wrap: wrap;
++}
++
++.email-reader-reply button {
++  min-height: var(--ky-control-size);
++  padding: 0 var(--ky-space-3);
++  font-size: var(--ky-type-nav);
++}
++
++.email-reader-facts {
+   display: grid;
+-  gap: 6px;
+-  justify-items: end;
++  gap: 2px;
++  color: var(--ink-strong);
+ }
+ 
+-.email-reader-actions-row {
++.email-reader-facts p {
++  margin: 0;
++  overflow-wrap: anywhere;
++}
++
++.email-reader-facts strong,
++.email-keyword-editor > strong {
++  color: var(--ink);
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++}
++
++.email-reader-foot {
+   display: flex;
+-  gap: 8px;
+-  justify-content: flex-end;
+-  flex-wrap: nowrap;
++  flex-wrap: wrap;
++  gap: var(--ky-space-1) var(--ky-space-3);
++  margin-top: var(--ky-space-2);
++  font-size: var(--ky-type-meta);
++  color: var(--ink);
++}
++
++.email-reader-foot p {
++  margin: 0;
+ }
+ 
+ .email-reader-content {
+@@ -887,14 +1059,37 @@ label {
+ input,
+ textarea,
+ select {
+-  border: 1px solid var(--line);
+-  border-radius: 8px;
+-  padding: 10px;
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++  padding: 8px 12px;
+   background: var(--panel);
+   color: var(--ink-strong);
+   font: inherit;
+ }
+ 
++input:where(:not([type="checkbox"], [type="radio"], [type="file"], [type="range"], [type="color"])),
++select {
++  min-height: var(--ky-control-size);
++}
++
++input[type="file"] {
++  border: 0;
++  padding: 0;
++  background: none;
++}
++
++input[type="file"]::file-selector-button {
++  margin-right: var(--ky-space-2);
++  min-height: 36px;
++  padding: 0 12px;
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++  background: transparent;
++  color: var(--ink-strong);
++  font: inherit;
++  cursor: pointer;
++}
++
+ textarea {
+   resize: vertical;
+ }
+@@ -904,29 +1099,73 @@ input[type="radio"] {
+   accent-color: var(--accent);
+ }
+ 
++/* One button system, shared with KyCalendar's names. A plain button is the
++   secondary outline; a form's submit and .btn-primary carry the view's one
++   accent fill; .btn-ghost drops the outline; .btn-danger recolours either. */
+ button {
+   width: fit-content;
+-  border: 1px solid var(--accent);
+-  background: var(--accent);
+-  color: var(--button-text);
+-  border-radius: 8px;
++  border: 1px solid var(--ky-field-border);
++  background: transparent;
++  color: var(--ink-strong);
++  border-radius: var(--ky-control-radius);
+   padding: 9px 14px;
+   font: inherit;
+   cursor: pointer;
+-  transition: filter 120ms ease, transform 120ms ease;
++  transition: background-color 120ms ease, filter 120ms ease, transform 120ms ease;
+ }
+ 
+-button:hover:not(:disabled) {
+-  filter: brightness(1.06);
++:where(button):hover:not(:disabled) {
++  background-color: color-mix(in srgb, var(--ink-strong) 7%, transparent);
+ }
+ 
+ button:active:not(:disabled) {
+   transform: translateY(1px);
+ }
+ 
++button[type="submit"],
++.btn-primary {
++  border-color: var(--accent);
++  background: var(--accent);
++  color: var(--button-text);
++  font-weight: 600;
++}
++
++button[type="submit"]:hover:not(:disabled),
++.btn-primary:hover:not(:disabled) {
++  background: var(--accent);
++  filter: brightness(1.08);
++}
++
++.btn-danger {
++  color: var(--danger);
++  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
++}
++
++.btn-danger:hover:not(:disabled) {
++  background: color-mix(in srgb, var(--danger) 10%, transparent);
++}
++
++.btn-ghost {
++  border-color: transparent;
++}
++
++/* Disabled reads as unavailable, not as a faded primary: muted ink, dashed
++   edge, and no accent fill. */
+ button:disabled {
+-  opacity: 0.6;
+-  cursor: default;
++  color: color-mix(in srgb, var(--ink) 65%, transparent);
++  border-style: dashed;
++  cursor: not-allowed;
++}
++
++button[type="submit"]:disabled,
++.btn-primary:disabled {
++  border-color: transparent;
++  background: color-mix(in srgb, var(--ink-strong) 10%, transparent);
++  color: color-mix(in srgb, var(--ink) 75%, transparent);
++}
++
++.btn-ghost:disabled {
++  border-color: transparent;
+ }
+ 
+ button:focus-visible,
+@@ -978,10 +1217,6 @@ pre {
+   margin-bottom: 12px;
+ }
+ 
+-.health-head h2 {
+-  margin: 0;
+-}
+-
+ .health-controls {
+   display: flex;
+   align-items: center;
+@@ -1069,14 +1304,6 @@ pre {
+ 
+ .config-page {
+   position: relative;
+-  overflow: hidden;
+-  background:
+-    radial-gradient(circle at 6% 8%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 36%),
+-    linear-gradient(160deg, color-mix(in srgb, var(--panel) 85%, var(--bg)), color-mix(in srgb, var(--panel) 95%, var(--bg)) 46%);
+-}
+-
+-.config-header h2 {
+-  margin: 0;
+ }
+ 
+ .config-header p {
+@@ -1251,16 +1478,9 @@ pre {
+ }
+ 
+ .config-card {
+-  margin-top: 14px;
+-  border: 1px solid color-mix(in srgb, var(--line) 86%, var(--accent));
+-  border-radius: 12px;
+-  padding: 14px;
+-  background: linear-gradient(
+-    180deg,
+-    color-mix(in srgb, var(--panel) 88%, var(--bg)),
+-    color-mix(in srgb, var(--panel) 80%, var(--bg))
+-  );
+-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink-strong) 8%, transparent);
++  margin-top: var(--ky-space-4);
++  padding-top: var(--ky-space-4);
++  border-top: 1px solid var(--line);
+ }
+ 
+ .config-card h3 {
+@@ -1295,17 +1515,10 @@ pre {
+   margin-top: 0;
+ }
+ 
+-.config-card label {
+-  border: 1px solid var(--line);
+-  border-radius: 10px;
+-  padding: 10px;
+-  background: color-mix(in srgb, var(--panel) 92%, var(--bg));
+-}
+-
+ .config-card label > div {
+   color: var(--ink-strong);
+-  font-size: 0.84rem;
+-  letter-spacing: 0.01em;
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
+ }
+ 
+ .config-card select,
+@@ -1501,9 +1714,6 @@ pre {
+ .users-page {
+   position: relative;
+   overflow: hidden;
+-  background:
+-    radial-gradient(circle at 94% 6%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 40%),
+-    linear-gradient(160deg, color-mix(in srgb, var(--panel) 85%, var(--bg)), color-mix(in srgb, var(--panel) 95%, var(--bg)) 46%);
+ }
+ 
+ .users-header {
+@@ -1844,11 +2054,10 @@ pre {
+   border-radius: 50%;
+   display: grid;
+   place-items: center;
+-  font-weight: 700;
++  font-weight: 600;
+   font-size: 0.92rem;
+-  color: var(--accent-contrast);
+-  background: linear-gradient(180deg, var(--new-email-start), var(--new-email-end));
+-  border: 1px solid var(--new-email-border);
++  color: var(--ink-strong);
++  background: color-mix(in srgb, var(--ink-strong) 9%, var(--panel));
+ }
+ 
+ .users-identity-text {
+@@ -1965,14 +2174,12 @@ pre {
+ }
+ 
+ .users-action-danger {
+-  border-color: rgba(255, 180, 171, 0.4);
+-  background: rgba(255, 180, 171, 0.12);
+-  color: #ffd8d3;
++  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
++  color: var(--danger);
+ }
+ 
+ .users-action-danger:hover:not(:disabled) {
+-  border-color: rgba(255, 180, 171, 0.6);
+-  background: rgba(255, 180, 171, 0.2);
++  background: color-mix(in srgb, var(--danger) 10%, transparent);
+ }
+ 
+ @media (max-width: 900px) {
+@@ -2048,14 +2255,12 @@ pre {
+ }
+ 
+ .security-action-danger {
+-  border-color: rgba(255, 180, 171, 0.4);
+-  background: rgba(255, 180, 171, 0.12);
+-  color: #ffd8d3;
++  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
++  color: var(--danger);
+ }
+ 
+ .security-action-danger:hover:not(:disabled) {
+-  border-color: rgba(255, 180, 171, 0.6);
+-  background: rgba(255, 180, 171, 0.2);
++  background: color-mix(in srgb, var(--danger) 10%, transparent);
+ }
+ 
+ .security-check {
+@@ -2187,10 +2392,6 @@ pre {
+   --sec-measure: 720px;
+ }
+ 
+-.sec-header h2 {
+-  margin: 0;
+-}
+-
+ /* Content links elsewhere in the app sit inside styled containers; here they
+    land in running prose, where the browser default renders near-invisible on
+    the dark themes. */
+@@ -2899,13 +3100,10 @@ pre {
+ 
+ .contacts-page {
+   position: relative;
+-  height: calc(100vh - 74px);
++  height: 100vh;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+-  background:
+-    radial-gradient(circle at 94% 6%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 40%),
+-    linear-gradient(160deg, color-mix(in srgb, var(--panel) 85%, var(--bg)), color-mix(in srgb, var(--panel) 95%, var(--bg)) 46%);
+ }
+ 
+ .contacts-header {
+@@ -2916,10 +3114,6 @@ pre {
+   flex-wrap: wrap;
+ }
+ 
+-.contacts-header h2 {
+-  margin: 0;
+-}
+-
+ .contacts-header-actions {
+   display: flex;
+   align-items: center;
+@@ -2934,13 +3128,9 @@ pre {
+ }
+ 
+ .contacts-stat {
+-  border: 1px solid color-mix(in srgb, var(--line) 86%, var(--accent));
+-  border-radius: 999px;
+-  padding: 5px 11px;
+-  font-size: 0.8rem;
++  font-size: var(--ky-type-meta);
+   white-space: nowrap;
+-  color: color-mix(in srgb, var(--ink) 80%, var(--ink-strong));
+-  background: color-mix(in srgb, var(--panel) 88%, var(--bg));
++  color: var(--ink);
+ }
+ 
+ .contacts-stat strong {
+@@ -2970,34 +3160,97 @@ pre {
+   font-size: 0.88rem;
+ }
+ 
++/* Title and actions stay put; only the fields between them scroll. */
+ .contacts-form-card {
++  display: flex;
++  flex-direction: column;
++  flex: 1 1 auto;
++  min-height: 0;
++}
++
++.contacts-form-head {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: var(--ky-space-3);
++  padding: var(--ky-space-3) var(--ky-space-3) var(--ky-space-3) var(--ky-space-4);
++  border-bottom: 1px solid var(--line);
++}
++
++.contacts-form-head h2 {
++  margin: 0;
++  font-size: var(--ky-type-section);
++  font-weight: 600;
++}
++
++.contacts-form-fields,
++.contacts-form-group-fields {
+   display: grid;
+-  gap: 12px;
++  gap: var(--ky-space-3);
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+ }
+ 
+-.contacts-form-card > h3,
+-.contacts-form-card > .contacts-multivalue,
+-.contacts-form-card > .contacts-form-actions,
+-.contacts-form-card > button,
+-.contacts-form-card > .contacts-pgp-fingerprint,
+-.contacts-form-card > .contacts-pgp-error,
+-.contacts-form-card > label:has(textarea) {
++.contacts-form-fields {
++  flex: 1 1 auto;
++  min-height: 0;
++  overflow-y: auto;
++  padding: var(--ky-space-4);
++}
++
++.contacts-form-group-fields {
++  padding: var(--ky-space-1) 0 var(--ky-space-3);
++}
++
++:is(.contacts-form-fields, .contacts-form-group-fields) > :is(.contacts-multivalue, .contacts-form-group, button, .contacts-pgp-fingerprint, .contacts-pgp-error, .notice, label:has(textarea)) {
+   grid-column: 1 / -1;
+ }
+ 
++.contacts-form-fields > .notice {
++  margin: 0;
++}
++
++.contacts-form-group {
++  border-top: 1px solid var(--line);
++}
++
++.contacts-form-group:last-of-type {
++  border-bottom: 1px solid var(--line);
++}
++
++.contacts-form-group > summary {
++  display: flex;
++  align-items: center;
++  min-height: var(--ky-control-size);
++  font-size: var(--ky-type-nav);
++  font-weight: 600;
++  color: var(--ink-strong);
++  cursor: pointer;
++  list-style: none;
++}
++
++.contacts-form-group > summary::-webkit-details-marker {
++  display: none;
++}
++
++.contacts-form-group > summary .nav-chevron {
++  color: var(--ink);
++}
++
++.contacts-form-group[open] > summary .nav-chevron {
++  transform: rotate(90deg);
++}
++
+ .contacts-form-card label {
+   display: grid;
+-  gap: 6px;
+-  border: 1px solid var(--line);
+-  border-radius: 10px;
+-  padding: 10px;
+-  background: color-mix(in srgb, var(--panel) 92%, var(--bg));
++  align-content: start;
++  gap: var(--ky-space-1);
+ }
+ 
+-.contacts-form-card label > div {
++.contacts-form-card label > div,
++.contacts-multivalue-label {
+   color: var(--ink-strong);
+-  font-size: 0.84rem;
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
+ }
+ 
+ .contacts-form-card input,
+@@ -3025,20 +3278,32 @@ pre {
+   min-width: 0;
+ }
+ 
+-.contacts-form-actions {
+-  display: flex;
+-  gap: 8px;
++.contacts-form-actions {
++  display: flex;
++  justify-content: flex-end;
++  gap: var(--ky-space-2);
++  padding: var(--ky-space-3) var(--ky-space-4);
++  border-top: 1px solid var(--line);
++}
++
++.contacts-form-actions button {
++  min-height: var(--ky-control-size);
++  justify-content: center;
++  font-size: var(--ky-type-nav);
+ }
+ 
+ .contacts-create-submit {
+-  flex: 1;
+-  justify-content: center;
+-  text-align: center;
+-  font-weight: 700;
++  min-width: 120px;
+ }
+ 
+ .contacts-list-card {
+-  margin-top: 16px;
++  margin-top: var(--ky-space-4);
++  padding: 0;
++  border: 0;
++  border-radius: 0;
++  background: none;
++  box-shadow: none;
++  animation: none;
+   display: flex;
+   flex-direction: column;
+   min-height: 0;
+@@ -3052,12 +3317,20 @@ pre {
+ }
+ 
+ .contacts-count {
+-  border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--line));
+-  border-radius: 999px;
+-  padding: 2px 9px;
+-  font-size: 0.78rem;
+-  color: var(--ink-strong);
+-  background: color-mix(in srgb, var(--accent-soft) 32%, transparent);
++  font-size: var(--ky-type-meta);
++  color: var(--ink);
++  font-variant-numeric: tabular-nums;
++}
++
++.contacts-list-head h2 {
++  margin: 0;
++  font-size: var(--ky-type-section);
++  font-weight: 600;
++}
++
++.contacts-search {
++  width: 100%;
++  margin-top: var(--ky-space-3);
+ }
+ 
+ .contacts-empty {
+@@ -3107,17 +3380,8 @@ pre {
+   color: var(--accent-contrast);
+ }
+ 
+-.contacts-page-tab.active {
+-  background: var(--accent);
+-  border-color: var(--accent);
+-  color: var(--accent-contrast);
+-}
+-
+ .contacts-table-wrap {
+-  margin-top: 12px;
+-  border: 1px solid var(--line);
+-  border-radius: 10px;
+-  background: color-mix(in srgb, var(--panel) 90%, var(--bg));
++  margin-top: var(--ky-space-3);
+   min-height: 0;
+   flex: 1;
+   overflow: hidden;
+@@ -3136,10 +3400,9 @@ pre {
+ 
+ .contacts-table th {
+   text-align: left;
+-  font-size: 0.72rem;
+-  letter-spacing: 0.06em;
+-  text-transform: uppercase;
+-  color: color-mix(in srgb, var(--ink) 72%, var(--ink-strong));
++  font-size: var(--ky-type-meta);
++  font-weight: 600;
++  color: var(--ink);
+   padding: 10px 12px;
+   border-bottom: 1px solid var(--line);
+   white-space: nowrap;
+@@ -3147,12 +3410,9 @@ pre {
+ 
+ .contacts-table td {
+   padding: 10px 12px;
+-  border-bottom: 1px solid color-mix(in srgb, var(--line) 62%, transparent);
++  border-bottom: 1px solid var(--line);
+   vertical-align: middle;
+-}
+-
+-.contacts-table tbody tr:last-child td {
+-  border-bottom: 0;
++  font-size: var(--ky-type-nav);
+ }
+ 
+ /* Same story as the inbox's select column (see .inbox-select-hit): a bare 13px
+@@ -3187,7 +3447,11 @@ pre {
+ }
+ 
+ .contacts-row:hover {
+-  background: color-mix(in srgb, var(--accent-soft) 30%, transparent);
++  background: color-mix(in srgb, var(--ink-strong) 4%, transparent);
++}
++
++.contacts-row:has(input:checked) {
++  background: var(--accent-soft);
+ }
+ 
+ .contacts-row-busy {
+@@ -3218,10 +3482,10 @@ pre {
+ }
+ 
+ .contacts-row-chevron {
+-  margin-left: 6px;
+-  opacity: 0.35;
+-  color: var(--accent);
+-  font-size: 0.9rem;
++  display: inline-flex;
++  margin-left: auto;
++  opacity: 0.6;
++  color: var(--ink);
+   transition: opacity 140ms ease, transform 140ms ease;
+ }
+ 
+@@ -3237,11 +3501,10 @@ pre {
+   border-radius: 50%;
+   display: grid;
+   place-items: center;
+-  font-weight: 700;
++  font-weight: 600;
+   font-size: 0.92rem;
+-  color: var(--accent-contrast);
+-  background: linear-gradient(180deg, var(--new-email-start), var(--new-email-end));
+-  border: 1px solid var(--new-email-border);
++  color: var(--ink-strong);
++  background: color-mix(in srgb, var(--ink-strong) 9%, var(--panel));
+   object-fit: cover;
+ }
+ 
+@@ -3322,30 +3585,39 @@ pre {
+   justify-content: flex-end;
+ }
+ 
++/* Links and buttons share one secondary shape. */
+ .contacts-action {
++  display: inline-flex;
++  align-items: center;
+   width: auto;
+-  padding: 6px 10px;
+-  font-size: 0.78rem;
+-  border-color: var(--line);
+-  background: color-mix(in srgb, var(--panel) 82%, var(--bg));
++  min-height: 36px;
++  padding: 0 12px;
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++  font-size: var(--ky-type-nav);
++  line-height: 1.2;
++  text-decoration: none;
++  background: transparent;
+   color: var(--ink-strong);
+ }
+ 
+ .contacts-action:hover:not(:disabled) {
+-  border-color: var(--accent);
+-  background: color-mix(in srgb, var(--accent-soft) 40%, var(--panel));
++  background: color-mix(in srgb, var(--ink-strong) 7%, transparent);
+   filter: none;
+ }
+ 
++.contacts-actions .contacts-action {
++  min-height: 32px;
++  border-color: transparent;
++}
++
+ .contacts-action-danger {
+-  border-color: rgba(255, 180, 171, 0.4);
+-  background: rgba(255, 180, 171, 0.12);
+-  color: #ffd8d3;
++  color: var(--danger);
++  border-color: color-mix(in srgb, var(--danger) 60%, transparent);
+ }
+ 
+ .contacts-action-danger:hover:not(:disabled) {
+-  border-color: rgba(255, 180, 171, 0.6);
+-  background: rgba(255, 180, 171, 0.2);
++  background: color-mix(in srgb, var(--danger) 10%, transparent);
+ }
+ 
+ .contacts-dav-url {
+@@ -3392,16 +3664,7 @@ pre {
+ 
+ .contacts-multivalue {
+   display: grid;
+-  gap: 6px;
+-  border: 1px solid var(--line);
+-  border-radius: 10px;
+-  padding: 10px;
+-  background: color-mix(in srgb, var(--panel) 92%, var(--bg));
+-}
+-
+-.contacts-multivalue-label {
+-  color: var(--ink-strong);
+-  font-size: 0.84rem;
++  gap: var(--ky-space-2);
+ }
+ 
+ .contacts-multivalue-row {
+@@ -3505,9 +3768,9 @@ pre {
+   max-height: 92vh;
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 14px;
++  border-radius: 12px;
+   padding: 16px;
+-  box-shadow: 0 14px 40px var(--modal-shadow);
++  box-shadow: var(--ky-shadow-overlay);
+   display: flex;
+   flex-direction: column;
+   gap: 14px;
+@@ -3519,16 +3782,30 @@ pre {
+   max-height: 92vh;
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 14px;
+-  padding: 18px;
+-  box-shadow: 0 14px 40px var(--modal-shadow);
+-  overflow: auto;
++  border-radius: 12px;
++  box-shadow: var(--ky-shadow-overlay);
++  display: flex;
++  flex-direction: column;
++  overflow: hidden;
+ }
+ 
+ @media (max-width: 700px) {
+-  .contacts-form-card {
++  .contacts-form-fields,
++  .contacts-form-group-fields {
+     grid-template-columns: 1fr;
+   }
++
++  .contacts-form-fields {
++    padding: var(--ky-space-3);
++  }
++
++  .contacts-form-actions {
++    padding: var(--ky-space-3);
++  }
++
++  .contacts-form-actions button {
++    flex: 1;
++  }
+ }
+ 
+ .contact-details-head {
+@@ -3612,6 +3889,47 @@ pre {
+   font-style: italic;
+ }
+ 
++/* Phones: each contact is a stacked block (identity and actions, then contact
++   info) instead of a table that clips its last columns. */
++@media (max-width: 700px) {
++  .contacts-table {
++    min-width: 0;
++  }
++
++  .contacts-table tr {
++    display: grid;
++    grid-template-columns: 40px minmax(0, 1fr) auto;
++    align-items: center;
++    border-bottom: 1px solid var(--line);
++  }
++
++  .contacts-table th,
++  .contacts-table td {
++    border-bottom: 0;
++  }
++
++  .contacts-table th:nth-child(n + 3) {
++    display: none;
++  }
++
++  .contacts-table td:nth-child(3) {
++    grid-row: 2;
++    grid-column: 2 / -1;
++    padding-top: 0;
++    padding-left: 56px;
++    color: var(--ink);
++    overflow-wrap: anywhere;
++  }
++
++  .contacts-table .contacts-col-actions {
++    padding-left: 0;
++  }
++
++  .contacts-row-chevron {
++    display: none;
++  }
++}
++
+ @media (max-width: 900px) {
+   .contacts-page {
+     height: 100%;
+@@ -3729,7 +4047,8 @@ pre {
+   max-height: 90vh;
+   background: var(--panel);
+   border: 1px solid var(--line);
+-  border-radius: 14px;
++  border-radius: 12px;
++  box-shadow: var(--ky-shadow-overlay);
+   color: var(--ink-strong);
+   padding: 16px;
+   display: flex;
+@@ -3751,26 +4070,6 @@ pre {
+   padding-bottom: 10px;
+ }
+ 
+-.compose-send {
+-  background: var(--accent);
+-  border-color: var(--accent);
+-  color: #24170f;
+-  font-weight: 700;
+-}
+-
+-.compose-save-draft {
+-  background: color-mix(in srgb, var(--accent) 24%, transparent);
+-  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+-  color: var(--ink-strong);
+-}
+-
+-.compose-trash,
+-.compose-close,
+-.compose-attach {
+-  background: transparent;
+-  border-color: var(--line);
+-  color: var(--ink-strong);
+-}
+ 
+ .compose-attachments {
+   display: flex;
+@@ -3879,11 +4178,17 @@ pre {
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 6px;
+-  min-height: 34px;
+-  padding: 4px 6px;
+-  background: var(--bg);
+-  border: 1px solid var(--line);
+-  border-radius: 8px;
++  min-height: var(--ky-control-size);
++  padding: 3px 8px;
++  background: var(--panel);
++  border: 1px solid var(--ky-field-border);
++  border-radius: var(--ky-control-radius);
++}
++
++/* The token input has no edge of its own, so the field shows its focus. */
++.compose-token-field:focus-within {
++  outline: 2px solid var(--accent);
++  outline-offset: 2px;
+ }
+ 
+ .compose-token-pill {
+@@ -4003,9 +4308,11 @@ pre {
+   flex-wrap: wrap;
+ }
+ 
+-.compose-token-input {
++.compose-token-input,
++.compose-field-row .compose-token-input {
+   flex: 1 1 120px;
+   min-width: 120px;
++  min-height: 0;
+   border: none;
+   background: transparent;
+   color: var(--ink-strong);
+@@ -4094,15 +4401,8 @@ pre {
+ }
+ 
+ .compose-field-row span {
+-  font-weight: 700;
+-  color: var(--ink-strong);
+-}
+-
+-.compose-field-row input,
+-.compose-field-row select {
+-  background: var(--bg);
++  font-weight: 600;
+   color: var(--ink-strong);
+-  border: 1px solid var(--line);
+ }
+ 
+ .compose-mode-bar {
+@@ -4147,19 +4447,22 @@ pre {
+   flex-direction: column;
+ }
+ 
+-.compose-editor-html .ql-toolbar.ql-snow {
+-  border: 0;
+-  border-bottom: 1px solid var(--line);
+-  border-radius: 10px 10px 0 0;
++/* Quill puts its toolbar beside the editor, not inside it, so these rules
++   are scoped to the window. Without them its fixed #444 icons vanish on dark
++   themes. The toolbar and editor read as one field-border box. */
++.compose-window .ql-toolbar.ql-snow {
++  border: 1px solid var(--ky-field-border);
++  border-bottom-color: var(--line);
++  border-radius: var(--ky-control-radius) var(--ky-control-radius) 0 0;
+   background: var(--panel);
+   color: var(--ink-strong);
+   flex: 0 0 auto;
+ }
+ 
+-.compose-editor-html .ql-container.ql-snow {
+-  border: 0;
+-  flex: 1 1 auto;
+-  min-height: 0;
++.compose-editor-html.ql-container.ql-snow {
++  border: 1px solid var(--ky-field-border);
++  border-top: 0;
++  border-radius: 0 0 var(--ky-control-radius) var(--ky-control-radius);
+   font-family: var(--sans);
+   font-size: 0.95rem;
+   background: var(--bg);
+@@ -4173,33 +4476,32 @@ pre {
+   color: var(--ink-strong);
+ }
+ 
+-.compose-editor-html .ql-toolbar button,
+-.compose-editor-html .ql-toolbar button:hover,
+-.compose-editor-html .ql-toolbar button:focus {
+-  width: auto;
+-  border: 0;
+-  background: transparent;
++.compose-window .ql-toolbar.ql-snow button {
++  border-radius: 4px;
+   color: var(--ink-strong);
+-  padding: 3px 5px;
+-  border-radius: 0;
+ }
+ 
+-.compose-editor-html .ql-toolbar .ql-stroke {
++.compose-window .ql-toolbar.ql-snow button:hover:not(.ql-active) {
++  background: color-mix(in srgb, var(--ink-strong) 8%, transparent);
++}
++
++.compose-window .ql-toolbar.ql-snow :is(button, .ql-picker-label, .ql-picker-item) .ql-stroke {
+   stroke: var(--ink-strong);
+ }
+ 
+-.compose-editor-html .ql-toolbar .ql-fill {
++.compose-window .ql-toolbar.ql-snow :is(button, .ql-picker-label, .ql-picker-item) .ql-fill {
+   fill: var(--ink-strong);
+ }
+ 
+-.compose-editor-html .ql-toolbar .ql-picker {
++.compose-window .ql-toolbar.ql-snow :is(.ql-picker, .ql-picker-label, .ql-picker-item, .ql-picker-label:hover, .ql-picker-item:hover) {
+   color: var(--ink-strong);
+ }
+ 
+-.compose-editor-html .ql-picker-options {
++.compose-window .ql-toolbar.ql-snow .ql-picker-options {
+   background: var(--panel);
+   color: var(--ink-strong);
+   border: 1px solid var(--line);
++  box-shadow: var(--ky-shadow-overlay);
+ }
+ 
+ .compose-editor-html .ql-editor.ql-blank::before {
+@@ -4207,18 +4509,15 @@ pre {
+   font-style: normal;
+ }
+ 
+-.compose-editor-html .ql-toolbar button.ql-active,
+-.compose-editor-html .ql-toolbar .ql-picker-label.ql-active {
++.compose-window .ql-toolbar.ql-snow :is(button.ql-active, .ql-picker-label.ql-active, .ql-picker-item.ql-selected) {
+   color: var(--accent);
+ }
+ 
+-.compose-editor-html .ql-toolbar button.ql-active .ql-stroke,
+-.compose-editor-html .ql-toolbar .ql-picker-label.ql-active .ql-stroke {
++.compose-window .ql-toolbar.ql-snow :is(button.ql-active, .ql-picker-label.ql-active, .ql-picker-item.ql-selected) .ql-stroke {
+   stroke: var(--accent);
+ }
+ 
+-.compose-editor-html .ql-toolbar button.ql-active .ql-fill,
+-.compose-editor-html .ql-toolbar .ql-picker-label.ql-active .ql-fill {
++.compose-window .ql-toolbar.ql-snow :is(button.ql-active, .ql-picker-label.ql-active) .ql-fill {
+   fill: var(--accent);
+ }
+ 
+@@ -4435,10 +4734,16 @@ pre {
+   }
+ 
+   .sidebar {
++    position: static;
++    height: auto;
+     border-right: 0;
+     border-bottom: 1px solid var(--line);
+   }
+ 
++  .panel {
++    padding: var(--ky-space-3);
++  }
++
+   .health-grid {
+     grid-template-columns: 1fr;
+   }
+@@ -4491,124 +4796,134 @@ pre {
+ 
+   .panel {
+     padding: 10px;
+-    margin-bottom: 10px;
+   }
+ 
++  /* Phone header: brand, New Email and account on one row, then one
++     horizontally scrolling strip of every destination in sidebar order. */
+   .sidebar {
+-    padding: 8px 10px;
+-    max-height: 24vh;
+-    overflow: auto;
++    display: grid;
++    grid-template-columns: minmax(0, 1fr) auto auto;
++    align-items: center;
++    gap: var(--ky-space-2);
++    padding: var(--ky-space-2) var(--ky-space-3) 0;
++  }
++
++  .sidebar-logo {
++    padding: 0;
+   }
+ 
+-  .sidebar-logo,
+-  .sidebar-app-logo,
+-  .sidebar-footer {
++  .sidebar-footer,
++  .sidebar-section-label:not(.mailbox-switcher-label),
++  .sidebar-account-role {
+     display: none;
+   }
+ 
+   .new-email-button {
+-    margin-bottom: 8px;
+-    padding: 8px;
+-    font-size: 0.82rem;
++    grid-column: 2;
++    grid-row: 1;
++    width: auto;
++    padding: 0 var(--ky-space-3);
+   }
+ 
+-  .mobile-quick-nav {
++  .sidebar-account {
++    grid-column: 3;
++    grid-row: 1;
++    margin: 0;
++    padding: 0;
++    border: 0;
+     display: flex;
+-    flex-wrap: nowrap;
+-    gap: 6px;
+-    overflow-x: auto;
+-    padding-bottom: 4px;
+-    margin-bottom: 6px;
+-    -webkit-overflow-scrolling: touch;
+-  }
+-
+-  .mobile-quick-nav a,
+-  .mobile-settings-toggle {
+-    flex: 0 0 auto;
+-    padding: 6px 8px;
+-    border: 1px solid var(--line);
+-    border-radius: 8px;
+-    font-size: 0.75rem;
+-    text-decoration: none;
+-    color: var(--ink-strong);
+-    background: color-mix(in srgb, var(--panel) 70%, transparent);
++    align-items: center;
++    gap: var(--ky-space-1);
+   }
+ 
+-  .mobile-settings-toggle {
+-    min-width: 68px;
+-    text-align: center;
+-    line-height: 1;
++  .sidebar-account-copy {
++    max-width: 6rem;
++    padding: 0 0 0 var(--ky-space-1);
++    font-size: var(--ky-type-meta);
+   }
+ 
+-  .sidebar-section-label {
+-    display: none;
++  .sidebar .sidebar-account .nav-link-button {
++    width: var(--ky-control-size);
++    padding: 0;
++    justify-content: center;
+   }
+ 
+-  .sidebar-section-label.mailbox-switcher-label {
+-    display: block;
++  .sidebar-logout-label {
++    position: absolute;
++    width: 1px;
++    height: 1px;
++    overflow: hidden;
++    clip-path: inset(50%);
++    white-space: nowrap;
+   }
+ 
+-  /* The quick nav stands in for these (and for the Scheduled heading). */
+-  .inbox-nav-row,
+-  .scheduled-heading,
+-  .sidebar-folder-row[data-folder-kind="inbox"],
+-  .sidebar-folder-row[data-folder-kind="drafts"],
+-  .sidebar-folder-row[data-folder-kind="junk"],
+-  .sidebar-folder-row[data-folder-kind="sent"],
+-  .sidebar-folder-row[data-folder-kind="trash"] {
+-    display: none;
++  .sidebar > .notice,
++  .sidebar > .mailbox-switcher {
++    grid-column: 1 / -1;
++    margin: 0;
+   }
+ 
+-  .inbox-expand-button,
+-  .archive-toggle,
+-  .archive-group,
+-  .settings-heading {
+-    display: none;
++  .sidebar nav {
++    grid-column: 1 / -1;
++    flex-direction: row;
++    align-items: center;
++    gap: 2px;
++    margin: 0 calc(-1 * var(--ky-space-3));
++    padding: var(--ky-space-1) var(--ky-space-3);
++    overflow-x: auto;
++    scroll-padding-inline: var(--ky-space-3);
++    scrollbar-width: none;
++    -webkit-overflow-scrolling: touch;
+   }
+ 
+-  .sidebar nav,
+-  .sidebar .nav-group {
++  .mobile-quick-nav,
++  .sidebar .nav-group,
++  .sidebar .nav-subgroup,
++  .sidebar .sidebar-folder-row {
+     display: flex;
+-    flex-wrap: wrap;
+-    align-items: flex-start;
+-    gap: 6px;
+-  }
+-
+-  .sidebar nav > .inbox-nav-row,
+-  .sidebar nav > .nav-heading {
+-    width: auto;
++    flex: none;
++    align-items: center;
++    gap: 2px;
+     margin: 0;
++    padding: 0;
++    border: 0;
+   }
+ 
+-  .sidebar .inbox-nav-row {
+-    grid-template-columns: auto;
++  .sidebar a,
++  .sidebar nav .nav-heading {
++    flex: none;
++    width: auto;
++    padding: 0 var(--ky-space-3) 0 var(--ky-space-2);
++    gap: 6px;
++    white-space: nowrap;
+   }
+ 
+-  .sidebar .nav-group {
+-    width: 100%;
+-    padding-left: 0;
++  .sidebar .nav-subheading {
++    margin: 0 0 0 var(--ky-space-2);
++    white-space: nowrap;
+   }
+ 
+-  .sidebar .sidebar-folder-row {
+-    grid-template-columns: auto auto;
+-    width: auto;
++  .sidebar .mobile-settings-toggle {
++    display: flex;
+   }
+ 
+-  .sidebar a,
+-  .sidebar .nav-heading,
+-  .sidebar .nav-link-button {
+-    padding: 7px 8px;
+-    font-size: 0.78rem;
+-    border-radius: 8px;
+-    /* Wrapped chips need an edge; the desktop base rule has none. */
+-    border-color: var(--line);
++  /* The strip stands in for these; Archive and Contacts stay as they are. */
++  .sidebar .inbox-nav-row,
++  .sidebar .scheduled-heading,
++  .sidebar .settings-heading,
++  .sidebar-folder-row[data-folder-kind="inbox"],
++  .sidebar-folder-row[data-folder-kind="drafts"],
++  .sidebar-folder-row[data-folder-kind="junk"],
++  .sidebar-folder-row[data-folder-kind="sent"],
++  .sidebar-folder-row[data-folder-kind="trash"] {
++    display: none;
+   }
+ 
+-  .inbox-expand-button,
+-  .sidebar-folder-menu-button {
+-    min-width: 34px;
+-    padding: 6px;
+-    font-size: 0.9rem;
++  /* The strip scrolls, which would clip a menu positioned inside it. */
++  .sidebar-folder-menu {
++    position: fixed;
++    top: auto;
++    right: auto;
+   }
+ 
+   .read-page-panel {
+@@ -4647,11 +4962,11 @@ pre {
+   }
+ 
+   .inbox-action-button {
+-    width: 34px;
+-    height: 34px;
+-    min-width: 34px;
++    width: 36px;
++    min-height: 36px;
++    min-width: 36px;
+     padding: 0;
+-    border-radius: 9px;
++    border-radius: var(--ky-control-radius);
+     display: inline-flex;
+     justify-content: center;
+     align-items: center;
+@@ -4776,26 +5091,12 @@ pre {
+     border-radius: 14px;
+   }
+ 
+-  .email-reader-head {
+-    align-items: flex-start;
+-    flex-direction: column;
+-  }
+-
+-  .email-reader-actions {
+-    width: 100%;
+-    gap: 6px;
+-    justify-items: stretch;
+-  }
+-
+-  .email-reader-actions-row {
+-    width: 100%;
+-    flex-wrap: wrap;
+-    justify-content: flex-start;
++  .email-reader-title {
++    font-size: 1.25rem;
+   }
+ 
+-  .email-reader-actions button {
+-    padding: 6px 8px;
+-    font-size: 0.78rem;
++  .email-reader-tools {
++    flex-wrap: nowrap;
+   }
+ 
+   .email-reader-content {
+@@ -4858,7 +5159,7 @@ pre {
+     flex: 1;
+   }
+ 
+-  .compose-editor-html .ql-container.ql-snow,
++  .compose-editor-html.ql-container.ql-snow,
+   .compose-editor-html .ql-editor {
+     min-height: min(38dvh, 300px);
+   }
+@@ -5387,6 +5688,13 @@ pre {
+   margin: 0;
+ }
+ 
++/* Named palettes carry no danger colour, so the shared alias would paint
++   Busnes red on any surface; tie it to the palette's own ink. `html` outranks
++   the alias in ky-ui/tokens.css, which loads after this sheet. */
++html:root:not([data-theme]):not([data-ky-theme]) {
++  --danger: color-mix(in srgb, var(--ky-danger) 50%, var(--ink-strong));
++}
++
+ /* Busnes.app fallback before the stored palette is applied. */
+ :root {
+   --bg: #f8f6f0;
+@@ -5441,7 +5749,7 @@ pre {
+ .compose-window > .notice, .compose-window > .compose-pgp-warning { padding: 12px 24px; }
+ @media (max-width: 600px) { .compose-window { width: 100%; max-height: 100dvh; border-radius: 0; } .compose-topbar, .compose-connection-hint, .compose-security, .compose-actionbar { padding-inline: 16px; } .compose-window > .compose-form-grid { padding-inline: 16px; } .compose-window > .compose-editor-html { margin-inline: 16px; } .compose-form-grid .compose-field-row { grid-template-columns: 48px minmax(0, 1fr); } .compose-actionbar { gap: 6px; } .compose-actionbar .compose-trash { margin-left: 0; } }
+ 
+-.compose-window > .ql-toolbar { margin: 16px 24px 0; width: auto; border-color: var(--line); }
++.compose-window > .ql-toolbar { margin: 16px 24px 0; width: auto; }
+ .compose-window > .compose-editor-html .ql-editor { min-height: 180px; }
+ .compose-footer { position: sticky; bottom: 0; flex: 0 0 auto; background: var(--panel); z-index: 2; }
+ .compose-footer .compose-actionbar { position: static; }
+diff --git a/frontend/src/test/setup.ts b/frontend/src/test/setup.ts
+index b4360c9e..40fb3223 100644
+--- a/frontend/src/test/setup.ts
++++ b/frontend/src/test/setup.ts
+@@ -78,3 +78,9 @@ function installStorage(name: "localStorage" | "sessionStorage"): void {
+ 
+ installStorage("localStorage");
+ installStorage("sessionStorage");
++
++// jsdom has no layout, so scrollIntoView is absent. App calls it to keep the
++// current navigation link in view on the phone strip.
++if (typeof Element !== "undefined" && typeof Element.prototype.scrollIntoView !== "function") {
++  Element.prototype.scrollIntoView = () => {};
++}
+diff --git a/frontend/vite.config.ts b/frontend/vite.config.ts
+index 24bc1284..2632cff9 100644
+--- a/frontend/vite.config.ts
++++ b/frontend/vite.config.ts
+@@ -2,6 +2,11 @@
+ import { defineConfig } from "vite";
+ import react from "@vitejs/plugin-react";
+ 
++// Expected build warning, deliberately not filtered: `Module "crypto" has been
++// externalized for browser compatibility` from @hpke/common (algorithm.js,
++// utils/misc.js). It reaches `import("crypto")` only when globalThis.crypto is
++// undefined, its Node fallback; browsers always define it, so the empty stub
++// Vite substitutes is never loaded. Re-check if @hpke changes that guard.
+ export default defineConfig({
+   plugins: [react()],
+   server: {

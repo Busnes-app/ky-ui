@@ -1,0 +1,724 @@
+[
+  {
+    "scheme": "light",
+    "viewport": "390x844",
+    "check": "phone-shell",
+    "path": "/read",
+    "headerHeight": 105,
+    "stripRows": 1,
+    "stripScrolls": true,
+    "labels": [
+      "Inbox",
+      "Drafts",
+      "Junk",
+      "Sent",
+      "Trash",
+      "Scheduled",
+      "Archive",
+      "Contacts",
+      "Toggle settings"
+    ],
+    "activeInView": true,
+    "brand": true,
+    "logoutName": "Logout",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "viewport": "390x844",
+    "check": "phone-shell",
+    "path": "/contacts",
+    "headerHeight": 105,
+    "stripRows": 1,
+    "stripScrolls": true,
+    "labels": [
+      "Inbox",
+      "Drafts",
+      "Junk",
+      "Sent",
+      "Trash",
+      "Scheduled",
+      "Archive",
+      "Contacts",
+      "Toggle settings"
+    ],
+    "activeInView": true,
+    "brand": true,
+    "logoutName": "Logout",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "viewport": "390x844",
+    "check": "phone-shell",
+    "path": "/settings/appearance",
+    "headerHeight": 105,
+    "stripRows": 1,
+    "stripScrolls": true,
+    "labels": [
+      "Inbox",
+      "Drafts",
+      "Junk",
+      "Sent",
+      "Trash",
+      "Scheduled",
+      "Archive",
+      "Contacts",
+      "Toggle settings",
+      "Appearance",
+      "Mail",
+      "Security",
+      "Notifications",
+      "Email Labels",
+      "Status",
+      "Get the apps"
+    ],
+    "activeInView": true,
+    "brand": true,
+    "logoutName": "Logout",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "phone-header-height-constant",
+    "heights": {
+      "/read": 105,
+      "/contacts": 105,
+      "/settings/appearance": 105
+    },
+    "pass": true
+  },
+  {
+    "scheme": "light",
+    "check": "phone-tab-walk",
+    "walk": [
+      {
+        "name": "Inbox",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Drafts",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Junk",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Sent",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Trash",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Scheduled",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Archive",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Contacts",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Toggle settings",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Logout",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Search mail",
+        "tag": "INPUT",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Search in",
+        "tag": "SELECT",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Search",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Uncategorized3",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Select all emails in page",
+        "tag": "INPUT",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Subject",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      }
+    ]
+  },
+  {
+    "scheme": "light",
+    "check": "phone-contact-editor-actions",
+    "closeVisible": true,
+    "footerBottom": 844,
+    "innerHeight": 844,
+    "submitVisible": true
+  },
+  {
+    "scheme": "dark",
+    "viewport": "390x844",
+    "check": "phone-shell",
+    "path": "/read",
+    "headerHeight": 105,
+    "stripRows": 1,
+    "stripScrolls": true,
+    "labels": [
+      "Inbox",
+      "Drafts",
+      "Junk",
+      "Sent",
+      "Trash",
+      "Scheduled",
+      "Archive",
+      "Contacts",
+      "Toggle settings"
+    ],
+    "activeInView": true,
+    "brand": true,
+    "logoutName": "Logout",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "viewport": "390x844",
+    "check": "phone-shell",
+    "path": "/contacts",
+    "headerHeight": 105,
+    "stripRows": 1,
+    "stripScrolls": true,
+    "labels": [
+      "Inbox",
+      "Drafts",
+      "Junk",
+      "Sent",
+      "Trash",
+      "Scheduled",
+      "Archive",
+      "Contacts",
+      "Toggle settings"
+    ],
+    "activeInView": true,
+    "brand": true,
+    "logoutName": "Logout",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "viewport": "390x844",
+    "check": "phone-shell",
+    "path": "/settings/appearance",
+    "headerHeight": 105,
+    "stripRows": 1,
+    "stripScrolls": true,
+    "labels": [
+      "Inbox",
+      "Drafts",
+      "Junk",
+      "Sent",
+      "Trash",
+      "Scheduled",
+      "Archive",
+      "Contacts",
+      "Toggle settings",
+      "Appearance",
+      "Mail",
+      "Security",
+      "Notifications",
+      "Email Labels",
+      "Status",
+      "Get the apps"
+    ],
+    "activeInView": true,
+    "brand": true,
+    "logoutName": "Logout",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "phone-header-height-constant",
+    "heights": {
+      "/read": 105,
+      "/contacts": 105,
+      "/settings/appearance": 105
+    },
+    "pass": true
+  },
+  {
+    "scheme": "dark",
+    "check": "phone-tab-walk",
+    "walk": [
+      {
+        "name": "Inbox",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Drafts",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Junk",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Sent",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Trash",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Scheduled",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Archive",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Contacts",
+        "tag": "A",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Toggle settings",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": true
+      },
+      {
+        "name": "Logout",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Search mail",
+        "tag": "INPUT",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Search in",
+        "tag": "SELECT",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Search",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Uncategorized3",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Select all emails in page",
+        "tag": "INPUT",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Subject",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      }
+    ]
+  },
+  {
+    "scheme": "dark",
+    "check": "phone-contact-editor-actions",
+    "closeVisible": true,
+    "footerBottom": 844,
+    "innerHeight": 844,
+    "submitVisible": true
+  },
+  {
+    "scheme": "light",
+    "check": "reader-keyboard",
+    "heading": null,
+    "order": [
+      "Close",
+      "Reply",
+      "Reply All",
+      "Forward",
+      "Archive",
+      "Snooze",
+      "Mark as Read",
+      "Mark as Spam",
+      "Print",
+      "Show Remote Content",
+      "Delete"
+    ],
+    "tabs": [
+      {
+        "name": "Reply",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Reply All",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Forward",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Archive",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Snooze",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      }
+    ],
+    "afterEscape": {
+      "open": false,
+      "focus": "Welcome to the KyPost sandbox"
+    }
+  },
+  {
+    "scheme": "light",
+    "check": "contact-editor-keyboard",
+    "footerVisible": true,
+    "groups": [
+      "More name fields",
+      "Birthday and dates",
+      "Addresses and links",
+      "Custom fields",
+      "Groups",
+      "PGP public key"
+    ],
+    "firstFocus": "Close",
+    "focusAfterEscape": "New Contact"
+  },
+  {
+    "scheme": "light",
+    "check": "contrast",
+    "pairs": {
+      "quillStroke_toolbar": 16.06,
+      "quillPicker_toolbar": 16.06,
+      "quillBorder_panel": 3.63
+    }
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "1024x768",
+    "path": "/read",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "1024x768",
+    "path": "/contacts",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "1024x768",
+    "path": "/settings/appearance",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "768x1024",
+    "path": "/read",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "768x1024",
+    "path": "/contacts",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "768x1024",
+    "path": "/settings/appearance",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "360x740",
+    "path": "/read",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "360x740",
+    "path": "/contacts",
+    "overflowX": 0
+  },
+  {
+    "scheme": "light",
+    "check": "overflow",
+    "viewport": "360x740",
+    "path": "/settings/appearance",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "reader-keyboard",
+    "heading": null,
+    "order": [
+      "Close",
+      "Reply",
+      "Reply All",
+      "Forward",
+      "Archive",
+      "Snooze",
+      "Mark as Read",
+      "Mark as Spam",
+      "Print",
+      "Show Remote Content",
+      "Delete"
+    ],
+    "tabs": [
+      {
+        "name": "Reply",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Reply All",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Forward",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Archive",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      },
+      {
+        "name": "Snooze",
+        "tag": "BUTTON",
+        "outline": "solid 2px",
+        "inView": true,
+        "ringInsideStrip": null
+      }
+    ],
+    "afterEscape": {
+      "open": false,
+      "focus": "Welcome to the KyPost sandbox"
+    }
+  },
+  {
+    "scheme": "dark",
+    "check": "contact-editor-keyboard",
+    "footerVisible": true,
+    "groups": [
+      "More name fields",
+      "Birthday and dates",
+      "Addresses and links",
+      "Custom fields",
+      "Groups",
+      "PGP public key"
+    ],
+    "firstFocus": "Close",
+    "focusAfterEscape": "New Contact"
+  },
+  {
+    "scheme": "dark",
+    "check": "contrast",
+    "pairs": {
+      "quillStroke_toolbar": 12.67,
+      "quillPicker_toolbar": 12.67,
+      "quillBorder_panel": 4.77
+    }
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "1024x768",
+    "path": "/read",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "1024x768",
+    "path": "/contacts",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "1024x768",
+    "path": "/settings/appearance",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "768x1024",
+    "path": "/read",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "768x1024",
+    "path": "/contacts",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "768x1024",
+    "path": "/settings/appearance",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "360x740",
+    "path": "/read",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "360x740",
+    "path": "/contacts",
+    "overflowX": 0
+  },
+  {
+    "scheme": "dark",
+    "check": "overflow",
+    "viewport": "360x740",
+    "path": "/settings/appearance",
+    "overflowX": 0
+  }
+]

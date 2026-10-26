@@ -1,0 +1,7 @@
+{
+  "implemented-post-messages-scores.json": "Historical: stage03/first implementation; superseded by stage05/06",
+  "implemented-calendar-final-scores.json": "Historical: stage04 reviewed before stage06 corrections",
+  "implemented-messages-release-scores.json": "Current release review: exact scope and capture revision in source JSON; below9 target",
+  "implemented-post-release-scores.json": "Current release review: exact scope and capture revision in source JSON; below9 target",
+  "implemented-calendar-release-scores.json": "Current release review: exact scope and capture revision in source JSON; below9 target"
+}
