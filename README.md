@@ -1,5 +1,7 @@
 # ky-ui
 
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15918/badge)](https://www.bestpractices.dev/projects/15918)
+
 `ky-ui` is the small shared browser foundation for the Ky* servers. It provides the Busnes Light/Dark design tokens, OS-aware theme selection, and the selected-navigation treatment used across the suite.
 
 It deliberately does not provide a framework, router, component runtime, or product page layouts. Each server keeps its own composition and imports the shared CSS/JS primitives.
