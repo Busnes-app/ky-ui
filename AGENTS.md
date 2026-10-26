@@ -9,7 +9,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/tokens.css` owns Busnes palettes and shared visual tokens.
 - `src/themes.js` owns the common 22-theme metadata and named palettes, legacy aliases and CSSOM application helper. `scripts/appearance-themes.mjs` generates `src/appearance-themes.css` previews from this catalog and Busnes tokens.
 - `src/navigation.css` owns reusable selected, hover, focus, and responsive navigation states.
-- `src/appearance.css` owns the shared responsive Appearance radio-card grid and preview styling; products retain catalogs, persistence adapters and page composition.
+- `src/appearance.css` owns the shared responsive Appearance radio-card grid and preview styling; products retain persistence adapters, compatibility exports and page composition.
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
 - `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.

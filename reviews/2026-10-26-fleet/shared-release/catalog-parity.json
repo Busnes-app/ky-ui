@@ -1,0 +1,626 @@
+{
+  "status": "pass",
+  "method": "Independent literal parsing of immutable original sources; shared core colors and explicitly declared base palette properties",
+  "limitations": "Source parity does not certify computed contrast, runtime CSS precedence, first paint or product behavior.",
+  "sources": [
+    {
+      "product": "KyIdentity-server",
+      "revision": "ba43fbe9829aca788878153b504d87d6dc18a386",
+      "file": "web/src/theme.ts",
+      "source_sha256": "39d7590a0980651734ca7ab62ad21ef56c636964b2339b648f949c8ead0344a0",
+      "checked": [
+        {
+          "name": "Dark Matter",
+          "canonical_id": "dark-matter",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Light Matter",
+          "canonical_id": "light-matter",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Tropics",
+          "canonical_id": "tropics",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Tropic Night",
+          "canonical_id": "tropic-night",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Ocean",
+          "canonical_id": "ocean",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Coffee",
+          "canonical_id": "coffee",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "White Cliffs",
+          "canonical_id": "white-cliffs",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Cyber Punk",
+          "canonical_id": "cyber-punk",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Neon Purple",
+          "canonical_id": "neon-purple",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Space",
+          "canonical_id": "space",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Sky",
+          "canonical_id": "sky",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Forest",
+          "canonical_id": "forest",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Sun",
+          "canonical_id": "sun",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Patina Ky",
+          "canonical_id": "patina-ky",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Polished Ky",
+          "canonical_id": "polished-ky",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        }
+      ]
+    },
+    {
+      "product": "KyPost-Server",
+      "revision": "7aea66f888ec3f251ab1b68b66378bd5c3e144c8",
+      "file": "frontend/src/theme.ts",
+      "source_sha256": "2c52eb85ef552726f9f70219d9b1166074d431a5e465c08af43c0490770b415d",
+      "checked": [
+        {
+          "name": "Dark Matter",
+          "canonical_id": "dark-matter",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Light Matter",
+          "canonical_id": "light-matter",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Tropics",
+          "canonical_id": "tropics",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Tropic Night",
+          "canonical_id": "tropic-night",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Ocean",
+          "canonical_id": "ocean",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Coffee",
+          "canonical_id": "coffee",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "White Cliffs",
+          "canonical_id": "white-cliffs",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Cyber Punk",
+          "canonical_id": "cyber-punk",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Neon Purple",
+          "canonical_id": "neon-purple",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Space",
+          "canonical_id": "space",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Sky",
+          "canonical_id": "sky",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Forest",
+          "canonical_id": "forest",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Sun",
+          "canonical_id": "sun",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Patina Ky",
+          "canonical_id": "patina-ky",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        },
+        {
+          "name": "Polished Ky",
+          "canonical_id": "polished-ky",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "glow",
+            "sidebarStart",
+            "sidebarEnd",
+            "buttonText"
+          ]
+        }
+      ]
+    },
+    {
+      "product": "ky-server-base",
+      "revision": "77d4d6337b854ba2ec7ba9c2b546c1aa87809242",
+      "file": "web/src/styles/theme.css",
+      "source_sha256": "6c6614b2f271f521b53b6243866f8f7a040f33bcb4f08560594eae1f95f2004f",
+      "checked": [
+        {
+          "name": "patina",
+          "canonical_id": "patina",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "panelHover",
+            "lineStrong",
+            "danger",
+            "success"
+          ]
+        },
+        {
+          "name": "cyber",
+          "canonical_id": "cyber",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "panelHover",
+            "lineStrong",
+            "danger",
+            "success"
+          ]
+        },
+        {
+          "name": "nord",
+          "canonical_id": "nord",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "panelHover",
+            "lineStrong",
+            "danger",
+            "success"
+          ]
+        },
+        {
+          "name": "paper",
+          "canonical_id": "paper",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "panelHover",
+            "lineStrong",
+            "danger",
+            "success"
+          ]
+        },
+        {
+          "name": "oled",
+          "canonical_id": "oled",
+          "verified_keys": [
+            "bg",
+            "panel",
+            "ink",
+            "inkStrong",
+            "accent",
+            "accentSoft",
+            "line",
+            "panelHover",
+            "lineStrong",
+            "danger",
+            "success"
+          ]
+        }
+      ]
+    }
+  ]
+}

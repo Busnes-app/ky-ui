@@ -1,0 +1,97 @@
+{
+  "surface": "Shared Appearance contract fixture, not a product or scored screen",
+  "source_revision": "f48e7a0dff72ec7b6b453d8cae055ca8487a1d30",
+  "fixture": "All22namedthemes+Matchsystem, native radios; no backend/API",
+  "driver": "Playwright1.63 Chromium, Linux, device scale1, Node26.12.1",
+  "capture_method": "Full fieldset screenshot cropped only to remove empty right margin; not a viewport capture",
+  "source_assets": {
+    "src/check-vendor.mjs": "1fdca377e486e52d9e660893ebfc2f1a90ddb6578eca24d8f844bb5485f3e053",
+    "src/navigation.css": "cc6dbaa07a01f4ed088d38d41ff6cf95155a480bcb29327f413cbfa1ec11ac55",
+    "src/theme.d.ts": "f83e4fb841e98b7b443bc78aa699f9044d395ff622258cf8bee85b5e0608fd4a",
+    "src/theme.js": "9f0e57c86783924a19fa9923be42d7f14b24cec46c95383f251e18ab69b0176a",
+    "src/tokens.css": "639f8e73259aca02119b98a5340539d5e8e16d65fd5f6124b939fdfe9c5f86af",
+    "src/appearance.css": "730095ffcefec3a4dfba96cbe08549ed7f21937355018827d2d4287c81636167",
+    "src/themes.js": "e9f536ba2537e169aa670bc834490406d42592efb1272595cd4e21892aeedfcb",
+    "src/themes.d.ts": "14c1c32523772eb1e602f692287701e8912ff85a8013832f86d49f58e72e6eee",
+    "src/appearance-themes.css": "6897cfea5a6e3c72e358c00f2ecd6f46f308ee33dc3b6cada023df99eab899ca",
+    "browser/AGENTS.md": "0925ccf8ff6bb7cf920a99d2b037b9264efee0d9fc6389c38d44683355768f25",
+    "browser/fixture.css": "5a4c2bd54f244c9c7c42d030c8c336ba5672883a383176d6347ee7940e7190a7",
+    "browser/fixture.html": "23115ae5ddb08dc78226dac03871cb383d1607f925f85e5e1f010c38b04603f9",
+    "browser/fixture.js": "2d2469de6c17513882a4c6a7a7874ca5e6d4b91ca9e5bb9c8dcf5ecd2ac9683d",
+    "browser/readme.spec.js": "1b52357e10dc5baa6d7dfe85bada197bd11722296393bd94072cd4004782467b",
+    "browser/server.mjs": "60e7bb175010438546f19c937fd48a62f99bda11804d5a16c83c040834ee251b",
+    "browser/theme.spec.js": "de3a4aaeeaa8a6a73f72f013fa1e12a31a9e79ce41abb4ce7a296d64cccd011a",
+    "browser/appearance.spec.js": "a5ee51d7f03f099bfe6f7ad8cc63fc6ab0779f335b87891786f7b50f836f39be"
+  },
+  "result": "14unit+32browserchecks; zero-warninglint",
+  "captures": [
+    {
+      "file": "appearance-dark-1280.png",
+      "sha256": "53715b328f6617e850732d26f6d215a14ac29c8bc53743cf914c846c14baab76",
+      "source_sha256": "06c62243b475eb371c53af3102f3cc789c8573916d8e2ea5e389f79f7e6235da",
+      "crop_rect": [
+        0,
+        0,
+        1000,
+        681
+      ],
+      "image_width": 1000,
+      "image_height": 681,
+      "viewport_width": 1280,
+      "viewport_height": 900,
+      "theme_source": "OS dark; no saved choice; system card checked",
+      "captured_at_utc": "2026-10-26T11:13:37.312493+00:00"
+    },
+    {
+      "file": "appearance-dark-390.png",
+      "sha256": "b2068a6ee4eb8dc930ab8bf73e89695e3fe3af380a63875e1acef3a2eeebe170",
+      "source_sha256": "419d85400d944901e778edc2ed1970d9de524a7aa4ba9b7c049a6b130b2e8b38",
+      "crop_rect": [
+        0,
+        0,
+        358,
+        1602
+      ],
+      "image_width": 358,
+      "image_height": 1602,
+      "viewport_width": 390,
+      "viewport_height": 900,
+      "theme_source": "OS dark; no saved choice; system card checked",
+      "captured_at_utc": "2026-10-26T11:13:37.258137+00:00"
+    },
+    {
+      "file": "appearance-light-1280.png",
+      "sha256": "3b89078a2561ef5e5189eb170c4361fda55c35cf619f9870469e2fdd3b20cef2",
+      "source_sha256": "150f12a0c9a0ac5d900d29dd8872a59f68c48064a915aea5d531155ed80912c1",
+      "crop_rect": [
+        0,
+        0,
+        1000,
+        681
+      ],
+      "image_width": 1000,
+      "image_height": 681,
+      "viewport_width": 1280,
+      "viewport_height": 900,
+      "theme_source": "OS light; no saved choice; system card checked",
+      "captured_at_utc": "2026-10-26T11:13:37.317137+00:00"
+    },
+    {
+      "file": "appearance-light-390.png",
+      "sha256": "6fb40a8d61d4a067e85775594638166b54ce02a7cf4380ae584fa15ddc729ce9",
+      "source_sha256": "83b5949a8a583c10ec3d528cb7b70eafde742305743848b79e1d7d7f4cbf694b",
+      "crop_rect": [
+        0,
+        0,
+        358,
+        1602
+      ],
+      "image_width": 358,
+      "image_height": 1602,
+      "viewport_width": 390,
+      "viewport_height": 900,
+      "theme_source": "OS light; no saved choice; system card checked",
+      "captured_at_utc": "2026-10-26T11:13:37.003293+00:00"
+    }
+  ]
+}
