@@ -13,4 +13,9 @@ export default [
     files: ['src/theme.js', 'browser/fixture.js', 'browser/*.spec.js'],
     languageOptions: { globals: globals.browser },
   },
+  {
+    // Review harnesses are Node scripts whose Playwright callbacks run in the page.
+    files: ['reviews/**/*.mjs'],
+    languageOptions: { globals: { ...globals.node, ...globals.browser } },
+  },
 ];
