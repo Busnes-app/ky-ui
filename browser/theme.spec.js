@@ -17,7 +17,8 @@ test('every catalog palette keeps status text and field borders readable', async
         return rgb.reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
       };
       const rows = [];
-      for (const status of ['danger', 'success']) {
+      for (const status of ['danger', 'success', 'warning']) {
+        if (!root.getPropertyValue(`--${status}`).trim()) throw new Error(`${status} is unset`);
         probe.style.color = `var(--${status})`;
         const color = getComputedStyle(probe).color;
         for (const token of ['--panel', '--panel-hover']) {

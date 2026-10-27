@@ -76,3 +76,5 @@ outside this web pass. Record any additional discovered surface explicitly.
 Implementation, council scoring and product checks are in progress. The earlier
 three-product pass is recorded in `reviews/2026-10-26-council`; its scores are not
 reused as evidence of this rollout or of competitor superiority.
+
+- Version 0.4.3 binds warning colors to each named palette’s scheme; KyPulse is the initial scoped consumer. Other consumers refresh during their UI passes.

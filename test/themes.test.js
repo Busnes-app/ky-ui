@@ -42,14 +42,15 @@ test('named palettes set product variables and Busnes or system clears them', ()
   assert.equal(applyThemeVariables('Ocean', root), 'dark');
   assert.equal(props.get('--ink-strong'), '#e0f2fb');
   assert.equal(props.get('--sidebar-start'), '#112430');
-  assert.equal(props.size, 15, 'named palettes include scheme-bound status colours');
+  assert.equal(props.size, 16, 'named palettes include scheme-bound status colours');
   assert.equal(props.get('--danger'), 'var(--ky-danger-dark)');
   assert.equal(props.get('--success'), 'var(--ky-success-dark)');
+  assert.equal(props.get('--warning'), 'var(--ky-warning-dark)');
   assert.equal(props.get('--panel-hover'), 'color-mix(in srgb, #152a36 93%, #e0f2fb)');
   applyThemeVariables('nord', root);
   assert.equal(props.get('--line-strong'), '#5e81ac');
   assert.equal(props.get('--danger'), '#dfb0b5');
-  assert.equal(props.size, 15);
+  assert.equal(props.size, 16);
   assert.equal(applyThemeVariables('busnes-light', root), null);
   assert.equal(props.size, 0);
   assert.equal(root.style.colorScheme, '', 'Busnes scheme comes from tokens.css');
@@ -57,6 +58,7 @@ test('named palettes set product variables and Busnes or system clears them', ()
   assert.equal(root.style.colorScheme, 'light');
   applyThemeVariables('sky', root);
   assert.equal(props.get('--danger'), 'var(--ky-danger-light)');
+  assert.equal(props.get('--warning'), 'var(--ky-warning-light)');
   assert.equal(applyThemeVariables('system', root), null);
   assert.equal(props.size, 0);
   assert.equal(root.style.colorScheme, '', 'system scheme follows tokens.css');

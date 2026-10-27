@@ -65,7 +65,7 @@ export const THEME_PALETTES = Object.freeze({
 
 // The product custom properties each palette key sets.
 export const THEME_VARIABLES = Object.freeze(Object.fromEntries(
-  Object.keys(THEME_PALETTES.patina).map(key => [key, '--' + key.replace(/[A-Z]/g, c => '-' + c.toLowerCase())]),
+  [...Object.keys(THEME_PALETTES.patina), 'warning'].map(key => [key, '--' + key.replace(/[A-Z]/g, c => '-' + c.toLowerCase())]),
 ));
 
 /** Returns the catalog entry for a saved ID, name or legacy alias, or undefined. */
@@ -88,6 +88,7 @@ export function applyThemeVariables(value, root = globalThis.document?.documentE
   for (const [key, name] of Object.entries(THEME_VARIABLES)) if (palette[key]) root.style.setProperty(name, palette[key]);
   root.style.setProperty('--danger', palette.danger ?? `var(--ky-danger-${theme.scheme})`);
   root.style.setProperty('--success', palette.success ?? `var(--ky-success-${theme.scheme})`);
+  root.style.setProperty('--warning', `var(--ky-warning-${theme.scheme})`);
   root.style.colorScheme = theme.scheme;
   return theme.scheme;
 }
