@@ -13,6 +13,19 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.4.2 — named-theme status contrast (pending)
+
+Based on source `f270e22`. Named palettes without status colors use the shared
+danger/success defaults for the selected palette's scheme, including when the OS
+uses the opposite scheme. Patina, Cyber, Nord and Paper status colors are adjusted
+within their existing hue families to reach 4.5:1 on panel and hover surfaces.
+Field borders derive from strong ink so all named palettes reach 3:1 against
+their page and panel surfaces.
+Upgrade impact: refresh the complete source copy and rebuild consumers. Theme IDs,
+names, aliases, preview colors and saved choices are unchanged. The initial scoped
+consumer is KyNotes; other products are pending their own UI passes. No known
+vulnerability IDs apply.
+
 ### 0.4.1 — first-paint theme bootstrap (pending)
 
 Based on 0.4.0 source `ab7a039`. Sync now generates `themes-browser.js`, a classic-script
