@@ -21,7 +21,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - The default theme follows the operating system until a browser-local choice is saved.
 - Products expose Appearance through navigation, without a compact theme dropdown in that navigation/sidebar or its phone-header presentation. Appearance description, theme name and mode text wrap consistently through shared styles.
 - Explicit `busnes-light` and `busnes-dark` choices override the OS.
-- Named palettes without explicit status colors select shared danger/success defaults by their own scheme. Status text must retain 4.5:1 contrast on panel and hover surfaces in both OS schemes.
+- Named palettes without explicit status colors select shared danger/success defaults and shared warning colors by their own scheme. Status text must retain 4.5:1 contrast on panel and hover surfaces in both OS schemes.
 - Shared selectors are prefixed with `ky-` or use explicit `data-ky-*`/ARIA state to avoid product CSS collisions.
 - Compatibility aliases map existing product variables to shared tokens. Product adapters retain saved theme keys and named palettes. Navigation primitives own state styling only; products own geometry.
 - The selected page remains obvious without relying on color alone: use a surface change and an accent rail.

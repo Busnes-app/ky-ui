@@ -13,6 +13,18 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.4.3 — named-theme warning colors (pending)
+
+Based on source `2900a49` (0.4.2). Named palettes now set and clear the warning
+alias alongside danger and success, using the selected palette's scheme rather
+than the OS. Previously the warning alias could be unset or inherit the opposite
+scheme's color. The shared dark warning is slightly lighter to reach 4.5:1
+on Nord's hover surface (previously 3.91:1). Busnes Dark uses the same token.
+Upgrade impact: refresh the complete source copy and rebuild consumers. KyPulse
+is the initial scoped consumer. Saved theme IDs, names and choices are unchanged.
+The managed-variable TypeScript declaration includes the warning alias.
+No known vulnerability IDs apply.
+
 ### 0.4.2 — named-theme status contrast (pending)
 
 Based on source `f270e22`. Named palettes without status colors use the shared
