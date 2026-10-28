@@ -22,7 +22,7 @@ product to either sync or check, with `--paths` mapping those products to their
 worktrees. Every selected destination is validated before any write; unselected
 checkouts are untouched. Fleet freshness remains a separate whole-inventory gate.
 
-- [Contributing](CONTRIBUTING.md) — how changes land, the test policy and the coding standard.
+- [Contributing](CONTRIBUTING.md) — how to propose a change and what it must pass.
 - [Assurance case](docs/ASSURANCE-CASE.md) — threat model, trust boundaries, and why the shipped files and tooling are safe to adopt.
 
 ## Use
@@ -153,3 +153,10 @@ Existing installations and their saved choices remain untouched.
 ky-ui is released under the [MIT License](LICENSE.txt).
 
 [![OctoCounts](https://api.octocounts.com/badge/Busnes-app/ky-ui/branch/main)](https://octocounts.com/github/Busnes-app/ky-ui/tree/main)
+
+## Documentation
+
+- [Assurance case](docs/ASSURANCE-CASE.md) — threat model, trust boundaries, and why the security requirements are met.
+- [Contributing](CONTRIBUTING.md) — how to propose a change and what it must pass.
+- [Security policy](SECURITY.md) — how to report a vulnerability privately.
+- [Release notes](CHANGELOG.md) — what changed in each release, and its upgrade impact.
