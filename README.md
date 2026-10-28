@@ -2,7 +2,6 @@
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15918/badge)](https://www.bestpractices.dev/projects/15918)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Busnes-app/ky-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/Busnes-app/ky-ui)
-[![OctoCounts](https://api.octocounts.com/badge/Busnes-app/ky-ui/branch/main)](https://octocounts.com/github/Busnes-app/ky-ui/tree/main)
 
 [Release notes](CHANGELOG.md) describe source versions, upgrade impact and integration changes.
 
@@ -148,3 +147,9 @@ availability. Consumer build checks still enforce their own pinned integrity.
 
 Archived KyForge, KyMark and KyVault are outside the active consumer inventory.
 Existing installations and their saved choices remain untouched.
+
+## License
+
+ky-ui is released under the [MIT License](LICENSE.txt).
+
+[![OctoCounts](https://api.octocounts.com/badge/Busnes-app/ky-ui/branch/main)](https://octocounts.com/github/Busnes-app/ky-ui/tree/main)
