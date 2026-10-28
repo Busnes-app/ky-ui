@@ -54,3 +54,9 @@ for what that is and the boundary it keeps.
 
 ky-ui is licensed under the MIT License. See [LICENSE.txt](LICENSE.txt).
 
+The repository follows the [REUSE](https://reuse.software/) specification: `REUSE.toml`
+names the license and copyright of every file, and `LICENSES/` holds the license text.
+Review screenshots show Ky products only; never commit third-party product screenshots
+or owner reference images here. Copied third-party material would need its own
+`REUSE.toml` entry with its original license. CI runs `reuse lint`.
+
