@@ -13,6 +13,13 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### Repository metadata — REUSE 3.3 (pending, no version bump)
+
+Every file now states its license and copyright in machine-readable form
+([REUSE](https://reuse.software/) 3.3): `REUSE.toml` labels the repository MIT,
+(c) 2026 Busnes.app, `LICENSES/MIT.txt` holds the text, and CI runs `reuse lint`.
+No shipped asset changes, so the package version stays 0.4.3. Upgrade impact: none.
+
 ### 0.4.3 — named-theme warning colors (pending)
 
 Based on source `2900a49` (0.4.2). Named palettes now set and clear the warning

@@ -18,6 +18,10 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 
 ## Local Contracts
 
+- REUSE: `REUSE.toml` labels every file MIT, (c) Busnes.app; `LICENSES/` holds the text.
+  Commit only Ky product screenshots; third-party screenshots and owner reference images
+  stay outside the repo (`reviews/2026-10-26-fleet/reference-inputs.json` keeps hashes only).
+  CI runs `reuse lint`.
 - The default theme follows the operating system until a browser-local choice is saved.
 - Products expose Appearance through navigation, without a compact theme dropdown in that navigation/sidebar or its phone-header presentation. Appearance description, theme name and mode text wrap consistently through shared styles.
 - Explicit `busnes-light` and `busnes-dark` choices override the OS.

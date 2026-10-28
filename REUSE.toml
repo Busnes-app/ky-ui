@@ -1,0 +1,9 @@
+version = 1
+
+# Everything in this repository is Busnes.app's own work: source, tests, docs and the
+# review screenshots of Ky products. Owner reference images stay outside the repo.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Busnes.app"
+SPDX-License-Identifier = "MIT"
