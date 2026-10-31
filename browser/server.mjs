@@ -9,6 +9,7 @@ const files = {
   '/navigation.css': ['../src/navigation.css', 'text/css'],
   '/appearance.css': ['../src/appearance.css', 'text/css'],
   '/appearance-themes.css': ['../src/appearance-themes.css', 'text/css'],
+  '/shell.css': ['../src/shell.css', 'text/css'],
   '/themes.js': ['../src/themes.js', 'text/javascript'],
   '/theme.js': ['../src/theme.js', 'text/javascript'],
 };

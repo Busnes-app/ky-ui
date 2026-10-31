@@ -13,6 +13,16 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.5.0 — shared shell (pending)
+
+Adds `shell.css`, exported as `@busnes/ky-ui/shell.css` and copied to consumers.
+It holds KyCalendar's sign-in card, sidebar user block with "Sign out", licence line,
+About dialog with an outlined Close, and page head, so all products can render the same
+markup. README `## Shell` documents that markup and the required accessible names.
+The sign-in card is 360px wide (KyCalendar: 400px). Upgrade impact: none until a product
+adopts the markup. Refresh the source copy, then replace the local equivalents.
+No known vulnerability IDs apply.
+
 ### Repository metadata — REUSE 3.3 (pending, no version bump)
 
 Every file now states its license and copyright in machine-readable form
