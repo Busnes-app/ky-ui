@@ -34,7 +34,7 @@ outside this web pass. Record any additional discovered surface explicitly.
 
 - Version 0.4.0 adds `appearance.css` to the complete release copy. Products render
   native grouped radios with the documented markup and actual palette previews;
-  the common catalog retains all 22 retained named themes plus Match system;
+  the common catalog (six light/dark pairs since 0.5.0) plus Match system;
   product adapters keep saved keys, legacy aliases, OS following, cross-tab updates
   and restricted-storage behavior. The picker applies choices immediately and states
   that they are stored in this browser.

@@ -13,6 +13,7 @@ Version 0.3.0 also supplies type, space, control, field-border and overlay token
 Version 0.4.0 adds the shared responsive Appearance theme-preview radio cards.
 Version 0.4.1 adds the generated classic catalog `themes-browser.js` for first-paint theme application.
 Version 0.5.0 adds the shared [shell](#shell): sign-in, user block, licence line, About dialog and page head.
+Version 0.6.0 groups the catalog into six light/dark pairs.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -68,7 +69,8 @@ The copy includes CSS, theme preference helpers, generated palette previews and 
 ## Appearance
 
 Import `appearance.css` and `appearance-themes.css` after product field/control
-styles. `themes.js` supplies the common 22-theme catalog plus Match system; keep
+styles. `themes.js` supplies the common catalog of twelve halves, `THEME_PAIRS`
+(six light/dark pairs: Busnes, Matter, Ocean, Forest, Ky, Nord) plus Match system; keep
 the product's existing storage key and legacy-choice adapter; the shared stylesheet supplies the
 same card geometry and keyboard-visible selection across React and server-rendered
 pages. Use native radios inside labels, rather than implementing a custom keyboard
@@ -91,7 +93,12 @@ widget. Each picker needs its own radio group name.
 Set `data-ky-preview` to the canonical theme ID; generated preview CSS owns its
 four color properties, with Busnes values read directly from `tokens.css`. Run
 `npm run generate:appearance` after a catalog or token change; tests verify the
-output. `findTheme` resolves canonical IDs, names and legacy aliases.
+output. `findTheme` resolves canonical IDs, names and legacy aliases. A saved half ID
+is a fixed mode. A saved pair ID such as `ocean-pair` follows the OS: `findTheme` and
+`applyThemeVariables` resolve it to the half for `prefers-color-scheme`, and
+`watchChoice` re-applies on every OS change, so the product's apply must be
+idempotent. A pair card's `data-ky-preview` is the pair ID and shows both halves.
+Removed IDs return undefined, so products fall back to Busnes following the OS.
 `applyThemeVariables` sets or clears named product variables through the CSSOM;
 products retain theme attributes, persistence and OS-following behavior.
 The product's existing external script or React handler applies changes immediately
