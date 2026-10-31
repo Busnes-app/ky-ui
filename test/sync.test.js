@@ -31,6 +31,7 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   await rm(join(first, 'tokens.css'));
   run();
   run('--check');
+  assert.ok(JSON.parse(await readFile(join(first, 'VERSION'), 'utf8')).files['appmarks.js']);
   // The classic copy exposes the module's exports, unchanged, for synchronous head scripts.
   const window = {};
   runInNewContext(await readFile(join(first, 'themes-browser.js'), 'utf8'), { window });

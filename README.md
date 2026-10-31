@@ -16,6 +16,7 @@ Version 0.5.0 adds the shared [shell](#shell): sign-in, user block, licence line
 Version 0.6.0 groups the catalog into six light/dark pairs.
 Version 0.7.0 adds the shared app frame: sidebar, brand row, navigation rows, content inset and phone header.
 Version 0.8.0 separates status from action: a crimson danger far from every accent, soft status tints and the `.ky-status` pill.
+Version 0.9.0 adds the [app rail](#app-rail), a row of suite app icons in the sidebar foot, and the `appmarks.js` app marks.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -121,7 +122,7 @@ names and mode labels wrap normally, without product-specific nowrap or clipping
 ## Shell
 
 `shell.css` gives every product the same app frame (sidebar, brand row, content
-and phone header), sign-in screen, sidebar user block, licence line, About dialog,
+and phone header), sign-in screen, app rail, sidebar user block, licence line, About dialog,
 page head and status pills, with KyCalendar's geometry. Import it after `tokens.css` and
 `navigation.css`. Unlike a bare `.ky-nav-item`, these classes own layout as well as
 state, so render the markup below as written, in React or a Go template, delete
@@ -145,6 +146,7 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
       <a class="ky-nav-item" href="/people"><svg aria-hidden="true">…</svg><span>People</span></a>
     </nav>
     <div class="ky-sidebar-foot">
+      <nav class="ky-app-rail" aria-label="Apps">…</nav>
       <div class="ky-user">…</div>
       <footer><button class="ky-license-link" type="button" commandfor="ky-about" command="show-modal">&copy; 2026 &middot; MIT License</button></footer>
     </div>
@@ -152,7 +154,10 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
   <main class="ky-content">
     <header class="ky-page-head">…</header>
     …
-    <footer class="ky-content-foot"><button class="ky-license-link" type="button" commandfor="ky-about" command="show-modal">&copy; 2026 &middot; MIT License</button></footer>
+    <footer class="ky-content-foot">
+      <nav class="ky-app-rail" aria-label="Apps">…</nav>
+      <button class="ky-license-link" type="button" commandfor="ky-about" command="show-modal">&copy; 2026 &middot; MIT License</button>
+    </footer>
   </main>
 </div>
 ```
@@ -174,8 +179,8 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
   is "Sign out". The navigation becomes one row of icon-and-label tabs that
   scrolls sideways, with the hidden edge faded (a scroll-driven animation; browsers
   without one scroll unfaded). Section labels, user name, role and the sidebar
-  licence line are hidden; `.ky-content-foot` repeats the licence line at the end
-  of the page instead, never under the tabs. On desktop it is hidden.
+  licence line are hidden; `.ky-content-foot` repeats the app rail and the licence
+  line at the end of the page instead, never under the tabs. On desktop it is hidden.
 
 ### Sign-in
 
@@ -250,6 +255,33 @@ accessible name, so do not replace it with an icon. A product without a form
 `POST` can use the same button with a click handler. The name truncates with an
 ellipsis, and the role line is "Administrator" or "Everyday account". Products
 choose how the sidebar collapses on phones, but keep both reachable.
+
+### App rail
+
+```html
+<nav class="ky-app-rail" aria-label="Apps">
+  <p class="ky-app-rail-label" aria-hidden="true">Apps</p>
+  <ul>
+    <li><a href="https://mail.example.com/api/auth/oidc/login" title="KyPost" aria-label="KyPost"><img src="…appMark('kypost')…" width="24" height="24" alt=""></a></li>
+    <li><a href="https://calendar.example.com/sso/login" title="KyCalendar" aria-label="KyCalendar" aria-current="page"><img src="…appMark('kycalendar')…" width="24" height="24" alt=""></a></li>
+  </ul>
+</nav>
+```
+
+The list comes from the app's own server, which asks KyIdentity's `/api/suite/apps`
+with the signed-in user's `sub` (contract: KyIdentity-server
+`docs/SUITE-DIRECTORY.md`); the browser never calls KyIdentity for it. Render one link per
+entry, in the order given, with the entry's `url` as the `href` exactly as given, its
+`name` as both `title` and `aria-label`, and `appMark(id)` from `appmarks.js` as the
+image (a letter badge for an ID ky-ui does not know). Mark the app itself with
+`aria-current="page"`; it gets the accent ring. Leave the whole `nav` out when the list
+is empty or the request fails, as for local accounts or a server without SSO. Set the
+`href` and text as attributes, never through `innerHTML`. The marks are `data:` URIs,
+so the page's CSP needs `img-src 'self' data:`. Render the rail twice, at the top of
+`.ky-sidebar-foot` and of `.ky-content-foot`: CSS shows the first on desktop and the
+second on phones, so only one is ever visible or in the accessibility tree. Links are
+36px on desktop and 40px on phones. `npm run generate:appmarks -- --site=<Busnes.app-site>`
+rebuilds the marks from the site's icon masters (ImageMagick for the PNG ones).
 
 ### About dialog
 

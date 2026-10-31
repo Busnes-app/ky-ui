@@ -25,7 +25,7 @@ for (const [key, path] of Object.entries(overrides)) {
   if (!(key in consumers)) throw new Error(`Unknown consumer: ${key}`);
   if (typeof path !== 'string' || !path) throw new Error(`Invalid checkout path: ${key}`);
 }
-const files = ['tokens.css', 'navigation.css', 'shell.css', 'appearance.css', 'appearance-themes.css', 'themes.js', 'themes.d.ts', 'theme.js', 'theme.d.ts', 'check-vendor.mjs'];
+const files = ['tokens.css', 'navigation.css', 'shell.css', 'appearance.css', 'appearance-themes.css', 'themes.js', 'themes.d.ts', 'theme.js', 'theme.d.ts', 'appmarks.js', 'appmarks.d.ts', 'check-vendor.mjs'];
 const bytes = Object.fromEntries(await Promise.all(files.map(async file => [file, await readFile(join(root, 'src', file))])));
 // Palette previews and stylesheet-free consumers derive from the CSS source.
 const css = bytes['tokens.css'].toString();
