@@ -13,3 +13,7 @@ input { max-width: 100%; box-sizing: border-box; }
 .fixture-mark path { fill: none; stroke: var(--bg); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
 .ky-app { margin-top: 16px; background: var(--bg); }
 .fixture-record { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-strong); }
+/* Status row: an accent action, selected segment and event chip beside the shared pills. */
+.fixture-status { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px; background: var(--panel); border: 1px solid var(--line); }
+.fixture-status .fixture-segment { border-color: var(--accent); background: var(--accent-soft); color: var(--ink-strong); font-size: 14px; padding: 8px 12px; }
+.fixture-event { padding: 4px 10px; border-left: 3px solid var(--accent); background: var(--accent-soft); color: var(--ink-strong); font-size: 13px; }

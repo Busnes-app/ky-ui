@@ -15,6 +15,7 @@ Version 0.4.1 adds the generated classic catalog `themes-browser.js` for first-p
 Version 0.5.0 adds the shared [shell](#shell): sign-in, user block, licence line, About dialog and page head.
 Version 0.6.0 groups the catalog into six light/dark pairs.
 Version 0.7.0 adds the shared app frame: sidebar, brand row, navigation rows, content inset and phone header.
+Version 0.8.0 separates status from action: a crimson danger far from every accent, soft status tints and the `.ky-status` pill.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -120,8 +121,8 @@ names and mode labels wrap normally, without product-specific nowrap or clipping
 ## Shell
 
 `shell.css` gives every product the same app frame (sidebar, brand row, content
-and phone header), sign-in screen, sidebar user block, licence line, About dialog
-and page head, with KyCalendar's geometry. Import it after `tokens.css` and
+and phone header), sign-in screen, sidebar user block, licence line, About dialog,
+page head and status pills, with KyCalendar's geometry. Import it after `tokens.css` and
 `navigation.css`. Unlike a bare `.ky-nav-item`, these classes own layout as well as
 state, so render the markup below as written, in React or a Go template, delete
 local equivalents and keep product CSS off these classes. Icons are optional,
@@ -289,6 +290,31 @@ choose how the sidebar collapses on phones, but keep both reachable.
 
 The lede is one sentence. `.ky-page-action` is the page's only primary button,
 and you can leave it out. On narrow screens it wraps below the title.
+
+### Status vs action
+
+The accent means "act here": primary buttons, the selected toggle, today, links and
+focus. Danger, warning and success mean "this is the state", and never borrow it.
+
+- Show state with `.ky-status`, never with the accent or `.ky-page-action`.
+  `data-ky-status` is `danger` (down, failing, missing), `warning` (degraded, due
+  soon) or `success` (up, passing); leave it off for a neutral state such as Paused.
+- Every pill has a word. The pill draws a leading dot; a 14px `aria-hidden` icon in
+  place of the dot is fine. Never show a bare coloured dot, and never colour only a word.
+- Status text outside a pill uses `--danger`, `--warning` or `--success`; a status
+  fill uses `--ky-danger-soft`, `--ky-warning-soft` or `--ky-success-soft`, a tint over
+  the active palette's panel. Never fill a button or a selected control with them.
+
+```html
+<span class="ky-status" data-ky-status="danger">Down</span>
+<span class="ky-status" data-ky-status="success">Up</span>
+<span class="ky-status">Paused</span>
+```
+
+`npm run check` runs `scripts/check-status-colours.mjs` over all twelve halves:
+status text reaches 4.5:1 on bg and panel, each pill's text 4.5:1 on its tint, the
+accent and danger are at least 20 apart (CIEDE2000), and warning, success, accent
+and danger are at least 10 apart from each other. Add `--table` for every value.
 
 ## Boundary
 

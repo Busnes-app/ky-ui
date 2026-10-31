@@ -13,6 +13,24 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.8.0 — status colours separate from the accent (pending)
+
+Based on 0.7.1. Danger no longer looks like the Busnes rust accent: `--ky-danger-light`
+`#b42318` → `#a8174e` and `--ky-danger-dark` `#ff8176` → `#ff8fb1` (cool crimson).
+Warning moves off Matter's brown (`#875b12` → `#7a5f00`, `#e0b775` → `#ffd25e`) and dark
+success off Ky's teal (`#7bc49c` → `#86efac`). Forest gets its own teal success
+(`#00737a`, `#6ee0d0`) away from its green accent; Nord's own danger and success are a step
+lighter (`#ecc4c8`, `#bcd4aa`) to read on their tint. No accent changes.
+New tokens `--ky-danger-soft`, `--ky-warning-soft` and `--ky-success-soft` (12% of the status
+over the active panel) and the `.ky-status` pill in `shell.css`: a word, a leading dot or
+icon, `data-ky-status="danger|warning|success"` or neutral. `navigation.css` puts a pill in a
+navigation row at its end. README documents the status vs action rule.
+`scripts/check-status-colours.mjs` (in `npm run check`) gates all twelve halves; the browser
+spec `status.spec.js` measures the rendered pills.
+Upgrade impact: status colours change wherever products use `--danger`, `--warning` or
+`--success`; contrast stays at least 4.5:1. Products adopt `.ky-status` for state badges and
+drop local pill styles in a later step. No known vulnerability IDs apply.
+
 ### 0.7.1 — phone tab focus ring (pending)
 
 On phones the nav row scrolls sideways and clipped the focus ring of the first tab. The ring now sits inside each tab (`outline-offset: -2px`). Upgrade impact: refresh the source copy. No known vulnerability IDs apply.

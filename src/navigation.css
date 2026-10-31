@@ -57,6 +57,8 @@
 }
 /* Icons follow the label colour; only the bar and tint mark the selected row. */
 :where(.ky-nav) > .ky-nav-item > svg { flex: none; width: 16px; height: 16px; color: inherit; }
+/* A status pill in a row (a count, Down) sits at the row's end. */
+:where(.ky-nav) > .ky-nav-item > .ky-status { margin-inline-start: auto; }
 /* A plain group label: no chevron, nothing collapses. */
 .ky-nav-section {
   margin: var(--ky-space-3) 0 var(--ky-space-1);

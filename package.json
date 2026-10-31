@@ -1,6 +1,6 @@
 {
   "name": "@busnes/ky-ui",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "private": true,
   "license": "MIT",
   "description": "Shared Busnes theme tokens and accessible navigation primitives for Ky web products.",
@@ -17,7 +17,8 @@
   "scripts": {
     "test": "node --test test/*.test.js",
     "lint": "eslint . --max-warnings 0",
-    "check": "npm run lint && npm test",
+    "check": "npm run lint && npm test && npm run check:status",
+    "check:status": "node scripts/check-status-colours.mjs",
     "test:browser": "playwright test",
     "check:suite": "node scripts/check-suite.mjs",
     "sync:consumers": "node scripts/sync-consumers.mjs",

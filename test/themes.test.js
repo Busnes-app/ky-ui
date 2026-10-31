@@ -64,8 +64,8 @@ test('every non-Busnes theme has a complete palette whose scheme matches its bac
   assert.deepEqual(Object.keys(THEME_PALETTES).sort(), named.map(t => t.id).sort());
   for (const theme of named) {
     const palette = THEME_PALETTES[theme.id];
-    const base = theme.id === 'nord';
-    assert.deepEqual(Object.keys(palette), Object.keys(THEME_VARIABLES).slice(0, base ? 15 : 13), theme.id);
+    const own = { nord: ['danger', 'success'], 'forest-light': ['success'], forest: ['success'] }[theme.id] ?? [];
+    assert.deepEqual(Object.keys(palette), [...Object.keys(THEME_VARIABLES).slice(0, 13), ...own], theme.id);
     const n = parseInt(palette.bg.slice(1), 16);
     const luma = (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255;
     assert.equal(theme.scheme, luma > 0.55 ? 'light' : 'dark', theme.id);
@@ -106,7 +106,7 @@ test('named palettes set product variables and Busnes or system clears them', ()
   assert.equal(props.get('--panel-hover'), 'color-mix(in srgb, #152a36 93%, #e0f2fb)');
   applyThemeVariables('nord', root);
   assert.equal(props.get('--line-strong'), '#5e81ac');
-  assert.equal(props.get('--danger'), '#dfb0b5');
+  assert.equal(props.get('--danger'), '#ecc4c8');
   assert.equal(props.size, 16);
   assert.equal(applyThemeVariables('busnes-light', root), null);
   assert.equal(props.size, 0);
@@ -115,6 +115,7 @@ test('named palettes set product variables and Busnes or system clears them', ()
   assert.equal(root.style.colorScheme, 'light');
   applyThemeVariables('forest-light', root);
   assert.equal(props.get('--danger'), 'var(--ky-danger-light)');
+  assert.equal(props.get('--success'), '#00737a', 'Forest keeps its own teal success');
   assert.equal(props.get('--warning'), 'var(--ky-warning-light)');
   assert.equal(applyThemeVariables('system', root), null);
   assert.equal(props.size, 0);

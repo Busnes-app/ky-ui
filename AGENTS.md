@@ -27,6 +27,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - Products expose Appearance through navigation, without a compact theme dropdown in that navigation/sidebar or its phone-header presentation. Appearance description, theme name and mode text wrap consistently through shared styles.
 - Explicit `busnes-light` and `busnes-dark` choices override the OS.
 - Named palettes without explicit status colors select shared danger/success defaults and shared warning colors by their own scheme. Status text must retain 4.5:1 contrast on panel and hover surfaces in both OS schemes.
+- Status never uses the accent. `scripts/check-status-colours.mjs` (part of `npm run check`) gates every half: status text and pill-on-tint contrast, and CIEDE2000 distance between accent and status colours. Run it with `--table` after any palette or status change.
 - Shared selectors are prefixed with `ky-` or use explicit `data-ky-*`/ARIA state to avoid product CSS collisions.
 - Compatibility aliases map existing product variables to shared tokens. Product adapters retain saved theme keys and named palettes. A bare `.ky-nav-item` owns state styling only; products own geometry, except inside `.ky-nav` and the shell parts in `shell.css`.
 - The selected page remains obvious without relying on color alone: use a surface change and an accent rail.
