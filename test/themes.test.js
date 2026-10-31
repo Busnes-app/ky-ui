@@ -80,7 +80,13 @@ test('legacy names and aliases resolve without rewriting the saved value', () =>
   assert.equal(findTheme('Patina Ky (base)').id, 'patina-ky');
   assert.equal(findTheme('paper').name, 'Nord Light');
   assert.equal(findTheme('Paper Clean').id, 'paper');
-  assert.equal(findTheme('nord').name, 'Nord');
+  assert.equal(findTheme('nord').name, 'Nord Dark');
+  assert.equal(findTheme('Nord').id, 'nord');
+  assert.equal(findTheme('White Cliffs').id, 'white-cliffs');
+  assert.equal(findTheme('Light Matter').id, 'light-matter');
+  assert.equal(findTheme('Polished Ky').id, 'polished-ky');
+  assert.equal(findTheme('Forest').id, 'forest');
+  assert.equal(findTheme('Ocean').id, 'ocean');
   assert.equal(findTheme('Nord Slate').id, 'nord');
   assert.equal(findTheme('system'), SYSTEM_THEME);
   assert.equal(findTheme('constructor'), undefined);
@@ -117,9 +123,9 @@ test('named palettes set product variables and Busnes or system clears them', ()
 
 test('revised halves carry the pairs spec values with sidebarStart = sidebarEnd and no glow', () => {
   const spec = {
-    'light-matter': '#f5efe5 #fff8ee #4c3d32 #2d1f15 #805a39 #eadfce #d4c7b5 #ede2d2 #ffffff',
+    'light-matter': '#f5efe5 #fff8ee #4c3d32 #2d1f15 #805a39 #e2d0b8 #d4c7b5 #ede2d2 #ffffff',
     'dark-matter': '#1d1b19 #292725 #cfc6bb #f0e9df #c29a72 #49392c #45403a #25221f #24170f',
-    'white-cliffs': '#f7f9fb #ffffff #2e4c63 #163246 #246b8d #dff1fb #c7d6df #edf3f7 #ffffff',
+    'white-cliffs': '#f7f9fb #ffffff #2e4c63 #163246 #1d5fa6 #dde9f7 #c7d6df #eaf1f8 #ffffff',
     'forest-light': '#f3f6ef #fcfdf9 #435342 #203322 #4b6b37 #e2ebda #c5d0bc #e8eee1 #ffffff',
     'polished-ky': '#eef2f6 #ffffff #475569 #0f172a #08758b #daf2f4 #c2cdd8 #e7edf3 #ffffff',
     'patina-ky': '#10161e #1b2530 #afbdca #e2e8f0 #6fc9cc #203d41 #34414d #161e27 #10161e',
