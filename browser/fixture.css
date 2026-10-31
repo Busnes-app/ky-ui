@@ -1,6 +1,6 @@
 /* Fixture geometry is deliberately local, never part of the shipped primitives. */
 body { margin: 16px; background: var(--bg); color: var(--ink-strong); font: 16px system-ui; }
-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 16px; }
+body > nav { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 16px; }
 button, select, input { font: inherit; padding: 10px; }
 button, select, input, dialog { color: var(--ink-strong); background: var(--panel); border: 1px solid var(--line); }
 dialog { max-width: calc(100vw - 64px); }
@@ -8,20 +8,8 @@ input { max-width: 100%; box-sizing: border-box; }
 [role=alert] { color: var(--ky-danger); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 :root[data-theme=legacy] { --bg: #202040; --panel: #28284a; --ink-strong: #ffffff; --ink: #ddddff; --accent: #d5b8ff; --accent-soft: #403050; --line: #aaaaaa; }
-/* Shell composition: a KyCalendar-like sidebar around the shared shell parts. */
-.fixture-slot { color: var(--ink); font-size: 13px; }
+/* Shell composition: the shared app frame supplies the layout; the fixture only draws the mark. */
 .fixture-mark rect { fill: var(--ink-strong); }
 .fixture-mark path { fill: none; stroke: var(--bg); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
-.fixture-shell { display: grid; grid-template-columns: var(--ky-sidebar-size) minmax(0, 1fr); min-height: 640px; margin-top: 16px; border: 1px solid var(--line); background: var(--bg); }
-.fixture-sidebar { display: flex; flex-direction: column; gap: var(--ky-space-4); padding: var(--ky-space-4) var(--ky-space-3) var(--ky-space-3); background: var(--sidebar-start, var(--panel)); border-right: 1px solid var(--line); }
-.fixture-brand { display: flex; align-items: center; gap: var(--ky-space-2); margin: 0; padding-inline: var(--ky-space-2); font-size: var(--ky-type-section); font-weight: 700; }
-.fixture-brand svg { width: 28px; height: 28px; }
-.fixture-sidebar-links { display: grid; gap: var(--ky-space-1); }
-.fixture-sidebar-links a { display: flex; align-items: center; min-height: var(--ky-control-size); padding: 0 var(--ky-space-2) 0 var(--ky-space-3); border-radius: var(--ky-control-radius); color: var(--ink); font-size: var(--ky-type-nav); font-weight: 500; text-decoration: none; }
-.fixture-sidebar-foot { display: grid; gap: var(--ky-space-3); margin-top: auto; }
-.fixture-content { min-width: 0; padding: var(--ky-space-5); }
-@media (max-width: 720px) {
-  .fixture-shell { grid-template-columns: minmax(0, 1fr); }
-  .fixture-sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
-  .fixture-content { padding: var(--ky-space-4) var(--ky-space-3); }
-}
+.ky-app { margin-top: 16px; background: var(--bg); }
+.fixture-record { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-strong); }

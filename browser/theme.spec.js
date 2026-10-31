@@ -5,7 +5,7 @@ test('every catalog palette keeps status text and field borders readable', async
   await page.goto('/');
   const results = [];
   for (const id of await page.locator('.ky-appearance-radio').evaluateAll(els => els.map(el => el.value).filter(id => id !== 'system'))) {
-    await page.getByLabel('Theme').selectOption(id);
+    await page.locator('#theme').selectOption(id);
     const rows = await page.evaluate(() => {
       const root = getComputedStyle(document.documentElement);
       const probe = document.body.appendChild(document.createElement('span'));
@@ -80,14 +80,14 @@ test('OS following, explicit persistence, legacy switching and cross-tab changes
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(24, 35, 38)');
   await page.emulateMedia({ colorScheme: 'light' });
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(248, 246, 240)');
-  await page.getByLabel('Theme').selectOption('legacy');
+  await page.locator('#theme').selectOption('legacy');
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(32, 32, 64)');
-  await page.getByLabel('Theme').selectOption('busnes-dark');
+  await page.locator('#theme').selectOption('busnes-dark');
   await page.reload();
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(24, 35, 38)');
   const other = await context.newPage();
   await other.goto('/');
-  await other.getByLabel('Theme').selectOption('busnes-light');
+  await other.locator('#theme').selectOption('busnes-light');
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(248, 246, 240)');
 });
 
@@ -102,7 +102,7 @@ test('restricted storage still renders the OS theme', async ({ page }) => {
 test('controls retain geometry, field contrast and readable legacy hover', async ({ page }) => {
   await page.goto('/');
   for (const theme of ['busnes-light', 'busnes-dark', 'legacy']) {
-    await page.getByLabel('Theme').selectOption(theme);
+    await page.locator('#theme').selectOption(theme);
     await page.getByRole('button', { name: 'Activity', exact: true }).hover();
     const result = await page.evaluate(() => {
       const probe = document.createElement('input');

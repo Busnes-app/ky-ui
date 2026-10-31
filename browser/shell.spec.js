@@ -3,12 +3,13 @@ import { test, expect } from '@playwright/test';
 test('sign-in card pairs every label with its field', async ({ page }) => {
   await page.goto('/');
   const auth = page.getByRole('region', { name: 'Sign-in screen' });
+  await expect(auth.getByRole('combobox', { name: 'Color theme' })).toBeVisible();
   await expect(auth.getByRole('heading', { level: 1, name: 'KyCalendar' })).toBeVisible();
   const card = auth.locator('.ky-auth-card');
   await expect(card).toBeVisible();
   await expect(card.getByLabel('Username', { exact: true })).toHaveAttribute('autocomplete', 'username');
   await expect(card.getByLabel('Password', { exact: true })).toHaveAttribute('autocomplete', 'current-password');
-  const pairs = await page.locator('.ky-auth input, .ky-auth select, .ky-auth textarea').evaluateAll(fields => fields.map(field => ({
+  const pairs = await page.locator('.ky-auth-card :is(input, select, textarea)').evaluateAll(fields => fields.map(field => ({
     id: field.id,
     unique: document.querySelectorAll(`[id="${field.id}"]`).length === 1,
     labels: [...field.labels].map(label => label.htmlFor),
@@ -89,12 +90,12 @@ test('shell evidence captures at 1440x900', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   const shot = (part, target = page) => target.screenshot({ path: testInfo.outputPath(`shell-${part}-${scheme}.png`), animations: 'disabled' });
-  await shot('signin', page.locator('.ky-auth'));
-  await shot('sidebar', page.locator('.fixture-sidebar'));
+  await shot('signin', page.getByRole('region', { name: 'Sign-in screen' }));
+  await shot('sidebar', page.locator('.ky-sidebar'));
   await page.locator('.ky-page-head').evaluate(el => el.scrollIntoView({ block: 'center' }));
   const head = await page.locator('.ky-page-head').boundingBox();
   await page.screenshot({ path: testInfo.outputPath(`shell-pagehead-${scheme}.png`), clip: { x: head.x - 32, y: head.y - 32, width: head.width + 64, height: head.height + 64 } });
-  await page.locator('.fixture-shell').scrollIntoViewIfNeeded();
+  await page.locator('.ky-app').scrollIntoViewIfNeeded();
   await page.getByRole('button', { name: '© 2026 · MIT License' }).click();
   await expect(page.getByRole('dialog', { name: 'About KyCalendar' })).toBeVisible();
   await shot('about');
