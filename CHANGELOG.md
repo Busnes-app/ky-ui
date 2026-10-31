@@ -13,6 +13,23 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.9.0 — app rail (pending)
+
+Based on 0.8.0. Adds the app rail to `shell.css`: `.ky-app-rail` (a `nav` named "Apps"),
+`.ky-app-rail-label` and one icon link per suite app, at the top of `.ky-sidebar-foot` on
+desktop and repeated at the top of `.ky-content-foot` on phones. Links are 36px (40px on
+phones) with 24px marks; the current app (`aria-current="page"`) gets a 2px accent ring and
+the accent tint, hover the panel hover surface, focus the shared accent outline. Existing
+tokens only. New `src/appmarks.js` (+ `appmarks.d.ts`, export `./appmarks`) exports
+`appMarks`, data-URI marks keyed by KyIdentity client ID (kypost, kycalendar, kydrive,
+kynotes, kymessage, kymessage-chat, kyidentity, kydns, kypulse, kyrecovery, kyyard; 40 KB),
+and `appMark(id)`, which falls back to a letter badge. `scripts/appmarks.mjs`
+(`npm run generate:appmarks`) rebuilds them from the Busnes.app-site masters.
+`sync-consumers.mjs` copies both files and lists them in `VERSION`.
+Upgrade impact: nothing changes until a product renders the rail from its server's
+`/api/suite/apps` list (README `### App rail`). Its CSP needs `img-src data:`.
+No known vulnerability IDs apply.
+
 ### 0.8.0 — status colours separate from the accent (pending)
 
 Based on 0.7.1. Danger no longer looks like the Busnes rust accent: `--ky-danger-light`

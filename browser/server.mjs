@@ -12,12 +12,13 @@ const files = {
   '/shell.css': ['../src/shell.css', 'text/css'],
   '/themes.js': ['../src/themes.js', 'text/javascript'],
   '/theme.js': ['../src/theme.js', 'text/javascript'],
+  '/appmarks.js': ['../src/appmarks.js', 'text/javascript'],
 };
 createServer(async (req, res) => {
   const file = Object.hasOwn(files, req.url) ? files[req.url] : undefined;
   if (!file) { res.writeHead(404).end(); return; }
   try {
     const body = await readFile(new URL(file[0], import.meta.url));
-    res.writeHead(200, { 'Content-Type': file[1], 'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'", 'Cache-Control': 'no-store' }).end(body);
+    res.writeHead(200, { 'Content-Type': file[1], 'Content-Security-Policy': "default-src 'self'; script-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'", 'Cache-Control': 'no-store' }).end(body);
   } catch { res.writeHead(500).end(); }
 }).listen(5390, '127.0.0.1');

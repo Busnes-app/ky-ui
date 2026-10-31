@@ -1,5 +1,6 @@
 import { applyTheme, readChoice, saveChoice, watchChoice } from '/theme.js';
 import { SYSTEM_THEME, THEME_CATALOG, THEME_PAIRS, applyThemeVariables, findTheme } from '/themes.js';
+import { appMark } from '/appmarks.js';
 
 const select = document.querySelector('#theme');
 const grid = document.querySelector('.ky-appearance-grid');
@@ -52,3 +53,20 @@ for (const button of document.querySelectorAll('nav button:not(:disabled)')) {
   });
 }
 document.querySelector('#open').addEventListener('click', () => document.querySelector('dialog').showModal());
+// The app rail, as a product renders /api/suite/apps: kytasks has no shipped mark.
+const suiteApps = [
+  ['kypost', 'KyPost'], ['kycalendar', 'KyCalendar'], ['kydrive', 'KyDrive'], ['kynotes', 'KyNotes'],
+  ['kymessage', 'KyMessages'], ['kypulse', 'KyPulse'], ['kytasks', 'KyTasks'],
+];
+for (const list of document.querySelectorAll('.ky-app-rail ul')) {
+  for (const [id, name] of suiteApps) {
+    const link = Object.assign(document.createElement('a'), { href: `https://${id}.example.test/sso`, title: name });
+    link.setAttribute('aria-label', name);
+    if (id === 'kycalendar') link.setAttribute('aria-current', 'page');
+    const img = Object.assign(document.createElement('img'), { src: appMark(id), alt: '', width: 24, height: 24 });
+    link.append(img);
+    const item = document.createElement('li');
+    item.append(link);
+    list.append(item);
+  }
+}
