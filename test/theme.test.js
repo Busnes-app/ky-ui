@@ -16,7 +16,7 @@ test("restricted storage getter cannot prevent theme application", () => {
   }
 });
 
-test("theme watcher follows OS only without a choice and disposes listeners", (t) => {
+test("theme watcher re-applies on every OS change, so a saved pair re-resolves, and disposes listeners", (t) => {
   const windowEvents = new EventTarget();
   const media = new EventTarget();
   for (const [key, value] of Object.entries({ addEventListener: windowEvents.addEventListener.bind(windowEvents), removeEventListener: windowEvents.removeEventListener.bind(windowEvents), matchMedia: () => media })) {
@@ -24,18 +24,18 @@ test("theme watcher follows OS only without a choice and disposes listeners", (t
     Object.defineProperty(globalThis, key, { configurable: true, value });
     t.after(() => { if (original) Object.defineProperty(globalThis, key, original); else delete globalThis[key]; });
   }
-  let explicit = false, calls = 0;
-  const stop = watchChoice('product-theme', () => calls++, () => explicit);
+  let calls = 0;
+  const stop = watchChoice('product-theme', (...args) => { assert.deepEqual(args, []); calls++; });
   media.dispatchEvent(new Event('change'));
-  explicit = true;
   media.dispatchEvent(new Event('change'));
   const event = new Event('storage');
   Object.defineProperty(event, 'key', { value: 'product-theme' });
   windowEvents.dispatchEvent(event);
-  assert.equal(calls, 2);
+  assert.equal(calls, 3);
   stop();
   windowEvents.dispatchEvent(event);
-  assert.equal(calls, 2);
+  media.dispatchEvent(new Event('change'));
+  assert.equal(calls, 3);
 });
 
 test("normalizes unknown choices to system", () => {

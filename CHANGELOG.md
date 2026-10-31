@@ -13,6 +13,25 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.6.0 — light/dark palette pairs (pending)
+
+Based on 0.5.0 (shared shell). The catalog is twelve halves in six pairs,
+exported as `THEME_PAIRS` (Busnes, Matter, Ocean, Forest, Ky, Nord); each catalog
+entry names its `pair`. A saved half ID keeps a fixed mode. A saved pair ID
+(`<name>-pair`) follows the OS: `findTheme` and `applyThemeVariables` resolve it by
+`prefers-color-scheme`, and `watchChoice` now re-applies on every OS change (its
+`hasChoice` argument is ignored). New `findPair`; new half `forest-light`.
+Light Matter, Dark Matter, White Cliffs, Polished Ky, Patina Ky and Paper take the
+pairs spec values. `paper` is renamed "Nord Light" (alias "Paper Clean") and uses the
+shared status colors; `nord` is renamed "Nord" (alias "Nord Slate"); `patina` and
+"Patina Ky (base)" are aliases of `patina-ky`. Removed: tropics, tropic-night, coffee,
+cyber-punk, neon-purple, space, sky, sun, cyber and oled; saved values resolve to
+nothing, so products fall back to Busnes following the OS. Pair previews show both
+halves (`appearance.css`, generated `appearance-themes.css`).
+Upgrade impact: refresh the complete source copy; products whose `apply` is not
+idempotent or that list the catalog must adopt pairs. KyCalendar is the reference
+consumer. No known vulnerability IDs apply.
+
 ### 0.5.0 — shared shell (pending)
 
 Adds `shell.css`, exported as `@busnes/ky-ui/shell.css` and copied to consumers.

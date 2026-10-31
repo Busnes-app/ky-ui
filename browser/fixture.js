@@ -1,9 +1,9 @@
 import { applyTheme, readChoice, saveChoice, watchChoice } from '/theme.js';
-import { SYSTEM_THEME, THEME_CATALOG, applyThemeVariables, findTheme } from '/themes.js';
+import { SYSTEM_THEME, THEME_CATALOG, THEME_PAIRS, applyThemeVariables, findTheme } from '/themes.js';
 
 const select = document.querySelector('#theme');
 const grid = document.querySelector('.ky-appearance-grid');
-for (const theme of [SYSTEM_THEME, ...THEME_CATALOG]) {
+for (const theme of [SYSTEM_THEME, ...THEME_CATALOG, ...THEME_PAIRS]) {
   if (![...select.options].some(option => option.value === theme.id)) select.add(new Option(theme.name, theme.id));
   const card = document.createElement('label');
   card.className = 'ky-appearance-option';
@@ -18,7 +18,7 @@ for (const theme of [SYSTEM_THEME, ...THEME_CATALOG]) {
   name.textContent = theme.name;
   const mode = document.createElement('small');
   mode.className = 'ky-appearance-mode';
-  mode.textContent = theme.scheme === 'system' ? 'Light or dark' : theme.scheme === 'light' ? 'Light' : 'Dark';
+  mode.textContent = { system: 'Light or dark', light: 'Light', dark: 'Dark' }[theme.scheme] ?? 'Follows device';
   card.append(radio, preview, name, mode);
   grid.append(card);
 }
