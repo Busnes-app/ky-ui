@@ -13,6 +13,14 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### Development tooling: minimatch 11 (pending, no version bump)
+
+Pins the development-only `minimatch` (pulled in by ESLint) to ^11.0.1 through
+`overrides`. ESLint 10.13 and 10.14 still ask for ^10, so updating ESLint does not
+fix it. No shipped asset changes, so consumers need no re-sync. Fixes
+GHSA-g3hv-75wg-m249 / CVE-2026-118764 (moderate: denial of service through
+globparts amplification in minimatch before 11.0.1). `npm audit` now reports 0.
+
 ### 0.7.0 — shared app frame and drift fixes (pending)
 
 Based on 0.6.0 (palette pairs). Adds KyCalendar's app frame to `shell.css`:
