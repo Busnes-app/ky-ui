@@ -9,6 +9,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/tokens.css` owns Busnes palettes and shared visual tokens.
 - `src/themes.js` owns the common 22-theme metadata and named palettes, legacy aliases and CSSOM application helper. `scripts/appearance-themes.mjs` generates `src/appearance-themes.css` previews from this catalog and Busnes tokens.
 - `src/navigation.css` owns reusable selected, hover, focus, and responsive navigation states.
+- `src/shell.css` owns the shared sign-in screen, sidebar user block, licence line, About dialog and page head, geometry included, with KyCalendar as the reference; README `## Shell` is its markup contract.
 - `src/appearance.css` owns the shared responsive Appearance radio-card grid and preview styling; products retain persistence adapters, compatibility exports and page composition.
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
 - `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, the classic catalog copy `themes-browser.js` (from `src/themes.js`), and a version/hash manifest.
@@ -27,7 +28,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - Explicit `busnes-light` and `busnes-dark` choices override the OS.
 - Named palettes without explicit status colors select shared danger/success defaults and shared warning colors by their own scheme. Status text must retain 4.5:1 contrast on panel and hover surfaces in both OS schemes.
 - Shared selectors are prefixed with `ky-` or use explicit `data-ky-*`/ARIA state to avoid product CSS collisions.
-- Compatibility aliases map existing product variables to shared tokens. Product adapters retain saved theme keys and named palettes. Navigation primitives own state styling only; products own geometry.
+- Compatibility aliases map existing product variables to shared tokens. Product adapters retain saved theme keys and named palettes. Navigation primitives own state styling only; products own geometry, except the shell parts in `shell.css`.
 - The selected page remains obvious without relying on color alone: use a surface change and an accent rail.
 - This package is browser-facing and stays separate from the Go-only `ky-primitives` library.
 - Integration examples use same-origin external scripts compatible with `script-src 'self'`; deferred modules do not promise saved-choice application before first paint. Products that promise it load the generated classic `themes-browser.js` (`window.kyThemes`) and their adapter synchronously in the head, building pickers after `DOMContentLoaded`.

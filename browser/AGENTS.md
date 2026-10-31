@@ -17,6 +17,7 @@ Owns the explicitly labeled contract fixture, loopback-only fixture server and P
 - Measure shared control geometry and field-border contrast against both Busnes page/panel surfaces in the browser; a primitive check does not certify every product field or named theme.
 - Measure danger, success and warning text for every catalog palette on panel and hover surfaces, under both OS schemes; product-level overrides still need product checks.
 - Screenshots and failure traces are test artifacts, not pixel-diff baselines or proof of product accessibility.
+- `shell.spec.js` checks the shell parts: label/`for` pairs, the About dialog's accessible name and keyboard open/close with focus return, text contrast, no overflow at 390px/1440px, and writes `shell-<part>-<light|dark>.png` evidence at 1440x900.
 - `readme.spec.js` serves the README's actual HTML/module snippets with shared assets on an owned loopback port and verifies saved-choice initialization under `script-src 'self'`.
 
 ## Verification
