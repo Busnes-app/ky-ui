@@ -82,6 +82,8 @@
   }
   .ky-nav:focus-within { mask-image: none; }
   :where(.ky-nav) > .ky-nav-item { flex: none; width: auto; padding-inline: var(--ky-space-3); white-space: nowrap; }
+  /* The row scrolls, so it clips anything drawn outside a tab: keep the focus ring inside. */
+  .ky-nav > .ky-nav-item:focus-visible { outline-offset: -2px; }
   .ky-nav-section { display: none; }
 }
 @keyframes ky-nav-fade {

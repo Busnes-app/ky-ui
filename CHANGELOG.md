@@ -13,6 +13,10 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.7.1 — phone tab focus ring (pending)
+
+On phones the nav row scrolls sideways and clipped the focus ring of the first tab. The ring now sits inside each tab (`outline-offset: -2px`). Upgrade impact: refresh the source copy. No known vulnerability IDs apply.
+
 ### 0.7.0 — shared app frame and drift fixes (pending)
 
 Based on 0.6.0 (palette pairs). Adds KyCalendar's app frame to `shell.css`:
