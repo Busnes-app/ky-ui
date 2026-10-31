@@ -8,8 +8,8 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 
 - `src/tokens.css` owns Busnes palettes and shared visual tokens.
 - `src/themes.js` owns the common catalog of twelve halves in six light/dark pairs (`THEME_PAIRS`), named palettes, legacy aliases and CSSOM application helper. A saved half ID is a fixed mode; a saved pair ID (`<name>-pair`) follows the OS; removed IDs resolve to nothing so products fall back to Busnes. `scripts/appearance-themes.mjs` generates `src/appearance-themes.css` previews from this catalog and Busnes tokens.
-- `src/navigation.css` owns reusable selected, hover, focus, and responsive navigation states, plus KyCalendar's row geometry and phone tabs for items inside `.ky-nav`.
-- `src/shell.css` owns the shared app frame (sidebar, brand row, content inset, phone header), sign-in screen, app rail, sidebar user block, licence line, About dialog and page head, geometry included, with KyCalendar as the reference; README `## Shell` is its markup contract.
+- `src/navigation.css` owns reusable selected, hover, focus, and responsive navigation states, plus KyCalendar's row geometry and phone tabs for items inside `.ky-nav`, and the Settings section tabs (`.ky-settings-tabs`).
+- `src/shell.css` owns the shared app frame (sidebar, brand row, content inset, phone header), sign-in screen, app rail, account footer and its icon buttons, licence line, About dialog and page head, geometry included, with KyCalendar as the reference; README `## Shell` is its markup contract.
 - `src/appearance.css` owns the shared responsive Appearance radio-card grid and preview styling; products retain persistence adapters, compatibility exports and page composition.
 - `src/appmarks.js` owns the suite app marks for the app rail, keyed by KyIdentity client ID, plus the letter-badge fallback. `scripts/appmarks.mjs` generates the `appMarks` table from the Busnes.app-site icon masters; the app list itself comes from each product's server.
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
@@ -25,7 +25,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
   stay outside the repo (`reviews/2026-10-26-fleet/reference-inputs.json` keeps hashes only).
   CI runs `reuse lint`.
 - The default theme follows the operating system until a browser-local choice is saved.
-- Products expose Appearance through navigation, without a compact theme dropdown in that navigation/sidebar or its phone-header presentation. Appearance description, theme name and mode text wrap consistently through shared styles.
+- Products expose Appearance as a Settings section, without a compact theme dropdown in that navigation/sidebar or its phone-header presentation. Appearance description, theme name and mode text wrap consistently through shared styles.
 - Explicit `busnes-light` and `busnes-dark` choices override the OS.
 - Named palettes without explicit status colors select shared danger/success defaults and shared warning colors by their own scheme. Status text must retain 4.5:1 contrast on panel and hover surfaces in both OS schemes.
 - Status never uses the accent. `scripts/check-status-colours.mjs` (part of `npm run check`) gates every half: status text and pill-on-tint contrast, and CIEDE2000 distance between accent and status colours. Run it with `--table` after any palette or status change.

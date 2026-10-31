@@ -17,3 +17,5 @@ input { max-width: 100%; box-sizing: border-box; }
 .fixture-status { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px; background: var(--panel); border: 1px solid var(--line); }
 .fixture-status .fixture-segment { border-color: var(--accent); background: var(--accent-soft); color: var(--ink-strong); font-size: 14px; padding: 8px 12px; }
 .fixture-event { padding: 4px 10px; border-left: 3px solid var(--accent); background: var(--accent-soft); color: var(--ink-strong); font-size: 13px; }
+/* Pre-0.10 user block at the sidebar's width, outside the frame. */
+.fixture-legacy { box-sizing: border-box; width: var(--ky-sidebar-size); margin-top: 16px; padding: 16px; background: var(--panel); border: 1px solid var(--line); }

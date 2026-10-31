@@ -52,7 +52,7 @@ test('A2 nav rows: fixed icon box, row height, plain section labels, bar on the 
     probe.remove();
     return color;
   });
-  expect(rows.length).toBe(5);
+  expect(rows.length).toBe(4);
   for (const row of rows) {
     expect(row).toMatchObject({ height: 40, iconX: 16, iconW: 16, iconH: 16, labelX: 40, size: '14px' });
     expect(row.x - sidebar.x).toBe(16);
@@ -123,13 +123,22 @@ test('A5-A7 sign-in brand keeps its offset whatever the card holds', async ({ pa
 test('A8 phone header: one row, scrolling tabs with an edge fade, licence after the content', async ({ page }, testInfo) => {
   await phone(page, testInfo);
   const head = page.locator('.ky-mobile-head');
+  const headBox = await box(head);
   const brand = await box(head.locator('.ky-brand'));
+  const settings = head.getByRole('link', { name: 'Settings', exact: true });
   const signout = head.getByRole('button', { name: 'Sign out', exact: true });
+  await expect(settings).toBeVisible();
+  await expect(settings).toHaveAttribute('aria-current', 'page');
   await expect(signout).toBeVisible();
+  expect(await settings.innerText()).toBe('');
   expect(await signout.innerText()).toBe('');
-  const out = await box(signout);
-  expect(Math.abs(out.y + out.height / 2 - (brand.y + brand.height / 2))).toBeLessThanOrEqual(1);
-  expect((await box(head)).height).toBe(40);
+  const [gear, out] = [await box(settings), await box(signout)];
+  // Brand, Settings, Sign out: one row, Sign out last at the head's end edge.
+  for (const icon of [gear, out]) expect(Math.abs(icon.y + icon.height / 2 - (brand.y + brand.height / 2))).toBeLessThanOrEqual(1);
+  expect(gear.x).toBeGreaterThan(brand.x + brand.width);
+  expect(out.x).toBeGreaterThan(gear.x + gear.width);
+  expect(out.x + out.width).toBe(headBox.x + headBox.width);
+  expect(headBox.height).toBe(40);
   await expect(page.locator('.ky-sidebar .ky-user')).toBeHidden();
   await expect(page.locator('.ky-sidebar .ky-license-link')).toBeHidden();
   await expect(page.locator('.ky-nav-section')).toBeHidden();
@@ -171,9 +180,9 @@ test('A8 phone tabs draw the focus ring inside the scrolling row', async ({ page
 
 test('desktop shows no phone parts and no tab fade', async ({ page }, testInfo) => {
   await desktop(page, testInfo);
-  await expect(page.locator('.ky-mobile-signout')).toBeHidden();
+  await expect(page.locator('.ky-mobile-actions')).toBeHidden();
   await expect(page.locator('.ky-content-foot')).toBeHidden();
-  await expect(page.locator('.ky-sidebar .ky-user-signout')).toBeVisible();
+  await expect(page.locator('.ky-sidebar .ky-user-actions')).toBeVisible();
   expect(await page.locator('.ky-nav').evaluate(el => getComputedStyle(el).maskImage)).toBe('none');
 });
 

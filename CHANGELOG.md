@@ -13,6 +13,27 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.10.0 — account footer and Settings (pending)
+
+Based on 0.9.0 (app rail). Follows the owner rules of 2026-10-31: KyDrive's original footer
+everywhere, and Account, Phones & apps and Appearance move from the navigation into Settings.
+`.ky-user` is one row: name and role on the left, each ellipsized, then `.ky-user-actions`
+with an optional Settings link and Sign out as `.ky-icon-button`s (outlined, 16px icon,
+40px, 44px on `pointer: coarse`, named by `aria-label` and `title`). The phone header holds
+the same buttons in `.ky-mobile-actions`. An open Settings button (`aria-current="page"`)
+takes the current navigation row's tint and bar. New `.ky-settings-tabs` in
+`navigation.css`: one row of `.ky-nav-item` links under the page head, the open section
+barred along its bottom, scrolling with the phone navigation's edge fade when it does not fit.
+README documents the footer, the Settings layout and section order, which apps show the
+Settings button (KyPost, KyCalendar, KyNotes, KyDrive) and the Settings navigation item
+admin consoles keep. Browser specs cover the footer row, names and target sizes, focus
+rings, the current state, long names in all twelve halves, the Settings layout, the phone
+header and the old markup.
+Upgrade impact: additive; no class is removed. A text `.ky-user-signout` form still
+renders, on its own row under the name. `.ky-mobile-signout` changes from a borderless
+icon to the outlined icon button. README "Upgrading from 0.9" lists the renames apps
+should make. No known vulnerability IDs apply.
+
 ### 0.9.0 — app rail (pending)
 
 Based on 0.8.0. Adds the app rail to `shell.css`: `.ky-app-rail` (a `nav` named "Apps"),

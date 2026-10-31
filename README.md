@@ -17,6 +17,7 @@ Version 0.6.0 groups the catalog into six light/dark pairs.
 Version 0.7.0 adds the shared app frame: sidebar, brand row, navigation rows, content inset and phone header.
 Version 0.8.0 separates status from action: a crimson danger far from every accent, soft status tints and the `.ky-status` pill.
 Version 0.9.0 adds the [app rail](#app-rail), a row of suite app icons in the sidebar foot, and the `appmarks.js` app marks.
+Version 0.10.0 makes the account footer one row with icon-only Settings and Sign out, and adds the [Settings page](#settings-page) layout with section tabs.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -122,8 +123,8 @@ names and mode labels wrap normally, without product-specific nowrap or clipping
 ## Shell
 
 `shell.css` gives every product the same app frame (sidebar, brand row, content
-and phone header), sign-in screen, app rail, sidebar user block, licence line, About dialog,
-page head and status pills, with KyCalendar's geometry. Import it after `tokens.css` and
+and phone header), sign-in screen, app rail, account footer, licence line, About dialog,
+page head, Settings layout and status pills, with KyCalendar's geometry. Import it after `tokens.css` and
 `navigation.css`. Unlike a bare `.ky-nav-item`, these classes own layout as well as
 state, so render the markup below as written, in React or a Go template, delete
 local equivalents and keep product CSS off these classes. Icons are optional,
@@ -136,9 +137,12 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
   <header class="ky-sidebar">
     <div class="ky-mobile-head">
       <div class="ky-brand"><img src="/app-icon.png" width="28" height="28" alt=""><span>KyNotes</span></div>
-      <form method="post" action="/logout">
-        <button class="ky-mobile-signout" type="submit" aria-label="Sign out"><svg aria-hidden="true">…</svg></button>
-      </form>
+      <div class="ky-mobile-actions">
+        <a class="ky-icon-button" href="/settings" aria-label="Settings" title="Settings"><svg aria-hidden="true">…</svg></a>
+        <form method="post" action="/logout">
+          <button class="ky-icon-button" type="submit" aria-label="Sign out" title="Sign out"><svg aria-hidden="true">…</svg></button>
+        </form>
+      </div>
     </div>
     <nav class="ky-nav" aria-label="Primary">
       <a class="ky-nav-item" href="/notes" aria-current="page"><svg aria-hidden="true">…</svg><span>Notes</span></a>
@@ -175,8 +179,8 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
   wide plus the inset. `.ky-page-head` spans the full content width. A full-bleed
   page such as a calendar may set `max-width: none` on its own `.ky-content`.
 - **Phones (720px and narrower):** the sidebar becomes a sticky header. Its first
-  row is the brand and the icon-only `.ky-mobile-signout`, whose `aria-label`
-  is "Sign out". The navigation becomes one row of icon-and-label tabs that
+  row is the brand and `.ky-mobile-actions`: the same icon buttons as the account
+  footer, Settings (where the app shows it) then Sign out. The navigation becomes one row of icon-and-label tabs that
   scrolls sideways, with the hidden edge faded (a scroll-driven animation; browsers
   without one scroll unfaded). Section labels, user name, role and the sidebar
   licence line are hidden; `.ky-content-foot` repeats the app rail and the licence
@@ -228,12 +232,12 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
   The passed text is "Browser check passed". Where no check runs, render the line
   empty (`<p class="ky-auth-check"></p>`) so it keeps its height.
 - The card can be the `form`, or a `div` holding one `form` per step, for example a two-step code with an `h2`.
-- The button says "Sign in", and the user block says "Sign out".
+- The button says "Sign in", and the account footer's icon button is named "Sign out".
 - Leave out the divider and SSO button when no provider is configured, and `.ky-auth-help` when there is no note.
 - `.ky-auth-help` is one short muted sentence under the card. The sign-in screen
   has no footer and no licence line.
 
-### User block and licence line
+### Account footer and licence line
 
 ```html
 <div class="ky-user">
@@ -241,20 +245,83 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
     <p class="ky-user-name">walter</p>
     <p class="ky-user-role">Everyday account</p>
   </div>
-  <form method="post" action="/logout">
-    <button class="ky-user-signout" type="submit"><svg aria-hidden="true">…</svg>Sign out</button>
-  </form>
+  <div class="ky-user-actions">
+    <!-- User-facing apps only. aria-current="page" while Settings is open. -->
+    <a class="ky-icon-button" href="/settings" aria-label="Settings" title="Settings"><svg aria-hidden="true">…</svg></a>
+    <form method="post" action="/logout">
+      <button class="ky-icon-button" type="submit" aria-label="Sign out" title="Sign out"><svg aria-hidden="true">…</svg></button>
+    </form>
+  </div>
 </div>
 <footer>
   <button class="ky-license-link" type="button" commandfor="ky-about" command="show-modal">&copy; 2026 &middot; MIT License</button>
 </footer>
 ```
 
-Put both at the bottom of the sidebar. The visible text "Sign out" is the button's
-accessible name, so do not replace it with an icon. A product without a form
-`POST` can use the same button with a click handler. The name truncates with an
-ellipsis, and the role line is "Administrator" or "Everyday account". Products
-choose how the sidebar collapses on phones, but keep both reachable.
+Put both at the bottom of the sidebar. The footer is one row, as in KyDrive's
+original: the name over the role on the left, each truncated with an ellipsis,
+then the icon buttons. The role line is "Administrator" or "Everyday account".
+
+- **Icon buttons:** `.ky-icon-button` is outlined, 40px square on a mouse or
+  trackpad and 44px on a touch screen, with a 16px icon (Lucide `settings` and
+  `log-out`). The icon is `aria-hidden`, so `aria-label` names the button and
+  `title` shows the same word on hover. Settings is a link; Sign out is a form
+  `POST` or a button with a click handler. Settings comes first, Sign out last.
+- **Current state:** while Settings is open, its link carries `aria-current="page"`
+  and takes the current navigation row's tint and accent bar (along the bottom on
+  phones), never an accent fill. No navigation row is current on Settings.
+- **Which apps show Settings:** the user-facing apps KyPost, KyCalendar, KyNotes
+  and KyDrive put personal settings behind this button, in the footer and the
+  phone header, and drop Account, Phones & apps and Appearance from the navigation.
+  Admin-console apps leave the button out and keep a Settings navigation item
+  that opens the same page and sections. KyDrive's button is personal Settings;
+  its admin "Server settings" stays a separate navigation item.
+- **Phones:** the footer is hidden; `.ky-mobile-actions` in the phone header holds
+  the same buttons.
+
+### Settings page
+
+```html
+<header class="ky-page-head">
+  <div>
+    <h1 class="ky-page-title">Settings</h1>
+    <p class="ky-page-lede">Your account, the phones and apps that sync with it, and how KyNotes looks.</p>
+  </div>
+</header>
+<nav class="ky-settings-tabs" aria-label="Settings sections">
+  <a class="ky-nav-item" href="/settings/account">Account</a>
+  <a class="ky-nav-item" href="/settings/devices" aria-current="page">Phones &amp; apps</a>
+  <a class="ky-nav-item" href="/settings/appearance">Appearance</a>
+  <!-- App sections follow. -->
+</nav>
+<section aria-label="Phones &amp; apps">…</section>
+```
+
+- A page head, then one row of section tabs, then the open section. The tabs are
+  links, one URL per section, so no tab script or arrow-key handling is needed;
+  mark the open one `aria-current="page"`. It takes the current navigation row's
+  tint with the accent bar along its bottom edge.
+- The personal sections come first, in this order: Account, Phones & apps,
+  Appearance. App sections, such as KyCalendar's Sharing, follow them.
+- The page head's action, if any, is the open section's, for example
+  "New app password" on Phones & apps.
+- The tabs reuse `.ky-nav-item` states. When they do not fit, the row scrolls
+  sideways with the same edge fade as the phone navigation, and the focus ring
+  stays inside each tab.
+
+### Upgrading from 0.9
+
+Markup from 0.9 and earlier still renders: a `form` holding a text `.ky-user-signout`, directly
+inside `.ky-user`, wraps to its own full-width row under the name, and
+`.ky-mobile-signout` takes the outlined icon-button look. Each app should still move
+to the markup above:
+
+- Replace the `.ky-user > form` with `.ky-user-actions`, and the text Sign out with
+  an icon `.ky-icon-button` carrying `aria-label` and `title`.
+- Wrap the phone header's form in `.ky-mobile-actions` and rename
+  `.ky-mobile-signout` to `.ky-icon-button`, so one class covers every account
+  button. Both old names stay styled until 1.0.
+- Move Account, Phones & apps and Appearance out of the navigation into Settings.
 
 ### App rail
 
@@ -313,8 +380,8 @@ rebuilds the marks from the site's icon masters (ImageMagick for the PNG ones).
 ```html
 <header class="ky-page-head">
   <div>
-    <h1 class="ky-page-title">Phones and apps</h1>
-    <p class="ky-page-lede">Each device gets its own app password.</p>
+    <h1 class="ky-page-title">Settings</h1>
+    <p class="ky-page-lede">Your account, the phones and apps that sync with it, and how KyNotes looks.</p>
   </div>
   <button class="ky-page-action" type="button">New app password</button>
 </header>
