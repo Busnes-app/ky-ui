@@ -160,6 +160,15 @@ test('A8 phone header: one row, scrolling tabs with an edge fade, licence after 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
+test('A8 phone tabs draw the focus ring inside the scrolling row', async ({ page }, testInfo) => {
+  await phone(page, testInfo);
+  const first = page.locator('.ky-nav > .ky-nav-item').first();
+  await first.focus();
+  await expect(first).toBeFocused();
+  // The row clips overflow, so a ring drawn outside the tab would be cut off.
+  expect(await first.evaluate(el => getComputedStyle(el).outlineOffset)).toBe('-2px');
+});
+
 test('desktop shows no phone parts and no tab fade', async ({ page }, testInfo) => {
   await desktop(page, testInfo);
   await expect(page.locator('.ky-mobile-signout')).toBeHidden();
