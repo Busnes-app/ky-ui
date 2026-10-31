@@ -31,7 +31,7 @@ test('Appearance selection stays visible in forced colors and follows changes fr
   await expect(selected.locator('..')).toHaveCSS('outline-style', 'solid');
   await expect(selected).toBeVisible();
   await page.emulateMedia({ forcedColors: 'none' });
-  await page.getByRole('combobox').selectOption('legacy');
+  await page.locator('#theme').selectOption('legacy');
   await expect(page.locator('.ky-appearance-mode').first()).toHaveCSS('color', 'rgb(221, 221, 255)');
 });
 

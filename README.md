@@ -14,6 +14,7 @@ Version 0.4.0 adds the shared responsive Appearance theme-preview radio cards.
 Version 0.4.1 adds the generated classic catalog `themes-browser.js` for first-paint theme application.
 Version 0.5.0 adds the shared [shell](#shell): sign-in, user block, licence line, About dialog and page head.
 Version 0.6.0 groups the catalog into six light/dark pairs.
+Version 0.7.0 adds the shared app frame: sidebar, brand row, navigation rows, content inset and phone header.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -118,17 +119,70 @@ names and mode labels wrap normally, without product-specific nowrap or clipping
 
 ## Shell
 
-`shell.css` gives every product the same sign-in screen, sidebar user block,
-licence line, About dialog and page head, with KyCalendar's geometry. Import it
-after `tokens.css`. Unlike `navigation.css`, it owns layout as well as state, so
-render the markup below as written, in React or a Go template, and keep product
-CSS off these classes. Icons are optional, decorative and `aria-hidden="true"`.
+`shell.css` gives every product the same app frame (sidebar, brand row, content
+and phone header), sign-in screen, sidebar user block, licence line, About dialog
+and page head, with KyCalendar's geometry. Import it after `tokens.css` and
+`navigation.css`. Unlike a bare `.ky-nav-item`, these classes own layout as well as
+state, so render the markup below as written, in React or a Go template, delete
+local equivalents and keep product CSS off these classes. Icons are optional,
+decorative and `aria-hidden="true"`; navigation icons are 16px.
+
+### App frame
+
+```html
+<div class="ky-app">
+  <header class="ky-sidebar">
+    <div class="ky-mobile-head">
+      <div class="ky-brand"><img src="/app-icon.png" width="28" height="28" alt=""><span>KyNotes</span></div>
+      <form method="post" action="/logout">
+        <button class="ky-mobile-signout" type="submit" aria-label="Sign out"><svg aria-hidden="true">…</svg></button>
+      </form>
+    </div>
+    <nav class="ky-nav" aria-label="Primary">
+      <a class="ky-nav-item" href="/notes" aria-current="page"><svg aria-hidden="true">…</svg><span>Notes</span></a>
+      <p class="ky-nav-section">Administration</p>
+      <a class="ky-nav-item" href="/people"><svg aria-hidden="true">…</svg><span>People</span></a>
+    </nav>
+    <div class="ky-sidebar-foot">
+      <div class="ky-user">…</div>
+      <footer><button class="ky-license-link" type="button" commandfor="ky-about" command="show-modal">&copy; 2026 &middot; MIT License</button></footer>
+    </div>
+  </header>
+  <main class="ky-content">
+    <header class="ky-page-head">…</header>
+    …
+    <footer class="ky-content-foot"><button class="ky-license-link" type="button" commandfor="ky-about" command="show-modal">&copy; 2026 &middot; MIT License</button></footer>
+  </main>
+</div>
+```
+
+- **Brand row:** `.ky-brand` is a 28px mark and the app name, nothing else: no
+  sub-label, chip or count under it. At 1440x900 the brand row is centred at y=44
+  and the first navigation row at y=108, as in KyCalendar.
+- **Navigation rows:** inside `.ky-nav`, a `.ky-nav-item` is 40px tall with 44px
+  pitch, 16px start padding, a 16px icon, an 8px gap and `--ky-type-nav` text.
+  Wrap the label in a `span`. Mark the current page with `aria-current="page"`;
+  only that row gets the accent bar and tint. Icons follow the label colour; do not
+  tint them. `.ky-nav-section` is a plain text label: no chevron, nothing collapses.
+- **Content:** `.ky-content` starts `--ky-content-inset` (32px, 16px on phones) from
+  the sidebar, so x=272 at desktop widths, and is at most `--ky-content-max` (72rem)
+  wide plus the inset. `.ky-page-head` spans the full content width. A full-bleed
+  page such as a calendar may set `max-width: none` on its own `.ky-content`.
+- **Phones (720px and narrower):** the sidebar becomes a sticky header. Its first
+  row is the brand and the icon-only `.ky-mobile-signout`, whose `aria-label`
+  is "Sign out". The navigation becomes one row of icon-and-label tabs that
+  scrolls sideways, with the hidden edge faded (a scroll-driven animation; browsers
+  without one scroll unfaded). Section labels, user name, role and the sidebar
+  licence line are hidden; `.ky-content-foot` repeats the licence line at the end
+  of the page instead, never under the tabs. On desktop it is hidden.
 
 ### Sign-in
 
 ```html
 <main class="ky-auth">
-  <div class="ky-auth-theme"><!-- product theme picker --></div>
+  <div class="ky-auth-theme">
+    <select aria-label="Color theme"><option value="system">Match system</option>…</select>
+  </div>
   <div class="ky-auth-body">
     <div class="ky-auth-brand">
       <img src="/app-icon.png" width="56" height="56" alt="">
@@ -158,10 +212,20 @@ CSS off these classes. Icons are optional, decorative and `aria-hidden="true"`.
 
 - The app name is the page's only `h1`. The mark has `alt=""`, because the name follows it.
 - Every field is a `.ky-auth-field` holding a `label` whose `for` matches the input's unique `id`. Do not rely on placeholders.
+- `.ky-auth-theme select` is KyCalendar's picker: field border, 14px text, a 40px
+  height and a filled caret drawn in CSS. It sits top-right, 16px from both edges.
+  The row keeps 40px when a product has no picker.
+- The brand block sits at a fixed top offset (`calc(16vh + 2.5rem)` below the
+  picker row; the mark's top is at y=240 at 900px high), not centred on the card,
+  so a password-only card or a help line does not move it.
 - `.ky-auth-check` has no box. `data-ky-state` is `passed` or `failed`; leave it off while the check runs.
+  The passed text is "Browser check passed". Where no check runs, render the line
+  empty (`<p class="ky-auth-check"></p>`) so it keeps its height.
 - The card can be the `form`, or a `div` holding one `form` per step, for example a two-step code with an `h2`.
 - The button says "Sign in", and the user block says "Sign out".
 - Leave out the divider and SSO button when no provider is configured, and `.ky-auth-help` when there is no note.
+- `.ky-auth-help` is one short muted sentence under the card. The sign-in screen
+  has no footer and no licence line.
 
 ### User block and licence line
 

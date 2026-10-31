@@ -13,6 +13,24 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.7.0 — shared app frame and drift fixes (pending)
+
+Based on 0.6.0 (palette pairs). Adds KyCalendar's app frame to `shell.css`:
+`.ky-app`, `.ky-sidebar`, `.ky-brand` (28px mark and name), `.ky-sidebar-foot`,
+`.ky-content`, and the phone header `.ky-mobile-head` with an icon-only
+`.ky-mobile-signout` and a page-end `.ky-content-foot` licence line. `navigation.css`
+gives `.ky-nav-item` rows inside `.ky-nav` KyCalendar's geometry (40px rows, 16px
+icons, `--ky-type-nav`), plain `.ky-nav-section` labels, and on phones a row of
+sideways-scrolling tabs with a scroll-driven edge fade. New tokens
+`--ky-content-inset` (32px; 16px at 720px and narrower) and `--ky-content-max` (72rem).
+Sign-in: `.ky-auth-theme select` takes KyCalendar's picker look, the picker row keeps
+40px when empty, and the brand sits at a fixed top offset instead of being centred,
+so the card's height no longer moves it.
+Upgrade impact: additive class names; a bare `.ky-nav-item` keeps state-only
+styling. The sign-in brand moves by at most a few pixels at 900px high and stays put
+on other card heights. Refresh the complete source copy, adopt the classes and delete
+local equivalents (drift spec section B). No known vulnerability IDs apply.
+
 ### 0.6.0 — light/dark palette pairs (pending)
 
 Based on 0.5.0 (shared shell). The catalog is twelve halves in six pairs,

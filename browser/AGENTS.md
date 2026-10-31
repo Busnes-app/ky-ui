@@ -18,6 +18,7 @@ Owns the explicitly labeled contract fixture, loopback-only fixture server and P
 - Measure danger, success and warning text for every catalog palette on panel and hover surfaces, under both OS schemes; product-level overrides still need product checks.
 - Screenshots and failure traces are test artifacts, not pixel-diff baselines or proof of product accessibility.
 - `shell.spec.js` checks the shell parts: label/`for` pairs, the About dialog's accessible name and keyboard open/close with focus return, text contrast, no overflow at 390px/1440px, and writes `shell-<part>-<light|dark>.png` evidence at 1440x900.
+- `drift.spec.js` checks the drift rules at 1440x900 and 390px: brand row and first navigation row positions, navigation icon box and row height, content inset, the sign-in brand offset for a two-field and a one-field card, the theme-picker geometry, and the phone header (one row, scrolling tabs with an edge fade, licence line after the content). It writes `drift-<part>-<width>-<light|dark>.png` evidence.
 - `readme.spec.js` serves the README's actual HTML/module snippets with shared assets on an owned loopback port and verifies saved-choice initialization under `script-src 'self'`.
 
 ## Verification

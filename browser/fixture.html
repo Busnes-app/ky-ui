@@ -25,7 +25,7 @@
 
   <h2>Shell contract fixture</h2>
   <section class="ky-auth" aria-label="Sign-in screen">
-    <div class="ky-auth-theme"><span class="fixture-slot">Product theme picker</span></div>
+    <div class="ky-auth-theme"><select id="auth-theme" aria-label="Color theme"><option value="system">Match system</option><option value="busnes-light">Busnes · Light</option><option value="busnes-dark">Busnes · Dark</option><option value="forest-light">Forest · Light</option><option value="ocean-dark">Ocean · Dark</option></select></div>
     <div class="ky-auth-body">
       <div class="ky-auth-brand">
         <svg class="fixture-mark" viewBox="0 0 56 56" aria-hidden="true"><rect width="56" height="56" rx="14"/><path d="M20 15v26M37 15 23 28l14 13"/></svg>
@@ -47,15 +47,45 @@
         <hr class="ky-auth-divider">
         <a class="ky-auth-sso" href="/sso/login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 20 3M16 7l3 3"/></svg>Continue with KySignOn</a>
       </form>
-      <p class="ky-auth-help">Your notes are encrypted in this browser before they reach the server.</p>
     </div>
   </section>
 
-  <div class="fixture-shell">
-    <aside class="fixture-sidebar" aria-label="Shell sidebar">
-      <p class="fixture-brand"><svg class="fixture-mark" viewBox="0 0 56 56" aria-hidden="true"><rect width="56" height="56" rx="14"/><path d="M20 15v26M37 15 23 28l14 13"/></svg>KyCalendar</p>
-      <div class="fixture-sidebar-links"><a class="ky-nav-item active" href="#shell-head">Calendar</a><a class="ky-nav-item" href="#shell-head">Phones and apps</a><a class="ky-nav-item" href="#shell-head">Appearance</a></div>
-      <div class="fixture-sidebar-foot">
+  <!-- A password-only card with no picker, no check and a help line: the brand must not move. -->
+  <section class="ky-auth" aria-label="Password-only sign-in">
+    <div class="ky-auth-theme"></div>
+    <div class="ky-auth-body">
+      <div class="ky-auth-brand">
+        <svg class="fixture-mark" viewBox="0 0 56 56" aria-hidden="true"><rect width="56" height="56" rx="14"/><path d="M20 15v26M37 15 23 28l14 13"/></svg>
+        <h1>KyDNS</h1>
+        <p>Your DNS, on your own server.</p>
+      </div>
+      <form class="ky-auth-card" method="post" action="/login">
+        <div class="ky-auth-field">
+          <label for="dns-password">Password</label>
+          <input id="dns-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <p class="ky-auth-check" aria-live="polite"></p>
+        <button class="ky-auth-submit" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>Sign in</button>
+      </form>
+      <p class="ky-auth-help">Ask your administrator for an account.</p>
+    </div>
+  </section>
+
+  <div class="ky-app">
+    <aside class="ky-sidebar" aria-label="Shell sidebar">
+      <div class="ky-mobile-head">
+        <p class="ky-brand"><svg class="fixture-mark" viewBox="0 0 56 56" aria-hidden="true"><rect width="56" height="56" rx="14"/><path d="M20 15v26M37 15 23 28l14 13"/></svg><span>KyCalendar</span></p>
+        <form method="post" action="/logout"><button class="ky-mobile-signout" type="submit" aria-label="Sign out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button></form>
+      </div>
+      <nav class="ky-nav" aria-label="Shell navigation">
+        <a class="ky-nav-item" aria-current="page" href="#shell-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><span>Calendar</span></a>
+        <a class="ky-nav-item" href="#shell-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM12 18h.01"/></svg><span>Phones and apps</span></a>
+        <a class="ky-nav-item" href="#shell-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a10 10 0 1 1 10-10c0 2.8-2.2 4-4 4h-2a2 2 0 0 0-1 3.7A1.6 1.6 0 0 1 12 22zM7.5 10.5h.01M10.5 7.5h.01M15.5 8.5h.01"/></svg><span>Appearance</span></a>
+        <p class="ky-nav-section">Administration</p>
+        <a class="ky-nav-item" href="#shell-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg><span>People</span></a>
+        <a class="ky-nav-item" href="#shell-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h18v5H3zM5 8v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8M10 12h4"/></svg><span>Backups</span></a>
+      </nav>
+      <div class="ky-sidebar-foot">
         <div class="ky-user">
           <div class="ky-user-copy">
             <p class="ky-user-name">walter.with-a-deliberately-long-username</p>
@@ -66,7 +96,7 @@
         <footer><button class="ky-license-link" type="button" commandfor="ky-about" command="show-modal">&copy; 2026 &middot; MIT License</button></footer>
       </div>
     </aside>
-    <div class="fixture-content">
+    <div class="ky-content">
       <header class="ky-page-head" id="shell-head">
         <div>
           <h2 class="ky-page-title">Phones and apps</h2>
@@ -74,6 +104,9 @@
         </div>
         <button class="ky-page-action" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>New app password</button>
       </header>
+      <p class="fixture-record">Pixel 9 &middot; last used today</p>
+      <p class="fixture-record">Thunderbird on the work laptop &middot; last used yesterday</p>
+      <footer class="ky-content-foot"><button class="ky-license-link" type="button" commandfor="ky-about" command="show-modal">&copy; 2026 &middot; MIT License</button></footer>
     </div>
   </div>
 
