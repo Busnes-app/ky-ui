@@ -1,6 +1,6 @@
 {
   "name": "@busnes/ky-ui",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": true,
   "license": "MIT",
   "description": "Shared Busnes theme tokens and accessible navigation primitives for Ky web products.",
@@ -13,7 +13,8 @@
     "./themes": "./src/themes.js",
     "./appearance-themes.css": "./src/appearance-themes.css",
     "./shell.css": "./src/shell.css",
-    "./appmarks": "./src/appmarks.js"
+    "./appmarks": "./src/appmarks.js",
+    "./menu": "./src/menu.js"
   },
   "scripts": {
     "test": "node --test test/*.test.js",

@@ -18,6 +18,7 @@ Version 0.7.0 adds the shared app frame: sidebar, brand row, navigation rows, co
 Version 0.8.0 separates status from action: a crimson danger far from every accent, soft status tints and the `.ky-status` pill.
 Version 0.9.0 adds the [app rail](#app-rail), a row of suite app icons in the sidebar foot, and the `appmarks.js` app marks.
 Version 0.10.0 makes the account footer one row with icon-only Settings and Sign out, and adds the [Settings page](#settings-page) layout with section tabs.
+Version 0.11.0 turns the Settings gear into a [menu of Settings sections](#settings-menu), with the `menu.js` helper.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -138,7 +139,7 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
     <div class="ky-mobile-head">
       <div class="ky-brand"><img src="/app-icon.png" width="28" height="28" alt=""><span>KyNotes</span></div>
       <div class="ky-mobile-actions">
-        <a class="ky-icon-button" href="/settings" aria-label="Settings" title="Settings"><svg aria-hidden="true">…</svg></a>
+        <div class="ky-menu">…</div> <!-- The Settings menu, as in the account footer. -->
         <form method="post" action="/logout">
           <button class="ky-icon-button" type="submit" aria-label="Sign out" title="Sign out"><svg aria-hidden="true">…</svg></button>
         </form>
@@ -246,8 +247,8 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
     <p class="ky-user-role">Everyday account</p>
   </div>
   <div class="ky-user-actions">
-    <!-- User-facing apps only. aria-current="page" while Settings is open. -->
-    <a class="ky-icon-button" href="/settings" aria-label="Settings" title="Settings"><svg aria-hidden="true">…</svg></a>
+    <!-- User-facing apps only: the Settings menu below. -->
+    <div class="ky-menu">…</div>
     <form method="post" action="/logout">
       <button class="ky-icon-button" type="submit" aria-label="Sign out" title="Sign out"><svg aria-hidden="true">…</svg></button>
     </form>
@@ -265,9 +266,10 @@ then the icon buttons. The role line is "Administrator" or "Everyday account".
 - **Icon buttons:** `.ky-icon-button` is outlined, 40px square on a mouse or
   trackpad and 44px on a touch screen, with a 16px icon (Lucide `settings` and
   `log-out`). The icon is `aria-hidden`, so `aria-label` names the button and
-  `title` shows the same word on hover. Settings is a link; Sign out is a form
-  `POST` or a button with a click handler. Settings comes first, Sign out last.
-- **Current state:** while Settings is open, its link carries `aria-current="page"`
+  `title` shows the same word on hover. Settings is a menu button (see
+  [Settings menu](#settings-menu)); Sign out is a form `POST` or a button with a
+  click handler. Settings comes first, Sign out last.
+- **Current state:** while Settings is open, the gear carries `aria-current="page"`
   and takes the current navigation row's tint and accent bar (along the bottom on
   phones), never an accent fill. No navigation row is current on Settings.
 - **Which apps show Settings:** the user-facing apps KyPost, KyCalendar, KyNotes
@@ -278,6 +280,69 @@ then the icon buttons. The role line is "Administrator" or "Everyday account".
   its admin "Server settings" stays a separate navigation item.
 - **Phones:** the footer is hidden; `.ky-mobile-actions` in the phone header holds
   the same buttons.
+
+### Settings menu
+
+The gear does not open a page: it opens a menu of the app's Settings sections, and
+each item opens that section's tab. (KyPost's first tab, Account, asks for the password
+again, so a gear that went straight to Settings always hit a password prompt.) Use the
+same markup in the footer and the phone header, with a different `id` for each menu:
+
+```html
+<div class="ky-menu">
+  <button class="ky-icon-button" type="button" aria-label="Settings" title="Settings"
+          aria-haspopup="menu" aria-expanded="false" aria-controls="ky-settings-menu"><svg aria-hidden="true">…</svg></button>
+  <div class="ky-menu-list" id="ky-settings-menu" role="menu" aria-label="Settings" hidden>
+    <a role="menuitem" tabindex="-1" href="/settings/account">Account</a>
+    <a role="menuitem" tabindex="-1" href="/settings/devices" aria-current="page">Phones &amp; apps</a>
+    <a role="menuitem" tabindex="-1" href="/settings/appearance">Appearance</a>
+    <!-- App sections follow, in tab order. -->
+  </div>
+</div>
+```
+
+- **Items** are links, one per Settings section, in the same order as the
+  `.ky-settings-tabs`. The open section's item carries `aria-current="page"`, and so
+  does the gear, while Settings is open. Leave out sections this user cannot see.
+  There is no "All settings" item, because the menu already lists every section.
+- **Placement:** in `.ky-user-actions` the menu opens upward and spans the footer row.
+  In `.ky-mobile-actions` it opens downward, aligned to the end of the buttons, never
+  wider than the screen less 2rem. The panel, line and shadow are the About dialog's.
+  Rows are 40px, or 44px on `pointer: coarse`. The open section's row gets the
+  navigation row's tint and bar, and the focus ring sits inside the row.
+- **Behaviour** follows the WAI-ARIA menu button pattern. A click, Enter, Space or
+  ArrowDown opens the menu on the first item, and ArrowUp opens it on the last.
+  ArrowDown and ArrowUp move between items and wrap. Home and End jump to the ends,
+  and a letter jumps to the next item starting with it. Escape closes the menu and
+  returns focus to the gear. Tab, or a click outside, closes it. Choosing an item
+  closes the menu and puts focus on the gear before the route changes.
+- **Script:** `menu.js` (export `./menu`) has no dependencies. Server-rendered pages
+  call it once from their external entry script:
+
+  ```js
+  import { initMenuButtons } from "/assets/ky-ui/menu.js";
+  initMenuButtons();
+  ```
+
+  `initMenuButton(button)` wires one gear. Both return a cleanup function, so React can
+  call either from an effect, for example `useEffect(() => initMenuButton(ref.current), [])`.
+  React can also render the markup and keep `aria-expanded` in state, as long as it has
+  the same behaviour. Without a script the gear does nothing, so render the menu
+  only with its script.
+
+Each app supplies these items, in this order (its current tab order):
+
+| App | Items |
+| --- | --- |
+| KyPost | Account, Phones & apps, Appearance, Mail, Notifications, Email Labels, then Status for everyday users or Server and Diagnostics for administrators |
+| KyCalendar | Account, Phones & apps (everyday users only), Appearance |
+| KyNotes | Account, Phones & apps, Appearance, Reminders, Colleague keys, Unsent edits |
+| KyDrive | Account, Phones & apps, Appearance, Files |
+
+**KyPost:** list Account first, but never open it automatically. The gear only opens
+the menu. Enter or ArrowDown focuses Account and does not follow it. A bare
+`/settings` (an old link or bookmark) should land on Phones & apps, the first section
+without a password check, not on Account.
 
 ### Settings page
 
@@ -308,6 +373,13 @@ then the icon buttons. The role line is "Administrator" or "Everyday account".
 - The tabs reuse `.ky-nav-item` states. When they do not fit, the row scrolls
   sideways with the same edge fade as the phone navigation, and the focus ring
   stays inside each tab.
+
+### Upgrading from 0.10
+
+Replace the Settings `<a class="ky-icon-button" href="/settings">` in the footer and
+the phone header with the [Settings menu](#settings-menu), and load `menu.js` (or wire
+the same behaviour in React). The 0.10 link still renders and still works, but it skips
+the menu. Nothing else changes.
 
 ### Upgrading from 0.9
 

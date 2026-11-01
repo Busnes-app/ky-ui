@@ -13,6 +13,27 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+### 0.11.0 — Settings menu (pending)
+
+Based on 0.10.0. Follows the owner decision of 2026-10-31: in KyPost, KyCalendar, KyNotes and
+KyDrive the Settings gear opens a menu of that app's Settings sections instead of a page, so
+KyPost's gear no longer lands on the password-checked Account tab. New `src/menu.js`
+(+ `menu.d.ts`, export `./menu`): `initMenuButton(button)` and `initMenuButtons(root)`, a
+dependency-free WAI-ARIA menu button. Enter, Space, a click or ArrowDown opens the menu on the
+first item and ArrowUp on the last. Arrows wrap, Home, End and type-ahead move, Escape closes
+it and returns focus to the gear, and Tab or a click outside closes it. Choosing an item puts
+focus back on the gear. Both functions return a cleanup.
+`shell.css` adds `.ky-menu` and `.ky-menu-list`: the About dialog's panel, line and overlay
+shadow, and link `menuitem` rows of 40px (44px on `pointer: coarse`). The open section's row
+gets the navigation tint and bar, and the focus ring sits inside the row. The menu opens upward
+over the footer row and downward from the phone header, within 390px. `sync-consumers.mjs` copies
+`menu.js` and `menu.d.ts`. README "Settings menu" gives the markup, each app's item list and the
+KyPost rule (Account first, never opened automatically). `menu.spec.js` covers keyboard
+open, move and close, focus return, Tab and outside-click closing, `aria-expanded`, row sizes,
+direction and overflow at 390px and 1280px, and text contrast in all twelve halves.
+Upgrade impact: additive. The 0.10 Settings link still renders; apps switch to the menu
+markup and load `menu.js` (README "Upgrading from 0.10"). No known vulnerability IDs apply.
+
 ### 0.10.0 — account footer and Settings (pending)
 
 Based on 0.9.0 (app rail). Follows the owner rules of 2026-10-31: KyDrive's original footer

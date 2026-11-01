@@ -1,6 +1,7 @@
 import { applyTheme, readChoice, saveChoice, watchChoice } from '/theme.js';
 import { SYSTEM_THEME, THEME_CATALOG, THEME_PAIRS, applyThemeVariables, findTheme } from '/themes.js';
 import { appMark } from '/appmarks.js';
+import { initMenuButtons } from '/menu.js';
 
 const select = document.querySelector('#theme');
 const grid = document.querySelector('.ky-appearance-grid');
@@ -70,3 +71,4 @@ for (const list of document.querySelectorAll('.ky-app-rail ul')) {
     list.append(item);
   }
 }
+initMenuButtons();
