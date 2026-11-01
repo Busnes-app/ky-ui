@@ -125,7 +125,7 @@ test('A8 phone header: one row, scrolling tabs with an edge fade, licence after 
   const head = page.locator('.ky-mobile-head');
   const headBox = await box(head);
   const brand = await box(head.locator('.ky-brand'));
-  const settings = head.getByRole('link', { name: 'Settings', exact: true });
+  const settings = head.getByRole('button', { name: 'Settings', exact: true });
   const signout = head.getByRole('button', { name: 'Sign out', exact: true });
   await expect(settings).toBeVisible();
   await expect(settings).toHaveAttribute('aria-current', 'page');

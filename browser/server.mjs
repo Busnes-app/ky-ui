@@ -13,6 +13,7 @@ const files = {
   '/themes.js': ['../src/themes.js', 'text/javascript'],
   '/theme.js': ['../src/theme.js', 'text/javascript'],
   '/appmarks.js': ['../src/appmarks.js', 'text/javascript'],
+  '/menu.js': ['../src/menu.js', 'text/javascript'],
 };
 createServer(async (req, res) => {
   const file = Object.hasOwn(files, req.url) ? files[req.url] : undefined;

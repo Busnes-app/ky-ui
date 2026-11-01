@@ -137,7 +137,7 @@ test('account footer is one row at the sidebar width: identity, then Settings an
 
 test('account icon buttons have names, titles and at least 40px targets', async ({ page }, testInfo) => {
   await page.goto('/');
-  await expect(page.locator('.ky-sidebar').getByRole('link', { name: 'Settings', exact: true })).toBeVisible();
+  await expect(page.locator('.ky-sidebar').getByRole('button', { name: 'Settings', exact: true })).toBeVisible();
   await expect(page.locator('.ky-sidebar').getByRole('button', { name: 'Sign out', exact: true })).toBeVisible();
   const buttons = await accountButtons(page, testInfo).evaluateAll(els => els.map(el => {
     const r = el.getBoundingClientRect();
