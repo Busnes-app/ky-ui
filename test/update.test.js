@@ -2,19 +2,34 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildAssets, pageAssets, watchForUpdate } from '../src/update.js';
 
-const LOADED = `<!doctype html><html><head>
-<!-- <script src="/assets/commented-out.js"></script> -->
-<link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" crossorigin href="/assets/index-AAAA.css">
-<script src="/assets/ky-ui/themes-browser.js"></script>
-<script type="module" crossorigin src='/assets/index-1111.js'></script>
-</head><body><div id="root"></div></body></html>`;
-const NEWER = LOADED.replace('index-1111.js', 'index-2222.js');
+// Node has no DOMParser, so these tests inject a stand-in that returns a fake document for each
+// page. Real HTML parsing (comments, case, inline scripts, icons) is checked in Chromium by
+// browser/update.spec.js.
+const LOADED = '<html>loaded</html>';
+const NEWER = '<html>newer</html>';
+const ASSETS = {
+  [LOADED]: ['/assets/index-AAAA.css', '/assets/ky-ui/themes-browser.js', '/assets/index-1111.js'],
+  [NEWER]: ['/assets/index-AAAA.css', '/assets/ky-ui/themes-browser.js', '/assets/index-2222.js'],
+};
+const fakeDocument = (urls = []) => {
+  const nodes = urls.map(url => ({ localName: url.endsWith('.css') ? 'link' : 'script', getAttribute: () => url }));
+  return { selectors: [], querySelectorAll(selector) { this.selectors.push(selector); return nodes; } };
+};
+class FakeParser {
+  static calls = [];
+  parseFromString(html, type) { FakeParser.calls.push([html, type]); return fakeDocument(ASSETS[html]); }
+}
 
-test('buildAssets lists script and stylesheet URLs, skipping comments, icons and inline scripts', () => {
-  assert.deepEqual(buildAssets(LOADED), ['/assets/index-AAAA.css', '/assets/ky-ui/themes-browser.js', '/assets/index-1111.js']);
-  assert.deepEqual(buildAssets('<SCRIPT>inline()</SCRIPT><LINK REL="preload stylesheet" HREF=/a.css>'), ['/a.css']);
-  assert.deepEqual(buildAssets('<p>Signed out</p>'), []);
+test('buildAssets parses the HTML as text/html and reads it as pageAssets reads the live page', () => {
+  FakeParser.calls = [];
+  assert.deepEqual(buildAssets(LOADED, new FakeParser()), ASSETS[LOADED]);
+  assert.deepEqual(FakeParser.calls, [[LOADED, 'text/html']]);
+  assert.deepEqual(buildAssets('<p>Signed out</p>', new FakeParser()), []);
+  const doc = fakeDocument(['/a.js', '', '/b.css']);
+  const parser = { parseFromString: () => doc };
+  assert.deepEqual(buildAssets('<html>', parser), ['/a.js', '/b.css'], 'empty URLs are skipped, order kept');
+  assert.deepEqual(doc.selectors, ['script[src], link[rel~="stylesheet"][href]']);
+  assert.throws(() => buildAssets(LOADED), /DOMParser/, 'no parser outside a browser');
 });
 
 // Just enough DOM and window for the watcher: the start-up assets, events, a timer and the notice.
@@ -30,16 +45,15 @@ function fixture(html = LOADED) {
     remove() { this.removed = true; },
   });
   const view = {
-    navigator: { onLine: true }, reloads: 0, timer: null, cleared: false,
+    DOMParser: FakeParser, navigator: { onLine: true }, reloads: 0, timer: null, cleared: false,
     location: { reload() { view.reloads++; } },
     setInterval(fn) { view.timer = fn; return 1; },
     clearInterval() { view.cleared = true; },
     addEventListener: on(listeners.view), removeEventListener: off(listeners.view),
   };
-  const nodes = buildAssets(html).map(url => ({ localName: url.endsWith('.css') ? 'link' : 'script', getAttribute: () => url }));
   const doc = {
     defaultView: view, visibilityState: 'visible', body: element('body'),
-    querySelectorAll: () => nodes, createElement: element,
+    querySelectorAll: () => fakeDocument(ASSETS[html]).querySelectorAll(), createElement: element,
     addEventListener: on(listeners.doc), removeEventListener: off(listeners.doc),
   };
   const requests = [];
@@ -56,7 +70,7 @@ function fixture(html = LOADED) {
 
 test('pageAssets reads scripts and stylesheets from the live document', () => {
   const { doc } = fixture();
-  assert.deepEqual(pageAssets(doc), buildAssets(LOADED));
+  assert.deepEqual(pageAssets(doc), ASSETS[LOADED]);
 });
 
 test('a new build shows one polite notice with Reload and Dismiss; it never reloads by itself', async t => {

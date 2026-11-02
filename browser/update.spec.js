@@ -86,3 +86,33 @@ test('offline, the check stays quiet', async ({ page, context, request }, testIn
   await context.setOffline(false);
   await expect(page.getByRole('status')).toBeVisible();
 });
+
+test('buildAssets parses fetched HTML with DOMParser: comments, icons and inline scripts are not assets', async ({ page }, testInfo) => {
+  const { errors } = await open(page, testInfo);
+  const assets = await page.evaluate(async () => {
+    const { buildAssets, pageAssets } = await import('/update.js');
+    const html = `<!doctype html><html><head>
+<!-- <script src="/assets/commented-out.js"></script> -->
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" crossorigin href="/assets/index-AAAA.css">
+<script src="/assets/ky-ui/themes-browser.js"></script>
+<script type="module" crossorigin src='/assets/index-1111.js'></script>
+<script>window.parsedScriptRan = true;</script>
+</head><body><div id="root"></div></body></html>`;
+    return {
+      page: buildAssets(html),
+      commentOnly: buildAssets('<!-- <script src="/old.js"></script> --><p>Signed out</p>'),
+      unclosedComment: buildAssets('<p>x</p><!-- <script src="/old.js"></script>'),
+      upper: buildAssets('<SCRIPT>inline()</SCRIPT><LINK REL="preload stylesheet" HREF=/a.css>'),
+      live: pageAssets(),
+      ran: window.parsedScriptRan ?? false,
+    };
+  });
+  expect(assets.page).toEqual(['/assets/index-AAAA.css', '/assets/ky-ui/themes-browser.js', '/assets/index-1111.js']);
+  expect(assets.commentOnly).toEqual([]);
+  expect(assets.unclosedComment).toEqual([]);
+  expect(assets.upper).toEqual(['/a.css']);
+  expect(assets.live, 'the live page ignores its commented-out script too').toEqual(['/tokens.css', '/navigation.css', '/shell.css', expect.stringMatching(/^\/update-fixture\.js\?build=1$/)]);
+  expect(assets.ran, 'parsing runs no script').toBe(false);
+  expect(errors, 'no CSP or console errors').toEqual([]);
+});

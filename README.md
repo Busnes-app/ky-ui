@@ -477,7 +477,8 @@ watchForUpdate({ name: 'KyIdentity' });
 It records the script and stylesheet URLs the page loaded with. On focus, when the tab
 becomes visible, on reconnecting and on a timer while visible, at most every five minutes
 (`interval`), it fetches the entry document (`url`, default `/`) with `cache: 'no-store'`
-and compares the URLs it names. Vite hashes bundle names, so a new build differs. A
+and compares the URLs it names, read with the browser's inert `DOMParser` exactly as the live
+page is read (comments are not elements). Vite hashes bundle names, so a new build differs. A
 different list shows `.ky-update`, a polite `role="status"` panel in the bottom corner
 ("KyIdentity was updated. Reload to use the new version.", Reload, Dismiss), styled by
 `shell.css`, and checking stops. Offline, a failed request, a redirect (such as to sign-in),

@@ -17,10 +17,12 @@ const files = {
   '/update.js': ['../src/update.js', 'text/javascript'],
 };
 // Update notice: /update/?id=<test> is an entry document whose bundle name changes after a
-// POST to /update/release?id=<test>, as a deploy changes Vite's hashed name.
+// POST to /update/release?id=<test>, as a deploy changes Vite's hashed name. Its commented-out
+// script names a different bundle each build, so a parser that read comments would never be quiet.
 const builds = new Map();
 const updatePage = (id, build) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Update notice fixture</title>
 <link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/navigation.css"><link rel="stylesheet" href="/shell.css">
+<!-- A commented-out bundle is not an asset: <script src="/update-fixture.js?build=${build + 100}"></script> -->
 <script type="module" src="/update-fixture.js?build=${build}"></script></head>
 <body><main class="fixture-update"><h1>KyIdentity</h1><label>Unsaved note <textarea id="note"></textarea></label></main></body></html>`;
 createServer(async (req, res) => {

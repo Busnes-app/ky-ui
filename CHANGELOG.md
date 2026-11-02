@@ -38,7 +38,8 @@ Update notice (same pending 0.11.0, version unchanged): new `src/update.js` (+ `
 export `./update`), synced to consumers. `watchForUpdate({ name })` records the scripts and
 stylesheets the page loaded with and, on focus, visibility, reconnecting or a visible-tab timer
 at most every five minutes, re-fetches the entry document (`cache: 'no-store'`, no redirects)
-and compares the URLs it names. A different build shows `.ky-update` (`shell.css`): a polite
+and compares the URLs it names, parsing it with the browser's inert `DOMParser` (no regex
+over the fetched HTML; comments are not elements). A different build shows `.ky-update` (`shell.css`): a polite
 status panel with Reload and Dismiss; it never reloads by itself. Offline, errors, redirects
 and asset-free pages stay quiet. `update.test.js` and `update.spec.js` (strict CSP fixture)
 cover detection, quiet cases, Reload, Dismiss, offline, contrast and 40px targets.
