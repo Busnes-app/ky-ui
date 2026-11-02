@@ -18,7 +18,7 @@ Version 0.7.0 adds the shared app frame: sidebar, brand row, navigation rows, co
 Version 0.8.0 separates status from action: a crimson danger far from every accent, soft status tints and the `.ky-status` pill.
 Version 0.9.0 adds the [app rail](#app-rail), a row of suite app icons in the sidebar foot, and the `appmarks.js` app marks.
 Version 0.10.0 makes the account footer one row with icon-only Settings and Sign out, and adds the [Settings page](#settings-page) layout with section tabs.
-Version 0.11.0 turns the Settings gear into a [menu of Settings sections](#settings-menu), with the `menu.js` helper.
+Version 0.11.0 turns the Settings gear into a [menu of Settings sections](#settings-menu), with the `menu.js` helper, and adds the [update notice](#update-notice) (`update.js`).
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -125,7 +125,7 @@ names and mode labels wrap normally, without product-specific nowrap or clipping
 
 `shell.css` gives every product the same app frame (sidebar, brand row, content
 and phone header), sign-in screen, app rail, account footer, licence line, About dialog,
-page head, Settings layout and status pills, with KyCalendar's geometry. Import it after `tokens.css` and
+page head, Settings layout, status pills and update notice, with KyCalendar's geometry. Import it after `tokens.css` and
 `navigation.css`. Unlike a bare `.ky-nav-item`, these classes own layout as well as
 state, so render the markup below as written, in React or a Go template, delete
 local equivalents and keep product CSS off these classes. Icons are optional,
@@ -461,6 +461,31 @@ rebuilds the marks from the site's icon masters (ImageMagick for the PNG ones).
 
 The lede is one sentence. `.ky-page-action` is the page's only primary button,
 and you can leave it out. On narrow screens it wraps below the title.
+
+### Update notice
+
+A tab left open across an upgrade keeps running the old build while it reads the new
+server's data. `update.js` notices and offers a reload; it never reloads by itself, since
+the page may hold unsaved work. Call it once from the product's entry module, before
+anything adds stylesheets:
+
+```js
+import { watchForUpdate } from './ky-ui/update.js';
+watchForUpdate({ name: 'KyIdentity' });
+```
+
+It records the script and stylesheet URLs the page loaded with. On focus, when the tab
+becomes visible, on reconnecting and on a timer while visible, at most every five minutes
+(`interval`), it fetches the entry document (`url`, default `/`) with `cache: 'no-store'`
+and compares the URLs it names. Vite hashes bundle names, so a new build differs. A
+different list shows `.ky-update`, a polite `role="status"` panel in the bottom corner
+("KyIdentity was updated. Reload to use the new version.", Reload, Dismiss), styled by
+`shell.css`, and checking stops. Offline, a failed request, a redirect (such as to sign-in),
+a non-HTML response or a page naming no assets stays quiet. It needs only `connect-src
+'self'`, adds no inline script or style, and returns a cleanup. Serve the entry document
+with `Cache-Control: no-cache`, so Reload (and every new tab) gets the new build. A service
+worker must send that request to the network: network-first for `/`, never cache-first.
+Pages whose HTML names no hashed assets (server-rendered templates) cannot use it as is.
 
 ### Status vs action
 
