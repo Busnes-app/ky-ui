@@ -34,6 +34,18 @@ direction and overflow at 390px and 1280px, and text contrast in all twelve halv
 Upgrade impact: additive. The 0.10 Settings link still renders; apps switch to the menu
 markup and load `menu.js` (README "Upgrading from 0.10"). No known vulnerability IDs apply.
 
+Update notice (same pending 0.11.0, version unchanged): new `src/update.js` (+ `update.d.ts`,
+export `./update`), synced to consumers. `watchForUpdate({ name })` records the scripts and
+stylesheets the page loaded with and, on focus, visibility, reconnecting or a visible-tab timer
+at most every five minutes, re-fetches the entry document (`cache: 'no-store'`, no redirects)
+and compares the URLs it names, parsing it with the browser's inert `DOMParser` (no regex
+over the fetched HTML; comments are not elements). A different build shows `.ky-update` (`shell.css`): a polite
+status panel with Reload and Dismiss; it never reloads by itself. Offline, errors, redirects
+and asset-free pages stay quiet. `update.test.js` and `update.spec.js` (strict CSP fixture)
+cover detection, quiet cases, Reload, Dismiss, offline, contrast and 40px targets.
+Upgrade impact: additive; apps opt in with one call and serve the entry document with
+`Cache-Control: no-cache`.
+
 ### 0.10.0 — account footer and Settings (pending)
 
 Based on 0.9.0 (app rail). Follows the owner rules of 2026-10-31: KyDrive's original footer

@@ -14,7 +14,8 @@
     "./appearance-themes.css": "./src/appearance-themes.css",
     "./shell.css": "./src/shell.css",
     "./appmarks": "./src/appmarks.js",
-    "./menu": "./src/menu.js"
+    "./menu": "./src/menu.js",
+    "./update": "./src/update.js"
   },
   "scripts": {
     "test": "node --test test/*.test.js",

@@ -14,6 +14,7 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/menu.js` owns the menu button behaviour (WAI-ARIA pattern) for the Settings gear's section menu; `shell.css` owns its look (`.ky-menu`, `.ky-menu-list`).
 - `src/appmarks.js` owns the suite app marks for the app rail, keyed by KyIdentity client ID, plus the letter-badge fallback. `scripts/appmarks.mjs` generates the `appMarks` table from the Busnes.app-site icon masters; the app list itself comes from each product's server.
 - `src/theme.js` owns theme choice normalization, OS fallback, persistence, and application to a document.
+- `src/update.js` owns the stale-build check and its reload notice (styled in `src/shell.css`); it never reloads by itself.
 - `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, the classic catalog copy `themes-browser.js` (from `src/themes.js`), and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
 - `skills/` owns the reusable suite design skill; `reviews/` owns comparative screenshot evidence and staged acceptance records.

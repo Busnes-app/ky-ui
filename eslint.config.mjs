@@ -10,7 +10,7 @@ export default [
   },
   {
     // Playwright specifications contain callbacks that execute in the browser.
-    files: ['src/theme.js', 'browser/fixture.js', 'browser/*.spec.js'],
+    files: ['src/theme.js', 'src/update.js', 'browser/fixture.js', 'browser/update-fixture.js', 'browser/*.spec.js'],
     languageOptions: { globals: globals.browser },
   },
   {
