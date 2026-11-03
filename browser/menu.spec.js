@@ -134,6 +134,20 @@ test.describe('on a touch screen', () => {
     expect(heights).toEqual([44, 44, 44, 44]);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
+  test('a long menu on a landscape phone scrolls inside the viewport', async ({ page }) => {
+    await page.setViewportSize({ width: 667, height: 375 });
+    await page.goto('/');
+    await page.locator('.ky-app').evaluate(el => el.scrollIntoView({ block: 'start' }));
+    const scope = page.locator('.ky-mobile-actions');
+    const menu = page.locator('#settings-menu-phone');
+    // KyPost's administrator menu has eight sections.
+    await menu.evaluate(list => { for (const name of ['Security', 'Domains', 'Users', 'Diagnostics']) { const item = list.firstElementChild.cloneNode(); item.textContent = name; list.append(item); } });
+    await scope.getByRole('button', { name: 'Settings', exact: true }).tap();
+    const box = await menu.boundingBox();
+    expect(box.y + box.height).toBeLessThanOrEqual(375);
+    await page.keyboard.press('End');
+    await expect(menu.getByRole('menuitem', { name: 'Diagnostics' })).toBeInViewport({ ratio: 1 });
+  });
 });
 
 test('the menu reads and fits in every palette half', async ({ page }, testInfo) => {
