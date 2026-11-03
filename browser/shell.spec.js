@@ -20,7 +20,7 @@ test('sign-in card pairs every label with its field', async ({ page }) => {
   const [cardBox, submitBox] = [await card.boundingBox(), await submit.boundingBox()];
   expect(cardBox.width).toBeLessThanOrEqual(360);
   expect(submitBox.width).toBeCloseTo(cardBox.width - 2 * 24 - 2, 0);
-  await expect(card.getByRole('link', { name: 'Continue with KySignOn' })).toHaveCSS('border-top-style', 'solid');
+  await expect(card.getByRole('link', { name: 'Continue with KyIdentity' })).toHaveCSS('border-top-style', 'solid');
   await submit.focus();
   await expect(submit).toHaveCSS('outline-style', 'solid');
 });

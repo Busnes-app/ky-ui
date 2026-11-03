@@ -46,6 +46,16 @@ cover detection, quiet cases, Reload, Dismiss, offline, contrast and 40px target
 Upgrade impact: additive; apps opt in with one call and serve the entry document with
 `Cache-Control: no-cache`.
 
+Hostile-review fixes (same pending 0.11.0, version unchanged): the desktop sidebar scrolls when
+the window is too short for it (a landscape phone, a long admin menu), so Settings and Sign out
+stay reachable; the Settings menu scrolls instead of running off a short screen or the top of the sidebar; the phone tab
+fade applies only where scroll timelines are supported (Firefox faded the first tab); forced
+colours outline the current navigation row and Settings tab. `applyTheme` in system mode no
+longer pins an inline `color-scheme`, so native controls follow a later OS change, and with no
+choice it reads the `storage` it was given. `watchForUpdate` ignores `<noscript>` assets (a
+false notice), times a check out after 30 seconds, and shows nothing after its cleanup ran.
+The sign-in example says "Continue with KyIdentity". Upgrade impact: none; re-sync.
+
 ### 0.10.0 — account footer and Settings (pending)
 
 Based on 0.9.0 (app rail). Follows the owner rules of 2026-10-31: KyDrive's original footer

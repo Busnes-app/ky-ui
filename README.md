@@ -214,7 +214,7 @@ decorative and `aria-hidden="true"`; navigation icons are 16px.
       <a class="ky-auth-link" href="/forgot">Forgot your password?</a>
       <!-- Only when SSO is configured: -->
       <hr class="ky-auth-divider">
-      <a class="ky-auth-sso" href="/sso/login">Continue with KySignOn</a>
+      <a class="ky-auth-sso" href="/sso/login">Continue with KyIdentity</a>
     </form>
     <p class="ky-auth-help">Notes are encrypted in this browser before they reach the server.</p>
   </div>
