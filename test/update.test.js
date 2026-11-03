@@ -11,8 +11,8 @@ const ASSETS = {
   [LOADED]: ['/assets/index-AAAA.css', '/assets/ky-ui/themes-browser.js', '/assets/index-1111.js'],
   [NEWER]: ['/assets/index-AAAA.css', '/assets/ky-ui/themes-browser.js', '/assets/index-2222.js'],
 };
-const fakeDocument = (urls = []) => {
-  const nodes = urls.map(url => ({ localName: url.endsWith('.css') ? 'link' : 'script', getAttribute: () => url }));
+const fakeDocument = (urls = [], noscript = []) => {
+  const nodes = [...urls, ...noscript].map(url => ({ localName: url.endsWith('.css') ? 'link' : 'script', getAttribute: () => url, closest: () => (noscript.includes(url) ? {} : null) }));
   return { selectors: [], querySelectorAll(selector) { this.selectors.push(selector); return nodes; } };
 };
 class FakeParser {
@@ -29,6 +29,8 @@ test('buildAssets parses the HTML as text/html and reads it as pageAssets reads 
   const parser = { parseFromString: () => doc };
   assert.deepEqual(buildAssets('<html>', parser), ['/a.js', '/b.css'], 'empty URLs are skipped, order kept');
   assert.deepEqual(doc.selectors, ['script[src], link[rel~="stylesheet"][href]']);
+  // DOMParser runs without scripting, so <noscript> content is elements there and text live.
+  assert.deepEqual(buildAssets('<html>', { parseFromString: () => fakeDocument(['/a.js'], ['/nojs.css']) }), ['/a.js'], 'noscript assets are skipped');
   assert.throws(() => buildAssets(LOADED), /DOMParser/, 'no parser outside a browser');
 });
 
@@ -49,6 +51,9 @@ function fixture(html = LOADED) {
     location: { reload() { view.reloads++; } },
     setInterval(fn) { view.timer = fn; return 1; },
     clearInterval() { view.cleared = true; },
+    timeouts: [],
+    setTimeout(fn, ms) { view.timeouts.push({ fn, ms, cleared: false }); return view.timeouts.length; },
+    clearTimeout(id) { if (view.timeouts[id - 1]) view.timeouts[id - 1].cleared = true; },
     addEventListener: on(listeners.view), removeEventListener: off(listeners.view),
   };
   const doc = {
@@ -61,6 +66,7 @@ function fixture(html = LOADED) {
   const fetch = async (url, init) => {
     requests.push({ url, init });
     if (served instanceof Error) throw served;
+    if (served instanceof Promise) await served;
     return { ok: served.status >= 200 && served.status < 300, headers: { get: () => served.type }, text: async () => served.body };
   };
   const fire = async (bucket, type) => { for (const fn of listeners[bucket][type] ?? []) fn(); await new Promise(resolve => setImmediate(resolve)); };
@@ -84,7 +90,9 @@ test('a new build shows one polite notice with Reload and Dismiss; it never relo
   page.serve({ status: 200, type: 'text/html', body: NEWER });
   await page.fire('view', 'focus');
   assert.equal(page.requests.length, 1);
-  assert.deepEqual(page.requests[0], { url: '/', init: { cache: 'no-store', credentials: 'same-origin', redirect: 'manual', headers: { Accept: 'text/html' } } });
+  const { signal, ...init } = page.requests[0].init;
+  assert.deepEqual({ url: page.requests[0].url, init }, { url: '/', init: { cache: 'no-store', credentials: 'same-origin', redirect: 'manual', headers: { Accept: 'text/html' } } });
+  assert.ok(signal instanceof AbortSignal, 'a request that never settles is aborted, so checking resumes');
   const notice = page.notice();
   assert.equal(notice.className, 'ky-update');
   assert.equal(notice.attrs.role, 'status');
@@ -147,4 +155,47 @@ test('the timer checks a visible tab, and the cleanup stops checking and removes
   const notice = page.notice();
   stop();
   assert.equal(notice.removed, true);
+});
+
+test('a check still in flight when the cleanup runs shows nothing', async t => {
+  t.mock.timers.enable({ apis: ['Date'] });
+  const page = fixture();
+  const stop = watchForUpdate({ doc: page.doc, fetch: page.fetch, interval: 1000 });
+  let respond;
+  page.serve(new Promise(resolve => { respond = resolve; }));
+  t.mock.timers.tick(1000);
+  page.view.timer();
+  assert.equal(page.requests.length, 1);
+  stop();
+  page.serve({ status: 200, type: 'text/html', body: NEWER });
+  respond();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(page.notice(), undefined);
+});
+
+test('a request that never settles is aborted after 30 seconds, and the next check goes ahead', async t => {
+  t.mock.timers.enable({ apis: ['Date'] });
+  const page = fixture();
+  watchForUpdate({ doc: page.doc, fetch: page.fetch, interval: 1000 });
+  let hung;
+  page.serve(new Promise((resolve, reject) => { hung = reject; }));
+  t.mock.timers.tick(1000);
+  page.view.timer();
+  const { signal } = page.requests[0].init;
+  signal.addEventListener('abort', () => hung(signal.reason));
+  t.mock.timers.tick(1000);
+  page.view.timer();
+  assert.equal(page.requests.length, 1, 'busy while the first request hangs');
+  const [timeout] = page.view.timeouts;
+  assert.equal(timeout.ms, 30_000);
+  timeout.fn();
+  assert.equal(signal.aborted, true);
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(timeout.cleared, true);
+  page.serve({ status: 200, type: 'text/html', body: NEWER });
+  t.mock.timers.tick(1000);
+  page.view.timer();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(page.requests.length, 2);
+  assert.ok(page.notice(), 'the check after the timeout found the new build');
 });

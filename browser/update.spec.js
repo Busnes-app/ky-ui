@@ -104,6 +104,8 @@ test('buildAssets parses fetched HTML with DOMParser: comments, icons and inline
       commentOnly: buildAssets('<!-- <script src="/old.js"></script> --><p>Signed out</p>'),
       unclosedComment: buildAssets('<p>x</p><!-- <script src="/old.js"></script>'),
       upper: buildAssets('<SCRIPT>inline()</SCRIPT><LINK REL="preload stylesheet" HREF=/a.css>'),
+      // DOMParser parses without scripting, so <noscript> content would be elements here and text live.
+      noscript: buildAssets('<head><noscript><link rel="stylesheet" href="/nojs.css"></noscript><script src="/a.js"></script></head>'),
       live: pageAssets(),
       ran: window.parsedScriptRan ?? false,
     };
@@ -112,6 +114,7 @@ test('buildAssets parses fetched HTML with DOMParser: comments, icons and inline
   expect(assets.commentOnly).toEqual([]);
   expect(assets.unclosedComment).toEqual([]);
   expect(assets.upper).toEqual(['/a.css']);
+  expect(assets.noscript).toEqual(['/a.js']);
   expect(assets.live, 'the live page ignores its commented-out script too').toEqual(['/tokens.css', '/navigation.css', '/shell.css', expect.stringMatching(/^\/update-fixture\.js\?build=1$/)]);
   expect(assets.ran, 'parsing runs no script').toBe(false);
   expect(errors, 'no CSP or console errors').toEqual([]);
