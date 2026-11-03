@@ -157,6 +157,35 @@ test.describe('on a touch screen', () => {
   });
 });
 
+test('a short desktop window scrolls the sidebar, so Settings and Sign out stay reachable', async ({ page }) => {
+  // A landscape phone is wider than 720px, so it gets the desktop sidebar at 390px tall.
+  await page.setViewportSize({ width: 844, height: 390 });
+  await page.goto('/');
+  await page.locator('.ky-sidebar .ky-nav').evaluate(nav => { for (let i = 0; i < 4; i++) nav.append(nav.querySelector('.ky-nav-item').cloneNode(true)); });
+  await page.locator('.ky-app').evaluate(el => el.scrollIntoView({ block: 'start' }));
+  const signout = page.locator('.ky-sidebar-foot').getByRole('button', { name: 'Sign out', exact: true });
+  // The page stays put (it may be an endless list); the sidebar itself scrolls to its footer.
+  await page.locator('.ky-sidebar').evaluate(el => { el.scrollTop = el.scrollHeight; });
+  await expect(signout).toBeInViewport({ ratio: 1 });
+  // KyPost's administrator menu has eight sections; opening upward, it stays inside the sidebar.
+  const menu = page.locator('#settings-menu');
+  await menu.evaluate(list => { for (const name of ['Security', 'Domains', 'Users', 'Diagnostics']) { const item = list.firstElementChild.cloneNode(); item.removeAttribute('aria-current'); item.textContent = name; list.append(item); } });
+  await page.locator('.ky-sidebar-foot').getByRole('button', { name: 'Settings', exact: true }).click();
+  await expect(menu.getByRole('menuitem').first()).toBeInViewport({ ratio: 1 });
+  const [box, sidebar] = [await menu.boundingBox(), await page.locator('.ky-sidebar').boundingBox()];
+  expect(box.y).toBeGreaterThanOrEqual(sidebar.y);
+});
+
+test('forced colours still mark the current navigation row and Settings tab', async ({ page }) => {
+  await page.emulateMedia({ forcedColors: 'active' });
+  await page.goto('/');
+  const rows = page.locator('.ky-sidebar .ky-nav > .ky-nav-item');
+  await rows.first().evaluate(el => el.setAttribute('aria-current', 'page'));
+  await expect(rows.first()).toHaveCSS('outline-style', 'solid');
+  await expect(rows.nth(1)).toHaveCSS('outline-style', 'none');
+  await expect(page.locator('.ky-settings-tabs > [aria-current="page"]')).toHaveCSS('outline-style', 'solid');
+});
+
 test('account icon buttons and Settings tabs show an unclipped focus ring', async ({ page }, testInfo) => {
   await page.goto('/');
   for (const target of await accountButtons(page, testInfo).all()) {
