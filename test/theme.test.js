@@ -78,3 +78,17 @@ test("leaves system mode on the OS-driven CSS path", () => {
   }), "busnes-dark");
   assert.equal("kyTheme" in root.dataset, false);
 });
+
+test("system mode leaves color-scheme to tokens.css, which follows later OS changes", () => {
+  const root = { dataset: {}, style: { colorScheme: "light" } };
+  applyTheme("system", { document: { documentElement: root }, persist: false, prefersDark: false });
+  assert.equal(root.style.colorScheme, "");
+});
+
+test("with no choice, applyTheme reads the storage it was given before writing to it", () => {
+  const root = { dataset: {}, style: {} };
+  const saved = new Map([["ky-theme", "busnes-dark"]]);
+  const storage = { getItem: key => saved.get(key) ?? null, setItem: (key, value) => saved.set(key, value) };
+  assert.equal(applyTheme(undefined, { document: { documentElement: root }, storage, prefersDark: false }), "busnes-dark");
+  assert.equal(saved.get("ky-theme"), "busnes-dark");
+});

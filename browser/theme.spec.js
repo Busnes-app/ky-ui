@@ -91,6 +91,15 @@ test('OS following, explicit persistence, legacy switching and cross-tab changes
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(248, 246, 240)');
 });
 
+test('system mode leaves native controls on the OS scheme after the OS changes', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  // README's one-call start-up, on a page with no theme watcher (the main fixture re-applies).
+  await page.goto('/update/?id=theme-system');
+  await page.evaluate(async () => { localStorage.removeItem('ky-theme'); (await import('/theme.js')).applyTheme(); });
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
+});
+
 test('restricted storage still renders the OS theme', async ({ page }) => {
   await page.addInitScript(() => Object.defineProperty(window, 'localStorage', { get() { throw new DOMException('Denied', 'SecurityError'); } }));
   await page.emulateMedia({ colorScheme: 'dark' });
