@@ -65,7 +65,7 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   assert.throws(() => run('--consumer=unknown'), /Unknown consumer/);
 });
 
-test('check:suite runs from a checkout path with spaces and accents', async t => {
+test('check:suite and the colour gate run from a checkout path with spaces and accents', async t => {
   const root = await mkdtemp(join(tmpdir(), 'ky ui é '));
   t.after(() => rm(root, { recursive: true, force: true }));
   for (const dir of ['src', 'scripts']) await cp(new URL(`../${dir}`, import.meta.url), join(root, dir), { recursive: true });
@@ -73,4 +73,5 @@ test('check:suite runs from a checkout path with spaces and accents', async t =>
   await writeFile(join(root, 'consumers.json'), '{}');
   const out = execFileSync(process.execPath, [join(root, 'scripts/check-suite.mjs')], { encoding: 'utf8' });
   assert.match(out, /Checked 0 consumers/);
+  assert.match(execFileSync(process.execPath, [join(root, 'scripts/check-status-colours.mjs')], { encoding: 'utf8' }), /checks pass across 12 halves/);
 });
