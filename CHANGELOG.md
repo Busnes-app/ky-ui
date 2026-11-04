@@ -56,6 +56,15 @@ choice it reads the `storage` it was given. `watchForUpdate` ignores `<noscript>
 false notice), times a check out after 30 seconds, and shows nothing after its cleanup ran.
 The sign-in example says "Continue with KyIdentity". Upgrade impact: none; re-sync.
 
+Hostile-review pass 2 (same pending 0.11.0, version unchanged): named palettes now set
+`--ink-muted` (`inkMuted`, ink 90% toward panel, gated at 4.5:1 on bg, panel, hover and sidebar
+by `check-status-colours.mjs`), where it used to keep the Busnes value (1.6:1 on Nord Dark).
+New `appHref(url)` in `appmarks.js` returns an app rail URL only when it is `http:` or `https:`;
+the README rail contract now drops any other entry, so a `javascript:` URL from the suite
+directory cannot run in a product's origin. `check:suite` works from a path with spaces or
+accents. The assurance case lists the rail and update-notice trust boundaries. Upgrade impact:
+re-sync; products that render the rail switch its `href` to `appHref(url)` and skip nulls.
+
 ### 0.10.0 — account footer and Settings (pending)
 
 Based on 0.9.0 (app rail). Follows the owner rules of 2026-10-31: KyDrive's original footer

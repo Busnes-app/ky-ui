@@ -486,7 +486,9 @@ different list shows `.ky-update`, a polite `role="status"` panel in the bottom 
 `shell.css`, and checking stops. Offline, a failed request, a redirect (such as to sign-in),
 a non-HTML response or a page naming no assets stays quiet. It needs only `connect-src
 'self'`, adds no inline script or style, and returns a cleanup. Serve the entry document
-with `Cache-Control: no-cache`, so Reload (and every new tab) gets the new build. A service
+with `Cache-Control: no-cache`, so Reload (and every new tab) gets the new build. Reload runs
+`location.reload()`, which fires `beforeunload`: a page that can hold unsaved work (a draft,
+an edit) should guard it there, as it would against closing the tab. A service
 worker must send that request to the network: network-first for `/`, never cache-first.
 Pages whose HTML names no hashed assets (server-rendered templates) cannot use it as is.
 
