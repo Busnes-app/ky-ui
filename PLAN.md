@@ -44,6 +44,9 @@ outside this web pass. Record any additional discovered surface explicitly.
 - Version 0.4.2 fixes named-theme status contrast independently of the OS scheme.
   KyNotes is the initial scoped consumer; distribute to other products during
   their sequential UI passes, with their own rebuilds and checks.
+- Version 0.11.0 adds `appHref` to `appmarks.js`. Products that render the app rail set
+  each link's `href` to `appHref(url)` and drop entries it returns null for, at their next
+  sync; until then a `javascript:` URL from the suite directory reaches their page.
 - Shared runtime colors, typography, control geometry and navigation states remain
   in ky-ui. Page composition, routing, authorization and content stay product-owned.
   Preserve existing accessible responsive navigation instead of imposing a sidebar

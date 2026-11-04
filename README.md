@@ -410,9 +410,11 @@ to the markup above:
 The list comes from the app's own server, which asks KyIdentity's `/api/suite/apps`
 with the signed-in user's `sub` (contract: KyIdentity-server
 `docs/SUITE-DIRECTORY.md`); the browser never calls KyIdentity for it. Render one link per
-entry, in the order given, with the entry's `url` as the `href` exactly as given, its
+entry, in the order given, with `appHref(url)` from `appmarks.js` as the `href`, its
 `name` as both `title` and `aria-label`, and `appMark(id)` from `appmarks.js` as the
-image (a letter badge for an ID ky-ui does not know). Mark the app itself with
+image (a letter badge for an ID ky-ui does not know). `appHref` returns null for anything
+but an `http:` or `https:` URL (a relative one resolves against the page); drop that
+entry, so a `javascript:` or `data:` URL from the directory never runs in your origin. Mark the app itself with
 `aria-current="page"`; it gets the accent ring. Leave the whole `nav` out when the list
 is empty or the request fails, as for local accounts or a server without SSO. Set the
 `href` and text as attributes, never through `innerHTML`. The marks are `data:` URIs,
@@ -484,7 +486,9 @@ different list shows `.ky-update`, a polite `role="status"` panel in the bottom 
 `shell.css`, and checking stops. Offline, a failed request, a redirect (such as to sign-in),
 a non-HTML response or a page naming no assets stays quiet. It needs only `connect-src
 'self'`, adds no inline script or style, and returns a cleanup. Serve the entry document
-with `Cache-Control: no-cache`, so Reload (and every new tab) gets the new build. A service
+with `Cache-Control: no-cache`, so Reload (and every new tab) gets the new build. Reload runs
+`location.reload()`, which fires `beforeunload`: a page that can hold unsaved work (a draft,
+an edit) should guard it there, as it would against closing the tab. A service
 worker must send that request to the network: network-first for `/`, never cache-first.
 Pages whose HTML names no hashed assets (server-rendered templates) cannot use it as is.
 
@@ -511,7 +515,8 @@ focus. Danger, warning and success mean "this is the state", and never borrow it
 `npm run check` runs `scripts/check-status-colours.mjs` over all twelve halves:
 status text reaches 4.5:1 on bg and panel, each pill's text 4.5:1 on its tint, the
 accent and danger are at least 20 apart (CIEDE2000), and warning, success, accent
-and danger are at least 10 apart from each other. Add `--table` for every value.
+and danger are at least 10 apart from each other, and muted text (`--ink-muted`) reaches
+4.5:1 on bg, panel, hover and sidebar. Add `--table` for every value.
 
 ## Boundary
 

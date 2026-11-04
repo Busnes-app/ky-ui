@@ -20,6 +20,7 @@ test('each app link is named, titled, sized and its mark loads under the CSP', a
   await page.goto('/');
   const links = visibleRail(page).getByRole('link');
   await expect(links).toHaveCount(7);
+  await expect(page.locator('.ky-app-rail a[href^="javascript:" i]')).toHaveCount(0);
   const facts = await links.evaluateAll(els => els.map(el => {
     const box = el.getBoundingClientRect();
     const img = el.querySelector('img');

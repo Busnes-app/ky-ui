@@ -5,6 +5,7 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir, devNull } from 'node:os';
 import { join } from 'node:path';
 import { execFile } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const exec = promisify(execFile);
@@ -21,7 +22,7 @@ try {
     const { stdout } = await exec('git', ['-C', checkout, 'rev-parse', 'HEAD']);
     console.log(`${repo}: ${stdout.trim()}`);
   }
-  const { stdout } = await exec(process.execPath, [new URL('./sync-consumers.mjs', import.meta.url).pathname, `--root=${root}`, '--check', ...publicRepos.map(repo => `--consumer=${repo}`)]);
+  const { stdout } = await exec(process.execPath, [fileURLToPath(new URL('./sync-consumers.mjs', import.meta.url)), `--root=${root}`, '--check', ...publicRepos.map(repo => `--consumer=${repo}`)]);
   process.stdout.write(stdout);
 } finally {
   await rm(root, { recursive: true, force: true });

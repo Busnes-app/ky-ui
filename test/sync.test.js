@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, writeFile, readFile, rm, symlink } from 'node:fs/promises';
+import { cp, mkdtemp, mkdir, writeFile, readFile, rm, symlink } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { runInNewContext } from 'node:vm';
 import * as themes from '../src/themes.js';
@@ -11,7 +12,7 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   const root = await mkdtemp(join(tmpdir(), 'ky-ui-sync-test-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const consumers = JSON.parse(await readFile(new URL('../consumers.json', import.meta.url)));
-  const run = (...args) => execFileSync(process.execPath, [new URL('../scripts/sync-consumers.mjs', import.meta.url).pathname, `--root=${root}`, ...args], { stdio: 'pipe' });
+  const run = (...args) => execFileSync(process.execPath, [fileURLToPath(new URL('../scripts/sync-consumers.mjs', import.meta.url)), `--root=${root}`, ...args], { stdio: 'pipe' });
   const entries = Object.entries(consumers);
   for (const [repo, path] of entries) {
     await mkdir(join(root, repo, path), { recursive: true });
@@ -62,4 +63,15 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   run('--check', `--consumer=${entries[0][0]}`);
   assert.equal(await readFile(join(second, 'tokens.css'), 'utf8'), 'other work in progress');
   assert.throws(() => run('--consumer=unknown'), /Unknown consumer/);
+});
+
+test('check:suite and the colour gate run from a checkout path with spaces and accents', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'ky ui é '));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const dir of ['src', 'scripts']) await cp(new URL(`../${dir}`, import.meta.url), join(root, dir), { recursive: true });
+  await cp(new URL('../package.json', import.meta.url), join(root, 'package.json'));
+  await writeFile(join(root, 'consumers.json'), '{}');
+  const out = execFileSync(process.execPath, [join(root, 'scripts/check-suite.mjs')], { encoding: 'utf8' });
+  assert.match(out, /Checked 0 consumers/);
+  assert.match(execFileSync(process.execPath, [join(root, 'scripts/check-status-colours.mjs')], { encoding: 'utf8' }), /checks pass across 12 halves/);
 });
