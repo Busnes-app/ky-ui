@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, writeFile, readFile, rm, symlink } from 'node:fs/promises';
+import { cp, mkdtemp, mkdir, writeFile, readFile, rm, symlink } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -62,4 +62,14 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   run('--check', `--consumer=${entries[0][0]}`);
   assert.equal(await readFile(join(second, 'tokens.css'), 'utf8'), 'other work in progress');
   assert.throws(() => run('--consumer=unknown'), /Unknown consumer/);
+});
+
+test('check:suite runs from a checkout path with spaces and accents', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'ky ui é '));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const dir of ['src', 'scripts']) await cp(new URL(`../${dir}`, import.meta.url), join(root, dir), { recursive: true });
+  await cp(new URL('../package.json', import.meta.url), join(root, 'package.json'));
+  await writeFile(join(root, 'consumers.json'), '{}');
+  const out = execFileSync(process.execPath, [join(root, 'scripts/check-suite.mjs')], { encoding: 'utf8' });
+  assert.match(out, /Checked 0 consumers/);
 });
