@@ -64,6 +64,8 @@ the README rail contract now drops any other entry, so a `javascript:` URL from 
 directory cannot run in a product's origin. `check:suite` works from a path with spaces or
 accents. The assurance case lists the rail and update-notice trust boundaries. Upgrade impact:
 re-sync; products that render the rail switch its `href` to `appHref(url)` and skip nulls.
+`applyThemeVariables` now sets `--ink-muted` inline for named palettes, overriding a product's
+own per-palette value; drop that value or keep it only for Busnes.
 
 ### 0.10.0 — account footer and Settings (pending)
 

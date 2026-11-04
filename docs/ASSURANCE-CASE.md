@@ -16,7 +16,7 @@ ships is the copy that was reviewed here.
 ## Security requirements
 
 1. **The shipped code cannot be used to inject script or markup** into a product page, whatever
-   is in the browser's storage.
+   is in the browser's storage, the suite directory's app list or the re-fetched entry document.
 2. **The shipped code works under a strict Content Security Policy** (`script-src 'self'`, no
    `unsafe-inline`), so no product has to loosen its policy to adopt it.
 3. **Shipped files add no third-party code** to a product.
@@ -48,11 +48,12 @@ Out of scope: a compromised ky-ui `main` branch (the ruleset requires a pull req
    as an npm `prebuild`/`pretest` script or in CI.
 3. **Public consumer branches → ky-ui CI.** `scripts/check-suite.mjs` clones them as data and
    compares bytes.
-4. **Suite directory → app rail.** An app `url` is untrusted. Products render it only through
-   `appHref`, which returns an `http:` or `https:` URL or null, and drop the entry on null, so a
-   `javascript:`, `data:` or `vbscript:` URL never becomes a link (README "App rail").
+4. **Suite directory → app rail.** An app `url` is untrusted. The README contract has products
+   render it only through `appHref`, which returns an `http:` or `https:` URL or null, and drop
+   the entry on null, so a `javascript:`, `data:` or `vbscript:` URL never becomes a link
+   (README "App rail").
 5. **Served entry document → `update.js`.** The re-fetched page is parsed by the inert
-   `DOMParser` (no script runs, nothing loads); only asset URLs are compared, redirects are not
+   `DOMParser` (its scripts do not run); only asset URLs are compared, redirects are not
    followed, and the notice is built with `textContent`.
 
 ## Secure design principles applied
@@ -96,12 +97,16 @@ Out of scope: a compromised ky-ui `main` branch (the ruleset requires a pull req
   kept in step with their modules by review only.
 - **Releases are not tagged or signed.** A release is a `package.json` version; consumers get it
   through reviewed pull requests, not a registry.
+- **The rail is only as safe as each product's rendering.** ky-ui does not render the rail; a
+  product that sets the `href` without `appHref` and has no strict CSP is still exposed until it
+  adopts the 0.11 contract (PLAN.md).
 - No independent security audit has been done.
 
 ## Evidence
 
-- **Tests:** `npm test` (Node test runner) covers theme logic and the sync tool's preflight,
-  symlink refusal and drift detection. `npm run test:browser` runs the shipped files in Chromium
+- **Tests:** `npm test` (Node test runner) covers theme logic, `appHref`, `update.js`, the
+  status and muted-text contrast gate, and the sync tool's preflight, symlink refusal and drift
+  detection. `npm run test:browser` runs the shipped files in Chromium
   at two widths in light and dark, including restricted storage and the README snippet under a
   strict CSP. CI requires both jobs.
 - **Static analysis:** CodeQL code scanning (default setup) and OpenSSF Scorecard
