@@ -27,8 +27,8 @@ test('all twelve halves pass, and the old rust-like danger fails', () => {
   assert.ok(failures.some(f => f.startsWith('busnes-light: ΔE accent–danger')), failures.join('\n'));
 });
 
-test('muted text keeps 4.5:1: an 80% mix would fail on Nord Light', async () => {
+test('muted text keeps 4.5:1: an 88% mix would fail on the Nord Light sidebar', async () => {
   const { THEME_PALETTES } = await import('../src/themes.js');
-  const halves = readHalves().map(h => h.id === 'paper' ? { ...h, inkMuted: mix(THEME_PALETTES.paper.ink, 80, h.panel) } : h);
-  assert.ok(evaluate(halves).failures.some(f => f.startsWith('paper: ink-muted on bg')));
+  const halves = readHalves().map(h => h.id === 'paper' ? { ...h, inkMuted: mix(THEME_PALETTES.paper.ink, 88, h.panel) } : h);
+  assert.ok(evaluate(halves).failures.some(f => f.startsWith('paper: ink-muted on sidebarStart')));
 });

@@ -36,7 +36,7 @@ export interface ThemePalette {
   readonly buttonText: string;
   readonly panelHover: string;
   readonly lineStrong: string;
-  /** Ink a step toward panel, 4.5:1 on bg, panel and hover. */
+  /** Ink a step toward panel, 4.5:1 on bg, panel, hover and sidebar. */
   readonly inkMuted: string;
   /** Base-family themes only. */
   readonly danger?: string;

@@ -100,7 +100,7 @@ test('named palettes set product variables and Busnes or system clears them', ()
   assert.equal(props.get('--ink-strong'), '#e0f2fb');
   assert.equal(props.get('--sidebar-start'), '#112430');
   assert.equal(props.size, 17, 'named palettes include scheme-bound status colours');
-  assert.equal(props.get('--ink-muted'), 'color-mix(in srgb, #b8d8e8 88%, #152a36)', 'muted text follows the palette, not Busnes');
+  assert.equal(props.get('--ink-muted'), 'color-mix(in srgb, #b8d8e8 90%, #152a36)', 'muted text follows the palette, not Busnes');
   assert.equal(props.get('--danger'), 'var(--ky-danger-dark)');
   assert.equal(props.get('--success'), 'var(--ky-success-dark)');
   assert.equal(props.get('--warning'), 'var(--ky-warning-dark)');

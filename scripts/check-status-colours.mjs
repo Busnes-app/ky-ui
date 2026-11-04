@@ -1,6 +1,6 @@
 // Status colour gate for all twelve halves: WCAG text contrast on bg and panel, pill text on
 // its soft tint, CIEDE2000 distance between the accent and each status colour, and muted
-// text contrast on bg, panel and hover.
+// text contrast on bg, panel, hover and sidebar.
 import { readFileSync } from 'node:fs';
 import { THEME_CATALOG, THEME_PALETTES } from '../src/themes.js';
 
@@ -78,7 +78,9 @@ export function readHalves(css = readFileSync(new URL('../src/tokens.css', impor
   return THEME_CATALOG.map(({ id, scheme }) => {
     const palette = busnes[id] ?? THEME_PALETTES[id];
     const status = Object.fromEntries(STATUSES.map(s => [s, (busnes[id] ? undefined : palette[s]) ?? shared[`${s}-${scheme}`]]));
-    const surfaces = busnes[id] ? { inkMuted: palette['ink-muted'], panelHover: palette['panel-hover'] } : { inkMuted: resolve(palette.inkMuted), panelHover: resolve(palette.panelHover) };
+    const surfaces = busnes[id]
+      ? { inkMuted: palette['ink-muted'], panelHover: palette['panel-hover'], sidebarStart: palette['sidebar-start'], sidebarEnd: palette['sidebar-end'] }
+      : { inkMuted: resolve(palette.inkMuted), panelHover: resolve(palette.panelHover), sidebarStart: palette.sidebarStart, sidebarEnd: palette.sidebarEnd };
     return { id, bg: palette.bg, panel: palette.panel, accent: palette.accent, ...surfaces, ...status, tints };
   });
 }
@@ -93,7 +95,7 @@ export function evaluate(halves) {
       checks.push([`${s} on panel`, contrast(half[s], half.panel), MIN_CONTRAST]);
       checks.push([`${s} pill on ${s}-soft ${soft}`, contrast(half[s], soft), MIN_CONTRAST]);
     }
-    for (const surface of ['bg', 'panel', 'panelHover']) checks.push([`ink-muted on ${surface}`, contrast(half.inkMuted, half[surface]), MIN_CONTRAST]);
+    for (const surface of ['bg', 'panel', 'panelHover', 'sidebarStart', 'sidebarEnd']) checks.push([`ink-muted on ${surface}`, contrast(half.inkMuted, half[surface]), MIN_CONTRAST]);
     checks.push(['ΔE accent–danger', deltaE(half.accent, half.danger), MIN_ACCENT_DANGER]);
     for (const [a, b] of [['accent', 'warning'], ['accent', 'success'], ['danger', 'warning'], ['danger', 'success'], ['warning', 'success']]) {
       checks.push([`ΔE ${a}–${b}`, deltaE(half[a], half[b]), MIN_OTHER]);
