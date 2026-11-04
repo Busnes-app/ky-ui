@@ -1,7 +1,8 @@
 // Status colour gate for all twelve halves: WCAG text contrast on bg and panel, pill text on
 // its soft tint, CIEDE2000 distance between the accent and each status colour, and muted
 // text contrast on bg, panel, hover and sidebar.
-import { readFileSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import { THEME_CATALOG, THEME_PALETTES } from '../src/themes.js';
 
 const STATUSES = ['danger', 'warning', 'success'];
@@ -108,7 +109,7 @@ export function evaluate(halves) {
   return { rows, failures };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href) {
   const { rows, failures } = evaluate(readHalves());
   if (process.argv.includes('--table')) for (const r of rows) console.log(`${r.id.padEnd(13)} ${r.check.padEnd(34)} ${String(r.value).padStart(6)}  (min ${r.min})`);
   if (failures.length) {
