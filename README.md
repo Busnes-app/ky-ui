@@ -515,7 +515,8 @@ focus. Danger, warning and success mean "this is the state", and never borrow it
 `npm run check` runs `scripts/check-status-colours.mjs` over all twelve halves:
 status text reaches 4.5:1 on bg and panel, each pill's text 4.5:1 on its tint, the
 accent and danger are at least 20 apart (CIEDE2000), and warning, success, accent
-and danger are at least 10 apart from each other. Add `--table` for every value.
+and danger are at least 10 apart from each other, and muted text (`--ink-muted`) reaches
+4.5:1 on bg, panel, hover and sidebar. Add `--table` for every value.
 
 ## Boundary
 

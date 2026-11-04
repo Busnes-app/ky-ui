@@ -67,7 +67,8 @@ Out of scope: a compromised ky-ui `main` branch (the ruleset requires a pull req
 - **Complete mediation.** Every consumer target's path is validated before any file is written,
   so a bad path stops the whole sync rather than leaving some consumers updated. Writability is
   not checked: a write error (a read-only file, a full disk) stops the sync with earlier
-  consumers already updated; fix it and run the sync again.
+  consumers updated and the current one partly copied under its old `VERSION`; fix it and run
+  the sync again.
 - **Separation.** Browser UI stays here; Go protocol and crypto code stays in `ky-primitives`
   (AGENTS.md, README "Boundary").
 
