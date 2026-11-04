@@ -65,7 +65,7 @@ test('every non-Busnes theme has a complete palette whose scheme matches its bac
   for (const theme of named) {
     const palette = THEME_PALETTES[theme.id];
     const own = { nord: ['danger', 'success'], 'forest-light': ['success'], forest: ['success'] }[theme.id] ?? [];
-    assert.deepEqual(Object.keys(palette), [...Object.keys(THEME_VARIABLES).slice(0, 13), ...own], theme.id);
+    assert.deepEqual(Object.keys(palette), [...Object.keys(THEME_VARIABLES).slice(0, 14), ...own], theme.id);
     const n = parseInt(palette.bg.slice(1), 16);
     const luma = (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255;
     assert.equal(theme.scheme, luma > 0.55 ? 'light' : 'dark', theme.id);
@@ -99,7 +99,8 @@ test('named palettes set product variables and Busnes or system clears them', ()
   assert.equal(applyThemeVariables('Ocean', root), 'dark');
   assert.equal(props.get('--ink-strong'), '#e0f2fb');
   assert.equal(props.get('--sidebar-start'), '#112430');
-  assert.equal(props.size, 16, 'named palettes include scheme-bound status colours');
+  assert.equal(props.size, 17, 'named palettes include scheme-bound status colours');
+  assert.equal(props.get('--ink-muted'), 'color-mix(in srgb, #b8d8e8 88%, #152a36)', 'muted text follows the palette, not Busnes');
   assert.equal(props.get('--danger'), 'var(--ky-danger-dark)');
   assert.equal(props.get('--success'), 'var(--ky-success-dark)');
   assert.equal(props.get('--warning'), 'var(--ky-warning-dark)');
@@ -107,7 +108,7 @@ test('named palettes set product variables and Busnes or system clears them', ()
   applyThemeVariables('nord', root);
   assert.equal(props.get('--line-strong'), '#5e81ac');
   assert.equal(props.get('--danger'), '#ecc4c8');
-  assert.equal(props.size, 16);
+  assert.equal(props.size, 17);
   assert.equal(applyThemeVariables('busnes-light', root), null);
   assert.equal(props.size, 0);
   assert.equal(root.style.colorScheme, '', 'Busnes scheme comes from tokens.css');

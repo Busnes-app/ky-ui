@@ -1,5 +1,6 @@
 // Status colour gate for all twelve halves: WCAG text contrast on bg and panel, pill text on
-// its soft tint, and CIEDE2000 distance between the accent and each status colour.
+// its soft tint, CIEDE2000 distance between the accent and each status colour, and muted
+// text contrast on bg, panel and hover.
 import { readFileSync } from 'node:fs';
 import { THEME_CATALOG, THEME_PALETTES } from '../src/themes.js';
 
@@ -18,6 +19,14 @@ export const contrast = (a, b) => {
 };
 // CSS color-mix(in srgb, a p%, b): per-channel interpolation of the encoded values.
 export const mix = (a, p, b) => '#' + rgb(a).map((v, i) => Math.round(v * p / 100 + rgb(b)[i] * (1 - p / 100)).toString(16).padStart(2, '0')).join('');
+
+// A palette value: a hex colour or the catalog's own color-mix of two hex colours.
+const resolve = value => {
+  if (/^#[0-9a-f]{6}$/i.test(value)) return value.toLowerCase();
+  const m = /^color-mix\(in srgb, (#[0-9a-f]{6}) (\d+)%, (#[0-9a-f]{6})\)$/i.exec(value);
+  if (!m) throw new Error(`cannot resolve ${value}`);
+  return mix(m[1], Number(m[2]), m[3]);
+};
 
 function lab(hex) {
   const [r, g, b] = rgb(hex).map(linear);
@@ -69,7 +78,8 @@ export function readHalves(css = readFileSync(new URL('../src/tokens.css', impor
   return THEME_CATALOG.map(({ id, scheme }) => {
     const palette = busnes[id] ?? THEME_PALETTES[id];
     const status = Object.fromEntries(STATUSES.map(s => [s, (busnes[id] ? undefined : palette[s]) ?? shared[`${s}-${scheme}`]]));
-    return { id, bg: palette.bg, panel: palette.panel, accent: palette.accent, ...status, tints };
+    const surfaces = busnes[id] ? { inkMuted: palette['ink-muted'], panelHover: palette['panel-hover'] } : { inkMuted: resolve(palette.inkMuted), panelHover: resolve(palette.panelHover) };
+    return { id, bg: palette.bg, panel: palette.panel, accent: palette.accent, ...surfaces, ...status, tints };
   });
 }
 
@@ -83,6 +93,7 @@ export function evaluate(halves) {
       checks.push([`${s} on panel`, contrast(half[s], half.panel), MIN_CONTRAST]);
       checks.push([`${s} pill on ${s}-soft ${soft}`, contrast(half[s], soft), MIN_CONTRAST]);
     }
+    for (const surface of ['bg', 'panel', 'panelHover']) checks.push([`ink-muted on ${surface}`, contrast(half.inkMuted, half[surface]), MIN_CONTRAST]);
     checks.push(['ΔE accent–danger', deltaE(half.accent, half.danger), MIN_ACCENT_DANGER]);
     for (const [a, b] of [['accent', 'warning'], ['accent', 'success'], ['danger', 'warning'], ['danger', 'success'], ['warning', 'success']]) {
       checks.push([`ΔE ${a}–${b}`, deltaE(half[a], half[b]), MIN_OTHER]);
