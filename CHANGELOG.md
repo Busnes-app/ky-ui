@@ -67,6 +67,12 @@ re-sync; products that render the rail switch its `href` to `appHref(url)` and s
 `applyThemeVariables` now sets `--ink-muted` inline for named palettes, overriding a product's
 own per-palette value; drop that value or keep it only for Busnes.
 
+Hostile-review pass 3 (same pending 0.11.0, version unchanged): on a touch screen the sign-in
+fields and the Color theme select are 16px, so iOS Safari no longer zooms the page in when one
+is focused (they were 15px and 14px). The About dialog's version pill uses `--ink-strong` text
+on its accent tint; accent text fell to 3.1:1 in Forest Dark and under 4.5:1 in Matter and
+Nord. Upgrade impact: re-sync.
+
 ### 0.10.0 — account footer and Settings (pending)
 
 Based on 0.9.0 (app rail). Follows the owner rules of 2026-10-31: KyDrive's original footer

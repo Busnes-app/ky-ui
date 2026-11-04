@@ -155,6 +155,37 @@ test.describe('on a touch screen', () => {
     const sizes = await accountButtons(page, testInfo).evaluateAll(els => els.map(el => [el.offsetWidth, el.offsetHeight]));
     expect(sizes).toEqual([[44, 44], [44, 44]]);
   });
+  test('sign-in fields are 16px, so iOS does not zoom in on focus', async ({ page }) => {
+    await page.goto('/');
+    const sizes = await page.locator('.ky-auth-field > input, .ky-auth-theme select').evaluateAll(els => els.map(el => getComputedStyle(el).fontSize));
+    expect(sizes.length).toBeGreaterThan(2);
+    for (const size of sizes) expect(size).toBe('16px');
+  });
+});
+
+test('the About version reads in every palette half', async ({ page }) => {
+  await page.goto('/');
+  const ids = await page.locator('.ky-appearance-radio').evaluateAll(els => els.map(el => el.value).filter(id => id !== 'system' && !id.endsWith('-pair')));
+  expect(ids).toHaveLength(12);
+  for (const id of ids) {
+    await page.locator('#theme').selectOption(id);
+    const ratio = await page.locator('.ky-about-version').evaluate(el => {
+      const ctx = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+      const rgba = color => {
+        ctx.clearRect(0, 0, 1, 1);
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, 1, 1);
+        return [...ctx.getImageData(0, 0, 1, 1).data];
+      };
+      // A translucent tint is measured as drawn: over the dialog.
+      const over = (top, bottom) => { const [t, b] = [rgba(top), rgba(bottom)]; return `rgb(${[0, 1, 2].map(i => Math.round(t[i] * t[3] / 255 + b[i] * (1 - t[3] / 255))).join(',')})`; };
+      const lum = color => rgba(color).slice(0, 3).map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
+      const surface = over(getComputedStyle(el).backgroundColor, getComputedStyle(el.closest('.ky-about')).backgroundColor);
+      const [x, y] = [lum(getComputedStyle(el).color), lum(surface)];
+      return (Math.max(x, y) + .05) / (Math.min(x, y) + .05);
+    });
+    expect(ratio, id).toBeGreaterThanOrEqual(4.5);
+  }
 });
 
 test('a short desktop window scrolls the sidebar, so Settings and Sign out stay reachable', async ({ page }) => {
