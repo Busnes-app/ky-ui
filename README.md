@@ -410,9 +410,11 @@ to the markup above:
 The list comes from the app's own server, which asks KyIdentity's `/api/suite/apps`
 with the signed-in user's `sub` (contract: KyIdentity-server
 `docs/SUITE-DIRECTORY.md`); the browser never calls KyIdentity for it. Render one link per
-entry, in the order given, with the entry's `url` as the `href` exactly as given, its
+entry, in the order given, with `appHref(url)` from `appmarks.js` as the `href`, its
 `name` as both `title` and `aria-label`, and `appMark(id)` from `appmarks.js` as the
-image (a letter badge for an ID ky-ui does not know). Mark the app itself with
+image (a letter badge for an ID ky-ui does not know). `appHref` returns null for anything
+but an `http:` or `https:` URL (a relative one resolves against the page); drop that
+entry, so a `javascript:` or `data:` URL from the directory never runs in your origin. Mark the app itself with
 `aria-current="page"`; it gets the accent ring. Leave the whole `nav` out when the list
 is empty or the request fails, as for local accounts or a server without SSO. Set the
 `href` and text as attributes, never through `innerHTML`. The marks are `data:` URIs,

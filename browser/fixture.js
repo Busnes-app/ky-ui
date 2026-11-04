@@ -1,6 +1,6 @@
 import { applyTheme, readChoice, saveChoice, watchChoice } from '/theme.js';
 import { SYSTEM_THEME, THEME_CATALOG, THEME_PAIRS, applyThemeVariables, findTheme } from '/themes.js';
-import { appMark } from '/appmarks.js';
+import { appHref, appMark } from '/appmarks.js';
 import { initMenuButtons } from '/menu.js';
 
 const select = document.querySelector('#theme');
@@ -54,14 +54,17 @@ for (const button of document.querySelectorAll('nav button:not(:disabled)')) {
   });
 }
 document.querySelector('#open').addEventListener('click', () => document.querySelector('dialog').showModal());
-// The app rail, as a product renders /api/suite/apps: kytasks has no shipped mark.
+// The app rail, as a product renders /api/suite/apps: kytasks has no shipped mark, and
+// appHref drops the script URL.
 const suiteApps = [
   ['kypost', 'KyPost'], ['kycalendar', 'KyCalendar'], ['kydrive', 'KyDrive'], ['kynotes', 'KyNotes'],
-  ['kymessage', 'KyMessages'], ['kypulse', 'KyPulse'], ['kytasks', 'KyTasks'],
+  ['kymessage', 'KyMessages'], ['kypulse', 'KyPulse'], ['kytasks', 'KyTasks'], ['kyevil', 'KyEvil', 'javascript:alert(1)'],
 ];
 for (const list of document.querySelectorAll('.ky-app-rail ul')) {
-  for (const [id, name] of suiteApps) {
-    const link = Object.assign(document.createElement('a'), { href: `https://${id}.example.test/sso`, title: name });
+  for (const [id, name, url = `https://${id}.example.test/sso`] of suiteApps) {
+    const href = appHref(url);
+    if (!href) continue;
+    const link = Object.assign(document.createElement('a'), { href, title: name });
     link.setAttribute('aria-label', name);
     if (id === 'kycalendar') link.setAttribute('aria-current', 'page');
     const img = Object.assign(document.createElement('img'), { src: appMark(id), alt: '', width: 24, height: 24 });
