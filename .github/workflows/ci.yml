@@ -20,6 +20,7 @@ jobs:
           node-version: 26
       - run: npm ci
       - run: npm run check
+      - run: scripts/check-no-binaries.sh
   browser:
     runs-on: ubuntu-latest
     timeout-minutes: 10
