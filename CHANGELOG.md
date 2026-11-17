@@ -13,7 +13,18 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
-- Refresh compatible dependency versions and lockfiles. Rebuild or install the updated application; no database, configuration, account or key migration is required.
+### Development tooling (pending)
+
+Tooling source revision: [`41343fc`](https://github.com/Busnes-app/ky-ui/commit/41343fc00ed5e039852cccb44ecd53b94d2963e4).
+This maintenance entry is separate from the pending source-copy releases below.
+
+- Update the development-only dependencies `@playwright/test` from 1.65.0 to
+  1.65.1 and `eslint` from 10.14.0 to 10.15.0, with their lockfile dependencies.
+- Pin CI's Playwright browser image to the matching 1.65.1 version and digest.
+
+Upgrade impact: maintainers run `npm ci` to install the updated tools. Shipped
+assets, package exports and source-copy version 0.11.0 are unchanged. Consumer
+applications need no rebuild, reinstall or asset sync for this tooling update.
 
 ### 0.11.0 — Settings menu (pending)
 
