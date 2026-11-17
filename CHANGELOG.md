@@ -13,6 +13,8 @@ identifiers when applicable. Pending PRs are not described as released fixes.
 
 ## Unreleased
 
+- Refresh compatible dependency versions and lockfiles. Rebuild or install the updated application; no database, configuration, account or key migration is required.
+
 ### 0.11.0 — Settings menu (pending)
 
 Based on 0.10.0. Follows the owner decision of 2026-10-31: in KyPost, KyCalendar, KyNotes and
