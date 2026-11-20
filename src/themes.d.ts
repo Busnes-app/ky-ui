@@ -51,3 +51,11 @@ export function findPair(value: unknown): ThemePair | undefined;
 /** A pair ID resolves to its half for `dark`, by default the OS scheme. */
 export function findTheme(value: unknown, dark?: boolean): CatalogTheme | SystemTheme | undefined;
 export function applyThemeVariables(value: unknown, root?: HTMLElement): 'light' | 'dark' | null;
+export type ThemeChoiceId = ThemeId | PairId | 'system';
+/** Canonical ID for a saved pair ID, half ID, name or alias. */
+export function canonicalChoice(value: unknown): ThemeChoiceId | undefined;
+/** Records the platform default the host app supplies; null clears it. Never persisted. */
+export function setServerDefaultTheme(value: unknown): ThemeChoiceId | null;
+export function serverDefaultTheme(): ThemeChoiceId | null;
+/** Saved choice (if the catalog knows it), else the server default, else `system`. */
+export function chooseTheme(saved: unknown): ThemeChoiceId;

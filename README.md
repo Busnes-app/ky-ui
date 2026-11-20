@@ -19,6 +19,7 @@ Version 0.8.0 separates status from action: a crimson danger far from every acce
 Version 0.9.0 adds the [app rail](#app-rail), a row of suite app icons in the sidebar foot, and the `appmarks.js` app marks.
 Version 0.10.0 makes the account footer one row with icon-only Settings and Sign out, and adds the [Settings page](#settings-page) layout with section tabs.
 Version 0.11.0 turns the Settings gear into a [menu of Settings sections](#settings-menu), with the `menu.js` helper, and adds the [update notice](#update-notice) (`update.js`).
+Version 0.12.0 adds a [server default theme](#server-default-theme): a platform default the host app supplies, between the saved choice and Match system.
 Products self-host Space Grotesk and own layout and components. The reusable
 [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
 evidence-based 9/10 acceptance target. The dated records under `reviews/` are
@@ -120,6 +121,32 @@ Keep the Appearance navigation link and remove the compact theme dropdown from
 the navigation/sidebar, including its phone-header presentation. Descriptions use
 `ky-appearance-description` and the same copy and 72ch width across products. Theme
 names and mode labels wrap normally, without product-specific nowrap or clipping.
+
+### Server default theme
+
+KyIdentity's administrator picks one suite-wide default theme. It applies to every user who
+has not saved a choice; a saved choice, Match system included, always wins. There is no lock.
+The order is: the saved choice (when the catalog knows it), then the server default, then
+Match system (Busnes following the OS).
+
+```js
+import { chooseTheme, setServerDefaultTheme } from './ky-ui/themes.js';
+
+setServerDefaultTheme(defaultTheme); // a catalog ID, or null; unknown values clear it
+applyProductTheme(chooseTheme(readChoice(PRODUCT_THEME_KEY)));
+```
+
+`defaultTheme` is the value of KyIdentity's public `GET /api/appearance`
+(`{"defaultTheme":"ocean-pair"}`; `system` when unset). The app's own backend fetches it
+(it already calls KyIdentity) and hands it to the page: server-render it into an
+attribute such as `<html data-ky-default-theme="ocean-pair">` for first paint, or serve
+it from a same-origin route. ky-ui never fetches, so no product needs a cross-origin
+`connect-src`, and the value only ever selects a catalog entry. `setServerDefaultTheme`
+canonicalises names and aliases, returns the ID it kept or null, and is kept for the page
+only. Saving a choice keeps using the product's own key. `chooseTheme` with no server
+default set returns exactly what the saved value resolved to before 0.12.0, so an app
+that never calls `setServerDefaultTheme` is unchanged. The same functions are on
+`window.kyThemes` in `themes-browser.js`.
 
 ## Shell
 
