@@ -47,6 +47,10 @@ outside this web pass. Record any additional discovered surface explicitly.
 - Version 0.11.0 adds `appHref` to `appmarks.js`. Products that render the app rail set
   each link's `href` to `appHref(url)` and drop entries it returns null for, at their next
   sync; until then a `javascript:` URL from the suite directory reaches their page.
+- Version 0.12.0 adds the server default theme (`setServerDefaultTheme`, `chooseTheme`).
+  Products adopt it at their next sync: their backend reads KyIdentity's public
+  `GET /api/appearance`, the page calls `setServerDefaultTheme` before applying and
+  resolves the stored value with `chooseTheme`.
 - Shared runtime colors, typography, control geometry and navigation states remain
   in ky-ui. Page composition, routing, authorization and content stay product-owned.
   Preserve existing accessible responsive navigation instead of imposing a sidebar

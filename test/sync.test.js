@@ -46,6 +46,8 @@ test('sync preflights all worktrees, rejects symlinks and detects drift', async 
   const html = { style: { setProperty: (k, v) => props.set(k, v), removeProperty: k => props.delete(k), colorScheme: '' } };
   assert.equal(window.kyThemes.applyThemeVariables('Ocean', html), 'dark');
   assert.equal(props.get('--bg'), '#0f1b24');
+  assert.equal(window.kyThemes.setServerDefaultTheme('ocean-pair'), 'ocean-pair');
+  assert.equal(window.kyThemes.chooseTheme(null), 'ocean-pair', 'the classic copy keeps its own server default');
   assert.throws(() => run('--check', '--consumer=unknown'), /Unknown consumer/);
   const checker = join(first, 'check-vendor.mjs');
   execFileSync(process.execPath, [checker]);

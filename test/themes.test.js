@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { SYSTEM_THEME, THEME_CATALOG, THEME_PAIRS, THEME_PALETTES, THEME_VARIABLES, findPair, findTheme, applyThemeVariables } from '../src/themes.js';
+import { SYSTEM_THEME, THEME_CATALOG, THEME_PAIRS, THEME_PALETTES, THEME_VARIABLES, findPair, findTheme, applyThemeVariables, canonicalChoice, chooseTheme, setServerDefaultTheme, serverDefaultTheme } from '../src/themes.js';
 import { previewCss } from '../scripts/appearance-themes.mjs';
 
 const tokens = await readFile(new URL('../src/tokens.css', import.meta.url), 'utf8');
@@ -149,4 +149,35 @@ test('generated preview CSS is current and Busnes previews come from tokens.css'
   assert.match(css, /\[data-ky-preview="ocean-pair"\] \{ --ky-preview-bg: #f7f9fb;.* --ky-preview-dark-bg: #0f1b24;/);
   assert.match(css, /\[data-ky-preview="busnes-pair"\] \{ --ky-preview-bg: #f8f6f0;.* --ky-preview-dark-bg: #182326;/);
   assert.doesNotMatch(css, /undefined/);
+});
+
+test('a saved choice beats the server default, which beats Match system', t => {
+  t.after(() => setServerDefaultTheme(null));
+  assert.equal(setServerDefaultTheme('ocean-pair'), 'ocean-pair');
+  assert.equal(serverDefaultTheme(), 'ocean-pair');
+  assert.equal(chooseTheme('nord'), 'nord', 'stored half beats server');
+  assert.equal(chooseTheme('forest-pair'), 'forest-pair', 'stored pair beats server');
+  assert.equal(chooseTheme('system'), 'system', 'a saved Match system is a choice too');
+  assert.equal(chooseTheme('Patina Ky'), 'patina-ky', 'legacy names stay choices');
+  assert.equal(chooseTheme(null), 'ocean-pair', 'nothing saved: server default');
+  assert.equal(chooseTheme('sky'), 'ocean-pair', 'a removed ID falls through to the server default');
+  setServerDefaultTheme(null);
+  assert.equal(chooseTheme(null), 'system', 'no server default: built-in default');
+});
+
+test('an app that never sets a server default resolves exactly as before', () => {
+  assert.equal(serverDefaultTheme(), null);
+  for (const saved of [null, undefined, '', 'sky', 42]) assert.equal(chooseTheme(saved), 'system');
+  for (const saved of ['system', 'busnes-light', 'ocean', 'nord-pair']) assert.equal(chooseTheme(saved), saved);
+});
+
+test('the server default accepts only catalog IDs, canonicalised', t => {
+  t.after(() => setServerDefaultTheme(null));
+  assert.equal(setServerDefaultTheme('Ocean'), 'ocean', 'alias resolves to its ID');
+  assert.equal(canonicalChoice('busnes-pair'), 'busnes-pair');
+  for (const bad of ['sky', '', 'javascript:alert(1)', {}, 7, undefined]) {
+    setServerDefaultTheme('nord');
+    assert.equal(setServerDefaultTheme(bad), null, String(bad));
+    assert.equal(chooseTheme(null), 'system', 'an unknown default clears rather than keeping the old one');
+  }
 });

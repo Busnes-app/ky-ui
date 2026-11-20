@@ -26,6 +26,21 @@ Upgrade impact: maintainers run `npm ci` to install the updated tools. Shipped
 assets, package exports and source-copy version 0.11.0 are unchanged. Consumer
 applications need no rebuild, reinstall or asset sync for this tooling update.
 
+### 0.12.0 — Server default theme (pending)
+
+Based on 0.11.0. Follows the owner decision of 2026-11-20: KyIdentity's administrator sets a
+suite-wide default theme, every app applies it until the user picks one, and the user's
+choice still wins. `themes.js` adds `setServerDefaultTheme(value)`, `serverDefaultTheme()`,
+`chooseTheme(saved)` and `canonicalChoice(value)` (also on `window.kyThemes`). Resolution:
+saved choice, then the server default, then Match system. The default is supplied by the host
+app (from KyIdentity's public `GET /api/appearance`, fetched by its backend); ky-ui does not
+fetch and does not persist it.
+
+Upgrade impact: additive. An app that never calls `setServerDefaultTheme` resolves exactly
+as before. To adopt, an app reads the default from KyIdentity on its backend, hands it to
+the page, calls `setServerDefaultTheme` before applying, and resolves its stored value with
+`chooseTheme`; its Appearance page should check the default's card when nothing is saved.
+
 ### 0.11.0 — Settings menu (pending)
 
 Based on 0.10.0. Follows the owner decision of 2026-10-31: in KyPost, KyCalendar, KyNotes and

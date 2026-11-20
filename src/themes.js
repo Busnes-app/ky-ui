@@ -100,3 +100,36 @@ export function applyThemeVariables(value, root = globalThis.document?.documentE
   root.style.colorScheme = theme.scheme;
   return theme.scheme;
 }
+
+// Server default: the platform-wide default theme a host app supplies, for example the
+// `defaultTheme` of KyIdentity's public `GET /api/appearance`, fetched by the app's own
+// backend and handed to the page. It sits between the user's saved choice and Match system,
+// so the user's choice always wins. ky-ui never fetches it. Kept per page, never persisted.
+let serverDefault = null;
+
+/** Returns the canonical ID for a saved pair ID, half ID, name or alias, or undefined. */
+export function canonicalChoice(value) {
+  return findPair(value)?.id ?? findTheme(value)?.id;
+}
+
+/**
+ * Records the server default and returns its canonical ID, or null when the value is
+ * missing or not in the catalog (the default is then cleared, so Match system applies).
+ */
+export function setServerDefaultTheme(value) {
+  serverDefault = canonicalChoice(value) ?? null;
+  return serverDefault;
+}
+
+/** The server default set on this page, or null. */
+export function serverDefaultTheme() {
+  return serverDefault;
+}
+
+/**
+ * The choice to apply: the saved choice when the catalog knows it, else the server default,
+ * else Match system. Pass the product's raw stored value (null when nothing is saved).
+ */
+export function chooseTheme(saved) {
+  return canonicalChoice(saved) ?? serverDefault ?? SYSTEM_THEME.id;
+}
