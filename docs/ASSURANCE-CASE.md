@@ -1,6 +1,6 @@
 # Assurance case
 
-[Overview](../README.md) · [Contributing](../CONTRIBUTING.md) · [Rollout plan](../PLAN.md)
+[Overview](../README.md) · [Contributing](../CONTRIBUTING.md) · [Security policy](../SECURITY.md)
 
 This is the argument that ky-ui does not weaken the security of the Ky products that use it:
 what it must protect, where the trust boundaries are, and why the design and the code hold at
@@ -100,7 +100,7 @@ Out of scope: a compromised ky-ui `main` branch (the ruleset requires a pull req
   through reviewed pull requests, not a registry.
 - **The rail is only as safe as each product's rendering.** ky-ui does not render the rail; a
   product that sets the `href` without `appHref` and has no strict CSP is still exposed until it
-  adopts the 0.11 contract (PLAN.md).
+  adopts the 0.11 contract.
 - No independent security audit has been done.
 
 ## Evidence

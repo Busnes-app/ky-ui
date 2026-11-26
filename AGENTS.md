@@ -17,14 +17,13 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - `src/update.js` owns the stale-build check and its reload notice (styled in `src/shell.css`); it never reloads by itself.
 - `consumers.json` lists the active product repositories and `ky-server-base`; `scripts/sync-consumers.mjs` validates their worktrees before copying shared assets, generated palette previews, the classic catalog copy `themes-browser.js` (from `src/themes.js`), and a version/hash manifest.
 - Product repositories own their page layouts, routes, product-specific components, and backend assets.
-- `skills/` owns the reusable suite design skill; `reviews/` owns comparative screenshot evidence and staged acceptance records.
+- `skills/` owns the reusable suite design skill.
 - `scripts/check-suite.mjs` checks public consumer default branches read-only with credential helpers disabled; no consumer code runs. Archived products stay outside the active inventory; no cross-repository private token is used.
 
 ## Local Contracts
 
 - REUSE: `REUSE.toml` labels every file MIT, (c) Busnes.app; `LICENSES/` holds the text.
-  Commit only Ky product screenshots; third-party screenshots and owner reference images
-  stay outside the repo (`reviews/2026-10-26-fleet/reference-inputs.json` keeps hashes only).
+  Third-party screenshots and owner reference images stay outside the repo.
   CI runs `reuse lint`.
 - The default theme follows the operating system until a browser-local choice is saved.
 - Products expose Appearance as a Settings section, without a compact theme dropdown in that navigation/sidebar or its phone-header presentation. Appearance description, theme name and mode text wrap consistently through shared styles.
@@ -44,7 +43,6 @@ Provide the shared browser design language for Ky* web products: Busnes Light/Da
 - Type, spacing, control, field-border and overlay tokens are shared alongside the palette. Self-host Space Grotesk in consumers; the font stack does not fetch a font.
 - `--consumer=<inventory name>` scopes both sync and check to the named consumers. Preflight every selected destination before any write; use an explicit worktree map for a partial rollout.
 - Run `npm run sync:consumers -- --root=<suite worktree root>` for a release copy, and `npm run check:consumers -- --root=<suite worktree root>` before merging consumer changes.
-- Update `PLAN.md` when a rollout step changes or a product migration is completed.
 - Before distributing a source copy, update `CHANGELOG.md` with major changes,
   upgrade impact, source revision and known vulnerability IDs; bump the package
   version when shipped assets change. Keep pending changes separate.
@@ -57,4 +55,3 @@ Run `npm run check` (ESLint recommended checks with zero warnings, then unit tes
 
 - `browser/AGENTS.md` owns the shared primitive browser fixture and regression checks (not product integration coverage).
 - `skills/AGENTS.md` owns the suite design skill and its references.
-- `reviews/AGENTS.md` owns comparative scores, provenance and staged visual evidence.

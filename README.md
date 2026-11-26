@@ -3,35 +3,24 @@
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15918/badge)](https://www.bestpractices.dev/projects/15918)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Busnes-app/ky-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/Busnes-app/ky-ui)
 
-[Release notes](CHANGELOG.md) describe source versions, upgrade impact and integration changes.
+`ky-ui` is the dependency-free shared browser foundation for the Ky* web products. It provides
+the Busnes Light/Dark design tokens, OS-aware theme selection, the shared app shell, and
+accessible navigation primitives.
 
-`ky-ui` is the small shared browser foundation for the Ky* servers. It provides the Busnes Light/Dark design tokens, OS-aware theme selection, and the selected-navigation treatment used across the suite.
+It deliberately does not provide a framework, router, component runtime, or product page
+layouts. Each server self-hosts Space Grotesk, keeps its own composition, and imports the
+shared CSS/JS primitives.
 
-It deliberately does not provide a framework, router, component runtime, or product page layouts. Each server keeps its own composition and imports the shared CSS/JS primitives.
+## What it provides
 
-Version 0.3.0 also supplies type, space, control, field-border and overlay tokens.
-Version 0.4.0 adds the shared responsive Appearance theme-preview radio cards.
-Version 0.4.1 adds the generated classic catalog `themes-browser.js` for first-paint theme application.
-Version 0.5.0 adds the shared [shell](#shell): sign-in, user block, licence line, About dialog and page head.
-Version 0.6.0 groups the catalog into six light/dark pairs.
-Version 0.7.0 adds the shared app frame: sidebar, brand row, navigation rows, content inset and phone header.
-Version 0.8.0 separates status from action: a crimson danger far from every accent, soft status tints and the `.ky-status` pill.
-Version 0.9.0 adds the [app rail](#app-rail), a row of suite app icons in the sidebar foot, and the `appmarks.js` app marks.
-Version 0.10.0 makes the account footer one row with icon-only Settings and Sign out, and adds the [Settings page](#settings-page) layout with section tabs.
-Version 0.11.0 turns the Settings gear into a [menu of Settings sections](#settings-menu), with the `menu.js` helper, and adds the [update notice](#update-notice) (`update.js`).
-Version 0.12.0 adds a [server default theme](#server-default-theme): a platform default the host app supplies, between the saved choice and Match system.
-Products self-host Space Grotesk and own layout and components. The reusable
-[Ky suite UI skill](skills/ky-suite-ui/SKILL.md) defines the visual contract and
-evidence-based 9/10 acceptance target. The dated records under `reviews/` are
-delivered in a companion evidence PR so runtime changes remain easy to review.
+- **Design tokens & themes** (`tokens.css`, `theme.js`, `themes.js`, `themes-browser.js`): Busnes Light/Dark plus six light/dark theme pairs, type/spacing/control tokens, status tints, and optional [server default theme](#server-default-theme).
+- **Appearance picker** (`appearance.css`, `appearance-themes.css`): responsive native radio-card theme selector ([Appearance](#appearance)).
+- **Shared app shell** (`shell.css`, `navigation.css`, `menu.js`, `appmarks.js`, `update.js`): [app frame](#app-frame), [sign-in](#sign-in), [account footer](#account-footer-and-licence-line), [Settings menu](#settings-menu) & [Settings page](#settings-page), [app rail](#app-rail), [About dialog](#about-dialog), [page head](#page-head), [update notice](#update-notice), and [status pills](#status-vs-action).
+- **Design guidance**: the reusable [Ky suite UI skill](skills/ky-suite-ui/SKILL.md).
 
-For a focused release copy, pass `--consumer=<inventory name>` once per selected
-product to either sync or check, with `--paths` mapping those products to their
-worktrees. Every selected destination is validated before any write; unselected
-checkouts are untouched. Fleet freshness remains a separate whole-inventory gate.
-
-- [Contributing](CONTRIBUTING.md) — how to propose a change and what it must pass.
-- [Assurance case](docs/ASSURANCE-CASE.md) — threat model, trust boundaries, and why the shipped files and tooling are safe to adopt.
+See [CHANGELOG.md](CHANGELOG.md) for per-version additions and upgrade impact,
+[CONTRIBUTING.md](CONTRIBUTING.md) for contribution rules, and
+[docs/ASSURANCE-CASE.md](docs/ASSURANCE-CASE.md) for the threat model and trust boundaries.
 
 ## Use
 
@@ -59,17 +48,35 @@ product; server-render a validated theme attribute when that preference is
 available to the server, or load the generated `ky-ui/themes-browser.js` and a
 product-owned classic script synchronously in the head. `themes-browser.js` defines
 `window.kyThemes` with the `themes.js` exports; build pickers after `DOMContentLoaded`.
-The token stylesheet follows the OS before an override
-is applied. Existing products should retain their adapter, saved key and named
-themes rather than replace them with this minimal default-key example.
+The token stylesheet follows the OS before an override is applied. Existing products
+should retain their adapter, saved key and named themes rather than replace them with
+this minimal default-key example.
 
-Product CSS should map its existing local variables to the `--ky-*` tokens during migration, then delete the duplicate token definitions once all consumers are moved.
+Product CSS should map its existing local variables to the `--ky-*` tokens during migration,
+then delete the duplicate token definitions once all consumers are moved.
 
-Refresh the checked-in consumer copies with `npm run sync:consumers -- --root=/path/to/suite-worktrees`. `consumers.json` names the ten active web products and server base. For differently named checkouts, pass `--paths=/path/to/paths.json`, a JSON object mapping those repository names to absolute checkout paths. Every destination is validated before writing.
+`tokens.css` is the palette source and `themes.js` the catalog source. Generated
+`themes-browser.js` is the catalog as a classic script. Generated `palettes.ts` and
+`palettes-browser.js` support swatches and consumers that require literal values without
+duplicating maintained palettes. Product adapters use `readChoice` and `saveChoice` with
+their existing storage keys. Navigation uses `.ky-nav-item` plus ARIA state or existing
+active/selected classes and product colors; spacing and orientation stay local.
 
-The copy includes CSS, theme preference helpers, generated palette previews and `VERSION` with SHA-256 hashes. `npm run check:consumers -- --paths=/path/to/paths.json` compares copies to the source. Each consumer runs `node path/to/ky-ui/check-vendor.mjs` in CI to detect accidental local edits. That check verifies the recorded copy; it does not claim a newer release is available. Bump the package version when releasing changes.
+### Syncing consumers
 
-`tokens.css` is the palette source and `themes.js` the catalog source. Generated `themes-browser.js` is the catalog as a classic script. Generated `palettes.ts` and `palettes-browser.js` support swatches and consumers that require literal values without duplicating maintained palettes. Product adapters use `readChoice` and `saveChoice` with their existing storage keys. Navigation uses `.ky-nav-item` plus ARIA state or existing active/selected classes and product colors; spacing and orientation stay local.
+Refresh the checked-in consumer copies with
+`npm run sync:consumers -- --root=/path/to/suite-worktrees`. `consumers.json` names the ten
+active web products and `ky-server-base`. For differently named checkouts, pass
+`--paths=/path/to/paths.json` (a JSON object mapping repository names to absolute checkout
+paths). For a focused release copy, pass `--consumer=<inventory name>` once per selected
+product to either sync or check; every selected destination is validated before any write,
+and unselected checkouts stay untouched.
+
+Each copy includes CSS, theme preference helpers, generated palette previews and `VERSION`
+with SHA-256 hashes. `npm run check:consumers -- --paths=/path/to/paths.json` compares copies
+to the source. Each consumer runs `node path/to/ky-ui/check-vendor.mjs` in CI to detect
+accidental local edits (it checks the recorded copy; fleet freshness is checked separately
+by `npm run check:suite`). Bump the package version when releasing changes.
 
 
 ## Appearance
@@ -594,6 +601,8 @@ ky-ui is released under the [MIT License](LICENSE.txt).
 ## Documentation
 
 - [Assurance case](docs/ASSURANCE-CASE.md) — threat model, trust boundaries, and why the security requirements are met.
+- [Ky suite UI skill](skills/ky-suite-ui/SKILL.md) — reusable visual contract and review rubric for suite products.
 - [Contributing](CONTRIBUTING.md) — how to propose a change and what it must pass.
+- [Code of conduct](CODE_OF_CONDUCT.md) — community expectations and adversarial review boundaries.
 - [Security policy](SECURITY.md) — how to report a vulnerability privately.
 - [Release notes](CHANGELOG.md) — what changed in each release, and its upgrade impact.
